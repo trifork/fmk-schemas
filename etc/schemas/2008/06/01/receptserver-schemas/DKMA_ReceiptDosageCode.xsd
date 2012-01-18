@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="ReceiptDosageCode" type="medicinecard:ReceiptDosageCode">
+		<annotation>
+			<documentation xml:lang="en-GB">code for dosage</documentation>
+			<documentation xml:lang="da-DK">kode for dosering</documentation>
+		</annotation>
+	</element>
+	<simpleType name="ReceiptDosageCode">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="8"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<xs:include schemaLocation="General_Types-1.0.xsd"/>
+	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
+	<xs:complexType name="Delivery_Type">
+		<xs:sequence>
+			<xs:element name="PriorityOfDelivery" type="PriorityOfDelivery_Type" minOccurs="0"/>
+			<xs:element name="StreetName" type="DeliveryStreetName_Type" minOccurs="0"/>
+			<xs:element name="PseudoAddress" type="DeliveryPseudoAddress_Type" minOccurs="0"/>
+			<xs:element name="PostCodeIdentifier" type="PostCodeIdentifier_Type" minOccurs="0"/>
+			<xs:element name="ContactName" type="DeliveryContactName_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

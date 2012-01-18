@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
+	targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_PrescriptionMedicationIdentifier.xsd" />
+	<include schemaLocation="DKMA_CreatedStructure.xsd" />
+	<include schemaLocation="DKMA_IndicationStructure.xsd" />
+	<include schemaLocation="DKMA_ReceiptDosageStructure.xsd" />
+	<include schemaLocation="DKMA_PriceListVersionDate.xsd" />
+	<include schemaLocation="DKMA_PrescriptionMedicationTypeIdentifier.xsd" />
+	<include schemaLocation="DKMA_RouteOfAdministrationStructure.xsd" />
+	<include schemaLocation="DKMA_DrugStructure.xsd" />
+	<include schemaLocation="DKMA_LatestEffectuationDateTime.xsd" />
+	<include schemaLocation="DKMA_TerminatedDateTime.xsd" />
+	<include schemaLocation="DKMA_CreatedLocalDateTime.xsd" />
+	<include schemaLocation="DKMA_EffectuationStructure.xsd" />
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../DKMA_PackageNumberIdentifier.xsd"/>
+	<element name="NewPrescriptionMedicationStructure" type="medicinecard:NewPrescriptionMedicationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">A prescription medication (a medication on a prescription) including effectuations</documentation>
+			<documentation xml:lang="da-DK">En receptordination (en ordination på en recept) inklusiv effektueringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="NewPrescriptionMedicationStructureType">
+		<sequence>
+			<element ref="medicinecard:PrescriptionMedicationIdentifier" />
+			<element ref="medicinecard:CreatedStructure" />
+			<element ref="medicinecard:PriceListVersionDate" minOccurs="0" />
+			<element ref="medicinecard:CreatedLocalDateTime" minOccurs="0" />
+			<element ref="medicinecard:LatestEffectuationDateTime" minOccurs="0" />
+			<element ref="medicinecard:TerminatedDateTime" minOccurs="0" />
+			<element ref="medicinecard:IndicationStructure" minOccurs="0" />
+			<element ref="medicinecard:ReceiptDosageStructure" minOccurs="0" />
+			<element ref="medicinecard:RouteOfAdministrationStructure" minOccurs="0"
+				maxOccurs="4" />
+			<element ref="medicinecard:PrescriptionMedicationTypeIdentifier" />
+			<element ref="medicinecard:DrugStructure" />
+            <element ref="medicinecard20080601:PackageNumberIdentifier" minOccurs="0"/>
+			<element ref="medicinecard:EffectuationStructure" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+</schema>

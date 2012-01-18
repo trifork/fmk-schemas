@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<xs:include schemaLocation="General_Types-1.0.xsd"/>
+	<xs:complexType name="Formulation_Type">
+		<xs:sequence>
+			<xs:element name="NameOfDrug" type="NameOfDrug_Type"/>
+			<xs:element name="DosageForm" type="DosageForm_Type" minOccurs="0"/>
+			<xs:element name="DrugStrength" type="DrugStrength_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

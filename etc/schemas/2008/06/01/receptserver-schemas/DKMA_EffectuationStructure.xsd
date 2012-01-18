@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_EffectuationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_EffectuationDateTime.xsd"/>
+	<include schemaLocation="DKMA_EffectuationMethodText.xsd"/>
+	<include schemaLocation="DKMA_OrganisationStructure.xsd"/>
+	<include schemaLocation="DKMA_DoctorStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugPackageStructureChoice.xsd"/>
+	<element name="EffectuationStructure" type="medicinecard:EffectuationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">The actual effectuation of the drug medication. It could be to administer the drug into the patient or that a doctor hands medication out to the patient</documentation>
+			<documentation xml:lang="da-DK">Den faktiske udførelse af lægemiddelordination. Det kan f.eks. være at indgive medicin i patienten, eller at en læge eller apoteket udleverer medicin til patienten</documentation>
+		</annotation>
+	</element>
+	<complexType name="EffectuationStructureType">
+		<sequence>
+			<element ref="medicinecard:EffectuationIdentifier"/>
+			<element ref="medicinecard:EffectuationDateTime"/>
+			<element ref="medicinecard:EffectuationMethodText" minOccurs="0"/>
+			<element ref="medicinecard:OrganisationStructure" minOccurs="0"/>
+			<element ref="medicinecard:DoctorStructure" minOccurs="0"/>
+			<choice>
+				<element ref="medicinecard:DrugStructure"/>
+				<element ref="medicinecard:DrugPackageStructureChoice"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="IndicationFreeText" type="medicinecard:IndicationFreeTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indication text in free form</documentation>
+			<documentation xml:lang="da-DK">Indikationstekst som fritekst</documentation>
+		</annotation>
+	</element>
+	<simpleType name="IndicationFreeTextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="150"/>
+		</restriction>
+	</simpleType>
+</schema>

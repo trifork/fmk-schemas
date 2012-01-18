@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<xs:include schemaLocation="General_Types-1.0.xsd"/>
+	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
+	<xs:complexType name="PatientOrRelative_Type">
+		<xs:sequence>
+			<xs:element name="CivilRegistrationNumber" type="CivilRegistrationNumber_Type" minOccurs="0"/>
+			<xs:element name="PersonSurname" type="PersonSurname_Type" minOccurs="0"/>
+			<xs:element name="PersonGivenName" type="PersonGivenName_Type" minOccurs="0"/>
+			<xs:element name="StreetName" type="StreetName_Type" minOccurs="0"/>
+			<xs:element name="DistrictName" type="DistrictName_Type" minOccurs="0"/>
+			<xs:element name="PostCodeIdentifier" type="PostCodeIdentifier_Type" minOccurs="0"/>
+			<xs:element name="CountryCode" type="CountryCode_Type" minOccurs="0"/>
+			<xs:element name="CountyCode" type="CountyCode_Type" minOccurs="0"/>
+			<xs:element name="PatientDateOfBirth" type="xs:date" minOccurs="0"/>
+			<xs:element name="PatientSex" type="PatientSex_Type" minOccurs="0"/>
+		</xs:sequence>
+		<!-- Cpr eller (fornavn og efternavn) -->
+	</xs:complexType>
+	<xs:element name="PatientOrRelative" type="PatientOrRelative_Type"/>
+</xs:schema>

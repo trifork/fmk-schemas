@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="ActiveSubstanceChemicalAbstractNumber" type="medicinecard:ActiveSubstanceChemicalAbstractNumberType">
+		<annotation>
+			<documentation xml:lang="en-GB">The Chemical Abstract Number for an active substance. The number is separated by hyphens into three parts, the first consisting of up to 6 digits, the second consisting of two digits, and the third consisting of a single digit serving as a check digit. </documentation>
+			<documentation xml:lang="da-DK">CAS nummeret (Chemical Abstract Number) for en aktiv substans. Nummeret er delt i tre dele, adskilt af bindestreger. Første del indeholder op til 6 tegn, anden del af to tegn og tredie del er et enkelt checkciffer.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="ActiveSubstanceChemicalAbstractNumberType">
+		<restriction base="string">
+			<pattern value="[0-9]?[0-9]?[0-9]?[0-9]?[0-9]?[0-9]-[0-9][0-9]-[0-9]"/>
+		</restriction>
+	</simpleType>
+</schema>

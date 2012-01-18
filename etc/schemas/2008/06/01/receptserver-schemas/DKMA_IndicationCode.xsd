@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="IndicationCode" type="medicinecard:IndicationCodeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indication code (LMS26 field 1)</documentation>
+			<documentation xml:lang="da-DK">Indikationskode (LMS26 felt 1)</documentation>
+		</annotation>
+	</element>
+	<simpleType name="IndicationCodeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="17"/>
+		</restriction>
+	</simpleType>
+</schema>

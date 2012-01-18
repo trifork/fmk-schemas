@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_ReceiptDosageCode.xsd"/>
+	<include schemaLocation="DKMA_ReceiptDosageText.xsd"/>
+	<element name="ReceiptDosageCodeAndTextStructure" type="medicinecard:ReceiptDosageCodeAndTextStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Dosage code and text from the values specified by dkma in taksten</documentation>
+			<documentation xml:lang="da-DK">Struktureret doseringskode og -tekst som de bruges i taksten</documentation>
+		</annotation>
+	</element>
+	<complexType name="ReceiptDosageCodeAndTextStructureType">
+		<sequence>
+			<element ref="medicinecard:ReceiptDosageCode"/>
+			<element ref="medicinecard:ReceiptDosageText" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

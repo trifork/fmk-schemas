@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by Jesper Nielsen (Sundhedsstyrelsen) -->
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by - (National Board of Health) -->
+<xs:schema targetNamespace="http://medinfo.dk/epj/proj/gepka/20030701/xml/schema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://medinfo.dk/epj/proj/gepka/20030701/xml/schema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../GEPJ_Package.xsd"/>
+	<xs:element name="GEpjInterface">
+		<xs:annotation>
+			<xs:documentation>Interface Schema til GEpj (GEPKA)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="patient" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Patient">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="paaroerende" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Paaroerende">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="forloeb" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Forloeb">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="kontaktprioritet" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Kontaktprioritet">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="forloebsansvar" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Forloebsansvar">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="personaleKontakt" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="PersonaleKontakt">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="forloebSymbolisering" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="ForloebSymbolisering">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="spontantOpstaaetOplysning" type="SpontantOpstaaetOplysning" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="spontanHenvendelse" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="SpontanHenvendelse">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="diagnose" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Diagnose">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="diagnosestatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Diagnosestatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="dAarsagRekurs" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="DAarsagRekurs">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="dDelRekurs" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="DDelRekurs">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="dPriorRekurs" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="DPriorRekurs">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="dFoelRekurs" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="DFoelRekurs">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="eksternAarsag" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="EksternAarsag">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="aarsagstilknytning" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Aarsagstilknytning">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="diagnostiknotat" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Diagnostiknotat">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="dNotatTilknytning" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="DNotatTilknytning">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="intervention" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Intervention">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="interventionsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Interventionsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="iDelRekurs" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="IDelRekurs">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="iFoelRekurs" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="IFoelRekurs">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="iPriorRekurs" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="IPriorRekurs">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="formaal" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Formaal">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="interventionsresultat" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Interventionsresultat">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="operationeltMaal" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="OperationeltMaal">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="evalueringsresultat" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Evalueringsresultat">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="maalTilknytning" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="MaalTilknytning">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="indikationstilknytning" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Indikationstilknytning">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="komplikationstilknytning" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Komplikationstilknytning">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="interventionsnotat" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Interventionsnotat">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="iNotatTilknytning" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="INotatTilknytning">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="udfoerendePersonale" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="UdfoerendePersonale">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="vejledning" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Vejledning">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="fokusering" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Fokusering">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="medicinudlevering" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Medicinudlevering">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="interventionsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Interventionsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="skemaMedicinering" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="SkemaMedicinering">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="interventionsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Interventionsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="fastMedicinering" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="FastMedicinering">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="interventionsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Interventionsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="variabelMedicinering" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="VariabelMedicinering">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="interventionsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Interventionsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="medicinblanding" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Medicinblanding">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ingrediens" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Ingrediens">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="tilstedevaerelse" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Tilstedevaerelse">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="interventionsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Interventionsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="plejeansvar" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Plejeansvar">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="pladsRessource" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="PladsRessource">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="journalfoeringskontekst" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Journalfoeringskontekst">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="henvendelse" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Henvendelse">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>Eventuelle rettelse til diagnose objekter</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="indberetningsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Indberetningsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="doedsattest" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Doedsattest">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>Eventuelle rettelse til diagnose objekter</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="indberetningsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Indberetningsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="skadesanmeldelse" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="Skadesanmeldelse">
+								<xs:sequence>
+									<xs:element name="gepjRettelse" type="GEpjRettelse" minOccurs="0" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>Eventuelle rettelse til diagnose objekter</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="indberetningsstatus" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="Indberetningsstatus">
+													<xs:sequence>
+														<xs:element name="statusRettelse" type="StatusRettelse" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DrugStrengthValue.xsd"/>
+	<include schemaLocation="DKMA_DrugStrengthUnitCode.xsd"/>
+	<include schemaLocation="DKMA_DrugStrengthUnitText.xsd"/>
+	<element name="DrugStrengthValueChoice" type="medicinecard:DrugStrengthValueChoiceType">
+		<annotation>
+			<documentation xml:lang="en-GB">Unit for drug strength, code (LMS15 field 2)</documentation>
+			<documentation xml:lang="da-DK">Enhed for lægemiddelstyrke, kode (LMS15 felt 2)</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugStrengthValueChoiceType">
+		<sequence>
+			<element ref="medicinecard:DrugStrengthValue"/>
+			<element ref="medicinecard:DrugStrengthUnitCode"/>
+			<element ref="medicinecard:DrugStrengthUnitText" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

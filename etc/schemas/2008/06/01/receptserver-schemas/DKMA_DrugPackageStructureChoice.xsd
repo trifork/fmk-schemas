@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_PackageQuantity.xsd"/>
+	<include schemaLocation="DKMA_DrugPackageStructure.xsd"/>
+	<element name="DrugPackageStructureChoice" type="medicinecard:DrugPackageStructureChoiceType">
+		<annotation>
+			<documentation xml:lang="en-GB">The actual effectuation of the drug medication. It could be to administer the drug into the patient or that a doctor hands medication out to the patient</documentation>
+			<documentation xml:lang="da-DK">Den faktiske udførelse af lægemiddelordination. Det kan f.eks. være at indgive medicin i patienten, eller at en læge eller apoteket udleverer medicin til patienten</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugPackageStructureChoiceType">
+		<sequence>
+			<element ref="medicinecard:DrugPackageStructure"/>
+			<element ref="medicinecard:PackageQuantity" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

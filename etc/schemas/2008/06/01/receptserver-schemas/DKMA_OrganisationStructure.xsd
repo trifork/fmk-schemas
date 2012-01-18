@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:receptserver="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_OrganisationName.xsd"/>
+	<include schemaLocation="DKMA_DoctorOrganisationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_HospitalOrganisationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_MunicipalityOrganisationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_PharmacyIdentifier.xsd"/>
+	<include schemaLocation="DKMA_AddressLine.xsd"/>
+	<include schemaLocation="subelements/General_Types-1.0.xsd"/>
+	<element name="OrganisationStructure" type="medicinecard:OrganisationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Describes either a general practitioner or a hospital</documentation>
+			<documentation xml:lang="da-DK">Beskriver enten en lægepraksis eller et sygehus</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrganisationStructureType">
+		<sequence>
+			<element ref="medicinecard:OrganisationName" minOccurs="0"/>
+			<element name="AddressLine" type="medicinecard:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<element name="TelephoneSubscriberIdentifier" type="receptserver:TelephoneSubscriberIdentifier_Type" minOccurs="0"/>
+			<choice>
+				<element ref="medicinecard:DoctorOrganisationIdentifier"/>
+				<element ref="medicinecard:HospitalOrganisationIdentifier"/>
+				<element ref="medicinecard:MunicipalityOrganisationIdentifier"/>
+				<element ref="medicinecard:PharmacyIdentifier"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

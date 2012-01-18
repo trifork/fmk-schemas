@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<xs:include schemaLocation="General_Types-1.0.xsd"/>
+	<xs:include schemaLocation="Sender_Type-1.0.xsd"/>
+	<xs:include schemaLocation="PatientOrRelative_Type-1.0.xsd"/>
+	<xs:include schemaLocation="Medication_Type-1.0.xsd"/>
+	<xs:complexType name="Prescription_Type">
+		<xs:sequence>
+			<xs:element name="PrescriptionID" type="PrescriptionID_Type"/>
+			<xs:element name="Sender" type="Sender_Type"/>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="PatientOrRelative" type="PatientOrRelative_Type" minOccurs="0"/>
+					<xs:element name="ForGPUse" type="ForGPUse_Type" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="ForGPClinicUse" type="ForGPClinicUse_Type"/>
+			</xs:choice>
+			<xs:element name="Medication" type="Medication_Type" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

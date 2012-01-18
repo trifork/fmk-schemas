@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<xs:include schemaLocation="General_Types-1.0.xsd"/>
+	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
+	<xs:include schemaLocation="Delivery_Type-1.0.xsd"/>
+	<xs:include schemaLocation="PharmacyWhereInProgress_Type-1.0.xsd"/>
+	<xs:complexType name="AdministrationInProgress_Type">
+		<xs:sequence>
+			<xs:element name="AdministrationID" type="AdministrationID_Type"/>
+			<xs:element name="OrderInstruction" type="OrderInstruction_Type" minOccurs="0"/>
+			<xs:element name="DeliveryInformation" type="DeliveryInformation_Type" minOccurs="0"/>
+			<xs:element name="Delivery" type="Delivery_Type" minOccurs="0"/>
+			<xs:element name="PharmacyWhereInProgress" type="PharmacyWhereInProgress_Type"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2002/06/28/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_OrganisationStructure.xsd"/>
+	<include schemaLocation="DKMA_DoctorStructure.xsd"/>
+	<include schemaLocation="DKMA_CreatedDateTime.xsd"/>
+	<element name="CreatedStructure" type="medicinecard:CreatedStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element containing information about which organisation and possibly doctor who created the document this element is in (e.g. drug medication) as well as the date it ocurred.</documentation>
+			<documentation xml:lang="da-DK">Element der indeholder information omkring hvilken organisation og muligvis læge som har oprettet dokumentet elementet befinder sig i (f.eks. lægemiddelordination), desuden datoen dette er sket.</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatedStructureType">
+		<sequence>
+			<element ref="medicinecard:OrganisationStructure"/>
+			<element ref="medicinecard:DoctorStructure" minOccurs="0"/>
+			<element ref="medicinecard:CreatedDateTime"/>
+		</sequence>
+	</complexType>
+</schema>

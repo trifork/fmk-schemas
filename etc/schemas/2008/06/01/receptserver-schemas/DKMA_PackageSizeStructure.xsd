@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_PackageSizeValueChoice.xsd"/>
+	<include schemaLocation="DKMA_PackageSizeText.xsd"/>
+	<element name="PackageSizeStructure" type="medicinecard:PackageSizeStructure">
+		<annotation>
+			<documentation xml:lang="en-GB">Package size in strucured form</documentation>
+			<documentation xml:lang="da-DK">Pakningsstørrelse på struktureret form</documentation>
+		</annotation>
+	</element>
+	<complexType name="PackageSizeStructure">
+		<choice>
+			<element ref="medicinecard:PackageSizeValueChoice"/>
+			<element ref="medicinecard:PackageSizeText" minOccurs="0"/>
+		</choice>
+	</complexType>
+</schema>

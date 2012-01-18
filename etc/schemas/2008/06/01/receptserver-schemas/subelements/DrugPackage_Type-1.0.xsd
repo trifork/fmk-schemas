@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<xs:include schemaLocation="General_Types-1.0.xsd"/>
+	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
+	<xs:include schemaLocation="Dosage_Type-1.0.xsd"/>
+	<xs:include schemaLocation="Importer_Type-1.0.xsd"/>
+	<xs:include schemaLocation="Iteration_Type-1.0.xsd"/>
+	<xs:include schemaLocation="Indication_Type-1.0.xsd"/>
+	<xs:include schemaLocation="Formulation_Type-1.0.xsd"/>
+	<xs:complexType name="DrugPackage_Type">
+		<xs:sequence>
+			<xs:element name="PackageIdentifier" type="PackageIdentifier_Type" minOccurs="0"/>
+			<!-- MagistalFormulation understøttes ikke i version 1.0, da disse recepter kommer i receptserveren-->
+			<xs:choice>
+				<xs:element name="Formulation" type="Formulation_Type"/>
+				<xs:element name="MagistralFormulation" type="MagistralFormulation_Type"/>
+			</xs:choice>
+			<!-- PackageSize vil typisk være sat når det kommer fra Lægen men ikke når recepten er oprettet af apoteket -->
+			<xs:element name="PackageSize" type="PackageSize_Type" minOccurs="0"/>
+			<xs:element name="NumberOfPackings" type="NumberOfPackings_Type"/>
+			<xs:element name="Importer" type="Importer_Type" minOccurs="0"/>
+			<xs:element name="ReimbursementClause" type="ReimbursementClause_Type" minOccurs="0"/>
+			<xs:element name="SubstitutionCode" type="SubstitutionCode_Type" minOccurs="0"/>
+			<xs:element name="Dosage" type="Dosage_Type" minOccurs="0"/>
+			<xs:element name="Indication" type="Indication_Type" minOccurs="0"/>
+			<xs:element name="DrugDatabaseVersion" type="DrugDatabaseVersion_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

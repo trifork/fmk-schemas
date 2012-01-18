@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<xs:include schemaLocation="General_Types-1.0.xsd"/>
+	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
+	<xs:include schemaLocation="Delivery_Type-1.0.xsd"/>
+	<xs:include schemaLocation="DrugPackage_Type-1.0.xsd"/>
+	<xs:include schemaLocation="PharmacyWhereAddressed_Type-1.0.xsd"/>
+	<xs:include schemaLocation="PharmacyWhereAdministrated_Type-1.0.xsd"/>
+	<xs:complexType name="AdministrationDone_Type">
+		<xs:sequence>
+			<xs:element name="AdministrationID" type="AdministrationID_Type"/>
+			<xs:element name="AdministrationDateTime" type="AdministrationDateTime_Type"/>
+			<xs:element name="PharmacyAdministrationNumber" type="PharmacyAdministrationNumber_Type" minOccurs="0"/>
+			<xs:element name="PharmacyMedicationNumber" type="PharmacyMedicationNumber_Type" minOccurs="0"/>
+			<xs:element name="DrugPackage" type="DrugPackage_Type"/>
+			<xs:element name="OrderInstruction" type="OrderInstruction_Type" minOccurs="0"/>
+			<xs:element name="DeliveryInformation" type="DeliveryInformation_Type" minOccurs="0"/>
+			<xs:element name="Delivery" type="Delivery_Type" minOccurs="0"/>
+			<xs:element name="PharmacyWhereAdministrated" type="PharmacyWhereAdministrated_Type"/>
+			<xs:element name="PharmacyComment" type="PharmacyComment_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="MunicipalityOrganisationIdentifier" type="medicinecard:MunicipalityOrganisationIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Identification number of the organisation of the precribing doctor in case of a municipality number</documentation>
+			<documentation xml:lang="da-DK">Identifikationsnummer for den ordinerende læges organisation såfremt dette er et kommunenummer</documentation>
+		</annotation>
+	</element>
+	<simpleType name="MunicipalityOrganisationIdentifierType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="17"/>
+		</restriction>
+	</simpleType>
+</schema>

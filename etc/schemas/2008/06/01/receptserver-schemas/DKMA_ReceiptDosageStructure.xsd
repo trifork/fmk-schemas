@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" 
+	targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_ReceiptDosageFreeText.xsd"/>
+	<include schemaLocation="DKMA_ReceiptDosageCodeAndTextStructure.xsd"/>
+	<element name="ReceiptDosageStructure" type="medicinecard:ReceiptDosageStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Dosage for prescription from prescriptionserver</documentation>
+			<documentation xml:lang="da-DK">Dosering for receptordination fra receptserveren</documentation>
+		</annotation>
+	</element>
+	<complexType name="ReceiptDosageStructureType">
+		<choice>
+			<element ref="medicinecard:ReceiptDosageFreeText"/>
+			<element ref="medicinecard:ReceiptDosageCodeAndTextStructure"/>
+		</choice>
+	</complexType>
+</schema>

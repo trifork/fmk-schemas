@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_ATCStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugIdentifier.xsd"/>
+	<include schemaLocation="DKMA_DrugName.xsd"/>
+	<element name="DrugInfo" type="medicinecard:DrugInfoType">
+		<annotation>
+			<documentation xml:lang="en-GB">Drug information.</documentation>
+			<documentation xml:lang="da-DK">Lægemiddel information.</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugInfoType">
+		<sequence>
+					<element ref="medicinecard:ATCStructure" minOccurs="0"/>
+					<element ref="medicinecard:DrugIdentifier" minOccurs="0"/>
+					<element ref="medicinecard:DrugName"/>
+		</sequence>
+	</complexType>
+</schema>
