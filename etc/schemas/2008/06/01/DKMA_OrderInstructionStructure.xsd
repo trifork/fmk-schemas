@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_OrderInstructionText.xsd"/>
+	<element name="OrderInstructionStructure" type="medicinecard:OrderInstructionStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">1 to 3 lines of text for an order instruction</documentation>
+			<documentation xml:lang="da-DK">1 til 3 liniers tekst til ordre instruktion</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderInstructionStructureType">
+		<sequence>
+			<element ref="medicinecard:OrderInstructionText" minOccurs="1" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+</schema>

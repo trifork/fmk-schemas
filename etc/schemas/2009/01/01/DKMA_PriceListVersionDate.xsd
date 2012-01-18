@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PriceListVersionDate" type="medicinecard20090101:PriceListVersionDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Date "The Price List of Proprietary Medicinal Products" is effective (SYSTEM field 3)</documentation>
+			<documentation xml:lang="da-DK">Datoen for takstens ikrafttrædelse (SYSTEM felt 3)</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PriceListVersionDateType">
+		<restriction base="string">
+			<pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
+		</restriction>
+	</simpleType>
+</schema>

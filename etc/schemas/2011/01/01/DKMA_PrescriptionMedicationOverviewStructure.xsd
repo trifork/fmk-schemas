@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20110101="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_LatestEffectuationDateTime.xsd"/>
+	<include schemaLocation="DKMA_TerminatedDateTime.xsd"/>
+	<include schemaLocation="DKMA_NumberOfPackages.xsd"/>
+	<include schemaLocation="DKMA_NumberOfIterations.xsd"/>
+	<include schemaLocation="DKMA_IterationInterval.xsd"/>
+	<include schemaLocation="DKMA_IterationIntervalUnit.xsd"/>
+	<include schemaLocation="DKMA_ReimbursementClauseCode.xsd"/>
+	<include schemaLocation="DKMA_SupplementaryInformation.xsd"/>
+	<include schemaLocation="DKMA_ReceiverEAN.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_CreatedStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_IndicationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_PriceListVersionDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_PriceListVersionWeek.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_DrugStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PrescriptionMedicationTypeIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_RouteOfAdministrationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PrescriptionMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PackageNumberIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_SubstitutionAllowed.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DeliveryStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_SingleDispensingStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_ReiteratedDispensingStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageDispensingStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_AuthorisationDateTime.xsd"/>
+	<include schemaLocation="DKMA_SinglePrescriptionDispensingStructure.xsd"/>
+	<include schemaLocation="DKMA_ReiteratedPrescriptionDispensingStructure.xsd"/>
+	<include schemaLocation="DKMA_PrescriptionDosageDispensingStructure.xsd"/>
+	<include schemaLocation="DeliveryInformationAndOrderInstruction.xsd"/>
+	<element name="PrescriptionMedicationOverviewStructure" type="medicinecard20110101:PrescriptionMedicationOverviewStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">A prescription medication (a medication on a prescription)</documentation>
+			<documentation xml:lang="da-DK">En receptordination (en ordination på en recept)</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionMedicationOverviewStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:PrescriptionMedicationIdentifier"/>
+			<element ref="medicinecard20080601:AuthorisationDateTime"/>
+			<element ref="medicinecard20090101:CreatedStructure"/>
+			<choice>
+				<element ref="medicinecard20090101:PriceListVersionDate"/>
+				<element ref="medicinecard20090101:PriceListVersionWeek"/>
+			</choice>
+			<element ref="medicinecard20110101:LatestEffectuationDateTime" minOccurs="0"/>
+			<element ref="medicinecard20110101:TerminatedDateTime" minOccurs="0"/>
+			<element ref="medicinecard20110101:DeliveryInformationAndOrderInstruction" minOccurs="0" maxOccurs="3"/>
+			<element ref="medicinecard20080601:DeliveryStructure" minOccurs="0"/>
+			<element ref="medicinecard20110101:ReimbursementClauseCode" minOccurs="0"/>
+			<choice>
+				<element ref="medicinecard20110101:SinglePrescriptionDispensingStructure"/>
+				<element ref="medicinecard20110101:ReiteratedPrescriptionDispensingStructure"/>
+				<element ref="medicinecard20110101:PrescriptionDosageDispensingStructure"/>
+			</choice>
+			<element ref="medicinecard20090101:IndicationStructure" minOccurs="0"/>
+			<element ref="medicinecard20090101:DrugStructure"/>
+			<element ref="medicinecard20080601:SubstitutionAllowed" minOccurs="0"/>
+			<element ref="medicinecard20110101:SupplementaryInformation" minOccurs="0"/>
+			<element ref="medicinecard20110101:ReceiverEAN" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

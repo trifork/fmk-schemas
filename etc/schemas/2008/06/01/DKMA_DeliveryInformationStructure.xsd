@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DeliveryInformationText.xsd"/>
+	<element name="DeliveryInformationStructure" type="medicinecard:DeliveryInformationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">1 to 3 lines of text for delivery information</documentation>
+			<documentation xml:lang="da-DK">1 til 3 liniers tekst til leveringsinformation</documentation>
+		</annotation>
+	</element>
+	<complexType name="DeliveryInformationStructureType">
+		<sequence>
+			<element ref="medicinecard:DeliveryInformationText" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+</schema>

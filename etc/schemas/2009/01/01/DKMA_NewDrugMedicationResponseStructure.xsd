@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_NegativeConsentStructure.xsd"/>
+	<include schemaLocation="DKMA_NewDrugMedicationStructure.xsd"/>
+	<include schemaLocation="DKMA_PrescriptionServerError.xsd"/>	
+	<element name="NewDrugMedicationResponseStructure" type="medicinecard20090101:NewDrugMedicationResponseStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a response with one or more drug medications</documentation>
+			<documentation xml:lang="da-DK">Element for et svar med en eller flere lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="NewDrugMedicationResponseStructureType">
+		<sequence>
+			<element ref="medicinecard20090101:NegativeConsentStructure" minOccurs="0"/>
+			<element ref="medicinecard20090101:NewDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20090101:PrescriptionServerError" minOccurs="0"/>			
+		</sequence>
+	</complexType>
+</schema>

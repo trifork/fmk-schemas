@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://acure.dk/pem/services/AuditV3" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://acure.dk/pem/services/AuditV3" xmlns:intf="http://acure.dk/pem/services/AuditV3" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://vo.impl.v2.services.pem.acure.dk" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.3
+Built on Oct 05, 2005 (05:23:37 EDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://vo.impl.v2.services.pem.acure.dk" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://acure.dk/pem/services/AuditV3"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="AuditVO">
+    <sequence>
+     <element name="auditLogPID" nillable="true" type="xsd:long"/>
+     <element name="date" nillable="true" type="xsd:dateTime"/>
+     <element name="dateStr" nillable="true" type="xsd:string"/>
+     <element name="method" nillable="true" type="xsd:string"/>
+     <element name="methodKey" nillable="true" type="xsd:string"/>
+     <element name="organisationNavn" nillable="true" type="xsd:string"/>
+     <element name="organisationStr" nillable="true" type="xsd:string"/>
+     <element name="parameters" nillable="true" type="xsd:string"/>
+     <element name="pemEvent" nillable="true" type="xsd:string"/>
+     <element name="pnummer" nillable="true" type="xsd:string"/>
+     <element name="sksKode" nillable="true" type="xsd:string"/>
+     <element name="system" nillable="true" type="xsd:string"/>
+     <element name="user" nillable="true" type="xsd:string"/>
+     <element name="ydernummer" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AuditVOV2">
+    <complexContent>
+     <extension base="tns1:AuditVO">
+      <sequence>
+       <element name="borgerCPR" nillable="true" type="xsd:string"/>
+       <element name="borgerNavn" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AuditVOV3">
+    <complexContent>
+     <extension base="tns1:AuditVOV2">
+      <sequence>
+       <element name="adgangsType" nillable="true" type="xsd:string"/>
+       <element name="kommunenummer" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="HaendelsesLogVOV3">
+    <sequence>
+     <element name="logIndgange" nillable="true" type="impl:ArrayOf_tns1_AuditVOV3"/>
+     <element name="totalAntalLogIndgange" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://acure.dk/pem/services/AuditV3" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://vo.impl.v2.services.pem.acure.dk"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_tns1_AuditVOV3">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="tns1:AuditVOV3[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="hentAuditLogRequest">
+
+      <wsdl:part name="cpr" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="hentAuditLogResponse">
+
+      <wsdl:part name="hentAuditLogReturn" type="impl:ArrayOf_tns1_AuditVOV3"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="hentLaegensMedhjaelpAuditLogResponse">
+
+      <wsdl:part name="hentLaegensMedhjaelpAuditLogReturn" type="tns1:HaendelsesLogVOV3"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="hentLaegensMedhjaelpAuditLogRequest">
+
+      <wsdl:part name="cpr" type="xsd:string"/>
+
+      <wsdl:part name="startDato" type="xsd:dateTime"/>
+
+      <wsdl:part name="fraOgMedIndex" type="xsd:int"/>
+
+      <wsdl:part name="tilOgMedIndex" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AuditV3Service">
+
+      <wsdl:operation name="hentAuditLog" parameterOrder="cpr">
+
+         <wsdl:input message="impl:hentAuditLogRequest" name="hentAuditLogRequest"/>
+
+         <wsdl:output message="impl:hentAuditLogResponse" name="hentAuditLogResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hentLaegensMedhjaelpAuditLog" parameterOrder="cpr startDato fraOgMedIndex tilOgMedIndex">
+
+         <wsdl:input message="impl:hentLaegensMedhjaelpAuditLogRequest" name="hentLaegensMedhjaelpAuditLogRequest"/>
+
+         <wsdl:output message="impl:hentLaegensMedhjaelpAuditLogResponse" name="hentLaegensMedhjaelpAuditLogResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AuditV3SoapBinding" type="impl:AuditV3Service">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="hentAuditLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="hentAuditLogRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://acure.dk/pem/services/AuditV3" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="hentAuditLogResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://acure.dk/pem/services/AuditV3" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="hentLaegensMedhjaelpAuditLog">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="hentLaegensMedhjaelpAuditLogRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://acure.dk/pem/services/AuditV3" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="hentLaegensMedhjaelpAuditLogResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://acure.dk/pem/services/AuditV3" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AuditV3ServiceService">
+
+      <wsdl:port binding="impl:AuditV3SoapBinding" name="AuditV3">
+
+         <wsdlsoap:address location="http://localhost/pemws/services/AuditV3"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

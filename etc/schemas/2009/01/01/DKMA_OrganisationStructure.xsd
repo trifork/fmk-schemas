@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:xkom="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" xmlns:itst="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" xmlns:ean="http://rep.oio.dk/ean/xml/schemas/2005/01/10/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" schemaLocation="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/ITST_TelephoneNumberIdentifier.xsd"/>
+	<import namespace="http://rep.oio.dk/ean/xml/schemas/2005/01/10/" schemaLocation="http://rep.oio.dk/ean/xml/schemas/2005/01/10/EAN_EANLocationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_OrganisationName.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_AuthorisationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DoctorOrganisationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_HospitalOrganisationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_MunicipalityOrganisationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_LMSAdministratorIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PharmacyIdentifier.xsd"/>
+	<include schemaLocation="DKMA_AddressLine.xsd"/>
+	<element name="OrganisationStructure" type="medicinecard20090101:OrganisationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Describes either a general practitioner, a hospital, a municipality or a pharmacy. The pharmacy is identified by the EANLocationIdentifier.</documentation>
+			<documentation xml:lang="da-DK">Beskriver enten en lægepraksis, et sygehus, en kommune eller et apotek. Apoteket er identificeret ud fra EANLocationIdentifier.</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrganisationStructureType">
+		<sequence>
+			<element ref="medicinecard20090101:OrganisationName"/>
+			<element ref="medicinecard20090101:AddressLine" minOccurs="0" maxOccurs="5"/>
+			<element ref="itst:TelephoneNumberIdentifier" minOccurs="0"/>
+			<choice>
+				<element ref="medicinecard20080601:DoctorOrganisationIdentifier"/>
+				<element ref="medicinecard20080601:HospitalOrganisationIdentifier"/>
+				<element ref="medicinecard20080601:MunicipalityOrganisationIdentifier"/>
+				<element ref="medicinecard20090101:LMSAdministratorIdentifier"/>
+				<element ref="ean:EANLocationIdentifier"/> 
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20110101="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_PrescriptionMedicationStructure.xsd"/>
+	<element name="PrescriptionMedicationResponseStructure" type="medicinecard20110101:PrescriptionMedicationResponseStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container elemenet for a response with one or more prescription medications</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en svar med en eller flere receptordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionMedicationResponseStructureType">
+		<sequence>
+			<element ref="medicinecard20110101:PrescriptionMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

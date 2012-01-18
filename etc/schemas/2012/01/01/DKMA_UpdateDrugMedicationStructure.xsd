@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+    xmlns:medicinecard20120101="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01"
+	xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" 
+	xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" 
+	xmlns:patientrecord="http://www.dkma.dk/patientrecord/xml.schema/2006.12.01" 
+	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_NegativeConsentIndicator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_IndicationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_PriceListVersionDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_PriceListVersionWeek.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_DrugMedicationBeginEndDateStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_DrugStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_DosageStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_RouteOfAdministrationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DrugMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_SubstitutionAllowed.xsd"/>
+	<include schemaLocation="UnWithdrawDrugMedication.xsd"></include>
+	<element name="UpdateDrugMedicationStructure" type="medicinecard20120101:UpdateDrugMedicationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">The element contains information about the updated drug medication</documentation>
+			<documentation xml:lang="da-DK">Elementet indeholder information omkring den opdaterede lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="UpdateDrugMedicationStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:DrugMedicationIdentifier"/>
+			<element ref="medicinecard20120101:UnWithdrawDrugMedication" minOccurs="0"/>
+			<element ref="medicinecard20090101:NegativeConsentIndicator" minOccurs="0"/>
+			<choice>
+				<element ref="medicinecard20090101:PriceListVersionDate"/>
+				<element ref="medicinecard20090101:PriceListVersionWeek"/>
+			</choice>
+			<element ref="medicinecard20090101:DrugMedicationBeginEndDateStructure"/>
+			<element ref="medicinecard20090101:IndicationStructure"/>
+			<element ref="medicinecard20080601:RouteOfAdministrationStructure"/>
+			<element ref="medicinecard20090101:DrugStructure"/>
+			<element ref="medicinecard20090101:DosageStructure"/>
+			<element ref="medicinecard20080601:SubstitutionAllowed" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

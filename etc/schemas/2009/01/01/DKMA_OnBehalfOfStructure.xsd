@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_AuthorisationIdentifier.xsd"/>
+	<element name="OnBehalfOfStructure" type="medicinecard20090101:OnBehalfOfStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Structure containing the autorisation id of the person that is responsible for the operation.</documentation>
+			<documentation xml:lang="da-DK">En structur der indeholder autorisationsid'et på den person som er ansvarlig for handlingen.</documentation>
+		</annotation>
+	</element>
+	<complexType name="OnBehalfOfStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:AuthorisationIdentifier"/>
+		</sequence>
+	</complexType>
+</schema>

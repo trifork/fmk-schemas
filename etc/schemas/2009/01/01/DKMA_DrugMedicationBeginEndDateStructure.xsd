@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="DKMA_DrugMedicationCreatedDateTime.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationTreatmentStartDate.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationTreatmentStartDateTime.xsd"/>
+    <include schemaLocation="DKMA_DrugMedicationTreatmentStartedPreviously.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationTreatmentEndDate.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationTreatmentEndDateTime.xsd"/>
+	<element name="DrugMedicationBeginEndDateStructure" type="medicinecard20090101:DrugMedicationBeginEndDateStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates a periode where the drug medication is active</documentation>
+			<documentation xml:lang="da-DK">Angiver en periode hvor lægemiddelordinationen gælder</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugMedicationBeginEndDateStructureType">
+		<sequence>
+            <element ref="medicinecard20090101:DrugMedicationCreatedDateTime" minOccurs="0"/>
+			<choice>
+				<element ref="medicinecard20090101:DrugMedicationTreatmentStartDate"/>
+				<element ref="medicinecard20090101:DrugMedicationTreatmentStartDateTime"/>
+                <element ref="medicinecard20090101:DrugMedicationTreatmentStartedPreviously"/>
+			</choice>
+			<choice>
+				<element ref="medicinecard20090101:DrugMedicationTreatmentEndDate" minOccurs="0"/>
+				<element ref="medicinecard20090101:DrugMedicationTreatmentEndDateTime" minOccurs="0"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

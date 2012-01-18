@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="IncludeNonReviewedOnly" type="medicinecard:IncludeNonReviewedOnlyType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates if the medicine card is to be returned with only non reviewed items (true) or all. Currently this is only used for prescription medications not attached to a drug medication.</documentation>
+			<documentation xml:lang="da-DK">Angiver hvorvidt lægemidlet skal returneres med ikke-gennemgået indhold (true) eller alt indhold. På nuværende tidspunkt gælder dette kun receptordinationer der ikke er knyttet til lægemiddelordinationer.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="IncludeNonReviewedOnlyType">
+		<restriction base="boolean"/>
+	</simpleType>
+</schema>

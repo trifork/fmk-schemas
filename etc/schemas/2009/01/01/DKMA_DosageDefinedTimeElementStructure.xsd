@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageQuantityValue.xsd"/>
+	<element name="DosageDefinedTimeElementStructure" type="medicinecard20090101:DosageDefinedTimeElementStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of a dosage time element, at a defined time defined by the outer element and how much</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af et doseringstidspunkt, på et defineret tidspunkt angivet af det ydre element og hvor meget</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageDefinedTimeElementStructureType">
+		<sequence>
+			<choice>
+				<element ref="medicinecard20080601:DosageQuantityValue"/>
+				<sequence>
+					<element name="MinimalDosageQuantityValue" type="medicinecard20080601:DosageQuantityValueType"/>
+					<element name="MaximalDosageQuantityValue" type="medicinecard20080601:DosageQuantityValueType"/>
+				</sequence>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

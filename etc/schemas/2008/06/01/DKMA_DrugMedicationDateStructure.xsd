@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationVersionIdentifier.xsd"/>
+	<element name="DrugMedicationDateStructure" type="medicinecard:DrugMedicationDateStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains ID for a drug medication and a date </documentation>
+			<documentation xml:lang="da-DK">Indeholder ID for en lægemiddelordination og en dato </documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugMedicationDateStructureType">
+		<sequence>
+			<element ref="medicinecard:DrugMedicationIdentifier" minOccurs="1" maxOccurs="1"/>
+			<element name="DateTime" type="dateTime" minOccurs="1" maxOccurs="1"/>
+		</sequence>
+	</complexType>
+</schema>

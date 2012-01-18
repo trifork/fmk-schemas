@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+	xmlns:sdsd="http://www.sdsd.dk/dgws/2010/08"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+	xmlns:wst="http://schemas.xmlsoap.org/ws/2005/02/trust"
+	targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="qualified">
+	<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+		schemaLocation="oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+	<xs:import namespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+		schemaLocation="medcom.xsd"/>
+	<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+		schemaLocation="oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+	<xs:import namespace="http://schemas.xmlsoap.org/ws/2005/02/trust"
+		schemaLocation="ws-trust-specialized.xsd"/>
+	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
+		schemaLocation="../../../sdsd/2010/08/SystemOwnerName.xsd"/>
+	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
+		schemaLocation="../../../sdsd/2010/08/SystemName.xsd"/>
+	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
+		schemaLocation="../../../sdsd/2010/08/SystemVersion.xsd"/>
+	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
+		schemaLocation="../../../sdsd/2010/08/OrgResponsibleName.xsd"/>
+	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
+		schemaLocation="../../../sdsd/2010/08/OrgUsingName.xsd"/>
+	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
+		schemaLocation="../../../sdsd/2010/08/OrgUsingID.xsd"/>
+	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
+		schemaLocation="../../../sdsd/2010/08/RequestedRole.xsd"/>
+	<xs:element name="Envelope">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="soap:Header" minOccurs="0"/>
+				<xs:element ref="soap:Body"/>
+			</xs:sequence>
+			<!-- Changed to 'optional' by Seal -->			
+			<xs:attribute name="id" type="xs:NCName" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Header">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- Added by Seal -->
+				<xs:any namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="medcom:Header" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="sdsd:SystemOwnerName" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="sdsd:SystemName" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="sdsd:SystemVersion" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="sdsd:OrgResponsibleName" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="sdsd:OrgUsingName" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="sdsd:OrgUsingID" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="sdsd:RequestedRole" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Body" type="xs:anyType"/>
+</xs:schema>

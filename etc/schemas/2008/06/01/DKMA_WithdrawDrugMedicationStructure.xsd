@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DrugMedicationIdentifier.xsd"/>
+	<element name="WithdrawDrugMedicationStructure" type="medicinecard:WithdrawDrugMedicationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request which withdraws the drug prescription</documentation>
+			<documentation xml:lang="da-DK">En forespørgsel der seponerer en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="WithdrawDrugMedicationStructureType">
+		<sequence>
+			<element ref="medicinecard:DrugMedicationIdentifier"/>
+		</sequence>
+	</complexType>
+</schema>

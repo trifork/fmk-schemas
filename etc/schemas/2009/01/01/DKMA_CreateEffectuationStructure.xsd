@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_EffectuationDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_EffectuationMethodText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageQuantityValue.xsd"/>
+	<include schemaLocation="DKMA_DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DKMA_DrugStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PackageQuantity.xsd"/>
+	<include schemaLocation="DKMA_DrugPackageStructure.xsd"/>
+	<include schemaLocation="DKMA_VaccinationStructure.xsd"/>
+	<include schemaLocation="DKMA_PriceListVersionDate.xsd"/>
+	<include schemaLocation="DKMA_PriceListVersionWeek.xsd"/>
+	<element name="CreateEffectuationStructure" type="medicinecard20090101:CreateEffectuationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Document for creation of a new effectuation of a drug</documentation>
+			<documentation xml:lang="da-DK">Dokument til oprettelse af en ny effektuering af et lægemiddel</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateEffectuationStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:EffectuationDateTime"/>
+			<element ref="medicinecard20080601:EffectuationMethodText"/>
+			<choice>
+				<element ref="medicinecard20090101:PriceListVersionDate"/>
+				<element ref="medicinecard20090101:PriceListVersionWeek"/>
+			</choice>
+			<choice>
+				<sequence>
+					<element ref="medicinecard20080601:DosageQuantityValue"/>
+					<element ref="medicinecard20090101:DosageQuantityUnitText"/>
+					<element ref="medicinecard20090101:DrugStructure"/>
+				</sequence>
+				<sequence>
+					<element ref="medicinecard20090101:DrugStructure"/>
+				</sequence>
+				<sequence>
+					<element ref="medicinecard20080601:PackageQuantity" minOccurs="0"/>
+					<element ref="medicinecard20090101:DrugPackageStructure"/>
+				</sequence>
+			</choice>
+			<element ref="medicinecard20090101:VaccinationStructure" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

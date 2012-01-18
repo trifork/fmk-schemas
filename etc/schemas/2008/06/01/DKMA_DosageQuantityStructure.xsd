@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DosageQuantityValue.xsd"/>
+	<include schemaLocation="DKMA_DosageQuantityFreeText.xsd"/>
+	<element name="DosageQuantityStructure" type="medicinecard:DosageQuantityStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Value for dosage and if necessary a supplementary free text. The unit is defined in the schema as an enumeration of values.</documentation>
+			<documentation xml:lang="da-DK">Værdi for dosis og hvis nødvendig en supplerende fritekst. Enhenden er defineret i skemaet som en enumeration af værdier.</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageQuantityStructureType">
+		<sequence>
+			<element ref="medicinecard:DosageQuantityValue"/>
+			<element ref="medicinecard:DosageQuantityFreeText" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"  xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" schemaLocation="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_PersonCivilRegistrationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DrugMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DrugMedicationVersionStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DrugMedicationDateStructure.xsd"/>
+	<include schemaLocation="DKMA_NegativeConsentRequest.xsd"/>
+	<element name="DrugMedicationRequestStructure" type="medicinecard20090101:DrugMedicationRequestStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a drug medcination</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugMedicationRequestStructureType">
+		<sequence>
+			<element ref="cpr:PersonCivilRegistrationIdentifier"/>
+			<element ref="medicinecard20080601:DrugMedicationIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20080601:DrugMedicationVersionStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20080601:DrugMedicationDateStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20090101:NegativeConsentRequest" minOccurs="0"/>			
+		</sequence>
+	</complexType>
+</schema>

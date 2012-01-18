@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:receptserver="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="receptserver-schemas/DKMA_PrescriptionMedicationStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationVersionIdentifier.xsd"/>
+	<include schemaLocation="DKMA_ModifiedStructure.xsd"/>
+	<include schemaLocation="DKMA_CreatedStructure.xsd"/>
+	<include schemaLocation="DKMA_PausedStructure.xsd"/>
+	<include schemaLocation="DKMA_IndicationStructure.xsd"/>
+	<include schemaLocation="DKMA_PriceListVersionDate.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationBeginEndDateStructure.xsd"/>
+	<include schemaLocation="DKMA_CreatedDateTime.xsd"/>
+	<include schemaLocation="DKMA_ModifiedDateTime.xsd"/>
+	<include schemaLocation="DKMA_DoctorStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugMedicationTypeIdentifier.xsd"/>
+	<include schemaLocation="DKMA_RouteOfAdministrationStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugStructure.xsd"/>
+	<include schemaLocation="DKMA_DosageStructure.xsd"/>
+	<include schemaLocation="DKMA_DosageStructureTranslation.xsd"/>	
+	<include schemaLocation="DKMA_EffectuationStructure.xsd"/>
+	<element name="DrugMedicationStructure" type="medicinecard:DrugMedicationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Specification of which drug to use (medication), how much to give (dosage and quantity), for how long (start- and enddate), how to adminster it (route of administration) and the cause (indication)</documentation>
+			<documentation xml:lang="da-Dk">Anvisning af, hvilken medicin der skal anvendes (lægemiddel) hvor meget der skal gives (lægemiddeldosering), hvor længe (startdato og slutdato), hvordan den skal tilføres (administrationsvej) og hvorfor (indikation)</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugMedicationStructureType">
+		<sequence>
+			<element ref="medicinecard:DrugMedicationIdentifier"/>
+			<element ref="medicinecard:DrugMedicationVersionIdentifier"/>
+			<element ref="medicinecard:ModifiedStructure" minOccurs="0"/>
+			<element ref="medicinecard:CreatedStructure"/>
+			<element ref="medicinecard:PausedStructure" minOccurs="0"/>
+			<element ref="medicinecard:PriceListVersionDate"/>
+			<element ref="medicinecard:DrugMedicationBeginEndDateStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard:IndicationStructure"/>
+			<element ref="medicinecard:RouteOfAdministrationStructure" minOccurs="0"/>
+			<element ref="medicinecard:DrugMedicationTypeIdentifier" minOccurs="0"/>
+			<element ref="medicinecard:DrugStructure"/>
+			<element ref="medicinecard:DosageStructure" minOccurs="0"/>
+			<element ref="medicinecard:DosageStructureTranslation" minOccurs="0"/>			
+			<element ref="medicinecard:EffectuationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="receptserver:PrescriptionMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

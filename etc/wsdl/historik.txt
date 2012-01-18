@@ -1,0 +1,64 @@
+2008-XX-XX
+----------
+Ændringer i skemaer og wsdl:
+1. DrugStrengthValue er rettet til 3 decimaler BÅDE i medicinkortets og receptserverens udgave
+
+2008-09-01
+----------
+Ændringer i skemaer og wsdl:
+1. Rettet fejl i receptserver skemaet OrganisationStructure
+2. Tilføjet stub til CreatePrescriptionMedication
+
+2008-07-09
+----------
+Ændringer i skemaer og wsdl:
+1. Enheder tilføjet til DosageQuantityUnitText skema: gram, mikrogram, millimol, million enheder
+
+2008-06-20
+----------
+Ændringer i skemaer og wsdl:
+1. DosageQuantityUnitText er begrænset mht udfaldsrum
+2. EffectuationDateTime er fjernet fra MedicineCardVersionResponseStructure
+
+2008-05-29
+----------
+Ændringer i skemaer og wsdl:
+1. I DosageQuantityStructure er det gjort obligatorisk at angive DosageQuantityValue
+2. Nye receptserver skemaer
+
+2008-05-19
+----------
+Ændringer i skemaer og wsdl:
+1. Typen EvalutionDateTime omdøbt til ReviewedDateTime påvirker SetMedicineCardReviewedRequestStructure,
+   SetMedicineCardReviewedStructure og ReviewedMedicineCardStructure.
+2. Tilføjet skema, DosageStructureTranslation, til at holde kort og lang doseringstekst
+
+2008-04-15
+----------
+Ændringer i skemaer og wsdl i forhold til fase 2.
+1. Nyt namespace på medicinkort skemaer
+2. Ny medicingennemgang service (SetReviewedMedicineCard)
+3. Ny doseringsstruktur
+4. Ændret hent medicinkort version service
+5. Flytning af organisation og doktor op i xml-request hierarkierne
+
+2008-02-11
+----------
+1. Rettet fejl-referencer i receptserverskemaerne:
+receptserver-schemas\DKMA_DosageQuantityStructure.xsd
+-                     <include schemaLocation="DosageQuantityValueChoice.xsd"/>
++                    <include schemaLocation="DKMA_DosageQuantityValueChoice.xsd"/>
+ 
+receptserver-schemas\DKMA_OrganisationStructure.xsd
+-                     <include schemaLocation="../subelements/General_Types-1.0.xsd"/>
++                    <include schemaLocation="subelements/General_Types-1.0.xsd"/>
+
+2. Rettet skema i forbindelse med returnering af receptordinationer ved GetDrugMedication
+Der er ændret i DKMA_DrugMedicationStructure.xsd, således at:
+  <element ref="medicinecard:PrescriptionMedicationStructure"...
+er erstattet med:
+  <element ref="receptserver:PrescriptionMedicationStructure"...
+
+Dvs. at vi nu ikke længere refererer til receptordinationen i medicinkort-namespacet (som er
+ændret til noget "forkert") men Acures løsere definerede (men "rigtige") version i
+receptserver-namespacet.

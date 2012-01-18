@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PackageNumberIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PackageSizeText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PackageQuantity.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_ReiterationNumber.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_ReiterationInterval.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_ReiterationIntervalUnitText.xsd"/>
+	<element name="ReiteratedDispensingStructure" type="medicinecard20090101:ReiteratedDispensingStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information dispensing the package two or more times</documentation>
+			<documentation xml:lang="da-DK">Information til to eller flere udleveringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="ReiteratedDispensingStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:PackageNumberIdentifier"/>
+			<element name="FreeTradePackageSizeText" type="medicinecard20080601:PackageSizeTextType" minOccurs="0"/>			
+			<element ref="medicinecard20080601:ReiterationNumber"/>
+			<element ref="medicinecard20080601:ReiterationInterval"/>
+			<element ref="medicinecard20080601:ReiterationIntervalUnitText"/>
+			<element ref="medicinecard20080601:PackageQuantity"/>
+			<element ref="medicinecard20080601:DosageText"/>
+		</sequence>
+	</complexType>
+</schema>

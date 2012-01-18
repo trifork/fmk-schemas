@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:ns1="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DosageDayIdentifier.xsd"/>
+	<include schemaLocation="DKMA_DosageTimesIterationIntervalQuantity.xsd"/>
+	<include schemaLocation="DKMA_DosageTimesStartDate.xsd"/>
+	<include schemaLocation="DKMA_DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DKMA_DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DKMA_DosageTimeElementStructure.xsd"/>
+	<include schemaLocation="DKMA_DosageDefinedTimeElementStructure.xsd"/>
+	<element name="DosageDayElementStructure" type="medicinecard:DosageDayElementStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Group of dosage times for the same day</documentation>
+			<documentation xml:lang="da-DK">Gruppering af doseringstidspunkter på samme dag</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageDayElementStructureType">
+		<sequence>
+			<element ref="medicinecard:DosageDayIdentifier"/>
+			<sequence>
+				<element ref="medicinecard:DosageTimeElementStructure" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="AccordingToNeedDosageTimeElementStructure" type="medicinecard:DosageTimeElementStructureType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="MorningDosageTimeElementStructure" type="medicinecard:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+				<element name="NoonDosageTimeElementStructure" type="medicinecard:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+				<element name="EveningDosageTimeElementStructure" type="medicinecard:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+				<element name="NightDosageTimeElementStructure" type="medicinecard:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

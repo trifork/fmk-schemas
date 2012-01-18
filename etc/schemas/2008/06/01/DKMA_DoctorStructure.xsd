@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_AuthorisationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_DoctorName.xsd"/>
+	<include schemaLocation="DKMA_SpecialityCode.xsd"/>
+	<element name="DoctorStructure" type="medicinecard:DoctorStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains authorisation number and name of a doctor</documentation>
+			<documentation xml:lang="da-DK">Indeholder autorsationsnummer og navn på en læge</documentation>
+		</annotation>
+	</element>
+	<complexType name="DoctorStructureType">
+		<sequence>
+			<element ref="medicinecard:AuthorisationIdentifier"/>
+			<element ref="medicinecard:DoctorName"/>
+			<element ref="medicinecard:SpecialityCode" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

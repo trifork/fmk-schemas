@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:medicinecard20110101="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01"
+	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="IterationIntervalUnit" type="medicinecard20110101:IterationIntervalUnit">
+		<annotation>
+			<documentation xml:lang="en-GB">Unit for iteration inverval, eg days</documentation>
+			<documentation xml:lang="da-DK">Enhed for iterationsinterval</documentation>
+		</annotation>
+	</element>
+	<simpleType name="IterationIntervalUnit">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="10"/>
+		</restriction>
+	</simpleType>
+</schema>

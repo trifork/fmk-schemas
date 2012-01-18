@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+    xmlns:medicinecard20120101="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01"
+	xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" 
+	xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" 
+	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" schemaLocation="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_PersonCivilRegistrationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_MedicineCardVersionIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_VersionMismatchWarningIndicator.xsd"/>
+	<include schemaLocation="UnWithdrawnDrugMedicationStructure.xsd"/>
+	<element name="UnWithdrawDrugMedicationResponseStructure" type="medicinecard20120101:UnWithdrawDrugMedicationResponseStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container elemenet for a response from an undo a withdraw of drug medications request</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel om af-seponering af lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="UnWithdrawDrugMedicationResponseStructureType">
+		<sequence>
+			<element ref="cpr:PersonCivilRegistrationIdentifier"/>
+			<element ref="medicinecard20080601:MedicineCardVersionIdentifier"/>
+			<element ref="medicinecard20080601:VersionMismatchWarningIndicator" minOccurs="0"/>
+			<element ref="medicinecard20120101:UnWithdrawnDrugMedicationStructure" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

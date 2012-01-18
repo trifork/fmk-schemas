@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
+	xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
+	xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/"
+		schemaLocation="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_PersonCivilRegistrationIdentifier.xsd" />
+	<include schemaLocation="DKMA_EffectuationsOnDrugMedicationStructure.xsd" />
+	<include schemaLocation="DKMA_EffectuationsOnPrescriptionMedicationStructure.xsd" />
+	<include schemaLocation="DKMA_NegativeConsentStructure.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
+		schemaLocation="../../../2008/06/01/DKMA_MoreAvailableIndicator.xsd" />
+	<element name="SearchEffectuationsResponseStructure" type="medicinecard20090101:SearchEffectuationsResponseStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response containing effectuations</documentation>
+			<documentation xml:lang="da-DK">Svar indeholdende effektueringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchEffectuationsResponseStructureType">
+		<sequence>
+			<element ref="cpr:PersonCivilRegistrationIdentifier" />
+			<element ref="medicinecard20090101:NegativeConsentStructure" minOccurs="0" />
+			<element ref="medicinecard20090101:EffectuationsOnDrugMedicationStructure"
+				minOccurs="0" maxOccurs="unbounded" />
+			<element ref="medicinecard20090101:EffectuationsOnPrescriptionMedicationStructure"
+				minOccurs="0" maxOccurs="unbounded" />
+			<element ref="medicinecard20080601:MoreAvailableIndicator" minOccurs="0" />
+		</sequence>
+	</complexType>
+</schema>

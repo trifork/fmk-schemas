@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DosageStructureTranslationShortText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageStructureTranslationLongText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageQuantityValue.xsd"/>
+	<include schemaLocation="DKMA_DosageQuantityUnitText.xsd"/>
+	<element name="DosageStructureTranslation" type="medicinecard20090101:DosageStructureTranslationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Dosage structure translated to text plus a calulated average daily dosage</documentation>
+			<documentation xml:lang="da-DK">Dosisstrukturen oversat til tekst samt beregnet gennemsnitlig daglig dosis</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageStructureTranslationType">
+		<sequence>
+			<element ref="medicinecard20090101:DosageStructureTranslationShortText" minOccurs="0"/>
+			<element ref="medicinecard20080601:DosageStructureTranslationLongText"/>
+			<sequence minOccurs="0">
+				<choice>
+					<element name="DosageStructureTranslationAverageDailyDosageValue" type="medicinecard20080601:DosageQuantityValueType"/>
+					<sequence>
+						<element name="DosageStructureTranslationAverageDailyDosageMinValue" type="medicinecard20080601:DosageQuantityValueType"/>
+						<element name="DosageStructureTranslationAverageDailyDosageMaxValue" type="medicinecard20080601:DosageQuantityValueType"/>
+					</sequence>
+				</choice>
+				<element name="DosageStructureTranslationAverageDailyDosageUnitText" type="medicinecard20090101:DosageQuantityUnitTextType"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

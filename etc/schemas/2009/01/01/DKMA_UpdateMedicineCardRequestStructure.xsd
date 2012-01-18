@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" schemaLocation="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_PersonCivilRegistrationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_MedicineCardVersionIdentifier.xsd"/>
+	<include schemaLocation="DKMA_OrganisationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DoctorStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_SetMedicineCardReviewedStructure.xsd"/>
+	<include schemaLocation="DKMA_CreateEffectuationOnDrugMedicationStructure.xsd"/>
+	<include schemaLocation="DKMA_CreateDrugMedicationStructure.xsd"/>
+	<include schemaLocation="DKMA_UpdateDrugMedicationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_WithdrawDrugMedicationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_UnsuspendMedicineCardStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_SuspendMedicineCardStructure.xsd"/>
+	<include schemaLocation="DKMA_ResuspendMedicineCardStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PauseDrugMedicationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_UnpauseDrugMedicationStructure.xsd"/>
+	<include schemaLocation="DKMA_CreateEffectuationOnDrugMedicationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DetachPrescriptionMedicationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_AttachPrescriptionMedicationStructure.xsd"/>
+	<include schemaLocation="DKMA_CreatePrescriptionMedicationStructure.xsd"/>
+	<element name="UpdateMedicineCardRequestStructure" type="medicinecard20090101:UpdateMedicineCardRequestStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en batchforespørgsel for at opdatere et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="UpdateMedicineCardRequestStructureType">
+		<sequence>
+			<element ref="cpr:PersonCivilRegistrationIdentifier"/>
+			<element ref="medicinecard20080601:MedicineCardVersionIdentifier"/>
+			<element ref="medicinecard20090101:OrganisationStructure"/>
+			<element ref="medicinecard20080601:DoctorStructure" minOccurs="0"/>
+			<element ref="medicinecard20080601:SetMedicineCardReviewedStructure" minOccurs="0"/>
+			<element ref="medicinecard20090101:CreateDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20090101:UpdateDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20080601:WithdrawDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20080601:SuspendMedicineCardStructure" minOccurs="0"/>
+			<element ref="medicinecard20090101:ResuspendMedicineCardStructure" minOccurs="0"/>
+			<element ref="medicinecard20080601:UnsuspendMedicineCardStructure" minOccurs="0"/>
+			<element ref="medicinecard20080601:PauseDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20080601:UnpauseDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20090101:CreateEffectuationOnDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20080601:DetachPrescriptionMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20080601:AttachPrescriptionMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20090101:CreatePrescriptionMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

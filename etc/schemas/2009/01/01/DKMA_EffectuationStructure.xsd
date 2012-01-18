@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_EffectuationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_EffectuationDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_EffectuationMethodText.xsd"/>
+	<include schemaLocation="DKMA_OrganisationStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DoctorStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageQuantityValue.xsd"/>
+	<include schemaLocation="DKMA_DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DKMA_DrugStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PackageQuantity.xsd"/>
+	<include schemaLocation="DKMA_VaccinationStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugPackageStructure.xsd"/>
+	<element name="EffectuationStructure" type="medicinecard20090101:EffectuationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">The actual effectuation of the drug medication. It could be to administer the drug into the patient or that a doctor hands medication out to the patient</documentation>
+			<documentation xml:lang="da-DK">Den faktiske udførelse af lægemiddelordination. Det kan f.eks. være at indgive medicin i patienten, eller at en læge eller apoteket udleverer medicin til patienten</documentation>
+		</annotation>
+	</element>
+	<complexType name="EffectuationStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:EffectuationIdentifier"/>
+			<element ref="medicinecard20080601:EffectuationDateTime"/>
+			<element ref="medicinecard20080601:EffectuationMethodText" minOccurs="0"/>
+			<element ref="medicinecard20090101:OrganisationStructure"/>
+			<element ref="medicinecard20080601:DoctorStructure" minOccurs="0"/>
+			<choice minOccurs="0">
+				<sequence>
+					<element ref="medicinecard20080601:DosageQuantityValue"/>
+					<element ref="medicinecard20090101:DosageQuantityUnitText"/>
+					<element ref="medicinecard20090101:DrugStructure"/>
+				</sequence>
+				<sequence>
+					<element ref="medicinecard20090101:DrugStructure"/>
+				</sequence>
+				<sequence>
+					<element ref="medicinecard20080601:PackageQuantity" minOccurs="0"/>
+					<element ref="medicinecard20090101:DrugPackageStructure"/>
+				</sequence>
+			</choice>
+			<element ref="medicinecard20090101:VaccinationStructure" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

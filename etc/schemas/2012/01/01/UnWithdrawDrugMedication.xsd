@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:medicinecard20120101="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" 
+	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" 
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="UnWithdrawDrugMedication" type="medicinecard20120101:UnWithdrawDrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates that the drug medications is withdrawn and that it is request that its undone before updateed </documentation>
+			<documentation xml:lang="da-DK">Angiver at en lægemiddelordination skal af-seponeres før den bliver opdateret</documentation>
+		</annotation>
+	</element>
+	<simpleType name="UnWithdrawDrugMedicationType">
+		<restriction base="boolean"/>
+	</simpleType>
+</schema>

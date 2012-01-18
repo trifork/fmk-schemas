@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120101="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" 
+targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="Permission" type="medicinecard20120101:PermissionType">
+		<annotation>
+			<documentation xml:lang="en-GB">A Permission is the right to perform an action</documentation>
+			<documentation xml:lang="da-DK">Permission modellerer retten til at udføre en handling</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PermissionType">
+        <restriction base="string">
+            <enumeration value="GetMedicineCard" />
+            <enumeration value="GetMedicineCardAsPDF" />
+            <enumeration value="GetMedicineCardVersion" />
+            <enumeration value="SetMedicineCardReviewed" />
+            <enumeration value="PauseDrugMedication" />
+            <enumeration value="CreateDrugMedication" />
+            <enumeration value="AttachOrDetachPrescriptionMedication" />
+            <enumeration value="CreateEffectuation" />
+            <enumeration value="CreatePrescriptionFromXML" />
+            <enumeration value="CreatePrescriptionMedication" />
+            <enumeration value="GetPrescriptionMedication" />
+            <enumeration value="SearchWithdrawnDrugMedications" />
+            <enumeration value="SuspendMedicineCard" />
+            <enumeration value="UnpauseDrugMedication" />
+            <enumeration value="UnsuspendMedicineCard" />
+            <enumeration value="UpdateDrugMedication" />
+            <enumeration value="UpdateMedicineCard" />
+            <enumeration value="WithdrawDrugMedication" />
+            <enumeration value="UnWithdrawDrugMedication" />
+            <enumeration value="GetDrugMedication" />
+            <enumeration value="ResuspendMedicineCard" />
+            <enumeration value="SearchEffectuations" />
+            <enumeration value="NewGetPrescriptionMedication" />
+            <enumeration value="NewGetMedicineCard" />
+            <enumeration value="NewGetDrugMedication" />
+            <enumeration value="GetAuditLog" />
+            <enumeration value="CreatePrescriptionMedicationForUseInPractice" />
+            <enumeration value="CreatePrescriptionMedicationWithoutCPR" />
+        </restriction>
+	</simpleType>
+</schema>

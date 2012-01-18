@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:ns1="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageDayIdentifier.xsd"/>
+	<include schemaLocation="DKMA_DosageTimeElementStructure.xsd"/>
+	<include schemaLocation="DKMA_DosageDefinedTimeElementStructure.xsd"/>
+	<element name="DosageDayElementStructure" type="medicinecard20090101:DosageDayElementStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Group of dosage times for the same day</documentation>
+			<documentation xml:lang="da-DK">Gruppering af doseringstidspunkter på samme dag</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageDayElementStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:DosageDayIdentifier"/>
+			<sequence>
+				<element ref="medicinecard20090101:DosageTimeElementStructure" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="AccordingToNeedDosageTimeElementStructure" type="medicinecard20090101:DosageTimeElementStructureType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="MorningDosageTimeElementStructure" type="medicinecard20090101:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+				<element name="NoonDosageTimeElementStructure" type="medicinecard20090101:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+				<element name="EveningDosageTimeElementStructure" type="medicinecard20090101:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+				<element name="NightDosageTimeElementStructure" type="medicinecard20090101:DosageDefinedTimeElementStructureType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

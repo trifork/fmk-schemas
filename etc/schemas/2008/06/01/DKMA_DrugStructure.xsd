@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_ATCStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugIdentifier.xsd"/>
+	<include schemaLocation="DKMA_DrugName.xsd"/>
+	<include schemaLocation="DKMA_DrugFormStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugStrengthStructure.xsd"/>
+	<include schemaLocation="DKMA_DetailedDrugText.xsd"/>
+	<include schemaLocation="DKMA_SubstancesStructure.xsd"/>
+	<element name="DrugStructure" type="medicinecard:DrugStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Drug. A drug is a substance used as treatment or a preventive treatment against diseases. Drugs can be approved and thereby be listed in the Danish Medicines Agency's pricelist ("Takst"), or can be compassionate permit dugs, natural drugs, vitamins, minerals or alike. A drug is an active substance or composed of one or more substances in a particular form and strength. If DrugIdentifier exists the drug is from the Danish Medicines Agency's price list. Alternatively a detailed prescription. The drug structure may contain a list of active substances.
+			The form and strength should be included if available</documentation>
+			<documentation xml:lang="da-DK">Lægemiddel. Et lægemiddel er en vare til at behandle eller forebygge sygdomme. Lægemidler er enten godkendt og fremgår dermed af Lægemiddelstyrelsens Takst, eller det kan være tilladelsespræparater, naturlægemidler, vitaminer, minerater el.lign. Et lægemiddel er et aktivt lægemiddelstof eller sammensat af et eller flere lægemiddelstoffer i en bestemt lægemiddelform og lægemiddelstyrke. Hvis DrugIdentifier findes er lægemiddlet fra lægemiddelstyrelsens takst. Alternativt et magistrelt lægemiddel. Lægemiddelstrukturen kan indeholde en række aktive substanser. Lægemidlets form og styrke skal angives, såfremt informationen findes</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugStructureType">
+		<sequence>
+			<choice>
+				<sequence>
+					<element ref="medicinecard:ATCStructure" minOccurs="0"/>
+					<element ref="medicinecard:DrugIdentifier" minOccurs="0"/>
+					<element ref="medicinecard:DrugName"/>
+				</sequence>
+				<element ref="medicinecard:DetailedDrugText"/>
+			</choice>
+			<element ref="medicinecard:DrugFormStructure" minOccurs="0"/>
+			<element ref="medicinecard:DrugStrengthStructure" minOccurs="0"/>
+			<element ref="medicinecard:SubstancesStructure" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

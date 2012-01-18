@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:medicinecard20110101="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01"
+    xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
+	xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
+	xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DrugMedicationIdentifier.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_AuthorisationDateTime.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_OrganisationStructure.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_SenderComputerSystemName.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_PriceListVersionDate.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_PriceListVersionWeek.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_OrderInstructionStructure.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DeliveryInformationStructure.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DeliveryStructure.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_SupplementaryInformationText.xsd" />
+	<include schemaLocation="DKMA_ReimbursementClauseCode.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_SingleDispensingStructure.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_ReiteratedDispensingStructure.xsd" />
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageDispensingStructure.xsd" />
+	<element name="CreatePrescriptionMedicationStructure" type="medicinecard20110101:CreatePrescriptionMedicationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document for creating a
+				PrescriptionMedication from a DrugMedication. When used in the service call where the
+				drug medication is created the DrugMedicationIdentifer may be omitted, otherwise it is
+				needed.</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til at oprette en
+				receptordination fra en lægemiddelordination. Når dette element anvendes i servicen
+				til oprettelse af en lægemiddelordination udelades DrugMedicationIdentifer, i alle
+				andre tilfælde er det nødvendigt.</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePrescriptionMedicationStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:DrugMedicationIdentifier" minOccurs="0" />
+			<element ref="medicinecard20080601:AuthorisationDateTime" />
+			<element name="ReceiverOrganisationStructure" type="medicinecard20090101:OrganisationStructureType"	minOccurs="0" />
+			<element ref="medicinecard20080601:SenderComputerSystemName" />
+			<choice>
+				<element ref="medicinecard20090101:PriceListVersionDate" />
+				<element ref="medicinecard20090101:PriceListVersionWeek" />
+			</choice>
+			<choice minOccurs="0">
+				<element ref="medicinecard20080601:OrderInstructionStructure" />
+				<element ref="medicinecard20080601:DeliveryInformationStructure" />
+			</choice>
+			<element ref="medicinecard20080601:DeliveryStructure" minOccurs="0" />
+			<element ref="medicinecard20110101:ReimbursementClauseCode" minOccurs="0" />
+			<choice>
+				<element ref="medicinecard20090101:SingleDispensingStructure" />
+				<element ref="medicinecard20090101:ReiteratedDispensingStructure" />
+				<element ref="medicinecard20080601:DosageDispensingStructure" />
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

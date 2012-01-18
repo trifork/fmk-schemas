@@ -1,0 +1,22 @@
+#
+# Usage:
+#  findrefs <xml_structure> | sort | uniq
+#  <xml_structure> can be any DKMA xml structure in FMK
+#  Ex.: ./findrefs DrugMedicationBeginEndDateStructure | sort |  uniq | xargs -J % cp % ../../../2009/01/01/
+#       which will copy all the schemas to the new destination
+
+#echo $1
+refs=`grep -l "ref=\"medicinecard:$1\"" *.xsd`
+#echo $refs
+
+for fn in $refs
+do
+#    echo $fn
+    xml=`echo $fn | sed 's/DKMA_\(.*\)\.xsd/\1/'`
+    echo $fn
+    if [ $xml != $1 ]; then
+        ./findrefs $xml
+#    else
+#       echo "Already searched for $1"
+    fi
+done

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_PackageNumberIdentifier.xsd"/>
+	<include schemaLocation="DKMA_PackageSizeText.xsd"/>
+	<include schemaLocation="DKMA_DoseDispensableIndicator.xsd"/>
+	<include schemaLocation="DKMA_PackageSizeStructure.xsd"/>
+	<include schemaLocation="DKMA_DrugStructure.xsd"/>
+	<element name="DrugPackageStructure" type="medicinecard:DrugPackageStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a drug package</documentation>
+			<documentation xml:lang="da-DK">Information om en lægemiddel-pakning</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugPackageStructureType">
+		<sequence>
+			<element ref="medicinecard:PackageNumberIdentifier"/>
+			<element ref="medicinecard:PackageSizeStructure"/>
+			<element ref="medicinecard:DoseDispensableIndicator"/>
+			<element ref="medicinecard:DrugStructure"/>
+		</sequence>
+	</complexType>
+</schema>

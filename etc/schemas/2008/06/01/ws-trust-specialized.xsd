@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+	xmlns:wst="http://schemas.xmlsoap.org/ws/2005/02/trust"
+	targetNamespace="http://schemas.xmlsoap.org/ws/2005/02/trust"
+	elementFormDefault="qualified">
+	<xs:import
+		namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+		schemaLocation="oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+	<xs:import
+		namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+		schemaLocation="oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+	<xs:import
+		namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+		schemaLocation="wsa-specialized.xsd" />
+	<xs:element name="RequestSecurityToken"
+		type="wst:RequestSecurityTokenType" />
+	<xs:complexType name="RequestSecurityTokenType">
+		<xs:sequence>
+			<xs:element ref="wst:TokenType" />
+			<xs:element ref="wst:RequestType" />
+			<xs:element ref="wst:Claims" />
+			<xs:element ref="wst:Issuer" />
+		</xs:sequence>
+		<xs:attribute name="Context" type="xs:anyURI" />
+	</xs:complexType>
+	<xs:element name="RequestSecurityTokenResponse"
+		type="wst:RequestSecurityTokenResponseType" />
+	<xs:complexType name="RequestSecurityTokenResponseType">
+		<xs:sequence>
+			<xs:element ref="wst:TokenType" />
+			<xs:element ref="wst:RequestedSecurityToken" />
+			<xs:element ref="wst:Status" />
+			<xs:element ref="wst:Issuer" />
+		</xs:sequence>
+		<xs:attribute name="Context" type="xs:anyURI" />
+	</xs:complexType>
+	<xs:element name="TokenType" type="xs:anyURI" />
+	<xs:element name="RequestType" type="wst:RequestTypeEnum" />
+	<xs:simpleType name="RequestTypeEnum">
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration
+				value="http://schemas.xmlsoap.org/ws/2005/02/trust/Issue" />
+			<xs:enumeration
+				value="http://schemas.xmlsoap.org/ws/2005/02/trust/Renew" />
+			<xs:enumeration
+				value="http://schemas.xmlsoap.org/ws/2005/02/trust/Cancel" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="RequestedSecurityToken"
+		type="wst:RequestedSecurityTokenType" />
+	<xs:complexType name="RequestedSecurityTokenType">
+		<xs:sequence>
+			<xs:any namespace="urn:oasis:names:tc:SAML:2.0:assertion" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Claims" type="wst:ClaimsType" />
+	<xs:complexType name="ClaimsType">
+		<xs:sequence>
+			<xs:any namespace="urn:oasis:names:tc:SAML:2.0:assertion" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Status" type="wst:StatusType" />
+	<xs:complexType name="StatusType">
+		<xs:sequence>
+			<xs:element name="Code" type="wst:StatusCodeEnum" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="StatusCodeEnum">
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration
+				value="http://schemas.xmlsoap.org/ws/2005/02/trust/status/valid" />
+			<xs:enumeration
+				value="http://schemas.xmlsoap.org/ws/2005/02/trust/status/invalid" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Issuer" type="wsa:EndpointReferenceType" />
+</xs:schema>

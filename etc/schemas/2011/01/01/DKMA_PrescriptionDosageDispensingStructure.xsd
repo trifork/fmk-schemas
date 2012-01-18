@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20110101="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_PackageNumberIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_CopyRequired.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DosageText.xsd"/>
+	<include schemaLocation="DKMA_DosageCode.xsd"/>
+	<element name="PrescriptionDosageDispensingStructure" type="medicinecard20110101:PrescriptionDosageDispensingStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information dispensing the package through dosage dispensing</documentation>
+			<documentation xml:lang="da-DK">Information til dosisdispensering</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionDosageDispensingStructureType">
+		<sequence>
+			<element ref="medicinecard20080601:PackageNumberIdentifier"/>
+			<element ref="medicinecard20080601:CopyRequired"/>
+			<element ref="medicinecard20110101:DosageCode" minOccurs="0"/>
+			<element ref="medicinecard20080601:DosageText"/>
+			<element name="StartDate" type="dateTime" minOccurs="0"/>
+			<element name="EndDate" type="dateTime" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

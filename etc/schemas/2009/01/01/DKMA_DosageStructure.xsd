@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20090101="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DosageTimesStructure.xsd"/>
+	<include schemaLocation="DKMA_DosageFreeText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_AdministrationAccordingToSchemeInLocalSystemIndicator.xsd"/>
+	<element name="DosageStructure" type="medicinecard20090101:DosageStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">How often and when the drug should be given</documentation>
+			<documentation xml:lang="da-DK">Angivelse af hvor ofte og hvornår et lægemiddel skal gives</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageStructureType">
+		<choice>
+			<element ref="medicinecard20090101:DosageTimesStructure"/>
+			<element ref="medicinecard20090101:DosageFreeText"/>
+			<element ref="medicinecard20080601:AdministrationAccordingToSchemeInLocalSystemIndicator"/>
+		</choice>
+	</complexType>
+</schema>

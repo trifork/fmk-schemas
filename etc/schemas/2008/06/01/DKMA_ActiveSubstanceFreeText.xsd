@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DetailedDrugText.xsd"/>
+	<element name="ActiveSubstanceFreeText" type="medicinecard:ActiveSubstanceFreeTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains one active substance as free text</documentation>
+			<documentation xml:lang="da-DK">Indeholder en enkelt aktiv substans som fritekst</documentation>
+		</annotation>
+	</element>
+	<simpleType name="ActiveSubstanceFreeTextType">
+		<restriction base="string">
+			<minLength value="1"/>
+		</restriction>
+	</simpleType>
+</schema>

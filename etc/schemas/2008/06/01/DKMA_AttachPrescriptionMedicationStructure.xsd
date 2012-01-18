@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_PrescriptionMedicationIdentifier.xsd"/>
+	<element name="AttachPrescriptionMedicationStructure" type="medicinecard:AttachPrescriptionMedicationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains a drug medication ID and one or more drug prescription IDs which are to be attached</documentation>
+			<documentation xml:lang="da-DK">Indeholder et lægemiddelordinations-ID og en eller flere receptordinations-IDer der skal knyttes hertil</documentation>
+		</annotation>
+	</element>
+	<complexType name="AttachPrescriptionMedicationStructureType">
+		<sequence>
+			<element ref="medicinecard:DrugMedicationIdentifier"/>
+			<element ref="medicinecard:PrescriptionMedicationIdentifier" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

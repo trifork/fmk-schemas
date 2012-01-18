@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:receptserver="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DrugMedicationStructure.xsd"/>
+	<import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="receptserver-schemas/subelements/Prescription_Type-1.0.xsd"/>
+	<element name="PrescriptionMedicationResponseStructure" type="medicinecard:PrescriptionMedicationResponseStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container elemenet for a response with one or more prescription medications</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en svar med en eller flere receptordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionMedicationResponseStructureType">
+		<sequence>
+			<element name="Prescription" type="receptserver:Prescription_Type" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

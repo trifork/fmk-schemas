@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_DeliveryPriorityText.xsd"/>
+	<include schemaLocation="DKMA_StreetName.xsd"/>
+	<include schemaLocation="DKMA_PseudoAddress.xsd"/>
+	<include schemaLocation="DKMA_PostCodeIdentifier.xsd"/>
+	<include schemaLocation="DKMA_ContactName.xsd"/>
+	<element name="DeliveryStructure" type="medicinecard:DeliveryStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Delivery information</documentation>
+			<documentation xml:lang="da-DK">Leveringsinformation</documentation>
+		</annotation>
+	</element>
+	<complexType name="DeliveryStructureType">
+		<sequence>
+			<element ref="medicinecard:DeliveryPriorityText"/>
+			<choice>
+				<element ref="medicinecard:StreetName"/>
+				<element ref="medicinecard:PseudoAddress"/>
+			</choice>
+			<element ref="medicinecard:PostCodeIdentifier" minOccurs="0"/>
+			<element ref="medicinecard:ContactName" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

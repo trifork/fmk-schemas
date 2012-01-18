@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" schemaLocation="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_PersonCivilRegistrationIdentifier.xsd"/>
+	<include schemaLocation="DKMA_MedicineCardVersionIdentifier.xsd"/>
+	<include schemaLocation="DKMA_VersionMismatchWarningIndicator.xsd"/>		
+	<include schemaLocation="DKMA_PausedDrugMedicationStructure.xsd"/>
+	<element name="PauseDrugMedicationResponseStructure" type="medicinecard:PauseDrugMedicationResponseStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container elemenet for a response on a request to pause a drug prescription</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel der pauserer en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="PauseDrugMedicationResponseStructureType">
+		<sequence>
+			<element ref="cpr:PersonCivilRegistrationIdentifier"/>
+			<element ref="medicinecard:MedicineCardVersionIdentifier"/>
+			<element ref="medicinecard:VersionMismatchWarningIndicator" minOccurs="0"/>			
+			<element ref="medicinecard:PausedDrugMedicationStructure" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
