@@ -70,6 +70,9 @@
 		<copy todir="target/wsdl">
 			<fileset dir="etc/wsdl" includes="PEMAuditLog_*.wsdl"/>
 		</copy>
+		<copy todir="target/schemas">
+			<fileset dir="etc/schemas" includes="2*/**"/>
+		</copy>
         <zip destfile="target/fmk-schema.zip"
              basedir="target"
              includes="schemas/**, wsdl/**" />
