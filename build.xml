@@ -1,19 +1,12 @@
 <?xml version="1.0"?>
 <!-- the project element's name attribute will be used in the name of the module's jar file -->
-<project name="medicinkortet12" default="organize-schemas" basedir="." xmlns:ivy="antlib:fr.jayasoft.ivy.ant" >
+<project name="medicinkortet-schema" default="all" basedir="." xmlns:ivy="antlib:fr.jayasoft.ivy.ant" >
 
 	<property name="ivy.checksums" value=""/>
 	
 	<property file="build.properties"/>
 	<property name="trifork-common" value="${basedir}/../trifork-common"/>
 	<import file="${trifork-common}/etc/build-common.xml"/>
-	<import file="${trifork-common}/etc/base-gwt.xml"/>
-
-	<!-- gwt properties -->
-	<property name="gwt.app.name" value="dk.medicinkortet.Application"/>
-	
-    <!-- gwt properties -->
-    <property name="project.fullname" value="Common Medicine Card"/>
     
     <path id="classpath">
         <fileset dir="lib/build">
@@ -25,17 +18,20 @@
     </path>
 
 	<condition property="os.family" value="mac">
-	        <os family="mac"/>
+        <os family="mac"/>
     </condition>
     <condition property="os.family" value="windows">
         <os family="windows"/>
     </condition>
 	<condition property="os.family" value="linux">
-	        <os family="unix"/>
+        <os family="unix"/>
 	</condition>
 
-    <target name="generate-namespace-oracle">
-        <java classpathref="classpath" classname="dk.medicinkortet.notproduktion.namespaceoracle.NamespaceOracleGenerator"/>
+	<target name="all" depends="organize-schemas,generate-namespace-oracle"/>
+	
+    <target name="generate-namespace-oracle" depends="compile">
+        <java classpathref="classpath" failonerror="true"
+        	classname="dk.medicinkortet.notproduktion.namespaceoracle.NamespaceOracleGenerator"/>
     </target>
 	
 	<target name="organize-schemas" depends="compile" >
