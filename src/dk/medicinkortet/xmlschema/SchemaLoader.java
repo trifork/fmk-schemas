@@ -40,8 +40,6 @@ import dk.sosi.seal.xml.XmlUtil;
 /**
  * This class goes through the schemas in etc/schemas and places them in the correct structure in target/gensrc/META-INF.
  * 
- * {@link SchemaResolver} and {@link SchemaInput} requires this structure to work.
- * 
  * @author recht
  *
  */
