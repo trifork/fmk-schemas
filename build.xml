@@ -67,7 +67,9 @@
 			<fileset dir="etc/wsdl" includes="PEMAuditLog_*.wsdl"/>
 		</copy>
 		<copy todir="target/schemas">
-			<fileset dir="etc/schemas" includes="2*/**"/>
+			<fileset dir="etc/schemas">
+				<exclude name="sdsd"/>
+			</fileset>
 		</copy>
         <zip destfile="target/fmk-schema.zip"
              basedir="target"
