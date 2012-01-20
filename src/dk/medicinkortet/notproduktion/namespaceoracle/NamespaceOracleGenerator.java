@@ -77,15 +77,21 @@ public class NamespaceOracleGenerator {
 		writeOutputFile(new File(outputFilename));
 		System.out.println("Wrote file: " + outputFilename);
 
-		if (namespacesWithNoCanonicalPrefix.size() > 0) {
-			System.out.println("A canonical prefix could not be found for the following namespaces:");
-			for (String ns : namespacesWithNoCanonicalPrefix) {
-				System.out.println("  " + ns);
-			}
-		}
-		
 		long duration = System.currentTimeMillis() - startTime;
 		System.out.println("Done in " + duration + " ms");
+		
+		if (namespacesWithNoCanonicalPrefix.size() > 0) {
+			StringBuilder sb = new StringBuilder("A canonical prefix could not be found for the following namespaces:\n");
+			for (String ns : namespacesWithNoCanonicalPrefix) {
+				sb.append("  " + ns + "\n");
+			}
+			
+			throw new IllegalStateException(sb.toString());
+		}
+		
+		if (mappedNamespacesCount == 0) {
+			throw new IllegalStateException("No namespaces mapped");
+		}
 	}
 	
 	private void createProperties() {
