@@ -6,6 +6,8 @@
 	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
 	xmlns:wst="http://schemas.xmlsoap.org/ws/2005/02/trust"
+	xmlns:mc2008="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
+	xmlns:mc2009="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
 	targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="qualified">
 	<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 		schemaLocation="oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
@@ -29,6 +31,12 @@
 		schemaLocation="../../../sdsd/2010/08/OrgUsingID.xsd"/>
 	<xs:import namespace="http://www.sdsd.dk/dgws/2010/08"
 		schemaLocation="../../../sdsd/2010/08/RequestedRole.xsd"/>
+	<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
+		schemaLocation="DKMA_TimingListStructure.xsd"/>
+	<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
+		schemaLocation="../../../2009/01/01/DKMA_PrescriptionReplicationStatusStructure.xsd"/>
+	<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
+		schemaLocation="../../../2009/01/01/DKMA_OnBehalfOfStructure.xsd"/>
 	<xs:element name="Envelope">
 		<xs:complexType>
 			<xs:sequence>
@@ -39,20 +47,26 @@
 			<xs:attribute name="id" type="xs:NCName" use="optional"/>
 		</xs:complexType>
 	</xs:element>
+	<!-- Request / Response / Fault header -->
 	<xs:element name="Header">
 		<xs:complexType>
 			<xs:sequence>
-				<!-- Added by Seal -->
-				<xs:any namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>
-				<xs:element ref="medcom:Header" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="sdsd:SystemOwnerName" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="sdsd:SystemName" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="sdsd:SystemVersion" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="sdsd:OrgResponsibleName" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="sdsd:OrgUsingName" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="sdsd:OrgUsingID" minOccurs="0" maxOccurs="1"/>
-				<xs:element ref="sdsd:RequestedRole" minOccurs="0" maxOccurs="1"/>
+				<xs:any namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" processContents="lax" minOccurs="0" maxOccurs="unbounded"/> <!-- REQ -->
+				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>           <!-- REQ / RESP / Fault -->
+				<xs:element ref="medcom:Header" minOccurs="0" maxOccurs="1"/>           <!-- REQ / Fault -->
+				<xs:element ref="mc2009:OnBehalfOfStructure" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
+				<xs:element ref="sdsd:SystemOwnerName" minOccurs="0" maxOccurs="1"/>    <!-- REQ -->
+				<xs:element ref="sdsd:SystemName" minOccurs="0" maxOccurs="1"/>         <!-- REQ -->
+				<xs:element ref="sdsd:SystemVersion" minOccurs="0" maxOccurs="1"/>      <!-- REQ -->
+				<xs:element ref="sdsd:OrgResponsibleName" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
+				<xs:element ref="sdsd:OrgUsingName" minOccurs="0" maxOccurs="1"/>       <!-- REQ -->
+				<xs:element ref="sdsd:OrgUsingID" minOccurs="0" maxOccurs="1"/>         <!-- REQ -->
+				<xs:element ref="sdsd:RequestedRole" minOccurs="0" maxOccurs="1"/>      <!-- REQ -->
+
+				<xs:element ref="medcom:Linking" minOccurs="0" maxOccurs="1"/>          <!-- RESP -->
+				<xs:element ref="medcom:FlowStatus" minOccurs="0" maxOccurs="1"/>       <!-- RESP -->
+				<xs:element ref="mc2009:PrescriptionReplicationStatusStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
+				<xs:element ref="mc2008:TimingListStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
