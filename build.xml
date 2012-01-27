@@ -26,8 +26,14 @@
 	<condition property="os.family" value="linux">
         <os family="unix"/>
 	</condition>
-
-	<target name="all" depends="organize-schemas,generate-namespace-oracle"/>
+	
+	
+	
+	<target name="publish" depends="clean, all, publish-from-jenkins"/>
+		
+	<target name="publish-internal" depends="clean, all, svn-revision, publish-internal-do"/>
+	
+	<target name="all" depends="resolve-build, organize-schemas,generate-namespace-oracle"/>
 	
     <target name="generate-namespace-oracle" depends="compile">
         <java classpathref="classpath" failonerror="true"
