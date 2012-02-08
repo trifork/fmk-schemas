@@ -16,7 +16,7 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_RouteOfAdministrationStructure.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DrugMedicationIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_SubstitutionAllowed.xsd"/>
-	<include schemaLocation="UnWithdrawDrugMedication.xsd"></include>
+	<include schemaLocation="UnWithdrawDrugMedicationIndicator.xsd"></include>
 	<element name="UpdateDrugMedicationStructure" type="medicinecard20120101:UpdateDrugMedicationStructureType">
 		<annotation>
 			<documentation xml:lang="en-GB">The element contains information about the updated drug medication</documentation>
@@ -26,7 +26,7 @@
 	<complexType name="UpdateDrugMedicationStructureType">
 		<sequence>
 			<element ref="medicinecard20080601:DrugMedicationIdentifier"/>
-			<element ref="medicinecard20120101:UnWithdrawDrugMedication" minOccurs="0"/>
+			<element ref="medicinecard20120101:UnWithdrawDrugMedicationIndicator" minOccurs="0"/>
 			<element ref="medicinecard20090101:NegativeConsentIndicator" minOccurs="0"/>
 			<choice>
 				<element ref="medicinecard20090101:PriceListVersionDate"/>

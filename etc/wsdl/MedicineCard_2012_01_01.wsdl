@@ -117,13 +117,15 @@
 			<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01" schemaLocation="../schemas/2011/01/01/CreatePrescriptionMedicationWithoutCPRResponse.xsd"/>
 			
 			<!-- FMK 1.2.x webservices, namespace 2012/01/01 -->
-			<xs:include schemaLocation="../schemas/2012/01/01/DeleteEffectuationRequestStructure.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/01/01/DeleteEffectuationResponseStructure.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/DeleteEffectuationRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/DeleteEffectuationResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_UpdateDrugMedicationRequestStructure.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_UpdateMedicineCardRequestStructure.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_UpdateMedicineCardResponseStructure.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/01/01/UnWithdrawDrugMedicationRequestStructure.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/01/01/UnWithdrawDrugMedicationResponseStructure.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/UnWithdrawDrugMedicationRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/UnWithdrawDrugMedicationResponse.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/GetPermissionsRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/GetPermissionsResponse.xsd"/>
 		</xs:schema>
 	</wsdl:types>
 	
@@ -388,17 +390,24 @@
 	</wsdl:message>
 
 	<wsdl:message name="UpdateMedicineCardRequest_20120101">
-		<wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20120101:UpdateMedicineCardRequestStructure"/>
+		<wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20120101:UpdateMedicineCardRequest"/>
 	</wsdl:message>
 	<wsdl:message name="UpdateMedicineCardResponse_20120101">
-		<wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20120101:UpdateMedicineCardResponseStructure"/>
+		<wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20120101:UpdateMedicineCardResponse"/>
 	</wsdl:message>
 
 	<wsdl:message name="UnWithdrawDrugMedicationRequest_20120101">
-		<wsdl:part name="UnWithdrawDrugMedicationRequest" element="medicinecard20120101:UnWithdrawDrugMedicationRequestStructure"/>
+		<wsdl:part name="UnWithdrawDrugMedicationRequest" element="medicinecard20120101:UnWithdrawDrugMedicationRequest"/>
 	</wsdl:message>
 	<wsdl:message name="UnWithdrawDrugMedicationResponse_20120101">
-		<wsdl:part name="UnWithdrawDrugMedicationResponse" element="medicinecard20120101:UnWithdrawDrugMedicationResponseStructure"/>
+		<wsdl:part name="UnWithdrawDrugMedicationResponse" element="medicinecard20120101:UnWithdrawDrugMedicationResponse"/>
+	</wsdl:message>
+
+	<wsdl:message name="GetPermissionsRequest_20120101">
+		<wsdl:part name="GetPermissionsRequest" element="medicinecard20120101:GetPermissionsRequest"/>
+	</wsdl:message>
+	<wsdl:message name="GetPermissionsResponse_20120101">
+		<wsdl:part name="GetPermissionsResponse" element="medicinecard20120101:GetPermissionsResponse"/>
 	</wsdl:message>
 
 	<wsdl:message name="DGWSFault">
@@ -634,6 +643,12 @@
 		<wsdl:operation name="UnWithdrawDrugMedication_20120101">
 			<wsdl:input name="UnWithdrawDrugMedicationRequest_20120101" message="tns:UnWithdrawDrugMedicationRequest_20120101"/>
 			<wsdl:output name="UnWithdrawDrugMedicationResponse_20120101" message="tns:UnWithdrawDrugMedicationResponse_20120101"/>
+			<wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetPermissions_20120101">
+			<wsdl:input name="GetPermissionsRequest_20120101" message="tns:GetPermissionsRequest_20120101"/>
+			<wsdl:output name="GetPermissionsResponse_20120101" message="tns:GetPermissionsResponse_20120101"/>
 			<wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
 		</wsdl:operation>
 
@@ -1318,6 +1333,30 @@
 			</wsdl:output>
 			<wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/> </wsdl:fault>
 		</wsdl:operation>
+
+		<wsdl:operation name="GetPermissions_20120101">
+			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#GetPermissions" style="document"/>
+			<wsdl:input name="GetPermissionsRequest_20120101">
+				<soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+				<soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/> 
+				<soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/> 
+				<soap:header use="literal" part="SDSDSystemOwnerName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDSystemName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDSystemVersion" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDOrgResponsibleName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDOrgUsingName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDOrgUsingID" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDRequestedRole" message="tns:SDSDRequestedRole"/> 
+			<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="GetPermissionsResponse_20120101">
+				<soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+				<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/> </wsdl:fault>
+		</wsdl:operation>
+
 
 	</wsdl:binding>
 

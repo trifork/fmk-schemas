@@ -10,20 +10,20 @@
     <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_DoctorStructure.xsd"/>
     <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_MedicineCardVersionIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_OrganisationStructure.xsd"/>
-	<include schemaLocation="DeleteEffectuationStructure.xsd"/>
-	<element name="DeleteEffectuationRequestStructure" type="medicinecard20120101:DeleteEffectuationRequestStructureType">
+	<include schemaLocation="DeleteEffectuation.xsd"/>
+	<element name="DeleteEffectuationRequest" type="medicinecard20120101:DeleteEffectuationRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document containing one or more documents for deleting effectuations</documentation>
 			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at slette effektueringer</documentation>
 		</annotation>
 	</element>
-	<complexType name="DeleteEffectuationRequestStructureType">
+	<complexType name="DeleteEffectuationRequestType">
 		<sequence>
 			<element ref="cpr:PersonCivilRegistrationIdentifier"/>
 			<element ref="medicinecard20080601:MedicineCardVersionIdentifier"/>
 			<element ref="medicinecard20090101:OrganisationStructure"/>
 			<element ref="medicinecard20080601:DoctorStructure"/>
-			<element ref="medicinecard20120101:DeleteEffectuationStructure" maxOccurs="unbounded"/>
+			<element ref="medicinecard20120101:DeleteEffectuation" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
