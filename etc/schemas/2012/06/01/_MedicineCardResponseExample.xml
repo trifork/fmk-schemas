@@ -2,21 +2,21 @@
 <MedicineCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01 MedicineCardResponse.xsd" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<MedicineCard>
 	
-		<!-- Patient. Som eneste sted anvendes her ikke-FMK namespaces -->
+		<!-- Patient -->
 		<Patient>
-			<SimpleCPRPerson>
-				<PersonNameStructure xmlns="http://rep.oio.dk/itst.dk/xml/schemas/2006/01/17/" xmlns:dkcc20030213="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/">
-					<dkcc20030213:PersonGivenName>Anders</dkcc20030213:PersonGivenName>
-					<dkcc20030213:PersonSurnameName>Andersen</dkcc20030213:PersonSurnameName>
-				</PersonNameStructure>
-				<PersonCivilRegistrationIdentifier xmlns="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/">0102034567</PersonCivilRegistrationIdentifier>
-			</SimpleCPRPerson>
-			<AddressPostal xmlns="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" xmlns:dkcc20050315="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/03/15/" xmlns:dkcc20030213="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/">
-				<dkcc20050315:StreetName>Skibakken</dkcc20050315:StreetName>
-				<dkcc20030213:StreetBuildingIdentifier>236</dkcc20030213:StreetBuildingIdentifier>
-				<dkcc20050315:PostCodeIdentifier>8000</dkcc20050315:PostCodeIdentifier>
-				<dkcc20050315:DistrictName>Århus</dkcc20050315:DistrictName>
-			</AddressPostal>
+			<Person>
+				<Name>
+					<GivenName>Anders</GivenName>
+					<Surname>Andersen</Surname>
+				</Name>
+				<PersonIdentifier>0102034567</PersonIdentifier>
+			</Person>
+			<Address>
+				<StreetName>Skibakken</StreetName>
+				<StreetBuildingIdentifier>236</StreetBuildingIdentifier>
+				<PostCodeIdentifier>8000</PostCodeIdentifier>
+				<DistrictName>Århus</DistrictName>
+			</Address>
 		</Patient>
 
 		<!-- Medicinkortets version og en relation til forrige version, som medicinkortet var oprettet på baggrud af -->
