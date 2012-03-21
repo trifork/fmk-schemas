@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+	<element name="ActiveSubstanceText" type="medicinecard20120601:ActiveSubstanceTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains one active substance from LMS 30 field 5</documentation>
+			<documentation xml:lang="da-DK">Indeholder en enkelt aktiv substans fra LMS30 felt 5</documentation>
+		</annotation>
+	</element>
+	<complexType name="ActiveSubstanceTextType">
+		<simpleContent>
+			<extension base="medicinecard20120601:ActiveSubstanceTextValueType">
+				<attribute name="source" type="medicinecard20120601:SourceType" use="required"/>
+				<attribute name="sourceDate" type="medicinecard20120601:SourceDateType" use="optional"/>
+				<attribute name="sourceYearAndWeek" type="medicinecard20120601:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="ActiveSubstanceTextValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="150"/>
+		</restriction>
+	</simpleType>
+</schema>

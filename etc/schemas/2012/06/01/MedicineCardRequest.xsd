@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="IncludeEffectuations.xsd"/>
+	<include schemaLocation="IncludeNonRelevantPrescriptionMedications.xsd"/>
+	<include schemaLocation="IncludePrescriptionMedications.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="NegativeConsentRequest.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="MedicineCardRequest" type="medicinecard20120601:MedicineCardRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a medicinecard</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="MedicineCardRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="Version" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DateTime" type="dateTime" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NegativeConsent" type="medicinecard20120601:NegativeConsentRequestType" minOccurs="0"/>
+			<element name="IncludePrescriptionMedications" type="medicinecard20120601:IncludePrescriptionMedicationsType"/>
+			<element name="IncludeEffectuations" type="medicinecard20120601:IncludeEffectuationsType"/>
+			<element name="IncludeNonRelevantPrescriptionMedications" type="medicinecard20120601:IncludeNonRelevantPrescriptionMedicationsType"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:xkom="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PostOfficeBoxIdentifier" type="medicinecard20120601:PostOfficeBoxIdentifierType">
+		<annotation>
+			<documentation>
+		Declaration of a Post Office Box.
+      </documentation>
+		</annotation>
+	</element>
+	<simpleType name="PostOfficeBoxIdentifierType">
+		<annotation>
+			<documentation>Declaration of a Post Office Box.</documentation>
+		</annotation>
+		<restriction base="integer">
+			<minInclusive value="1"/>
+			<maxInclusive value="9999"/>
+		</restriction>
+	</simpleType>
+</schema>

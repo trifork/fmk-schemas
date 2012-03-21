@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:xkom="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="StreetName.xsd"/>
+	<include schemaLocation="StreetBuildingIdentifier.xsd"/>
+	<include schemaLocation="FloorIdentifier.xsd"/>
+	<include schemaLocation="SuiteIdentifier.xsd"/>
+	<include schemaLocation="MailDeliverySublocationIdentifier.xsd"/>
+	<include schemaLocation="DistrictSubdivisionIdentifier.xsd"/>
+	<include schemaLocation="PostOfficeBoxIdentifier.xsd"/>
+	<include schemaLocation="PostCodeIdentifier.xsd"/>
+	<include schemaLocation="DistrictName.xsd"/>
+	<include schemaLocation="CountryIdentificationCode.xsd"/>
+	<include schemaLocation="StreetNameForAddressing.xsd"/>
+	<element name="Address" type="medicinecard20120601:AddressType"/>
+	<complexType name="AddressType">
+		<sequence>
+			<element ref="medicinecard20120601:MailDeliverySublocationIdentifier" minOccurs="0"/>
+			<element ref="medicinecard20120601:StreetName"/>
+			<element ref="medicinecard20120601:StreetNameForAddressing" minOccurs="0"/>
+			<element ref="medicinecard20120601:StreetBuildingIdentifier"/>
+			<element ref="medicinecard20120601:FloorIdentifier" minOccurs="0"/>
+			<element ref="medicinecard20120601:SuiteIdentifier" minOccurs="0"/>
+			<element ref="medicinecard20120601:DistrictSubdivisionIdentifier" minOccurs="0"/>
+			<element ref="medicinecard20120601:PostOfficeBoxIdentifier" minOccurs="0"/>
+			<element ref="medicinecard20120601:PostCodeIdentifier"/>
+			<element ref="medicinecard20120601:DistrictName"/>
+			<element ref="medicinecard20120601:CountryIdentificationCode" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

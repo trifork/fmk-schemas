@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DosageDay.xsd"/>
+	<include schemaLocation="DosageIsNotIterated.xsd"/>
+	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+	<include schemaLocation="DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DosageTimesEndDateTime.xsd"/>
+	<include schemaLocation="DosageTimesIterationInterval.xsd"/>
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
+	<include schemaLocation="DosageTimesStartDateTime.xsd"/>
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DosageSupplementaryText.xsd"/>
+	<element name="DosageTimes" type="medicinecard20120601:DosageTimesType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageTimesType">
+		<sequence>
+			<choice>
+				<element name="IterationInterval" type="medicinecard20120601:DosageTimesIterationIntervalType"/>
+				<element name="NotIterated" type="medicinecard20120601:DosageIsNotIteratedType"/>
+			</choice>
+			<choice>
+				<element name="StartDate" type="medicinecard20120601:DosageTimesStartDateType"/>
+				<element name="StartDateTime" type="medicinecard20120601:DosageTimesStartDateTimeType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="medicinecard20120601:DosageTimesEndDateType"/>
+				<element name="EndDateTime" type="medicinecard20120601:DosageTimesEndDateTimeType"/>
+				<element name="DosageEndingUndetermined" type="medicinecard20120601:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+			<element name="UnitText" type="medicinecard20120601:DosageQuantityUnitTextType"/>
+			<element name="SupplementaryText" type="medicinecard20120601:DosageSupplementaryTextType" minOccurs="0"/>
+			<element name="Day" type="medicinecard20120601:DosageDayType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"  xmlns:itst="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" schemaLocation="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/ITST_TelephoneNumberIdentifier.xsd"/>
+	<include schemaLocation="OrganisationName.xsd"/>
+	<include schemaLocation="AddressLine.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="OrganisationType.xsd"/>
+	<element name="Organisation" type="medicinecard20120601:OrganisationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Describes an organisation.</documentation>
+			<documentation xml:lang="da-DK">Beskriver en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrganisationType">
+		<sequence>
+			<element name="Name" type="medicinecard20120601:OrganisationNameType"/>
+			<element name="AddressLine" type="medicinecard20120601:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<element name="TelephoneNumber" type="itst:TelephoneNumberIdentifierType" minOccurs="0"/>
+			<element name="Type" type="medicinecard20120601:OrganisationTypeType"/>
+			<element name="Identifier" type="medicinecard20120601:OrganisationIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>

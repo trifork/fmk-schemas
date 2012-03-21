@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="Doctor.xsd"/>
+	<element name="Paused" type="medicinecard20120601:PausedType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element containing information about which organisation and possibly doctor who paused the document this element is in (e.g. drug prescription) as well as the date it ocurred.</documentation>
+			<documentation xml:lang="da-DK">Element der indeholder information omkring hvilken organisation og muligvis læge som har pauseret dokumentet elementet befinder sig i (f.eks. lægemiddelordination), desuden datoen dette er sket.</documentation>
+		</annotation>
+	</element>
+	<complexType name="PausedType">
+		<sequence>
+			<element ref="medicinecard20120601:Organisation"/>
+			<element ref="medicinecard20120601:Doctor"/>
+			<element name="DateTime" type="dateTime"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PostCode" type="medicinecard20120601:PostCodeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Postal code, must match the XML prescription and allow for other post codes than Danish ones</documentation>
+			<documentation xml:lang="da-DK">Postnummer, skal passe the XML recepten og tillade andre postnumre end danske</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PostCodeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="9"/>
+		</restriction>
+	</simpleType>
+</schema>

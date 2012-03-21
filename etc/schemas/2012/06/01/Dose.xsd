@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DoseTime.xsd"/>
+	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="IsAccordingToNeed.xsd"/>
+	<element name="Dose" type="medicinecard20120601:DoseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of a dose element, when and how much</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en dosis på et givet stidspunkt, hvornår og hvor meget</documentation>
+		</annotation>
+	</element>
+	<complexType name="DoseType">
+		<sequence>
+			<element name="Time" type="medicinecard20120601:DoseTimeType" minOccurs="0"/>
+			<choice>
+				<element name="Quantity" type="medicinecard20120601:DoseQuantityType"/>
+				<sequence>
+					<element name="MinimalQuantity" type="medicinecard20120601:DoseQuantityType"/>
+					<element name="MaximalQuantity" type="medicinecard20120601:DoseQuantityType"/>
+				</sequence>
+			</choice>
+			<element name="IsAccordingToNeed" type="medicinecard20120601:IsAccordingToNeedType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
