@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<element name="CreatePrescriptionMedicationWithoutCPRResponse" type="medicinecard20120601:CreatePrescriptionMedicationWithoutCPRResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document containing one or more responses from creating prescription medications from drug medications</documentation>
+			<documentation xml:lang="da-DK">Response-dokument der indeholder en eller flere svar på oprettelse receptordinationer fra lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePrescriptionMedicationWithoutCPRResponseType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
