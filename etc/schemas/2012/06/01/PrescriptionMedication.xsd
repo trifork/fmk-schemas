@@ -3,11 +3,12 @@
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
-	<include schemaLocation="DeliveryInformationAndOrderInstruction.xsd"/>
+	<include schemaLocation="DeliveryInformation.xsd"/>
 	<include schemaLocation="DoseDispensedPrescriptionDispensing.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="LatestEffectuationDateTime.xsd"/>
+	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<include schemaLocation="ReceiverEAN.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
@@ -29,7 +30,10 @@
 			<element name="Created" type="medicinecard20120601:CreatedType"/>
 			<element name="LatestEffectuationDateTime" type="medicinecard20120601:LatestEffectuationDateTimeType" minOccurs="0"/>
 			<element name="TerminatedDateTime" type="medicinecard20120601:TerminatedDateTimeType" minOccurs="0"/>
-			<element name="DeliveryInformationAndOrderInstruction" type="medicinecard20120601:DeliveryInformationAndOrderInstructionType" minOccurs="0" maxOccurs="3"/>
+			<choice minOccurs="0" maxOccurs="3">
+				<element name="DeliveryInformation" type="medicinecard20120601:DeliveryInformationType"/>
+				<element name="OrderInstruction" type="medicinecard20120601:OrderInstructionType"/>
+			</choice>
 			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
 			<element name="ReimbursementClause" type="medicinecard20120601:ReimbursementClauseType" minOccurs="0"/>
 			<choice>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="AuthorisationDateTime.xsd"/>
+	<include schemaLocation="Delivery.xsd"/>
+	<include schemaLocation="DeliveryInformation.xsd"/>
+	<include schemaLocation="DoseDispensedPrescriptionDispensing.xsd"/>
+	<include schemaLocation="OrderInstruction.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="ReiteratedPrescriptionDispensing.xsd"/>
+	<include schemaLocation="SinglePrescriptionDispensing.xsd"/>
+	<include schemaLocation="SystemName.xsd"/>
+	<include schemaLocation="ReimbursementClause.xsd"/>
+	<element name="CreatePrescriptionMedication" type="medicinecard20120601:CreatePrescriptionMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document for creating a
+				PrescriptionMedication from a DrugMedication. When used in the service call where the
+				drug medication is created the DrugMedicationIdentifer may be omitted, otherwise it is
+				needed.</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til at oprette en
+				receptordination fra en lægemiddelordination. Når dette element anvendes i servicen
+				til oprettelse af en lægemiddelordination udelades DrugMedicationIdentifer, i alle
+				andre tilfælde er det nødvendigt.</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePrescriptionMedicationType">
+		<sequence>
+<!--		<element ref="medicinecard20080601:DrugMedicationIdentifier" minOccurs="0"/> -->
+			<element name="AuthorisationDateTime" type="medicinecard20120601:AuthorisationDateTimeType"/>
+			<element name="ReceiverOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
+			<element name="SystemName" type="medicinecard20120601:SystemNameType"/>
+			<choice minOccurs="0" maxOccurs="3">
+				<element name="DeliveryInformation" type="medicinecard20120601:DeliveryInformationType"/>
+				<element name="OrderInstruction" type="medicinecard20120601:OrderInstructionType"/>
+			</choice>
+			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
+			<element name="ReimbursementClause" type="medicinecard20120601:ReimbursementClauseType" minOccurs="0"/>
+			<choice>
+				<element ref="medicinecard20120601:SinglePrescriptionDispensing"/>
+				<element ref="medicinecard20120601:ReiteratedPrescriptionDispensing"/>
+				<element ref="medicinecard20120601:DoseDispensedPrescriptionDispensing"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
