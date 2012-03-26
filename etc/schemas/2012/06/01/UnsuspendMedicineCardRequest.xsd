@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Doctor.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="UnsuspendMedicineCardRequestStructure" type="medicinecard20120601:UnsuspendMedicineCardRequestStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request to unsuspend a medicine card, the patient is discharged from hospital</documentation>
+			<documentation xml:lang="da-DK">En forespørgsel om at ophæve suspenderingen af et medicinkort (frigive), patienten udskrivers fra sygehus</documentation>
+		</annotation>
+	</element>
+	<complexType name="UnsuspendMedicineCardRequestStructureType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
+			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
+			<element name="Doctor" type="medicinecard20120601:DoctorType"/>
+		</sequence>
+	</complexType>
+</schema>

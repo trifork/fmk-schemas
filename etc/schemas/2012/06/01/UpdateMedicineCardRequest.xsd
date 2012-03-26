@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="AttachPrescriptionMedication.xsd"/>
+	<include schemaLocation="CreateDrugMedication.xsd"/>
+	<include schemaLocation="CreateEffectuationOnDrugMedication.xsd"/>
+	<include schemaLocation="CreatePrescriptionMedication.xsd"/>
+	<include schemaLocation="DeleteEffectuation.xsd"/>
+	<include schemaLocation="DetachPrescriptionMedication.xsd"/>
+	<include schemaLocation="Doctor.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PauseDrugMedication.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="ResuspendMedicineCard.xsd"/>
+	<include schemaLocation="SetMedicineCardReviewed.xsd"/>
+	<include schemaLocation="SuspendMedicineCard.xsd"/>
+	<include schemaLocation="UnpauseDrugMedication.xsd"/>
+	<include schemaLocation="UnsuspendMedicineCard.xsd"/>
+	<include schemaLocation="UnwithdrawDrugMedication.xsd"/>
+	<include schemaLocation="UpdateDrugMedication.xsd"/>
+	<include schemaLocation="WithdrawDrugMedication.xsd"/>
+	<element name="UpdateMedicineCardRequest" type="medicinecard20120601:UpdateMedicineCardRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en batchforespørgsel for at opdatere et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="UpdateMedicineCardRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
+			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
+			<element name="Doctor" type="medicinecard20120601:DoctorType"/>
+			<sequence maxOccurs="unbounded">
+				<element name="SuspendMedicineCard" type="medicinecard20120601:SuspendMedicineCardType" minOccurs="0"/>
+				<element name="ResuspendMedicineCard" type="medicinecard20120601:ResuspendMedicineCardType" minOccurs="0"/>
+				<element name="UnsuspendMedicineCard" type="medicinecard20120601:UnsuspendMedicineCardType" minOccurs="0"/>
+				<element name="SetMedicineCardReviewed" type="medicinecard20120601:SetMedicineCardReviewedType" minOccurs="0"/>
+				<element name="CreateDrugMedication" type="medicinecard20120601:CreateDrugMedicationType" minOccurs="0"/>
+				<element name="UpdateDrugMedication" type="medicinecard20120601:UpdateDrugMedicationType" minOccurs="0"/>
+				<element name="WithdrawDrugMedication" type="medicinecard20120601:WithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="UnwithdrawDrugMedication" type="medicinecard20120601:UnwithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="PauseDrugMedication" type="medicinecard20120601:PauseDrugMedicationType" minOccurs="0"/>
+				<element name="UnpauseDrugMedication" type="medicinecard20120601:UnpauseDrugMedicationType" minOccurs="0"/>
+				<element name="CreatePrescriptionMedication" type="medicinecard20120601:CreatePrescriptionMedicationType" minOccurs="0"/>			
+				<element name="AttachPrescriptionMedication" type="medicinecard20120601:AttachPrescriptionMedicationType" minOccurs="0"/>
+				<element name="DetachPrescriptionMedication" type="medicinecard20120601:DetachPrescriptionMedicationType" minOccurs="0"/>
+				<element name="CreateEffectuationOnDrugMedication" type="medicinecard20120601:CreateEffectuationOnDrugMedicationType" minOccurs="0"/>
+				<element name="DeleteEffectuation" type="medicinecard20120601:DeleteEffectuationType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

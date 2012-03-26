@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="NegativeConsent.xsd"/>
+	<element name="SearchWithdrawnDrugMedicationsResponse" type="medicinecard20120601:SearchWithdrawnDrugMedicationsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response from a search request for withdrawn drug medcinations</documentation>
+			<documentation xml:lang="da-DK">Svar på en søge-forespørgsel efter seponerede lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchWithdrawnDrugMedicationsResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="NegativeConsent" type="medicinecard20120601:NegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedicationIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationVersion.xsd"/>
+	<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType">
+		<annotation>
+			<documentation xml:lang="en-GB">This structure contains drug medication identifiers and version for drug medications with negative consent.</documentation>
+			<documentation xml:lang="da-DK">Denne struktur indeholder drug id'er og version for lægemiddelordinationer med negativt samtykke.</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugMedicationWithNegativeConsentType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="Version" type="medicinecard20120601:DrugMedicationVersionType"/>
+		</sequence>
+	</complexType>
+</schema>

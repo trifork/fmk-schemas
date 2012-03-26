@@ -10,7 +10,7 @@
 	<complexType name="OrganisationIdentifierType">
 		<simpleContent>
 			<extension base="medicinecard20120601:OrganisationIdentifierValueType">
-				<attribute name="source" type="medicinecard20120601:SourceType" use="required"/>
+				<attribute name="source" type="medicinecard20120601:OrganisationIdentifierSourceType" use="required"/>
 			</extension>
 		</simpleContent>
 	</complexType>
@@ -19,5 +19,13 @@
 			<minLength value="1"/>
 			<maxLength value="200"/>
 		</restriction>
+	</simpleType>	
+	<simpleType name="OrganisationIdentifierSourceType">
+		<union memberTypes="medicinecard20120601:OrganisationIdentifierPredefinedSourceType medicinecard20120601:UndefinedSourceType"/>
 	</simpleType>
+	<simpleType name="OrganisationIdentifierPredefinedSourceType">
+		<restriction base="medicinecard20120601:UndefinedSourceType">
+			<enumeration value="SKS"/>
+		</restriction>
+	</simpleType>	
 </schema>
