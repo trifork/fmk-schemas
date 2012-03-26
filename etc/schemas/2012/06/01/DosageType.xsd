@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="DosageType" type="medicinecard20120601:DosageTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Gender</documentation>
+			<documentation xml:lang="da-DK">Køn</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DosageTypeType">
+		<restriction base="string">
+			<enumeration value="engangs"/>
+			<enumeration value="fast"/>
+			<enumeration value="efter behov"/>
+			<enumeration value="kombineret"/>
+			<enumeration value="ikke angivet"/>
+		</restriction>
+	</simpleType>
+</schema>
