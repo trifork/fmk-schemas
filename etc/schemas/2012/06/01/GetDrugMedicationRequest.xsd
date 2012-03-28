@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifierAndDateTime.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifierAndVersion.xsd"/>
+	<include schemaLocation="DrugMedicationVersion.xsd"/>
+	<include schemaLocation="IncludeEffectuations.xsd"/>
+	<include schemaLocation="IncludePrescriptionMedications.xsd"/>	
+	<include schemaLocation="NegativeConsentRequest.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="GetDrugMedicationRequest" type="medicinecard20120601:GetDrugMedicationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a drug medcination</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetDrugMedicationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="Identifier" type="medicinecard20120601:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IdentifierAndVersion" type="medicinecard20120601:DrugMedicationIdentifierAndVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IdentifierAndDateTime" type="medicinecard20120601:DrugMedicationIdentifierAndDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NegativeConsent" type="medicinecard20120601:NegativeConsentRequestType" minOccurs="0"/>
+			<element name="IncludePrescriptionMedications" type="medicinecard20120601:IncludePrescriptionMedicationsType"/>
+			<element name="IncludeEffectuations" type="medicinecard20120601:IncludeEffectuationsType"/>			
+		</sequence>
+	</complexType>
+</schema>

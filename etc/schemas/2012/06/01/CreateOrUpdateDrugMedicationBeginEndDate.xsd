@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugMedicationCreatedDateTime.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentStartDate.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentStartDateTime.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentStartedPreviously.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentEndDate.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentEndDateTime.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentEndingUndetermined.xsd"/>
+	<element name="CreateOrUpdateDrugMedicationBeginEndDate" type="medicinecard20120601:CreateOrUpdateDrugMedicationBeginEndDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates a periode where the drug medication is active</documentation>
+			<documentation xml:lang="da-DK">Angiver en periode hvor lægemiddelordinationen gælder</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateOrUpdateDrugMedicationBeginEndDateType">
+		<sequence>
+			<choice>
+				<element name="TreatmentStartDate" type="medicinecard20120601:DrugMedicationTreatmentStartDateType"/>
+				<element name="TreatmentStartDateTime" type="medicinecard20120601:DrugMedicationTreatmentStartDateTimeType"/>
+				<element name="TreatmentStartedPreviously" type="medicinecard20120601:DrugMedicationTreatmentStartedPreviouslyType"/>
+			</choice>
+			<choice>
+				<element name="TreatmentEndDate" type="medicinecard20120601:DrugMedicationTreatmentEndDateType"/>
+				<element name="TreatmentEndDateTime" type="medicinecard20120601:DrugMedicationTreatmentEndDateTimeType"/>
+				<element name="TreatmentEndingUndetermined" type="medicinecard20120601:DrugMedicationTreatmentEndingUndeterminedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
