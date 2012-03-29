@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="MedicineCardAsPDF.xsd"/>
-	<element name="MedicineCardAsPDFResponseStructure" type="medicinecard20120601:MedicineCardAsPDFResponseType">
+	<element name="GetMedicineCardAsPDFResponse" type="medicinecard20120601:GetMedicineCardAsPDFResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container elemenet for a response with a medicinecard as PDF</documentation>
 			<documentation xml:lang="da-DK">Ydre container-element for en et svar med et medicinkort som PDF</documentation>
 		</annotation>
 	</element>
-	<complexType name="MedicineCardAsPDFResponseType">
+	<complexType name="GetMedicineCardAsPDFResponseType">
 		<choice>
-			<element name="MedicineCardAsPDF" type="medicinecard20120601:MedicineCardAsPDFType" maxOccurs="unbounded"/>
+			<element name="MedicineCard" type="medicinecard20120601:MedicineCardAsPDFType" maxOccurs="unbounded"/>
 		</choice>
 	</complexType>
 </schema>
