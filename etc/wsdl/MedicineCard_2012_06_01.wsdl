@@ -2,20 +2,19 @@
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-	xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" 
-	xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01"
-	xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd"
+	xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
+	xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
 	xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
 	xmlns:sdsd201008="http://www.sdsd.dk/dgws/2010/08"
 	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
 	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
 
-	
+    <!--	xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd" -->
 
 	<wsdl:types>
 
 		<xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
-			<xs:include schemaLocation="../schemas/2012/06/01/medcom.xsd" />
+			<xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd" />
 		</xs:schema>
 		
 		<xs:schema targetNamespace="http://www.sdsd.dk/dgws/2010/08">
@@ -102,6 +101,9 @@
 
 			<xs:include schemaLocation="../schemas/2012/06/01/DeleteEffectuationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/06/01/DeleteEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2012/06/01/DrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2012/06/01/DrugMedicationResponse.xsd"/>
 
 			<xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
 
@@ -202,176 +204,165 @@
 		<wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20120601:SetMedicineCardReviewedResponse"/>
 	</wsdl:message>
 
-<!-- 
-
-
-	<wsdl:message name="DrugMedicationRequest">
+	<wsdl:message name="DrugMedicationRequest_2012_06_01">
 		<wsdl:part name="DrugMedicationRequest" element="medicinecard20120601:DrugMedicationRequest"/>
 	</wsdl:message>
-	<wsdl:message name="DrugMedicationResponse">
+	<wsdl:message name="DrugMedicationResponse_2012_06_01">
 		<wsdl:part name="DrugMedicationResponse" element="medicinecard20120601:DrugMedicationResponse"/>
 	</wsdl:message>
 
-	<wsdl:message name="PauseDrugMedicationRequest">
-		<wsdl:part name="PauseDrugMedicationRequest" element="medicinecard20120601:PauseDrugMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="PauseDrugMedicationResponse">
-		<wsdl:part name="PauseDrugMedicationResponse" element="medicinecard20120601:PauseDrugMedicationResponse"/>
-	</wsdl:message>
+     <wsdl:message name="PauseDrugMedicationRequest_2012_06_01">
+            <wsdl:part name="PauseDrugMedicationRequest" element="medicinecard20120601:PauseDrugMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="PauseDrugMedicationResponse_2012_06_01">
+            <wsdl:part name="PauseDrugMedicationResponse" element="medicinecard20120601:PauseDrugMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="CreateDrugMedicationRequest">
-		<wsdl:part name="CreateDrugMedicationRequest" element="medicinecard20120601:CreateDrugMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="CreateDrugMedicationResponse">
-		<wsdl:part name="CreateDrugMedicationResponse" element="medicinecard20120601:CreateDrugMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="CreateDrugMedicationRequest_2012_06_01">
+            <wsdl:part name="CreateDrugMedicationRequest" element="medicinecard20120601:CreateDrugMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="CreateDrugMedicationResponse_2012_06_01">
+            <wsdl:part name="CreateDrugMedicationResponse" element="medicinecard20120601:CreateDrugMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="AttachOrDetachPrescriptionMedicationRequest">
-		<wsdl:part name="AttachOrDetachPrescriptionMedicationRequest" element="medicinecard20120601:AttachOrDetachPrescriptionMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="AttachOrDetachPrescriptionMedicationResponse">
-		<wsdl:part name="AttachOrDetachPrescriptionMedicationResponse" element="medicinecard20120601:AttachOrDetachPrescriptionMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="AttachOrDetachPrescriptionMedicationRequest_2012_06_01">
+            <wsdl:part name="AttachOrDetachPrescriptionMedicationRequest" element="medicinecard20120601:AttachOrDetachPrescriptionMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="AttachOrDetachPrescriptionMedicationResponse_2012_06_01">
+            <wsdl:part name="AttachOrDetachPrescriptionMedicationResponse" element="medicinecard20120601:AttachOrDetachPrescriptionMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="CreateEffectuationRequest">
-		<wsdl:part name="CreateEffectuationRequest" element="medicinecard20120601:CreateEffectuationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="CreateEffectuationResponse">
-		<wsdl:part name="CreateEffectuationResponse" element="medicinecard20120601:CreateEffectuationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="CreateEffectuationRequest_2012_06_01">
+            <wsdl:part name="CreateEffectuationRequest" element="medicinecard20120601:CreateEffectuationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="CreateEffectuationResponse_2012_06_01">
+            <wsdl:part name="CreateEffectuationResponse" element="medicinecard20120601:CreateEffectuationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="CreatePrescriptionMedicationRequest">
-		<wsdl:part name="CreatePrescriptionMedicationRequest" element="medicinecard20120601:CreatePrescriptionMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="CreatePrescriptionMedicationResponse">
-		<wsdl:part name="CreatePrescriptionMedicationResponse" element="medicinecard20120601:CreatePrescriptionMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="CreatePrescriptionMedicationRequest_2012_06_01">
+            <wsdl:part name="CreatePrescriptionMedicationRequest" element="medicinecard20120601:CreatePrescriptionMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="CreatePrescriptionMedicationResponse_2012_06_01">
+            <wsdl:part name="CreatePrescriptionMedicationResponse" element="medicinecard20120601:CreatePrescriptionMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="PrescriptionMedicationRequest">
-		<wsdl:part name="PrescriptionMedicationRequest" element="medicinecard20120601:PrescriptionMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="PrescriptionMedicationResponse">
-		<wsdl:part name="PrescriptionMedicationResponse" element="medicinecard20120601:PrescriptionMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="PrescriptionMedicationRequest_2012_06_01">
+            <wsdl:part name="PrescriptionMedicationRequest" element="medicinecard20120601:PrescriptionMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="PrescriptionMedicationResponse_2012_06_01">
+            <wsdl:part name="PrescriptionMedicationResponse" element="medicinecard20120601:PrescriptionMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="SearchWithdrawnDrugMedicationsRequest">
-		<wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="medicinecard20120601:SearchWithdrawnDrugMedicationsRequest"/>
-	</wsdl:message>
-	<wsdl:message name="SearchWithdrawnDrugMedicationsResponse">
-		<wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="medicinecard20120601:SearchWithdrawnDrugMedicationsResponse"/>
-	</wsdl:message>
+        <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_2012_06_01">
+            <wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="medicinecard20120601:SearchWithdrawnDrugMedicationsRequest"/>
+        </wsdl:message>
+        <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_2012_06_01">
+            <wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="medicinecard20120601:SearchWithdrawnDrugMedicationsResponse"/>
+        </wsdl:message>
 
+        <wsdl:message name="UnpauseDrugMedicationRequest_2012_06_01">
+            <wsdl:part name="UnpauseDrugMedicationRequest" element="medicinecard20120601:UnpauseDrugMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="UnpauseDrugMedicationResponse_2012_06_01">
+            <wsdl:part name="UnpauseDrugMedicationResponse" element="medicinecard20120601:UnpauseDrugMedicationResponse"/>
+        </wsdl:message>
 
+        <wsdl:message name="UpdateDrugMedicationRequest_2012_06_01">
+            <wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20120601:UpdateDrugMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="UpdateDrugMedicationResponse_2012_06_01">
+            <wsdl:part name="UpdateDrugMedicationResponse" element="medicinecard20120601:UpdateDrugMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="UnpauseDrugMedicationRequest">
-		<wsdl:part name="UnpauseDrugMedicationRequest" element="medicinecard20120601:UnpauseDrugMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="UnpauseDrugMedicationResponse">
-		<wsdl:part name="UnpauseDrugMedicationResponse" element="medicinecard20120601:UnpauseDrugMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="UpdateMedicineCardRequest_2012_06_01">
+            <wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20120601:UpdateMedicineCardRequest"/>
+        </wsdl:message>
+        <wsdl:message name="UpdateMedicineCardResponse_2012_06_01">
+            <wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20120601:UpdateMedicineCardResponse"/>
+        </wsdl:message>
 
+        <wsdl:message name="WithdrawDrugMedicationRequest_2012_06_01">
+            <wsdl:part name="WithdrawDrugMedicationRequest" element="medicinecard20120601:WithdrawDrugMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="WithdrawDrugMedicationResponse_2012_06_01">
+            <wsdl:part name="WithdrawDrugMedicationResponse" element="medicinecard20120601:WithdrawDrugMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="UpdateDrugMedicationRequest">
-		<wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20120601:UpdateDrugMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="UpdateDrugMedicationResponse">
-		<wsdl:part name="UpdateDrugMedicationResponse" element="medicinecard20120601:UpdateDrugMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="SearchEffectuationsRequest_2012_06_01">
+            <wsdl:part name="SearchEffectuationsRequest" element="medicinecard20120601:SearchEffectuationsRequest"/>
+        </wsdl:message>
+        <wsdl:message name="SearchEffectuationsResponse_2012_06_01">
+            <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20120601:SearchEffectuationsResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="UpdateMedicineCardRequest">
-		<wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20120601:UpdateMedicineCardRequest"/>
-	</wsdl:message>
-	<wsdl:message name="UpdateMedicineCardResponse">
-		<wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20120601:UpdateMedicineCardResponse"/>
-	</wsdl:message>
+        <wsdl:message name="DrugMedicationRequest_2012_06_01">
+            <wsdl:part name="DrugMedicationRequest" element="medicinecard20120601:DrugMedicationRequest"/>
+        </wsdl:message>
+    
+        <wsdl:message name="DrugMedicationResponse_2012_06_01">
+            <wsdl:part name="DrugMedicationResponse" element="medicinecard20120601:DrugMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="WithdrawDrugMedicationRequest">
-		<wsdl:part name="WithdrawDrugMedicationRequest" element="medicinecard20120601:WithdrawDrugMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="WithdrawDrugMedicationResponse">
-		<wsdl:part name="WithdrawDrugMedicationResponse" element="medicinecard20120601:WithdrawDrugMedicationResponse"/>
-	</wsdl:message>
+    <wsdl:message name="PrescriptionMedicationRequest_2012_06_01">
+        <wsdl:part name="PrescriptionMedicationRequest" element="medicinecard20120601:PrescriptionMedicationRequest"/>
+    </wsdl:message>
+    
+        <wsdl:message name="PrescriptionMedicationResponse_2012_06_01">
+            <wsdl:part name="PrescriptionMedicationResponse" element="medicinecard20120601:PrescriptionMedicationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="SearchEffectuationsRequest">
-		<wsdl:part name="SearchEffectuationsRequest" element="medicinecard20120601:SearchEffectuationsRequest"/>
-	</wsdl:message>
-	<wsdl:message name="SearchEffectuationsResponse">
-		<wsdl:part name="SearchEffectuationsResponse" element="medicinecard20120601:SearchEffectuationsResponse"/>
-	</wsdl:message>
-	
+        <wsdl:message name="CreatePrescriptionMedicationRequest_20110101">
+            <wsdl:part name="CreatePrescriptionMedicationRequest" element="medicinecard20120601:CreatePrescriptionMedicationRequest"/>
+        </wsdl:message>
 
+        <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_20110101">
+            <wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="medicinecard20120601:SearchWithdrawnDrugMedicationsResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="MedicineCardResponse_20110101">
-		<wsdl:part name="MedicineCardResponse" element="medicinecard20120601:MedicineCardResponse"/>
-	</wsdl:message>
+        <wsdl:message name="UpdateMedicineCardRequest_20110101">
+            <wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20120601:UpdateMedicineCardRequest"/>
+        </wsdl:message>
 
-	<wsdl:message name="DrugMedicationResponse_20110101">
-		<wsdl:part name="DrugMedicationResponse" element="medicinecard20120601:DrugMedicationResponse"/>
-	</wsdl:message>
-	
-	<wsdl:message name="PrescriptionMedicationResponse_20110101">
-		<wsdl:part name="PrescriptionMedicationResponse" element="medicinecard20120601:PrescriptionMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="SearchEffectuationsRequest_20110101">
+            <wsdl:part name="SearchEffectuationsRequest" element="medicinecard20120601:SearchEffectuationsRequest"/>
+        </wsdl:message>
+        <wsdl:message name="SearchEffectuationsResponse_20110101">
+            <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20120601:SearchEffectuationsResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="CreateDrugMedicationRequest_20110101">
-		<wsdl:part name="CreateDrugMedicationRequest" element="medicinecard20120601:CreateDrugMedicationRequest"/>
-	</wsdl:message>
+        <wsdl:message name="CreatePrescriptionMedicationForUseInPracticeRequest_20110101">
+            <wsdl:part name="CreatePrescriptionMedicationForUseInPracticeRequest" element="medicinecard20120601:CreatePrescriptionMedicationForUseInPracticeRequest"/>
+        </wsdl:message>
+        <wsdl:message name="CreatePrescriptionMedicationForUseInPracticeResponse_20110101">
+            <wsdl:part name="CreatePrescriptionMedicationForUseInPracticeResponse" element="medicinecard20120601:CreatePrescriptionMedicationForUseInPracticeResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="CreatePrescriptionMedicationRequest_20110101">
-		<wsdl:part name="CreatePrescriptionMedicationRequest" element="medicinecard20120601:CreatePrescriptionMedicationRequest"/>
-	</wsdl:message>
-	
-	<wsdl:message name="SearchWithdrawnDrugMedicationsResponse_20110101">
-		<wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="medicinecard20120601:SearchWithdrawnDrugMedicationsResponse"/>
-	</wsdl:message>
+        <wsdl:message name="CreatePrescriptionMedicationWithoutCPRRequest_20110101">
+            <wsdl:part name="CreatePrescriptionMedicationWithoutCPRRequest" element="medicinecard20120601:CreatePrescriptionMedicationWithoutCPRRequest"/>
+        </wsdl:message>
+        <wsdl:message name="CreatePrescriptionMedicationWithoutCPRResponse_20110101">
+            <wsdl:part name="CreatePrescriptionMedicationWithoutCPRResponse" element="medicinecard20120601:CreatePrescriptionMedicationWithoutCPRResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="UpdateMedicineCardRequest_20110101">
-		<wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20120601:UpdateMedicineCardRequest"/>
-	</wsdl:message>
+        <wsdl:message name="DeleteEffectuationRequest_20120101">
+            <wsdl:part name="DeleteEffectuationRequest" element="medicinecard20120601:DeleteEffectuationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="DeleteEffectuationResponse_20120101">
+            <wsdl:part name="DeleteEffectuationResponse" element="medicinecard20120601:DeleteEffectuationResponse"/>
+        </wsdl:message>
 
-	<wsdl:message name="SearchEffectuationsRequest_20110101">
-		<wsdl:part name="SearchEffectuationsRequest" element="medicinecard20120601:SearchEffectuationsRequest"/>
-	</wsdl:message>
-	<wsdl:message name="SearchEffectuationsResponse_20110101">
-		<wsdl:part name="SearchEffectuationsResponse" element="medicinecard20120601:SearchEffectuationsResponse"/>
-	</wsdl:message>
-
-	<wsdl:message name="CreatePrescriptionMedicationForUseInPracticeRequest_20110101">
-		<wsdl:part name="CreatePrescriptionMedicationForUseInPracticeRequest" element="medicinecard20120601:CreatePrescriptionMedicationForUseInPracticeRequest"/>
-	</wsdl:message>
-	<wsdl:message name="CreatePrescriptionMedicationForUseInPracticeResponse_20110101">
-		<wsdl:part name="CreatePrescriptionMedicationForUseInPracticeResponse" element="medicinecard20120601:CreatePrescriptionMedicationForUseInPracticeResponse"/>
-	</wsdl:message>
-
-	<wsdl:message name="CreatePrescriptionMedicationWithoutCPRRequest_20110101">
-		<wsdl:part name="CreatePrescriptionMedicationWithoutCPRRequest" element="medicinecard20120601:CreatePrescriptionMedicationWithoutCPRRequest"/>
-	</wsdl:message>
-	<wsdl:message name="CreatePrescriptionMedicationWithoutCPRResponse_20110101">
-		<wsdl:part name="CreatePrescriptionMedicationWithoutCPRResponse" element="medicinecard20120601:CreatePrescriptionMedicationWithoutCPRResponse"/>
-	</wsdl:message>
-
-
-
-	<wsdl:message name="DeleteEffectuationRequest_20120101">
-		<wsdl:part name="DeleteEffectuationRequest" element="medicinecard20120601:DeleteEffectuationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="DeleteEffectuationResponse_20120101">
-		<wsdl:part name="DeleteEffectuationResponse" element="medicinecard20120601:DeleteEffectuationResponse"/>
-	</wsdl:message>
-
-	<wsdl:message name="UpdateDrugMedicationRequest_20120101">
-		<wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20120601:UpdateDrugMedicationRequest"/>
-	</wsdl:message>
+        <wsdl:message name="UpdateDrugMedicationRequest_20120101">
+            <wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20120601:UpdateDrugMedicationRequest"/>
+        </wsdl:message>
 
 
-	<wsdl:message name="UnWithdrawDrugMedicationRequest_20120101">
-		<wsdl:part name="UnWithdrawDrugMedicationRequest" element="medicinecard20120601:UnwithdrawDrugMedicationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="UnWithdrawDrugMedicationResponse_20120101">
-		<wsdl:part name="UnWithdrawDrugMedicationResponse" element="medicinecard20120601:UnwithdrawDrugMedicationResponse"/>
-	</wsdl:message>
+        <wsdl:message name="UnWithdrawDrugMedicationRequest_20120101">
+            <wsdl:part name="UnWithdrawDrugMedicationRequest" element="medicinecard20120601:UnwithdrawDrugMedicationRequest"/>
+        </wsdl:message>
+        <wsdl:message name="UnWithdrawDrugMedicationResponse_20120101">
+            <wsdl:part name="UnWithdrawDrugMedicationResponse" element="medicinecard20120601:UnwithdrawDrugMedicationResponse"/>
+        </wsdl:message>
 
--->	
 
 	<wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode" />
