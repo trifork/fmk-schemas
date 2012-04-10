@@ -10,7 +10,9 @@
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="LatestEffectuationDateTime.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
+	<include schemaLocation="PrescriptionMedicationDeprecated.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionMedicationStatus.xsd"/>
 	<include schemaLocation="ReceiverEAN.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
 	<include schemaLocation="ReiteratedPrescriptionDispensing.xsd"/>
@@ -47,6 +49,8 @@
 			<element name="SubstitutionAllowed" type="medicinecard20120601:SubstitutionAllowedType"/>
 			<element name="SupplementaryInformation" type="medicinecard20120601:SupplementaryInformationType" minOccurs="0"/>
 			<element name="ReceiverEAN" type="medicinecard20120601:ReceiverEANType" minOccurs="0"/>
+			<element name="Status" type="medicinecard20120601:PrescriptionMedicationStatusType"/>
+			<element name="Deprecated" type="medicinecard20120601:PrescriptionMedicationDeprecatedType" minOccurs="0"/>
 			<element name="Effectuation" type="medicinecard20120601:EffectuationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
