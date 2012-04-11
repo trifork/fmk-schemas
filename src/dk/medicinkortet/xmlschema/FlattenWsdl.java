@@ -23,10 +23,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class FlattenWsdl {
 	
+	private static final String NS_SCHEMA = "http://www.w3.org/2001/XMLSchema";
 	private DocumentBuilderFactory documentBuilderFactory;
 	private Node typesNode;
 	
@@ -65,8 +67,7 @@ public class FlattenWsdl {
 		private String location;
 		private Element domSchemaNode;
 		
-		private boolean analyzed = false;
-		private boolean hasBeenCopied = false;
+		private boolean hasBeenAnalyzed = false;
 		
 		private Set<SchemaFile> references = new HashSet<SchemaFile>();
 	}
@@ -96,8 +97,8 @@ public class FlattenWsdl {
 				findReferencedSchemaFilesInSchemaFile(schemaFile);
 			}
 			
-			for (SchemaFile schemaFile : referredSchemaFiles) {
-				insertSchemaSectionIntoWsdl(schemaFile, wsdlDocument);
+			for (SchemaSection schemaSection : schemaSectionMap.values()) {
+				insertSchemaSectionIntoWsdl(schemaSection, wsdlDocument);
 			}
 			
 			wsdlDocument.normalizeDocument();
@@ -105,7 +106,7 @@ public class FlattenWsdl {
 			StreamResult streamResult = new StreamResult(new File(output));
 			trans.transform(new DOMSource(wsdlDocument.getDocumentElement()), streamResult);
 			
-			printSchemaFiles(referredSchemaFiles);
+//			printSchemaFiles(referredSchemaFiles);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -116,11 +117,11 @@ public class FlattenWsdl {
 		return documentBuilderFactory.newDocumentBuilder().parse(file);
 	}
 	
-	private void printSchemaFiles(Set<SchemaFile> schemaFiles) {
-		for (SchemaFile schemaFile : schemaFiles) {
-			System.out.println(schemaFile.location);
-		}
-	}
+//	private void printSchemaFiles(Set<SchemaFile> schemaFiles) {
+//		for (SchemaFile schemaFile : schemaFiles) {
+//			System.out.println(schemaFile.location);
+//		}
+//	}
 	
 	private Set<SchemaFile> findReferencedSchemaFilesInWsdl(Document dom, File basedir) throws IOException {
 		Element rootElm = dom.getDocumentElement();
@@ -156,10 +157,10 @@ public class FlattenWsdl {
 		
 		// Schema files may be referred to from multiple paths, so check if this one has
 		// already been parsed and analyzed
-		if (schemaFile.analyzed) {
+		if (schemaFile.hasBeenAnalyzed) {
 			return;
 		}
-		schemaFile.analyzed = true;
+		schemaFile.hasBeenAnalyzed = true;
 		
 		// schemaLocation has been converted to an absolute path in schemaFile.location
 		File file = new File(schemaFile.location); 
@@ -173,7 +174,7 @@ public class FlattenWsdl {
 		
 		registerSchemaFile(schemaFile);
 		findReferencedSchemaFilesInSchemaNode(schemaFile.domSchemaNode, schemaFile.references, basedir);
-		System.out.println("Found " + schemaFile.references.size() + " references in " + schemaFile.location);
+		//System.out.println("Found " + schemaFile.references.size() + " references in " + schemaFile.location);
 		
 		// Recurse into the schema files referenced by the current schema file
 		for (SchemaFile ref : schemaFile.references) {
@@ -202,7 +203,7 @@ public class FlattenWsdl {
 		
 		schemaFile.targetNamespace = targetNamespace;
 
-		System.out.println("Registering SchemaFile: " + schemaFile.location + ", targetNamespace=" + targetNamespace);
+		//System.out.println("Registering SchemaFile: " + schemaFile.location + ", targetNamespace=" + targetNamespace);
 		SchemaSection schemaSection = getSchemaSectionForTargetNamespace(targetNamespace);
 		schemaSection.schemaFilesToInclude.add(schemaFile);
 
@@ -328,34 +329,69 @@ public class FlattenWsdl {
 		return attribute == null ? null : attribute.getNodeValue();
 	}
 
-	/**
-	 * This makes a depth-first traversal of the SchemaFile "graph" and inserts the "leafs" into the WSDL first.
-	 * That ensures that types are defined before being used in the output WSDL.
-	 *  
-	 * @param schemaFile
-	 * @param wsdlDocument
-	 * @throws TransformerException 
-	 * @throws TransformerFactoryConfigurationError 
-	 */
-	private void insertSchemaSectionIntoWsdl(SchemaFile schemaFile, Document wsdlDocument) throws TransformerFactoryConfigurationError, TransformerException {
-		// Test and set a flag to prevent the same file being copied more than once
-		if (schemaFile.hasBeenCopied) {
-			return;
+	private void insertSchemaSectionIntoWsdl(SchemaSection schemaSection, Document wsdlDocument) throws TransformerFactoryConfigurationError, TransformerException {
+		
+		System.out.println("Generating <schema targetNamespace='" + schemaSection.targetNamespace + "'>");
+		
+		// Create <schema> element defining all the relevant namespace prefixes
+		Element schemaElement = wsdlDocument.createElementNS(NS_SCHEMA, "schema");
+		schemaElement.setAttribute("xmlns", "http://www.w3.org/2001/XMLSchema");
+		schemaElement.setAttribute("targetNamespace", schemaSection.targetNamespace);
+		for (Map.Entry<String, String> entry : schemaSection.prefixToNamespaceMap.entrySet()) {
+			schemaElement.setAttribute("xmlns:"+entry.getKey(), entry.getValue());
 		}
-		schemaFile.hasBeenCopied = true;
+		typesNode.appendChild(schemaElement);
+		
+		// This set is used to collect the namespace which already have an import element in the schema section
+		Set<String> importedNamespaces = new HashSet<String>();
+		DOMResult schemaElementResult = new DOMResult(schemaElement);
+
+		// Insert contents of files into schemaElement
+		// First all imports
+		for (SchemaFile schemaFile : schemaSection.schemaFilesToInclude) {
+			insertSchemaFileIntoSchemaElement(schemaFile, schemaElementResult, importedNamespaces, true);
+		}
+		// Then everything except imports
+		for (SchemaFile schemaFile : schemaSection.schemaFilesToInclude) {
+			insertSchemaFileIntoSchemaElement(schemaFile, schemaElementResult, importedNamespaces, false);
+		}
+	}
+	
+	private void insertSchemaFileIntoSchemaElement(SchemaFile schemaFile, DOMResult schemaElementResult, Set<String> importedNamespaces, boolean imports) 
+			throws TransformerFactoryConfigurationError, TransformerException {
 		
 		if (schemaFile.domSchemaNode == null) {
 			throw new RuntimeException("dom == null for schemaLocation=" + schemaFile.location);
 		}
 		
-//		schemaFile.domSchemaNode.normalize();
 		Transformer trans = TransformerFactory.newInstance().newTransformer();
-		trans.transform(new DOMSource(schemaFile.domSchemaNode), new DOMResult(typesNode));
+		NodeList childNodeList = schemaFile.domSchemaNode.getChildNodes();
 		
-		
-		for (SchemaFile ref : schemaFile.references) {
-			insertSchemaSectionIntoWsdl(ref, wsdlDocument);
+		for (int i=0; i<childNodeList.getLength(); i++) {
+			Node node = childNodeList.item(i);
+			
+			if ("import".equals(node.getLocalName()) && NS_SCHEMA.equals(node.getNamespaceURI())) {
+				if (imports) {
+					Node namespaceNode = node.getAttributes().getNamedItem("namespace");
+					if (namespaceNode == null) {
+						throw new RuntimeException("Expected a 'namespace' attribute in import statement in file: " + schemaFile.location);
+					}
+					if (importedNamespaces.contains(namespaceNode.getNodeValue())) {
+						// This is an import that is already included, so don't copy it again!
+						continue;
+					}
+					System.out.println("    <import namespace='" + namespaceNode.getNodeValue() + "'/>");
+					importedNamespaces.add(namespaceNode.getNodeValue());
+					trans.transform(new DOMSource(node), schemaElementResult);
+				}
+			} else if (!imports) {
+				trans.transform(new DOMSource(node), schemaElementResult);
+			}
 		}
+		
+//		for (SchemaFile ref : schemaFile.references) {
+//			insertSchemaSectionIntoWsdl(ref, wsdlDocument);
+//		}
 		
 	}
 }
