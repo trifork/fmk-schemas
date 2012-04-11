@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MedicineCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01 ../etc/schemas/2012/06/01/MedicineCardResponse.xsd" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<GetMedicineCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01 ../../../../etc/schemas/2012/06/01/GetMedicineCardResponse.xsd" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<MedicineCard>
-	
 		<!-- Patient -->
 		<Patient>
 			<Person>
 				<Name>
-					<GivenName>Anders</GivenName>
+					<GivenName>Anita</GivenName>
 					<Surname>Andersen</Surname>
 				</Name>
-				<PersonIdentifier>0102034567</PersonIdentifier>
+				<PersonIdentifier>1111111118</PersonIdentifier>
 			</Person>
 			<Address>
-				<StreetName>Skibakken</StreetName>
-				<StreetBuildingIdentifier>236</StreetBuildingIdentifier>
+				<StreetName>Margrethepladsen</StreetName>
+				<StreetBuildingIdentifier>4</StreetBuildingIdentifier>
 				<PostCodeIdentifier>8000</PostCodeIdentifier>
 				<DistrictName>Århus</DistrictName>
 			</Address>
 		</Patient>
-
 		<!-- Medicinkortets version og en relation til forrige version, som medicinkortet var oprettet på baggrud af -->
 		<Version>131436572800010002</Version>
 		<PreviousVersion>131436411700030001</PreviousVersion>
-		
+		<NextVersion>131436587100030004</NextVersion>
 		<!-- Ændret af -->
 		<Modified>
 			<Organisation>
@@ -37,21 +35,53 @@
 				<Name>Henrik Hansen</Name>
 				<SpecialityCode source="Takst" sourceDate="2012-02-06">PSYK</SpecialityCode>
 			</Doctor>
-			<DateTime>2011-02-10T09:30:47.0Z</DateTime>
+			<DateTime>2011-02-10T09:30:47Z</DateTime>
 		</Modified>
-		
+		<!-- Medicinkortet er suspenderet af -->
+		<Suspended>
+			<Organisation>
+				<Name>Århus Universitetshospital, Skejby</Name>
+				<AddressLine>Brendstrupgårdsvej 100</AddressLine>
+				<AddressLine>8200 Århus N</AddressLine>
+				<TelephoneNumber>89495566</TelephoneNumber>
+				<Type>Sygehus</Type>
+				<Identifier source="SKS">7026</Identifier>
+			</Organisation>
+			<Doctor>
+				<AuthorisationIdentifier>757RR</AuthorisationIdentifier>
+				<Name>Ekhardt Jørgensen</Name>
+			</Doctor>
+			<DateTime>2011-02-10T09:12:41Z</DateTime>
+		</Suspended>
+		<!-- Markering af medicinafstemning -->
+		<Reviewed>
+			<Organisation>
+				<Name>Århus Universitetshospital, Skejby</Name>
+				<AddressLine>Brendstrupgårdsvej 100</AddressLine>
+				<AddressLine>8200 Århus N</AddressLine>
+				<TelephoneNumber>89495566</TelephoneNumber>
+				<Type>Sygehus</Type>
+				<Identifier source="SKS">7026</Identifier>
+			</Organisation>
+			<Doctor>
+				<AuthorisationIdentifier>757RR</AuthorisationIdentifier>
+				<Name>Ekhardt Jørgensen</Name>
+			</Doctor>
+			<DateTime>2011-02-10T09:11:12Z</DateTime>
+		</Reviewed>
+		<!-- Ugyldig-markering -->
+		<IsInvalid/>
 		<!-- Negativt samtykke -->
 		<DrugMedicationWithNegativeConsent>
 			<Identifier>1122212313</Identifier>
 			<Version>131410412100020002</Version>
 		</DrugMedicationWithNegativeConsent>
-		
 		<!-- Lægemiddelordination -->
 		<DrugMedication>
-			<Identifier>1</Identifier>
-			<Version>1</Version>
-			<PreviousVersion>1122287121</PreviousVersion>
-			
+			<Identifier>131436412800010004</Identifier>
+			<Version>131436412800020002</Version>
+			<PreviousVersion>131436221300010005</PreviousVersion>
+			<NextVersion>131436569800010005</NextVersion>
 			<Created>
 				<Organisation>
 					<Name>Lægerne Vestergade</Name>
@@ -67,23 +97,59 @@
 				</Doctor>
 				<DateTime>2011-02-10T09:30:47.0Z</DateTime>
 			</Created>
-			
+			<Modified>
+				<Organisation>
+					<Name>Lægehuset Fanø</Name>
+					<Type>Yder</Type>
+					<Identifier source="Yder">27548</Identifier>
+				</Organisation>
+				<Doctor>
+					<AuthorisationIdentifier>TH3VJ</AuthorisationIdentifier>
+					<Name>Ulf Johannesen</Name>
+				</Doctor>
+				<DateTime>2011-02-13T15:31:10Z</DateTime>
+			</Modified>
+			<Paused>
+				<Organisation>
+					<Name>Lægehuset Fanø</Name>
+					<Type>Yder</Type>
+					<Identifier source="Yder">27548</Identifier>
+				</Organisation>
+				<Doctor>
+					<AuthorisationIdentifier>TH3VJ</AuthorisationIdentifier>
+					<Name>Ulf Johannesen</Name>
+				</Doctor>
+				<DateTime>2011-02-13T15:31:10Z</DateTime>
+			</Paused>
+			<Withdrawn>
+				<Organisation>
+					<Name>Lægerne Vestergade</Name>
+					<AddressLine>Vestergade 12</AddressLine>
+					<TelephoneNumber>86561010</TelephoneNumber>
+					<Type>Yder</Type>
+					<Identifier source="Ydernummer">12121</Identifier>
+				</Organisation>
+				<Doctor>
+					<AuthorisationIdentifier>1B2F7</AuthorisationIdentifier>
+					<Name>Henrik Hansen</Name>
+					<SpecialityCode source="Takst" sourceDate="2012-02-06">PSYK</SpecialityCode>
+				</Doctor>
+				<DateTime>2011-02-11T11:04:11Z</DateTime>
+			</Withdrawn>
+			<HasNegativeConsent/>
 			<BeginEndDate>
-				<DrugMedicationCreatedDateTime>2012-02-10T09:30:47.0Z</DrugMedicationCreatedDateTime>
+				<CreatedDateTime>2012-02-10T09:30:47.0Z</CreatedDateTime>
 				<TreatmentStartDate>2012-02-10</TreatmentStartDate>
-				<TreatmentEndingUndetermined/>
+				<TreatmentEndDate>2012-04-21</TreatmentEndDate>
 			</BeginEndDate>
-			
 			<Indication>
 				<Code source="Takst" date="2012-02-06">121</Code>
 				<Text>mod mellemørebetændelse</Text>
 			</Indication>
-			
 			<RouteOfAdministration>
 				<Code source="Takst" date="2012-02-06">OR</Code>
 				<Text>Oral anvendelse</Text>
 			</RouteOfAdministration>
-			
 			<Drug>
 				<ATC>
 					<Code source="Takst" date="2012-02-06">J01CE02</Code>
@@ -106,7 +172,6 @@
 					</ActiveSubstance>
 				</Substances>
 			</Drug>
-			
 			<Dosage>
 				<Structure>
 					<IterationInterval>1</IterationInterval>
@@ -127,18 +192,16 @@
 					</Day>
 				</Structure>
 			</Dosage>
-			
 			<DosageTranslation>
 				<ShortText>1 tablet morgen og aften ved måltid</ShortText>
 				<LongText>1 tablet morgen og aften ved måltid</LongText>
 				<AverageDailyDosage>2</AverageDailyDosage>
 				<UnitText source="Doseringsforslag" date="2012-02-06">tablet</UnitText>
 			</DosageTranslation>
-			
 			<SubstitutionAllowed>true</SubstitutionAllowed>
-			
 			<!-- Effektuering af lægemiddelordination -->
 			<Effectuation>
+				<Identifier>131436579300020004</Identifier>
 				<DateTime>2012-02-10T09:30:47.0Z</DateTime>
 				<EffectuationMethod>udleveret</EffectuationMethod>
 				<Organisation>
@@ -161,7 +224,6 @@
 					<UnitText>stk</UnitText>
 				</PackageSize>
 			</Effectuation>
-			
 			<!-- Receptordination knyttet til lægemiddelordination -->
 			<PrescriptionMedication>
 				<Identifier>1312312324</Identifier>
@@ -227,8 +289,8 @@
 				<ReceiverEAN>
 					<ReceiverEAN>5710000000012</ReceiverEAN>
 				</ReceiverEAN>
+				<Status>åben</Status>
 			</PrescriptionMedication>
-			
 		</DrugMedication>
 	</MedicineCard>
-</MedicineCardResponse>
+</GetMedicineCardResponse>
