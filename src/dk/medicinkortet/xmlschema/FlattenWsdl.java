@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -22,20 +21,52 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 public class FlattenWsdl {
 	
+	private DocumentBuilderFactory documentBuilderFactory;
 	private Node typesNode;
+	
+	/**
+	 * Map from schemaLocation to SchemaFile, so that multiple references to the same
+	 * schema file can be resolved to the same SchemaFile instance.
+	 */
+	private Map<String, SchemaFile> schemaFileMap = new HashMap<String, SchemaFile>();
+	
+	/** 
+	 * Map from targetNamespace to SchemaSection, so that there can be a single SchemaSection 
+	 * for each targetNamespace. 
+	 */
+	private Map<String, SchemaSection> schemaSectionMap = new HashMap<String, SchemaSection>();
 
+	/**
+	 * This class is used to collect all SchemaFile instances that have the same targetNamespace,
+	 * so that they can be moved into the same 'schema' section of the output WSDL file.
+	 */
+	private static class SchemaSection {
+		private String targetNamespace;
+		private Map<String, String> prefixToNamespaceMap = new HashMap<String,String>();
+		private Map<String, Set<String>> namespaceToSetOfPrefixesMap = new HashMap<String,Set<String>>();
+		private Set<SchemaFile> schemaFilesToInclude = new HashSet<SchemaFile>();
+	}
+	
+	/**
+	 * This class is used to build a simple graph of the referenced schema files.
+	 * The "root" of the graph is a set of schema files (instance of Set<SchemaFile>) referenced from the WSDL file.
+	 * 
+	 * When the graph is built, it is insured that references to the same file will
+	 * be represented as a reference to a shared SchemaFile instance. 
+	 */
 	private static class SchemaFile {
 		private String targetNamespace;
 		private String location;
 		private Element domSchemaNode;
 		
 		private boolean analyzed = false;
-		private boolean output = false;
+		private boolean hasBeenCopied = false;
 		
 		private Set<SchemaFile> references = new HashSet<SchemaFile>();
 	}
@@ -48,26 +79,26 @@ public class FlattenWsdl {
 		new FlattenWsdl().run("etc/wsdl/MedicineCard_2011_01_01.wsdl", "target/MedicineCard-inline_2011_01_01.wsdl");
 	}
 	
+	private FlattenWsdl() {
+		documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		documentBuilderFactory.setNamespaceAware(true);
+	}
+	
 	private void run(String input, String output) {
 		try {
 			File inputFile = new File(input);
 			File basedir = inputFile.getParentFile();
 			Document wsdlDocument = parseXmlFile(inputFile);
 			
-			Map<String, SchemaFile> map = new HashMap<String, SchemaFile>();
-			Set<SchemaFile> referredSchemaFiles = findReferencedSchemaFilesInWsdl(wsdlDocument, map, basedir);
+			Set<SchemaFile> referredSchemaFiles = findReferencedSchemaFilesInWsdl(wsdlDocument, basedir);
 			
 			for (SchemaFile schemaFile : referredSchemaFiles) {
-				findReferencedSchemaFilesInSchemaFile(schemaFile, map);
+				findReferencedSchemaFilesInSchemaFile(schemaFile);
 			}
 			
 			for (SchemaFile schemaFile : referredSchemaFiles) {
 				insertSchemaSectionIntoWsdl(schemaFile, wsdlDocument);
 			}
-			
-//			Writer stream = new FileWriter(output);
-//			XMLStreamWriter xmlStreamWriter = XMLOutputFactory.newInstance().createXMLStreamWriter(stream);
-//			xmlStreamWriter.
 			
 			wsdlDocument.normalizeDocument();
 			Transformer trans = TransformerFactory.newInstance().newTransformer();
@@ -81,13 +112,8 @@ public class FlattenWsdl {
 	}
 
 	private Document parseXmlFile(File file) throws ParserConfigurationException, SAXException, IOException  {
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		dbf.setNamespaceAware(true);
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document dom = db.parse(file);
-
-		System.out.println("Parsed file '" + file.getName() + "'");
-		return dom;
+		//System.out.println("Parsing file '" + file.getName() + "'");
+		return documentBuilderFactory.newDocumentBuilder().parse(file);
 	}
 	
 	private void printSchemaFiles(Set<SchemaFile> schemaFiles) {
@@ -96,7 +122,7 @@ public class FlattenWsdl {
 		}
 	}
 	
-	private Set<SchemaFile> findReferencedSchemaFilesInWsdl(Document dom, Map<String, SchemaFile> map, File basedir) throws IOException {
+	private Set<SchemaFile> findReferencedSchemaFilesInWsdl(Document dom, File basedir) throws IOException {
 		Element rootElm = dom.getDocumentElement();
 
 		// Find definitions/types/schema/ section of wsdl
@@ -109,7 +135,7 @@ public class FlattenWsdl {
 			typesNode = typesNode.getNextSibling();
 		}
 		if (typesNode == null) {
-			throw new RuntimeException("Expected 'types' element");
+			throw new RuntimeException("Expected a 'types' element in WSDL file");
 		}
 		
 		// Traverse child nodes to 'types' and proces 'schema' elements
@@ -117,7 +143,7 @@ public class FlattenWsdl {
 		Node node = typesNode.getFirstChild();
 		while (node != null) {
 			if ("schema".equals(node.getLocalName())) {
-				findReferencedSchemaFilesInSchemaNode(node, map, referredSchemaFiles, basedir);
+				findReferencedSchemaFilesInSchemaNode(node, referredSchemaFiles, basedir);
 			}
 			node = node.getNextSibling();
 		}
@@ -125,7 +151,7 @@ public class FlattenWsdl {
 		return referredSchemaFiles;
 	}
 
-	private void findReferencedSchemaFilesInSchemaFile(SchemaFile schemaFile, Map<String, SchemaFile> map) 
+	private void findReferencedSchemaFilesInSchemaFile(SchemaFile schemaFile) 
 			throws ParserConfigurationException, SAXException, IOException {
 		
 		// Schema files may be referred to from multiple paths, so check if this one has
@@ -139,36 +165,105 @@ public class FlattenWsdl {
 		File file = new File(schemaFile.location); 
 		File basedir = file.getParentFile();
 		Document dom = parseXmlFile(file);
-		Element e = dom.getDocumentElement();
+		schemaFile.domSchemaNode = dom.getDocumentElement();
 		 
-		if (!"schema".equals(e.getLocalName())) {
+		if (!"schema".equals(schemaFile.domSchemaNode.getLocalName())) {
 			throw new RuntimeException("Expected root element 'schema' in schema file");
 		}
 		
-		schemaFile.domSchemaNode = e;
-		findReferencedSchemaFilesInSchemaNode(e, map, schemaFile.references, basedir);
+		registerSchemaFile(schemaFile);
+		findReferencedSchemaFilesInSchemaNode(schemaFile.domSchemaNode, schemaFile.references, basedir);
 		System.out.println("Found " + schemaFile.references.size() + " references in " + schemaFile.location);
 		
 		// Recurse into the schema files referenced by the current schema file
 		for (SchemaFile ref : schemaFile.references) {
-			findReferencedSchemaFilesInSchemaFile(ref, map);
+			findReferencedSchemaFilesInSchemaFile(ref);
 		}
 	}
 
+	
+	/**
+	 * Register the given schemaFile to be included in a given SchemaSection, and also register the namespaces/prefixes used. 
+	 * 
+	 * NOTE: This tool does not rewrite namespace prefixes, so a given prefix can be used for one namespace only in a given
+	 * schema section. Conflicts will generate a RuntimeException.
+	 */
+	private void registerSchemaFile(SchemaFile schemaFile) {
+		String targetNamespace = getAttribute(schemaFile.domSchemaNode, "targetNamespace");
+		if (targetNamespace == null) {
+			throw new RuntimeException("Expected attribute 'targetNamespace' of 'schema' element in " + schemaFile.location);
+		}
+		
+		if (schemaFile.targetNamespace != null && !schemaFile.targetNamespace.equals(targetNamespace)) {
+			throw new RuntimeException("An import of schema file '" + schemaFile.location + "' specified namespace '"
+					+ schemaFile.targetNamespace + "' but the targetNamespace inside the schema file is '"
+					+ targetNamespace + "'");
+		}
+		
+		schemaFile.targetNamespace = targetNamespace;
+
+		System.out.println("Registering SchemaFile: " + schemaFile.location + ", targetNamespace=" + targetNamespace);
+		SchemaSection schemaSection = getSchemaSectionForTargetNamespace(targetNamespace);
+		schemaSection.schemaFilesToInclude.add(schemaFile);
+
+		// Find and register namespace prefixes from attributes in the 'schema' node
+		// Example: <schema xmlns:example="http://www.example.com/service">
+		NamedNodeMap attributes = schemaFile.domSchemaNode.getAttributes();
+		for (int i=0; i<attributes.getLength(); i++) {
+			Node node = attributes.item(i);
+			
+			if (node.getPrefix() != null && node.getPrefix().equals("xmlns")) {
+				String attrNsPrefix = node.getLocalName();
+				String attrNamespace = node.getNodeValue();
+				
+				String registeredNamespace = schemaSection.prefixToNamespaceMap.get(attrNsPrefix);
+				if (registeredNamespace != null) {
+					if (!registeredNamespace.equals(attrNamespace)) {
+						System.err.println("prefixToNamespaceMap:" + schemaSection.prefixToNamespaceMap);
+						System.err.println("namespaceToSetOfPrefixesMap:" + schemaSection.namespaceToSetOfPrefixesMap);
+						throw new RuntimeException("This tool cannot currently handle that multiple namespaces that use the same prefix. " +
+								"prefix=" + attrNsPrefix + ". new namespace: " + attrNamespace + 
+								", registered namespace: " + registeredNamespace);
+					}
+				} else {
+					schemaSection.prefixToNamespaceMap.put(attrNsPrefix, attrNamespace);
+					
+					Set<String> setOfPrefixes = schemaSection.namespaceToSetOfPrefixesMap.get(attrNamespace);
+					if (setOfPrefixes == null) {
+						setOfPrefixes = new HashSet<String>();
+						schemaSection.namespaceToSetOfPrefixesMap.put(attrNamespace, setOfPrefixes);
+					}
+					setOfPrefixes.add(attrNsPrefix);
+				}
+			}
+		}
+
+	}
+
+	private SchemaSection getSchemaSectionForTargetNamespace(String targetNamespace) {
+		SchemaSection schemaSection = schemaSectionMap.get(targetNamespace);
+		if (schemaSection == null) {
+			schemaSection = new SchemaSection();
+			schemaSection.targetNamespace = targetNamespace;
+			schemaSectionMap.put(targetNamespace, schemaSection);
+		}
+		return schemaSection;
+	}
+	
 	/**
 	 * Helper method that is used both when finding references directly in the wsdl file
 	 * and when finding references in the schema files.
 	 * 
 	 * @param node The 'schema' node (from WSDL or XSD file) to be processed.
-	 * @param map Map from canonical schemaLocation string to SchemaFile representations, to insure they are 
+	 * @param schemaFileMap Map from canonical schemaLocation string to SchemaFile representations, to insure they are 
 	 * 		processed and included only once.
 	 * @param referredSchemaFiles A Set instance to be filled with a SchemaFile instance for each import/include 
 	 * 		found in this file.
 	 * @param removeReferenceNodes If true this method will remove the import/include nodes as they are found.
 	 * @throws IOException 
 	 */
-	private void findReferencedSchemaFilesInSchemaNode(Node node, Map<String, SchemaFile> map,
-			Set<SchemaFile> referredSchemaFiles, File basedir) throws IOException {
+	private void findReferencedSchemaFilesInSchemaNode(Node node, Set<SchemaFile> referredSchemaFiles, File basedir) 
+			throws IOException {
 		// Traverse child nodes to 'schema' and proces 'import' and 'include' elements
 		Node child = node.getFirstChild();
 		while (child != null) {
@@ -180,7 +275,7 @@ public class FlattenWsdl {
 				}
 				//System.out.println("Found " + child.getLocalName() + " schemaLocation=" + schemaLocation);
 				
-				SchemaFile schemaFile = getSchemaFile(schemaLocation, map, basedir);
+				SchemaFile schemaFile = getSchemaFile(schemaLocation, basedir);
 				if (schemaFile != null) {
 					String namespaceAttribute = getAttribute(child, "namespace");
 					if (schemaFile.targetNamespace == null) {
@@ -205,7 +300,7 @@ public class FlattenWsdl {
 		}
 	}
 	
-	private SchemaFile getSchemaFile(String schemaLocation, Map<String, SchemaFile> map, File basedir) throws IOException {
+	private SchemaFile getSchemaFile(String schemaLocation, File basedir) throws IOException {
 		try {
 			// If schemaLocation is a valid URL, then don't inline!?!
 			new URL(schemaLocation);
@@ -217,12 +312,12 @@ public class FlattenWsdl {
 		
 		String canonicalSchemaLocation = new File(basedir, schemaLocation).getCanonicalPath();
 		
-		SchemaFile schemaFile = map.get(canonicalSchemaLocation);
+		SchemaFile schemaFile = schemaFileMap.get(canonicalSchemaLocation);
 		if (schemaFile == null) {
 			schemaFile = new SchemaFile();
 			schemaFile.location = canonicalSchemaLocation;
 			
-			map.put(canonicalSchemaLocation, schemaFile);
+			schemaFileMap.put(canonicalSchemaLocation, schemaFile);
 		}
 		
 		return schemaFile;
@@ -244,10 +339,10 @@ public class FlattenWsdl {
 	 */
 	private void insertSchemaSectionIntoWsdl(SchemaFile schemaFile, Document wsdlDocument) throws TransformerFactoryConfigurationError, TransformerException {
 		// Test and set a flag to prevent the same file being copied more than once
-		if (schemaFile.output) {
+		if (schemaFile.hasBeenCopied) {
 			return;
 		}
-		schemaFile.output = true;
+		schemaFile.hasBeenCopied = true;
 		
 		if (schemaFile.domSchemaNode == null) {
 			throw new RuntimeException("dom == null for schemaLocation=" + schemaFile.location);
