@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120101="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PrescriptionMedicationStatus" type="medicinecard20120101:PrescriptionMedicationStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">The status of the prescription medication</documentation>
+			<documentation xml:lang="da-DK">Receptens status</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PrescriptionMedicationStatusType">
+		<restriction base="string">
+			<enumeration value="aaben"/>
+			<enumeration value="afsluttet"/>
+			<enumeration value="annulleret"/>
+			<enumeration value="kladde"/>
+			<enumeration value="inaktiv"/>
+			<enumeration value="delvist_udleveret"/>
+			<enumeration value="under_behandling"/>
+			<enumeration value="ugyldig"/>
+			<enumeration value="web_ekspederet"/>
+			<enumeration value="overfoert_til_dosiskort"/>
+		</restriction>
+	</simpleType>
+</schema>

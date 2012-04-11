@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Permission.xsd"/>
+	<include schemaLocation="RequestedRole.xsd"/>
+	<element name="RolesPermissions" type="medicinecard20120601:RolesPermissionsType">
+		<annotation>
+			<documentation xml:lang="en-GB">Permissions for a role</documentation>
+			<documentation xml:lang="da-DK">En rolles rettigheder</documentation>
+		</annotation>
+	</element>
+	<complexType name="RolesPermissionsType">
+		<sequence>
+			<element name="RequestedRole" type="medicinecard20120601:RequestedRoleType"/>
+			<element name="Permission" type="medicinecard20120601:PermissionType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
