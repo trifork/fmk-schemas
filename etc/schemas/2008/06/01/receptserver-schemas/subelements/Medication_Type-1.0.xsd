@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xs:schema xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
-	<xs:include schemaLocation="General_Types-1.0.xsd"/>
-	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
-	<xs:include schemaLocation="DrugPackage_Type-1.0.xsd"/>
-	<xs:include schemaLocation="Iteration_Type-1.0.xsd"/>
-	<xs:include schemaLocation="DoseDispensing_Type-1.0.xsd"/>
-	<xs:include schemaLocation="AdministrationDone_Type-1.0.xsd"/>
-	<xs:include schemaLocation="AdministrationsOrdered_Type-1.0.xsd"/>
-	<xs:include schemaLocation="AdministrationsInProgress_Type-1.0.xsd"/>
-	<xs:complexType name="Medication_Type">
-		<xs:sequence>
-			<xs:element name="MedicationID" type="MedicationID_Type"/>
-			<xs:element name="VersionCheckKey" type="VersionCheckKey_Type"/>
-			<xs:element name="MedicationCount" type="MedicationCount_Type"/>
-			<xs:element name="MedicationCreatedDateTime" type="MedicationCreatedDateTime_Type" minOccurs="0"/>
-			<xs:element name="EnvelopeDateTime" type="EnvelopeDateTime_Type" minOccurs="0"/>
-			<xs:element name="LetterDateTime" type="LetterDateTime_Type" minOccurs="0"/>
-			<xs:element name="DrugPackage" type="DrugPackage_Type"/>
-			<xs:element name="Iteration" type="Iteration_Type" minOccurs="0"/>
-			<xs:element name="SupplementaryInformation" type="SupplementaryInformation_Type" minOccurs="0"/>
-			<xs:element name="DoseDispensing" type="DoseDispensing_Type" minOccurs="0"/>
-			<xs:element name="AdministrationDone" type="AdministrationDone_Type" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element name="AdministrationOrdered" type="AdministrationOrdered_Type" minOccurs="0"/>
-				<xs:element name="AdministrationInProgress" type="AdministrationInProgress_Type" minOccurs="0"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:complexType>
-</xs:schema>
+<schema xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<include schemaLocation="General_Types-1.0.xsd" />
+	<include schemaLocation="General_Enumerated_Types-1.0.xsd" />
+	<include schemaLocation="DrugPackage_Type-1.0.xsd" />
+	<include schemaLocation="Iteration_Type-1.0.xsd" />
+	<include schemaLocation="DoseDispensing_Type-1.0.xsd" />
+	<include schemaLocation="AdministrationDone_Type-1.0.xsd" />
+	<include schemaLocation="AdministrationsOrdered_Type-1.0.xsd" />
+	<include schemaLocation="AdministrationsInProgress_Type-1.0.xsd" />
+	<complexType name="Medication_Type">
+		<sequence>
+			<element name="MedicationID" type="medicinecard:MedicationID_Type" />
+			<element name="VersionCheckKey" type="medicinecard:VersionCheckKey_Type" />
+			<element name="MedicationCount" type="medicinecard:MedicationCount_Type" />
+			<element name="MedicationCreatedDateTime" type="medicinecard:MedicationCreatedDateTime_Type" minOccurs="0" />
+			<element name="EnvelopeDateTime" type="medicinecard:EnvelopeDateTime_Type" minOccurs="0" />
+			<element name="LetterDateTime" type="medicinecard:LetterDateTime_Type" minOccurs="0" />
+			<element name="DrugPackage" type="medicinecard:DrugPackage_Type" />
+			<element name="Iteration" type="medicinecard:Iteration_Type" minOccurs="0" />
+			<element name="SupplementaryInformation" type="medicinecard:SupplementaryInformation_Type" minOccurs="0" />
+			<element name="DoseDispensing" type="medicinecard:DoseDispensing_Type" minOccurs="0" />
+			<element name="AdministrationDone" type="medicinecard:AdministrationDone_Type" minOccurs="0" maxOccurs="unbounded" />
+			<choice>
+				<element name="AdministrationOrdered" type="medicinecard:AdministrationOrdered_Type" minOccurs="0" />
+				<element name="AdministrationInProgress" type="medicinecard:AdministrationInProgress_Type" minOccurs="0" />
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
-	<xs:include schemaLocation="General_Types-1.0.xsd"/>
-	<xs:complexType name="PharmacyWhereAddressed_Type">
-		<xs:sequence>
-			<xs:element name="PharmacyName" type="PharmacyName_Type"/>
-			<xs:element name="LocationNumber" type="LocationNumber_Type"/>
-		</xs:sequence>
-	</xs:complexType>
-</xs:schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<include schemaLocation="General_Types-1.0.xsd" />
+	<complexType name="PharmacyWhereAddressed_Type">
+		<sequence>
+			<element name="PharmacyName" type="medicinecard:PharmacyName_Type" />
+			<element name="LocationNumber" type="medicinecard:LocationNumber_Type" />
+		</sequence>
+	</complexType>
+</schema>

@@ -1,117 +1,117 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xs:schema xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
-	<xs:simpleType name="DosagePeriodUnit_Type">
-		<xs:annotation>
-			<xs:documentation>Enheder for doseringsværdier</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="dag"/>
-			<xs:enumeration value="uge"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ErrorType_Type">
-		<xs:annotation>
-			<xs:documentation>Type der angiver fejlens oprindelige type</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="ReceptserverDatabaseException"/>
-			<xs:enumeration value="ReceptserverInternalException"/>
-			<xs:enumeration value="ReceptserverSchemaValidationException"/>
-			<xs:enumeration value="ReceptserverServiceException"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="IdentifierCode_Type">
-		<xs:annotation>
-			<xs:documentation>Typekode for identifier (ydernummer o.l.)</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="sygehusafdelingsnummer"/>
-			<xs:enumeration value="ydernummer"/>
-			<xs:enumeration value="lokationsnummer"/>
-			<xs:enumeration value="kommunenummer"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="IterationIntervalUnit_Type">
-		<xs:annotation>
-			<xs:documentation>Enheder for iteration interval (udleveringsinterval)</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="dag"/>
-			<xs:enumeration value="uge"/>
-			<xs:enumeration value="maaned"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="Occupation_Type">
-		<xs:annotation>
-			<xs:documentation>Type læge/tandlæge</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="laege"/>
-			<xs:enumeration value="tandlaege"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="ReimbursementClause_Type">
-		<xs:annotation>
-			<xs:documentation>Type af klausulbetingelse</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="klausulbetingelse_opfyldt"/>
-			<xs:enumeration value="varig_lidelse"/>
-			<xs:enumeration value="pensionist"/>
-			<xs:enumeration value="bevilling_fra_laegemiddelstyrelsen"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="PatientSex_Type">
-		<xs:annotation>
-			<xs:documentation>Køn</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="hankoen"/>
-			<xs:enumeration value="hunkoen"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="PriorityOfDelivery_Type">
-		<xs:annotation>
-			<xs:documentation>Kode for leveringsprioritet</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="send_to_other_address_same_day"/>
-			<xs:enumeration value="send_to_other_address_via_mail"/>
-			<xs:enumeration value="send_to_patient_address_same_day"/>
-			<xs:enumeration value="send_to_patient_address_via_mail"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="SubstitutionCode_Type">
-		<xs:annotation>
-			<xs:documentation>Flag, indikerer ordination må ikke substitueres</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="ikke_substitution"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="StatusCode_Type">
-		<xs:annotation>
-			<xs:documentation>Kode ordinationens status</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="aaben"/>
-			<xs:enumeration value="afsluttet"/>
-			<xs:enumeration value="annulleret"/>
-			<xs:enumeration value="kladde"/>
-			<xs:enumeration value="inaktiv"/>
-			<xs:enumeration value="delvist_udleveret"/>
-			<xs:enumeration value="under_behandling"/>
-			<xs:enumeration value="ugyldig"/>
-			<xs:enumeration value="web_ekspederet"/>
-			<xs:enumeration value="overfoert_til_dosiskort"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="Warning_Type">
-		<xs:annotation>
-			<xs:documentation>Flag der indikerer advarsel fra receptserveren</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="more_available"/>
-		</xs:restriction>
-	</xs:simpleType>
-</xs:schema>
+<schema xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<simpleType name="DosagePeriodUnit_Type">
+		<annotation>
+			<documentation>Enheder for doseringsværdier</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="dag"/>
+			<enumeration value="uge"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ErrorType_Type">
+		<annotation>
+			<documentation>Type der angiver fejlens oprindelige type</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="ReceptserverDatabaseException"/>
+			<enumeration value="ReceptserverInternalException"/>
+			<enumeration value="ReceptserverSchemaValidationException"/>
+			<enumeration value="ReceptserverServiceException"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="IdentifierCode_Type">
+		<annotation>
+			<documentation>Typekode for identifier (ydernummer o.l.)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="sygehusafdelingsnummer"/>
+			<enumeration value="ydernummer"/>
+			<enumeration value="lokationsnummer"/>
+			<enumeration value="kommunenummer"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="IterationIntervalUnit_Type">
+		<annotation>
+			<documentation>Enheder for iteration interval (udleveringsinterval)</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="dag"/>
+			<enumeration value="uge"/>
+			<enumeration value="maaned"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Occupation_Type">
+		<annotation>
+			<documentation>Type læge/tandlæge</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="laege"/>
+			<enumeration value="tandlaege"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ReimbursementClause_Type">
+		<annotation>
+			<documentation>Type af klausulbetingelse</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="klausulbetingelse_opfyldt"/>
+			<enumeration value="varig_lidelse"/>
+			<enumeration value="pensionist"/>
+			<enumeration value="bevilling_fra_laegemiddelstyrelsen"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PatientSex_Type">
+		<annotation>
+			<documentation>Køn</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="hankoen"/>
+			<enumeration value="hunkoen"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="PriorityOfDelivery_Type">
+		<annotation>
+			<documentation>Kode for leveringsprioritet</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="send_to_other_address_same_day"/>
+			<enumeration value="send_to_other_address_via_mail"/>
+			<enumeration value="send_to_patient_address_same_day"/>
+			<enumeration value="send_to_patient_address_via_mail"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SubstitutionCode_Type">
+		<annotation>
+			<documentation>Flag, indikerer ordination må ikke substitueres</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="ikke_substitution"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="StatusCode_Type">
+		<annotation>
+			<documentation>Kode ordinationens status</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="aaben"/>
+			<enumeration value="afsluttet"/>
+			<enumeration value="annulleret"/>
+			<enumeration value="kladde"/>
+			<enumeration value="inaktiv"/>
+			<enumeration value="delvist_udleveret"/>
+			<enumeration value="under_behandling"/>
+			<enumeration value="ugyldig"/>
+			<enumeration value="web_ekspederet"/>
+			<enumeration value="overfoert_til_dosiskort"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Warning_Type">
+		<annotation>
+			<documentation>Flag der indikerer advarsel fra receptserveren</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="more_available"/>
+		</restriction>
+	</simpleType>
+</schema>

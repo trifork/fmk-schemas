@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
-	<xs:include schemaLocation="General_Types-1.0.xsd"/>
-	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
-	<xs:complexType name="Iteration_Type">
-		<xs:sequence>
-			<xs:element name="Number" type="IterationNumber_Type"/>
-			<xs:element name="Interval" type="IterationInterval_Type"/>
-			<xs:element name="IntervalUnit" type="IterationIntervalUnit_Type"/>
-		</xs:sequence>
-	</xs:complexType>
-</xs:schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<include schemaLocation="General_Types-1.0.xsd" />
+	<include schemaLocation="General_Enumerated_Types-1.0.xsd" />
+	<complexType name="Iteration_Type">
+		<sequence>
+			<element name="Number" type="medicinecard:IterationNumber_Type" />
+			<element name="Interval" type="medicinecard:IterationInterval_Type" />
+			<element name="IntervalUnit" type="medicinecard:IterationIntervalUnit_Type" />
+		</sequence>
+	</complexType>
+</schema>

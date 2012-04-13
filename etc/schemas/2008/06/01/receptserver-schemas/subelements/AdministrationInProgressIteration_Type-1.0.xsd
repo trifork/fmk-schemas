@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xs:schema xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
-	<xs:include schemaLocation="AdministrationInProgress_Type-1.0.xsd"/>
-	<xs:complexType name="AdministrationInProgressIteration_Type">
-		<xs:sequence>
-			<xs:element name="AdministrationInProgress" type="AdministrationInProgress_Type"/>
-		</xs:sequence>
-	</xs:complexType>
-</xs:schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<include schemaLocation="AdministrationInProgress_Type-1.0.xsd"/>
+	<complexType name="AdministrationInProgressIteration_Type">
+		<sequence>
+			<element name="AdministrationInProgress" type="medicinecard:AdministrationInProgress_Type"/>
+		</sequence>
+	</complexType>
+</schema>
