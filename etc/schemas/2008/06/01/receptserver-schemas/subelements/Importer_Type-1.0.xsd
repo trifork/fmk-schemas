@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
-    <xs:include schemaLocation="General_Types-1.0.xsd"/>
-    <xs:complexType name="Importer_Type">
-        <xs:choice>
-            <xs:element name="ShortName" type="ImporterShortName_Type" minOccurs="0"/>
-            <xs:element name="LongName" type="ImporterLongName_Type" minOccurs="0"/>
-        </xs:choice>
-    </xs:complexType>
-</xs:schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+    <include schemaLocation="General_Types-1.0.xsd"/>
+    <complexType name="Importer_Type">
+        <choice>
+            <element name="ShortName" type="medicinecard:ImporterShortName_Type" minOccurs="0"/>
+            <element name="LongName" type="medicinecard:ImporterLongName_Type" minOccurs="0"/>
+        </choice>
+    </complexType>
+</schema>

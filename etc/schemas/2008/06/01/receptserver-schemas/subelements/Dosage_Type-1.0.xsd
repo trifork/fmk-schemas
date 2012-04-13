@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
-	<xs:include schemaLocation="General_Types-1.0.xsd"/>
-	<xs:include schemaLocation="General_Enumerated_Types-1.0.xsd"/>
-	<xs:complexType name="Dosage_Type">
-		<xs:sequence>
-			<xs:element name="Code" type="DosageCode_Type" minOccurs="0"/>
-			<xs:element name="Text" type="DosageText_Type" minOccurs="0"/>
-			<xs:element name="Period" type="DosagePeriod_Type" minOccurs="0"/>
-			<xs:element name="PeriodUnit" type="DosagePeriodUnit_Type" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
-</xs:schema>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" elementFormDefault="qualified">
+	<include schemaLocation="General_Types-1.0.xsd" />
+	<include schemaLocation="General_Enumerated_Types-1.0.xsd" />
+	<complexType name="Dosage_Type">
+		<sequence>
+			<element name="Code" type="medicinecard:DosageCode_Type" minOccurs="0" />
+			<element name="Text" type="medicinecard:DosageText_Type" minOccurs="0" />
+			<element name="Period" type="medicinecard:DosagePeriod_Type" minOccurs="0" />
+			<element name="PeriodUnit" type="medicinecard:DosagePeriodUnit_Type" minOccurs="0" />
+		</sequence>
+	</complexType>
+</schema>
