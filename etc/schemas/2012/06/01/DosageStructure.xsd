@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DosageAnyDay.xsd"/>
 	<include schemaLocation="DosageDay.xsd"/>
 	<include schemaLocation="DosageIsNotIterated.xsd"/>
 	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
@@ -33,7 +34,14 @@
 			</choice>
 			<element name="UnitText" type="medicinecard20120601:DosageQuantityUnitTextType"/>
 			<element name="SupplementaryText" type="medicinecard20120601:DosageSupplementaryTextType" minOccurs="0"/>
-			<element name="Day" type="medicinecard20120601:DosageDayType" maxOccurs="unbounded"/>
+			<choice>
+				<!-- A convoluted construction for either AnyDay or one or more Day, or both, bot not neither -->
+				<sequence>
+					<element name="AnyDay" type="medicinecard20120601:DosageAnyDayType"/>
+					<element name="Day" type="medicinecard20120601:DosageDayType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<element name="Day" type="medicinecard20120601:DosageDayType" maxOccurs="unbounded"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>
