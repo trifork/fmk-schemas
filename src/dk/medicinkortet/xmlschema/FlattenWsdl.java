@@ -29,6 +29,7 @@ import org.xml.sax.SAXException;
 public class FlattenWsdl {
 	
 	private static final String NS_SCHEMA = "http://www.w3.org/2001/XMLSchema";
+	private TransformerFactory transformerFactory = TransformerFactory.newInstance();
 	private DocumentBuilderFactory documentBuilderFactory;
 	private Node typesNode;
 	
@@ -81,6 +82,7 @@ public class FlattenWsdl {
 	}
 	
 	private FlattenWsdl() {
+		transformerFactory = TransformerFactory.newInstance();
 		documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		documentBuilderFactory.setNamespaceAware(true);
 	}
@@ -102,7 +104,7 @@ public class FlattenWsdl {
 			}
 			
 			wsdlDocument.normalizeDocument();
-			Transformer trans = TransformerFactory.newInstance().newTransformer();
+			Transformer trans = transformerFactory.newTransformer();
 			StreamResult streamResult = new StreamResult(new File(output));
 			trans.transform(new DOMSource(wsdlDocument.getDocumentElement()), streamResult);
 			
@@ -364,7 +366,7 @@ public class FlattenWsdl {
 			throw new RuntimeException("dom == null for schemaLocation=" + schemaFile.location);
 		}
 		
-		Transformer trans = TransformerFactory.newInstance().newTransformer();
+		Transformer transformer = transformerFactory.newTransformer();
 		NodeList childNodeList = schemaFile.domSchemaNode.getChildNodes();
 		
 		for (int i=0; i<childNodeList.getLength(); i++) {
@@ -382,10 +384,10 @@ public class FlattenWsdl {
 					}
 					System.out.println("    <import namespace='" + namespaceNode.getNodeValue() + "'/>");
 					importedNamespaces.add(namespaceNode.getNodeValue());
-					trans.transform(new DOMSource(node), schemaElementResult);
+					transformer.transform(new DOMSource(node), schemaElementResult);
 				}
 			} else if (!imports) {
-				trans.transform(new DOMSource(node), schemaElementResult);
+				transformer.transform(new DOMSource(node), schemaElementResult);
 			}
 		}
 		
