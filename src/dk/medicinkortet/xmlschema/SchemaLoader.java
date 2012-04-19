@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,6 +36,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import dk.medicinkortet.xmlschema.FindReferencedSchemaFiles.SchemaFile;
 import dk.sosi.seal.xml.XmlUtil;
 
 /**
@@ -52,7 +54,6 @@ public class SchemaLoader {
 
 	private static HashMap<String,Integer> uniquePrefixIdx = new HashMap<String,Integer>();
 	
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws ParserConfigurationException, IOException, URISyntaxException, SAXException, TransformerFactoryConfigurationError, TransformerException {
 		File outputDir = new File("target/gensrc/META-INF/schemas/");
 		FileUtils.forceMkdir(outputDir);
@@ -61,28 +62,36 @@ public class SchemaLoader {
 		builderFactory.setNamespaceAware(true);
 		DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
-		Document wsdlDoc = builder.parse(new File("etc/wsdl/"+System.getProperty("WsdlName")+"_"+System.getProperty("VersionDate")+".wsdl"));
-		Element wsdl = wsdlDoc.getDocumentElement();
-		NodeList typeElements = wsdl.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "types");
-		Element types = null;
-		if (typeElements.getLength() == 1) {
-			types = (Element) typeElements.item(0);
-		} else {
-			throw new IllegalStateException("WSDL file must have a <types> element");
-		}
-		NodeList children = types.getChildNodes();
-		for (int i = children.getLength() - 1; i >= 0; i--) {
-			Node item = children.item(i);
-			item.getParentNode().removeChild(item);
-		}
-		
 		Map<String, Set<File>> namespaces = new HashMap<String, Set<File>>();
 		Set<URI> externals = new HashSet<URI>();
 		
-		Pattern locationPattern = Pattern.compile("schemaLocation\\s*=\\s*[\"'](\\S+)[\"']");
+		copySchemaFiles(outputDir, builder, namespaces, externals);
+		resolveExternals(outputDir, externals);
+		generateIndexFiles(outputDir, namespaces);
+		generateInlineWsdl(builder);
+	}
 
+	private static void resolveExternals(File outputDir, Set<URI> externals) {
+		System.out.println("Resolving externals: " + externals);
+		Set<URI> missing = new HashSet<URI>();
+		for (URI external : externals) {
+			File schema = new File(outputDir, external.getPath());
+			if (!schema.exists()) {
+				missing.add(external);
+			}
+		}
+		if (missing.size() > 0) {
+			throw new RuntimeException("Some schemas are missing: " + missing);
+		}
+	}
 
+	@SuppressWarnings("unchecked")
+	private static void copySchemaFiles(File outputDir,
+			DocumentBuilder builder, Map<String, Set<File>> namespaces,
+			Set<URI> externals) throws URISyntaxException,
+			FileNotFoundException, IOException {
 		System.out.println("Copying schema files to " + outputDir);
+		Pattern locationPattern = Pattern.compile("schemaLocation\\s*=\\s*[\"'](\\S+)[\"']");
 		Collection<File> files = FileUtils.listFiles(new File("etc/schemas"), FileFilterUtils.suffixFileFilter("xsd"), FileFilterUtils.directoryFileFilter());
 		for (File file : files) {
 			try {
@@ -104,6 +113,7 @@ public class SchemaLoader {
 				File sub = new File(outputDir, path);
 				FileUtils.forceMkdir(sub);
 				
+				// Copy file
 				OutputStream fos = new BufferedOutputStream(new FileOutputStream(new File(sub, file.getName())));
 				byte[] contents = FileUtils.readFileToByteArray(file);
 				if (contents.length > 3 && contents[0] == (byte)0xef && contents[1] == (byte)0xbb && contents[2] == (byte)0xbf) {
@@ -137,26 +147,18 @@ public class SchemaLoader {
 				}
 			}
 		}
-		
-		System.out.println("Resolving externals: " + externals);
-		Set<URI> missing = new HashSet<URI>();
-		for (URI external : externals) {
-			File schema = new File(outputDir, external.getPath());
-			if (!schema.exists()) {
-				missing.add(external);
-			}
-		}
-		if (missing.size() > 0) {
-			throw new RuntimeException("Some schemas are missing: " + missing);
-		}
-		
-		
+	}
+
+	private static void generateIndexFiles(File outputDir,
+			Map<String, Set<File>> namespaces) throws URISyntaxException,
+			FileNotFoundException, IOException {
 		System.out.println("Generating index files");
 		for (Map.Entry<String, Set<File>> e : namespaces.entrySet()) {
-			URI p = new URI(e.getKey());
+			String targetNamespace = e.getKey();
+			URI p = new URI(targetNamespace);
 			String path = p.getPath();
 			if (path == null) {
-				path = e.getKey().replaceAll(":", "_");
+				path = targetNamespace.replaceAll(":", "_");
 			}
 			File sub = new File(outputDir, path);
 			
@@ -166,17 +168,13 @@ public class SchemaLoader {
 			try {
 				w.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 				w.write("<schema targetNamespace=\"");
-				w.write(e.getKey());
+				w.write(targetNamespace);
 				w.write("\" xmlns=\"http://www.w3.org/2001/XMLSchema\" elementFormDefault=\"qualified\">\n");
-				
-				Element ns = addSchemaToWsdl(types, wsdlDoc, wsdl, e.getKey());
 				
 				for (File schema : e.getValue()) {
 					w.write("<include schemaLocation=\"");
 					w.write(schema.getName());
 					w.write("\"/>\n");
-
-					insertSchema(builder, wsdlDoc, ns, schema);
 				}
 				w.write("</schema>");
 			} catch (IOException e1) {
@@ -185,7 +183,46 @@ public class SchemaLoader {
 				w.close();
 			}
 		}
-
+	}
+	
+	private static void generateInlineWsdl(DocumentBuilder builder) throws IOException, SAXException {
+		String outputFilename = "etc/wsdl/"+System.getProperty("WsdlName")+"_"+System.getProperty("VersionDate")+".wsdl";
+		System.out.println("Generating Inline WSDL file: " + outputFilename);
+		
+		File wsdlFile = new File(outputFilename);
+		File basedir = wsdlFile.getParentFile();
+		Document wsdlDoc = builder.parse(wsdlFile);
+		Element wsdl = wsdlDoc.getDocumentElement();
+		
+		NodeList typeElements = wsdl.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "types");
+		Element types = null;
+		if (typeElements.getLength() == 1) {
+			types = (Element) typeElements.item(0);
+		} else {
+			throw new IllegalStateException("WSDL file must have a <types> element");
+		}
+		
+		// Find referenced schema files from the WSDL
+		Map<String,Set<SchemaFile>> ns2schemaFilesMap = FindReferencedSchemaFiles.run(wsdlDoc, basedir);
+		
+		// Empty the <types> element of the WSDL file
+		while (types.getFirstChild() != null) {
+			types.removeChild(types.getFirstChild());
+		}
+		
+		// Insert new schema sections to the <types> element of the WSDL file
+		for (Map.Entry<String, Set<SchemaFile>> entry : ns2schemaFilesMap.entrySet()) {
+			String targetNamespace = entry.getKey();
+			
+			System.out.println("Add <schema targetNamespace='" + targetNamespace + "'>");
+			
+			Element ns = addSchemaToWsdl(types, wsdlDoc, targetNamespace);
+			for (SchemaFile schemaFile : entry.getValue()) {
+				//System.out.println("  - including " + schemaFile);
+				insertSchema(builder, wsdlDoc, ns, schemaFile);
+			}
+		}
+		
 		organizeIncludesAndImports(wsdl);
 		
 		wsdl.normalize();
@@ -236,12 +273,12 @@ public class SchemaLoader {
 	private static HashMap<String, String> ns2Prefix = new HashMap<String, String>();
 	private static HashMap<String, String> prefix2NS = new HashMap<String, String>();
 	
-	private static void insertSchema(DocumentBuilder builder, Document wsdlDoc, Element ns, File schema) throws SAXException, IOException {
+	private static void insertSchema(DocumentBuilder builder, Document wsdlDoc, Element ns, SchemaFile schemaFile) throws SAXException, IOException {
 		if (ns == null) {
-			System.out.println("Ignoring " + schema);
+			System.err.println("Ignoring schemaFile because given schema section in null");
 			return;
 		}
-		Element childDoc = builder.parse(schema).getDocumentElement();
+		Element childDoc = schemaFile.domSchemaNode;
 		
 		NamedNodeMap attributes = childDoc.getAttributes();
 		for (int i = 0; i < attributes.getLength(); i++) {
@@ -343,21 +380,27 @@ public class SchemaLoader {
 		return s + idx;
 	}
 
-	private static Element addSchemaToWsdl(Element types, Document wsdlDoc, Element wsdl, String namespace) {
-		if (namespace != null && !namespace.equals("")) {
-			if (SCHEMA_NS.equals(namespace) || XML_NS.equals(namespace) || SOAP_NS.equals(namespace)) {
+	private static Element createSchemaElement(Document wsdlDoc, String targetNamespace) {
+		if (targetNamespace != null && !targetNamespace.equals("")) {
+			if (SCHEMA_NS.equals(targetNamespace) || XML_NS.equals(targetNamespace) || SOAP_NS.equals(targetNamespace)) {
 				return null;
 			}
 		} else {
 			return null;
 		}
+		
 		Element ns = wsdlDoc.createElementNS(SCHEMA_NS, "schema");
 		ns.setPrefix("xs");
-		ns.setAttribute("targetNamespace", namespace);
+		ns.setAttribute("targetNamespace", targetNamespace);
 		ns.setAttribute("elementFormDefault", "qualified");
 		ns.setAttribute("attributeFormDefault", "unqualified");
+		
+		return ns;
+	}
+	
+	private static Element addSchemaToWsdl(Element types, Document wsdlDoc, String targetNamespace) {
+		Element ns = createSchemaElement(wsdlDoc, targetNamespace);
 		types.appendChild(ns);
-
 		return ns;
 	}
 }

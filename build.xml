@@ -39,7 +39,7 @@
 	
 	<target name="organize-schemas" depends="compile" >
 		<mkdir dir="target/wsdl" />
-        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" >
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
             <classpath>
                 <path location="${build.dir}"/>
                 <fileset dir="lib/build" excludes="*gwt*"/>
@@ -47,7 +47,7 @@
             <sysproperty key="VersionDate" value="2012_06_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
         </java>
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" >
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
@@ -55,7 +55,7 @@
 			<sysproperty key="VersionDate" value="2012_01_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" >
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
@@ -63,7 +63,7 @@
 			<sysproperty key="VersionDate" value="2011_01_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" >
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
