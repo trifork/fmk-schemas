@@ -53,6 +53,8 @@
 			<xs:sequence>
 				<xs:any namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" processContents="lax" minOccurs="0" maxOccurs="unbounded"/> <!-- REQ -->
 				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>           <!-- REQ / RESP / Fault -->
+			</xs:sequence>
+			<xs:all>
 				<xs:element ref="medcom:Header" minOccurs="0" maxOccurs="1"/>           <!-- REQ / Fault -->
 				<xs:element ref="mc2009:OnBehalfOfStructure" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
 				<xs:element ref="sdsd:SystemOwnerName" minOccurs="0" maxOccurs="1"/>    <!-- REQ -->
@@ -67,7 +69,7 @@
 				<xs:element ref="medcom:FlowStatus" minOccurs="0" maxOccurs="1"/>       <!-- RESP -->
 				<xs:element ref="mc2009:PrescriptionReplicationStatusStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
 				<xs:element ref="mc2008:TimingListStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
-			</xs:sequence>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Body" type="xs:anyType"/>
