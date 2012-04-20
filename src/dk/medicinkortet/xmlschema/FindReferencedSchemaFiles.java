@@ -124,7 +124,6 @@ public class FindReferencedSchemaFiles {
 		dummyWsdlSchemaFile.location = new File(basedir, "dummy.wsdl").getCanonicalPath();
 		
 		// Traverse child nodes to 'types' and proces 'schema' elements
-		Set<SchemaFile> referredSchemaFiles = new HashSet<SchemaFile>();
 		Node node = typesNode.getFirstChild();
 		while (node != null) {
 			if ("schema".equals(node.getLocalName())) {
@@ -151,11 +150,9 @@ public class FindReferencedSchemaFiles {
 		}
 		schemaFile.hasBeenAnalyzed = true;
 		
-		File basedir = null;
 		if (schemaFile.location != null) {
 			// schemaLocation has been converted to an absolute path in schemaFile.location
 			File file = new File(schemaFile.location); 
-			basedir = file.getParentFile();
 			Document dom = parseXmlFile(file);
 			schemaFile.domSchemaNode = dom.getDocumentElement();
 		} else {
@@ -209,7 +206,6 @@ public class FindReferencedSchemaFiles {
 				
 				if (schemaFile.targetNamespace == null) {
 					schemaFile.targetNamespace = targetNamespace;
-					//schemaFileMap.put(targetNamespace, schemaFile);
 				} else if (targetNamespace != null && !schemaFile.targetNamespace.equals(targetNamespace)) {
 					throw new RuntimeException("Different namespaces expected from import of schema file: " + schemaFile.location);
 				}
@@ -248,7 +244,6 @@ public class FindReferencedSchemaFiles {
 				url = new URL(schemaLocation);
 			}
 			key = schemaLocation;
-			//System.err.println("*** Skipping URL schema location: " + schemaLocation);
 		} catch (MalformedURLException e) {
 			File basedir = new File(referringSchemaFile.location).getParentFile();
 			canonicalSchemaLocation = new File(basedir, schemaLocation).getCanonicalPath();
