@@ -8,6 +8,7 @@
 	xmlns:wst="http://schemas.xmlsoap.org/ws/2005/02/trust"
 	xmlns:mc2008="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
 	xmlns:mc2009="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
+	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
 	targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="qualified">
 	<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 		schemaLocation="oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
@@ -37,6 +38,8 @@
 		schemaLocation="../../../2009/01/01/DKMA_PrescriptionReplicationStatusStructure.xsd"/>
 	<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
 		schemaLocation="../../../2009/01/01/DKMA_OnBehalfOfStructure.xsd"/>
+	<xs:import namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    	schemaLocation="http://schemas.xmlsoap.org/ws/2004/08/addressing/addressing.xsd" />
 	<xs:element name="Envelope">
 		<xs:complexType>
 			<xs:sequence>
@@ -50,8 +53,17 @@
 	<!-- Request / Response / Fault header -->
 	<xs:element name="Header">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:any namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" processContents="lax" minOccurs="0" maxOccurs="unbounded"/> <!-- REQ -->
+			<xs:all>
+				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" --> 
+				<xs:element name="MessageID" type="wsa:AttributedURI"/>					<!-- REQ -->
+				<xs:element name="RelatesTo" />											<!-- REQ -->
+				<xs:element name="To" type="wsa:AttributedURI"/>						<!-- REQ -->
+				<xs:element name="Action" type="wsa:AttributedURI"/>					<!-- REQ -->
+				<xs:element name="From" type="wsa:EndpointReferenceType"/>				<!-- REQ -->
+				<xs:element name="ReplyTo" type="wsa:EndpointReferenceType"/>			<!-- REQ -->
+				<xs:element name="FaultTo" type="wsa:EndpointReferenceType"/>			<!-- REQ -->
+				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" -->
+				
 				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>           <!-- REQ / RESP / Fault -->
 				<xs:element ref="medcom:Header" minOccurs="0" maxOccurs="1"/>           <!-- REQ / Fault -->
 				<xs:element ref="mc2009:OnBehalfOfStructure" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
@@ -67,7 +79,7 @@
 				<xs:element ref="medcom:FlowStatus" minOccurs="0" maxOccurs="1"/>       <!-- RESP -->
 				<xs:element ref="mc2009:PrescriptionReplicationStatusStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
 				<xs:element ref="mc2008:TimingListStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
-			</xs:sequence>
+			</xs:all>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Body" type="xs:anyType"/>
