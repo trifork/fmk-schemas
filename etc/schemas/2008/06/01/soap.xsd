@@ -8,7 +8,6 @@
 	xmlns:wst="http://schemas.xmlsoap.org/ws/2005/02/trust"
 	xmlns:mc2008="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01"
 	xmlns:mc2009="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
-	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
 	targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="qualified">
 	<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 		schemaLocation="oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
@@ -38,8 +37,6 @@
 		schemaLocation="../../../2009/01/01/DKMA_PrescriptionReplicationStatusStructure.xsd"/>
 	<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
 		schemaLocation="../../../2009/01/01/DKMA_OnBehalfOfStructure.xsd"/>
-	<xs:import namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing"
-    	schemaLocation="addressing.xsd" />
 	<xs:element name="Envelope">
 		<xs:complexType>
 			<xs:sequence>
@@ -55,13 +52,13 @@
 		<xs:complexType>
 			<xs:all>
 				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" --> 
-				<xs:element name="MessageID" type="wsa:AttributedURI"/>					<!-- REQ -->
-				<xs:element name="RelatesTo" />											<!-- REQ -->
-				<xs:element name="To" type="wsa:AttributedURI"/>						<!-- REQ -->
-				<xs:element name="Action" type="wsa:AttributedURI"/>					<!-- REQ -->
-				<xs:element name="From" type="wsa:EndpointReferenceType"/>				<!-- REQ -->
-				<xs:element name="ReplyTo" type="wsa:EndpointReferenceType"/>			<!-- REQ -->
-				<xs:element name="FaultTo" type="wsa:EndpointReferenceType"/>			<!-- REQ -->
+				<xs:element name="MessageID"/>					<!-- REQ -->
+				<xs:element name="RelatesTo"/>											<!-- REQ -->
+				<xs:element name="To"/>						<!-- REQ -->
+				<xs:element name="Action"/>					<!-- REQ -->
+				<xs:element name="From"/>				<!-- REQ -->
+				<xs:element name="ReplyTo"/>			<!-- REQ -->
+				<xs:element name="FaultTo"/>			<!-- REQ -->
 				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" -->
 				
 				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>           <!-- REQ / RESP / Fault -->
