@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
-	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="CreatedWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
 	<include schemaLocation="DeliveryInformation.xsd"/>
 	<include schemaLocation="DoseDispensedPrescriptionDispensing.xsd"/>
@@ -30,7 +30,7 @@
 		<sequence>
 			<element name="Identifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType"/>
 			<element name="AuthorisationDateTime" type="medicinecard20120601:AuthorisationDateTimeType"/>
-			<element name="Created" type="medicinecard20120601:CreatedType"/>
+			<element name="Created" type="medicinecard20120601:CreatedWithOptionalAuthorisationIdentifierType"/>
 			<element name="LatestEffectuationDateTime" type="medicinecard20120601:LatestEffectuationDateTimeType" minOccurs="0"/>
 			<element name="TerminatedDateTime" type="medicinecard20120601:TerminatedDateTimeType" minOccurs="0"/>
 			<choice minOccurs="0" maxOccurs="3">
