@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="DrugMedicationWithNegativeConsent.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
 	<element name="GetDrugMedicationResponse" type="medicinecard20120601:GetDrugMedicationResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a response with one or more drug medications</documentation>
@@ -10,6 +11,7 @@
 	</element>
 	<complexType name="GetDrugMedicationResponseType">
 		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>		
 			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="medicinecard20120601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
