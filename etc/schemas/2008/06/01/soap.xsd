@@ -55,13 +55,12 @@
 		<xs:complexType>
 			<xs:all>
 				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" --> 
-				<xs:element name="MessageID" type="wsa:AttributedURI"/>					<!-- REQ -->
-				<xs:element name="RelatesTo" />											<!-- REQ -->
-				<xs:element name="To" type="wsa:AttributedURI"/>						<!-- REQ -->
-				<xs:element name="Action" type="wsa:AttributedURI"/>					<!-- REQ -->
-				<xs:element name="From" type="wsa:EndpointReferenceType"/>				<!-- REQ -->
-				<xs:element name="ReplyTo" type="wsa:EndpointReferenceType"/>			<!-- REQ -->
-				<xs:element name="FaultTo" type="wsa:EndpointReferenceType"/>			<!-- REQ -->
+				<xs:element ref="wsa:MessageID" />										<!-- REQ -->
+				<xs:element ref="wsa:To" />												<!-- REQ -->
+				<xs:element ref="wsa:Action" />											<!-- REQ -->
+				<xs:element ref="wsa:From" />											<!-- REQ -->
+				<xs:element ref="wsa:ReplyTo" />										<!-- REQ -->
+				<xs:element ref="wsa:FaultTo" />										<!-- REQ -->
 				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" -->
 				
 				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>           <!-- REQ / RESP / Fault -->
