@@ -99,6 +99,18 @@
             <xs:include schemaLocation="../schemas/2012/06/01/DeleteEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2012/06/01/DeleteEffectuationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2012/06/01/GetPermissionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2012/06/01/GetPermissionsResponse.xsd"/>
+
+	    <xs:include schemaLocation="../schemas/2012/06/01/MarkPrescriptionMedicationDeprecatedRequest.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/06/01/MarkPrescriptionMedicationDeprecatedResponse.xsd"/>
+
+	    <xs:include schemaLocation="../schemas/2012/01/01/UnmarkPrescriptionMedicationDeprecatedResponse.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/01/01/UnmarkPrescriptionMedicationDeprecatedRequest.xsd"/>
+
+	    <xs:include schemaLocation="../schemas/2012/01/01/InvalidatePrescriptionMedicationRequest.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/01/01/InvalidatePrescriptionMedicationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
 
             <xs:include schemaLocation="../schemas/2012/06/01/PrescriptionReplicationStatus.xsd"/>
@@ -317,6 +329,34 @@
         <wsdl:part name="DeleteEffectuationResponse" element="medicinecard20120601:DeleteEffectuationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetPermissionsRequest_2012_06_01">
+        <wsdl:part name="GetPermissionsRequest" element="medicinecard20120601:GetPermissionsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPermissionsResponse_2012_06_01">
+        <wsdl:part name="GetPermissionsResponse" element="medicinecard20120601:GetPermissionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="MarkPrescriptionMedicationDeprecatedRequest_2012_06_01">
+        <wsdl:part name="MarkPrescriptionMedicationDeprecatedRequest" element="medicinecard20120601:MarkPrescriptionMedicationDeprecatedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="MarkPrescriptionMedicationDeprecatedResponse_2012_06_01">
+        <wsdl:part name="MarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20120601:MarkPrescriptionMedicationDeprecatedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnmarkPrescriptionMedicationDeprecatedRequest_2012_06_01">
+        <wsdl:part name="UnmarkPrescriptionMedicationDeprecatedRequest" element="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UnmarkPrescriptionMedicationDeprecatedResponse_2012_06_01">
+        <wsdl:part name="UnmarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="InvalidatePrescriptionMedicationRequest_2012_06_01">
+        <wsdl:part name="InvalidatePrescriptionMedicationRequest" element="medicinecard20120601:InvalidatePrescriptionMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="InvalidatePrescriptionMedicationResponse_2012_06_01">
+        <wsdl:part name="InvalidatePrescriptionMedicationResponse" element="medicinecard20120601:InvalidatePrescriptionMedicationResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="DGWSFault">
         <wsdl:part name="fault" element="medcom:FaultCode"/>
     </wsdl:message>
@@ -508,6 +548,30 @@
             <wsdl:input name="DeleteEffectuationRequest_2012_06_01" message="tns:DeleteEffectuationRequest_2012_06_01"/>
             <wsdl:output name="DeleteEffectuationResponse_2012_06_01"
                          message="tns:DeleteEffectuationResponse_2012_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPermissions_2012_06_01">
+            <wsdl:input name="GetPermissionsRequest_2012_06_01" message="tns:GetPermissionsRequest_2012_06_01"/>
+            <wsdl:output name="GetPermissionsResponse_2012_06_01" message="tns:GetPermissionsResponse_2012_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="MarkPrescriptionMedicationDeprecated_2012_06_01">
+            <wsdl:input name="MarkPrescriptionMedicationDeprecatedRequest_2012_06_01" message="tns:MarkPrescriptionMedicationDeprecatedRequest_2012_06_01"/>
+            <wsdl:output name="MarkPrescriptionMedicationDeprecatedResponse_2012_06_01" message="tns:MarkPrescriptionMedicationDeprecatedResponse_2012_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnmarkPrescriptionMedicationDeprecated_2012_06_01">
+            <wsdl:input name="UnmarkPrescriptionMedicationDeprecatedRequest_2012_06_01" message="tns:UnmarkPrescriptionMedicationDeprecatedRequest_2012_06_01"/>
+            <wsdl:output name="UnmarkPrescriptionMedicationDeprecatedResponse_2012_06_01" message="tns:UnmarkPrescriptionMedicationDeprecatedResponse_2012_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="InvalidatePrescriptionMedication_2012_06_01">
+            <wsdl:input name="InvalidatePrescriptionMedicationRequest_2012_06_01" message="tns:InvalidatePrescriptionMedicationRequest_2012_06_01"/>
+            <wsdl:output name="InvalidatePrescriptionMedicationResponse_2012_06_01" message="tns:InvalidatePrescriptionMedicationResponse_2012_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1025,11 +1089,94 @@
             </wsdl:fault>
         </wsdl:operation>
 
+       <wsdl:operation name="GetPermissions_2012_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetPermissions"
+                            style="document"/>
+            <wsdl:input name="GetPermissionsRequest_2012_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
+                             wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPermissionsResponse_2012_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="MarkPrescriptionMedicationDeprecated_2012_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#MarkPrescriptionMedicationDeprecated"
+                            style="document"/>
+            <wsdl:input name="MarkPrescriptionMedicationDeprecatedRequest_2012_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
+                             wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="MarkPrescriptionMedicationDeprecatedReponse_2012_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="UnmarkPrescriptionMedicationDeprecated_2012_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UnmarkPrescriptionMedicationDeprecated"
+                            style="document"/>
+            <wsdl:input name="UnmarkPrescriptionMedicationDeprecatedRequest_2012_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
+                             wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnmarkPrescriptionMedicationDeprecatedReponse_2012_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="InvalidatePrescriptionMedication_2012_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#InvalidatePrescriptionMedication"
+                            style="document"/>
+            <wsdl:input name="InvalidatePrescriptionMedicationRequest_2012_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
+                             wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="InvalidatePrescriptionMedicationReponse_2012_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
     </wsdl:binding>
 
     <wsdl:service name="MedicineCard">
         <wsdl:port name="MedicineCardPort" binding="tns:MedicineCardBinding">
-            <soap:address location="http://trifork.lms.trifork.com/fmk14/ws/medicinecard"/>
+            <soap:address location="https://trifork.lms.trifork.com/fmk14/ws/medicinecard"/>
         </wsdl:port>
 
     </wsdl:service>
