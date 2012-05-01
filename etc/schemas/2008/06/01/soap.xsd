@@ -53,16 +53,12 @@
 	<!-- Request / Response / Fault header -->
 	<xs:element name="Header">
 		<xs:complexType>
+			<xs:sequence>
+				<xs:any namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" processContents="lax" minOccurs="0" maxOccurs="unbounded"/> <!-- REQ -->
+			</xs:sequence>
+		</xs:complexType>
+		<xs:complexType>
 			<xs:all>
-				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" --> 
-                <xs:element ref='wsa:To' minOccurs='0'/>
-                <xs:element ref='wsa:Action'  minOccurs='0' />
-                <xs:element ref='wsa:MessageId' minOccurs='0'/>
-                <xs:element ref='wsa:From' minOccurs='0'/>
-                <xs:element ref='wsa:ReplyTo' minOccurs='0'/>
-                <xs:element ref='wsa:FaultTo' minOccurs='0'/>
-				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" -->
-				
 				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>           <!-- REQ / RESP / Fault -->
 				<xs:element ref="medcom:Header" minOccurs="0" maxOccurs="1"/>           <!-- REQ / Fault -->
 				<xs:element ref="mc2009:OnBehalfOfStructure" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
