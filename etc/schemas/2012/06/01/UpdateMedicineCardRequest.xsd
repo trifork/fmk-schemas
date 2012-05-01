@@ -7,13 +7,16 @@
 	<include schemaLocation="DeleteEffectuation.xsd"/>
 	<include schemaLocation="DetachPrescriptionMedication.xsd"/>
 	<include schemaLocation="Doctor.xsd"/>
+	<include schemaLocation="InvalidatePrescriptionMedication.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="MarkPrescriptionMedicationDeprecated.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PauseDrugMedication.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="ResuspendMedicineCard.xsd"/>
 	<include schemaLocation="SetMedicineCardReviewed.xsd"/>
 	<include schemaLocation="SuspendMedicineCard.xsd"/>
+	<include schemaLocation="UnmarkPrescriptionMedicationDeprecated.xsd"/>
 	<include schemaLocation="UnpauseDrugMedication.xsd"/>
 	<include schemaLocation="UnsuspendMedicineCard.xsd"/>
 	<include schemaLocation="UnwithdrawDrugMedication.xsd"/>
@@ -29,14 +32,14 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
-			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
-			<element name="Doctor" type="medicinecard20120601:DoctorType"/>
+			<element name="Organisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
+			<element name="Doctor" type="medicinecard20120601:DoctorType" minOccurs="0"/>
 			<sequence maxOccurs="unbounded">
 				<element name="SetMedicineCardReviewed" type="medicinecard20120601:SetMedicineCardReviewedType" minOccurs="0"/>
 				<element name="SuspendMedicineCard" type="medicinecard20120601:SuspendMedicineCardType" minOccurs="0"/>
 				<element name="ResuspendMedicineCard" type="medicinecard20120601:ResuspendMedicineCardType" minOccurs="0"/>
 				<element name="UnsuspendMedicineCard" type="medicinecard20120601:UnsuspendMedicineCardType" minOccurs="0"/>
-				<element name="CreateDrugMedication" type="medicinecard20120601:CreateDrugMedicationType" minOccurs="0"/>				
+				<element name="CreateDrugMedication" type="medicinecard20120601:CreateDrugMedicationType" minOccurs="0"/>
 				<element name="UpdateDrugMedication" type="medicinecard20120601:UpdateDrugMedicationType" minOccurs="0"/>
 				<element name="WithdrawDrugMedication" type="medicinecard20120601:WithdrawDrugMedicationType" minOccurs="0"/>
 				<element name="UnwithdrawDrugMedication" type="medicinecard20120601:UnwithdrawDrugMedicationType" minOccurs="0"/>
@@ -45,8 +48,11 @@
 				<element name="CreatePrescriptionMedication" type="medicinecard20120601:CreatePrescriptionMedicationType" minOccurs="0"/>
 				<element name="AttachPrescriptionMedication" type="medicinecard20120601:AttachPrescriptionMedicationType" minOccurs="0"/>
 				<element name="DetachPrescriptionMedication" type="medicinecard20120601:DetachPrescriptionMedicationType" minOccurs="0"/>
+				<element name="MarkPrescriptionMedicationDeprecated" type="medicinecard20120601:MarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
+				<element name="UnmarkPrescriptionMedicationDeprecated" type="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
+				<element name="InvalidatePrescriptionMedication" type="medicinecard20120601:InvalidatePrescriptionMedicationType" minOccurs="0"/>
 				<element name="CreateEffectuationOnDrugMedication" type="medicinecard20120601:CreateEffectuationOnDrugMedicationType" minOccurs="0"/>
-				<element name="DeleteEffectuation" type="medicinecard20120601:DeleteEffectuationType" minOccurs="0"/>				
+				<element name="DeleteEffectuation" type="medicinecard20120601:DeleteEffectuationType" minOccurs="0"/>
 			</sequence>
 		</sequence>
 	</complexType>
