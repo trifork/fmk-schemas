@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 
+    targetNamespace="http://acure.dk/pem/services/ReceptDocLit"
+    xmlns:apachesoap="http://xml.apache.org/xml-soap"
+    xmlns:impl="http://acure.dk/pem/services/ReceptDocLit"
+    xmlns:intf="http://acure.dk/pem/services/ReceptDocLit"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:tns0="http://rep.oio.dk/medcom.dk/xml/schemas/2004/06/01/"
+    xmlns:tns1="http://rep.oio.dk/sundcom.dk/medcom.dk/xml/schemas/2005/08/07/"
+    xmlns:tns2="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/"
+    xmlns:tns3="http://dkma.dk/receptserver/laegesnitflade/xml/schemas/"
+    xmlns:tns4="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+<!--WSDL created by Apache Axis version: 1.3
+Built on Oct 05, 2005 (05:23:37 EDT)-->
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/medcom.dk/xml/schemas/2004/06/01/">
+      <xsd:import namespace="http://rep.oio.dk/medcom.dk/xml/schemas/2004/06/01/" schemaLocation="schemas-axis/dengodexmlrecept/EMessage_LMS15.xsd"/>
+    </schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/sundcom.dk/medcom.dk/xml/schemas/2005/08/07/">
+      <xsd:import namespace="http://rep.oio.dk/sundcom.dk/medcom.dk/xml/schemas/2005/08/07/" schemaLocation="schemas-axis/dengodexmlrecept/EMessage.xsd"/>
+    </schema>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/laegesnitflade/xml/schemas/">
+      <xsd:import namespace="http://dkma.dk/receptserver/laegesnitflade/xml/schemas/" schemaLocation="schemas-axis/dengodexmlrecept/CreatePrescriptionResponse.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/laegesnitflade/xml/schemas/" schemaLocation="schemas-axis/dengodexmlrecept/CreatePrescriptionFromEDIFACTRequest-1.0.xsd"/>
+    </schema>
+    
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/">
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/AdministrationReport-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/AdministrationResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/CreateAndAdministerPrescriptionReport-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/CreateAndAdministerPrescriptionResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetAddressedPrescriptionsRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetAddressedPrescriptionsResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetSynchronizationListRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetSynchronizationListResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationsByCprRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationsByCprResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationDetailsByCprRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationDetailsByCprResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetLatestStatusChangeDateRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetLatestStatusChangeDateResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationsByMedicationIDRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationsByMedicationIDResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationsByPrescriptionIDRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetMedicationsByPrescriptionIDResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SearchRejectedOrdinationsRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SearchRejectedOrdinationsResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/RemoveStatusInProcessRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/RemoveStatusInProcessResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SearchMedicationsRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SearchMedicationsResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetAdministrationTerminatedRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetAdministrationTerminatedResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetStatusInvalidatedRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetStatusInvalidatedResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/UndoAdministrationRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/UndoAdministrationResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetMedicationTerminatedRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetMedicationTerminatedResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/AcknowledgmentReport-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/AcknowledgmentResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetOrdinationDetailsRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetOrdinationDetailsResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/ReleaseMedicationRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/ReleaseMedicationResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetReleaseMedicationStatusRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/GetReleaseMedicationStatusResponse-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetReleaseMedicationStatusRequest-1.0.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/SetReleaseMedicationStatusResponse-1.0.xsd"/>
+
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/DKMA_PrescriptionMedicationOverviewRequestStructure.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/DKMA_PrescriptionMedicationOverviewResponseStructure.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/DKMA_PrescriptionMedicationRequestStructure.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/DKMA_PrescriptionMedicationResponseStructure.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/DKMA_PrescriptionMedicationStructureRequestStructure.xsd"/>
+      <xsd:import namespace="http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/" schemaLocation="schemas-axis/apoteksnitfladebinding/DKMA_PrescriptionMedicationStructureResponseStructure.xsd"/> 
+    </schema>
+    
+    <!-- OIO start -->
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/">
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_UpdateDosageStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_PrescriptionDetailStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_StopPrescriptionStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_DeActivatePrescriptionStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_GetPrescriptionDetailStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_ActivatePrescriptionStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_GetPrescriptionFromCPRStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_AddressedPharmacyStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_RePrescribeDispensingStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_PrescriptionDetailStructure.xsd"/>
+      <xsd:import namespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" schemaLocation="schemas-axis/dengodexmlrecept/oio/DKMA_PrescriptionStructureResponse.xsd"/>
+      
+    </schema>
+    <!-- OIO slut -->    
+  </wsdl:types>
+   <wsdl:message name="opretReceptLMS15Request">
+      <wsdl:part name="recept" element="tns0:Emessage"/>
+   </wsdl:message>
+   <wsdl:message name="opretReceptLMS15Response">
+      <wsdl:part name="opretReceptReturn" element="tns3:CreatePrescriptionResponse"/>
+   </wsdl:message>
+   <wsdl:message name="opretReceptRequest">
+      <wsdl:part name="recept" element="tns1:Emessage"/>
+   </wsdl:message>
+   <wsdl:message name="opretReceptResponse">
+      <wsdl:part name="opretReceptReturn" element="tns3:CreatePrescriptionResponse"/>
+   </wsdl:message>
+   <!-- begynd message tilfoejelse til nyt recepthaandtag -->
+   <wsdl:message name="opretReceptFromEdifactRequest">
+      <wsdl:part name="receptEdifactAsString" element="tns3:CreatePrescriptionFromEDIFACTRequest" />
+   </wsdl:message>
+   <wsdl:message name="opretReceptFromEdifactResponse">
+      <wsdl:part name="opretReceptFromEdifactReturn" element="tns3:CreatePrescriptionResponse"/>
+   </wsdl:message>
+   <!-- slut tilfoejelse til nyt recepthaandtag -->
+
+   <wsdl:message name="hentReceptOrdinationerUdfraCPRRequest">
+      <wsdl:part name="hentReceptOrdinationerUdFraCPRInput" element="tns2:GetMedicationsByCprRequest"/>
+   </wsdl:message>
+   <wsdl:message name="hentReceptOrdinationerUdfraCPRResponse">
+      <wsdl:part name="hentReceptOrdinationerUdFraCPRReturn" element="tns2:GetMedicationsByCprResponse"/>
+   </wsdl:message>
+   <wsdl:message name="hentReceptOrdinationsDetaljerUdfraCPRRequest">
+      <wsdl:part name="hentReceptOrdinationsDetaljerUdFraCPRInput" element="tns2:GetMedicationsByCprRequest"/>
+   </wsdl:message>
+   <wsdl:message name="hentReceptOrdinationsDetaljerUdfraCPRResponse">
+      <wsdl:part name="hentReceptOrdinationsDetaljerUdFraCPRReturn" element="tns2:GetMedicationDetailsByCprResponse"/>
+   </wsdl:message>
+   
+   <wsdl:message name="getLatestStatusChangeDateRequest">
+      <wsdl:part name="getLatestStatusChangeDateInput" element="tns2:GetLatestStatusChangeDateRequest"/>
+   </wsdl:message>
+   <wsdl:message name="getLatestStatusChangeDateResponse">
+      <wsdl:part name="getLatestStatusChangeDateReturn" element="tns2:GetLatestStatusChangeDateResponse"/>
+   </wsdl:message>
+   <wsdl:message name="searchRejectedOrdinationsRequest">
+      <wsdl:part name="input" element="tns2:SearchRejectedOrdinationsRequest"/>
+   </wsdl:message>
+   <wsdl:message name="searchRejectedOrdinationsResponse">
+      <wsdl:part name="return" element="tns2:SearchRejectedOrdinationsResponse"/>
+   </wsdl:message>
+   <wsdl:message name="getOrdinationDetailsRequest">
+      <wsdl:part name="input" element="tns2:GetOrdinationDetailsRequest"/>
+   </wsdl:message>
+   <wsdl:message name="getOrdinationDetailsResponse">
+      <wsdl:part name="return" element="tns2:GetOrdinationDetailsResponse"/>
+   </wsdl:message>
+   <wsdl:message name="foretagEkspeditionRequest">
+      <wsdl:part name="input" element="tns2:AdministrationReport"/>
+   </wsdl:message>
+   <wsdl:message name="foretagEkspeditionResponse">
+      <wsdl:part name="return" element="tns2:AdministrationResponse"/>
+   </wsdl:message>
+   <wsdl:message name="opretOgForetagEkspeditionRequest">
+      <wsdl:part name="input" element="tns2:CreateAndAdministerPrescriptionReport"/>
+   </wsdl:message>
+   <wsdl:message name="opretOgForetagEkspeditionResponse">
+      <wsdl:part name="return" element="tns2:CreateAndAdministerPrescriptionResponse"/>
+   </wsdl:message>
+   <wsdl:message name="hentAdresseredeRecepterRequest">
+      <wsdl:part name="input" element="tns2:GetAddressedPrescriptionsRequest"/>
+   </wsdl:message>
+   <wsdl:message name="hentAdresseredeRecepterResponse">
+      <wsdl:part name="return" element="tns2:GetAddressedPrescriptionsResponse"/>
+   </wsdl:message>   
+   <wsdl:message name="findRecepterRequest">
+      <wsdl:part name="input" element="tns2:SearchMedicationsRequest"/>
+   </wsdl:message>
+   <wsdl:message name="findRecepterResponse">
+      <wsdl:part name="return" element="tns2:SearchMedicationsResponse"/>
+   </wsdl:message>   
+   <wsdl:message name="hentReceptOrdinationerRequest">
+      <wsdl:part name="input" element="tns2:GetMedicationsByPrescriptionIDRequest"/>
+   </wsdl:message>
+   <wsdl:message name="hentReceptOrdinationerResponse">
+      <wsdl:part name="return" element="tns2:GetMedicationsByPrescriptionIDResponse"/>
+   </wsdl:message>
+   <wsdl:message name="hentReceptOrdinationUdfraIDRequest">
+      <wsdl:part name="input" element="tns2:GetMedicationsByMedicationIDRequest"/>
+   </wsdl:message>
+   <wsdl:message name="hentReceptOrdinationUdfraIDResponse">
+      <wsdl:part name="return" element="tns2:GetMedicationsByMedicationIDResponse"/>
+   </wsdl:message>
+   <wsdl:message name="ugyldiggoerOrdinationRequest">
+      <wsdl:part name="input" element="tns2:SetStatusInvalidatedRequest"/>
+   </wsdl:message>
+   <wsdl:message name="ugyldiggoerOrdinationResponse">
+      <wsdl:part name="return" element="tns2:SetStatusInvalidatedResponse"/>
+   </wsdl:message>
+   <wsdl:message name="fjernStatusUnderBehandlingRequest">
+      <wsdl:part name="input" element="tns2:RemoveStatusInProcessRequest"/>
+   </wsdl:message>
+   <wsdl:message name="fjernStatusUnderBehandlingResponse">
+      <wsdl:part name="return" element="tns2:RemoveStatusInProcessResponse"/>
+   </wsdl:message>
+   <wsdl:message name="tilbagefoerUdleveringRequest">
+      <wsdl:part name="input" element="tns2:UndoAdministrationRequest"/>
+   </wsdl:message>
+   <wsdl:message name="tilbagefoerUdleveringResponse">
+      <wsdl:part name="return" element="tns2:UndoAdministrationResponse"/>
+   </wsdl:message>
+   <wsdl:message name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerRequest">
+      <wsdl:part name="input" element="tns2:GetSynchronizationListRequest"/>
+   </wsdl:message>
+   <wsdl:message name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerResponse">
+      <wsdl:part name="return" element="tns2:GetSynchronizationListResponse"/>
+   </wsdl:message>   
+   <wsdl:message name="afslutOrdinationRequest">
+      <wsdl:part name="input" element="tns2:SetMedicationTerminatedRequest"/>
+   </wsdl:message>
+   <wsdl:message name="afslutOrdinationResponse">
+      <wsdl:part name="return" element="tns2:SetMedicationTerminatedResponse"/>
+   </wsdl:message>
+   <wsdl:message name="kvitterRequest">
+      <wsdl:part name="input" element="tns2:AcknowledgmentReport"/>
+   </wsdl:message>
+   <wsdl:message name="kvitterResponse">
+      <wsdl:part name="return" element="tns2:AcknowledgmentResponse"/>
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionMedicationOverviewRequestStructure">
+      <wsdl:part name="input" element="tns2:PrescriptionMedicationOverviewRequestStructure"/>
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionMedicationOverviewResponseStructure">
+      <wsdl:part name="return" element="tns2:PrescriptionMedicationOverviewResponseStructure"/>
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionMedicationRequestStructure">
+      <wsdl:part name="input" element="tns2:PrescriptionMedicationRequestStructure"/>
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionMedicationResponseStructure">
+      <wsdl:part name="return" element="tns2:PrescriptionMedicationResponseStructure"/>
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionMedicationStructureRequestStructure">
+      <wsdl:part name="input" element="tns2:PrescriptionMedicationStructureRequestStructure"/>
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionMedicationStructureResponseStructure">
+      <wsdl:part name="return" element="tns2:PrescriptionMedicationStructureResponseStructure"/>
+   </wsdl:message>
+   
+   <!-- frigivelse af ordinationer -->
+    <wsdl:message name="releaseMedicationRequest">
+      <wsdl:part name="input" element="tns2:ReleaseMedicationRequest"/>
+   </wsdl:message>
+   <wsdl:message name="releaseMedicationResponse">
+      <wsdl:part name="return" element="tns2:ReleaseMedicationResponse"/>
+   </wsdl:message>
+   <wsdl:message name="getReleaseMedicationStatusRequest">
+      <wsdl:part name="input" element="tns2:GetReleaseMedicationStatusRequest"/>
+   </wsdl:message>
+   <wsdl:message name="getReleaseMedicationStatusResponse">
+      <wsdl:part name="return" element="tns2:GetReleaseMedicationStatusResponse"/>
+   </wsdl:message>
+   <wsdl:message name="setReleaseMedicationStatusRequest">
+      <wsdl:part name="input" element="tns2:SetReleaseMedicationStatusRequest"/>
+   </wsdl:message>
+   <wsdl:message name="setReleaseMedicationStatusResponse">
+      <wsdl:part name="return" element="tns2:SetReleaseMedicationStatusResponse"/>
+   </wsdl:message>
+   
+   <!-- OIO start -->
+   <wsdl:message name="getPrescriptionFromCPRSoapIn">
+      <wsdl:part name="getPrescription" element="tns4:GetPrescriptionFromCPRStructure" />
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionFromCPRSoapOut">
+      <wsdl:part name="prescriptionStructure" element="tns4:PrescriptionStructureResponse" />
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionDetailSoapIn">
+      <wsdl:part name="getPrescriptionDetail" element="tns4:GetPrescriptionDetailStructure" />
+   </wsdl:message>
+   <wsdl:message name="getPrescriptionDetailSoapOut">
+      <wsdl:part name="prescriptionDetailStructure" element="tns4:PrescriptionDetailStructure" />
+   </wsdl:message>
+   <wsdl:message name="activatePrescriptionSoapIn">
+      <wsdl:part name="activatePrescription" element="tns4:ActivatePrescriptionStructure" />
+   </wsdl:message>
+   <wsdl:message name="deActivatePrescriptionSoapIn">
+     <wsdl:part name="seActivatePrescription" element="tns4:DeActivatePrescriptionStructure" />
+   </wsdl:message>
+   <wsdl:message name="stopPrescriptionSoapIn">
+    <wsdl:part name="stopPrescription" element="tns4:StopPrescriptionStructure" />
+   </wsdl:message>
+   <wsdl:message name="updateDosageSoapIn">
+     <wsdl:part name="updateDosage" element="tns4:UpdateDosageStructure" />
+   </wsdl:message>
+   <wsdl:message name="setAddressedPharmacySoapIn">
+    <wsdl:part name="setAddressedPharmacy" element="tns4:AddressedPharmacyStructure" />
+   </wsdl:message>
+   <wsdl:message name="rePrescribeDispensingSoapIn">
+    <wsdl:part name="RePrescribeDispensing" element="tns4:RePrescribeDispensingStructure" />
+   </wsdl:message>
+   <!-- OIO slut -->   
+   
+   <wsdl:portType name="ReceptDocLitService">
+      <wsdl:operation name="opretReceptLMS15" parameterOrder="recept">
+         <wsdl:input message="impl:opretReceptLMS15Request" name="opretReceptLMS15Request"/>
+         <wsdl:output message="impl:opretReceptLMS15Response" name="opretReceptLMS15Response"/>
+      </wsdl:operation>
+      <wsdl:operation name="opretRecept" parameterOrder="recept">
+         <wsdl:input message="impl:opretReceptRequest" name="opretReceptRequest"/>
+         <wsdl:output message="impl:opretReceptResponse" name="opretReceptResponse"/>
+      </wsdl:operation>
+      <!-- begynd operation tilfoejelse til nyt recepthaandtag -->
+      <wsdl:operation name="opretReceptFromEdifact" parameterOrder="receptEdifactAsString">
+         <wsdl:input message="impl:opretReceptFromEdifactRequest" name="opretReceptFromEdifactRequest"/>
+         <wsdl:output message="impl:opretReceptFromEdifactResponse" name="opretReceptFromEdifactResponse"/>
+      </wsdl:operation>
+      <!-- slut operation tilfoejelse til nyt recepthaandtag -->
+      <wsdl:operation name="hentReceptOrdinationerUdfraCPR" parameterOrder="hentReceptOrdinationerUdFraCPRInput">
+         <wsdl:input message="impl:hentReceptOrdinationerUdfraCPRRequest" name="hentReceptOrdinationerUdfraCPRRequest"/>
+         <wsdl:output message="impl:hentReceptOrdinationerUdfraCPRResponse" name="hentReceptOrdinationerUdfraCPRResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="hentReceptOrdinationsDetaljerUdfraCPR" parameterOrder="hentReceptOrdinationsDetaljerUdFraCPRInput">
+         <wsdl:input message="impl:hentReceptOrdinationsDetaljerUdfraCPRRequest" name="hentReceptOrdinationsDetaljerUdfraCPRRequest"/>
+         <wsdl:output message="impl:hentReceptOrdinationsDetaljerUdfraCPRResponse" name="hentReceptOrdinationsDetaljerUdfraCPRResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="getLatestStatusChangeDate" parameterOrder="getLatestStatusChangeDateInput">
+         <wsdl:input message="impl:getLatestStatusChangeDateRequest" name="getLatestStatusChangeDateRequest"/>
+         <wsdl:output message="impl:getLatestStatusChangeDateResponse" name="getLatestStatusChangeDateResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="searchRejectedOrdinations" parameterOrder="input">
+         <wsdl:input message="impl:searchRejectedOrdinationsRequest" name="searchRejectedOrdinationsRequest"/>
+         <wsdl:output message="impl:searchRejectedOrdinationsResponse" name="searchRejectedOrdinationsResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="getOrdinationDetails" parameterOrder="input">
+         <wsdl:input message="impl:getOrdinationDetailsRequest" name="getOrdinationDetailsRequest"/>
+         <wsdl:output message="impl:getOrdinationDetailsResponse" name="getOrdinationDetailsResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="foretagEkspedition" parameterOrder="input">
+         <wsdl:input message="impl:foretagEkspeditionRequest" name="foretagEkspeditionRequest"/>
+         <wsdl:output message="impl:foretagEkspeditionResponse" name="foretagEkspeditionResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="opretOgForetagEkspedition" parameterOrder="input">
+         <wsdl:input message="impl:opretOgForetagEkspeditionRequest" name="opretOgForetagEkspeditionRequest"/>
+         <wsdl:output message="impl:opretOgForetagEkspeditionResponse" name="opretOgForetagEkspeditionResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="hentAdresseredeRecepter" parameterOrder="input">
+         <wsdl:input message="impl:hentAdresseredeRecepterRequest" name="hentAdresseredeRecepterRequest"/>
+         <wsdl:output message="impl:hentAdresseredeRecepterResponse" name="hentAdresseredeRecepterResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="findRecepter" parameterOrder="input">
+         <wsdl:input message="impl:findRecepterRequest" name="findRecepterRequest"/>
+         <wsdl:output message="impl:findRecepterResponse" name="findRecepterResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="hentReceptOrdinationer" parameterOrder="input">
+         <wsdl:input message="impl:hentReceptOrdinationerRequest" name="hentReceptOrdinationerRequest"/>
+         <wsdl:output message="impl:hentReceptOrdinationerResponse" name="hentReceptOrdinationerResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="hentReceptOrdinationUdfraID" parameterOrder="input">
+         <wsdl:input message="impl:hentReceptOrdinationUdfraIDRequest" name="hentReceptOrdinationUdfraIDRequest"/>
+         <wsdl:output message="impl:hentReceptOrdinationUdfraIDResponse" name="hentReceptOrdinationUdfraIDResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="ugyldiggoerOrdination" parameterOrder="input">
+         <wsdl:input message="impl:ugyldiggoerOrdinationRequest" name="ugyldiggoerOrdinationRequest"/>
+         <wsdl:output message="impl:ugyldiggoerOrdinationResponse" name="ugyldiggoerOrdinationResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="fjernStatusUnderBehandling" parameterOrder="input">
+         <wsdl:input message="impl:fjernStatusUnderBehandlingRequest" name="fjernStatusUnderBehandlingRequest"/>
+         <wsdl:output message="impl:fjernStatusUnderBehandlingResponse" name="fjernStatusUnderBehandlingResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="tilbagefoerUdlevering" parameterOrder="input">
+         <wsdl:input message="impl:tilbagefoerUdleveringRequest" name="tilbagefoerUdleveringRequest"/>
+         <wsdl:output message="impl:tilbagefoerUdleveringResponse" name="tilbagefoerUdleveringResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummer" parameterOrder="input">
+         <wsdl:input message="impl:hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerRequest" name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerRequest"/>
+         <wsdl:output message="impl:hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerResponse" name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="afslutOrdination" parameterOrder="input">
+         <wsdl:input message="impl:afslutOrdinationRequest" name="afslutOrdinationRequest"/>
+         <wsdl:output message="impl:afslutOrdinationResponse" name="afslutOrdinationResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="kvitter" parameterOrder="input">
+         <wsdl:input message="impl:kvitterRequest" name="kvitterRequest"/>
+         <wsdl:output message="impl:kvitterResponse" name="kvitterResponse"/>
+      </wsdl:operation>
+			<!-- returns an overview of the persons medications -->
+      <wsdl:operation name="getPrescriptionMedicationOverview" parameterOrder="input">
+         <wsdl:input message="impl:getPrescriptionMedicationOverviewRequestStructure" name="getPrescriptionMedicationOverviewRequestStructure"/>
+         <wsdl:output message="impl:getPrescriptionMedicationOverviewResponseStructure" name="getPrescriptionMedicationOverviewResponseStructure"/>
+      </wsdl:operation>
+			<!-- returns details of a specific prescription medications -->
+      <wsdl:operation name="getPrescriptionMedications" parameterOrder="input">
+         <wsdl:input message="impl:getPrescriptionMedicationRequestStructure" name="getPrescriptionMedicationRequestStructure"/>
+         <wsdl:output message="impl:getPrescriptionMedicationResponseStructure" name="getPrescriptionMedicationResponseStructure"/>
+      </wsdl:operation>
+			<!-- returns an overview and effectuations of the specific prescription medications -->
+      <wsdl:operation name="getPrescriptionMedicationStructure" parameterOrder="input">
+         <wsdl:input message="impl:getPrescriptionMedicationStructureRequestStructure" name="getPrescriptionMedicationStructureRequestStructure"/>
+         <wsdl:output message="impl:getPrescriptionMedicationStructureResponseStructure" name="getPrescriptionMedicationStructureResponseStructure"/>
+      </wsdl:operation>
+      
+      <wsdl:operation name="releaseMedication" parameterOrder="input">
+         <wsdl:input message="impl:releaseMedicationRequest" name="releaseMedicationRequest"/>
+         <wsdl:output message="impl:releaseMedicationResponse" name="releaseMedicationResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="getReleaseMedicationStatus" parameterOrder="input">
+         <wsdl:input message="impl:getReleaseMedicationStatusRequest" name="getReleaseMedicationStatusRequest"/>
+         <wsdl:output message="impl:getReleaseMedicationStatusResponse" name="getReleaseMedicationStatusResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="setReleaseMedicationStatus" parameterOrder="input">
+         <wsdl:input message="impl:setReleaseMedicationStatusRequest" name="setReleaseMedicationStatusRequest"/>
+         <wsdl:output message="impl:setReleaseMedicationStatusResponse" name="setReleaseMedicationStatusResponse"/>
+      </wsdl:operation>
+      <!-- OIO start -->
+      <wsdl:operation name="setAddressedPharmacy">
+        <wsdl:input message="impl:setAddressedPharmacySoapIn" />
+      </wsdl:operation>
+      <wsdl:operation name="rePrescribeDispensing">
+        <wsdl:input message="impl:rePrescribeDispensingSoapIn" />
+      </wsdl:operation>
+      <wsdl:operation name="getPrescriptionFromCPR">
+        <wsdl:input message="impl:getPrescriptionFromCPRSoapIn" />
+        <wsdl:output message="impl:getPrescriptionFromCPRSoapOut" />
+      </wsdl:operation>
+      <wsdl:operation name="getPrescriptionDetail">
+        <wsdl:input message="impl:getPrescriptionDetailSoapIn" />
+        <wsdl:output message="impl:getPrescriptionDetailSoapOut" />
+      </wsdl:operation>
+      <wsdl:operation name="activatePrescription">
+        <wsdl:input message="impl:activatePrescriptionSoapIn" />
+      </wsdl:operation>
+      <wsdl:operation name="deActivatePrescription">
+        <wsdl:input message="impl:deActivatePrescriptionSoapIn" />
+      </wsdl:operation>
+      <wsdl:operation name="stopPrescription">
+        <wsdl:input message="impl:stopPrescriptionSoapIn" name="stopPrescriptionSoapIn"/>
+      </wsdl:operation>
+      <wsdl:operation name="updateDosage">
+        <wsdl:input message="impl:updateDosageSoapIn" />
+      </wsdl:operation>
+
+      <!-- OIO slut -->
+   </wsdl:portType>
+
+   <wsdl:binding name="ReceptDocLitSoapBinding" type="impl:ReceptDocLitService">
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="opretReceptLMS15">
+         <wsdlsoap:operation soapAction="opretReceptLMS15"/>
+         <wsdl:input name="opretReceptLMS15Request">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="opretReceptLMS15Response">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="opretRecept">
+         <wsdlsoap:operation soapAction="opretRecept"/>
+         <wsdl:input name="opretReceptRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="opretReceptResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <!-- begynd operation tilfoejelse til nyt recepthaandtag -->
+      <wsdl:operation name="opretReceptFromEdifact">
+         <wsdlsoap:operation soapAction="opretReceptFromEdifact"/>
+         <wsdl:input name="opretReceptFromEdifactRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="opretReceptFromEdifactResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <!-- slut operation tilfoejelse til nyt recepthaandtag -->
+      <wsdl:operation name="hentReceptOrdinationerUdfraCPR">
+         <wsdlsoap:operation soapAction="hentReceptOrdinationerUdfraCPR"/>
+         <wsdl:input name="hentReceptOrdinationerUdfraCPRRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="hentReceptOrdinationerUdfraCPRResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="hentReceptOrdinationsDetaljerUdfraCPR">
+         <wsdlsoap:operation soapAction="hentReceptOrdinationsDetaljerUdfraCPR"/>
+         <wsdl:input name="hentReceptOrdinationsDetaljerUdfraCPRRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="hentReceptOrdinationsDetaljerUdfraCPRResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getLatestStatusChangeDate">
+         <wsdlsoap:operation soapAction="getLatestStatusChangeDate"/>
+         <wsdl:input name="getLatestStatusChangeDateRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getLatestStatusChangeDateResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="searchRejectedOrdinations">
+         <wsdlsoap:operation soapAction="searchRejectedOrdinations"/>
+         <wsdl:input name="searchRejectedOrdinationsRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="searchRejectedOrdinationsResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+
+      <wsdl:operation name="getOrdinationDetails">
+         <wsdlsoap:operation soapAction="getOrdinationDetails"/>
+         <wsdl:input name="getOrdinationDetailsRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getOrdinationDetailsResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="foretagEkspedition">
+         <wsdlsoap:operation soapAction="foretagEkspedition"/>
+         <wsdl:input name="foretagEkspeditionRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="foretagEkspeditionResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="opretOgForetagEkspedition">
+         <wsdlsoap:operation soapAction="opretOgForetagEkspedition"/>
+         <wsdl:input name="opretOgForetagEkspeditionRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="opretOgForetagEkspeditionResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="hentAdresseredeRecepter">
+         <wsdlsoap:operation soapAction="hentAdresseredeRecepter"/>
+         <wsdl:input name="hentAdresseredeRecepterRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="hentAdresseredeRecepterResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="findRecepter">
+         <wsdlsoap:operation soapAction="findRecepter"/>
+         <wsdl:input name="findRecepterRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="findRecepterResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="hentReceptOrdinationer">
+         <wsdlsoap:operation soapAction="hentReceptOrdinationer"/>
+         <wsdl:input name="hentReceptOrdinationerRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="hentReceptOrdinationerResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="hentReceptOrdinationUdfraID">
+         <wsdlsoap:operation soapAction="hentReceptOrdinationUdfraID"/>
+         <wsdl:input name="hentReceptOrdinationUdfraIDRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="hentReceptOrdinationUdfraIDResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="ugyldiggoerOrdination">
+         <wsdlsoap:operation soapAction="ugyldiggoerOrdination"/>
+         <wsdl:input name="ugyldiggoerOrdinationRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="ugyldiggoerOrdinationResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="fjernStatusUnderBehandling">
+         <wsdlsoap:operation soapAction="fjernStatusUnderBehandling"/>
+         <wsdl:input name="fjernStatusUnderBehandlingRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="fjernStatusUnderBehandlingResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="tilbagefoerUdlevering">
+         <wsdlsoap:operation soapAction="tilbagefoerUdlevering"/>
+         <wsdl:input name="tilbagefoerUdleveringRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="tilbagefoerUdleveringResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummer">
+         <wsdlsoap:operation soapAction="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummer"/>
+         <wsdl:input name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="hentOrdinationsIdUnderBehandlingPaaDetteLokationsnummerResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="afslutOrdination">
+         <wsdlsoap:operation soapAction="afslutOrdination"/>
+         <wsdl:input name="afslutOrdinationRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="afslutOrdinationResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="kvitter">
+         <wsdlsoap:operation soapAction="kvitter"/>
+         <wsdl:input name="kvitterRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="kvitterResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      
+      <wsdl:operation name="releaseMedication">
+         <wsdlsoap:operation soapAction="releaseMedication"/>
+         <wsdl:input name="releaseMedicationRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="releaseMedicationResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getReleaseMedicationStatus">
+         <wsdlsoap:operation soapAction="getReleaseMedicationStatus"/>
+         <wsdl:input name="getReleaseMedicationStatusRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getReleaseMedicationStatusResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="setReleaseMedicationStatus">
+         <wsdlsoap:operation soapAction="setReleaseMedicationStatus"/>
+         <wsdl:input name="setReleaseMedicationStatusRequest">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="setReleaseMedicationStatusResponse">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getPrescriptionMedicationOverview">
+         <wsdlsoap:operation soapAction="getPrescriptionMedicationOverview"/>
+         <wsdl:input name="getPrescriptionMedicationOverviewRequestStructure">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getPrescriptionMedicationOverviewResponseStructure">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getPrescriptionMedications">
+         <wsdlsoap:operation soapAction="getPrescriptionMedications"/>
+         <wsdl:input name="getPrescriptionMedicationRequestStructure">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getPrescriptionMedicationResponseStructure">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getPrescriptionMedicationStructure">
+         <wsdlsoap:operation soapAction="getPrescriptionMedicationStructure"/>
+         <wsdl:input name="getPrescriptionMedicationStructureRequestStructure">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getPrescriptionMedicationStructureResponseStructure">
+            <wsdlsoap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      
+      <!-- OIO start -->
+      <wsdl:operation name="getPrescriptionFromCPR">
+        <wsdlsoap:operation soapAction="http://acure.dk/pem/getPrescriptionFromCPR" />
+         <wsdl:input>
+           <wsdlsoap:body use="literal" parts="getPrescription" />
+         </wsdl:input>
+         <wsdl:output>
+           <wsdlsoap:body use="literal" parts="prescriptionStructure" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getPrescriptionDetail">
+        <wsdlsoap:operation soapAction="http://acure.dk/pem/getPrescriptionDetail" />
+          <wsdl:input>
+            <wsdlsoap:body use="literal" parts="getPrescriptionDetail" />
+          </wsdl:input>
+          <wsdl:output>
+            <wsdlsoap:body use="literal" parts="prescriptionDetailStructure" />
+          </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="activatePrescription">
+        <wsdlsoap:operation soapAction="http://acure.dk/pem/activatePrescription" />
+          <wsdl:input>
+           <wsdlsoap:body use="literal" parts="activatePrescription" />
+          </wsdl:input>
+      </wsdl:operation>
+      <wsdl:operation name="deActivatePrescription">
+        <wsdlsoap:operation soapAction="http://acure.dk/pem/deActivatePrescription" />
+        <wsdl:input>
+          <wsdlsoap:body use="literal" parts="deActivatePrescription" />
+        </wsdl:input>
+      </wsdl:operation>
+      <wsdl:operation name="stopPrescription">
+        <wsdlsoap:operation soapAction="stopPrescription" />
+        <wsdl:input name="stopPrescriptionSoapIn">
+          <wsdlsoap:body use="literal"/>
+        </wsdl:input>
+      </wsdl:operation>
+      <wsdl:operation name="updateDosage">
+        <wsdlsoap:operation soapAction="http://acure.dk/pem/updateDosage" />
+          <wsdl:input>
+            <wsdlsoap:body use="literal" parts="updateDosage" />
+        </wsdl:input>
+      </wsdl:operation>
+      <wsdl:operation name="setAddressedPharmacy">
+        <wsdlsoap:operation soapAction="http://acure.dk/pem/setAddressedPharmacy" />
+        <wsdl:input>
+          <wsdlsoap:body use="literal" parts="setAddressedPharmacy" />
+        </wsdl:input>
+      </wsdl:operation>
+      <wsdl:operation name="rePrescribeDispensing">
+        <wsdlsoap:operation soapAction="http://acure.dk/pem/rePrescribeDispensing" />
+        <wsdl:input>
+          <wsdlsoap:body use="literal" parts="rePrescribeDispensing" />
+        </wsdl:input>
+      </wsdl:operation>
+    
+    <!-- OIO slut -->
+   </wsdl:binding>
+   <wsdl:service name="ReceptDocLitServiceService">
+      <wsdl:port binding="impl:ReceptDocLitSoapBinding" name="ReceptDocLit">
+         <wsdlsoap:address location="http://localhost/pemws/services/ReceptDocLit"/>
+      </wsdl:port>
+   </wsdl:service>
+   
+   
+   
+   <!-- OIO -->
+</wsdl:definitions>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dkma="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" targetNamespace="http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DKMA_PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="DKMA_VersionCheckKey.xsd"/>
+	<element name="StopPrescriptionStructure" type="dkma:StopPrescriptionStructureType">
+		<annotation>
+			<documentation xml:lang="en-uk">Information to terminate the prescription</documentation>
+			<documentation xml:lang="da-dk">Information til at afslutte ordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="StopPrescriptionStructureType">
+		<sequence>
+			<element ref="dkma:PrescriptionIdentifier"/>
+			<element ref="dkma:VersionCheckKey"/>
+		</sequence>
+	</complexType>
+</schema>
