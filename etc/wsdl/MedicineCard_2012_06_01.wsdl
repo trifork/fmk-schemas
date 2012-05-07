@@ -108,8 +108,8 @@
 	    <xs:include schemaLocation="../schemas/2012/01/01/UnmarkPrescriptionMedicationDeprecatedResponse.xsd"/>
 	    <xs:include schemaLocation="../schemas/2012/01/01/UnmarkPrescriptionMedicationDeprecatedRequest.xsd"/>
 
-	    <xs:include schemaLocation="../schemas/2012/01/01/InvalidatePrescriptionMedicationRequest.xsd"/>
-	    <xs:include schemaLocation="../schemas/2012/01/01/InvalidatePrescriptionMedicationResponse.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/01/01/CancelPrescriptionMedicationRequest.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/01/01/CancelPrescriptionMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
 
@@ -350,11 +350,11 @@
         <wsdl:part name="UnmarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="InvalidatePrescriptionMedicationRequest_2012_06_01">
-        <wsdl:part name="InvalidatePrescriptionMedicationRequest" element="medicinecard20120601:InvalidatePrescriptionMedicationRequest"/>
+    <wsdl:message name="CancelPrescriptionMedicationRequest_2012_06_01">
+        <wsdl:part name="CancelPrescriptionMedicationRequest" element="medicinecard20120601:CancelPrescriptionMedicationRequest"/>
     </wsdl:message>
-    <wsdl:message name="InvalidatePrescriptionMedicationResponse_2012_06_01">
-        <wsdl:part name="InvalidatePrescriptionMedicationResponse" element="medicinecard20120601:InvalidatePrescriptionMedicationResponse"/>
+    <wsdl:message name="CancelPrescriptionMedicationResponse_2012_06_01">
+        <wsdl:part name="CancelPrescriptionMedicationResponse" element="medicinecard20120601:CancelPrescriptionMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="DGWSFault">
@@ -569,9 +569,9 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="InvalidatePrescriptionMedication_2012_06_01">
-            <wsdl:input name="InvalidatePrescriptionMedicationRequest_2012_06_01" message="tns:InvalidatePrescriptionMedicationRequest_2012_06_01"/>
-            <wsdl:output name="InvalidatePrescriptionMedicationResponse_2012_06_01" message="tns:InvalidatePrescriptionMedicationResponse_2012_06_01"/>
+        <wsdl:operation name="CancelPrescriptionMedication_2012_06_01">
+            <wsdl:input name="CancelPrescriptionMedicationRequest_2012_06_01" message="tns:CancelPrescriptionMedicationRequest_2012_06_01"/>
+            <wsdl:output name="CancelPrescriptionMedicationResponse_2012_06_01" message="tns:CancelPrescriptionMedicationResponse_2012_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1152,10 +1152,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-       <wsdl:operation name="InvalidatePrescriptionMedication_2012_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#InvalidatePrescriptionMedication"
+       <wsdl:operation name="CancelPrescriptionMedication_2012_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CancelPrescriptionMedication"
                             style="document"/>
-            <wsdl:input name="InvalidatePrescriptionMedicationRequest_2012_06_01">
+            <wsdl:input name="CancelPrescriptionMedicationRequest_2012_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
@@ -1163,7 +1163,7 @@
                              wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="InvalidatePrescriptionMedicationReponse_2012_06_01">
+            <wsdl:output name="CancelPrescriptionMedicationReponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>

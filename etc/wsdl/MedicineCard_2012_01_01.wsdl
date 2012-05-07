@@ -133,9 +133,9 @@
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_DrugMedicationOverviewStructure.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_DrugMedicationStructure.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_MedicineCardOverviewStructure.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/01/01/InvalidatePrescriptionMedicationResponse.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/CancelPrescriptionMedicationResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/MarkPrescriptionMedicationDeprecatedRequest.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/01/01/InvalidatePrescriptionMedicationRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/01/01/CancelPrescriptionMedicationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/MarkPrescriptionMedicationDeprecatedResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_SetMedicineCardReviewedRequestStructure.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/01/01/DKMA_SetMedicineCardReviewedResponseStructure.xsd"/>
@@ -442,11 +442,11 @@
 		<wsdl:part name="UnmarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20120101:UnmarkPrescriptionMedicationDeprecatedResponse"/>
 	</wsdl:message>
 
-	<wsdl:message name="InvalidatePrescriptionMedicationRequest_20120101">
-		<wsdl:part name="InvalidatePrescriptionMedicationRequest" element="medicinecard20120101:InvalidatePrescriptionMedicationRequest"/>
+	<wsdl:message name="CancelPrescriptionMedicationRequest_20120101">
+		<wsdl:part name="CancelPrescriptionMedicationRequest" element="medicinecard20120101:CancelPrescriptionMedicationRequest"/>
 	</wsdl:message>
-	<wsdl:message name="InvalidatePrescriptionMedicationResponse_20120101">
-		<wsdl:part name="InvalidatePrescriptionMedicationResponse" element="medicinecard20120101:InvalidatePrescriptionMedicationResponse"/>
+	<wsdl:message name="CancelPrescriptionMedicationResponse_20120101">
+		<wsdl:part name="CancelPrescriptionMedicationResponse" element="medicinecard20120101:CancelPrescriptionMedicationResponse"/>
 	</wsdl:message>
 
 	<wsdl:message name="SetMedicineCardReviewedRequest_20120101">
@@ -747,9 +747,9 @@
 			<wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
 		</wsdl:operation>
 
-		<wsdl:operation name="InvalidatePrescriptionMedication_20120101">
-			<wsdl:input name="InvalidatePrescriptionMedicationRequest_20120101" message="tns:InvalidatePrescriptionMedicationRequest_20120101"/>
-			<wsdl:output name="InvalidatePrescriptionMedicationResponse_20120101" message="tns:InvalidatePrescriptionMedicationResponse_20120101"/>
+		<wsdl:operation name="CancelPrescriptionMedication_20120101">
+			<wsdl:input name="CancelPrescriptionMedicationRequest_20120101" message="tns:CancelPrescriptionMedicationRequest_20120101"/>
+			<wsdl:output name="CancelPrescriptionMedicationResponse_20120101" message="tns:CancelPrescriptionMedicationResponse_20120101"/>
 			<wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
 		</wsdl:operation>
 
@@ -1575,15 +1575,15 @@
 			<wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/> </wsdl:fault>
 		</wsdl:operation>
 
-		<wsdl:operation name="InvalidatePrescriptionMedication_20120101">
-			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#InvalidatePrescriptionMedication" style="document"/>
-			<wsdl:input name="InvalidatePrescriptionMedicationRequest_20120101">
+		<wsdl:operation name="CancelPrescriptionMedication_20120101">
+			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#CancelPrescriptionMedication" style="document"/>
+			<wsdl:input name="CancelPrescriptionMedicationRequest_20120101">
 				<soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
 		    	        <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/> 
 				<soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/> 
 				<soap:body use="literal"/>
 			</wsdl:input>
-			<wsdl:output name="InvalidatePrescriptionMedicationResponse_20120101">
+			<wsdl:output name="CancelPrescriptionMedicationResponse_20120101">
 		    	        <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
 				<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
 				<soap:body use="literal"/>
