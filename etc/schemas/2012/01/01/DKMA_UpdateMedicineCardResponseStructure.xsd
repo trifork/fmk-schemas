@@ -17,6 +17,7 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" schemaLocation="../../../2008/06/01/DKMA_CreatedPrescriptionMedicationStructure.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01" schemaLocation="../../../2009/01/01/DKMA_CreatedDrugMedicationStructure.xsd"/>
 	<include schemaLocation="UnWithdrawnDrugMedication.xsd"/>
+	<include schemaLocation="CancelledPrescriptionMedication.xsd"/>
 	<element name="UpdateMedicineCardResponseStructure" type="medicinecard20120101:UpdateMedicineCardResponseStructureType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container elemenet for a batch request to update a medicine card</documentation>
@@ -36,6 +37,7 @@
 			<element ref="medicinecard20080601:CreatedEffectuationOnDrugMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
 			<element ref="medicinecard20080601:CreatedPrescriptionMedicationStructure" minOccurs="0" maxOccurs="unbounded"/>
 			<element ref="medicinecard20120101:UnWithdrawnDrugMedication" minOccurs="0" maxOccurs="unbounded"/>
+			<element ref="medicinecard20120101:CancelledPrescriptionMedication" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
