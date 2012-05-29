@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="AttachPrescriptionMedication.xsd"/>
 	<include schemaLocation="CreateEffectuation.xsd"/>
 	<include schemaLocation="CreatePrescriptionMedication.xsd"/>
@@ -30,7 +30,7 @@
 			<element name="SubstitutionAllowed" type="medicinecard20120601:SubstitutionAllowedType"/>
 			<element name="Effectuation" type="medicinecard20120601:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="CreatePrescriptionMedication" type="medicinecard20120601:CreatePrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="AttachPrescriptionMedication" type="medicinecard20120601:AttachPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AttachPrescriptionMedication" type="medicinecard20120601:PrescriptionMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
