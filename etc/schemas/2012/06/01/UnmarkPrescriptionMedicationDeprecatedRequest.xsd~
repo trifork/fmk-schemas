@@ -3,20 +3,21 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="ReviewedDateTime.xsd"/>
-	<element name="SetMedicineCardReviewedRequest" type="medicinecard20120601:SetMedicineCardReviewedRequestType">
+	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="UnmarkPrescriptionMedicationDeprecatedRequestType"
+	<element name="UnmarkPrescriptionMedicationDeprecatedRequest" type="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for a request to set a date and time for a review of the medicine card</documentation>
-			<documentation xml:lang="da-DK">Element for en forespørgsel til at sætte dato og tid for en medicinkort-gennemgang</documentation>
+			<documentation xml:lang="en-GB">Unmark one or more prescription medications as no longer relevant</documentation>
+			<documentation xml:lang="da-DK">Fjern markering af at en eller flere receptordinationer ikke længere er relevante</documentation>
 		</annotation>
 	</element>
-	<complexType name="SetMedicineCardReviewedRequestType">
+	<complexType name="UnmarkPrescriptionMedicationDeprecatedRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
 			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType"/>
 			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
-			<element name="ReviewedDateTime" type="medicinecard20120601:ReviewedDateTimeType"/>
+			<element name="PrescriptionMedication" type="medicinecard20120601:PrescriptionMedicationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

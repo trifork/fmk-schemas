@@ -8,6 +8,7 @@
 	<include schemaLocation="CreateOrUpdateDrugMedicationBeginEndDate.xsd"/>
 	<include schemaLocation="HasNegativeConsent.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>	
 	<include schemaLocation="Pause.xsd"/>
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
@@ -20,6 +21,7 @@
 	<complexType name="CreateDrugMedicationType">
 		<sequence>
 			<element name="ParentIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType" minOccurs="0"/>
+			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<element name="Pause" type="medicinecard20120601:PauseType" minOccurs="0"/>
 			<element name="HasNegativeConsent" type="medicinecard20120601:HasNegativeConsentType" minOccurs="0"/>
 			<element name="BeginEndDate" type="medicinecard20120601:CreateOrUpdateDrugMedicationBeginEndDateType"/>

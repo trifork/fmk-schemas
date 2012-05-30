@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="Doctor.xsd"/>
+	<include schemaLocation="CreatedWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="DosageQuantityUnitText.xsd"/>
 	<include schemaLocation="DoseQuantity.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
@@ -9,7 +9,7 @@
 	<include schemaLocation="EffectuationMethod.xsd"/>
 	<include schemaLocation="IsDoseDispensable.xsd"/>
 	<include schemaLocation="IsEffectuatedAccordingToDrugMedication.xsd"/>
-	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="ModificatorWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="PackageNumber.xsd"/>
 	<include schemaLocation="PackageSize.xsd"/>
 	<include schemaLocation="PackageQuantity.xsd"/>
@@ -24,8 +24,8 @@
 			<element name="Identifier" type="medicinecard20120601:EffectuationIdentifierType"/>
 			<element name="DateTime" type="medicinecard20120601:EffectuationDateTimeType"/>
 			<element name="EffectuationMethod" type="medicinecard20120601:EffectuationMethodType" minOccurs="0"/>
-			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
-			<element name="Doctor" type="medicinecard20120601:DoctorType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20120601:CreatedWithOptionalAuthorisationIdentifierType"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorWithOptionalAuthorisationIdentifierType" minOccurs="0"/>
 			<choice>
 				<sequence>
 					<!-- A drug was effectuated, with the dose and unit below. This overrides whatever is stated as drug and dosage on the prescription or drug medication -->
@@ -42,7 +42,7 @@
 					<element name="PackageQuantity" type="medicinecard20120601:PackageQuantityType" minOccurs="0"/>
 					<element name="PackageNumber" type="medicinecard20120601:PackageNumberType"/>
 					<element name="PackageSize" type="medicinecard20120601:PackageSizeType" minOccurs="0"/>
-                    <!-- TODO Skal dose dispensable være her? -->
+					<!-- TODO Skal dose dispensable være her? -->
 					<element name="IsDoseDispensable" type="medicinecard20120601:IsDoseDispensableType" minOccurs="0"/>
 					<element name="Drug" type="medicinecard20120601:DrugType" minOccurs="0"/>
 				</sequence>

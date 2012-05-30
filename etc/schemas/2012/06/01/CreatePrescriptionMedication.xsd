@@ -9,6 +9,7 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="SystemName.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
 	<element name="CreatePrescriptionMedication" type="medicinecard20120601:CreatePrescriptionMedicationType">
@@ -26,6 +27,7 @@
 	<complexType name="CreatePrescriptionMedicationType">
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<element name="AuthorisationDateTime" type="medicinecard20120601:AuthorisationDateTimeType"/>
 			<element name="ReceiverOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
 			<element name="SystemName" type="medicinecard20120601:SystemNameType"/>

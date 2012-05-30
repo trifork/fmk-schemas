@@ -2,9 +2,8 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="AttachPrescriptionMedication.xsd"/>
 	<include schemaLocation="DetachPrescriptionMedication.xsd"/>
-	<include schemaLocation="Doctor.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
-	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<element name="AttachOrDetachPrescriptionMedicationRequest" type="medicinecard20120601:AttachOrDetachPrescriptionMedicationRequestType">
 		<annotation>
@@ -16,9 +15,9 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
-			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
-			<element name="Doctor" type="medicinecard20120601:DoctorType"/>			
-			<element name="DetachPrescriptionMedication" type="medicinecard20120601:DetachPrescriptionMedicationType" minOccurs="0"/>
+			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="DetachPrescriptionMedication" type="medicinecard20120601:DetachPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AttachPrescriptionMedication" type="medicinecard20120601:AttachPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

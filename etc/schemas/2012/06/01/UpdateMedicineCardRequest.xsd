@@ -10,10 +10,12 @@
 	<include schemaLocation="CancelPrescriptionMedication.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="MarkPrescriptionMedicationDeprecated.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PauseDrugMedication.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="ResuspendMedicineCard.xsd"/>
+	<include schemaLocation="Reviewed.xsd"/>
 	<include schemaLocation="SetMedicineCardReviewed.xsd"/>
 	<include schemaLocation="SuspendMedicineCard.xsd"/>
 	<include schemaLocation="UnmarkPrescriptionMedicationDeprecated.xsd"/>
@@ -32,8 +34,8 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
-			<element name="Organisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
-			<element name="Doctor" type="medicinecard20120601:DoctorType" minOccurs="0"/>
+			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<sequence maxOccurs="unbounded">
 				<element name="SetMedicineCardReviewed" type="medicinecard20120601:SetMedicineCardReviewedType" minOccurs="0"/>
 				<element name="SuspendMedicineCard" type="medicinecard20120601:SuspendMedicineCardType" minOccurs="0"/>

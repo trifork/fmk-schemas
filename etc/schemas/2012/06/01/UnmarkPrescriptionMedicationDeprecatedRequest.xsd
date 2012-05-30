@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
-	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="Doctor.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="UnmarkPrescriptionMedicationDeprecated.xsd"/>
 	<element name="UnmarkPrescriptionMedicationDeprecatedRequest" type="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Unmark one or more prescription medications as no longer relevant</documentation>
@@ -15,9 +15,9 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
-			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
-			<element name="Doctor" type="medicinecard20120601:DoctorType"/>
-			<element name="Identifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType" maxOccurs="unbounded"/>
+			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="PrescriptionMedication" type="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

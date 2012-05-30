@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>	
 	<element name="UnwithdrawDrugMedication" type="medicinecard20120601:UnwithdrawDrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Instructions on undo withdraw of drug medications </documentation>
@@ -10,6 +11,7 @@
 	<complexType name="UnwithdrawDrugMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>			
 		</sequence>
 	</complexType>
 </schema>
