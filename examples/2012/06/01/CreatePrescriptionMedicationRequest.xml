@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CreatePrescriptionMedicationRequest xmlns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01 ../etc/schemas/2012/06/01/CreatePrescriptionMedicationRequest.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<CreatePrescriptionMedicationRequest xmlns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01 ../../../../etc/schemas/2012/06/01/CreatePrescriptionMedicationRequest.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<PersonIdentifier>1111111118</PersonIdentifier>
 	<MedicineCardVersion>133283011600090002</MedicineCardVersion>
-	<Organisation>
-		<Name>Lægerne Vestergade</Name>
-		<TelephoneNumber>86521348</TelephoneNumber>
-		<Type>Yder</Type>
-		<Identifier source="Yder">66974</Identifier>
-	</Organisation>
-	<Doctor>
-		<AuthorisationIdentifier>2Q5TK</AuthorisationIdentifier>
-		<Name>Tess Christoffersen</Name>
-	</Doctor>
+	<CreatedBy>
+		<Doctor>
+			<AuthorisationIdentifier>2Q5TK</AuthorisationIdentifier>
+			<Name>Tess Christoffersen</Name>
+		</Doctor>
+		<Organisation>
+			<Name>Lægerne Vestergade</Name>
+			<TelephoneNumber>86521348</TelephoneNumber>
+			<Type>Yder</Type>
+			<Identifier source="Yder">66974</Identifier>
+		</Organisation>
+	</CreatedBy>
 	<PrescriptionMedication>
 		<DrugMedicationIdentifier>133283023900110001</DrugMedicationIdentifier>
 		<AuthorisationDateTime>2012-03-29T09:30:47.0Z</AuthorisationDateTime>
@@ -22,7 +24,7 @@
 		</ReceiverOrganisation>
 		<SystemName>FMK-online</SystemName>
 		<SinglePrescriptionDispensing>
-			<PackageNumber>412</PackageNumber>
+			<PackageNumber source="Medicinpriser" date="2012-02-23">412</PackageNumber>
 			<PackageQuantity>1</PackageQuantity>
 			<DosageText>1 tablet morgen og aften</DosageText>
 		</SinglePrescriptionDispensing>

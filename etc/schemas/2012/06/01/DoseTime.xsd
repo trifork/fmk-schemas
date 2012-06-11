@@ -7,18 +7,18 @@
 		</annotation>
 	</element>
 	<simpleType name="DoseTimeType">
-		<union>
-			<simpleType>
-				<restriction base="string">
-					<enumeration value="morning"/>
-					<enumeration value="noon"/>
-					<enumeration value="evening"/>
-					<enumeration value="night"/>
-				</restriction>
-			</simpleType>
-			<simpleType>
-				<restriction base="time"/>
-			</simpleType>
+		<union memberTypes="medicinecard20120601:MorningNoonEveningNightDoseTimeType medicinecard20120601:TimeDoseTimeType">
 		</union>
+	</simpleType>
+	<simpleType name="MorningNoonEveningNightDoseTimeType">
+		<restriction base="string">
+			<enumeration value="morning"/>
+			<enumeration value="noon"/>
+			<enumeration value="evening"/>
+			<enumeration value="night"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TimeDoseTimeType">
+		<restriction base="time"/>
 	</simpleType>
 </schema>
