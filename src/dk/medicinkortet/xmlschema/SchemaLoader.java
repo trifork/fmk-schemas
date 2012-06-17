@@ -68,8 +68,45 @@ public class SchemaLoader {
 		copySchemaFiles(outputDir, builder, namespaces, externals);
 		resolveExternals(outputDir, externals);
 		generateIndexFiles(outputDir, namespaces);
-		generateInlineWsdl(builder);
+		Map<String, Set<SchemaFile>> ns2schemaFilesMap = generateInlineWsdl(builder);
+		makeWsdlXsdCollectionZip(ns2schemaFilesMap.values());
 	}
+
+	private static void makeWsdlXsdCollectionZip(Collection<Set<SchemaFile>> schemaFilesCollection) throws IOException {
+		System.out.println("Make WSDL + XSD collection zip-file");
+		
+		File outputDir = new File("target/wsdl/"+System.getProperty("WsdlName")+"_"+System.getProperty("VersionDate"));
+		outputDir.mkdirs();
+		
+		copyFileAndRemoveBOM(new File(getWsdlFilename()), outputDir);
+		
+		for (Set<SchemaFile> schemaFilesSet : schemaFilesCollection) {
+			copySchemaFileSet(schemaFilesSet, outputDir);
+		}
+	}
+	
+	private static void copySchemaFileSet(Set<SchemaFile> schemaFilesSet, File outputDir) throws IOException {
+		for (SchemaFile schemaFile : schemaFilesSet) {
+			if (schemaFile.hasBeenCopied) {
+				continue;
+			}
+			schemaFile.hasBeenCopied = true;
+
+			if (schemaFile.location != null) {
+				String destPath = schemaFile.location.substring(schemaFile.location.indexOf("/schemas/") + 9);
+				File destFile = new File(outputDir, destPath);
+				File destDir = destFile.getParentFile();
+				destDir.mkdirs();
+				copyFileAndRemoveBOM(new File(schemaFile.location), destDir);
+			}
+			
+			if (schemaFile.references != null) {
+				copySchemaFileSet(schemaFile.references, outputDir);
+			}
+		}
+
+	}
+	
 
 	private static void resolveExternals(File outputDir, Set<URI> externals) {
 		System.out.println("Resolving externals: " + externals);
@@ -113,16 +150,7 @@ public class SchemaLoader {
 				File sub = new File(outputDir, path);
 				FileUtils.forceMkdir(sub);
 				
-				// Copy file
-				OutputStream fos = new BufferedOutputStream(new FileOutputStream(new File(sub, file.getName())));
-				byte[] contents = FileUtils.readFileToByteArray(file);
-				if (contents.length > 3 && contents[0] == (byte)0xef && contents[1] == (byte)0xbb && contents[2] == (byte)0xbf) {
-					System.out.println("Removing BOM from " + file);
-					fos.write(contents, 3, contents.length - 3);
-				} else {
-					fos.write(contents);
-				}
-				fos.close();
+				copyFileAndRemoveBOM(file, sub);
 			} catch (SAXException e) {
 				throw new RuntimeException(e);
 			} catch (IOException e) {
@@ -149,6 +177,19 @@ public class SchemaLoader {
 		}
 	}
 
+	private static void copyFileAndRemoveBOM(File srcFile, File destDir) throws IOException {
+		// Copy file
+		OutputStream fos = new BufferedOutputStream(new FileOutputStream(new File(destDir, srcFile.getName())));
+		byte[] contents = FileUtils.readFileToByteArray(srcFile);
+		if (contents.length > 3 && contents[0] == (byte)0xef && contents[1] == (byte)0xbb && contents[2] == (byte)0xbf) {
+			System.out.println("Removing BOM from " + srcFile);
+			fos.write(contents, 3, contents.length - 3);
+		} else {
+			fos.write(contents);
+		}
+		fos.close();
+	}
+	
 	private static void generateIndexFiles(File outputDir,
 			Map<String, Set<File>> namespaces) throws URISyntaxException,
 			FileNotFoundException, IOException {
@@ -185,11 +226,11 @@ public class SchemaLoader {
 		}
 	}
 	
-	private static void generateInlineWsdl(DocumentBuilder builder) throws IOException, SAXException {
-		String outputFilename = "etc/wsdl/"+System.getProperty("WsdlName")+"_"+System.getProperty("VersionDate")+".wsdl";
-		System.out.println("Generating Inline WSDL file: " + outputFilename);
+	private static Map<String, Set<SchemaFile>> generateInlineWsdl(DocumentBuilder builder) throws IOException, SAXException {
+		String inputFilename = getWsdlFilename();
+		System.out.println("Generating Inline WSDL file: " + inputFilename);
 		
-		File wsdlFile = new File(outputFilename);
+		File wsdlFile = new File(inputFilename);
 		File basedir = wsdlFile.getParentFile();
 		Document wsdlDoc = builder.parse(wsdlFile);
 		Element wsdl = wsdlDoc.getDocumentElement();
@@ -232,6 +273,12 @@ public class SchemaLoader {
 		IOUtils.write(XmlUtil.node2String(wsdl, true, true), fw, "UTF-8");
 		fw.close();
 		System.out.println("Written new wsdl to " + wsdlOut);
+		
+		return ns2schemaFilesMap;
+	}
+
+	private static String getWsdlFilename() {
+		return "etc/wsdl/"+System.getProperty("WsdlName")+"_"+System.getProperty("VersionDate")+".wsdl";
 	}
 	
 	private static void organizeIncludesAndImports(Element wsdl) {
