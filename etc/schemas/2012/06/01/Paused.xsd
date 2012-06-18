@@ -9,6 +9,14 @@
 	</element>
 	<complexType name="PausedType">
 		<sequence>
+			<choice minOccurs="0">
+				<element name="FromDate" type="date"/>
+				<element name="FromDateTime" type="dateTime"/>
+			</choice>
+			<choice minOccurs="0">
+				<element name="ToDate" type="date"/>
+				<element name="ToDateTime" type="dateTime"/>
+			</choice>		
 			<element name="By" type="medicinecard20120601:ModificatorType"/>
 			<element name="DateTime" type="dateTime"/>
 		</sequence>

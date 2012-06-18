@@ -6,5 +6,16 @@
 			<documentation xml:lang="da-DK">Flag der angiver at lægemiddelordinationen er pauseret</documentation>
 		</annotation>
 	</element>
-	<complexType name="PauseType"/>
+	<complexType name="PauseType">	
+		<sequence>
+			<choice minOccurs="0">
+				<element name="FromDate" type="date"/>
+				<element name="FromDateTime" type="dateTime"/>
+			</choice>
+			<choice minOccurs="0">
+				<element name="ToDate" type="date"/>
+				<element name="ToDateTime" type="dateTime"/>
+			</choice>
+		</sequence>
+	</complexType>
 </schema>

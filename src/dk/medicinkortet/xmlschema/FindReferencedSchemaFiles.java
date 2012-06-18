@@ -44,6 +44,7 @@ public class FindReferencedSchemaFiles {
 		public Element domSchemaNode;
 		
 		private boolean hasBeenAnalyzed = false;
+		public boolean hasBeenCopied = false;
 		
 		public Set<SchemaFile> references = new HashSet<SchemaFile>();
 	}
