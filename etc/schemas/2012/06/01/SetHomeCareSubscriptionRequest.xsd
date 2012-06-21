@@ -3,20 +3,20 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<element name="SetHomecareSubscriptionRequest" type="medicinecard20120601:SetHomecareSubscriptionRequestType">
+	<include schemaLocation="Organisation.xsd"/>
+	<element name="SetHomeCareSubscriptionRequest" type="medicinecard20120601:SetHomeCareSubscriptionRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Indicates that the patient is under home care treatment</documentation>
 			<documentation xml:lang="da-DK">Angiver at patienten er under hjemmesygeplejens behandling</documentation>
 		</annotation>
 	</element>
-	<complexType name="SetHomecareSubscriptionRequestType">
+	<complexType name="SetHomeCareSubscriptionRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
 			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
-			<element name="SetHomecareSubscribtionTo" type="medicinecard20120601:OrganisationIdentifierType"/>
+			<element name="HomecareSubscription" type="medicinecard20120601:OrganisationType"/>
 		</sequence>
 	</complexType>
 </schema>
