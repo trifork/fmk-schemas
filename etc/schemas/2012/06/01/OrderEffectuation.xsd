@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="OrderEffectuationOrPrescriptionMedication.xsd"/>
+	<element name="OrderEffectuation" type="medicinecard20120601:OrderEffectuationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Order for an effectuation on the pharmacy or a new prescription medication to be created by the doctor</documentation>
+			<documentation xml:lang="da-DK">Bestilling for en effektuering på apoteket eller en ny receptordination til oprettelse hos lægen</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderEffectuationType">
+		<sequence>
+			<choice maxOccurs="unbounded">
+				<element name="OrderPrescriptionMedication" type="medicinecard20120601:OrderEffectuationOrPrescriptionMedicationType"/>
+				<element name="OrderEffectuation" type="medicinecard20120601:OrderEffectuationOrPrescriptionMedicationType"/>
+				<element name="OrderPrescriptionMedicationOrEffectuation" type="medicinecard20120601:OrderEffectuationOrPrescriptionMedicationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
