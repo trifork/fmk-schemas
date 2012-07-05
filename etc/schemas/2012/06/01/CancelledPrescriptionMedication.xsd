@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-	xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
-	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionServerError.xsd"/>
 	<element name="CancelledPrescriptionMedication" type="medicinecard20120601:CancelledPrescriptionMedicationType">
@@ -14,7 +11,7 @@
 	<complexType name="CancelledPrescriptionMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType" maxOccurs="unbounded"/>
-			<element name="PrescriptionServerError" type="medicinecard20120601:PrescriptionServerErrorType" maxOccurs="unbounded"/>
+			<element name="PrescriptionServerError" type="medicinecard20120601:PrescriptionServerErrorType"/>
 		</sequence>
 	</complexType>
 </schema>
