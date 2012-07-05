@@ -105,11 +105,11 @@
 	    <xs:include schemaLocation="../schemas/2012/06/01/MarkPrescriptionMedicationDeprecatedRequest.xsd"/>
 	    <xs:include schemaLocation="../schemas/2012/06/01/MarkPrescriptionMedicationDeprecatedResponse.xsd"/>
 
-	    <xs:include schemaLocation="../schemas/2012/01/01/UnmarkPrescriptionMedicationDeprecatedResponse.xsd"/>
-	    <xs:include schemaLocation="../schemas/2012/01/01/UnmarkPrescriptionMedicationDeprecatedRequest.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/06/01/UnmarkPrescriptionMedicationDeprecatedResponse.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/06/01/UnmarkPrescriptionMedicationDeprecatedRequest.xsd"/>
 
-	    <xs:include schemaLocation="../schemas/2012/01/01/CancelPrescriptionMedicationRequest.xsd"/>
-	    <xs:include schemaLocation="../schemas/2012/01/01/CancelPrescriptionMedicationResponse.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/06/01/CancelPrescriptionMedicationRequest.xsd"/>
+	    <xs:include schemaLocation="../schemas/2012/06/01/CancelPrescriptionMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
 
@@ -1003,7 +1003,7 @@
         </wsdl:operation>
 
         <wsdl:operation name="UnWithdrawDrugMedication_2012_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#UpdateDrugMedication"
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UnWithdrawDrugMedication"
                             style="document"/>
             <wsdl:input name="UnWithdrawDrugMedicationRequest_2012_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
@@ -1121,7 +1121,7 @@
                              wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="MarkPrescriptionMedicationDeprecatedReponse_2012_06_01">
+            <wsdl:output name="MarkPrescriptionMedicationDeprecatedResponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
@@ -1142,7 +1142,7 @@
                              wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="UnmarkPrescriptionMedicationDeprecatedReponse_2012_06_01">
+            <wsdl:output name="UnmarkPrescriptionMedicationDeprecatedResponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
@@ -1163,7 +1163,7 @@
                              wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CancelPrescriptionMedicationReponse_2012_06_01">
+            <wsdl:output name="CancelPrescriptionMedicationResponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
