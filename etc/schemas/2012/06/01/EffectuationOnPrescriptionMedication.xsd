@@ -7,7 +7,6 @@
 	<include schemaLocation="EffectuationDateTime.xsd"/>
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
 	<include schemaLocation="EffectuationMethod.xsd"/>
-	<include schemaLocation="IsDoseDispensable.xsd"/>
 	<include schemaLocation="IsEffectuatedAccordingToDrugMedication.xsd"/>
 	<include schemaLocation="ModificatorWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="PackageNumber.xsd"/>
@@ -25,29 +24,10 @@
 			<element name="EffectuationMethod" type="medicinecard20120601:EffectuationMethodType" minOccurs="0"/>
 			<element name="Created" type="medicinecard20120601:CreatedWithoutPersonType"/>
 			<element name="ReportedBy" type="medicinecard20120601:ModificatorWithoutPersonType" minOccurs="0"/>
-			<choice>
-				<sequence>
-					<!-- A drug was effectuated, with the dose and unit below. This overrides whatever is stated as drug and dosage on the prescription or drug medication -->
-					<element name="DoseQuantity" type="medicinecard20120601:DoseQuantityType"/>
-					<element name="DosageQuantityUnitText" type="medicinecard20120601:DosageQuantityUnitTextType"/>
-					<element name="Drug" type="medicinecard20120601:DrugType"/>
-				</sequence>
-				<sequence>
-					<!-- A drug was effectuated, with a drug substituted as below. This overrides whatever is stated as drug on the prescription or drug medication -->
-					<element name="Drug" type="medicinecard20120601:DrugType"/>
-				</sequence>
-				<sequence>
-					<!-- A drug was effectuated, one or more packages was given to the patient -->
-					<element name="PackageQuantity" type="medicinecard20120601:PackageQuantityType" minOccurs="0"/>
-					<element name="PackageNumber" type="medicinecard20120601:PackageNumberType"/>
-					<element name="PackageSize" type="medicinecard20120601:PackageSizeType" minOccurs="0"/>
-					<!-- TODO Skal dose dispensable være her? -->
-					<element name="IsDoseDispensable" type="medicinecard20120601:IsDoseDispensableType" minOccurs="0"/>
-					<element name="Drug" type="medicinecard20120601:DrugType" minOccurs="0"/>
-				</sequence>
-				<!-- A drug was effectuated, the drug and dosage was given as stated on the drug medication -->
-				<element name="IsEffectuatedAccordingToDrugMedication" type="medicinecard20120601:IsEffectuatedAccordingToDrugMedicationType"/>
-			</choice>
+			<element name="PackageQuantity" type="medicinecard20120601:PackageQuantityType" minOccurs="0"/>
+			<element name="PackageNumber" type="medicinecard20120601:PackageNumberType"/>
+			<element name="PackageSize" type="medicinecard20120601:PackageSizeType" minOccurs="0"/>
+			<element name="Drug" type="medicinecard20120601:DrugType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
