@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="CreatedWithoutPerson.xsd"/>
 	<include schemaLocation="DosageQuantityUnitText.xsd"/>
 	<include schemaLocation="DoseQuantity.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
@@ -9,23 +9,22 @@
 	<include schemaLocation="EffectuationMethod.xsd"/>
 	<include schemaLocation="IsDoseDispensable.xsd"/>
 	<include schemaLocation="IsEffectuatedAccordingToDrugMedication.xsd"/>
-	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ModificatorWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="PackageNumber.xsd"/>
 	<include schemaLocation="PackageSize.xsd"/>
 	<include schemaLocation="PackageQuantity.xsd"/>
-	<element name="Effectuation" type="medicinecard20120601:EffectuationType">
+	<element name="EffectuationOnPrescriptionMedication" type="medicinecard20120601:EffectuationOnPrescriptionMedicationType">
 		<annotation>
-			<documentation xml:lang="en-GB">The actual effectuation of the drug medication. It could be to administer the drug into the patient or that a doctor hands medication out to the patient</documentation>
-			<documentation xml:lang="da-DK">Den faktiske udførelse af lægemiddelordination. Det kan f.eks. være at indgive medicin i patienten, eller at en læge eller apoteket udleverer medicin til patienten</documentation>
+			<documentation xml:lang="en-GB">An effectuation on the prescription medication. It has been created by the pharamacy, so there is no doctor element. The possibilities for how the effectuation is done is limited, there is always effectuated one or more packages.</documentation>
 		</annotation>
 	</element>
-	<complexType name="EffectuationType">
+	<complexType name="EffectuationOnPrescriptionMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20120601:EffectuationIdentifierType"/>
 			<element name="DateTime" type="medicinecard20120601:EffectuationDateTimeType"/>
 			<element name="EffectuationMethod" type="medicinecard20120601:EffectuationMethodType" minOccurs="0"/>
-			<element name="Created" type="medicinecard20120601:CreatedType"/>
-			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20120601:CreatedWithoutPersonType"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorWithoutPersonType" minOccurs="0"/>
 			<choice>
 				<sequence>
 					<!-- A drug was effectuated, with the dose and unit below. This overrides whatever is stated as drug and dosage on the prescription or drug medication -->
