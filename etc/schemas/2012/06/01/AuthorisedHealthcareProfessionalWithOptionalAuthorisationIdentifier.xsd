@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="AuthorisationIdentifier.xsd"/>
-	<include schemaLocation="DoctorName.xsd"/>
+	<include schemaLocation="AuthorisedHealthcareProfessionalName.xsd"/>
 	<include schemaLocation="SpecialityCode.xsd"/>
-	<element name="DoctorWithOptionalAuthorisationIdentifier" type="medicinecard20120601:DoctorWithOptionalAuthorisationIdentifierType">
+	<element name="AuthorisedHealthcareProfessionalWithOptionalAuthorisationIdentifier" type="medicinecard20120601:AuthorisedHealthcareProfessionalWithOptionalAuthorisationIdentifierType">
 		<annotation>
-			<documentation xml:lang="en-GB">Contains authorisation number and name of a doctor</documentation>
-			<documentation xml:lang="da-DK">Indeholder autorsationsnummer og navn på en læge</documentation>
+			<documentation xml:lang="en-GB">Contains authorisation number and name of an authorised healthchare professional</documentation>
+			<documentation xml:lang="da-DK">Indeholder autorsationsnummer og navn på en autoriseret sundhedsperson</documentation>
 		</annotation>
 	</element>
-	<complexType name="DoctorWithOptionalAuthorisationIdentifierType">
+	<complexType name="AuthorisedHealthcareProfessionalWithOptionalAuthorisationIdentifierType">
 		<sequence>
 			<element name="AuthorisationIdentifier" type="medicinecard20120601:AuthorisationIdentifierType" minOccurs="0"/>
-			<element name="Name" type="medicinecard20120601:DoctorNameType"/>
+			<element name="Name" type="medicinecard20120601:AuthorisedHealthcareProfessionalNameType"/>
 			<element name="SpecialityCode" type="medicinecard20120601:SpecialityCodeType" minOccurs="0"/>
 		</sequence>
 	</complexType>

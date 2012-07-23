@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="DoctorWithOptionalAuthorisationIdentifier.xsd"/>
+	<include schemaLocation="AuthorisedHealthcareProfessionalWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PatientFlag.xsd"/>
 	<include schemaLocation="RequestedRole.xsd"/>
@@ -15,7 +15,7 @@
 		<sequence>
 			<choice>
 				<sequence>
-					<element name="Doctor" type="medicinecard20120601:DoctorWithOptionalAuthorisationIdentifierType"/>
+					<element name="AuthorisedHealthcareProfessional" type="medicinecard20120601:AuthorisedHealthcareProfessionalWithOptionalAuthorisationIdentifierType"/>
 					<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
 				</sequence>
 				<element name="Patient" type="medicinecard20120601:PatientFlagType"/>
