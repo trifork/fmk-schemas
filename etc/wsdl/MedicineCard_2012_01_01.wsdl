@@ -695,7 +695,7 @@
 
 		<wsdl:operation name="UpdateMedicineCard_20120101">
 			<wsdl:input name="UpdateMedicineCardRequest_20120101" message="tns:UpdateMedicineCardRequest_20120101"/>
-			<wsdl:output name="UpdateMedicineCardResponse_20120101" message="tns:UpdateMedicineCardResponse"/>
+			<wsdl:output name="UpdateMedicineCardResponse_20120101" message="tns:UpdateMedicineCardResponse_20120101"/>
 			<wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
 		</wsdl:operation>
 
@@ -1411,6 +1411,30 @@
 			</wsdl:output>
 			<wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/> </wsdl:fault>
 		</wsdl:operation>
+		
+		<wsdl:operation name="UpdateMedicineCard_20120101">
+			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#UpdateMedicineCard" style="document"/>
+			<wsdl:input name="UpdateMedicineCardRequest_20120101">
+				<soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+				<soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/> 
+				<soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/> 
+				<soap:header use="literal" part="SDSDSystemOwnerName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDSystemName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDSystemVersion" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDOrgResponsibleName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDOrgUsingName" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDOrgUsingID" message="tns:SDSDSystemHeader" wsdl:required="true"/> 
+				<soap:header use="literal" part="SDSDRequestedRole" message="tns:SDSDRequestedRole"/> 
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="UpdateMedicineCardResponse_20120101">
+				<soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+				<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/> </wsdl:fault>
+		</wsdl:operation>
+		
 
 		<wsdl:operation name="UnWithdrawDrugMedication_20120101">
 			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#UnWithdrawDrugMedication" style="document"/>
@@ -1475,7 +1499,7 @@
 		</wsdl:operation>
 
 		<wsdl:operation name="GetMedicineCard_20120101">
-			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01#GetMedicineCard" style="document"/>
+			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#GetMedicineCard" style="document"/>
 			<wsdl:input name="MedicineCardRequest_20120101">
 				<soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
 				<soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/> 
@@ -1521,7 +1545,7 @@
 		</wsdl:operation>
 
 		<wsdl:operation name="GetPrescriptionMedication_20120101">
-			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2011/01/01#GetPrescriptionMedication" style="document"/>
+			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/01/01#GetPrescriptionMedication" style="document"/>
 			<wsdl:input name="PrescriptionMedicationRequest_20120101">
 				<soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
 				<soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/> 
