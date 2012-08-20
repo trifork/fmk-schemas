@@ -78,10 +78,12 @@ public class SchemaLoader {
 		File outputDir = new File("target/wsdl/"+System.getProperty("WsdlName")+"_"+System.getProperty("VersionDate"));
 		outputDir.mkdirs();
 		
+		File schemadir = new File(outputDir.getAbsolutePath() + "/schemas");
+		
 		copyFileAndRemoveBOM(new File(getWsdlFilename()), outputDir);
 		
 		for (Set<SchemaFile> schemaFilesSet : schemaFilesCollection) {
-			copySchemaFileSet(schemaFilesSet, outputDir);
+			copySchemaFileSet(schemaFilesSet, schemadir);
 		}
 	}
 	
