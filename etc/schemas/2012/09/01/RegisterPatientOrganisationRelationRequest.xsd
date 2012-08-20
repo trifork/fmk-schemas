@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20120901="http://www.dkma.dk/medicinecard/xml.schema/2012/09/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/09/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../06/01/PersonIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../06/01/Modificator.xsd"/>
+	<include schemaLocation="RegisterPatientOrganisationRelation.xsd"/>
+	<element name="RegisterPatientOrganisationRelationRequest" type="medicinecard20120901:RegisterPatientOrganisationRelationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document to register at relation between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Request-dokument for at registrere en relation mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="RegisterPatientOrganisationRelationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="Relation" type="medicinecard20120901:RegisterPatientOrganisationRelationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
