@@ -39,6 +39,18 @@
 	
 	<target name="organize-schemas" depends="compile" >
 		<mkdir dir="target/wsdl" />
+		
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+			<classpath>
+				<path location="${build.dir}"/>
+				<fileset dir="lib/build" excludes="*gwt*"/>
+			</classpath>
+			<sysproperty key="VersionDate" value="2012_09_01"/>
+			<sysproperty key="WsdlName" value="PatientOrganisationRelation"/>
+		</java>
+		<zip destfile="target/wsdl/PatientOrganisationRelation_2012_09_01-collection.zip" 
+			  basedir="target/wsdl/PatientOrganisationRelation_2012_09_01"/>
+		
         <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
             <classpath>
                 <path location="${build.dir}"/>
@@ -78,7 +90,7 @@
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
 		<zip destfile="target/wsdl/MedicineCard_2009_01_01-collection.zip" basedir="target/wsdl/MedicineCard_2009_01_01"/>
-
+		
 		<copy todir="target">
 			<fileset dir="target/gensrc/META-INF" includes="schemas/**"/>
 		</copy>
