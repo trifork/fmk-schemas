@@ -35,6 +35,8 @@
 
 			<xs:include schemaLocation="../schemas/2012/09/01/RemovePatientOrganisationRelationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/09/01/RemovePatientOrganisationRelationResponse.xsd"/>
+			
+			<xs:include schemaLocation="../schemas/2012/06/01/OnBehalfOf.xsd"/>
         </xs:schema>
     </wsdl:types>
 
@@ -52,6 +54,10 @@
 
     <wsdl:message name="TimingHeader">
         <wsdl:part name="TimingHeader" element="medicinecard20120601:TimingList"/>
+    </wsdl:message>
+    
+   <wsdl:message name="OnBehalfOfHeader">
+        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20120601:OnBehalfOf"/>
     </wsdl:message>
 
     <wsdl:message name="GetPatientOrganisationRelationRequest_2012_09_01">
@@ -123,6 +129,7 @@
                     name="GetPatientOrganisationRelationRequest_2012_09_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -142,6 +149,7 @@
                     name="RegisterPatientOrganisationRelationRequest_2012_09_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -161,6 +169,7 @@
                     name="RemovePatientOrganisationRelationRequest_2012_09_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
