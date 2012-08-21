@@ -122,13 +122,9 @@ public class NamespaceOracleGenerator {
 						}
 					} else {
 						if (prefix1 == null && element.getNamespace() != null) {
-							System.out.println("!!!!!!!!!! " + element.getNamespace());
-							System.out.println(element.getFilename());
 							namespacesWithNoCanonicalPrefix.add(element.getNamespace());
 						}
 						if (prefix2 == null && elm2.getNamespace() != null) {
-							System.out.println("########## " + elm2.getNamespace());
-							System.out.println(elm2.getFilename());
 							namespacesWithNoCanonicalPrefix.add(elm2.getNamespace());
 						}
 					}
