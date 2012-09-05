@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionServerError.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="PrescriptionMedicationDateTime.xsd"/>
+	<element name="GetMedicineCardVersionUsingPatientOrganisationRelationResponse" type="medicinecard20120601:GetMedicineCardVersionUsingPatientOrganisationRelationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document for a query for medicine card versions using relations between patients and organisations</documentation>
+			<documentation xml:lang="da-DK">Response-dokument returneret ved  opslag på medicinkortversioner ved anvendelse af relationer mellem patienter og organisationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetMedicineCardVersionUsingPatientOrganisationRelationResponseType">
+		<sequence>
+			<element name="MedicineCard" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+						<element name="Version" type="medicinecard20120601:MedicineCardVersionType"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
