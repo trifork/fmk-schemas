@@ -3,9 +3,9 @@
 	<include schemaLocation="Delivery.xsd"/>
 	<include schemaLocation="DeliveryInformation.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
-	<include schemaLocation="EffectuationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
+	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<element name="OrderedEffectuationDetails" type="medicinecard20120601:OrderedEffectuationDetailsType">
@@ -26,8 +26,8 @@
 			</choice>
 			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
 			<element name="OrderedDate" type="dateTime"/>
-			<element name="ExistingPrescriptionMedicationIdentifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType"/>			
-			<element name="OrderedEffectuationIdentifier" type="medicinecard20120601:EffectuationIdentifierType" minOccurs="0"/>
+			<element name="ExistingPrescriptionMedicationIdentifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType"/>
+			<element name="OrderedEffectuationIdentifier" type="medicinecard20120601:OrderedEffectuationIdentifierType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
