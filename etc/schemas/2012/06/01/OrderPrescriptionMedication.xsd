@@ -7,17 +7,18 @@
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
-	<element name="OrderEffectuation" type="medicinecard20120601:OrderEffectuationType">
+	<element name="OrderPrescriptionMedication" type="medicinecard20120601:OrderPrescriptionMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Order for a new effectuation on the pharmacy or prescription medication to be created by the doctor</documentation>
 			<documentation xml:lang="da-DK">Bestilling for en en ny effektuering på apoteket eller receptordination til oprettelse hos lægen</documentation>
 		</annotation>
 	</element>
-	<complexType name="OrderEffectuationType">
+	<complexType name="OrderPrescriptionMedicationType">
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
 			<element name="PrescriptionMedicationIdentifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType" minOccurs="0"/>
 			<element name="OrderedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="PrescribingOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="EffectuatingOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
 			<choice minOccurs="0" maxOccurs="3">
 				<element name="DeliveryInformation" type="medicinecard20120601:DeliveryInformationType"/>

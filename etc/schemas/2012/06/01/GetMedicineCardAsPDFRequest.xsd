@@ -4,6 +4,7 @@
 	<include schemaLocation="IncludeNonRelevantPrescriptionMedications.xsd"/>
 	<include schemaLocation="IncludePrescriptionMedications.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="ModifiedDateTime.xsd"/>	
 	<include schemaLocation="NegativeConsentRequest.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="PrintType.xsd"/>
@@ -18,7 +19,7 @@
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="Version" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrintType" type="medicinecard20120601:PrintTypeType"/>
-			<element name="DateTime" type="dateTime" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DateTime" type="medicinecard20120601:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="NegativeConsent" type="medicinecard20120601:NegativeConsentRequestType" minOccurs="0"/>
 		</sequence>
 	</complexType>

@@ -3,7 +3,9 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="OrderEffectuation.xsd"/>
 	<include schemaLocation="OrderEffectuationOrPrescriptionMedication.xsd"/>
+	<include schemaLocation="OrderPrescriptionMedication.xsd"/>
 	<element name="OrderEffectuationRequest" type="medicinecard20120601:OrderEffectuationRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document containing one or more documents for reordering prescription medications from drug medications</documentation>
@@ -17,8 +19,8 @@
 			<element name="OrderedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<choice maxOccurs="unbounded">
-				<element name="OrderPrescriptionMedication" type="medicinecard20120601:OrderEffectuationOrPrescriptionMedicationType"/>
-				<element name="OrderEffectuation" type="medicinecard20120601:OrderEffectuationOrPrescriptionMedicationType"/>
+				<element name="OrderPrescriptionMedication" type="medicinecard20120601:OrderPrescriptionMedicationType"/>
+				<element name="OrderEffectuation" type="medicinecard20120601:OrderEffectuationType"/>
 				<element name="OrderPrescriptionMedicationOrEffectuation" type="medicinecard20120601:OrderEffectuationOrPrescriptionMedicationType"/>
 			</choice>
 		</sequence>

@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="IncludeOrderedEffectuations.xsd"/>
 	<include schemaLocation="IncludeOrderedPrescriptionMedications.xsd"/>
+	<include schemaLocation="OrderedDateTime.xsd"/>
 	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
 	<include schemaLocation="OrderEffectuationOrPrescriptionMedication.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
@@ -14,8 +15,8 @@
 	<complexType name="GetOrderedEffectuationsRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
-			<element name="FromDateTime" type="dateTime" minOccurs="0"/>
-			<element name="ToDateTime" type="dateTime" minOccurs="0"/>
+			<element name="FromDateTime" type="medicinecard20120601:OrderedDateTimeType" minOccurs="0"/>
+			<element name="ToDateTime" type="medicinecard20120601:OrderedDateTimeType" minOccurs="0"/>
 			<element name="IncludeOrderedPrescriptionMedications" type="medicinecard20120601:IncludeOrderedPrescriptionMedicationsType" minOccurs="0"/>
 			<element name="IncludeOrderedEffectuations" type="medicinecard20120601:IncludeOrderedEffectuationsType" minOccurs="0"/>
 			<choice minOccurs="0">

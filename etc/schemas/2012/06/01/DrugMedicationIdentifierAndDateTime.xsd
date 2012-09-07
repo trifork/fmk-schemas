@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersion.xsd"/>
+	<include schemaLocation="ModifiedDateTime.xsd"/>	
 	<element name="DrugMedicationIdentifierAndDateTime" type="medicinecard20120601:DrugMedicationIdentifierAndDateTimeType">
 		<annotation>
 			<documentation xml:lang="en-GB">Contains ID and version number for a drug medication</documentation>
@@ -11,7 +12,7 @@
 	<complexType name="DrugMedicationIdentifierAndDateTimeType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
-			<element name="DateTime" type="dateTime"/>
+			<element name="DateTime" type="medicinecard20120601:ModifiedDateTimeType"/>
 		</sequence>
 	</complexType>
 </schema>

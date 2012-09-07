@@ -2,6 +2,8 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DosageCode.xsd"/>
 	<include schemaLocation="DosageText.xsd"/>
+	<include schemaLocation="DoseDispensingEndDate.xsd"/>
+	<include schemaLocation="DoseDispensingStartDate.xsd"/>
 	<include schemaLocation="CopyRequired.xsd"/>
 	<include schemaLocation="PackageNumber.xsd"/>
 	<element name="DoseDispensedPrescriptionDispensing" type="medicinecard20120601:DoseDispensedPrescriptionDispensingType">
@@ -16,8 +18,8 @@
 			<element name="CopyRequired" type="medicinecard20120601:CopyRequiredType"/>
 			<element name="DosageCode" type="medicinecard20120601:DosageCodeType" minOccurs="0"/>
 			<element name="DosageText" type="medicinecard20120601:DosageTextType"/>
-			<element name="StartDate" type="date" minOccurs="0"/>
-			<element name="EndDate" type="date" minOccurs="0"/>
+			<element name="StartDate" type="medicinecard20120601:DoseDispensingStartDateType" minOccurs="0"/>
+			<element name="EndDate" type="medicinecard20120601:DoseDispensingEndDateType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
