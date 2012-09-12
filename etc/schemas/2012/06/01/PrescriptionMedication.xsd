@@ -10,6 +10,7 @@
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="LatestEffectuationDateTime.xsd"/>
 	<include schemaLocation="ModificatorWithOptionalAuthorisationIdentifier.xsd"/>
+	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="DeprecatedDateTime.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
@@ -30,6 +31,7 @@
 	<complexType name="PrescriptionMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType"/>
+			<element name="OrderedEffectuationIdentifier" type="medicinecard20120601:OrderedEffectuationIdentifierType" minOccurs="0"/>
 			<element name="AuthorisationDateTime" type="medicinecard20120601:AuthorisationDateTimeType"/>
 			<element name="Created" type="medicinecard20120601:CreatedWithOptionalAuthorisationIdentifierType"/>
 			<element name="LatestEffectuationDateTime" type="medicinecard20120601:LatestEffectuationDateTimeType" minOccurs="0"/>
