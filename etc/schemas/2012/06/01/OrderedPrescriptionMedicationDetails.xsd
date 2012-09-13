@@ -8,7 +8,9 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="OrderedDateTime.xsd"/>
+	<include schemaLocation="OrderedPrescriptionMedicationIdentifier.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="OrganisationNotifiable.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<element name="OrderedPrescriptionMedicationDetails" type="medicinecard20120601:OrderedPrescriptionMedicationDetailsType">
 		<annotation>
@@ -18,9 +20,11 @@
 	</element>
 	<complexType name="OrderedPrescriptionMedicationDetailsType">
 		<sequence>
+			<element name="Identifier" type="medicinecard20120601:OrderedPrescriptionMedicationIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
 			<element name="OrderedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
-			<element name="ReceiverOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
+			<element name="PrescribingOrganisation" type="medicinecard20120601:OrganisationNotifiableType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="EffectuatingOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
 			<choice minOccurs="0" maxOccurs="3">
 				<element name="DeliveryInformation" type="medicinecard20120601:DeliveryInformationType"/>
 				<element name="OrderInstruction" type="medicinecard20120601:OrderInstructionType"/>
