@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
 	<element name="RemovePatientOrganisationRelation" type="medicinecard20120601:RemovePatientOrganisationRelationType">
@@ -11,6 +12,7 @@
 	<complexType name="RemovePatientOrganisationRelationType">
 		<sequence>
 			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>			
 			<element name="Identifier" type="medicinecard20120601:PatientOrganisationRelationIdentifierType"/>
 		</sequence>
 	</complexType>

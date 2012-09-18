@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<attribute name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType">
+		<annotation>
+			<documentation xml:lang="en-GB">Modification medtadata</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="ModificationMetadataType">
+		<union memberTypes="medicinecard20120601:PredefinedModificationMetadataType medicinecard20120601:BaseModificationMetadataType"/>
+	</simpleType>
+	<simpleType name="PredefinedModificationMetadataType">
+		<restriction base="medicinecard20120601:BaseModificationMetadataType">
+			<enumeration value="Override clinical validation"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="BaseModificationMetadataType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

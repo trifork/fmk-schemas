@@ -7,6 +7,8 @@
 	<include schemaLocation="Delivery.xsd"/>
 	<include schemaLocation="DeliveryInformation.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>	
+	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
@@ -21,6 +23,8 @@
 	</element>
 	<complexType name="UnattachedPrescriptionMedicationType">
 		<sequence>
+			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>			
 			<element name="AuthorisationDateTime" type="medicinecard20120601:AuthorisationDateTimeType"/>
 			<element name="ReceiverOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
 			<element name="SystemName" type="medicinecard20120601:SystemNameType"/>
