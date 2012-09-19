@@ -20,8 +20,6 @@
 			<xs:include schemaLocation="../schemas/2012/06/01/RegisterPatientOrganisationRelationResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/06/01/RemovePatientOrganisationRelationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/06/01/RemovePatientOrganisationRelationResponse.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardVersionUsingPatientOrganisationRelationRequest.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardVersionUsingPatientOrganisationRelationResponse.xsd"/>
 		</xs:schema>
 	</wsdl:types>
 	<wsdl:message name="SecurityHeader">
@@ -57,12 +55,6 @@
 	<wsdl:message name="RemovePatientOrganisationRelationResponse_2012_06_01">
 		<wsdl:part name="RemovePatientOrganisationRelationResponse" element="medicinecard20120601:RemovePatientOrganisationRelationResponse"/>
 	</wsdl:message>
-	<wsdl:message name="GetMedicineCardVersionUsingPatientOrganisationRelationRequest_2012_06_01">
-		<wsdl:part name="GetMedicineCardVersionUsingPatientOrganisationRelationRequest" element="medicinecard20120601:GetMedicineCardVersionUsingPatientOrganisationRelationRequest"/>
-	</wsdl:message>
-	<wsdl:message name="GetMedicineCardVersionUsingPatientOrganisationRelationResponse_2012_06_01">
-		<wsdl:part name="GetMedicineCardVersionUsingPatientOrganisationRelationResponse" element="medicinecard20120601:GetMedicineCardVersionUsingPatientOrganisationRelationResponse"/>
-	</wsdl:message>
 	<wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode"/>
 	</wsdl:message>
@@ -80,11 +72,6 @@
 		<wsdl:operation name="RemovePatientOrganisationRelation_2012_06_01">
 			<wsdl:input name="RemovePatientOrganisationRelationRequest_2012_06_01" message="medicinecard20120601:RemovePatientOrganisationRelationRequest_2012_06_01"/>
 			<wsdl:output name="RemovePatientOrganisationRelationResponse_2012_06_01" message="medicinecard20120601:RemovePatientOrganisationRelationResponse_2012_06_01"/>
-			<wsdl:fault name="DGWSFault" message="medicinecard20120601:DGWSFault"/>
-		</wsdl:operation>
-		<wsdl:operation name="GetMedicineCardVersionUsingPatientOrganisationRelation_2012_06_01">
-			<wsdl:input name="GetMedicineCardVersionUsingPatientOrganisationRelationRequest_2012_06_01" message="medicinecard20120601:GetMedicineCardVersionUsingPatientOrganisationRelationRequest_2012_06_01"/>
-			<wsdl:output name="GetMedicineCardVersionUsingPatientOrganisationRelationResponse_2012_06_01" message="medicinecard20120601:GetMedicineCardVersionUsingPatientOrganisationRelationResponse_2012_06_01"/>
 			<wsdl:fault name="DGWSFault" message="medicinecard20120601:DGWSFault"/>
 		</wsdl:operation>
 	</wsdl:portType>
@@ -134,23 +121,6 @@
 				<soap:body use="literal"/>
 			</wsdl:input>
 			<wsdl:output name="RemovePatientOrganisationRelationResponse_2012_06_01">
-				<soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
-				<soap:body use="literal"/>
-			</wsdl:output>
-			<wsdl:fault name="DGWSFault">
-				<soap:fault name="DGWSFault" use="literal"/>
-			</wsdl:fault>
-		</wsdl:operation>
-				<wsdl:operation name="GetMedicineCardVersionUsingPatientOrganisationRelation_2012_06_01">
-			<soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetMedicineCardVersionUsingPatientOrganisationRelation" style="document"/>
-			<wsdl:input name="GetMedicineCardVersionUsingPatientOrganisationRelationRequest_2012_06_01">
-				<soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
-				<soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
-				<soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
-				<soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
-				<soap:body use="literal"/>
-			</wsdl:input>
-			<wsdl:output name="GetMedicineCardVersionUsingPatientOrganisationRelationResponse_2012_06_01">
 				<soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
 				<soap:body use="literal"/>
 			</wsdl:output>
