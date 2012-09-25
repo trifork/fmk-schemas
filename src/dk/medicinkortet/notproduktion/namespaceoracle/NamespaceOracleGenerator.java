@@ -173,7 +173,7 @@ public class NamespaceOracleGenerator {
 		private Stack<XsdType> typeUnderDefinitionStack = new Stack<XsdType>();
 		private Stack<XsdElement> elementUnderDefinitionStack = new Stack<XsdElement>();
 
-		private com.trifork.xmlquery.Namespaces localNamespaces = new com.trifork.xmlquery.Namespaces();
+		private com.trifork.xmlquery.Namespaces localNamespaces = FmkNamespaces.getNamespaces();
 		private String targetNamespace;
 		private final File file;
 		
