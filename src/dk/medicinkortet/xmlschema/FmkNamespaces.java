@@ -11,6 +11,7 @@ public class FmkNamespaces {
 		namespaces.addNamespace("mc2010", "http://www.dkma.dk/medicinecard/xml.schema/2010/06/01");
 		namespaces.addNamespace("mc2011", "http://www.dkma.dk/medicinecard/xml.schema/2011/01/01");
 		namespaces.addNamespace("mc2012", "http://www.dkma.dk/medicinecard/xml.schema/2012/01/01");
+		namespaces.addNamespace("medicinecard20120601", "http://www.dkma.dk/medicinecard/xml.schema/2012/06/01");
 		namespaces.addNamespace("medicinecard20120901", "http://www.dkma.dk/medicinecard/xml.schema/2012/09/01");
 		namespaces.addNamespace("cpr", "http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/");
 		namespaces.addNamespace("cpr2002", "http://rep.oio.dk/cpr.dk/xml/schemas/core/2002/06/28/");
@@ -33,7 +34,7 @@ public class FmkNamespaces {
 		namespaces.addNamespace("sdsd", "http://www.sdsd.dk/dgws/2010/08");
 		namespaces.addNamespace("sdsd201206", "http://www.sdsd.dk/dgws/2012/06");
 		namespaces.addNamespace("topic20130101", "http://nsi.dk/topic/xml.schema/2013/01/01");
-		
+		namespaces.addNamespace("reimbursement20121201", "http://nsi.dk/reimbursement/xml.schema/2012/12/01");
 		namespaces.addNamespace("saml", "urn:oasis:names:tc:SAML:2.0:assertion");
 		namespaces.addNamespace("wsse", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd");
 		namespaces.addNamespace("wsu", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd");

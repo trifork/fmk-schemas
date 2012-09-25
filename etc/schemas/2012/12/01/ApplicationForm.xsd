@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:reimbursement20121201="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	targetNamespace="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ApplicationFormKeyValuePair.xsd" />
+	<element name="ApplicationForm" type="reimbursement20121201:ApplicationFormType">
+		<annotation>
+			<documentation xml:lang="en-GB"></documentation>
+			<documentation xml:lang="da-DK"></documentation>
+		</annotation>
+	</element>
+	<complexType name="ApplicationFormType">
+		<sequence>
+			<element name="ApplicationFormKeyValuePair" type="reimbursement20121201:ApplicationFormKeyValuePairType" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+</schema>
