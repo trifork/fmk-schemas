@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:reimbursement20121201="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	targetNamespace="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Source.xsd"/>
+	<element name="OrganisationIdentifier" type="reimbursement20121201:OrganisationIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Number or code identifying an organisation</documentation>
+			<documentation xml:lang="da-DK">Nummer eller kode der identificerer en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrganisationIdentifierType">
+		<simpleContent>
+			<extension base="reimbursement20121201:OrganisationIdentifierValueType">
+				<attribute name="source" type="reimbursement20121201:OrganisationIdentifierSourceType" use="required"/>
+							</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="OrganisationIdentifierValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="OrganisationIdentifierSourceType">
+		<union memberTypes="reimbursement20121201:OrganisationIdentifierPredefinedSourceType reimbursement20121201:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="OrganisationIdentifierPredefinedSourceType">
+		<restriction base="reimbursement20121201:UndefinedSourceType">
+			<enumeration value="SKS"/>
+			<enumeration value="Yder"/>
+			<enumeration value="EAN-Lokationsnummer"/>
+			<enumeration value="CVR"/>
+			<enumeration value="CVR-P"/>
+			<enumeration value="Kommunekode"/>
+		</restriction>
+	</simpleType>
+</schema>

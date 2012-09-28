@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20080601="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugStrengthValue.xsd"/>
+	<include schemaLocation="DrugStrengthUnitText.xsd"/>
+	<include schemaLocation="DrugStrengthText.xsd"/>
+	<include schemaLocation="DrugStrengthUnitCode.xsd"/>
+	<element name="DrugStrength" type="medicinecard20120601:DrugStrengthType">
+		<annotation>
+			<documentation xml:lang="en-GB">Unit for drug strength, code (LMS15 field 2)</documentation>
+			<documentation xml:lang="da-DK">Enhed for lægemiddelstyrke, kode (LMS15 felt 2)</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugStrengthType">
+		<choice>
+			<sequence>
+				<element name="Value" type="medicinecard20120601:DrugStrengthValueType"/>
+				<element name="UnitCode" type="medicinecard20120601:DrugStrengthUnitCodeType"/>
+				<element name="UnitText" type="medicinecard20120601:DrugStrengthUnitTextType"/>
+			</sequence>
+			<element name="Text" type="medicinecard20120601:DrugStrengthTextType"/>
+		</choice>
+	</complexType>
+</schema>

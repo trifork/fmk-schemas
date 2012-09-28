@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:reimbursement20121201="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	targetNamespace="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonGivenName.xsd"/>
+	<include schemaLocation="PersonMiddleName.xsd"/>
+	<include schemaLocation="PersonSurname.xsd"/>
+	<element name="PersonName" type="reimbursement20121201:PersonNameType"/>
+	<complexType name="PersonNameType">
+		<sequence>
+			<element name="GivenName" type="reimbursement20121201:PersonGivenNameType"/>
+			<element name="MiddleName" type="reimbursement20121201:PersonMiddleNameType" minOccurs="0"/>
+			<element name="Surname" type="reimbursement20121201:PersonSurnameType"/>
+		</sequence>
+	</complexType>
+</schema>

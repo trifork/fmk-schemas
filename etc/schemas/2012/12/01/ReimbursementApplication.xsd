@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:reimbursement20121201="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	targetNamespace="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="EmailAddress.xsd" />
+	<include schemaLocation="PersonIdentifier.xsd" />
+	<include schemaLocation="ReimbursementType.xsd" />
+	<include schemaLocation="ApplicationForm.xsd" />
+	<include schemaLocation="Attachment.xsd" />
+	<element name="ReimbursementApplication"
+		type="reimbursement20121201:ReimbursementApplicationType">
+		<annotation>
+			<documentation xml:lang="en-GB"></documentation>
+			<documentation xml:lang="da-DK"></documentation>
+		</annotation>
+	</element>
+	<complexType name="ReimbursementApplicationType">
+		<sequence>
+			<element name="DoctorEmailAddressForUpdates" type="reimbursement20121201:EmailAddressType"
+				minOccurs="0" />
+			<element name="PersonIdentifier" type="reimbursement20121201:PersonIdentifierType" />
+			<element name="ReimbursementType" type="reimbursement20121201:ReimbursementTypeType" />
+			<element name="ApplicationForm" type="reimbursement20121201:ApplicationFormType" />
+			<element name="Drug" type="reimbursement20121201:DrugType" />
+			<element name="RouteOfAdministration" type="reimbursement20121201:RouteOfAdministrationType" />
+			<element name="Attachment" type="reimbursement20121201:AttachmentType" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+</schema>
+
