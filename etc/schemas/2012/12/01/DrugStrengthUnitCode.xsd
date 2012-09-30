@@ -6,31 +6,31 @@
 	<include schemaLocation="Source.xsd"/>
 	<include schemaLocation="SourceDate.xsd"/>
 	<include schemaLocation="SourceYearAndWeek.xsd"/>
-	<element name="DrugFormCode" type="reimbursement20121201:DrugFormCodeType">
+	<element name="DrugStrengthUnitCode" type="reimbursement20121201:DrugStrengthUnitCodeType">
 		<annotation>
-			<documentation xml:lang="en-GB">Code for drug form. Source: LMS22 field 1</documentation>
-			<documentation xml:lang="da-DK">Kode for lægemiddelform. Kilde: LMS22 felt 1</documentation>
+			<documentation xml:lang="en-GB">Unit for drug strength, code (LMS15 field 2)</documentation>
+			<documentation xml:lang="da-DK">Enhed for lægemiddelstyrke, kode (LMS15 felt 2)</documentation>
 		</annotation>
 	</element>
-	<complexType name="DrugFormCodeType">
+	<complexType name="DrugStrengthUnitCodeType">
 		<simpleContent>
-			<extension base="reimbursement20121201:DrugFormCodeValueType">
-				<attribute name="source" type="reimbursement20121201:DrugFormCodeSourceType" use="required"/>
+			<extension base="reimbursement20121201:DrugStrengthUnitCodeValueType">
+				<attribute name="source" type="reimbursement20121201:DrugStrengthUnitCodeSourceType" use="required"/>
 				<attribute name="date" type="reimbursement20121201:SourceDateType" use="optional"/>
 				<attribute name="yearAndWeek" type="reimbursement20121201:SourceYearAndWeekType" use="optional"/>
 			</extension>
 		</simpleContent>
 	</complexType>
-	<simpleType name="DrugFormCodeValueType">
+	<simpleType name="DrugStrengthUnitCodeValueType">
 		<restriction base="string">
 			<minLength value="1"/>
-			<maxLength value="7"/>
+			<maxLength value="3"/>
 		</restriction>
 	</simpleType>
-	<simpleType name="DrugFormCodeSourceType">
-		<union memberTypes="reimbursement20121201:DrugFormCodePredefinedSourceType reimbursement20121201:UndefinedSourceType"/>
+	<simpleType name="DrugStrengthUnitCodeSourceType">
+		<union memberTypes="reimbursement20121201:DrugStrengthUnitCodePredefinedSourceType reimbursement20121201:UndefinedSourceType"/>
 	</simpleType>
-	<simpleType name="DrugFormCodePredefinedSourceType">
+	<simpleType name="DrugStrengthUnitCodePredefinedSourceType">
 		<restriction base="reimbursement20121201:UndefinedSourceType">
 			<enumeration value="Medicinpriser"/>
 		</restriction>

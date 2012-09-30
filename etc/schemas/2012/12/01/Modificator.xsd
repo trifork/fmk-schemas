@@ -3,7 +3,7 @@
 	xmlns:reimbursement20121201="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
 	targetNamespace="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
 	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="AuthorisedHealthcareProfessional.xsd"/>
+	<include schemaLocation="AuthorisationIdentifier.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<element name="Modificator" type="reimbursement20121201:ModificatorType">
 		<annotation>
@@ -15,7 +15,7 @@
 		<sequence>
 			<choice>
 				<sequence>
-					<element name="AuthorisedHealthcareProfessional" type="reimbursement20121201:AuthorisedHealthcareProfessionalType"/>
+					<element name="AuthorisationIdentifier" type="reimbursement20121201:AuthorisationIdentifierType"/>
 					<element name="Organisation" type="reimbursement20121201:OrganisationType"/>
 				</sequence>
 			</choice>

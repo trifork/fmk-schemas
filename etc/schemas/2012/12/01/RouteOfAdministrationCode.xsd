@@ -6,31 +6,31 @@
 	<include schemaLocation="Source.xsd"/>
 	<include schemaLocation="SourceDate.xsd"/>
 	<include schemaLocation="SourceYearAndWeek.xsd"/>
-	<element name="DrugFormCode" type="reimbursement20121201:DrugFormCodeType">
+	<element name="RouteOfAdministrationCode" type="reimbursement20121201:RouteOfAdministrationCodeType">
 		<annotation>
-			<documentation xml:lang="en-GB">Code for drug form. Source: LMS22 field 1</documentation>
-			<documentation xml:lang="da-DK">Kode for lægemiddelform. Kilde: LMS22 felt 1</documentation>
+			<documentation xml:lang="en-GB">Indicates the code of the formulations route of administration. Sourcec: "Taksten" LMS11 field 2</documentation>
+			<documentation xml:lang="da-DK">Angiver kode for medicinens administrationsvej. Kilde: Taksten, LMS11 felt 2</documentation>
 		</annotation>
 	</element>
-	<complexType name="DrugFormCodeType">
+	<complexType name="RouteOfAdministrationCodeType">
 		<simpleContent>
-			<extension base="reimbursement20121201:DrugFormCodeValueType">
-				<attribute name="source" type="reimbursement20121201:DrugFormCodeSourceType" use="required"/>
+			<extension base="reimbursement20121201:RouteOfAdministrationCodeValueType">
+				<attribute name="source" type="reimbursement20121201:RouteOfAdministrationSourceType" use="required"/>
 				<attribute name="date" type="reimbursement20121201:SourceDateType" use="optional"/>
 				<attribute name="yearAndWeek" type="reimbursement20121201:SourceYearAndWeekType" use="optional"/>
 			</extension>
 		</simpleContent>
 	</complexType>
-	<simpleType name="DrugFormCodeValueType">
+	<simpleType name="RouteOfAdministrationCodeValueType">
 		<restriction base="string">
 			<minLength value="1"/>
-			<maxLength value="7"/>
+			<maxLength value="2"/>
 		</restriction>
 	</simpleType>
-	<simpleType name="DrugFormCodeSourceType">
-		<union memberTypes="reimbursement20121201:DrugFormCodePredefinedSourceType reimbursement20121201:UndefinedSourceType"/>
+	<simpleType name="RouteOfAdministrationSourceType">
+		<union memberTypes="reimbursement20121201:RouteOfAdministrationPredefinedSourceType reimbursement20121201:UndefinedSourceType"/>
 	</simpleType>
-	<simpleType name="DrugFormCodePredefinedSourceType">
+	<simpleType name="RouteOfAdministrationPredefinedSourceType">
 		<restriction base="reimbursement20121201:UndefinedSourceType">
 			<enumeration value="Medicinpriser"/>
 		</restriction>
