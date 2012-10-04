@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-	xmlns:reimbursement20121201="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
-	targetNamespace="http://nsi.dk/reimbursement/xml.schema/2012/12/01"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
-		schemaLocation="../../../2013/01/01/PersonIdentifier.xsd" />
-	<include schemaLocation="PersonIdentifier.xsd" />
-	<include schemaLocation="PersonWithFictivePersonIdentifier.xsd" />
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:reimbursement20121201="http://nsi.dk/reimbursement/xml.schema/2012/12/01" targetNamespace="http://nsi.dk/reimbursement/xml.schema/2012/12/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2013/01/01/PersonIdentifier.xsd"/> -->
+	<include schemaLocation="PersonIdentifier.xsd"/> 
+	<include schemaLocation="PersonWithFictivePersonIdentifier.xsd"/>
 	<element name="Person" type="reimbursement20121201:PersonType">
 		<annotation>
-			<documentation xml:lang="en-GB"></documentation>
-			<documentation xml:lang="da-DK"></documentation>
+			<documentation xml:lang="en-GB"/>
+			<documentation xml:lang="da-DK"/>
 		</annotation>
 	</element>
 	<complexType name="PersonType">
 		<choice>
-			<element name="PersonIdentifier" type="reimbursement20121201:PersonIdentifierType" />
-			<element name="PersonWithFictivePersonIdentifier" type="reimbursement20121201:PersonWithFictivePersonIdentifierType" />
+			<element name="PersonIdentifier" type="reimbursement20121201:PersonIdentifierType"/> 
+			<element name="PersonWithFictivePersonIdentifier" type="reimbursement20121201:PersonWithFictivePersonIdentifierType"/>
 		</choice>
 	</complexType>
 </schema>
