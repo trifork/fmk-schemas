@@ -3,6 +3,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrderedEffectuationDetails.xsd"/>
 	<include schemaLocation="OrderedPrescriptionMedicationDetails.xsd"/>
+    <include schemaLocation="MoreAvailableOrders.xsd"/>
 	<element name="GetOrderedEffectuationsResponse" type="medicinecard20120601:GetOrderedEffectuationsResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Get ordered effectuations</documentation>
@@ -21,6 +22,7 @@
 					</sequence>
 				</complexType>
 			</element>
+            <element name="MoreAvailable" type="medicinecard20120601:MoreAvailableOrdersType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
