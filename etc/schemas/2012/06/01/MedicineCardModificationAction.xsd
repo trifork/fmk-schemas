@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-
 	<simpleType name="MedicineCardModificationActionType">
 		<union memberTypes="medicinecard20120601:PredefinedMedicineCardModificationActionType medicinecard20120601:UndefinedMedicineCardModificationActionType"/>
 	</simpleType>
-
 	<simpleType name="PredefinedMedicineCardModificationActionType">
 		<restriction base="medicinecard20120601:UndefinedMedicineCardModificationActionType">
+			<enumeration value="MedicineCardSuspended"/>
+			<enumeration value="MedicineCardResuspended"/>
+			<enumeration value="MedicineCardUnsuspended"/>
+			<enumeration value="MedicineCardReviewed"/>
 			<enumeration value="DrugMedicationCreated"/>
+			<enumeration value="DrugMedicationUpdated"/>
+			<enumeration value="DrugMedicationPaused"/>
+			<enumeration value="DrugMedicationUnpaused"/>
 			<enumeration value="DrugMedicationWithdrawn"/>
+			<enumeration value="DrugMedicationUnwithdrawn"/>
+			<enumeration value="PrescriptionMedicationCreated"/>
+			<enumeration value="PrescriptionMedicationAttached"/>
+			<enumeration value="PrescriptionMedicationDetached"/>
+			<enumeration value="PrescriptionMedicationDeprecated"/>
+			<enumeration value="PrescriptionMedicationCancelled"/>
+			<enumeration value="EffectuationCreated"/>
+			<enumeration value="EffectuationDeleted"/>
 		</restriction>
 	</simpleType>
-
 	<simpleType name="UndefinedMedicineCardModificationActionType">
 		<restriction base="string">
 			<minLength value="1"/>
 			<maxLength value="50"/>
 		</restriction>
 	</simpleType>
-	
 </schema>
