@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="MedicineCardModificationAction.xsd"/>
-	<include schemaLocation="MedicineCardModificiationIdentifiers.xsd"/>
+	<include schemaLocation="MedicineCardModificationIdentifiers.xsd"/>
 	<include schemaLocation="ModificationDetails.xsd"/>
 	<element name="MedicineCardModification" type="medicinecard20120601:MedicineCardModificationType">
 		<annotation>
@@ -13,7 +13,7 @@
 		<sequence>
 			<element name="Action" type="medicinecard20120601:MedicineCardModificationActionType"/>
 			<element name="Details" type="medicinecard20120601:ModificationDetailsType" minOccurs="0"/>
-			<element name="MedicineCard" type="medicinecard20120601:MedicineCardModificiationIdentifiersType"/>
+			<element name="MedicineCard" type="medicinecard20120601:MedicineCardModificationIdentifiersType"/>
 			<any minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
