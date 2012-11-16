@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd"
+	xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+	xmlns:tns="http://www.ssi.dk/nsitest/xml.schema/2013/01/01"
+	targetNamespace="http://www.ssi.dk/nsitest/xml.schema/2013/01/01">
+	
+		
+	<wsdl:types>
+		<xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+			<xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd" />
+		</xs:schema>
+		
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ssi.dk/nsitest/xml.schema/2013/01/01" elementFormDefault="qualified">
+			<import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" schemaLocation="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+			
+			<simpleType name="PersonIdentifierType">
+				<restriction base="string">
+					<pattern value="((((0[1-9]|1[0-9]|2[0-9]|3[0-1])(01|03|05|07|08|10|12))|((0[1-9]|1[0-9]|2[0-9]|30)(04|06|09|11))|((0[1-9]|1[0-9]|2[0-9])(02)))[0-9]{6})"/>
+				</restriction>
+			</simpleType>
+			
+			<complexType name="DumpDataType">
+				<sequence>
+					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded"/>
+					<element name="DumpData" type="base64Binary" />
+				</sequence>
+			</complexType>
+			
+			<complexType name="DumpPatientsRequestType">
+				<sequence>
+					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			
+			<complexType name="DumpPatientsReponseType">
+				<sequence>
+					<element name="DumpData" type="tns:DumpDataType" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			
+			<complexType name="RestorePatientsRequestType">
+				<sequence>
+					<element name="DumpData" type="tns:DumpDataType" />
+				</sequence>
+			</complexType>
+			
+			<complexType name="RestorePatientsReponseType">
+				<sequence>
+					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+
+			<complexType name="ResetPatientsRequestType">
+				<sequence>
+					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			
+			<complexType name="ResetPatientsReponseType">
+				<sequence>
+					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			
+			
+			<element name="DumpPatientsRequest" type="tns:DumpPatientsRequestType" />
+			<element name="DumpPatientsResponse" type="tns:DumpPatientsReponseType" />
+
+			<element name="RestorePatientsRequest" type="tns:RestorePatientsRequestType" />
+			<element name="RestorePatientsResponse" type="tns:RestorePatientsReponseType" />
+
+			<element name="ResetPatientsRequest" type="tns:ResetPatientsRequestType" />
+			<element name="ResetPatientsResponse" type="tns:ResetPatientsReponseType" />
+
+		</schema>
+	</wsdl:types>
+	
+   <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
+
+    <wsdl:message name="DumpPatientsRequest">
+        <wsdl:part name="GetDoctorAssistantsRequest" element="tns:DumpPatientsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DumpPatientsResponse">
+        <wsdl:part name="GetDoctorAssistantsResponse" element="tns:DumpPatientsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RestorePatientsRequest">
+        <wsdl:part name="AddDoctorAssistantRequest" element="tns:RestorePatientsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RestorePatientsResponse">
+        <wsdl:part name="AddDoctorAssistantResponse" element="tns:RestorePatientsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ResetPatientsRequest">
+        <wsdl:part name="RemoveDoctorAssistantRequest" element="tns:ResetPatientsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ResetPatientsResponse">
+        <wsdl:part name="RemoveDoctorAssistantResponse" element="tns:ResetPatientsResponse"/>
+    </wsdl:message>
+	
+	<wsdl:message name="DGWSFault">
+		<wsdl:part name="fault" element="medcom:FaultCode" />
+	</wsdl:message>
+	
+	<wsdl:portType name="DumpRestorePortType">
+        <wsdl:operation name="DumpPatients">
+            <soap:operation soapAction="http://www.dkma.dk/nsitest/xml.schema/2013/01/01#DumpPatients" style="document"/>
+            <wsdl:input name="DumpPatientsRequest" message="tns:DumpPatientsRequest"/>
+            <wsdl:output name="DumpPatientsResponse" message="tns:DumpPatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="RestorePatients">
+            <soap:operation soapAction="http://www.dkma.dk/nsitest/xml.schema/2013/01/01#RestorePatients" style="document"/>
+            <wsdl:input name="RestorePatientsRequest" message="tns:RestorePatientsRequest"/>
+            <wsdl:output name="RestorePatientsResponse" message="tns:RestorePatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPatients">
+            <soap:operation soapAction="http://www.dkma.dk/nsitest/xml.schema/2013/01/01#ResetPatients" style="document"/>
+            <wsdl:input name="ResetPatientsRequest" message="tns:ResetPatientsRequest"/>
+            <wsdl:output name="ResetPatientsResponse" message="tns:ResetPatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="DumpRestoreBinding" type="tns:DumpRestorePortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<wsdl:operation name="DumpPatients">
+        	<soap:operation soapAction="http://www.ssi.dk/nsitest/xml.schema/2013/01/01#DumpPatients" style="document"/>
+            <wsdl:input name="DumpPatientsRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+            	<soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DumpPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="RestorePatients">
+        	<soap:operation soapAction="http://www.ssi.dk/nsitest/xml.schema/2013/01/01#RestorePatients" style="document"/>
+            <wsdl:input name="RestorePatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="RestorePatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="ResetPatients">
+        	<soap:operation soapAction="http://www.ssi.dk/nsitest/xml.schema/2013/01/01#ResetPatients" style="document"/>
+            <wsdl:input name="ResetPatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="ResetPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+	<wsdl:service name="DumpRestore">
+		<wsdl:port name="DumpRestorePort" binding="tns:DumpRestoreBinding">
+			<soap:address location="http://nsi.dk/ws/DumpRestore"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
