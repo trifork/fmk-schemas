@@ -37,20 +37,27 @@
 				</restriction>
 			</simpleType>
 			
-			<complexType name="DumpDataType">
+			<complexType name="IdentifierType">
 				<sequence>
 					<choice>
 						<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded"/>
 						<element name="SubstitutionPersonIdentifier" type="tns:SubstitutionPersonIdentifierType" maxOccurs="unbounded"/>
 						<element name="OtherIdentifier" type="tns:OtherIdentifierType" maxOccurs="unbounded"/>
 					</choice>
+				</sequence>
+			
+			</complexType>
+			
+			<complexType name="DumpDataType">
+				<sequence>
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 					<element name="DumpData" type="base64Binary" />
 				</sequence>
 			</complexType>
 			
 			<complexType name="DumpPatientsRequestType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 			
@@ -68,19 +75,19 @@
 			
 			<complexType name="RestorePatientsReponseType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 
 			<complexType name="ResetPatientsRequestType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 			
 			<complexType name="ResetPatientsReponseType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 			
