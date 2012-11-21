@@ -5,8 +5,8 @@
 	xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd"
 	xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
 	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-	xmlns:tns="http://www.ssi.dk/nsitest/xml.schema/2013/01/01"
-	targetNamespace="http://www.ssi.dk/nsitest/xml.schema/2013/01/01">
+	xmlns:tns="http://www.ssi.dk/nsi/xml.schema/2013/01/01"
+	targetNamespace="http://www.ssi.dk/nsi/xml.schema/2013/01/01">
 	
 		
 	<wsdl:types>
@@ -14,55 +14,80 @@
 			<xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd" />
 		</xs:schema>
 		
-		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ssi.dk/nsitest/xml.schema/2013/01/01" elementFormDefault="qualified">
-			<import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" schemaLocation="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ssi.dk/nsi/xml.schema/2013/01/01" elementFormDefault="qualified">
+            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
 			
 			<simpleType name="PersonIdentifierType">
 				<restriction base="string">
 					<pattern value="((((0[1-9]|1[0-9]|2[0-9]|3[0-1])(01|03|05|07|08|10|12))|((0[1-9]|1[0-9]|2[0-9]|30)(04|06|09|11))|((0[1-9]|1[0-9]|2[0-9])(02)))[0-9]{6})"/>
 				</restriction>
 			</simpleType>
+
+			<simpleType name="SubstitutionPersonIdentifierType">
+				<restriction base="string">
+ 					<pattern value="[a-zA-Z0-9]{10}"/>
+ 				</restriction>
+			</simpleType>
+
+			<simpleType name="OtherIdentifierType">
+				<restriction base="string">
+			      <minLength value="1"/>
+			      <maxLength value="100"/>
+				</restriction>
+			</simpleType>
+			
+			<complexType name="IdentifierType">
+				<sequence>
+					<choice>
+						<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded"/>
+						<element name="SubstitutionPersonIdentifier" type="tns:SubstitutionPersonIdentifierType" maxOccurs="unbounded"/>
+						<element name="OtherIdentifier" type="tns:OtherIdentifierType" maxOccurs="unbounded"/>
+					</choice>
+				</sequence>
+			
+			</complexType>
 			
 			<complexType name="DumpDataType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded"/>
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 					<element name="DumpData" type="base64Binary" />
 				</sequence>
 			</complexType>
 			
 			<complexType name="DumpPatientsRequestType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 			
 			<complexType name="DumpPatientsReponseType">
 				<sequence>
-					<element name="DumpData" type="tns:DumpDataType" maxOccurs="unbounded" />
+					<element name="Dump" type="tns:DumpDataType" maxOccurs="unbounded" />
 				</sequence>
 			</complexType>
 			
 			<complexType name="RestorePatientsRequestType">
 				<sequence>
-					<element name="DumpData" type="tns:DumpDataType" />
+					<element name="Dump" type="tns:DumpDataType" />
 				</sequence>
 			</complexType>
 			
 			<complexType name="RestorePatientsReponseType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 
 			<complexType name="ResetPatientsRequestType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 			
 			<complexType name="ResetPatientsReponseType">
 				<sequence>
-					<element name="PersonIdentifier" type="tns:PersonIdentifierType" maxOccurs="unbounded" />
+					<element name="Identifier" type="tns:IdentifierType" maxOccurs="unbounded"/>
 				</sequence>
 			</complexType>
 			
@@ -114,19 +139,19 @@
 	
 	<wsdl:portType name="DumpRestorePortType">
         <wsdl:operation name="DumpPatients">
-            <soap:operation soapAction="http://www.dkma.dk/nsitest/xml.schema/2013/01/01#DumpPatients" style="document"/>
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#DumpPatients" style="document"/>
             <wsdl:input name="DumpPatientsRequest" message="tns:DumpPatientsRequest"/>
             <wsdl:output name="DumpPatientsResponse" message="tns:DumpPatientsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         <wsdl:operation name="RestorePatients">
-            <soap:operation soapAction="http://www.dkma.dk/nsitest/xml.schema/2013/01/01#RestorePatients" style="document"/>
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#RestorePatients" style="document"/>
             <wsdl:input name="RestorePatientsRequest" message="tns:RestorePatientsRequest"/>
             <wsdl:output name="RestorePatientsResponse" message="tns:RestorePatientsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         <wsdl:operation name="ResetPatients">
-            <soap:operation soapAction="http://www.dkma.dk/nsitest/xml.schema/2013/01/01#ResetPatients" style="document"/>
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#ResetPatients" style="document"/>
             <wsdl:input name="ResetPatientsRequest" message="tns:ResetPatientsRequest"/>
             <wsdl:output name="ResetPatientsResponse" message="tns:ResetPatientsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -136,7 +161,7 @@
 	<wsdl:binding name="DumpRestoreBinding" type="tns:DumpRestorePortType">
 		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
 		<wsdl:operation name="DumpPatients">
-        	<soap:operation soapAction="http://www.ssi.dk/nsitest/xml.schema/2013/01/01#DumpPatients" style="document"/>
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#DumpPatients" style="document"/>
             <wsdl:input name="DumpPatientsRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
@@ -146,13 +171,13 @@
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 		<wsdl:operation name="RestorePatients">
-        	<soap:operation soapAction="http://www.ssi.dk/nsitest/xml.schema/2013/01/01#RestorePatients" style="document"/>
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#RestorePatients" style="document"/>
             <wsdl:input name="RestorePatientsRequest"><soap:body use="literal"/></wsdl:input>
             <wsdl:output name="RestorePatientsResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 		<wsdl:operation name="ResetPatients">
-        	<soap:operation soapAction="http://www.ssi.dk/nsitest/xml.schema/2013/01/01#ResetPatients" style="document"/>
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#ResetPatients" style="document"/>
             <wsdl:input name="ResetPatientsRequest"><soap:body use="literal"/></wsdl:input>
             <wsdl:output name="ResetPatientsResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
