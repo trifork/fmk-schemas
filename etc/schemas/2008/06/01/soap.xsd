@@ -70,22 +70,16 @@
 				
 				<xs:element ref="wsse:Security" minOccurs="1" maxOccurs="1"/>           <!-- REQ / RESP / Fault -->
 				<xs:element ref="medcom:Header" minOccurs="0" maxOccurs="1"/>           <!-- REQ / Fault -->
-                <xs:choice>
-                        <xs:all>
-				            <xs:element ref="mc2009:OnBehalfOfStructure" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
-                            <xs:element ref="sdsd:SystemOwnerName" minOccurs="0" maxOccurs="1"/>    <!-- REQ -->
-                            <xs:element ref="sdsd:SystemName" minOccurs="0" maxOccurs="1"/>         <!-- REQ -->
-                            <xs:element ref="sdsd:SystemVersion" minOccurs="0" maxOccurs="1"/>      <!-- REQ -->
-                            <xs:element ref="sdsd:OrgResponsibleName" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
-                            <xs:element ref="sdsd:OrgUsingName" minOccurs="0" maxOccurs="1"/>       <!-- REQ -->
-                            <xs:element ref="sdsd:OrgUsingID" minOccurs="0" maxOccurs="1"/>         <!-- REQ -->
-                            <xs:element ref="sdsd:RequestedRole" minOccurs="0" maxOccurs="1"/>      <!-- REQ -->
-                        </xs:all>
-                        <xs:all>
-                            <xs:element ref="medicinecard20120601:OnBehalfOf" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
-				            <xs:element ref="sdsd201206:WhitelistingHeader" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
-                        </xs:all>
-                </xs:choice>
+                <xs:element ref="mc2009:OnBehalfOfStructure" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
+                <xs:element ref="sdsd:SystemOwnerName" minOccurs="0" maxOccurs="1"/>    <!-- REQ -->
+                <xs:element ref="sdsd:SystemName" minOccurs="0" maxOccurs="1"/>         <!-- REQ -->
+                <xs:element ref="sdsd:SystemVersion" minOccurs="0" maxOccurs="1"/>      <!-- REQ -->
+                <xs:element ref="sdsd:OrgResponsibleName" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
+                <xs:element ref="sdsd:OrgUsingName" minOccurs="0" maxOccurs="1"/>       <!-- REQ -->
+                <xs:element ref="sdsd:OrgUsingID" minOccurs="0" maxOccurs="1"/>         <!-- REQ -->
+                <xs:element ref="sdsd:RequestedRole" minOccurs="0" maxOccurs="1"/>      <!-- REQ -->
+                <xs:element ref="medicinecard20120601:OnBehalfOf" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
+                <xs:element ref="sdsd201206:WhitelistingHeader" minOccurs="0" maxOccurs="1"/> <!-- REQ -->
 				<xs:element ref="medcom:Linking" minOccurs="0" maxOccurs="1"/>          <!-- RESP -->
 				<xs:element ref="medcom:FlowStatus" minOccurs="0" maxOccurs="1"/>       <!-- RESP -->
 				<xs:element ref="mc2009:PrescriptionReplicationStatusStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
