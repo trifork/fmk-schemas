@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="EmptyDosageStructure.xsd"/>
+	<include schemaLocation="DosageStructure.xsd"/>
+	<element name="DosageStructures" type="medicinecard20130601:DosageStructuresType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageStructuresType">
+		<sequence>
+			<choice>
+				<element name="UnitText" type="medicinecard20120601:DosageQuantityUnitTextType"/>
+				<element name="UnitTexts" type="medicinecard20120601:DosageQuantityUnitTextsType"/>
+			</choice>
+			<choice maxOccurs="unbounded">
+				<element name="Structure" type="medicinecard20130601:DosageStructureType"/>
+				<element name="EmptyStructure" type="medicinecard20130601:EmptyDosageStructureType"/>
+			</choice>				
+		</sequence>
+	</complexType>
+</schema>

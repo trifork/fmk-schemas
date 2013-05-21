@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Modificator.xsd"/>
+	<include schemaLocation="CreateEffectuationOnDrugMedication.xsd"/>
+	<element name="CreateEffectuationRequest" type="medicinecard20130601:CreateEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container elemenet for a request to add a effecutation</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel for at tilføje en effektuering</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateEffectuationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
+			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="DrugMedication" type="medicinecard20130601:CreateEffectuationOnDrugMedicationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

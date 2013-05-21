@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTranslationLongText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTranslationShortText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DoseQuantity.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitText.xsd"/>
+	<element name="DosageTranslation" type="medicinecard20130601:DosageTranslationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Dosage structure translated to text plus a calulated average daily dosage</documentation>
+			<documentation xml:lang="da-DK">Dosisstrukturen oversat til tekst samt beregnet gennemsnitlig daglig dosis</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageTranslationType">
+		<sequence>
+			<element name="ShortText" type="medicinecard20120601:DosageTranslationShortTextType" minOccurs="0"/>
+			<element name="LongText" type="medicinecard20120601:DosageTranslationLongTextType"/>
+			<sequence minOccurs="0">
+				<choice>
+					<element name="AverageDailyDosage" type="medicinecard20120601:DoseQuantityType"/>
+					<sequence>
+						<element name="MinimalAverageDailyDosage" type="medicinecard20120601:DoseQuantityType"/>
+						<element name="MaximalAverageDailyDosage" type="medicinecard20120601:DoseQuantityType"/>
+					</sequence>
+				</choice>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

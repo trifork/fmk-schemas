@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesDosageEndingUndetermined.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesEndDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesEndDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesStartDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesStartDateTime.xsd"/>
+	<element name="EmptyDosageStructure" type="medicinecard20130601:EmptyDosageStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of an interval in the treatment where the drug is not given</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en periode i behandlingen hvor lægemidlet ikke gives</documentation>
+		</annotation>
+	</element>
+	<complexType name="EmptyDosageStructureType">
+		<sequence>
+			<choice>
+				<element name="StartDate" type="medicinecard20120601:DosageTimesStartDateType"/>
+				<element name="StartDateTime" type="medicinecard20120601:DosageTimesStartDateTimeType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="medicinecard20120601:DosageTimesEndDateType"/>
+				<element name="EndDateTime" type="medicinecard20120601:DosageTimesEndDateTimeType"/>
+				<element name="DosageEndingUndetermined" type="medicinecard20120601:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

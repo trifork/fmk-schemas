@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardIsInvalid.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Modified.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationWithNegativeConsent.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationType.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Patient.xsd"/>
+	<include schemaLocation="PrescriptionMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Reviewed.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Suspended.xsd"/>
+	<element name="MedicineCard" type="medicinecard20130601:MedicineCardType">
+		<annotation>
+			<documentation xml:lang="en-GB">Virtual card where a patient's medications are documented, except effectuations</documentation>
+			<documentation xml:lang="da-DK">Virtuelt kort hvori en patients medicineringer dokumenteres, undtaget effektueringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="MedicineCardType">
+		<sequence>
+			<element name="Patient" type="medicinecard20120601:PatientType"/>
+			<element name="Version" type="medicinecard20120601:MedicineCardVersionType"/>
+			<element name="PreviousVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NextVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20120601:ModifiedType" minOccurs="0"/>
+			<element name="Suspended" type="medicinecard20120601:SuspendedType" minOccurs="0"/>
+			<element name="Reviewed" type="medicinecard20120601:ReviewedType" minOccurs="0"/>
+			<element name="IsInvalid" type="medicinecard20120601:MedicineCardIsInvalidType" minOccurs="0"/>
+			<element name="HomeCareSubscription" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
+			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedication" type="medicinecard20130601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20130601:PrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CreatedWithoutPerson.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DoseQuantity.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationMethod.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IsEffectuatedAccordingToDrugMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ModificatorWithOptionalAuthorisationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageNumber.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageSize.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageQuantity.xsd"/>
+	<element name="EffectuationOnPrescriptionMedication" type="medicinecard20130601:EffectuationOnPrescriptionMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">An effectuation on the prescription medication. It has been created by the pharamacy, so there is no doctor element. The possibilities for how the effectuation is done is limited, there is always effectuated one or more packages.</documentation>
+		</annotation>
+	</element>
+	<complexType name="EffectuationOnPrescriptionMedicationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:EffectuationIdentifierType"/>
+			<element name="DateTime" type="medicinecard20120601:EffectuationDateTimeType"/>
+			<element name="EffectuationMethod" type="medicinecard20120601:EffectuationMethodType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20120601:CreatedWithoutPersonType"/>
+			<element name="ReportedBy" type="medicinecard20120601:ModificatorWithoutPersonType" minOccurs="0"/>
+			<element name="PackageQuantity" type="medicinecard20120601:PackageQuantityType" minOccurs="0"/>
+			<element name="PackageNumber" type="medicinecard20120601:PackageNumberType"/>
+			<element name="PackageSize" type="medicinecard20120601:PackageSizeType" minOccurs="0"/>
+			<element name="Drug" type="medicinecard20130601:DrugType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
