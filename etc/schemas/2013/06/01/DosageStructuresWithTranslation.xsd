@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DosageStructureWithTranslation.xsd"/>
-	<include schemaLocation="EmptyDosageStructure.xsd"/>	
+	<include schemaLocation="EmptyDosageStructure.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitTexts.xsd"/>		
 	<element name="DosageStructuresWithTranslation" type="medicinecard20130601:DosageStructuresWithTranslationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
@@ -18,7 +20,7 @@
 				<element name="EmptyStructure" type="medicinecard20130601:EmptyDosageStructureType"/>
 				<element name="Structure" type="medicinecard20130601:DosageStructureWithTranslationType" maxOccurs="unbounded"/>
 			</choice>
-			<element name="DosageTranslationCombined" type="medicinecard20130601:DosageTranslationType"/>
+			<element name="DosageTranslationCombined" type="medicinecard20130601:DosageTranslationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
