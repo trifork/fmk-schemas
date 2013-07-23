@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageFreeText.xsd"/>
-	<include schemaLocation="DosageStructures.xsd"/>
+	<include schemaLocation="DosageFreeTextForResponse.xsd"/>
+	<include schemaLocation="DosageStructuresForResponse.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageType.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/AdministrationAccordingToSchemaInLocalSystem.xsd"/>
-	<element name="Dosage" type="medicinecard20130601:DosageType">
+	<include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForResponse.xsd"/>
+	<element name="DosageForResponse" type="medicinecard20130601:DosageForResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">How often and when the drug should be given</documentation>
 			<documentation xml:lang="da-DK">Angivelse af hvor ofte og hvornår et lægemiddel skal gives</documentation>
 		</annotation>
 	</element>
-	<complexType name="DosageType">
+	<complexType name="DosageForResponseType">
 		<sequence>
 			<choice>
-				<element name="Structures" type="medicinecard20130601:DosageStructuresType"/>
-				<element name="FreeText" type="medicinecard20120601:DosageFreeTextType"/>
-				<element name="AdministrationAccordingToSchemaInLocalSystem" type="medicinecard20120601:AdministrationAccordingToSchemaInLocalSystemType"/>
+				<element name="Structures" type="medicinecard20130601:DosageStructuresForResponseType"/>
+				<element name="FreeText" type="medicinecard20130601:DosageFreeTextForResponseType"/>
+				<element name="AdministrationAccordingToSchemaInLocalSystem" type="medicinecard20130601:AdministrationAccordingToSchemaInLocalSystemForResponseType"/>
 			</choice>
 			<element name="Type" type="medicinecard20120601:DosageTypeType" minOccurs="0"/>
 		</sequence>

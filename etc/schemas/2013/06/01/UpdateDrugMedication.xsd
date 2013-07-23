@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="Dosage.xsd"/>
+	<include schemaLocation="DosageForRequest.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CreateOrUpdateDrugMedicationBeginEndDate.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
@@ -31,7 +31,7 @@
 			<element name="Indication" type="medicinecard20120601:IndicationType"/>
 			<element name="RouteOfAdministration" type="medicinecard20120601:RouteOfAdministrationType"/>
 			<element name="Drug" type="medicinecard20130601:DrugType"/>
-			<element name="Dosage" type="medicinecard20130601:DosageType"/>
+			<element name="Dosage" type="medicinecard20130601:DosageForRequestType"/>
 			<element name="SubstitutionAllowed" type="medicinecard20120601:SubstitutionAllowedType"/>
 		</sequence>
 	</complexType>

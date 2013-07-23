@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Created.xsd"/>
-	<include schemaLocation="DosageWithTranslation.xsd"/>
+	<include schemaLocation="DosageForResponse.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationBeginEndDate.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
@@ -37,7 +37,7 @@
 			<element name="Indication" type="medicinecard20120601:IndicationType"/>
 			<element name="RouteOfAdministration" type="medicinecard20120601:RouteOfAdministrationType"/>
 			<element name="Drug" type="medicinecard20130601:DrugType"/>
-			<element name="Dosage" type="medicinecard20130601:DosageWithTranslationType"/>
+			<element name="Dosage" type="medicinecard20130601:DosageForResponseType"/>
 			<element name="SubstitutionAllowed" type="medicinecard20120601:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="Effectuation" type="medicinecard20130601:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrescriptionMedication" type="medicinecard20130601:PrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>

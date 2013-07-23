@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"  xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageAnyDay.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageDay.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageIsNotIterated.xsd"/>
@@ -12,13 +12,13 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitText.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitTexts.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageSupplementaryText.xsd"/>
-	<element name="DosageStructure" type="medicinecard20130601:DosageStructureType">
+	<element name="DosageStructureForRequest" type="medicinecard20130601:DosageStructureForRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
 			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
 		</annotation>
 	</element>
-	<complexType name="DosageStructureType">
+	<complexType name="DosageStructureForRequestType">
 		<sequence>
 			<choice>
 				<element name="IterationInterval" type="medicinecard20120601:DosageTimesIterationIntervalType"/>
@@ -32,7 +32,7 @@
 				<element name="EndDate" type="medicinecard20120601:DosageTimesEndDateType"/>
 				<element name="EndDateTime" type="medicinecard20120601:DosageTimesEndDateTimeType"/>
 				<element name="DosageEndingUndetermined" type="medicinecard20120601:DosageTimesDosageEndingUndeterminedType"/>
-			</choice>			
+			</choice>
 			<element name="SupplementaryText" type="medicinecard20120601:DosageSupplementaryTextType" minOccurs="0"/>
 			<choice>
 				<!-- A convoluted construction for either AnyDay or one or more Day, or both, bot not neither -->
