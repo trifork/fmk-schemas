@@ -11,11 +11,9 @@
   <xs:element name="Security">
     <xs:complexType>
       <xs:sequence>
-        <xs:any processContents="lax" minOccurs="0" maxOccurs="unbounded">
-	        <xs:element ref="wsu:Timestamp" minOccurs="1" maxOccurs="1"/>
-	        <xs:element ref="saml:Assertion" minOccurs="0" maxOccurs="1"/>
-	        <xs:element ref="ds:Signature" minOccurs="0" maxOccurs="1"/>
-      	</xs:any>
+        <xs:element ref="wsu:Timestamp" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="saml:Assertion" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="ds:Signature" minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
 	  <xs:anyAttribute namespace="##other" processContents="lax"/>
       <xs:attribute name="id" use="optional"/>
