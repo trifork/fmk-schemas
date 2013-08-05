@@ -13,6 +13,7 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Pause.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/RouteOfAdministration.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SubstitutionAllowed.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ReimbursementClause.xsd"/>
 	<element name="CreateDrugMedication" type="medicinecard20130601:CreateDrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Instructions of which drug to use, how much to give (drug dosage), for how long (startdate and enddate), how to administrate it and motivation (indication)</documentation>
@@ -35,6 +36,7 @@
 			<element name="Effectuation" type="medicinecard20130601:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="CreatePrescriptionMedication" type="medicinecard20130601:CreatePrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AttachPrescriptionMedication" type="medicinecard20120601:PrescriptionMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="ReimbursementClause" type="medicinecard20120601:ReimbursementClauseType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
