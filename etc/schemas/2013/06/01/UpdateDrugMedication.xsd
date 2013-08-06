@@ -12,6 +12,7 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/RouteOfAdministration.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SubstitutionAllowed.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/UnwithdrawDrugMedicationOnUpdate.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ReimbursementClause.xsd"/>
 	<element name="UpdateDrugMedication" type="medicinecard20130601:UpdateDrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">An overview of the drug medication (a medication on the medicine card), used for update</documentation>
@@ -33,6 +34,7 @@
 			<element name="Drug" type="medicinecard20130601:DrugType"/>
 			<element name="Dosage" type="medicinecard20130601:DosageForRequestType"/>
 			<element name="SubstitutionAllowed" type="medicinecard20120601:SubstitutionAllowedType"/>
+            <element name="ReimbursementClause" type="medicinecard20120601:ReimbursementClauseType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
