@@ -134,6 +134,8 @@
 			<xs:include schemaLocation="../schemas/2013/06/01/SearchEffectuationsResponse.xsd"/>
 
 			<xs:include schemaLocation="../schemas/2013/06/01/GetPrescriptionMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2013/06/01/CreatePrescriptionMedicationRequest.xsd"/>
         
         </xs:schema>
         
@@ -271,6 +273,10 @@
         <wsdl:part name="CreateEffectuationResponse" element="medicinecard20120601:CreateEffectuationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="CreatePrescriptionMedicationRequest_2013_06_01">
+        <wsdl:part name="CreatePrescriptionMedicationRequest"
+                   element="medicinecard20130601:CreatePrescriptionMedicationRequest"/>
+    </wsdl:message>
     <wsdl:message name="CreatePrescriptionMedicationRequest_2012_06_01">
         <wsdl:part name="CreatePrescriptionMedicationRequest"
                    element="medicinecard20120601:CreatePrescriptionMedicationRequest"/>
@@ -548,6 +554,14 @@
             <wsdl:input name="CreateEffectuationRequest_2013_06_01" message="tns:CreateEffectuationRequest_2013_06_01"/>
             <wsdl:output name="CreateEffectuationResponse_2013_06_01"
                          message="tns:CreateEffectuationResponse_2013_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionMedication_2013_06_01">
+            <wsdl:input name="CreatePrescriptionMedicationRequest_2013_06_01"
+                        message="tns:CreatePrescriptionMedicationRequest_2013_06_01"/>
+            <wsdl:output name="CreatePrescriptionMedicationResponse_2012_06_01"
+                         message="tns:CreatePrescriptionMedicationResponse_2012_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1025,6 +1039,27 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CreatePrescriptionMedication"
                     style="document"/>
             <wsdl:input name="CreatePrescriptionMedicationRequest_2012_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionMedicationResponse_2012_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionMedication_2013_06_01">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01#CreatePrescriptionMedication"
+                    style="document"/>
+            <wsdl:input name="CreatePrescriptionMedicationRequest_2013_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
