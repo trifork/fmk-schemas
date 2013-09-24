@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/AuthorisationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+	<element name="OnBehalfOf" type="medicinecard20130601:OnBehalfOfType">
+		<annotation>
+			<documentation xml:lang="en-GB">Structure containing the autorisation id or CPR of the person that is responsible for the operation.</documentation>
+			<documentation xml:lang="da-DK">En structur der indeholder autorisationsid'et eller CPR på den person som er ansvarlig for handlingen.</documentation>
+		</annotation>
+	</element>
+	<complexType name="OnBehalfOfType">
+		<choice>
+			<element name="AuthorisationIdentifier" type="medicinecard20120601:AuthorisationIdentifierType"/>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+		</choice>
+	</complexType>
+</schema>
