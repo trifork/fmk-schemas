@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="ActiveSubstanceCode.xsd"></include>
+	<include schemaLocation="ActiveSubstanceCode.xsd"/>
+	<include schemaLocation="ActiveSubstanceTextWithoutSource.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ActiveSubstanceText.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ActiveSubstanceFreeText.xsd"/>
 	<element name="ActiveSubstance" type="medicinecard20130601:ActiveSubstanceType">
@@ -12,10 +13,11 @@
 	<complexType name="ActiveSubstanceType">
 		<choice>
 			<sequence>
-				<element name="Code" type="medicinecard20130601:ActiveSubstanceCodeType" minOccurs="0"/>
-				<element name="Text" type="medicinecard20120601:ActiveSubstanceTextType" minOccurs="0"/>
+				<element name="Code" type="medicinecard20130601:ActiveSubstanceCodeType"/>
+				<element name="Text" type="medicinecard20130601:ActiveSubstanceTextWithoutSourceType"/>
 			</sequence>
-			<element name="FreeText" type="medicinecard20120601:ActiveSubstanceFreeTextType" minOccurs="0"/>
+			<element name="SubstanceText" type="medicinecard20120601:ActiveSubstanceTextType"/>
+			<element name="FreeText" type="medicinecard20120601:ActiveSubstanceFreeTextType"/>
 		</choice>
 	</complexType>
 </schema>
