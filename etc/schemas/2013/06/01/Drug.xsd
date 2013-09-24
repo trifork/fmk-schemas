@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ATC.xsd"/>
+	<include schemaLocation="DrugStrength.xsd"/>
+	<include schemaLocation="Substances.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ATC.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DetailedDrugText.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugForm.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugName.xsd"/>
-	<include schemaLocation="DrugStrength.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Substances.xsd"/>
 	<element name="Drug" type="medicinecard20130601:DrugType">
 		<annotation>
 			<documentation xml:lang="en-GB">Drug. A drug is a substance used as treatment or a preventive treatment against diseases. Drugs can be approved and thereby be listed in the Danish Medicines Agency's pricelist ("Takst"), or can be compassionate permit dugs, natural drugs, vitamins, minerals or alike. A drug is an active substance or composed of one or more substances in a particular form and strength. If DrugIdentifier exists the drug is from the Danish Medicines Agency's price list. Alternatively a detailed prescription. The drug structure may contain a list of active substances. The form and strength should be included if available</documentation>
@@ -25,7 +26,7 @@
 			</choice>
 			<element name="Form" type="medicinecard20120601:DrugFormType" minOccurs="0"/>
 			<element name="Strength" type="medicinecard20130601:DrugStrengthType" minOccurs="0"/>
-			<element name="Substances" type="medicinecard20120601:SubstancesType" minOccurs="0"/>
+			<element name="Substances" type="medicinecard20130601:SubstancesType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

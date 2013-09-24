@@ -28,7 +28,6 @@
 
             <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardRequest.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardAsPDFRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardAsPDFResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardVersionRequest.xsd"/>
@@ -113,7 +112,10 @@
                        schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
         
             <xs:include schemaLocation="../schemas/2013/06/01/OnBehalfOf.xsd"/>
+            
 			<xs:include schemaLocation="../schemas/2013/06/01/GetMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2013/06/01/GetMedicineCardAsPDFRequest.xsd"/>
 			
 			<xs:include schemaLocation="../schemas/2013/06/01/UpdateMedicineCardRequest.xsd"/>
 
@@ -166,10 +168,10 @@
         <wsdl:part name="GetMedicineCardResponse" element="medicinecard20130601:GetMedicineCardResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardAsPDFRequest_2012_06_01">
-        <wsdl:part name="GetMedicineCardAsPDFRequest" element="medicinecard20120601:GetMedicineCardAsPDFRequest"/>
+    <wsdl:message name="GetMedicineCardAsPDFRequest_2013_06_01">
+        <wsdl:part name="GetMedicineCardAsPDFRequest" element="medicinecard20130601:GetMedicineCardAsPDFRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetMedicineCardAsPDFResponse_2012_06_01">
+    <wsdl:message name="GetMedicineCardAsPDFResponse_2013_06_01">
         <wsdl:part name="GetMedicineCardAsPDFResponse" element="medicinecard20120601:GetMedicineCardAsPDFResponse"/>
     </wsdl:message>
 
@@ -385,11 +387,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardAsPDF_2012_06_01">
-            <wsdl:input name="GetMedicineCardAsPDFRequest_2012_06_01"
-                        message="tns:GetMedicineCardAsPDFRequest_2012_06_01"/>
-            <wsdl:output name="GetMedicineCardAsPDFResponse_2012_06_01"
-                         message="tns:GetMedicineCardAsPDFResponse_2012_06_01"/>
+        <wsdl:operation name="GetMedicineCardAsPDF_2013_06_01">
+            <wsdl:input name="GetMedicineCardAsPDFRequest_2013_06_01"
+                        message="tns:GetMedicineCardAsPDFRequest_2013_06_01"/>
+            <wsdl:output name="GetMedicineCardAsPDFResponse_2013_06_01"
+                         message="tns:GetMedicineCardAsPDFResponse_2013_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -617,17 +619,17 @@
             </wsdl:fault>
         </wsdl:operation>        
 
-        <wsdl:operation name="GetMedicineCardAsPDF_2012_06_01">
+        <wsdl:operation name="GetMedicineCardAsPDF_2013_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetMedicineCardAsPDF"
                             style="document"/>
-            <wsdl:input name="GetMedicineCardAsPDFRequest_2012_06_01">
+            <wsdl:input name="GetMedicineCardAsPDFRequest_2013_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardAsPDFResponse_2012_06_01">
+            <wsdl:output name="GetMedicineCardAsPDFResponse_2013_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>

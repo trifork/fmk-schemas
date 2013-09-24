@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ActiveSubstance.xsd"/>
+	<element name="Substances" type="medicinecard20130601:SubstancesType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains a number of substances</documentation>
+			<documentation xml:lang="da-DK">Indeholder et antal substanser</documentation>
+		</annotation>
+	</element>
+	<complexType name="SubstancesType">
+		<sequence maxOccurs="100">
+			<element name="ActiveSubstance" type="medicinecard20130601:ActiveSubstanceType"/>
+		</sequence>
+	</complexType>
+</schema>
