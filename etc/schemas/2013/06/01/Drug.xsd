@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="ATC.xsd"/>
+	<include schemaLocation="DrugIdentifier.xsd"/>
 	<include schemaLocation="DrugStrength.xsd"/>
 	<include schemaLocation="Substances.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ATC.xsd"/>
@@ -19,7 +19,7 @@
 			<element name="ATC" type="medicinecard20120601:ATCType" minOccurs="0"/>
 			<choice>
 				<sequence>
-					<element name="Identifier" type="medicinecard20120601:DrugIdentifierType" minOccurs="0"/>
+					<element name="Identifier" type="medicinecard20130601:DrugIdentifierType" minOccurs="0"/>
 					<element name="Name" type="medicinecard20120601:DrugNameType"/>
 				</sequence>
 				<element name="DetailedDrugText" type="medicinecard20120601:DetailedDrugTextType"/>
