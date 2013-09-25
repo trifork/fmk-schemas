@@ -129,6 +129,9 @@
 
 			<xs:include schemaLocation="../schemas/2013/06/01/SearchEffectuationsResponse.xsd"/>
 			
+            <xs:include schemaLocation="../schemas/2013/06/01/SetMedicineCardNotReviewedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2013/06/01/SetMedicineCardNotReviewedResponse.xsd"/>
+            
             <xs:include schemaLocation="../schemas/2013/06/01/SetMedicineCardReviewedRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2013/06/01/SuspendMedicineCardRequest.xsd"/>
@@ -202,12 +205,18 @@
         <wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20120601:UpdateMedicineCardResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="SetMedicineCardNotReviewedRequest_2013_06_01">
+        <wsdl:part name="SetMedicineCardNotReviewedRequest" element="medicinecard20130601:SetMedicineCardNotReviewedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SetMedicineCardNotReviewedResponse_2013_06_01">
+        <wsdl:part name="SetMedicineCardNotReviewedResponse" element="medicinecard20130601:SetMedicineCardNotReviewedResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="SetMedicineCardReviewedRequest_2013_06_01">
         <wsdl:part name="SetMedicineCardReviewedRequest" element="medicinecard20130601:SetMedicineCardReviewedRequest"/>
     </wsdl:message>
     <wsdl:message name="SetMedicineCardReviewedResponse_2013_06_01">
-        <wsdl:part name="SetMedicineCardReviewedResponse"
-                   element="medicinecard20120601:SetMedicineCardReviewedResponse"/>
+        <wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20120601:SetMedicineCardReviewedResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationRequest_2013_06_01">
@@ -418,6 +427,14 @@
             <wsdl:input name="UpdateMedicineCardRequest_2013_06_01" message="tns:UpdateMedicineCardRequest_2013_06_01"/>
             <wsdl:output name="UpdateMedicineCardResponse_2013_06_01"
                          message="tns:UpdateMedicineCardResponse_2013_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardNotReviewed_2013_06_01">
+            <wsdl:input name="SetMedicineCardNotReviewedRequest_2013_06_01"
+                        message="tns:SetMedicineCardNotReviewedRequest_2013_06_01"/>
+            <wsdl:output name="SetMedicineCardNotReviewedResponse_2013_06_01"
+                         message="tns:SetMedicineCardNotReviewedResponse_2013_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -681,6 +698,26 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UpdateMedicineCardResponse_2013_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardNotReviewed_2013_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01#SetMedicineCardNotReviewed"
+                            style="document"/>
+            <wsdl:input name="SetMedicineCardNotReviewedRequest_2013_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetMedicineCardNotReviewedResponse_2013_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
