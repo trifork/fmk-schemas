@@ -4,12 +4,12 @@
 	<include schemaLocation="NotReviewed.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
 	<include schemaLocation="NotReviewed.xsd"/>
+	<include schemaLocation="PatientOrganisationRelation.xsd"/>
 	<include schemaLocation="PrescriptionMedication.xsd"/>
 	<include schemaLocation="Reviewed.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardIsInvalid.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationWithNegativeConsent.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationType.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Patient.xsd"/>
 	<element name="MedicineCard" type="medicinecard20130601:MedicineCardType">
 		<annotation>
@@ -30,7 +30,7 @@
 				<element name="NotReviewed" type="medicinecard20130601:NotReviewedType"/>
 			</choice>
 			<element name="IsInvalid" type="medicinecard20120601:MedicineCardIsInvalidType" minOccurs="0"/>
-			<element name="HomeCareSubscription" type="medicinecard20120601:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PatientOrganisationRelation" type="medicinecard20130601:PatientOrganisationRelationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="medicinecard20130601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrescriptionMedication" type="medicinecard20130601:PrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
