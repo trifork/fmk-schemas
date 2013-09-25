@@ -4,19 +4,19 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ReviewedDateTime.xsd"/>
-	<element name="SetMedicineCardReviewedRequest" type="medicinecard20130601:SetMedicineCardReviewedRequestType">
+	<element name="SetMedicineCardNotReviewedRequest" type="medicinecard20130601:SetMedicineCardNotReviewedRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for a request to set a date and time for a review of the medicine card</documentation>
-			<documentation xml:lang="da-DK">Element for en forespørgsel til at sætte dato og tid for en medicinkort-gennemgang</documentation>
+			<documentation xml:lang="en-GB">Element for a request to set a date and time for marking the medicine card not reviewed</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel til at sætte dato og tid for markering af at manglende medicinkort-gennemgang</documentation>
 		</annotation>
 	</element>
-	<complexType name="SetMedicineCardReviewedRequestType">
+	<complexType name="SetMedicineCardNotReviewedRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
-			<element name="ReviewedBy" type="medicinecard20130601:ModificatorType"/>
+			<element name="NotReviewdBy" type="medicinecard20130601:ModificatorType"/>
 			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
-			<element name="ReviewedDateTime" type="medicinecard20120601:ReviewedDateTimeType"/>
+			<element name="NotReviewedDateTime" type="medicinecard20120601:ReviewedDateTimeType"/>
 		</sequence>
 	</complexType>
 </schema>

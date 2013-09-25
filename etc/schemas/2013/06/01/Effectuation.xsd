@@ -2,13 +2,13 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitText.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DoseQuantity.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationDateTime.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationMethod.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IsEffectuatedAccordingToDrugMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Modificator.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageNumber.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageSize.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageQuantity.xsd"/>
@@ -24,7 +24,7 @@
 			<element name="DateTime" type="medicinecard20120601:EffectuationDateTimeType"/>
 			<element name="EffectuationMethod" type="medicinecard20120601:EffectuationMethodType" minOccurs="0"/>
 			<element name="Created" type="medicinecard20130601:CreatedType"/>
-			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<choice>
 				<sequence>
 					<!-- A drug was effectuated, with the dose and unit below. This overrides whatever is stated as drug and dosage on the prescription or drug medication -->

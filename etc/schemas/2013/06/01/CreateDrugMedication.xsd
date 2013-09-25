@@ -4,11 +4,11 @@
     <include schemaLocation="CreatePrescriptionMedication.xsd"/>
 	<include schemaLocation="DosageForRequest.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CreateOrUpdateDrugMedicationBeginEndDate.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/HasNegativeConsent.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Indication.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ModificationMetadata.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Modificator.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Pause.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PrescriptionMedicationIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/RouteOfAdministration.xsd"/>
@@ -23,7 +23,7 @@
 	<complexType name="CreateDrugMedicationType">
 		<sequence>
 			<element name="ParentIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType" minOccurs="0"/>
-			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="CreatedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>
 			<element name="Pause" type="medicinecard20120601:PauseType" minOccurs="0"/>
 			<element name="HasNegativeConsent" type="medicinecard20120601:HasNegativeConsentType" minOccurs="0"/>

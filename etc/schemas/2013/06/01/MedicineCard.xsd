@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedication.xsd"/>
+	<include schemaLocation="NotReviewed.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
+	<include schemaLocation="NotReviewed.xsd"/>
 	<include schemaLocation="PrescriptionMedication.xsd"/>
 	<include schemaLocation="Reviewed.xsd"/>
 	<include schemaLocation="Suspended.xsd"/>
@@ -22,10 +24,13 @@
 			<element name="Version" type="medicinecard20120601:MedicineCardVersionType"/>
 			<element name="PreviousVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="NextVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="medicinecard20130601:ModifiedType" minOccurs="0"/>
 			<element name="Suspended" type="medicinecard20130601:SuspendedType" minOccurs="0"/>
-			<element name="Reviewed" type="medicinecard20130601:ReviewedType" minOccurs="0"/>
+			<choice  minOccurs="0">
+				<element name="Reviewed" type="medicinecard20130601:ReviewedType"/>
+				<element name="NotReviewed" type="medicinecard20130601:NotReviewedType"/>
+			</choice>
 			<element name="IsInvalid" type="medicinecard20120601:MedicineCardIsInvalidType" minOccurs="0"/>
 			<element name="HomeCareSubscription" type="medicinecard20120601:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>

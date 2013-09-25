@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="CreatePrescriptionMedication.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
     <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
     <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
-    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Modificator.xsd"/>
-	<include schemaLocation="CreatePrescriptionMedication.xsd"/>
 	<element name="CreatePrescriptionMedicationRequest" type="medicinecard20130601:CreatePrescriptionMedicationRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document containing one or more documents for creating prescription medications from drug medications</documentation>
@@ -14,8 +14,8 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
-			<element name="CreatedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
-			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
+			<element name="CreatedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="PrescriptionMedication" type="medicinecard20130601:CreatePrescriptionMedicationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
