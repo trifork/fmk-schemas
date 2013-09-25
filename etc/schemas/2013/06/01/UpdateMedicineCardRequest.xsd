@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/AttachPrescriptionMedication.xsd"/>
+	<include schemaLocation="AttachPrescriptionMedication.xsd"/>
+	<include schemaLocation="CancelPrescriptionMedication.xsd"/>
 	<include schemaLocation="CreateDrugMedication.xsd"/>
 	<include schemaLocation="CreateEffectuationOnDrugMedication.xsd"/>
     <include schemaLocation="CreatePrescriptionMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DeleteEffectuation.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DetachPrescriptionMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CancelPrescriptionMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MarkPrescriptionMedicationDeprecated.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Modificator.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Organisation.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PauseDrugMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ResuspendMedicineCard.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Reviewed.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SetMedicineCardReviewed.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SuspendMedicineCard.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/UnmarkPrescriptionMedicationDeprecated.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/UnpauseDrugMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/UnsuspendMedicineCard.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/UnwithdrawDrugMedication.xsd"/>
+	<include schemaLocation="DetachPrescriptionMedication.xsd"/>
+	<include schemaLocation="DeleteEffectuation.xsd"/>
+	<include schemaLocation="MarkPrescriptionMedicationDeprecated.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PauseDrugMedication.xsd"/>
+	<include schemaLocation="ResuspendMedicineCard.xsd"/>
+	<include schemaLocation="SetMedicineCardReviewed.xsd"/>
+	<include schemaLocation="SuspendMedicineCard.xsd"/>
+	<include schemaLocation="UnmarkPrescriptionMedicationDeprecated.xsd"/>
+	<include schemaLocation="UnpauseDrugMedication.xsd"/>
+	<include schemaLocation="UnsuspendMedicineCard.xsd"/>
+	<include schemaLocation="UnwithdrawDrugMedication.xsd"/>
 	<include schemaLocation="UpdateDrugMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/WithdrawDrugMedication.xsd"/>
+	<include schemaLocation="WithdrawDrugMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Organisation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
 	<element name="UpdateMedicineCardRequest" type="medicinecard20130601:UpdateMedicineCardRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
@@ -36,24 +35,24 @@
 			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<sequence maxOccurs="unbounded">
-				<element name="SetMedicineCardReviewed" type="medicinecard20120601:SetMedicineCardReviewedType" minOccurs="0"/>
-				<element name="SuspendMedicineCard" type="medicinecard20120601:SuspendMedicineCardType" minOccurs="0"/>
-				<element name="ResuspendMedicineCard" type="medicinecard20120601:ResuspendMedicineCardType" minOccurs="0"/>
-				<element name="UnsuspendMedicineCard" type="medicinecard20120601:UnsuspendMedicineCardType" minOccurs="0"/>
+				<element name="SetMedicineCardReviewed" type="medicinecard20130601:SetMedicineCardReviewedType" minOccurs="0"/>
+				<element name="SuspendMedicineCard" type="medicinecard20130601:SuspendMedicineCardType" minOccurs="0"/>
+				<element name="ResuspendMedicineCard" type="medicinecard20130601:ResuspendMedicineCardType" minOccurs="0"/>
+				<element name="UnsuspendMedicineCard" type="medicinecard20130601:UnsuspendMedicineCardType" minOccurs="0"/>
 				<element name="CreateDrugMedication" type="medicinecard20130601:CreateDrugMedicationType" minOccurs="0"/>
 				<element name="UpdateDrugMedication" type="medicinecard20130601:UpdateDrugMedicationType" minOccurs="0"/>
-				<element name="WithdrawDrugMedication" type="medicinecard20120601:WithdrawDrugMedicationType" minOccurs="0"/>
-				<element name="UnwithdrawDrugMedication" type="medicinecard20120601:UnwithdrawDrugMedicationType" minOccurs="0"/>
-				<element name="PauseDrugMedication" type="medicinecard20120601:PauseDrugMedicationType" minOccurs="0"/>
-				<element name="UnpauseDrugMedication" type="medicinecard20120601:UnpauseDrugMedicationType" minOccurs="0"/>
+				<element name="WithdrawDrugMedication" type="medicinecard20130601:WithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="UnwithdrawDrugMedication" type="medicinecard20130601:UnwithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="PauseDrugMedication" type="medicinecard20130601:PauseDrugMedicationType" minOccurs="0"/>
+				<element name="UnpauseDrugMedication" type="medicinecard20130601:UnpauseDrugMedicationType" minOccurs="0"/>
 				<element name="CreatePrescriptionMedication" type="medicinecard20130601:CreatePrescriptionMedicationType" minOccurs="0"/>
-				<element name="AttachPrescriptionMedication" type="medicinecard20120601:AttachPrescriptionMedicationType" minOccurs="0"/>
-				<element name="DetachPrescriptionMedication" type="medicinecard20120601:DetachPrescriptionMedicationType" minOccurs="0"/>
-				<element name="MarkPrescriptionMedicationDeprecated" type="medicinecard20120601:MarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
-				<element name="UnmarkPrescriptionMedicationDeprecated" type="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
-				<element name="CancelPrescriptionMedication" type="medicinecard20120601:CancelPrescriptionMedicationType" minOccurs="0"/>
+				<element name="AttachPrescriptionMedication" type="medicinecard20130601:AttachPrescriptionMedicationType" minOccurs="0"/>
+				<element name="DetachPrescriptionMedication" type="medicinecard20130601:DetachPrescriptionMedicationType" minOccurs="0"/>
+				<element name="MarkPrescriptionMedicationDeprecated" type="medicinecard20130601:MarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
+				<element name="UnmarkPrescriptionMedicationDeprecated" type="medicinecard20130601:UnmarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
+				<element name="CancelPrescriptionMedication" type="medicinecard20130601:CancelPrescriptionMedicationType" minOccurs="0"/>
 				<element name="CreateEffectuationOnDrugMedication" type="medicinecard20130601:CreateEffectuationOnDrugMedicationType" minOccurs="0"/>
-				<element name="DeleteEffectuation" type="medicinecard20120601:DeleteEffectuationType" minOccurs="0"/>
+				<element name="DeleteEffectuation" type="medicinecard20130601:DeleteEffectuationType" minOccurs="0"/>
 			</sequence>
 		</sequence>
 	</complexType>

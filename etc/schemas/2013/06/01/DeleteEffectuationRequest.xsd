@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DeleteEffectuation.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+	<element name="DeleteEffectuationRequest" type="medicinecard20130601:DeleteEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for deleting effectuations</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at slette effektueringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="DeleteEffectuationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
+			<element name="ModifiedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="Effectuation" type="medicinecard20130601:DeleteEffectuationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

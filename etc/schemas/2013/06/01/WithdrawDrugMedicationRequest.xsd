@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="WithdrawDrugMedication.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+	<element name="WithdrawDrugMedicationRequest" type="medicinecard20130601:WithdrawDrugMedicationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container elemenet for a request for which withdraws the drug medication</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der seponerer en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="WithdrawDrugMedicationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
+			<element name="WithdrawnBy" type="medicinecard20130601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="DrugMedication" type="medicinecard20130601:WithdrawDrugMedicationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

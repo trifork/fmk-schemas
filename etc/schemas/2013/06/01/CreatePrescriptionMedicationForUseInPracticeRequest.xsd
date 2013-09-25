@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="UnattachedPrescriptionMedication.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<element name="CreatePrescriptionMedicationForUseInPracticeRequest" type="medicinecard20130601:CreatePrescriptionMedicationForUseInPracticeRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for creating prescription medications from drug medications</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at oprette receptordinationer fra lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePrescriptionMedicationForUseInPracticeRequestType">
+		<sequence>
+			<element name="CreatedBy" type="medicinecard20130601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="PrescriptionMedication" type="medicinecard20130601:UnattachedPrescriptionMedicationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

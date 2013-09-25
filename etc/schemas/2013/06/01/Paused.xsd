@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedFromDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedFromDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedToDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedToDateTime.xsd"/>	
+	<element name="Paused" type="medicinecard20130601:PausedType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element containing information about which organisation and possibly doctor who paused the document this element is in (e.g. drug prescription) as well as the date it ocurred.</documentation>
+			<documentation xml:lang="da-DK">Element der indeholder information omkring hvilken organisation og muligvis læge som har pauseret dokumentet elementet befinder sig i (f.eks. lægemiddelordination), desuden datoen dette er sket.</documentation>
+		</annotation>
+	</element>
+	<complexType name="PausedType">
+		<sequence>
+			<choice minOccurs="0">
+				<element name="FromDate" type="medicinecard20120601:PausedFromDateType"/>
+				<element name="FromDateTime" type="medicinecard20120601:PausedFromDateTimeType"/>
+			</choice>
+			<choice minOccurs="0">
+				<element name="ToDate" type="medicinecard20120601:PausedToDateType"/>
+				<element name="ToDateTime" type="medicinecard20120601:PausedToDateTimeType"/>
+			</choice>
+			<element name="By" type="medicinecard20130601:ModificatorType"/>
+			<element name="DateTime" type="dateTime"/>
+		</sequence>
+	</complexType>
+</schema>

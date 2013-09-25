@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CreatedDateTime.xsd"/>
+	<element name="Created" type="medicinecard20130601:CreatedType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element containing information about which organisation and possibly doctor who created the document this element is in (e.g. drug medication) as well as the date it ocurred.</documentation>
+			<documentation xml:lang="da-DK">Element der indeholder information omkring hvilken organisation og muligvis læge som har oprettet dokumentet elementet befinder sig i (f.eks. lægemiddelordination), desuden datoen dette er sket.</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatedType">
+		<sequence>
+			<element name="By" type="medicinecard20130601:ModificatorType"/>
+			<element name="DateTime" type="medicinecard20120601:CreatedDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>

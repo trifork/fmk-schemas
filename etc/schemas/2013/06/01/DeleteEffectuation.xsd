@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ModificationMetadata.xsd"/>	
+	<element name="DeleteEffectuation" type="medicinecard20130601:DeleteEffectuationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Instructions on deleting an effectuation</documentation>
+			<documentation xml:lang="da-DK">Anvisning for sletning af en effetuering</documentation>
+		</annotation>
+	</element>
+	<complexType name="DeleteEffectuationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:EffectuationIdentifierType"/>
+			<element name="ModifiedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>						
+		</sequence>
+	</complexType>
+</schema>

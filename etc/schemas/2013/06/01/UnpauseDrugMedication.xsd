@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ModificationMetadata.xsd"/>
+	<element name="UnpauseDrugMedication" type="medicinecard20130601:UnpauseDrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request to remove a pause on a drugmedication</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel der fjerner pausering af en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="UnpauseDrugMedicationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="ModifiedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>			
+		</sequence>
+	</complexType>
+</schema>
