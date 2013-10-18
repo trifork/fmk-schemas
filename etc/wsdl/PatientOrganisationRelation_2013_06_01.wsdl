@@ -1,49 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd" xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01">
-
-    <wsdl:types>
-
-        <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
-            <xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd"/>
-        </xs:schema>
-
-        <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
-            <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
-        </xs:schema>
-
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
-            <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
-        </xs:schema>
-
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified">
-            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
-            <xs:include schemaLocation="../schemas/2012/06/01/OnBehalfOf.xsd"/>
-            <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
-            <xs:include schemaLocation="../schemas/2012/06/01/RegisterPatientOrganisationRelationResponse.xsd"/>
-            <xs:include schemaLocation="../schemas/2012/06/01/RemovePatientOrganisationRelationResponse.xsd"/>
-        </xs:schema>
-
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified">
-            <xs:include schemaLocation="../schemas/2013/06/01/GetPatientOrganisationRelationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2013/06/01/GetPatientOrganisationRelationResponse.xsd"/>
-            <xs:include schemaLocation="../schemas/2013/06/01/RegisterPatientOrganisationRelationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2013/06/01/RemovePatientOrganisationRelationRequest.xsd"/>
-        </xs:schema>
-
-    </wsdl:types>
-
-
-    <wsdl:message name="SecurityHeader">
-        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
-    </wsdl:message>
-
-    <wsdl:message name="MedComHeader">
-        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
-    </wsdl:message>
-
-    <wsdl:message name="WhitelistingHeader">
-        <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
-    </wsdl:message>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd" xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:sdsd201306="http://www.sdsd.dk/dgws/2013/06" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+			<xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd"/>
+		</xs:schema>
+		<xs:schema targetNamespace="http://www.sdsd.dk/dgws/2013/06">
+			<xs:include schemaLocation="../schemas/sdsd/2013/06/WhitelistingHeader.xsd"/>
+		</xs:schema>
+		<xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
+			<xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
+		</xs:schema>
+		<xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified">
+			<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/06/01/OnBehalfOf.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/06/01/RegisterPatientOrganisationRelationResponse.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/06/01/RemovePatientOrganisationRelationResponse.xsd"/>
+		</xs:schema>
+		<xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified">
+			<xs:include schemaLocation="../schemas/2013/06/01/GetPatientOrganisationRelationRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2013/06/01/GetPatientOrganisationRelationResponse.xsd"/>
+			<xs:include schemaLocation="../schemas/2013/06/01/RegisterPatientOrganisationRelationRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2013/06/01/RemovePatientOrganisationRelationRequest.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="SecurityHeader">
+		<wsdl:part name="SecurityHeader" element="wsse:Security"/>
+	</wsdl:message>
+	<wsdl:message name="MedComHeader">
+		<wsdl:part name="MedcomHeader" element="medcom:Header"/>
+	</wsdl:message>
+	<wsdl:message name="WhitelistingHeader">
+		<wsdl:part name="WhitelistingHeader" element="sdsd201306:WhitelistingHeader"/>
+	</wsdl:message>
 
     <wsdl:message name="TimingHeader">
         <wsdl:part name="TimingHeader" element="medicinecard20120601:TimingList"/>

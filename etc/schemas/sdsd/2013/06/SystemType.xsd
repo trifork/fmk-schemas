@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sdsd="http://www.sdsd.dk/dgws/2010/08" xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06" xmlns:sdsd201306="http://www.sdsd.dk/dgws/2013/06" targetNamespace="http://www.sdsd.dk/dgws/2013/06" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="SystemType" type="sdsd201306:SystemTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Declararation of the system type as part of the whitelisting on any call</documentation>
+			<documentation xml:lang="da-DK">Angivelse af system type som en del af whitelisting for alle kald</documentation>
+		</annotation>
+	</element>
+	<simpleType name="SystemTypeType">
+		<union memberTypes="sdsd201306:PredefinedSystemTypes sdsd201306:UndefinedSystemTypes"/>
+	</simpleType>
+	<simpleType name="PredefinedSystemTypes">
+		<restriction base="string">
+			<enumeration value="Elektronisk patientjournal"/>
+			<enumeration value="Elektronisk omsorgsjournal"/>
+			<enumeration value="Læge-praksissystem"/>
+			<enumeration value="Tandlægesystem"/>
+			<enumeration value="Apotekersystem"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedSystemTypes">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

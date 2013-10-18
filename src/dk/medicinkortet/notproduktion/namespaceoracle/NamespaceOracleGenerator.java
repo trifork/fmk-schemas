@@ -86,7 +86,10 @@ public class NamespaceOracleGenerator {
 			for (String ns : namespacesWithNoCanonicalPrefix) {
 				sb.append("  " + ns + "\n");
 			}
-			
+			/*
+			 *  It is possible that if this exception is thrown it is because you have defined a new name space and 
+			 *  forgotten to declare it in dk.medicinkortet.xmlschema.FmkNamespaces
+			 */
 			throw new IllegalStateException(sb.toString());
 		}
 		

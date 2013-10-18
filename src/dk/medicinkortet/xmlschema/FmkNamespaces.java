@@ -34,6 +34,7 @@ public class FmkNamespaces {
 		namespaces.addNamespace("ean", "http://rep.oio.dk/ean/xml/schemas/2005/01/10/");
 		namespaces.addNamespace("sdsd", "http://www.sdsd.dk/dgws/2010/08");
 		namespaces.addNamespace("sdsd201206", "http://www.sdsd.dk/dgws/2012/06");
+		namespaces.addNamespace("sdsd201306", "http://www.sdsd.dk/dgws/2013/06");
 		namespaces.addNamespace("topic20130101", "http://nsi.dk/topic/xml.schema/2013/01/01");
 		namespaces.addNamespace("reimbursement20121201", "http://nsi.dk/reimbursement/xml.schema/2012/12/01");
 		namespaces.addNamespace("saml", "urn:oasis:names:tc:SAML:2.0:assertion");
