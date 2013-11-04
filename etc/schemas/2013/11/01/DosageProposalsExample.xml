@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DosageProposals xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2013/11/01 DosageProposals.xsd" xmlns="http://www.dkma.dk/medicinecard/xml.schema/2013/11/01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dosage>
+		<Version>1.2.6</Version>
+		<m09:DosageStructure xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01 ../../../2009/01/01/DKMA_DosageStructure.xsd" xmlns:m08="http://www.dkma.dk/medicinecard/xml.schema/2008/06/01" xmlns:m09="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01">
+			<m09:DosageTimesStructure>
+				<m08:DosageTimesIterationIntervalQuantity>1</m08:DosageTimesIterationIntervalQuantity>
+				<m08:DosageTimesStartDate>2010-01-01</m08:DosageTimesStartDate>
+				<m08:DosageTimesEndDate>2110-01-01</m08:DosageTimesEndDate>
+				<m09:DosageQuantityUnitText>tabletter</m09:DosageQuantityUnitText>
+				<m09:DosageDayElementStructure>
+					<m08:DosageDayIdentifier>1</m08:DosageDayIdentifier>
+					<m09:MorningDosageTimeElementStructure>
+						<m08:DosageQuantityValue>1</m08:DosageQuantityValue>
+					</m09:MorningDosageTimeElementStructure>
+				</m09:DosageDayElementStructure>
+			</m09:DosageTimesStructure>
+		</m09:DosageStructure>
+	</Dosage>
+	
+	<!-- Version 1.4.0 -->
+	<Dosage>
+		<Version>1.4.0</Version>
+		<m12:Dosage xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01 ../../../2012/06/01/Dosage.xsd" xmlns:m12="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
+			<m12:Structure>
+			<m12:IterationInterval>1</m12:IterationInterval>
+			<m12:StartDate>2010-01-01</m12:StartDate>
+			<m12:EndDate>2110-01-01</m12:EndDate>
+			<m12:UnitTexts source="Doseringsforslag">
+				<m12:Singular>tablet</m12:Singular>
+				<m12:Plural>tabletter</m12:Plural>
+			</m12:UnitTexts>
+			<m12:Day>
+				<m12:Number>1</m12:Number>
+				<m12:Dose>
+					<m12:Time>morning</m12:Time>
+					<m12:Quantity>1</m12:Quantity>
+					<m12:IsAccordingToNeed/>
+				</m12:Dose>
+			</m12:Day>
+			</m12:Structure>
+		</m12:Dosage>
+	</Dosage>
+	
+	<!-- Version 1.4.2 -->
+	<Dosage>
+		<Version>1.4.2</Version>
+		<m13:DosageForRequest xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01  ../../../2013/06/01/DosageForRequest.xsd" xmlns:m12="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:m13="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01">
+			<m13:Structures>
+				<m13:UnitTexts source="Doseringsforslag">
+					<m12:Singular>tablet</m12:Singular>
+					<m12:Plural>tabletter</m12:Plural>
+				</m13:UnitTexts>
+				<m13:Structure>
+					<m13:IterationInterval>1</m13:IterationInterval>
+					<m13:StartDate>2010-01-01</m13:StartDate>
+					<m13:EndDate>2110-01-01</m13:EndDate>
+					<m13:Day>
+						<m12:Number>1</m12:Number>
+						<m12:Dose>
+							<m12:Time>morning</m12:Time>
+							<m12:Quantity>1</m12:Quantity>
+						</m12:Dose>
+					</m13:Day>
+				</m13:Structure>
+			</m13:Structures>
+		</m13:DosageForRequest>
+	</Dosage>
+</DosageProposals>

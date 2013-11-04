@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20131101="http://www.dkma.dk/medicinecard/xml.schema/2013/11/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/11/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DosageProposalVersion.xsd"/>
+	<element name="DosageProposal" type="medicinecard20131101:DosageProposalType">
+		<annotation>
+			<documentation xml:lang="en-GB">A version of a dosage proposal</documentation>
+			<documentation xml:lang="da-DK">En version af et doseringsforslag</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageProposalType">
+		<sequence>
+			<element name="Version" type="medicinecard20131101:DosageProposalVersionType"/>
+			<any/>
+		</sequence>
+	</complexType>
+</schema>

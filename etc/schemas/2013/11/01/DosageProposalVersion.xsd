@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20131101="http://www.dkma.dk/medicinecard/xml.schema/2013/11/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/11/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="DosageProposalVersion" type="medicinecard20131101:DosageProposalVersionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Version of dosage proposal</documentation>
+			<documentation xml:lang="da-DK">Version af doseringsforslag</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DosageProposalVersionType">
+		<union memberTypes="medicinecard20131101:PredefinedDosageProposalVersionType medicinecard20131101:UndefinedDosageProposalVersionType"/>
+	</simpleType>
+	<simpleType name="PredefinedDosageProposalVersionType">
+		<restriction base="medicinecard20131101:UndefinedDosageProposalVersionType">
+			<enumeration value="1.2.6"/>
+			<enumeration value="1.4.0"/>
+			<enumeration value="1.4.2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedDosageProposalVersionType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+</schema>

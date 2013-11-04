@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DeliveryInformation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrderInstruction.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrderedDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrderedEffectuationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Organisation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PrescriptionMedicationIdentifier.xsd"/>
+	<element name="OrderedEffectuationDetails" type="medicinecard20130601:OrderedEffectuationDetailsType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response on an order, response for the order request</documentation>
+			<documentation xml:lang="da-DK">Svar på bestilling, svar til order request </documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderedEffectuationDetailsType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:OrderedEffectuationIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="PrescriptionMedicationIdentifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType" minOccurs="0"/>
+			<element name="OrderedBy" type="medicinecard20130601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="ReceiverOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
+			<element name="CancelledBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<choice minOccurs="0" maxOccurs="3">
+				<element name="DeliveryInformation" type="medicinecard20120601:DeliveryInformationType"/>
+				<element name="OrderInstruction" type="medicinecard20120601:OrderInstructionType"/>
+			</choice>
+			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
+			<element name="OrderedDateTime" type="medicinecard20120601:OrderedDateTimeType"/>
+			<element name="ExistingPrescriptionMedicationIdentifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType"/>
+			<element name="OrderedEffectuationIdentifier" type="medicinecard20120601:OrderedEffectuationIdentifierType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

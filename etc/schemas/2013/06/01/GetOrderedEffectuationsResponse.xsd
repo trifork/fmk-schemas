@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+	<include schemaLocation="OrderedEffectuationDetails.xsd"/>
+	<include schemaLocation="OrderedPrescriptionMedicationDetails.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MoreAvailableOrders.xsd"/>
+	<element name="GetOrderedEffectuationsResponse" type="medicinecard20130601:GetOrderedEffectuationsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Get ordered effectuations</documentation>
+			<documentation xml:lang="da-DK">Opslag på bestilte udleveringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetOrderedEffectuationsResponseType">
+		<sequence>
+			<element name="Patient" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+						<element name="OrderedPrescriptionMedication" type="medicinecard20130601:OrderedPrescriptionMedicationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="OrderedEffectuation" type="medicinecard20130601:OrderedEffectuationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="MoreAvailable" type="medicinecard20120601:MoreAvailableOrdersType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

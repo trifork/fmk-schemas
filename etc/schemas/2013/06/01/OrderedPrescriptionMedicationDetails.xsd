@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DeliveryInformation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DoseDispensedPrescriptionDispensing.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrderInstruction.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrderedDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrderedPrescriptionMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Organisation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PrescriptionMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ReimbursementClause.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ReiteratedPrescriptionDispensing.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SinglePrescriptionDispensing.xsd"/>
+	<element name="OrderedPrescriptionMedicationDetails" type="medicinecard20130601:OrderedPrescriptionMedicationDetailsType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response on an order, response for the order request</documentation>
+			<documentation xml:lang="da-DK">Svar på bestilling, svar til order request </documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderedPrescriptionMedicationDetailsType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:OrderedPrescriptionMedicationIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="OrderedBy" type="medicinecard20130601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="PrescribingOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="EffectuatingOrganisation" type="medicinecard20120601:OrganisationType" minOccurs="0"/>
+			<element name="CancelledBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<choice minOccurs="0" maxOccurs="3">
+				<element name="DeliveryInformation" type="medicinecard20120601:DeliveryInformationType"/>
+				<element name="OrderInstruction" type="medicinecard20120601:OrderInstructionType"/>
+			</choice>
+			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
+			<element name="ReimbursementClause" type="medicinecard20120601:ReimbursementClauseType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="SinglePrescriptionDispensing" type="medicinecard20120601:SinglePrescriptionDispensingType"/>
+				<element name="ReiteratedPrescriptionDispensing" type="medicinecard20120601:ReiteratedPrescriptionDispensingType"/>
+				<element name="DoseDispensedDispensing" type="medicinecard20120601:DoseDispensedPrescriptionDispensingType"/>
+			</choice>
+			<element name="OrderedDateTime" type="medicinecard20120601:OrderedDateTimeType"/>
+			<element name="OrderedPrescriptionMedicationIdentifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType" minOccurs="0"/>
+			<element name="OrderedEffectuationIdentifier" type="medicinecard20120601:EffectuationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
