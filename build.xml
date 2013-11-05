@@ -40,18 +40,28 @@
 	<target name="organize-schemas" depends="compile" >
 		<mkdir dir="target/wsdl" />
 
-			<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
-				<classpath>
-					<path location="${build.dir}"/>
-					<fileset dir="lib/build" excludes="*gwt*"/>
-				</classpath>
-				<sysproperty key="VersionDate" value="2012_06_01"/>
-				<sysproperty key="WsdlName" value="EffectuationOrdering"/>
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+			<classpath>
+				<path location="${build.dir}"/>
+				<fileset dir="lib/build" excludes="*gwt*"/>
+			</classpath>
+			<sysproperty key="VersionDate" value="2012_06_01"/>
+			<sysproperty key="WsdlName" value="EffectuationOrdering"/>
 			</java>
-
 		<zip destfile="target/wsdl/EffectuationOrdering_2012_06_01-collection.zip" 
 				  basedir="target/wsdl/EffectuationOrdering_2012_06_01"/>
 		
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+			<classpath>
+				<path location="${build.dir}"/>
+				<fileset dir="lib/build" excludes="*gwt*"/>
+			</classpath>
+			<sysproperty key="VersionDate" value="2013_06_01"/>
+			<sysproperty key="WsdlName" value="EffectuationOrdering"/>
+			</java>
+		<zip destfile="target/wsdl/EffectuationOrdering_2013_06_01-collection.zip" 
+				  basedir="target/wsdl/EffectuationOrdering_2013_06_01"/>
+
 		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
 			<classpath>
 				<path location="${build.dir}"/>

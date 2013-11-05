@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"  xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="EffectuationOnPrescriptionMedication.xsd"/>
+	<include schemaLocation="InvalidEffectuation.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/AuthorisationDateTime.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CreatedWithOptionalAuthorisationIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
@@ -55,6 +56,7 @@
 			<element name="Status" type="medicinecard20120601:PrescriptionMedicationStatusType"/>
 			<element name="Deprecated" type="medicinecard20120601:DeprecatedDateTimeType" minOccurs="0"/>
 			<element name="Effectuation" type="medicinecard20130601:EffectuationOnPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidEffectuation" type="medicinecard20130601:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

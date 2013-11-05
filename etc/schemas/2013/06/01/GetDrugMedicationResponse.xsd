@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01"   targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedication.xsd"/>
+	<include schemaLocation="InvalidDrugMedication.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationWithNegativeConsent.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
 	<element name="GetDrugMedicationResponse" type="medicinecard20130601:GetDrugMedicationResponseType">
@@ -14,6 +15,7 @@
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="medicinecard20130601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidDrugMedication" type="medicinecard20130601:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
