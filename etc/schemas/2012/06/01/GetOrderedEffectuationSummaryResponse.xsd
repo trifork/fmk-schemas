@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="OrderedDateTime.xsd"/>
+	<include schemaLocation="NumberOfUnprescribedOrders.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="GetOrderedEffectuationSummaryResponse" type="medicinecard20120601:GetOrderedEffectuationSummaryResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Get ordered effectuations</documentation>
+			<documentation xml:lang="da-DK">Opslag på bestilte udleveringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetOrderedEffectuationSummaryResponseType">
+		<sequence>
+			<element name="Patient" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+						<element name="NumberOfUnprescribedOrders" type="medicinecard20120601:NumberOfUnprescribedOrdersType"/>
+						<element name="OldestOrderedDateTime" type="medicinecard20120601:OrderedDateTimeType"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

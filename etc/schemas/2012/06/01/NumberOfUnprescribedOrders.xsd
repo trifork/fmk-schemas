@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="NumberOfUnprescribedOrders" type="medicinecard20120601:NumberOfUnprescribedOrdersType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains the numer of orders where there isn't created a prescription medication or the order hasn't been cancelled</documentation>
+			<documentation xml:lang="da-DK">Indeholder antallet af bestillinger hvor der ikke endnu er oprettet en receptoridination eller bestillingen er ophævet</documentation>
+		</annotation>
+	</element>
+	<simpleType name="NumberOfUnprescribedOrdersType">
+		<restriction base="integer">
+			<minInclusive value="1"/>
+		</restriction>
+	</simpleType>
+</schema>
