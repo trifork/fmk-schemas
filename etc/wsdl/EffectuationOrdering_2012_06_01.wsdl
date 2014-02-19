@@ -76,6 +76,13 @@
         <wsdl:part name="GetOrderedEffectuationsResponse" element="medicinecard20120601:GetOrderedEffectuationsResponse"/>
     </wsdl:message>
     
+    <wsdl:message name="GetOrderedEffectuationsSummaryRequest_2012_06_01">
+        <wsdl:part name="GetOrderedEffectuationsSummaryRequest" element="medicinecard20120601:GetOrderedEffectuationsSummaryRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrderedEffectuationsSummaryResponse_2012_06_01">
+        <wsdl:part name="GetOrderedEffectuationsSummaryResponse" element="medicinecard20120601:GetOrderedEffectuationsSummaryResponse"/>
+    </wsdl:message>
+    
     <wsdl:message name="OrderEffectuationRequest_2012_06_01">
         <wsdl:part name="OrderEffectuationRequest" element="medicinecard20120601:OrderEffectuationRequest"/>
     </wsdl:message>
@@ -105,6 +112,16 @@
             			 message="tns:GetOrderedEffectuationsResponse_2012_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
+
+        <wsdl:operation name="GetOrderedEffectuationsSummary_2012_06_01">
+            <wsdl:input name="GetOrderedEffectuationsSummaryRequest_2012_06_01" 
+            			message="tns:GetOrderedEffectuationsSummaryRequest_2012_06_01"/>
+            
+            <wsdl:output name="GetOrderedEffectuationsSummaryResponse_2012_06_01" 
+            			 message="tns:GetOrderedEffectuationsSummaryResponse_2012_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
         
         <wsdl:operation name="OrderEffectuation_2012_06_01">
             <wsdl:input name="OrderEffectuationRequest_2012_06_01" 
@@ -150,6 +167,27 @@
                 <soap:fault name="DGWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
+        
+         <wsdl:operation name="GetOrderedEffectuationsSummary_2012_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetOrderedEffectuationsSummary"
+                            style="document"/>
+            <wsdl:input
+                    name="GetOrderedEffectuationsSummaryRequest_2012_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrderedEffectuationsSummaryResponse_2012_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+         
         
         <wsdl:operation name="OrderEffectuation_2012_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#OrderEffectuation"
