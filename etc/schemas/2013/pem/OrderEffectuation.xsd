@@ -2,7 +2,6 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard2013pem="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/Delivery.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/DeliveryInformation.xsd"/>
-	<!--<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/DrugMedicationIdentifier.xsd"/>-->
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/ModificationMetadata.xsd"/>
     <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../2013/06/01/Modificator.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/OrderInstruction.xsd"/>
@@ -10,13 +9,12 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/PrescriptionMedicationIdentifier.xsd"/>
 	<element name="OrderEffectuation" type="medicinecard2013pem:OrderEffectuationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Order for a new effectuation on the pharmacy</documentation>
-			<documentation xml:lang="da-DK">Bestilling for en en ny effektuering på apoteket</documentation>
+			<documentation xml:lang="en-GB">Order for a new effectuation on the pharmacy - Specifically for use by PEM</documentation>
+			<documentation xml:lang="da-DK">Bestilling for en en ny effektuering på apoteket - Specifikt til brug fra PEM</documentation>
 		</annotation>
 	</element>
 	<complexType name="OrderEffectuationType">
 		<sequence>
-			<!--<element name="DrugMedicationIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>-->
 			<element name="PrescriptionMedicationIdentifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType" minOccurs="0"/>
 			<element name="OrderedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>
