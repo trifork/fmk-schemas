@@ -122,6 +122,15 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
+          <wsdl:operation name="GetOrderedEffectuationSummary_2013_06_01">
+            <wsdl:input name="GetOrderedEffectuationSummaryRequest_2013_06_01" 
+            			message="tns:GetOrderedEffectuationSummaryRequest_2013_06_01"/>
+            
+            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2013_06_01" 
+            			 message="tns:GetOrderedEffectuationSummaryResponse_2013_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        
         <wsdl:operation name="OrderEffectuation_2013_06_01">
             <wsdl:input name="OrderEffectuationRequest_2013_06_01" 
             			message="tns:OrderEffectuationRequest_2013_06_01"/>
@@ -167,23 +176,24 @@
             </wsdl:fault>
         </wsdl:operation>
         
-                <wsdl:operation name="GetOrderedEffectuationSummary_2012_06_01">
-            <wsdl:input name="GetOrderedEffectuationSummaryRequest_2012_06_01" 
-            			message="tns:GetOrderedEffectuationSummaryRequest_2012_06_01"/>
-            
-            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2012_06_01" 
-            			 message="tns:GetOrderedEffectuationSummaryResponse_2012_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-        
-        
-        <wsdl:operation name="GetOrderedEffectuationSummary_2013_06_01">
-            <wsdl:input name="GetOrderedEffectuationSummaryRequest_2013_06_01" 
-            			message="tns:GetOrderedEffectuationSummaryRequest_2013_06_01"/>
-            
-            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2013_06_01" 
-            			 message="tns:GetOrderedEffectuationSummaryResponse_2013_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+         <wsdl:operation name="GetOrderedEffectuationSummary_2013_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01#GetOrderedEffectuations"
+                            style="document"/>
+            <wsdl:input
+                    name="GetOrderedEffectuationSummaryRequest_2013_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2013_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
         </wsdl:operation>
         
         <wsdl:operation name="OrderEffectuation_2013_06_01">
