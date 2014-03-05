@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="CreateOrder.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
+	<include schemaLocation="WarrantVersion.xsd"/>
+	<complexType name="CreateOrderOnWarrantType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20140601:WarrantIdentifierType"/>
+			<element name="Version" type="medicinecard20140601:WarrantVersionType"/>
+			<element name="Order" type="medicinecard20140601:CreateOrderType"/>
+		</sequence>
+	</complexType>
+</schema>
