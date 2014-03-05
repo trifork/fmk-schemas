@@ -35,6 +35,9 @@
 			
 			<xs:include schemaLocation="../schemas/2012/06/01/OrderEffectuationResponse.xsd"/>
 			
+			<xs:include schemaLocation="../schemas/2012/06/01/GetOrderedEffectuationSummaryRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2012/06/01/GetOrderedEffectuationSummaryResponse.xsd"/>
+			
 			<xs:include schemaLocation="../schemas/2012/06/01/CancelOrderedEffectuationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2012/06/01/CancelOrderedEffectuationResponse.xsd"/>
 
@@ -82,6 +85,13 @@
         <wsdl:part name="GetOrderedEffectuationsResponse" element="medicinecard20130601:GetOrderedEffectuationsResponse"/>
     </wsdl:message>
     
+    <wsdl:message name="GetOrderedEffectuationSummaryRequest_2013_06_01">
+        <wsdl:part name="GetOrderedEffectuationSummaryRequest" element="medicinecard20120601:GetOrderedEffectuationSummaryRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrderedEffectuationSummaryResponse_2013_06_01">
+        <wsdl:part name="GetOrderedEffectuationSummaryResponse" element="medicinecard20120601:GetOrderedEffectuationSummaryResponse"/>
+    </wsdl:message>
+        
     <wsdl:message name="OrderEffectuationRequest_2013_06_01">
         <wsdl:part name="OrderEffectuationRequest" element="medicinecard20130601:OrderEffectuationRequest"/>
     </wsdl:message>
@@ -109,6 +119,15 @@
             
             <wsdl:output name="GetOrderedEffectuationsResponse_2013_06_01" 
             			 message="tns:GetOrderedEffectuationsResponse_2013_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        
+          <wsdl:operation name="GetOrderedEffectuationSummary_2013_06_01">
+            <wsdl:input name="GetOrderedEffectuationSummaryRequest_2013_06_01" 
+            			message="tns:GetOrderedEffectuationSummaryRequest_2013_06_01"/>
+            
+            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2013_06_01" 
+            			 message="tns:GetOrderedEffectuationSummaryResponse_2013_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
@@ -149,6 +168,26 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetOrderedEffectuationsResponse_2013_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+         <wsdl:operation name="GetOrderedEffectuationSummary_2013_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01#GetOrderedEffectuations"
+                            style="document"/>
+            <wsdl:input
+                    name="GetOrderedEffectuationSummaryRequest_2013_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2013_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>

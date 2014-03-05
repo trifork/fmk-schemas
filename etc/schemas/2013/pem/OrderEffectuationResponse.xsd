@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard2013pem="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/PersonIdentifier.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/OrderedPrescriptionMedication.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/OrderedEffectuation.xsd"/>
+	<element name="OrderEffectuationResponse" type="medicinecard2013pem:OrderEffectuationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document contaning information about the re-ordered prescription medications and effectuations - Specifically for use by PEM</documentation>
+			<documentation xml:lang="da-DK">Response-dokument indeholdende information om de genbestilte receptordinationer samt udleveringer - Specifikt til brug fra PEM</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderEffectuationResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<choice maxOccurs="unbounded">
+				<element name="OrderedPrescriptionMedication" type="medicinecard20120601:OrderedPrescriptionMedicationType"/>
+				<element name="OrderedEffectuation" type="medicinecard20120601:OrderedEffectuationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
