@@ -5,12 +5,12 @@
 	<include schemaLocation="PrescriptionModification.xsd"/>
 	<include schemaLocation="PrescriptionModificationAction.xsd"/>
 	<include schemaLocation="PrescriptionMedicationModificationIdentifiers.xsd"/>
-    <include schemaLocation="AdministrationIdentifier.xsd"/>
+    <include schemaLocation="EffectuationIdentifier.xsd"/>
 
 	<element name="PrescriptionModification" type="medicinecard20140601:PrescriptionModificationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Information about a modification of a medicine card</documentation>
-			<documentation xml:lang="da-DK">Information omkring en modifikation af et medicinkort</documentation>
+			<documentation xml:lang="en-GB">Information about a modification of a prescription medication</documentation>
+			<documentation xml:lang="da-DK">Information omkring en modifikation af en receptordination</documentation>
 		</annotation>
 	</element>
 	<complexType name="PrescriptionModificationType">
@@ -18,8 +18,7 @@
 			<element name="Action" type="medicinecard20140601:PrescriptionModificationActionType"/>
             <element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
             <element name="PrescriptionMedication" type="medicinecard20140601:PrescriptionMedicationModificationIdentifiersType"/>
-            <element name="AdministrationIdentifier" type="medicinecard20140601:AdministrationIdentifierType"/>
-			<any minOccurs="0" maxOccurs="unbounded"/>
+            <any minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+    <include schemaLocation="EffectuationIdentifier.xsd"/>
+    <element name="Effectuation" type="medicinecard20140601:EffectuationModificationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Effectuation element in a prescription medication modification</documentation>
+            <documentation xml:lang="da-DK">Effectuation element i en modifikation på en receptordination</documentation>
+        </annotation>
+    </element>
+    <complexType name="EffectuationModificationType">
+        <sequence>
+            <element name="Identifier" type="medicinecard20140601:EffectuationIdentifierType"/>
+        </sequence>
+    </complexType>
+</schema>
