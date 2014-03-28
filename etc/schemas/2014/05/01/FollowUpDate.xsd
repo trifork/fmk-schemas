@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140501="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="FollowUpDateDate.xsd"/>
+	<include schemaLocation="FollowUpDateReason.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Modificator.xsd"/>
+	<complexType name="FollowUpDateType">
+		<sequence>
+			<element name="Date" type="medicinecard20140501:FollowUpDateDateType"/>
+			<element name="Reason" type="medicinecard20140501:FollowUpDateReasonType" minOccurs="0"/>
+			<element name="Responsible" type="medicinecard20130601:ModificatorType"/>
+		</sequence>
+	</complexType>
+</schema>

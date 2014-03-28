@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20140501="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="MedicineCard.xsd"/>
+	<element name="GetMedicineCardResponse" type="medicinecard20140501:GetMedicineCardResponseType"/>
+	<complexType name="GetMedicineCardResponseType">
+		<sequence>
+			<element name="MedicineCard" type="medicinecard20140501:MedicineCardType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

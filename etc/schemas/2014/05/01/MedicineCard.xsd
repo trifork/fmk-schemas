@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140501="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/NotReviewed.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Modified.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/NotReviewed.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/PatientOrganisationRelation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/PrescriptionMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Reviewed.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/InvalidDrugMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/InvalidPrescriptionMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardIsInvalid.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationWithNegativeConsent.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Patient.xsd"/>
+	<complexType name="MedicineCardType">
+		<sequence>
+			<element name="Patient" type="medicinecard20120601:PatientType"/>
+			<element name="Version" type="medicinecard20120601:MedicineCardVersionType"/>
+			<element name="PreviousVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NextVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20130601:ModifiedType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="Reviewed" type="medicinecard20130601:ReviewedType"/>
+				<element name="NotReviewed" type="medicinecard20130601:NotReviewedType"/>
+			</choice>
+			<element name="IsInvalid" type="medicinecard20120601:MedicineCardIsInvalidType" minOccurs="0"/>
+			<element name="PatientOrganisationRelation" type="medicinecard20130601:PatientOrganisationRelationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedication" type="medicinecard20140501:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidDrugMedication" type="medicinecard20130601:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20130601:PrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidPrescriptionMedication" type="medicinecard20130601:InvalidPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

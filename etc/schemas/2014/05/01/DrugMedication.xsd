@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140501="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="FollowUpDates.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Created.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/DosageForResponse.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Drug.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Effectuation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Modified.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Paused.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/PrescriptionMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Withdrawn.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/InvalidEffectuation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/InvalidPrescriptionMedication.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationBeginEndDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/HasNegativeConsent.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/HasNegativeConsent.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/RouteOfAdministration.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ReimbursementClause.xsd"/>
+	<element name="DrugMedication" type="medicinecard20140501:DrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">An overview of the drug medication (a medication on the medicine card)</documentation>
+			<documentation xml:lang="da-DK">En oversigt over lægemiddelordination (en ordination på medicinkortet)</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugMedicationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="Version" type="medicinecard20120601:DrugMedicationVersionType"/>
+			<element name="PreviousVersion" type="medicinecard20120601:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NextVersion" type="medicinecard20120601:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ParentIdentifier" type="medicinecard20120601:DrugMedicationIdentifierType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20130601:CreatedType"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20130601:ModifiedType" minOccurs="0"/>
+			<element name="Paused" type="medicinecard20130601:PausedType" minOccurs="0"/>
+			<element name="Withdrawn" type="medicinecard20130601:WithdrawnType" minOccurs="0"/>
+			<element name="HasNegativeConsent" type="medicinecard20120601:HasNegativeConsentType" minOccurs="0"/>
+			<element name="BeginEndDate" type="medicinecard20120601:DrugMedicationBeginEndDateType"/>
+			<element name="Indication" type="medicinecard20120601:IndicationType"/>
+			<element name="RouteOfAdministration" type="medicinecard20120601:RouteOfAdministrationType"/>
+			<element name="Drug" type="medicinecard20130601:DrugType"/>
+			<element name="Dosage" type="medicinecard20130601:DosageForResponseType"/>
+			<element name="FollowUpDates" type="medicinecard20140501:FollowUpDatesType" minOccurs="0"/>
+			<element name="SubstitutionAllowed" type="medicinecard20120601:SubstitutionAllowedType" minOccurs="0"/>
+			<element name="Effectuation" type="medicinecard20130601:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidEffectuation" type="medicinecard20130601:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20130601:PrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidPrescriptionMedication" type="medicinecard20130601:InvalidPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ReimbursementClause" type="medicinecard20120601:ReimbursementClauseType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
