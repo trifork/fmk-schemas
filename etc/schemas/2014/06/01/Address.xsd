@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/StreetName.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/StreetBuildingIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/FloorIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SuiteIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MailDeliverySublocationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DistrictSubdivisionIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PostOfficeBoxIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PostCodeIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DistrictName.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CountryIdentificationCode.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/StreetNameForAddressing.xsd"/>
+	<include schemaLocation="InternationalPostCodeIdentifier.xsd"/>
+	<complexType name="AddressType">
+		<sequence>
+			<element name="MailDeliverySublocationIdentifier" type="medicinecard20120601:MailDeliverySublocationIdentifierType" minOccurs="0"/>
+			<element name="StreetName" type="medicinecard20120601:StreetNameType"/>
+			<element name="StreetNameForAddressing" type="medicinecard20120601:StreetNameForAddressingType" minOccurs="0"/>
+			<element name="StreetBuildingIdentifier" type="medicinecard20120601:StreetBuildingIdentifierType"/>
+			<element name="FloorIdentifier" type="medicinecard20120601:FloorIdentifierType" minOccurs="0"/>
+			<element name="SuiteIdentifier" type="medicinecard20120601:SuiteIdentifierType" minOccurs="0"/>
+			<element name="DistrictSubdivisionIdentifier" type="medicinecard20120601:DistrictSubdivisionIdentifierType" minOccurs="0"/>
+			<element name="PostOfficeBoxIdentifier" type="medicinecard20120601:PostOfficeBoxIdentifierType" minOccurs="0"/>
+			<choice>
+				<element name="PostCodeIdentifier" type="medicinecard20120601:PostCodeIdentifierType"/>
+				<element name="InternationalPostCodeIdentifier" type="medicinecard20140601:InternationalPostCodeIdentifierType"/>
+			</choice>
+			<element name="DistrictName" type="medicinecard20120601:DistrictNameType"/>
+			<element name="CountryIdentificationCode" type="medicinecard20120601:CountryIdentificationCodeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

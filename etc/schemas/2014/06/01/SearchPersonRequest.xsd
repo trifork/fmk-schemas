@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="UnstructuredSearch.xsd"/>
+	<include schemaLocation="StructuredSearch.xsd"/>
+	<include schemaLocation="MaxResultSize.xsd"/>
+	<element name="SearchPersonRequest" type="medicinecard20140601:SearchPersonRequestType"/>
+	<complexType name="SearchPersonRequestType">
+		<sequence>
+			<choice>
+				<element name="UnstructuredSearch" type="medicinecard20140601:UnstructuredSearchType"/>
+				<element name="StructuredSearch" type="medicinecard20140601:StructuredSearchType"/>
+			</choice>
+			<element name="MaxResultSize" type="medicinecard20140601:MaxResultSizeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
