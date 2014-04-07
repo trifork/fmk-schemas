@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01"  xmlns:medicinecard20140501="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/05/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Modificator.xsd"/>
+	<include schemaLocation="INRValue.xsd"/>
+	<include schemaLocation="INRComment.xsd"/>
+	<complexType name="CreateINRType">
+		<sequence>
+			<element name="CreatedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>		
+			<element name="MinimalTerapeuticalINRLevel" type="medicinecard20140501:INRValueType"/>
+			<element name="MaximalTerapeuticalINRLevel" type="medicinecard20140501:INRValueType"/>
+			<element name="Comment" type="medicinecard20140501:INRCommentType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
