@@ -143,16 +143,23 @@ public class SchemaLoader {
 					namespaces.put(ns, schemas);
 				}
 				schemas.add(file);
-				
+
+                //Copy to ns based location
 				URI p = new URI(ns);
 				String path = p.getPath();
 				if (path == null) {
 					path = ns.replaceAll(":", "_");
 				}
-				File sub = new File(outputDir, path);
-				FileUtils.forceMkdir(sub);
-				
-				copyFileAndRemoveBOM(file, sub);
+                File sub = new File(outputDir, path);
+                FileUtils.forceMkdir(sub);
+                copyFileAndRemoveBOM(file, sub);
+
+                //Copy to source based location
+                String path2 = file.getPath();
+                path2 = path2.substring(path2.indexOf("/schemas/") + 9);
+				File sub2 = new File(outputDir, path2);
+				FileUtils.forceMkdir(sub2);
+				copyFileAndRemoveBOM(file, sub2);
 			} catch (SAXException e) {
 				throw new RuntimeException(e);
 			} catch (IOException e) {
@@ -173,7 +180,8 @@ public class SchemaLoader {
 			while (m.find()) {
 				URI location = new URI(m.group(1));
 				if (location.getScheme() != null) {
-					externals.add(location);
+//                    System.out.println("\tFile: " + file.getPath() + " references: " + location.toString());
+                    externals.add(location);
 				}
 			}
 		}
