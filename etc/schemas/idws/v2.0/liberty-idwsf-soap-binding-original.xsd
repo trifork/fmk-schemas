@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:liberty:sb" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns="urn:liberty:sb" 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified">
+    
+    <!-- Author: John Kemp -->
+    <!-- Last editor: $Author: dchampagne $ -->
+    <!-- $Date: 2006/07/16 04:21:57 $ -->
+    <!-- $Revision: 1.7.2.1 $ -->
+    
+    <xs:annotation>
+        <xs:documentation>
+            Liberty ID-WSF SOAP Binding Specification XSD
+        </xs:documentation>
+        <xs:documentation> 
+            The source code in this XSD file was excerpted verbatim from:
+            
+            Liberty ID-WSF SOAP Binding Specification
+            Version 2.0
+            30 July, 2006
+            
+            Copyright (c) 2006 Liberty Alliance participants, see
+            http://www.projectliberty.org/specs/idwsf_2_0_final_copyrights.php
+        </xs:documentation>
+    </xs:annotation>
+    
+
+    <!-- framework header block -->
+
+    <xs:complexType name="FrameworkType">
+        <xs:sequence>
+            <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="version" type="xs:string" use="required"/>
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+
+    <xs:element name="Framework" type="FrameworkType"/>
+
+</xs:schema>

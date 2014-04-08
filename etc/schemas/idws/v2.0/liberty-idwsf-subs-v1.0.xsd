@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    targetNamespace="urn:liberty:ssos:2006-08"
+    xmlns:subs="urn:liberty:ssos:2006-08"
+    xmlns:lu="urn:liberty:util:2006-08"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+  <xs:import namespace="urn:liberty:util:2006-08"
+      schemaLocation="liberty-idwsf-utility-v2.0.xsd"/>
+  <xs:annotation>
+    <xs:documentation>Title: Liberty ID-WSF Subscriptions and Notifications Schema</xs:documentation>
+    <xs:documentation>
+The source code in this XSD file was excerpted verbatim from:
+
+Liberty ID-WSF Subscriptions and Notifications
+Version 1.0
+30 July, 2006
+
+            Copyright (c) 2006 Liberty Alliance participants, see
+            http://www.projectliberty.org/specs/idwsf_2_0_final_copyrights.php
+    </xs:documentation>
+  </xs:annotation>
+<!--sec(subscr)-->
+  <xs:complexType name="SubscriptionType">
+    <xs:sequence>
+      <xs:element ref="subs:RefItem"	minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="lu:Extension"	minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="subscriptionID" use="required" type="lu:IDType"/>
+    <xs:attribute name="notifyToRef" use="required" type="xs:anyURI"/>
+    <xs:attribute name="adminNotifyToRef" use="optional" type="xs:anyURI"/>
+    <xs:attribute name="starts" use="optional" type="xs:dateTime"/>
+    <xs:attribute name="expires" use="optional" type="xs:dateTime"/>
+    <xs:attribute name="id" use="optional" type="xs:ID"/>
+    <xs:attribute name="includeData" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Yes"/>
+          <xs:enumeration value="No"/>
+          <xs:enumeration value="YesWithCommonAttributes"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="RefItem" type="subs:RefItemType"/>
+  <xs:complexType name="RefItemType">
+    <xs:attribute name="subscriptionID" use="optional" type="lu:IDType"/>
+    <xs:attribute ref="lu:itemIDRef" use="required"/>
+  </xs:complexType>
+<!--endsec(subscr)-->
+<!--sec(notif)-->
+  <xs:attributeGroup name="NotifyAttributeGroup">
+    <xs:attribute name="timeStamp" use="optional" type="xs:dateTime"/>
+  </xs:attributeGroup>
+  <xs:complexType name="NotificationType">
+    <xs:sequence>
+      <xs:element ref="lu:TestResult"	minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" use="optional" type="xs:ID"/>
+    <xs:attribute name="subscriptionID" use="required" type="lu:IDType"/>
+    <xs:attribute name="expires" use="optional" type="xs:dateTime"/>
+    <xs:attribute name="endReason" use="optional" type="xs:anyURI"/>
+  </xs:complexType>
+  <xs:complexType name="NotifyResponseType">
+    <xs:complexContent>
+      <xs:extension base="lu:ResponseType"/>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(notif)-->
+</xs:schema>

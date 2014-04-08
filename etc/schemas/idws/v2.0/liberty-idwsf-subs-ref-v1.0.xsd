@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    targetNamespace="urn:liberty:ssos:2006-08:ref"
+    xmlns:subsref="urn:liberty:ssos:2006-08:ref"
+    xmlns:dst="urn:liberty:dst:2006-08"
+    xmlns:subs="urn:liberty:ssos:2006-08"
+    xmlns:lu="urn:liberty:util:2006-08"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+  <xs:import namespace="urn:liberty:dst:2006-08"
+      schemaLocation="liberty-idwsf-dst-v2.1.xsd"/>
+  <xs:import namespace="urn:liberty:ssos:2006-08"
+      schemaLocation="liberty-idwsf-subs-v1.0.xsd"/>
+  <xs:import namespace="urn:liberty:util:2006-08"
+      schemaLocation="liberty-idwsf-utility-v2.0.xsd"/>
+  <xs:annotation>
+    <xs:documentation>Title: Liberty ID-WSF Subscriptions and Notifications Schema</xs:documentation>
+    <xs:documentation>
+The source code in this XSD file was excerpted verbatim from:
+
+Liberty ID-WSF Subscriptions and Notifications
+Version 1.0
+30 July, 2006
+
+            Copyright (c) 2006 Liberty Alliance participants, see
+            http://www.projectliberty.org/specs/idwsf_2_0_final_copyrights.php
+    </xs:documentation>
+  </xs:annotation>
+<!--sec(methods)-->
+  <xs:element name="Create" type="subsref:CreateType"/>
+  <xs:element name="CreateResponse" type="subsref:CreateResponseType"/>
+  <xs:element name="Query" type="subsref:QueryType"/>
+  <xs:element name="QueryResponse" type="subsref:QueryResponseType"/>
+  <xs:element name="Modify" type="subsref:ModifyType"/>
+  <xs:element name="ModifyResponse" type="subsref:ModifyResponseType"/>
+  <xs:element name="Delete" type="subsref:DeleteType"/>
+  <xs:element name="DeleteResponse" type="subsref:DeleteResponseType"/>
+<!--endsec(methods)-->
+<!--sec(notifymethods)-->
+  <xs:element name="Notify" type="subsref:NotifyType"/>
+  <xs:element name="NotifyResponse" type="subsref:NotifyResponseType"/>
+<!--endsec(notifymethods)-->
+<!--sec(redefs)-->
+  <xs:complexType name="SelectType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string"/>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TestOpType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string"/>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SortType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string"/>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TriggerType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string"/>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AggregationType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string"/>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType mixed="1" name="AppDataType">
+    <xs:sequence>
+      <xs:element ref="subsref:Subscription"	minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+<!--endsec(redefs)-->
+<!--sec(create)-->
+  <xs:complexType name="CreateType">
+    <xs:complexContent>
+      <xs:extension base="dst:RequestType">
+        <xs:sequence>
+          <xs:element ref="subsref:Subscription"	minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="subsref:CreateItem"	minOccurs="1" maxOccurs="unbounded"/>
+          <xs:element ref="subsref:ResultQuery"	minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(create)-->
+<!--sec(createaux)-->
+  <xs:element name="CreateItem" type="subsref:CreateItemType"/>
+  <xs:complexType name="CreateItemType">
+    <xs:sequence>
+      <xs:element ref="subsref:NewData"	minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="dst:CreateItemAttributeGroup"/>
+  </xs:complexType>
+  <xs:element name="NewData" type="subsref:AppDataType"/>
+  <xs:complexType name="CreateResponseType">
+    <xs:complexContent>
+      <xs:extension base="subsref:DataResponseType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DataResponseType">
+    <xs:complexContent>
+      <xs:extension base="dst:DataResponseBaseType">
+        <xs:sequence>
+          <xs:element ref="subsref:ItemData"	minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(createaux)-->
+<!--sec(query)-->
+  <xs:complexType name="QueryType">
+    <xs:complexContent>
+      <xs:extension base="dst:RequestType">
+        <xs:sequence>
+          <xs:element ref="subsref:TestItem"	minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="subsref:QueryItem"	minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="subsref:Subscription"	minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(query)-->
+<!--sec(queryaux)-->
+  <xs:element name="TestItem" type="subsref:TestItemType"/>
+  <xs:complexType name="TestItemType">
+    <xs:complexContent>
+      <xs:extension base="dst:TestItemBaseType">
+        <xs:sequence>
+          <xs:element name="TestOp"	minOccurs="0" maxOccurs="1" type="subsref:TestOpType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="QueryItem" type="subsref:QueryItemType"/>
+  <xs:complexType name="QueryItemType">
+    <xs:complexContent>
+      <xs:extension base="subsref:ResultQueryType">
+        <xs:attributeGroup ref="dst:PaginationAttributeGroup"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(queryaux)-->
+<!--sec(queryresp)-->
+  <xs:complexType name="QueryResponseType">
+    <xs:complexContent>
+      <xs:extension base="dst:DataResponseBaseType">
+        <xs:sequence>
+          <xs:element ref="lu:TestResult"	minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="subsref:Data"	minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Data" type="subsref:DataType"/>
+  <xs:complexType name="DataType">
+    <xs:complexContent>
+      <xs:extension base="subsref:ItemDataType">
+        <xs:attributeGroup ref="dst:PaginationResponseAttributeGroup"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(queryresp)-->
+<!--sec(mod)-->
+  <xs:complexType name="ModifyType">
+    <xs:complexContent>
+      <xs:extension base="dst:RequestType">
+        <xs:sequence>
+          <xs:element ref="subsref:Subscription"	minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="subsref:ModifyItem"	minOccurs="1" maxOccurs="unbounded"/>
+          <xs:element ref="subsref:ResultQuery"	minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(mod)-->
+<!--sec(modaux)-->
+  <xs:element name="ModifyItem" type="subsref:ModifyItemType"/>
+  <xs:complexType name="ModifyItemType">
+    <xs:sequence>
+      <xs:element ref="subsref:Select"	minOccurs="0" maxOccurs="1"/>
+      <xs:element ref="subsref:NewData"	minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attributeGroup ref="dst:ModifyItemAttributeGroup"/>
+  </xs:complexType>
+  <xs:complexType name="ModifyResponseType">
+    <xs:complexContent>
+      <xs:extension base="subsref:DataResponseType"/>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(modaux)-->
+<!--sec(del)-->
+  <xs:complexType name="DeleteType">
+    <xs:complexContent>
+      <xs:extension base="dst:RequestType">
+        <xs:sequence>
+          <xs:element ref="subsref:DeleteItem"	minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteItem" type="subsref:DeleteItemType"/>
+  <xs:complexType name="DeleteItemType">
+    <xs:complexContent>
+      <xs:extension base="dst:DeleteItemBaseType">
+        <xs:sequence>
+          <xs:element ref="subsref:Select"	minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DeleteResponseType">
+    <xs:complexContent>
+      <xs:extension base="lu:ResponseType"/>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(del)-->
+<!--sec(resqry)-->
+  <xs:element name="Select" type="subsref:SelectType"/>
+  <xs:element name="ResultQuery" type="subsref:ResultQueryType"/>
+  <xs:complexType name="ResultQueryType">
+    <xs:complexContent>
+      <xs:extension base="dst:ResultQueryBaseType">
+        <xs:sequence>
+          <xs:element ref="subsref:Select"	minOccurs="0" maxOccurs="1"/>
+          <xs:element name="Sort"	minOccurs="0" maxOccurs="1" type="subsref:SortType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ItemData" type="subsref:ItemDataType"/>
+  <xs:complexType name="ItemDataType">
+    <xs:complexContent>
+      <xs:extension base="subsref:AppDataType">
+        <xs:attributeGroup ref="dst:ItemDataAttributeGroup"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(resqry)-->
+<!--sec(subscr)-->
+  <xs:element name="Subscription" type="subsref:SubscriptionType"/>
+  <xs:complexType name="SubscriptionType">
+    <xs:complexContent>
+      <xs:extension base="subs:SubscriptionType">
+        <xs:sequence>
+          <xs:element ref="subsref:ResultQuery"	minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="Aggregation"	minOccurs="0" maxOccurs="1" type="subsref:AggregationType"/>
+          <xs:element name="Trigger"	minOccurs="0" maxOccurs="1" type="subsref:TriggerType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(subscr)-->
+<!--sec(notif)-->
+  <xs:complexType name="NotifyType">
+    <xs:complexContent>
+      <xs:extension base="dst:RequestType">
+        <xs:sequence>
+          <xs:element ref="subsref:Notification"	minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="subs:NotifyAttributeGroup"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Notification" type="subsref:NotificationType"/>
+  <xs:complexType name="NotificationType">
+    <xs:complexContent>
+      <xs:extension base="subs:NotificationType">
+        <xs:sequence>
+          <xs:element ref="subsref:ItemData"	minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NotifyResponseType">
+    <xs:complexContent>
+      <xs:extension base="subs:NotifyResponseType"/>
+    </xs:complexContent>
+  </xs:complexType>
+<!--endsec(notif)-->
+</xs:schema>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+    targetNamespace="urn:liberty:ims:2006-08" 
+    xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:ims="urn:liberty:ims:2006-08" 
+    xmlns:sec="urn:liberty:security:2006-08"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:lu="urn:liberty:util:2006-08"
+    xmlns="urn:liberty:ims:2006-08" 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified"
+    >
+
+<!-- Filename: liberty-idwsf-idmapping-svc-v2.0.xsd  -->
+<!-- $Id: lib-arch-idmapping-svc.xsd,v 1.7.2.1 2006/07/25 01:58:12 dchampagne Exp $ -->
+<!-- Author: Scott Cantor -->
+<!-- Last editor: $Author: dchampagne $ -->
+<!-- $Date: 2006/07/25 01:58:12 $ -->
+<!-- $Revision: 1.7.2.1 $ -->
+
+  <xs:import
+      namespace="urn:liberty:security:2006-08"
+      schemaLocation="liberty-idwsf-security-mechanisms-v2.0.xsd"/>
+    
+  <xs:import namespace="urn:liberty:util:2006-08"
+      schemaLocation="liberty-idwsf-utility-v2.0.xsd"/>
+
+  <xs:annotation>
+      <xs:documentation>
+          Liberty ID-WSF Identity Mapping Service XSD
+      </xs:documentation>
+      <xs:documentation> 
+          The source code in this XSD file was excerpted verbatim from:
+
+          Liberty ID-WSF Authentication, Single Sign-On, and Identity Mapping Services Specification
+          Version 2.0
+          30 July, 2006
+
+          Copyright (c) 2006 Liberty Alliance participants, 
+          see http://www.projectliberty.org/specs/idwsf_2_0_copyrights.php
+      </xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="MappingInput" type="MappingInputType"/>
+  <xs:complexType name="MappingInputType">
+      <xs:sequence>
+          <xs:element ref="sec:TokenPolicy" minOccurs="0"/>
+          <xs:element ref="sec:Token" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="reqID" type="lu:IDType" use="optional"/>
+  </xs:complexType>
+
+  <xs:element name="MappingOutput" type="MappingOutputType"/>
+  <xs:complexType name="MappingOutputType">
+      <xs:sequence>
+          <xs:element ref="sec:Token"/>
+      </xs:sequence>
+      <xs:attribute name="reqRef" type="lu:IDReferenceType" use="optional"/>
+  </xs:complexType>
+    
+  <xs:element name="IdentityMappingRequest" type="IdentityMappingRequestType"/>
+  <xs:complexType name="IdentityMappingRequestType">
+        <xs:sequence>
+            <xs:element ref="MappingInput" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+    
+    <xs:element name="IdentityMappingResponse" type="IdentityMappingResponseType"/>
+    <xs:complexType name="IdentityMappingResponseType">
+        <xs:sequence>
+            <xs:element ref="lu:Status"/>
+            <xs:element ref="MappingOutput" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax"/>
+    </xs:complexType>
+    
+</xs:schema>
+
