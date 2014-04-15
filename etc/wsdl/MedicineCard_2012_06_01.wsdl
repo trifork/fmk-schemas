@@ -133,19 +133,19 @@
     </wsdl:types>
 
     <wsdl:message name="MessageIDHeader">
-        <wsdl:part name="MessageID" element="wsa:MessageID" />
+        <wsdl:part name="MessageIDHeader" element="wsa:MessageID" />
     </wsdl:message>
     <wsdl:message name="ActionHeader">
-        <wsdl:part name="Action" element="wsa:Action" />
+        <wsdl:part name="ActionHeader" element="wsa:Action" />
     </wsdl:message>
     <wsdl:message name="ToHeader">
-        <wsdl:part name="To" element="wsa:To" />
+        <wsdl:part name="ToHeader" element="wsa:To" />
     </wsdl:message>
     <wsdl:message name="RelatesToHeader">
-        <wsdl:part name="RelatesTo" element="wsa:RelatesTo" />
+        <wsdl:part name="RelatesToHeader" element="wsa:RelatesTo" />
     </wsdl:message>
     <wsdl:message name="FrameworkHeader">
-        <wsdl:part name="Framework" element="sbf:Framework"/>
+        <wsdl:part name="FrameworkHeader" element="sbf:Framework"/>
     </wsdl:message>
 
     <wsdl:message name="SecurityHeader">
@@ -623,14 +623,14 @@
                     name="GetMedicineCardIdwsRequest_2012_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" required="false" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
                 <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardIdwsResponse_2012_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" required="false" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
                 <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
