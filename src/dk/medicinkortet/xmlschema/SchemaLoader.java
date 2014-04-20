@@ -316,7 +316,7 @@ public class SchemaLoader {
 
     private static void insertSchema(DocumentBuilder builder, Document wsdlDoc, Element ns, SchemaFile schemaFile) throws SAXException, IOException {
         if (ns == null) {
-            System.err.println("Ignoring schemaFile because given schema section in null");
+            System.err.println("Ignoring schemaFile because given schema section is null");
             return;
         }
         Element childDoc = schemaFile.domSchemaNode;
@@ -441,7 +441,9 @@ public class SchemaLoader {
 
     private static Element addSchemaToWsdl(Element types, Document wsdlDoc, String targetNamespace) {
         Element ns = createSchemaElement(wsdlDoc, targetNamespace);
-        types.appendChild(ns);
+        if (ns != null) {
+            types.appendChild(ns);
+        }
         return ns;
     }
 }
