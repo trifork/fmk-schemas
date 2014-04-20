@@ -8,22 +8,9 @@
                   xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
                   xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd"
                   xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-
-                  xmlns:wsa="http://www.w3.org/2005/08/addressing"
-                  xmlns:sbf="urn:liberty:sb"
-
                   targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
 
     <wsdl:types>
-
-        <xs:schema targetNamespace="urn:liberty:sb">
-            <xs:include schemaLocation="../schemas/idws/v2.0/liberty-idwsf-soap-binding.xsd" />
-        </xs:schema>
-
-        <xs:schema targetNamespace="http://www.w3.org/2005/08/addressing">
-            <xs:include schemaLocation="../schemas/2005/08/addressing/ws-addr.xsd" />
-        </xs:schema>
-
         <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
             <xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd"/>
         </xs:schema>
@@ -131,22 +118,6 @@
 
         </xs:schema>
     </wsdl:types>
-
-    <wsdl:message name="MessageIDHeader">
-        <wsdl:part name="MessageIDHeader" element="wsa:MessageID" />
-    </wsdl:message>
-    <wsdl:message name="ActionHeader">
-        <wsdl:part name="ActionHeader" element="wsa:Action" />
-    </wsdl:message>
-    <wsdl:message name="ToHeader">
-        <wsdl:part name="ToHeader" element="wsa:To" />
-    </wsdl:message>
-    <wsdl:message name="RelatesToHeader">
-        <wsdl:part name="RelatesToHeader" element="wsa:RelatesTo" />
-    </wsdl:message>
-    <wsdl:message name="FrameworkHeader">
-        <wsdl:part name="FrameworkHeader" element="sbf:Framework"/>
-    </wsdl:message>
 
     <wsdl:message name="SecurityHeader">
         <wsdl:part name="SecurityHeader" element="wsse:Security"/>
@@ -615,33 +586,6 @@
     <wsdl:binding name="MedicineCardBinding" type="tns:MedicineCardPortType">
 
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-        <wsdl:operation name="GetMedicineCardIdws_2012_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetMedicineCardIdws"
-                            style="document"/>
-            <wsdl:input
-                    name="GetMedicineCardIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetMedicineCardIdwsResponse_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
 
         <wsdl:operation name="GetMedicineCard_2012_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetMedicineCard"
