@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Organisation.xsd"/>
+	<include schemaLocation="CreateEffectuation.xsd"/>
+	<include schemaLocation="DoseDispensingDate.xsd"/>
+	<include schemaLocation="ProductionDay.xsd"/>
+	<include schemaLocation="PackingGroup.xsd"/>
+	<include schemaLocation="DeliveryInstructionText.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
+	<complexType name="CreateOrderWithDrugMedicationType">
+		<sequence>
+			<element name="OrderedAtPharmacy" type="medicinecard20120601:OrganisationType"/>
+			<element name="DoseDispensing" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="PackedAtOrganisation" type="medicinecard20120601:OrganisationType"/>
+						<element name="DeadlineDate" type="medicinecard20140601:DoseDispensingDateType"/>
+						<element name="ExpectedFirstDosageDate" type="medicinecard20140601:DoseDispensingDateType"/>
+						<element name="ExpectedLastDosageDate" type="medicinecard20140601:DoseDispensingDateType"/>
+						<element name="ProductionDay" type="medicinecard20140601:ProductionDayType" minOccurs="0"/>
+						<element name="PackingGroup" type="medicinecard20140601:PackingGroupType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
+			<element name="DeliveryInstructionText" type="medicinecard20140601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
+			<element name="Effectuation" type="medicinecard20140601:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
