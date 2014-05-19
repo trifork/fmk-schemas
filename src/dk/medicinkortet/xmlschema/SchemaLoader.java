@@ -34,8 +34,14 @@ public class SchemaLoader {
 
     private static HashMap<String, Integer> uniquePrefixIdx = new HashMap<String, Integer>();
 
+    private static String targetDir() {
+        String targetDir = System.getProperty("target.dir");
+        if (targetDir != null) return targetDir;
+        return "target";
+    }
+
     public static void main(String[] args) throws ParserConfigurationException, IOException, URISyntaxException, SAXException, TransformerFactoryConfigurationError, TransformerException {
-        File outputDir = new File("target/gensrc/META-INF/schemas/");
+        File outputDir = new File(targetDir() + "/gensrc/META-INF/schemas/");
         FileUtils.forceMkdir(outputDir);
 
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -55,7 +61,7 @@ public class SchemaLoader {
     private static void makeWsdlXsdCollectionZip(Collection<Set<SchemaFile>> schemaFilesCollection) throws IOException {
         System.out.println("Make WSDL + XSD collection zip-file");
 
-        File outputDir = new File("target/wsdl/" + System.getProperty("WsdlName") + "_" + System.getProperty("VersionDate"));
+        File outputDir = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "_" + System.getProperty("VersionDate"));
         outputDir.mkdirs();
 
         File schemadir = new File(outputDir.getAbsolutePath() + "/schemas");
@@ -261,7 +267,7 @@ public class SchemaLoader {
         organizeIncludesAndImports(wsdl);
 
         wsdl.normalize();
-        File wsdlOut = new File("target/wsdl/" + System.getProperty("WsdlName") + "-inline_" + System.getProperty("VersionDate") + ".wsdl");
+        File wsdlOut = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "-inline_" + System.getProperty("VersionDate") + ".wsdl");
 
         FileOutputStream fw = new FileOutputStream(wsdlOut);
         IOUtils.write(XmlUtil.node2String(wsdl, true, true), fw, "UTF-8");
