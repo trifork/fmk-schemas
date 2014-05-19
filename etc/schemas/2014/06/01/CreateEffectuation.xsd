@@ -9,6 +9,7 @@
 	<include schemaLocation="DoseDispensedQuantity.xsd"/>
 	<include schemaLocation="EffectuationType.xsd"/>
 	<include schemaLocation="LabelText.xsd"/>
+	<include schemaLocation="TerminateWarrant.xsd"/>
 	<complexType name="CreateEffectuationType">
 		<sequence>
 			<element name="DateTime" type="medicinecard20120601:EffectuationDateTimeType"/>
@@ -35,7 +36,8 @@
 				</element>
 			</choice>
 			<element name="SubstitutedDrug" type="medicinecard20140601:CreateSubstitutedDrugType" minOccurs="0"/>
-			<element name="LabelText" type="medicinecard20140601:LabelTextType"/>
+			<element name="LabelText" type="medicinecard20140601:LabelTextType" minOccurs="0"/>
+			<element name="TerminateWarrant" type="medicinecard20140601:TerminateWarrantType"/>
 		</sequence>
 	</complexType>
 </schema>

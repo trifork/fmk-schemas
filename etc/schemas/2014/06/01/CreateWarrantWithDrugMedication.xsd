@@ -4,13 +4,9 @@
 	<include schemaLocation="ValidDate.xsd"/>
 	<include schemaLocation="PackageRestriction.xsd"/>
 	<include schemaLocation="DoseDispensedRestriction.xsd"/>
-	<include schemaLocation="Order.xsd"/>
-	<include schemaLocation="WarrantIdentifier.xsd"/>
-	<include schemaLocation="WarrantVersion.xsd"/>
-	<complexType name="WarrantType">
+	<include schemaLocation="CreateOrderWithDrugMedication.xsd"/>
+	<complexType name="CreateWarrantWithDrugMedicationType">
 		<sequence>
-			<element name="Identifier" type="medicinecard20140601:WarrantIdentifierType"/>
-			<element name="Version" type="medicinecard20140601:WarrantVersionType"/>
 			<element name="ValidFromDate" type="medicinecard20140601:ValidDateType" minOccurs="0"/>
 			<element name="ValidToDate" type="medicinecard20140601:ValidDateType"/>
 			<element name="TerminatedDateTime" type="medicinecard20120601:TerminatedDateTimeType" minOccurs="0"/>
@@ -18,7 +14,7 @@
 				<element name="PackageRestriction" type="medicinecard20140601:PackageRestrictionType"/>
 				<element name="DoseDispensedRestriction" type="medicinecard20140601:DoseDispensedRestrictionType"/>
 			</choice>
-			<element name="Order" type="medicinecard20140601:OrderType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Order" type="medicinecard20140601:CreateOrderWithDrugMedicationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
