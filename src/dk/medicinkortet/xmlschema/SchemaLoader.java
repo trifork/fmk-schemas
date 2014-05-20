@@ -14,8 +14,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -102,12 +104,18 @@ public class SchemaLoader {
         for (URI external : externals) {
             File schema = new File(outputDir, external.getPath());
             if (!schema.exists()) {
+                //TODO: Download schema if valid URL?
+                downloadSchema(external, schema);
                 missing.add(external);
             }
         }
         if (missing.size() > 0) {
             throw new RuntimeException("Some schemas are missing: " + missing);
         }
+    }
+
+    private static void downloadSchema(URI external, File target) {
+
     }
 
     @SuppressWarnings("unchecked")
@@ -140,12 +148,14 @@ public class SchemaLoader {
                 FileUtils.forceMkdir(sub);
                 copyFileAndRemoveBOM(file, sub);
 
+/*
                 //Copy to source based location
                 String path2 = file.isFile() ? file.getParentFile().getPath() : file.getPath();
                 path2 = path2.substring(path2.indexOf("/schemas/") + 9);
                 File sub2 = new File(outputDir, path2);
                 FileUtils.forceMkdir(sub2);
                 copyFileAndRemoveBOM(file, sub2);
+*/
             } catch (SAXException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
@@ -162,7 +172,7 @@ public class SchemaLoader {
             String schema = sb.toString();
             r.close();
 
-            Matcher m = locationPattern.matcher(schema);
+            Matcher m = locationPattern.matcher(schema); //TODO: Replace with xpath expression - the regexp will also find schemaLocation inside xs:documentation tags, and this will lead to problems...
             while (m.find()) {
                 URI location = new URI(m.group(1));
                 if (location.getScheme() != null) {

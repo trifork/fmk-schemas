@@ -12,6 +12,7 @@
 
     <property name="idws.target.dir" value="${target.dir}/idws/target" />
     <property name="idws.work.dir" value="${target.dir}/idws/workdir" />
+    <property name="idws.schemas" value="schemas-idws" />
 
     <property name="standard.target.dir" value="${target.dir}/standard/target" />
     <property name="standard.work.dir" value="${target.dir}/standard/workdir" />
@@ -61,14 +62,18 @@
     <fileset id="schemas_excluding_idws_schemas" dir="etc">
         <include name="schemas/**"/>
         <include name="wsdl/**"/>
-        <exclude name="schemas/idws/**"/>
+        <!--<exclude name="schemas/idws/**"/>-->
         <exclude name="wsdl/MedicineCard_Idws_2012_06_01.wsdl"/>
     </fileset>
 
     <target name="filter-specialized-xsds">
-        <copy todir="${idws.work.dir}/etc" flatten="false">
+        <copy todir="${idws.work.dir}/etc" flatten="false" description="Adding non-specialized schemas to ${idws.work.dir}/etc/schemas">
             <fileset refid="schemas_excluding_specialized_schemas"/>
         </copy>
+        <copy todir="${idws.work.dir}/etc/schemas" flatten="false" description="Adding IDWS schemas to ${idws.work.dir}/etc/schemas">
+            <fileset dir="${basedir}/etc/${idws.schemas}"/>
+        </copy>
+        <replace file="${idws.work.dir}/etc/wsdl/MedicineCard_Idws_2012_06_01.wsdl" token="/${idws.schemas}/" value="/schemas/" description="Fix paths to referenced schemas"/>
     </target>
 
     <target name="filter-idws-xsds">
