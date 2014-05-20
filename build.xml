@@ -73,7 +73,11 @@
         <copy todir="${idws.work.dir}/etc/schemas" flatten="false" description="Adding IDWS schemas to ${idws.work.dir}/etc/schemas">
             <fileset dir="${basedir}/etc/${idws.schemas}"/>
         </copy>
-        <replace file="${idws.work.dir}/etc/wsdl/MedicineCard_Idws_2012_06_01.wsdl" token="/${idws.schemas}/" value="/schemas/" description="Fix paths to referenced schemas"/>
+        <replace file="${idws.work.dir}/etc/wsdl/MedicineCard_Idws_2012_06_01.wsdl"
+                 token="/${idws.schemas}/" value="/schemas/"
+                 description="Fix paths to referenced schemas"
+                 preserveLastModified="true"
+                />
     </target>
 
     <target name="filter-idws-xsds">
