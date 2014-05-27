@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<simpleType name="UnstructuredSearchType">
-		<restriction base="string">
-			<minLength value="1"/>
-			<maxLength value="400"/>
-		</restriction>
-	</simpleType>
+	<include schemaLocation="PrivacyMarkedConsentGivenDateless.xsd"/>
+	<complexType name="ForPharmacyCompleteType">
+		<sequence>
+			<element name="ConsentGiven" type="medicinecard20140601:ConsentGivenDatelessType"/>
+			<element name="PrivacyMarked" type="medicinecard20140601:PrivacyMarkedConsentGivenDatelessType"/>
+		</sequence>
+	</complexType>
 </schema>

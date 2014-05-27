@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="EffectuationTypeCode.xsd"/>
-	<include schemaLocation="EffectuationTypeText.xsd"/>
-	<complexType name="EffectuationTypeType">
+	<include schemaLocation="DrugMedication.xsd"/>
+	<include schemaLocation="PersonAndAddress.xsd"/>
+	<complexType name="DrugMedicationsForPersonType">
 		<sequence>
-			<element name="Code" type="medicinecard20140601:EffectuationTypeCodeType"/>
-			<element name="Text" type="medicinecard20140601:EffectuationTypeTextType" minOccurs="0"/>
+			<element name="PersonAndAddress" type="medicinecard20140601:PersonAndAddressType"/>
+			<element name="DrugMedication" type="medicinecard20140601:DrugMedicationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

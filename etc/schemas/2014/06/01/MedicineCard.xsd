@@ -10,10 +10,10 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardIsInvalid.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationWithNegativeConsent.xsd"/>
-	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="PersonAndAddress.xsd"/>
 	<complexType name="MedicineCardType">
 		<sequence>
-			<element name="Patient" type="medicinecard20140601:PatientType"/>
+			<element name="PersonAndAddress" type="medicinecard20140601:PersonAndAddressType"/>
 			<element name="Version" type="medicinecard20120601:MedicineCardVersionType"/>
 			<element name="PreviousVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="NextVersion" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>

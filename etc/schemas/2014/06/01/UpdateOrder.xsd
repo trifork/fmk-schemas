@@ -8,6 +8,7 @@
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="OrderVersion.xsd"/>
+	<include schemaLocation="OrderStatus.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
 	<complexType name="UpdateOrderType">
 		<sequence>
@@ -15,6 +16,7 @@
 			<element name="Version" type="medicinecard20140601:OrderVersionType"/>
 			<element name="ModifiedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="OrderedAtPharmacy" type="medicinecard20120601:OrganisationType"/>
+			<element name="Status" type="medicinecard20140601:OrderStatusType"/>
 			<element name="DoseDispensing" minOccurs="0">
 				<complexType>
 					<sequence>

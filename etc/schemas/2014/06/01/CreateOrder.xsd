@@ -5,12 +5,14 @@
 	<include schemaLocation="DoseDispensingDate.xsd"/>
 	<include schemaLocation="ProductionDay.xsd"/>
 	<include schemaLocation="PackingGroup.xsd"/>
+	<include schemaLocation="OrderStatus.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
 	<complexType name="CreateOrderType">
 		<sequence>
 			<element name="CreatedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="OrderedAtPharmacy" type="medicinecard20120601:OrganisationType"/>
+			<element name="Status" type="medicinecard20140601:OrderStatusType"/>
 			<element name="DoseDispensing" minOccurs="0">
 				<complexType>
 					<sequence>

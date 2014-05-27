@@ -3,7 +3,7 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IncludeEffectuations.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationIdentifier.xsd"/>
-	<include schemaLocation="ForAnyEffectuation.xsd"/>
+	<include schemaLocation="ForPharmacyComplete.xsd"/>
 	<include schemaLocation="ForPharmacyDoseDispensingEffectuation.xsd"/>
 	<include schemaLocation="ForPharmacyEffectuation.xsd"/>
 	<element name="GetMedicineCardRequest" type="medicinecard20140601:GetMedicineCardRequestType"/>
@@ -15,7 +15,7 @@
 			</choice>
 			<choice>
 				<element name="ForPharmacyEffectuation" type="medicinecard20140601:ForPharmacyEffectuationType"/>
-				<element name="ForAnyEffectuation" type="medicinecard20140601:ForAnyEffectuationType"/>
+				<element name="ForPharmacyComplete" type="medicinecard20140601:ForPharmacyCompleteType"/>
 				<element name="ForPharmacyDoseDispensingEffectuation" type="medicinecard20140601:ForPharmacyDoseDispensingEffectuationType"/>
 			</choice>
 		</sequence>
