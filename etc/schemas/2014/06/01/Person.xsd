@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified">
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonName.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonNameProtected.xsd"/>
 	<include schemaLocation="SubstitutionPersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardKey.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/BirthDate.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Gender.xsd"/>	
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Gender.xsd"/>
 	<complexType name="PersonType">
 		<sequence>
 			<choice>
 				<element name="Name" type="medicinecard20120601:PersonNameType"/>
 				<element name="NameProtected" type="medicinecard20120601:PersonNameProtectedType"/>
 			</choice>
-			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType" minOccurs="0"/>
-			<element name="SubstitutionPersonIdentifier" type="medicinecard20140601:SubstitutionPersonIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="MedicineCardKey" type="medicinecard20140601:MedicineCardKeyType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PersonIdentifier" type="medicinecard20140601:PersonIdentifierType" />
+			<element name="AlternativePersonIdentifier" type="medicinecard20140601:PersonIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="BirthDate" type="medicinecard20120601:BirthDateType" minOccurs="0"/>
-			<element name="Gender" type="medicinecard20120601:GenderType" minOccurs="0"/>			
+			<element name="Gender" type="medicinecard20120601:GenderType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

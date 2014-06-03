@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/TerminatedDateTime.xsd"/>
+	<include schemaLocation="ValidDate.xsd"/>
+	<include schemaLocation="PackageRestriction.xsd"/>
+	<include schemaLocation="DoseDispensedRestriction.xsd"/>
+	<include schemaLocation="UpdateOrderWithDrugMedication.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
+	<include schemaLocation="WarrantVersion.xsd"/>
+	<complexType name="UpdateWarrantWithDrugMedicationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20140601:WarrantIdentifierType"/>
+			<element name="Version" type="medicinecard20140601:WarrantVersionType"/>
+			<element name="ValidFromDate" type="medicinecard20140601:ValidDateType" minOccurs="0"/>
+			<element name="ValidToDate" type="medicinecard20140601:ValidDateType"/>
+			<element name="TerminatedDateTime" type="medicinecard20120601:TerminatedDateTimeType" minOccurs="0"/>
+			<choice>
+				<element name="PackageRestriction" type="medicinecard20140601:PackageRestrictionType"/>
+				<element name="DoseDispensedRestriction" type="medicinecard20140601:DoseDispensedRestrictionType"/>
+			</choice>
+			<element name="Order" type="medicinecard20140601:UpdateOrderWithDrugMedicationType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

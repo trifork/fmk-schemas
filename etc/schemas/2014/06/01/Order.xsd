@@ -8,13 +8,17 @@
 	<include schemaLocation="DoseDispensingDateTime.xsd"/>
 	<include schemaLocation="ProductionDay.xsd"/>
 	<include schemaLocation="OrderStatus.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="OrderVersion.xsd"/>
 	<include schemaLocation="PackingGroup.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
-	<include schemaLocation="ClosedButNotEffectuated.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Effectuation.xsd"/>
+	<include schemaLocation="EmptyEffectuation.xsd"/>
+	<include schemaLocation="Effectuation.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
 	<complexType name="OrderType">
 		<sequence>
+			<element name="Identifier" type="medicinecard20140601:OrderIdentifierType"/>
+			<element name="Version" type="medicinecard20140601:OrderVersionType"/>
 			<element name="Created" type="medicinecard20130601:CreatedType"/>
 			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="medicinecard20130601:ModifiedType" minOccurs="0"/>
@@ -34,9 +38,9 @@
 			</element>
 			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
 			<element name="DeliveryInstructionText" type="medicinecard20140601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
-			<choice minOccurs="0">
-				<element name="Effectuation" type="medicinecard20130601:EffectuationType" maxOccurs="unbounded"/>
-				<element name="ClosedButNotEffectuated" type="medicinecard20140601:ClosedButNotEffectuatedType"/>
+			<choice minOccurs="0" maxOccurs="unbounded">
+				<element name="Effectuation" type="medicinecard20140601:EffectuationType"/>
+				<element name="EmptyEffectuation" type="medicinecard20140601:EmptyEffectuationType"/>
 			</choice>
 		</sequence>
 	</complexType>

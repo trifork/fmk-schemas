@@ -9,8 +9,8 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/InvalidDrugMedication.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardIsInvalid.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationWithNegativeConsent.xsd"/>
 	<include schemaLocation="PersonAndAddress.xsd"/>
+	<include schemaLocation="PrivacyMarkedDrugMedication.xsd"/>
 	<complexType name="MedicineCardType">
 		<sequence>
 			<element name="PersonAndAddress" type="medicinecard20140601:PersonAndAddressType"/>
@@ -25,7 +25,7 @@
 			</choice>
 			<element name="IsInvalid" type="medicinecard20120601:MedicineCardIsInvalidType" minOccurs="0"/>
 			<element name="PatientOrganisationRelation" type="medicinecard20130601:PatientOrganisationRelationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20120601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrivacyMarkedDrugMedication" type="medicinecard20140601:PrivacyMarkedDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="medicinecard20140601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidDrugMedication" type="medicinecard20130601:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

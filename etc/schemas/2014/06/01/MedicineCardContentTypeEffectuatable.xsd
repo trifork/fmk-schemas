@@ -2,10 +2,9 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PrivacyMarkedConsentGivenDateless.xsd"/>
-	<complexType name="ForPharmacyEffectuationType">
+	<complexType name="MedicineCardContentTypeEffectuatableType">
 		<sequence>
-<!--			<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType"/> -->
-			<element name="PrivacyMarked" type="medicinecard20140601:PrivacyMarkedConsentGivenDatelessType" minOccurs="0"/>
+			<element name="PrivacyMarkedConsentGiven" type="medicinecard20140601:PrivacyMarkedConsentGivenDatelessType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
