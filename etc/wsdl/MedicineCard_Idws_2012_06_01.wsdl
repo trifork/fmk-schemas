@@ -31,14 +31,12 @@
             <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
         </xs:schema>
 
-
         <xs:schema targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
             <xs:include schemaLocation="../schemas-idws/wss/2004/01/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd" />
         </xs:schema>
         <xs:schema targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
             <xs:include schemaLocation="../schemas-idws/wss/2004/01/oasis-200401_orig-wss-wssecurity-utility-1.0.xsd" />
         </xs:schema>
-
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
                    elementFormDefault="qualified">
@@ -163,11 +161,9 @@
     <wsdl:message name="FrameworkHeader">
         <wsdl:part name="FrameworkHeader" element="sbf:Framework"/>
     </wsdl:message>
-
     <wsdl:message name="SecurityHeader">
         <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
     </wsdl:message>
-
     <wsdl:message name="WhitelistingHeader">
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
     </wsdl:message>
@@ -623,11 +619,12 @@
                             style="document"/>
             <wsdl:input
                     name="GetMedicineCardIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardIdwsResponse_2012_06_01">
@@ -649,11 +646,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetMedicineCardAsPDF"
                             style="document"/>
             <wsdl:input name="GetMedicineCardAsPDFIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardAsPDFIdwsResponse_2012_06_01">
@@ -675,11 +673,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetMedicineCardVersion"
                             style="document"/>
             <wsdl:input name="GetMedicineCardVersionIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardVersionIdwsResponse_2012_06_01">
@@ -701,11 +700,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UpdateMedicineCard"
                             style="document"/>
             <wsdl:input name="UpdateMedicineCardIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UpdateMedicineCardIdwsResponse_2012_06_01">
@@ -728,11 +728,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#SetMedicineCardReviewed"
                             style="document"/>
             <wsdl:input name="SetMedicineCardReviewedIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SetMedicineCardReviewedIdwsResponse_2012_06_01">
@@ -754,11 +755,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetDrugMedication"
                             style="document"/>
             <wsdl:input name="GetDrugMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDrugMedicationIdwsResponse_2012_06_01">
@@ -780,11 +782,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#PauseDrugMedication"
                             style="document"/>
             <wsdl:input name="PauseDrugMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="PauseDrugMedicationIdwsResponse_2012_06_01">
@@ -806,11 +809,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CreateDrugMedication"
                             style="document"/>
             <wsdl:input name="CreateDrugMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreateDrugMedicationIdwsResponse_2012_06_01">
@@ -833,11 +837,12 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#AttachOrDetachPrescriptionMedication"
                     style="document"/>
             <wsdl:input name="AttachOrDetachPrescriptionMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AttachOrDetachPrescriptionMedicationIdwsResponse_2012_06_01">
@@ -859,11 +864,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CreateEffectuation"
                             style="document"/>
             <wsdl:input name="CreateEffectuationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreateEffectuationIdwsResponse_2012_06_01">
@@ -886,11 +892,12 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CreatePrescriptionMedication"
                     style="document"/>
             <wsdl:input name="CreatePrescriptionMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionMedicationIdwsResponse_2012_06_01">
@@ -912,11 +919,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#SuspendMedicineCard"
                             style="document"/>
             <wsdl:input name="SuspendMedicineCardIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SuspendMedicineCardIdwsResponse_2012_06_01">
@@ -938,11 +946,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#ResuspendMedicineCard"
                             style="document"/>
             <wsdl:input name="ResuspendMedicineCardIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="ResuspendMedicineCardIdwsResponse_2012_06_01">
@@ -964,11 +973,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UnsuspendMedicineCard"
                             style="document"/>
             <wsdl:input name="UnsuspendMedicineCardIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UnsuspendMedicineCardIdwsResponse_2012_06_01">
@@ -990,11 +1000,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetPrescriptionMedication"
                             style="document"/>
             <wsdl:input name="GetPrescriptionMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescriptionMedicationIdwsResponse_2012_06_01">
@@ -1018,15 +1029,16 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#SearchWithdrawnDrugMedications"
                     style="document"/>
             <wsdl:input name="SearchWithdrawnDrugMedicationsIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchWithdrawnDrugMedicationsIdwsResponse_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
@@ -1044,11 +1056,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UnpauseDrugMedication"
                             style="document"/>
             <wsdl:input name="UnpauseDrugMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UnpauseDrugMedicationIdwsResponse_2012_06_01">
@@ -1070,11 +1083,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UpdateDrugMedication"
                             style="document"/>
             <wsdl:input name="UpdateDrugMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UpdateDrugMedicationIdwsResponse_2012_06_01">
@@ -1096,11 +1110,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#WithdrawDrugMedication"
                             style="document"/>
             <wsdl:input name="WithdrawDrugMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="WithdrawDrugMedicationIdwsResponse_2012_06_01">
@@ -1122,11 +1137,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#SearchEffectuations"
                             style="document"/>
             <wsdl:input name="SearchEffectuationsIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchEffectuationsIdwsResponse_2012_06_01">
@@ -1148,11 +1164,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UnwithdrawDrugMedication"
                             style="document"/>
             <wsdl:input name="UnwithdrawDrugMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UnwithdrawDrugMedicationIdwsResponse_2012_06_01">
@@ -1176,16 +1193,17 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CreatePrescriptionMedicationForUseInPractice"
                     style="document"/>
             <wsdl:input name="CreatePrescriptionMedicationForUseInPracticeIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionMedicationForUseInPracticeIdwsResponse_2012_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
                 <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
@@ -1203,11 +1221,12 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CreatePrescriptionMedicationWithoutCPR"
                     style="document"/>
             <wsdl:input name="CreatePrescriptionMedicationWithoutCPRIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionMedicationWithoutCPRIdwsResponse_2012_06_01">
@@ -1229,11 +1248,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#DeleteEffectuation"
                             style="document"/>
             <wsdl:input name="DeleteEffectuationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="DeleteEffectuationIdwsResponse_2012_06_01">
@@ -1255,11 +1275,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetPermissions"
                             style="document"/>
             <wsdl:input name="GetPermissionsIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPermissionsIdwsResponse_2012_06_01">
@@ -1281,11 +1302,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#MarkPrescriptionMedicationDeprecated"
                             style="document"/>
             <wsdl:input name="MarkPrescriptionMedicationDeprecatedIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="MarkPrescriptionMedicationDeprecatedIdwsResponse_2012_06_01">
@@ -1307,11 +1329,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#UnmarkPrescriptionMedicationDeprecated"
                             style="document"/>
             <wsdl:input name="UnmarkPrescriptionMedicationDeprecatedIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UnmarkPrescriptionMedicationDeprecatedIdwsResponse_2012_06_01">
@@ -1333,11 +1356,12 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CancelPrescriptionMedication"
                             style="document"/>
             <wsdl:input name="CancelPrescriptionMedicationIdwsRequest_2012_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CancelPrescriptionMedicationIdwsResponse_2012_06_01">
