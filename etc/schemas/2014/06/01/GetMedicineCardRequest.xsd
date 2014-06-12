@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IncludeEffectuations.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationIdentifier.xsd"/>
-	<include schemaLocation="ForAnyEffectuation.xsd"/>
-	<include schemaLocation="ForPharmacyDoseDispensingEffectuation.xsd"/>
-	<include schemaLocation="ForPharmacyEffectuation.xsd"/>
+	<include schemaLocation="MedicineCardContentTypeEffectuatable.xsd"/>
+	<include schemaLocation="MedicineCardContentTypeComplete.xsd"/>
+	<include schemaLocation="MedicineCardContentTypeDoseDispensable.xsd"/>
 	<element name="GetMedicineCardRequest" type="medicinecard20140601:GetMedicineCardRequestType"/>
 	<complexType name="GetMedicineCardRequestType">
 		<sequence>
 			<choice>
-				<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+				<element name="PersonIdentifier" type="medicinecard20140601:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType"/>
 			</choice>
-			<choice>
-				<element name="ForPharmacyEffectuation" type="medicinecard20140601:ForPharmacyEffectuationType"/>
-				<element name="ForAnyEffectuation" type="medicinecard20140601:ForAnyEffectuationType"/>
-				<element name="ForPharmacyDoseDispensingEffectuation" type="medicinecard20140601:ForPharmacyDoseDispensingEffectuationType"/>
+			<choice maxOccurs="unbounded">
+				<element name="MedicineCardContentTypeEffectuatable" type="medicinecard20140601:MedicineCardContentTypeEffectuatableType"/>
+				<element name="MedicineCardContentTypeComplete" type="medicinecard20140601:MedicineCardContentTypeCompleteType"/>
+				<element name="MedicineCardContentTypeDoseDispensable" type="medicinecard20140601:MedicineCardContentTypeDoseDispensableType"/>
 			</choice>
 		</sequence>
 	</complexType>

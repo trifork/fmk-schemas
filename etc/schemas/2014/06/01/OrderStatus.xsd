@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<simpleType name="OrderStatusType">
+		<union memberTypes="medicinecard20140601:OrderStatusPredefinedType medicinecard20140601:OrderStatusUndefinedType"/>
+	</simpleType>
+	<simpleType name="OrderStatusPredefinedType">
+		<restriction base="medicinecard20140601:OrderStatusUndefinedType">
+			<enumeration value="Bestilt"/>
+			<enumeration value="Ekspedition påbegyndt"/>
+			<enumeration value="Afsendt"/>
+			<enumeration value="Klar til afhentning"/>
+			<enumeration value="Afhentet"/>
+			<enumeration value="Annulleret"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="OrderStatusUndefinedType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="25"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreateDosisDispensingDeliveryFilter xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01 CreateDosisDispensingDeliveryFilter.xsd" xmlns:m12="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:m13="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<PersonIdentifier>1111111118</PersonIdentifier>
+	<CreatedBy>
+		<m13:AuthorisedHealthcareProfessional>
+			<m12:AuthorisationIdentifier>2Q5TK</m12:AuthorisationIdentifier>
+			<m12:Name>Tess Christoffersen</m12:Name>
+		</m13:AuthorisedHealthcareProfessional>
+		<m13:Organisation>
+			<m12:Name>Lægerne Vestergade</m12:Name>
+			<m12:Type>Yder</m12:Type>
+			<m12:Identifier source="Yder">66974</m12:Identifier>
+		</m13:Organisation>
+	</CreatedBy>
+	<Filter>
+		<FilterPriority>1</FilterPriority>
+		<Name>Dosispakke til dagcenteret</Name>
+		<Match>
+			<Day>
+				<Name>alle hverdage</Name>
+				<From>10:00:00</From>
+				<To>16:30:00</To>
+			</Day>
+		</Match>		
+		<Delivery>
+			<m12:Priority>send til anden adresse samme dag</m12:Priority>
+			<m12:StreetName>Søkildevej 6</m12:StreetName>
+			<m12:PostCode>8680</m12:PostCode>
+		</Delivery>
+	</Filter>
+	<Filter>
+		<FilterPriorityRest/>
+		<Name>Dosispakke til hjemme</Name>
+		<MatchRest/>
+		<Delivery>
+			<m12:Priority>send til send til patientadresse samme dag</m12:Priority>
+		</Delivery>
+	</Filter>
+</CreateDosisDispensingDeliveryFilter>

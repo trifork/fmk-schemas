@@ -7,17 +7,14 @@
 	<include schemaLocation="CreatePackageSize.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageQuantity.xsd"/>
 	<include schemaLocation="DoseDispensedQuantity.xsd"/>
-	<include schemaLocation="EffectuationType.xsd"/>
 	<include schemaLocation="LabelText.xsd"/>
-	<include schemaLocation="TerminateWarrant.xsd"/>
 	<complexType name="CreateEffectuationType">
 		<sequence>
 			<element name="DateTime" type="medicinecard20120601:EffectuationDateTimeType"/>
-			<element name="EffectuationType" type="medicinecard20140601:EffectuationTypeType"/>
 			<element name="CreatedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<choice>
 				<!-- A drug was effectuated, one or more packages was given to the patient -->
-				<element name="PlainDispensed">
+				<element name="PackageDispensed">
 					<complexType>
 						<sequence>
 							<element name="PackageQuantity" type="medicinecard20120601:PackageQuantityType"/>
@@ -37,7 +34,6 @@
 			</choice>
 			<element name="SubstitutedDrug" type="medicinecard20140601:CreateSubstitutedDrugType" minOccurs="0"/>
 			<element name="LabelText" type="medicinecard20140601:LabelTextType" minOccurs="0"/>
-			<element name="TerminateWarrant" type="medicinecard20140601:TerminateWarrantType"/>
 		</sequence>
 	</complexType>
 </schema>
