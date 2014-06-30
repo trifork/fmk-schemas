@@ -60,8 +60,8 @@
 			<xs:attribute name="id" type="xs:NCName" use="optional"/>
 		</xs:complexType>
 	</xs:element>
-	<!-- Request / Response / Fault header -->
-	<xs:element name="Header">
+	
+	<xs:element name="HeaderElementType">
 		<xs:complexType>
 			<xs:all>
 				<!-- http://schemas.xmlsoap.org/ws/2004/08/addressing" --> 
@@ -90,8 +90,17 @@
 				<xs:element ref="medcom:FlowStatus" minOccurs="0" maxOccurs="1"/>       <!-- RESP -->
 				<xs:element ref="mc2009:PrescriptionReplicationStatusStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
 				<xs:element ref="mc2008:TimingListStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
-				<xs:any minOccurs="0" />
-			</xs:all>
+				</xs:all>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Request / Response / Fault header -->
+	<xs:element name="Header">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="HeaderElementType" minOccurs="1" maxOccurs="1"/>
+				<xs:any minOccurs="0"></xs:any>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="Body" type="xs:anyType"/>
