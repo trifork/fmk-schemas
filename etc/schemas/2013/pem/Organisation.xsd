@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/AddressLine.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/EmailAddress.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/OrganisationName.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/OrganisationType.xsd"/>
+    <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/TelephoneNumber.xsd"/>
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+	<element name="Organisation" type="medicinecard20120601:OrganisationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Describes an organisation.</documentation>
+			<documentation xml:lang="da-DK">Beskriver en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrganisationType">
+		<sequence>
+			<element name="Name" type="medicinecard20120601:OrganisationNameType"/>
+			<element name="AddressLine" type="medicinecard20120601:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<element name="TelephoneNumber" type="medicinecard20120601:TelephoneNumberType" minOccurs="0"/>
+			<element name="EmailAddress" type="medicinecard20120601:EmailAddressType" minOccurs="0"/>
+			<element name="Type" type="medicinecard20120601:OrganisationTypeType"/>
+			<element name="Identifier" type="medicinecard20120601:OrganisationIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>
