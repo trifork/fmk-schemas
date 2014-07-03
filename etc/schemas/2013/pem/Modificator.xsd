@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard2013pem="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/PatientFlag.xsd"/>
     <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/RequestedRole.xsd"/>
     <import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../2012/06/01/ModificatorPerson.xsd"/>
@@ -16,8 +16,8 @@
 		<sequence>
 			<choice>
 				<sequence>
-					<element name="AuthorisedHealthcareProfessional" type="medicinecard20120601:AuthorisedHealthcareProfessionalType"/>
-					<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
+					<element name="AuthorisedHealthcareProfessional" type="medicinecard2013pem:AuthorisedHealthcareProfessionalType"/>
+					<element name="Organisation" type="medicinecard2013pem:OrganisationType"/>
 					<element name="AuthorisedBy" type="medicinecard20130601:AuthorisedModificatorType" minOccurs="0"/>
 				</sequence>
 				<element name="Patient" type="medicinecard20120601:PatientFlagType"/>
@@ -35,8 +35,8 @@
 		<sequence>
 			<choice>
 				<sequence>
-					<element name="AuthorisedHealthcareProfessional" type="medicinecard20120601:AuthorisedHealthcareProfessionalType"/>
-					<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
+					<element name="AuthorisedHealthcareProfessional" type="medicinecard2013pem:AuthorisedHealthcareProfessionalType"/>
+					<element name="Organisation" type="medicinecard2013pem:OrganisationType"/>
 				</sequence>
 				<sequence>
 					<element name="Other" type="medicinecard20120601:ModificatorPersonType"/>
