@@ -8,8 +8,14 @@
 		<sequence>
 			<element name="Identifier" type="medicinecard20140601:OrderIdentifierType"/>
 			<element name="Version" type="medicinecard20140601:OrderVersionType"/>
-			<element name="Status" type="medicinecard20140601:AquireOrderStatusType"/>
-			<element name="Comment" type="medicinecard20140601:AquireOrderCommentType" minOccurs="0"/>
+			<element name="Aquire">
+				<complexType>
+					<sequence>
+						<element name="Status" type="medicinecard20140601:AquireOrderStatusType"/>
+						<element name="Comment" type="medicinecard20140601:AquireOrderCommentType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>						
 		</sequence>
 	</complexType>
 </schema>

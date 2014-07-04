@@ -12,8 +12,8 @@
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="OrderVersion.xsd"/>
 	<include schemaLocation="EffectuationVersion.xsd"/>
-	<element name="CreateEffectuationResponse" type="medicinecard20140601:CreateEffectuationResponseType"/>
-	<complexType name="CreateEffectuationResponseType">
+	<element name="UpdateWarrantResponse" type="medicinecard20140601:UpdateWarrantResponseType"/>
+	<complexType name="UpdateWarrantResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="medicinecard20140601:PersonIdentifierType"/>
@@ -36,24 +36,6 @@
 									<element name="Version" type="medicinecard20140601:WarrantVersionType"/>
 									<element name="PreviousVersion" type="medicinecard20140601:WarrantVersionType" minOccurs="0" maxOccurs="unbounded"/>
 									<element name="VersionMismatchWarning" type="medicinecard20120601:VersionMismatchWarningType" minOccurs="0"/>
-									<element name="Order" maxOccurs="unbounded">
-										<complexType>
-											<sequence>
-												<element name="Identifier" type="medicinecard20140601:OrderIdentifierType"/>
-												<element name="Version" type="medicinecard20140601:OrderVersionType"/>
-												<element name="PreviousVersion" type="medicinecard20140601:OrderVersionType" minOccurs="0" maxOccurs="unbounded"/>
-												<element name="VersionMismatchWarning" type="medicinecard20120601:VersionMismatchWarningType" minOccurs="0"/>
-												<element name="Effectuation" maxOccurs="unbounded">
-													<complexType>
-														<sequence>
-															<element name="Identifier" type="medicinecard20120601:EffectuationIdentifierType"/>
-															<element name="Version" type="medicinecard20140601:EffectuationVersionType"/>
-														</sequence>
-													</complexType>
-												</element>
-											</sequence>
-										</complexType>
-									</element>
 								</sequence>
 							</complexType>
 						</element>

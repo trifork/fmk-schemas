@@ -14,6 +14,7 @@
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="EmptyEffectuation.xsd"/>
 	<include schemaLocation="Effectuation.xsd"/>
+	<include schemaLocation="DeliverySite.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Delivery.xsd"/>
 	<complexType name="OrderType">
 		<sequence>
@@ -36,7 +37,10 @@
 					</sequence>
 				</complexType>
 			</element>
-			<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="Delivery" type="medicinecard20120601:DeliveryType" minOccurs="0"/>
+				<element name="DeliverySite" type="medicinecard20140601:DeliverySiteType"/>
+			</choice>
 			<element name="DeliveryInstructionText" type="medicinecard20140601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<choice minOccurs="0" maxOccurs="unbounded">
 				<element name="Effectuation" type="medicinecard20140601:EffectuationType"/>

@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/TerminatedDateTime.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Created.xsd"/>
+	<include schemaLocation="InvalidatedDateTime.xsd"/>
 	<include schemaLocation="ValidDate.xsd"/>
 	<include schemaLocation="PackageRestriction.xsd"/>
 	<include schemaLocation="DoseDispensedRestriction.xsd"/>
@@ -20,6 +21,7 @@
 			<element name="ValidFromDate" type="medicinecard20140601:ValidDateType" minOccurs="0"/>
 			<element name="ValidToDate" type="medicinecard20140601:ValidDateType"/>
 			<element name="TerminatedDateTime" type="medicinecard20120601:TerminatedDateTimeType" minOccurs="0"/>
+			<element name="InvalidatedDateTime" type="medicinecard20140601:InvalidatedDateTimeType" minOccurs="0"/>
 			<choice>
 				<element name="PackageRestriction" type="medicinecard20140601:PackageRestrictionType"/>
 				<element name="DoseDispensedRestriction" type="medicinecard20140601:DoseDispensedRestrictionType"/>

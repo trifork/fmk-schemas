@@ -6,6 +6,7 @@
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationVersion.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationIdentifier.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="WarrantVersion.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
@@ -14,7 +15,10 @@
 	<element name="UpdateDrugMedicationResponse" type="medicinecard20140601:UpdateDrugMedicationResponseType"/>
 	<complexType name="UpdateDrugMedicationResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20140601:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20140601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType"/>
+			</choice>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
 			<element name="PreviousVersion" type="medicinecard20120601:MedicineCardVersionType" maxOccurs="unbounded"/>
 			<element name="VersionMismatchWarning" type="medicinecard20120601:VersionMismatchWarningType" minOccurs="0"/>

@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2007 (http://www.altova.com) by Tom Nilson (Trifork A/S) -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="UpdateOrderOnDrugMedicationAndWarrant.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/VersionMismatchWarning.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationIdentifier.xsd"/>
-	<element name="UpdateOrderRequest" type="medicinecard20140601:UpdateOrderRequestType"/>
-	<complexType name="UpdateOrderRequestType">
+	<include schemaLocation="AquireOrderIdentifier.xsd"/>
+	<include schemaLocation="AquireOrderVersion.xsd"/>
+	<element name="UpdateAquireOrderResponse" type="medicinecard20140601:UpdateAquireOrderResponseType"/>
+	<complexType name="UpdateAquireOrderResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="medicinecard20140601:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType"/>
 			</choice>
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
-			<element name="ModifiedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
-			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
-			<element name="DrugMedication" type="medicinecard20140601:UpdateOrderOnDrugMedicationAndWarrantType" maxOccurs="unbounded"/>
+			<element name="VersionMismatchWarning" type="medicinecard20120601:VersionMismatchWarningType" minOccurs="0"/>
+			<element name="AquireOrder" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Identifier" type="medicinecard20140601:AquireOrderIdentifierType"/>
+						<element name="Version" type="medicinecard20140601:AquireOrderVersionType"/>
+						<element name="VersionMismatchWarning" type="medicinecard20120601:VersionMismatchWarningType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
 		</sequence>
 	</complexType>
 </schema>

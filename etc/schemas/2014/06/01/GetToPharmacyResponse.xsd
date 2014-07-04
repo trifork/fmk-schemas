@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationIdentifier.xsd"/>
-	<include schemaLocation="DrugMedicationsForPerson.xsd"/>
+	<include schemaLocation="DrugMedicationsForPersonOrOrganisation.xsd"/>
 	<include schemaLocation="AquireOrderForResponseOuter.xsd"/>
 	<element name="GetToPharmacyResponse" type="medicinecard20140601:GetToPharmacyResponseType"/>
 	<complexType name="GetToPharmacyResponseType">
 		<sequence>
 			<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType"/>
 			<choice maxOccurs="unbounded">
-				<element name="DrugMedications" type="medicinecard20140601:DrugMedicationsForPersonType"/>
+				<element name="DrugMedications" type="medicinecard20140601:DrugMedicationsForPersonOrOrganisationType"/>
 				<element name="AquireOrder" type="medicinecard20140601:AquireOrderForResponseOuterType"/>
 			</choice>
 		</sequence>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2007 (http://www.altova.com) by Tom Nilson (Trifork A/S) -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="UpdateOrderOnDrugMedicationAndWarrant.xsd"/>
+	<include schemaLocation="UpdateWarrantOnDrugMedication.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" schemaLocation="../../../2013/06/01/Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
 	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/OrganisationIdentifier.xsd"/>
-	<element name="UpdateOrderRequest" type="medicinecard20140601:UpdateOrderRequestType"/>
-	<complexType name="UpdateOrderRequestType">
+	<element name="UpdateWarrantRequest" type="medicinecard20140601:UpdateWarrantRequestType"/>
+	<complexType name="UpdateWarrantRequestType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="medicinecard20140601:PersonIdentifierType"/>
@@ -16,7 +15,7 @@
 			<element name="MedicineCardVersion" type="medicinecard20120601:MedicineCardVersionType"/>
 			<element name="ModifiedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
-			<element name="DrugMedication" type="medicinecard20140601:UpdateOrderOnDrugMedicationAndWarrantType" maxOccurs="unbounded"/>
+			<element name="DrugMedication" type="medicinecard20140601:UpdateWarrantOnDrugMedicationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
