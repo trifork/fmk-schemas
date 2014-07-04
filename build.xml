@@ -7,8 +7,16 @@
 	<property file="build.properties"/>
 	<property name="trifork-common" value="${basedir}/../trifork-common"/>
 	<import file="${trifork-common}/etc/build-common.xml"/>
-    
-	
+
+    <property name="target.dir" value="${basedir}/target" />
+
+    <property name="idws.target.dir" value="${target.dir}/idws/target" />
+    <property name="idws.work.dir" value="${target.dir}/idws/workdir" />
+    <property name="idws.schemas" value="schemas-idws" />
+
+    <property name="standard.target.dir" value="${target.dir}/standard/target" />
+    <property name="standard.work.dir" value="${target.dir}/standard/workdir" />
+
     <path id="classpath">
         <fileset dir="lib/build">
             <include name="**/*.jar"/>
@@ -27,164 +35,240 @@
 	<condition property="os.family" value="linux">
         <os family="unix"/>
 	</condition>
-	
+
 	<target name="publish" depends="clean, all, publish-from-jenkins"/>
-		
-	<target name="all" depends="resolve-build, organize-schemas,generate-namespace-oracle"/>
-	
+
+	<target name="all" depends="clean, all-idws, all-standard"/>
+	<target name="all-standard" depends="resolve-build, organize-schemas,generate-namespace-oracle"/>
+	<target name="all-idws" depends="resolve-build, organize-schemas_idws"/>
+
     <target name="generate-namespace-oracle" depends="compile">
         <java classpathref="classpath" failonerror="true"
         	classname="dk.medicinkortet.notproduktion.namespaceoracle.NamespaceOracleGenerator"/>
-    </target>	
-	
-	<target name="organize-schemas" depends="compile" >
-		<mkdir dir="target/wsdl" />
+    </target>
 
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
-			<classpath>
-				<path location="${build.dir}"/>
-				<fileset dir="lib/build" excludes="*gwt*"/>
-			</classpath>
-			<sysproperty key="VersionDate" value="2012_06_01"/>
-			<sysproperty key="WsdlName" value="EffectuationOrdering"/>
-			</java>
-		<zip destfile="target/wsdl/EffectuationOrdering_2012_06_01-collection.zip" 
-				  basedir="target/wsdl/EffectuationOrdering_2012_06_01"/>
-		
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
-			<classpath>
-				<path location="${build.dir}"/>
-				<fileset dir="lib/build" excludes="*gwt*"/>
-			</classpath>
-			<sysproperty key="VersionDate" value="2013_06_01"/>
-			<sysproperty key="WsdlName" value="EffectuationOrdering"/>
-			</java>
-		<zip destfile="target/wsdl/EffectuationOrdering_2013_06_01-collection.zip" 
-				  basedir="target/wsdl/EffectuationOrdering_2013_06_01"/>
+    <fileset id="schemas_excluding_specialized_schemas" dir="etc">
+        <include name="schemas/**"/>
+        <include name="wsdl/MedicineCard_Idws_2012_06_01.wsdl"/>
+        <!-- Exclude specialized versions of XSDs -->
+        <exclude name="schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" />
+        <exclude name="schemas/2008/06/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+        <exclude name="schemas/2008/06/01/xmldsig-core-schema.xsd"/>
+        <exclude name="schemas/2008/06/01/saml.xsd"/>
+        <exclude name="schemas/2008/06/01/ws-trust-specialized.xsd"/>
+        <exclude name="schemas/2008/06/01/wsa-specialized.xsd"/>
+    </fileset>
 
-        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+    <fileset id="schemas_excluding_idws_schemas" dir="etc">
+        <include name="schemas/**"/>
+        <include name="wsdl/**"/>
+        <!--<exclude name="schemas/idws/**"/>-->
+        <exclude name="wsdl/MedicineCard_Idws_2012_06_01.wsdl"/>
+    </fileset>
+
+    <target name="filter-specialized-xsds">
+        <copy todir="${idws.work.dir}/etc" flatten="false" description="Adding non-specialized schemas to ${idws.work.dir}/etc/schemas">
+            <fileset refid="schemas_excluding_specialized_schemas"/>
+        </copy>
+        <copy todir="${idws.work.dir}/etc/schemas" flatten="false" description="Adding IDWS schemas to ${idws.work.dir}/etc/schemas" overwrite="true">
+            <fileset dir="${basedir}/etc/${idws.schemas}"/>
+        </copy>
+        <replace file="${idws.work.dir}/etc/wsdl/MedicineCard_Idws_2012_06_01.wsdl"
+                 token="/${idws.schemas}/" value="/schemas/"
+                 description="Fix paths to referenced schemas"
+                />
+    </target>
+
+    <target name="filter-idws-xsds">
+        <copy todir="${standard.work.dir}/etc" flatten="false">
+            <fileset refid="schemas_excluding_idws_schemas"/>
+        </copy>
+    </target>
+
+	<target name="organize-schemas_idws" depends="compile, filter-specialized-xsds" >
+		<mkdir dir="${idws.work.dir}"  />
+		<mkdir dir="${idws.target.dir}/wsdl"  />
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${idws.work.dir}">
             <classpath>
                 <path location="${build.dir}"/>
                 <fileset dir="lib/build" excludes="*gwt*"/>
             </classpath>
+            <sysproperty key="target.dir" value="${idws.target.dir}" />
+            <sysproperty key="VersionDate" value="Idws_2012_06_01"/>
+            <sysproperty key="WsdlName" value="MedicineCard"/>
+        </java>
+        <zip destfile="${idws.target.dir}/wsdl/MedicineCard_Idws_2012_06_01-collection.zip" basedir="${idws.target.dir}/wsdl/MedicineCard_Idws_2012_06_01"/>
+        
+   		<copy todir="${idws.target.dir}">
+			<fileset dir="${idws.target.dir}/gensrc/META-INF" includes="schemas/**"/>
+		</copy>
+
+        <zip destfile="${target.dir}/fmk-schema-idws.zip"
+             basedir="${idws.target.dir}"
+             includes="schemas/**, wsdl/**" />
+    </target>
+
+	<target name="organize-schemas" depends="compile, filter-idws-xsds" >
+		<mkdir dir="${standard.target.dir}/wsdl" />
+		<mkdir dir="${standard.work.dir}" />
+
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
+			<classpath>
+				<path location="${build.dir}"/>
+				<fileset dir="lib/build" excludes="*gwt*"/>
+			</classpath>
+			<sysproperty key="target.dir" value="${standard.target.dir}"/>
+			<sysproperty key="VersionDate" value="2012_06_01"/>
+			<sysproperty key="WsdlName" value="EffectuationOrdering"/>
+			</java>
+		<zip destfile="${standard.target.dir}/wsdl/EffectuationOrdering_2012_06_01-collection.zip"
+				  basedir="${standard.target.dir}/wsdl/EffectuationOrdering_2012_06_01"/>
+		
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
+			<classpath>
+				<path location="${build.dir}"/>
+				<fileset dir="lib/build" excludes="*gwt*"/>
+			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
+			<sysproperty key="VersionDate" value="2013_06_01"/>
+			<sysproperty key="WsdlName" value="EffectuationOrdering"/>
+			</java>
+		<zip destfile="${standard.target.dir}/wsdl/EffectuationOrdering_2013_06_01-collection.zip"
+				  basedir="${standard.target.dir}/wsdl/EffectuationOrdering_2013_06_01"/>
+
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
+            <classpath>
+                <path location="${build.dir}"/>
+                <fileset dir="lib/build" excludes="*gwt*"/>
+            </classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
             <sysproperty key="VersionDate" value="2013_pem"/>
             <sysproperty key="WsdlName" value="EffectuationOrdering"/>
         </java>
-        <zip destfile="target/wsdl/EffectuationOrdering_2013_pem-collection.zip"
-             basedir="target/wsdl/EffectuationOrdering_2013_pem"/>
+        <zip destfile="${standard.target.dir}/wsdl/EffectuationOrdering_2013_pem-collection.zip"
+             basedir="${standard.target.dir}/wsdl/EffectuationOrdering_2013_pem"/>
 
-        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
 			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
 			<sysproperty key="VersionDate" value="2012_06_01"/>
 			<sysproperty key="WsdlName" value="PatientOrganisationRelation"/>
 		</java>
-		<zip destfile="target/wsdl/PatientOrganisationRelation_2012_06_01-collection.zip" 
-			  basedir="target/wsdl/PatientOrganisationRelation_2012_06_01"/>
+		<zip destfile="${standard.target.dir}/wsdl/PatientOrganisationRelation_2012_06_01-collection.zip"
+			  basedir="${standard.target.dir}/wsdl/PatientOrganisationRelation_2012_06_01"/>
 
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
 			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
 			<sysproperty key="VersionDate" value="2013_06_01"/>
 			<sysproperty key="WsdlName" value="PatientOrganisationRelation"/>
 		</java>
-		<zip destfile="target/wsdl/PatientOrganisationRelation_2013_06_01-collection.zip" 
-			  basedir="target/wsdl/PatientOrganisationRelation_2013_06_01"/>
+		<zip destfile="${standard.target.dir}/wsdl/PatientOrganisationRelation_2013_06_01-collection.zip"
+			  basedir="${standard.target.dir}/wsdl/PatientOrganisationRelation_2013_06_01"/>
 
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
 			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
 			<sysproperty key="VersionDate" value="2013_01_01"/>
 			<sysproperty key="WsdlName" value="DumpRestore"/>
 		</java>
-		<zip destfile="target/wsdl/Dumprestore_2013_01_01-collection.zip" 
-			  basedir="target/wsdl/DumpRestore_2013_01_01"/>
+		<zip destfile="${standard.target.dir}/wsdl/Dumprestore_2013_01_01-collection.zip"
+			  basedir="${standard.target.dir}/wsdl/DumpRestore_2013_01_01"/>
 		
-        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
             <classpath>
                 <path location="${build.dir}"/>
                 <fileset dir="lib/build" excludes="*gwt*"/>
             </classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
             <sysproperty key="VersionDate" value="2012_06_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
         </java>
-		<zip destfile="target/wsdl/MedicineCard_2012_06_01-collection.zip" basedir="target/wsdl/MedicineCard_2012_06_01"/>
+		<zip destfile="${standard.target.dir}/wsdl/MedicineCard_2012_06_01-collection.zip" basedir="${standard.target.dir}/wsdl/MedicineCard_2012_06_01"/>
 
-        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
             <classpath>
                 <path location="${build.dir}"/>
                 <fileset dir="lib/build" excludes="*gwt*"/>
             </classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
             <sysproperty key="VersionDate" value="2013_06_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
         </java>
-        <zip destfile="target/wsdl/MedicineCard_2013_06_01-collection.zip" basedir="target/wsdl/MedicineCard_2013_06_01"/>
+        <zip destfile="${standard.target.dir}/wsdl/MedicineCard_2013_06_01-collection.zip" basedir="${standard.target.dir}/wsdl/MedicineCard_2013_06_01"/>
 
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
 			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
 			<sysproperty key="VersionDate" value="2012_01_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
-		<zip destfile="target/wsdl/MedicineCard_2012_01_01-collection.zip" basedir="target/wsdl/MedicineCard_2012_01_01"/>
+		<zip destfile="${standard.target.dir}/wsdl/MedicineCard_2012_01_01-collection.zip" basedir="${standard.target.dir}/wsdl/MedicineCard_2012_01_01"/>
 
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
 			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
 			<sysproperty key="VersionDate" value="2012_01_01_126Only"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
-		<zip destfile="target/wsdl/MedicineCard_2012_01_01_126Only-collection.zip" basedir="target/wsdl/MedicineCard_2012_01_01_126Only"/>
+		<zip destfile="${standard.target.dir}/wsdl/MedicineCard_2012_01_01_126Only-collection.zip" basedir="${standard.target.dir}/wsdl/MedicineCard_2012_01_01_126Only"/>
 
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
 			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
 			<sysproperty key="VersionDate" value="2011_01_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
-		<zip destfile="target/wsdl/MedicineCard_2011_01_01-collection.zip" basedir="target/wsdl/MedicineCard_2011_01_01"/>
+		<zip destfile="${standard.target.dir}/wsdl/MedicineCard_2011_01_01-collection.zip" basedir="${standard.target.dir}/wsdl/MedicineCard_2011_01_01"/>
 
-		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m">
+		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>
 				<fileset dir="lib/build" excludes="*gwt*"/>
 			</classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
 			<sysproperty key="VersionDate" value="2009_01_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
-		<zip destfile="target/wsdl/MedicineCard_2009_01_01-collection.zip" basedir="target/wsdl/MedicineCard_2009_01_01"/>
+		<zip destfile="${standard.target.dir}/wsdl/MedicineCard_2009_01_01-collection.zip" basedir="${standard.target.dir}/wsdl/MedicineCard_2009_01_01"/>
 		
-		<copy todir="target">
-			<fileset dir="target/gensrc/META-INF" includes="schemas/**"/>
+		<copy todir="${standard.target.dir}">
+			<fileset dir="${standard.target.dir}/gensrc/META-INF" includes="schemas/**"/>
 		</copy>
-		<copy todir="target/wsdl">
-			<fileset dir="etc/wsdl" includes="PEMAuditLog_*.wsdl"/>
+		<copy todir="${standard.target.dir}/wsdl">
+			<fileset dir="${standard.work.dir}/etc/wsdl" includes="PEMAuditLog_*.wsdl"/>
 		</copy>
-		<copy todir="target/schemas">
-			<fileset dir="etc/schemas">
+		<copy todir="${standard.target.dir}/schemas">
+			<fileset dir="${standard.work.dir}/etc/schemas">
 				<exclude name="sdsd"/>
 			</fileset>
 		</copy>
-        <zip destfile="target/fmk-schema.zip"
-             basedir="target"
+        <zip destfile="${target.dir}/fmk-schema.zip"
+             basedir="${standard.target.dir}"
              includes="schemas/**, wsdl/**" />
 	</target>
 
     <target name="clean">
         <delete dir="build"/>
-        <delete dir="target"/>
+        <delete dir="${target.dir}"/>
         <delete dir="gensrc"/>
         <delete dir="lib/build"/>
         <delete dir="lib/test"/>
