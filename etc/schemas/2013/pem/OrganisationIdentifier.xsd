@@ -6,24 +6,24 @@
 			<documentation xml:lang="da-DK">Nummer eller kode der identificerer en organisation</documentation>
 		</annotation>
 	</element>
-    <complexType name="OrganisationIdentifierType"> <!--simpleType name="OrganisationIdentifierValueType"-->
+    <complexType name="OrganisationIdentifierType">
         <simpleContent>
-            <extension base="string">
-                <restriction base="string">
+            <restriction base="string">
                     <minLength value="1"/>
                     <maxLength value="200"/>
-                </restriction>
                 <attribute name="source" type="string" use="required">
-                    <restriction>
-                        <enumeration value="SKS"/>
-                        <enumeration value="Yder"/>
-                        <enumeration value="EAN-Lokationsnummer"/>
-                        <enumeration value="CVR"/>
-                        <enumeration value="CVR-P"/>
-                        <enumeration value="Kommunekode"/>
-                    </restriction>
-                </attribute>
-            </extension>
+                    <simpleType>
+                        <restriction>
+                            <enumeration value="SKS"/>
+                            <enumeration value="Yder"/>
+                            <enumeration value="EAN-Lokationsnummer"/>
+                            <enumeration value="CVR"/>
+                            <enumeration value="CVR-P"/>
+                            <enumeration value="Kommunekode"/>
+                        </restriction>
+                        </simpleType>
+                    </attribute>
+            </restriction>
         </simpleContent>
     </complexType>
 </schema>

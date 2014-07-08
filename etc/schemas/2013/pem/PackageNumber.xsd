@@ -8,23 +8,24 @@
 	</element>
 	<complexType name="PackageNumberType">
 		<simpleContent>
-			<extension base="int">
-                <restriction>
+			<restriction base="int">
                     <minInclusive value="1"/>
                     <maxInclusive value="999999"/>
-                </restriction>
 				<attribute name="source" type="string" use="required">
+                    <simpleType>
                     <restriction base="string">
                         <enumeration value="Medicinpriser"/>
                         <enumeration value="Frihandelsvare"/>
                     </restriction>
+                    </simpleType>
                 </attribute>
 				<attribute name="date" type="string" use="optional">
-                    <restriction base="string">
-                        <pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
-                    </restriction>
+                    <simpleType>
+                        <restriction base="string">
+                            <pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
+                        </restriction>
+                    </simpleType>
                 </attribute>
-
 				<attribute name="yearAndWeek" type="string" use="optional">
                     <simpleType>
                         <restriction base="string">
@@ -32,8 +33,7 @@
                         </restriction>
                     </simpleType>
                 </attribute>
-
-			</extension>
+			</restriction>
 		</simpleContent>
 	</complexType>
 </schema>
