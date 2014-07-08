@@ -13,31 +13,29 @@
     </element>
     <complexType name="SpecialityCodeType">
         <simpleContent>
-            <restriction base="string">
-                <minLength value="1"/>
-                <maxLength value="5"/>
+            <extension base="string">
+                <!--restriction>
+                    <minLength value="1"/>
+                    <maxLength value="5"/>
+                </restriction-->
                 <attribute name="source" type="string" use="required">
-                    <simpleType>
-                        <restriction base="string">
-                            <enumeration value="Medicinpriser"/>
-                        </restriction>
-                    </simpleType>
+                    <!--restriction base="string">
+                        <enumeration value="Medicinpriser"/>
+                    </restriction-->
                 </attribute>
                 <attribute name="date" type="string" use="optional">
-                    <simpleType>
-                        <restriction base="string">
-                            <pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
-                        </restriction>
-                    </simpleType>
+                    <!--restriction base="string">
+                        yyyy-mm-dd
+                        <pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
+                    </restriction-->
                 </attribute>
                 <attribute name="yearAndWeek" type="string" use="optional">
-                    <simpleType>
-                        <restriction base="string">
-                            <pattern value="[1-2][0-9][0-9][0-9]-(0[1-9]|[1-4][0-9]|5[0-3])"/>
-                        </restriction>
-                    </simpleType>
+                    <!--restriction base="string">
+                        yyyy-ww
+                        <pattern value="[1-2][0-9][0-9][0-9]-(0[1-9]|[1-4][0-9]|5[0-3])"/>
+                    </restriction-->
                 </attribute>
-            </restriction>
+            </extension>
         </simpleContent>
     </complexType>
 </schema>

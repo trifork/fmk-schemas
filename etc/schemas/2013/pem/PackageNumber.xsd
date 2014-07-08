@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard2013pem="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<element name="PackageNumber" type="medicinecard2013pem:PackageNumberType">
-		<annotation>
-			<documentation xml:lang="en-GB">The package number (DMA02 field 2)</documentation>
-			<documentation xml:lang="da-DK">Lægemiddelpakningens varenummer (LMS02 felt 2)</documentation>
-		</annotation>
-	</element>
-	<complexType name="PackageNumberType">
-		<simpleContent>
-			<restriction base="int">
-                    <minInclusive value="1"/>
-                    <maxInclusive value="999999"/>
-				<attribute name="source" type="string" use="required">
-                    <simpleType>
-                    <restriction base="string">
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
+        xmlns:medicinecard2013pem="http://www.dkma.dk/medicinecard/xml.schema/2013/pem"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+    <element name="PackageNumber" type="medicinecard2013pem:PackageNumberType">
+        <annotation>
+            <documentation xml:lang="en-GB">The package number (DMA02 field 2)</documentation>
+            <documentation xml:lang="da-DK">Lægemiddelpakningens varenummer (LMS02 felt 2)</documentation>
+        </annotation>
+    </element>
+    <complexType name="PackageNumberType">
+        <simpleContent>
+            <extension base="int">
+                <!-- restriction base="int">
+                        <minInclusive value="1"/>
+                        <maxInclusive value="999999"/>
+                </restriction -->
+                <attribute name="source" type="string" use="required">
+                    <!--restriction base="string">
                         <enumeration value="Medicinpriser"/>
                         <enumeration value="Frihandelsvare"/>
-                    </restriction>
-                    </simpleType>
+                    </restriction-->
                 </attribute>
-				<attribute name="date" type="string" use="optional">
-                    <simpleType>
-                        <restriction base="string">
-                            <pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
-                        </restriction>
-                    </simpleType>
+                <attribute name="date" type="string" use="optional">
+                    <!--restriction base="string">
+                        yyyy-mm-dd
+                        <pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
+                    </restriction-->
                 </attribute>
-				<attribute name="yearAndWeek" type="string" use="optional">
-                    <simpleType>
-                        <restriction base="string">
-                            <pattern value="[1-2][0-9][0-9][0-9]-(0[1-9]|[1-4][0-9]|5[0-3])"/>
-                        </restriction>
-                    </simpleType>
+                <attribute name="yearAndWeek" type="string" use="optional">
+                    <!--restriction base="string">
+                        yyyy-ww
+                        <pattern value="[1-2][0-9][0-9][0-9]-(0[1-9]|[1-4][0-9]|5[0-3])"/>
+                    </restriction-->
                 </attribute>
-			</restriction>
-		</simpleContent>
-	</complexType>
+            </extension>
+        </simpleContent>
+    </complexType>
 </schema>
