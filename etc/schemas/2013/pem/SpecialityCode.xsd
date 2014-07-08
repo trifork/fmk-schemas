@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard2013pem="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/pem" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="SpecialityCode" type="medicinecard2013pem:SpecialityCodeType">
+		<annotation>
+			<documentation xml:lang="en-GB">The doctors speciality code according to the pricelist's table LMS19</documentation>
+			<documentation xml:lang="da-DK">Lægens specialekode ifølge takstens LMS19</documentation>
+		</annotation>
+	</element>
+	<complexType name="SpecialityCodeType">
+		<simpleContent>
+            <extension base="string">
+                <restriction>
+                    <minLength value="1"/>
+                    <maxLength value="5"/>
+                </restriction>
+                <attribute name="source" type="string" use="required">
+                    <restriction base="string">
+                        <enumeration value="Medicinpriser"/>
+                    </restriction>
+                </attribute>
+                <attribute name="date" type="string" use="optional">
+                    <restriction base="string">
+                        <pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
+                    </restriction>
+                </attribute>
+
+                <attribute name="yearAndWeek" type="string" use="optional">
+                    <simpleType>
+                        <restriction base="string">
+                            <pattern value="[1-2][0-9][0-9][0-9]-(0[1-9]|[1-4][0-9]|5[0-3])"/>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+
+            </extension>
+            </simpleContent>
+	</complexType>
+</schema>
