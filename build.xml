@@ -10,6 +10,8 @@
 
     <property name="target.dir" value="${basedir}/target" />
 
+    <property name="fmk-classes.target.jar" value="${target.dir}/fmk-schema-classes.jar" />
+
     <property name="idws.target.dir" value="${target.dir}/idws/target" />
     <property name="idws.work.dir" value="${target.dir}/idws/workdir" />
     <property name="idws.schemas" value="schemas-idws" />
@@ -39,7 +41,7 @@
 	<target name="publish" depends="clean, all, publish-from-jenkins"/>
 
 	<target name="all" depends="clean, all-idws, all-standard"/>
-	<target name="all-standard" depends="resolve-build, organize-schemas,generate-namespace-oracle"/>
+	<target name="all-standard" depends="resolve-build, organize-schemas, generate, generate-namespace-oracle"/>
 	<target name="all-idws" depends="resolve-build, organize-schemas_idws"/>
 
     <target name="generate-namespace-oracle" depends="compile">
@@ -49,7 +51,7 @@
 
     <fileset id="schemas_excluding_specialized_schemas" dir="etc">
         <include name="schemas/**"/>
-        <include name="wsdl/MedicineCard_Idws_2012_06_01.wsdl"/>
+        <include name="wsdl/*_Idws_*.wsdl"/>
         <!-- Exclude specialized versions of XSDs -->
         <exclude name="schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" />
         <exclude name="schemas/2008/06/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
@@ -63,7 +65,7 @@
         <include name="schemas/**"/>
         <include name="wsdl/**"/>
         <!--<exclude name="schemas/idws/**"/>-->
-        <exclude name="wsdl/MedicineCard_Idws_2012_06_01.wsdl"/>
+        <include name="wsdl/*_Idws_*.wsdl"/>
     </fileset>
 
     <target name="filter-specialized-xsds">
@@ -74,6 +76,10 @@
             <fileset dir="${basedir}/etc/${idws.schemas}"/>
         </copy>
         <replace file="${idws.work.dir}/etc/wsdl/MedicineCard_Idws_2012_06_01.wsdl"
+                 token="/${idws.schemas}/" value="/schemas/"
+                 description="Fix paths to referenced schemas"
+                />
+        <replace file="${idws.work.dir}/etc/wsdl/MedicineCard_Idws_2013_06_01.wsdl"
                  token="/${idws.schemas}/" value="/schemas/"
                  description="Fix paths to referenced schemas"
                 />
@@ -88,6 +94,7 @@
 	<target name="organize-schemas_idws" depends="compile, filter-specialized-xsds" >
 		<mkdir dir="${idws.work.dir}"  />
 		<mkdir dir="${idws.target.dir}/wsdl"  />
+        <!-- 1.4.0 - 20120601 -->
         <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${idws.work.dir}">
             <classpath>
                 <path location="${build.dir}"/>
@@ -98,10 +105,22 @@
             <sysproperty key="WsdlName" value="MedicineCard"/>
         </java>
         <zip destfile="${idws.target.dir}/wsdl/MedicineCard_Idws_2012_06_01-collection.zip" basedir="${idws.target.dir}/wsdl/MedicineCard_Idws_2012_06_01"/>
-        
-   		<copy todir="${idws.target.dir}">
-			<fileset dir="${idws.target.dir}/gensrc/META-INF" includes="schemas/**"/>
-		</copy>
+
+        <!-- 1.4.2 - 20130601 -->
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${idws.work.dir}">
+            <classpath>
+                <path location="${build.dir}"/>
+                <fileset dir="lib/build" excludes="*gwt*"/>
+            </classpath>
+            <sysproperty key="target.dir" value="${idws.target.dir}" />
+            <sysproperty key="VersionDate" value="Idws_2013_06_01"/>
+            <sysproperty key="WsdlName" value="MedicineCard"/>
+        </java>
+        <zip destfile="${idws.target.dir}/wsdl/MedicineCard_Idws_2013_06_01-collection.zip" basedir="${idws.target.dir}/wsdl/MedicineCard_Idws_2013_06_01"/>
+
+        <copy todir="${idws.target.dir}">
+            <fileset dir="${idws.target.dir}/gensrc/META-INF" includes="schemas/**"/>
+        </copy>
 
         <zip destfile="${target.dir}/fmk-schema-idws.zip"
              basedir="${idws.target.dir}"
@@ -265,6 +284,92 @@
              basedir="${standard.target.dir}"
              includes="schemas/**, wsdl/**" />
 	</target>
+
+    <!-- Java Codegen -->
+
+    <property name="medicinkort.webservice.version" value="2012_01_01"/>
+    <property name="medicinkort.webservice-1.4.version" value="2012_06_01"/>
+    <property name="medicinkort.webservice-1.4.2.version" value="2013_06_01"/>
+    <property name="auditlog.webservice.version" value="2009_01_01"/>
+    <property name="dumprestore.webservice.version" value="2013_01_01"/>
+
+    <target name="axis-init" depends="init">
+        <tstamp />
+        <mkdir dir="target/build"/>
+        <mkdir dir="target/gen/src"/>
+    </target>
+
+    <target name="check-generate" >
+        <available file="${fmk-classes.target.jar}" property="generated_files_present"/>
+    </target>
+
+    <target name="set-codegen-encoding-property">
+        <!-- if file.encoding has been set as a jvmarg e.g. via ANT_OPTS environment variable -->
+        <condition property="codegen-encoding" value="${file.encoding}">
+            <and>
+                <isset property="file.encoding"/>
+                <or>
+                    <equals arg1="${file.encoding}" arg2="UTF-8" casesensitive="false"/>
+                    <equals arg1="${file.encoding}" arg2="MacRoman" casesensitive="false"/>
+                    <equals arg1="${file.encoding}" arg2="ISO-8859-1" casesensitive="false"/>
+                </or>
+            </and>
+        </condition>
+        <!-- else if platform is mac -->
+        <condition property="codegen-encoding" value="MacRoman">
+            <os family="mac"/>
+        </condition>
+        <!-- else -->
+        <property name="codegen-encoding" value="ISO-8859-1"/>
+        <echo>codegen-encoding set to '${codegen-encoding}'</echo>
+    </target>
+
+    <target name="generate" depends="set-codegen-encoding-property, check-generate, axis-init, resolve-build" unless="generated_files_present">
+        <taskdef name="codegen" classname="org.apache.axis2.tool.ant.AntCodegenTask" classpathref="classpath"/>
+        <mkdir dir="${standard.target.dir}/genclasses"/>
+        <delete dir="${standard.target.dir}/gentestsrc"/>
+        <mkdir dir="${standard.target.dir}/gentestsrc-tmp"/>
+
+<!--
+        <unzip src="${medicinkortet}/lib/build/com.trifork-fmk-schema.zip"
+               dest="${medicinkortet}/target/web">
+            <patternset>
+                <include name="schemas/**"/>
+            </patternset>
+        </unzip>
+-->
+
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/PatientOrganisationRelation-inline_${medicinkort.webservice-1.4.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/PatientOrganisationRelation-inline_${medicinkort.webservice-1.4.2.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_${medicinkort.webservice.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_${medicinkort.webservice-1.4.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_${medicinkort.webservice-1.4.2.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_${medicinkort.webservice-1.4.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_${medicinkort.webservice-1.4.2.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2013_pem.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/PEMAuditLog_${auditlog.webservice.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/DumpRestore-inline_${dumprestore.webservice.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+
+        <copy todir="${standard.target.dir}/gentestsrc" encoding="${codegen-encoding}" outputencoding="UTF-8">
+            <fileset dir="${standard.target.dir}/gentestsrc-tmp" includes="**/*.java"/>
+        </copy>
+        <move todir="${standard.target.dir}/gentestsrc">
+            <fileset dir="${standard.target.dir}/gentestsrc-tmp" excludes="**/*.java"/>
+        </move>
+
+        <javac classpathref="classpath" debug="true" source="${sourceversion}" target="${targetversion}" destdir="${standard.target.dir}/genclasses" fork="true" memorymaximumsize="512m" encoding="UTF-8">
+            <src path="${standard.target.dir}/gentestsrc/src"/>
+        </javac>
+        <jar basedir="${standard.target.dir}/gentestsrc/resources" destfile="${fmk-classes.target.jar}">
+            <fileset dir="${standard.target.dir}/gentestsrc/resources">
+                <include name="**/*.class"/>
+            </fileset>
+            <fileset dir="${standard.target.dir}/genclasses">
+                <include name="**/*.class"/>
+            </fileset>
+        </jar>
+    </target>
+
 
     <target name="clean">
         <delete dir="build"/>
