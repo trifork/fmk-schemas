@@ -9,11 +9,13 @@
 	<publications>
 		<artifact name="fmk-schema" ext="zip" />
 		<artifact name="fmk-schema-idws" ext="zip" />
-		<artifact name="NamespaceOracle-generated" ext="properties" />
+        <artifact name="fmk-schema-classes" ext="jar" />
+        <artifact name="NamespaceOracle-generated" ext="properties" />
 	</publications>    
 
 	<dependencies>
 		<dependency org="commons-io" name="commons-io" rev="1.4" />
+        <dependency org="log4j" name="log4j" rev="1.2.14" transitive="false" conf="build,deploy->default"/>
 		<dependency org="dk.sosi.seal" name="seal" rev="2.1.6">
 			<exclude org="axis" />
 		</dependency>
@@ -26,5 +28,8 @@
 
 		<dependency org="com.trifork" name="xmlobject" rev="1.17"/>
 		<dependency org="xerces" name="xercesImpl" rev="2.9.1"/>
+
+        <dependency org="org.apache.axis2" name="axis2-ant-plugin" rev="1.6.1" />
+        <dependency org="org.apache.axis2" name="axis2-xmlbeans" rev="1.6.1" />
 	</dependencies>
 </ivy-module>
