@@ -11,6 +11,7 @@
     <property name="target.dir" value="${basedir}/target" />
 
     <property name="fmk-classes.target.jar" value="${target.dir}/fmk-schema-classes.jar" />
+    <property name="fmk-sources.target.zip" value="${target.dir}/fmk-schema-source.jar" />
 
     <property name="idws.target.dir" value="${target.dir}/idws/target" />
     <property name="idws.work.dir" value="${target.dir}/idws/workdir" />
@@ -356,6 +357,11 @@
         <move todir="${standard.target.dir}/gentestsrc">
             <fileset dir="${standard.target.dir}/gentestsrc-tmp" excludes="**/*.java"/>
         </move>
+
+        <zip destfile="${fmk-sources.target.zip}">
+            <fileset dir="${standard.target.dir}/gentestsrc/src" />
+            <fileset dir="${standard.target.dir}/gentestsrc/resources" />
+        </zip>
 
         <javac classpathref="classpath" debug="true" source="${sourceversion}" target="${targetversion}" destdir="${standard.target.dir}/genclasses" fork="true" memorymaximumsize="512m" encoding="UTF-8">
             <src path="${standard.target.dir}/gentestsrc/src"/>
