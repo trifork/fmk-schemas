@@ -4,14 +4,17 @@
 	<configurations>
 		<conf name="build" />
 		<conf name="deploy" />
+		<conf name="jar" />
+		<conf name="src" />
 	</configurations>
 
 	<publications>
 		<artifact name="fmk-schema" ext="zip" />
 		<artifact name="fmk-schema-idws" ext="zip" />
-        <artifact name="fmk-schema-classes" ext="jar" />
         <artifact name="NamespaceOracle-generated" ext="properties" />
-	</publications>    
+        <artifact name="fmk-schema-classes" ext="jar" conf="jar" />
+        <artifact name="fmk-schema-source" ext="zip" conf="src" />
+	</publications>
 
 	<dependencies>
 		<dependency org="commons-io" name="commons-io" rev="1.4" />
