@@ -1,0 +1,103 @@
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                  xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01"
+                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01">
+
+    <wsdl:types>
+
+        <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+            <xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
+            <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01"
+                   elementFormDefault="qualified">
+            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2014/08/01/VersionService.xsd"/>
+
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedicineCardVersionsRequest">
+        <wsdl:part name="MedicineCardVersionsRequest" element="tns:MedicineCardVersionsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="MedicineCardVersionsResponse">
+        <wsdl:part name="MedicineCardVersionsResponse" element="tns:MedicineCardVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DrugMedicationVersionsRequest">
+        <wsdl:part name="DrugMedicationVersionsRequest" element="tns:DrugMedicationVersionsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DrugMedicationVersionsResponse">
+        <wsdl:part name="DrugMedicationVersionsResponse" element="tns:DrugMedicationVersionsResponse"/>
+    </wsdl:message>
+
+
+    <wsdl:message name="DGWSFault">
+        <wsdl:part name="fault" element="medcom:FaultCode" />
+    </wsdl:message>
+
+    <wsdl:portType name="VersionsPortType">
+
+        <wsdl:operation name="MedicineCardVersions">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01#MedicineCardVersions" style="document"/>
+            <wsdl:input name="MedicineCardVersionsRequest" message="tns:MedicineCardVersionsRequest"/>
+            <wsdl:output name="MedicineCardVersionsResponse" message="tns:MedicineCardVersionsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="DrugMedicationVersions">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01#DrugMedicationVersions" style="document"/>
+            <wsdl:input name="DrugMedicationVersionsRequest" message="tns:DrugMedicationVersionsRequest"/>
+            <wsdl:output name="DrugMedicationVersionsResponse" message="tns:DrugMedicationVersionsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="VersionsBinding" type="tns:VersionsPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="MedicineCardVersions">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01#MedicineCardVersions" style="document"/>
+            <wsdl:input name="MedicineCardVersionsRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="MedicineCardVersionsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="DrugMedicationVersions">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01#DrugMedicationVersions" style="document"/>
+            <wsdl:input name="DrugMedicationVersionsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="DrugMedicationVersionsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+
+    <wsdl:service name="Versions">
+        <wsdl:port name="VersionsPort" binding="tns:VersionsBinding">
+            <soap:address location="http://nsi.dk/ws/Versions"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
