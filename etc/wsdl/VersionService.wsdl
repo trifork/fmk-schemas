@@ -86,7 +86,11 @@
 
         <wsdl:operation name="DrugMedicationVersions">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2014/08/01#DrugMedicationVersions" style="document"/>
-            <wsdl:input name="DrugMedicationVersionsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:input name="DrugMedicationVersionsRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
             <wsdl:output name="DrugMedicationVersionsResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
