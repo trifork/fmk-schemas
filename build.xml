@@ -269,7 +269,18 @@
             <sysproperty key="WsdlName" value="MedicineCard"/>
 		</java>
 		<zip destfile="${standard.target.dir}/wsdl/MedicineCard_2009_01_01-collection.zip" basedir="${standard.target.dir}/wsdl/MedicineCard_2009_01_01"/>
-		
+
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
+            <classpath>
+                <path location="${build.dir}"/>
+                <fileset dir="lib/build" excludes="*gwt*"/>
+            </classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
+            <sysproperty key="VersionDate" value="2014_08_01"/>
+            <sysproperty key="WsdlName" value="VersionService"/>
+        </java>
+        <zip destfile="${standard.target.dir}/wsdl/VersionService_2014_08_01-collection.zip" basedir="${standard.target.dir}/wsdl/VersionService_2014_08_01"/>
+
 		<copy todir="${standard.target.dir}">
 			<fileset dir="${standard.target.dir}/gensrc/META-INF" includes="schemas/**"/>
 		</copy>

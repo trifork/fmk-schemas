@@ -54,14 +54,14 @@
     </element>
     <complexType name="MedicineCardVersionsResponseType">
         <sequence>
-            <element name="MedicineCardVersionsForCPR" type="medicinecard20140801:MedicineCardVersionsForCPRType" maxOccurs="unbounded" />
+            <element name="MedicineCardVersionsForCPR" type="medicinecard20140801:MedicineCardVersionsForCPRType" minOccurs="0" maxOccurs="unbounded" />
         </sequence>
     </complexType>
     <complexType name="MedicineCardVersionsForCPRType">
         <sequence>
             <element name="PersonIdentifier" type="medicinecard20140801:PersonIdentifierType" />
             <sequence>
-                <element name="MedicineCardVersions" type="medicinecard20140801:MedicineCardVersionsType" maxOccurs="unbounded" />
+                <element name="MedicineCardVersions" type="medicinecard20140801:MedicineCardVersionsType" minOccurs="0" maxOccurs="unbounded" />
             </sequence>
         </sequence>
     </complexType>
@@ -118,7 +118,7 @@
     <element name="DrugMedicationVersionsResponse" type="medicinecard20140801:DrugMedicationVersionsResponseType"/>
     <complexType name="DrugMedicationVersionsResponseType">
         <sequence>
-            <element name="DrugMedicationsForIdentifier" type="medicinecard20140801:DrugMedicationVersionsForIdentifierType" maxOccurs="unbounded" />
+            <element name="DrugMedicationsForIdentifier" type="medicinecard20140801:DrugMedicationVersionsForIdentifierType" minOccurs="0" maxOccurs="unbounded" />
         </sequence>
     </complexType>
 
