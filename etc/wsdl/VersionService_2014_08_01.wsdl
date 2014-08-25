@@ -25,8 +25,9 @@
             <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                        schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
 
-            <!--<xs:include schemaLocation="../schemas/2014/08/01/VersionService.xsd" />-->
-            <!-- Copied from 2012_06_01 PersonIdentifier -->
+            <xs:include schemaLocation="../schemas/2014/08/01/VersionService.xsd" />
+
+<!--            &lt;!&ndash; Copied from 2012_06_01 PersonIdentifier &ndash;&gt;
             <element name="PersonIdentifier" type="medicinecard20140801:PersonIdentifierType">
                 <annotation>
                     <documentation xml:lang="en-GB">Element for a person identifier, according to the Danish CPR
@@ -103,8 +104,8 @@
             </complexType>
 
 
-            <!-- DrugMedication versions -->
-            <!-- Copied from 2012_06_01 DrugMedicationVersion -->
+            &lt;!&ndash; DrugMedication versions &ndash;&gt;
+            &lt;!&ndash; Copied from 2012_06_01 DrugMedicationVersion &ndash;&gt;
             <element name="DrugMedicationVersion" type="medicinecard20140801:DrugMedicationVersionType">
                 <annotation>
                     <documentation xml:lang="en-GB">Version number of the drug medication</documentation>
@@ -117,7 +118,7 @@
                 </restriction>
             </simpleType>
 
-            <!-- Copied from 2012_06_01 DrugMedicationIdentifier -->
+            &lt;!&ndash; Copied from 2012_06_01 DrugMedicationIdentifier &ndash;&gt;
             <element name="DrugMedicationIdentifier" type="medicinecard20140801:DrugMedicationIdentifierType">
                 <annotation>
                     <documentation xml:lang="en-GB">Unique identification of the drug medication</documentation>
@@ -162,7 +163,7 @@
                              type="medicinecard20140801:DrugMedicationVersionsForIdentifierType" minOccurs="0"
                              maxOccurs="unbounded"/>
                 </sequence>
-            </complexType>
+            </complexType>-->
 
         </xs:schema>
     </wsdl:types>
