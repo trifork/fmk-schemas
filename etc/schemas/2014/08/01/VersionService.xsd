@@ -47,7 +47,7 @@
     <element name="MedicineCardVersionsRequest" type="medicinecard20140801:MedicineCardVersionsRequestType"/>
     <complexType name="MedicineCardVersionsRequestType">
         <sequence>
-            <element name="PersonIdentifier" type="medicinecard20140801:PersonIdentifierType" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="PersonIdentifier" type="medicinecard20140801:PersonIdentifierType" minOccurs="1" maxOccurs="100"/>
         </sequence>
     </complexType>
 
@@ -90,7 +90,7 @@
     <element name="DrugMedicationVersionsRequest" type="medicinecard20140801:DrugMedicationVersionsRequestType"/>
     <complexType name="DrugMedicationVersionsRequestType">
         <sequence>
-            <element name="DrugMedicationIdentifier" type="medicinecard20140801:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
+            <element name="DrugMedicationIdentifier" type="medicinecard20140801:DrugMedicationIdentifierType" minOccurs="1" maxOccurs="100"/>
         </sequence>
     </complexType>
 
@@ -111,7 +111,7 @@
     <element name="DrugMedicationVersionsResponse" type="medicinecard20140801:DrugMedicationVersionsResponseType"/>
     <complexType name="DrugMedicationVersionsResponseType">
         <sequence>
-            <element name="DrugMedicationsForIdentifier" type="medicinecard20140801:DrugMedicationVersionsForIdentifierType" minOccurs="0" maxOccurs="unbounded" />
+            <element name="DrugMedicationsForIdentifier" type="medicinecard20140801:DrugMedicationVersionsForIdentifierType" minOccurs="0" maxOccurs="500" />
         </sequence>
     </complexType>
 
