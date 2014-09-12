@@ -105,6 +105,9 @@
             <sysproperty key="VersionDate" value="Idws_2012_06_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
         </java>
+        <copy todir="${idws.target.dir}/wsdl/MedicineCard_Idws_2012_06_01">
+            <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
+        </copy>
         <zip destfile="${idws.target.dir}/wsdl/MedicineCard_Idws_2012_06_01-collection.zip" basedir="${idws.target.dir}/wsdl/MedicineCard_Idws_2012_06_01"/>
 
         <!-- 1.4.2 - 20130601 -->
@@ -117,10 +120,14 @@
             <sysproperty key="VersionDate" value="Idws_2013_06_01"/>
             <sysproperty key="WsdlName" value="MedicineCard"/>
         </java>
+        <copy todir="${idws.target.dir}/wsdl/MedicineCard_Idws_2013_06_01">
+            <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
+        </copy>
         <zip destfile="${idws.target.dir}/wsdl/MedicineCard_Idws_2013_06_01-collection.zip" basedir="${idws.target.dir}/wsdl/MedicineCard_Idws_2013_06_01"/>
 
         <copy todir="${idws.target.dir}">
             <fileset dir="${idws.target.dir}/gensrc/META-INF" includes="schemas/**"/>
+            <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
         </copy>
 
         <zip destfile="${target.dir}/fmk-schema-idws.zip"
