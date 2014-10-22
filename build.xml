@@ -41,7 +41,7 @@
 
 	<target name="publish" depends="clean, all, publish-from-jenkins"/>
 
-	<target name="all" depends="clean, all-idws, all-standard"/>
+	<target name="all" depends="clean, all-idws, all-standard, medicinecard_dist_zips"/>
 	<target name="all-standard" depends="resolve-build, organize-schemas, generate, generate-namespace-oracle"/>
 	<target name="all-idws" depends="resolve-build, organize-schemas_idws"/>
 
@@ -303,6 +303,62 @@
              basedir="${standard.target.dir}"
              includes="schemas/**, wsdl/**" />
 	</target>
+
+    <target name="medicinecard_dist_zips" depends="organize-schemas, organize-schemas_idws">
+
+        <!-- Dist collection for MedicineCard 2012_06_01 -->
+        <property name="medicinecard_2012_06_01_dist_file" value="${target.dir}/wsdl/MedicineCard_2012_06_01-collection-dist.zip"/>
+        <zip destfile="${medicinecard_2012_06_01_dist_file}"
+             description="Dist collection for MedicineCard 2012_06_01 (1.4.0)"
+             update="false"
+             basedir="${standard.target.dir}/wsdl" includes="MedicineCard*_2012_06_01-collection.zip"
+        />
+        <zip destfile="${medicinecard_2012_06_01_dist_file}"
+             description="Dist collection for MedicineCard 2012_06_01 (1.4.0)"
+             update="true"
+             basedir="${idws.target.dir}/wsdl" includes="MedicineCard*_2012_06_01-collection.zip"
+        />
+
+
+        <!-- Dist collection for MedicineCard 2013_06_01 -->
+        <property name="medicinecard_2013_06_01_dist_file" value="${target.dir}/wsdl/MedicineCard_2013_06_01-collection-dist.zip"/>
+        <zip destfile="${medicinecard_2013_06_01_dist_file}"
+             description="Dist collection for MedicineCard 2013_06_01 (1.4.0)"
+             update="false"
+             basedir="${standard.target.dir}/wsdl" includes="MedicineCard*_2013_06_01-collection.zip"
+                />
+        <zip destfile="${medicinecard_2013_06_01_dist_file}"
+             update="true"
+             basedir="${idws.target.dir}/wsdl" includes="MedicineCard*_2013_06_01-collection.zip"
+                />
+
+
+        <!-- Dist collection for inlined 2012_06_01 MedicineCard wsdl files -->
+        <property name="medicinecard_2012_06_01_inline_dist_file" value="${target.dir}/wsdl/MedicineCard-inline_2012_06_01-dist.zip"/>
+        <zip destfile="${medicinecard_2012_06_01_inline_dist_file}"
+             description="Dist collection for inlined 2012_06_01 MedicineCard wsdl files (1.4.0)"
+             update="false"
+             basedir="${standard.target.dir}/wsdl" includes="MedicineCard-inline*_2012_06_01.wsdl"
+                />
+        <zip destfile="${medicinecard_2012_06_01_inline_dist_file}"
+             update="true"
+             basedir="${idws.target.dir}/wsdl" includes="MedicineCard-inline*_2012_06_01.wsdl"
+                />
+
+
+        <!-- Dist collection for inlined 2013_06_01 MedicineCard wsdl files -->
+        <property name="medicinecard_2013_06_01_inline_dist_file" value="${target.dir}/wsdl/MedicineCard-inline_2013_06_01-dist.zip"/>
+        <zip destfile="${medicinecard_2013_06_01_inline_dist_file}"
+             description="Dist collection for inlined 2013_06_01 MedicineCard wsdl files (1.4.0)"
+             update="false"
+             basedir="${standard.target.dir}/wsdl" includes="MedicineCard-inline*_2013_06_01.wsdl"
+                />
+        <zip destfile="${medicinecard_2013_06_01_inline_dist_file}"
+             update="true"
+             basedir="${idws.target.dir}/wsdl" includes="MedicineCard-inline*_2013_06_01.wsdl"
+                />
+
+    </target>
 
     <!-- Java Codegen -->
 
