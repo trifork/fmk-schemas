@@ -306,6 +306,7 @@
 
     <target name="medicinecard_dist_zips" depends="organize-schemas, organize-schemas_idws">
 
+        <mkdir dir="${target.dir}/wsdl"/>
         <!-- Dist collection for MedicineCard 2012_06_01 -->
         <property name="medicinecard_2012_06_01_dist_file" value="${target.dir}/wsdl/MedicineCard_2012_06_01-collection-dist.zip"/>
         <zip destfile="${medicinecard_2012_06_01_dist_file}"
@@ -356,6 +357,12 @@
         <zip destfile="${medicinecard_2013_06_01_inline_dist_file}"
              update="true"
              basedir="${idws.target.dir}/wsdl" includes="MedicineCard-inline*_2013_06_01.wsdl"
+                />
+
+        <zip destfile="${target.dir}/fmk-schema-dist.zip"
+             description="Dist files for 2013_06_01 and 2012_06_01 MedicineCard (1.4.0 and 1.4.2)"
+             update="false"
+             basedir="${target.dir}/wsdl" includes="MedicineCard*.zip"
                 />
 
     </target>
