@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageAnyDay.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageDay.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageIsNotIterated.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesDosageEndingUndetermined.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesEndDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesEndDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesIterationInterval.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesStartDate.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageTimesStartDateTime.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageSupplementaryText.xsd"/>
+	<element name="DosageStructureForRequest" type="medicinecard20150101:DosageStructureForRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageStructureForRequestType">
+		<sequence>
+			<choice>
+				<element name="IterationInterval" type="medicinecard20120601:DosageTimesIterationIntervalType"/>
+				<element name="NotIterated" type="medicinecard20120601:DosageIsNotIteratedType"/>
+			</choice>
+			<choice>
+				<element name="StartDate" type="medicinecard20120601:DosageTimesStartDateType"/>
+				<element name="StartDateTime" type="medicinecard20120601:DosageTimesStartDateTimeType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="medicinecard20120601:DosageTimesEndDateType"/>
+				<element name="EndDateTime" type="medicinecard20120601:DosageTimesEndDateTimeType"/>
+				<element name="DosageEndingUndetermined" type="medicinecard20120601:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+			<element name="SupplementaryText" type="medicinecard20120601:DosageSupplementaryTextType" minOccurs="0"/>
+			<choice>
+				<!-- A convoluted construction for either AnyDay or one or more Day, or both, bot not neither -->
+				<sequence>
+					<element name="AnyDay" type="medicinecard20120601:DosageAnyDayType"/>
+					<element name="Day" type="medicinecard20120601:DosageDayType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<element name="Day" type="medicinecard20120601:DosageDayType" maxOccurs="unbounded"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
