@@ -13,7 +13,10 @@
 		<sequence>
 			<element name="ModifiedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>
-			<element name="Identifier" type="medicinecard20120601:PatientOrganisationRelationIdentifierType"/>
+			<choice>
+				<element name="Identifier" type="medicinecard20120601:PatientOrganisationRelationIdentifierType"/>
+				<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>
