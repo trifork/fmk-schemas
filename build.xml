@@ -414,7 +414,10 @@
 	<property name="medicinkort.webservice-1.4.4.version" value="2015_01_01"/>
     <property name="auditlog.webservice.version" value="2009_01_01"/>
     <property name="dumprestore.webservice.version" value="2013_01_01"/>
-
+	<property name="versionservice.webservice.version" value="2014_08_01"/>
+		
+	
+	
     <target name="axis-init" depends="init">
         <tstamp />
         <mkdir dir="target/build"/>
@@ -474,6 +477,7 @@
         <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2013_pem.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/PEMAuditLog_${auditlog.webservice.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/DumpRestore-inline_${dumprestore.webservice.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/VersionService-inline_${versionservice.webservice.version}.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
 
         <copy todir="${standard.target.dir}/gentestsrc" encoding="${codegen-encoding}" outputencoding="UTF-8">
             <fileset dir="${standard.target.dir}/gentestsrc-tmp" includes="**/*.java"/>
