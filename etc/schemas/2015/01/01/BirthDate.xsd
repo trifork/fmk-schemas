@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="BirthDate" type="medicinecard20150101:BirthDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Birth date</documentation>
+			<documentation xml:lang="da-DK">Fødselsdato</documentation>
+		</annotation>
+	</element>
+	<simpleType name="BirthDateType">
+		<restriction base="date">	
+			<minInclusive value="1890-01-01"/>
+		</restriction>
+	</simpleType>
+</schema>

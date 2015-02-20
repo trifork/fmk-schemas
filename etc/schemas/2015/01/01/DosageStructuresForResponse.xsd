@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DosageStructureForResponse.xsd"/>
 	<include schemaLocation="EmptyDosageStructure.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitText.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitTexts.xsd"/>
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
 	<element name="DosageStructuresForResponse" type="medicinecard20150101:DosageStructuresForResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
@@ -13,8 +13,8 @@
 	<complexType name="DosageStructuresForResponseType">
 		<sequence>
 			<choice>
-				<element name="UnitText" type="medicinecard20120601:DosageQuantityUnitTextType"/>
-				<element name="UnitTexts" type="medicinecard20120601:DosageQuantityUnitTextsType"/>
+				<element name="UnitText" type="medicinecard20150101:DosageQuantityUnitTextType"/>
+				<element name="UnitTexts" type="medicinecard20150101:DosageQuantityUnitTextsType"/>
 			</choice>
 			<choice minOccurs="1" maxOccurs="unbounded">
 				<element name="EmptyStructure" type="medicinecard20150101:EmptyDosageStructureType"/>

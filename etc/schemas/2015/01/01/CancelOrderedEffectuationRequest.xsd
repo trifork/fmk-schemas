@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
+	<element name="CancelOrderedEffectuationRequest" type="medicinecard20150101:CancelOrderedEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Cancel an ordered effectuation</documentation>
+			<documentation xml:lang="da-DK">Ophæv en bestilt udlevering</documentation>
+		</annotation>
+	</element>
+	<complexType name="CancelOrderedEffectuationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150101:MedicineCardVersionType"/>
+			<element name="ModifiedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20150101:ModificationMetadataType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="Identifier" type="medicinecard20150101:OrderedEffectuationIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

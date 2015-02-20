@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="ShowDosagePeriodType.xsd"></include>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IncludeEffectuations.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IncludeNonRelevantPrescriptionMedications.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IncludePrescriptionMedications.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MedicineCardVersion.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/ModifiedDateTime.xsd"/>	
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/NegativeConsentRequest.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PrintType.xsd"/>
+	<include schemaLocation="IncludeEffectuations.xsd"/>
+	<include schemaLocation="IncludeNonRelevantPrescriptionMedications.xsd"/>
+	<include schemaLocation="IncludePrescriptionMedications.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="ModifiedDateTime.xsd"/>	
+	<include schemaLocation="NegativeConsentRequest.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PrintType.xsd"/>
 	<element name="GetMedicineCardAsPDFRequest" type="medicinecard20150101:GetMedicineCardAsPDFRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request for a medicinecard returned as PDF</documentation>
@@ -17,11 +17,11 @@
 	</element>
 	<complexType name="GetMedicineCardAsPDFRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
-			<element name="Version" type="medicinecard20120601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="PrintType" type="medicinecard20120601:PrintTypeType"/>
-			<element name="DateTime" type="medicinecard20120601:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="NegativeConsent" type="medicinecard20120601:NegativeConsentRequestType" minOccurs="0"/>
+			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+			<element name="Version" type="medicinecard20150101:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrintType" type="medicinecard20150101:PrintTypeType"/>
+			<element name="DateTime" type="medicinecard20150101:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NegativeConsent" type="medicinecard20150101:NegativeConsentRequestType" minOccurs="0"/>
 			<element name="ShowDosageLimitations" type="medicinecard20150101:ShowDosagePeriodType" minOccurs="0"/>
 		</sequence>
 	</complexType>

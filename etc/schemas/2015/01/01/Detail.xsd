@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" xmlns:xs="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="FaultText.xsd"/>
+	<include schemaLocation="FaultDetails.xsd"/>
+	<import namespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd" schemaLocation="../../../2008/06/01/medcom.xsd"/>
+	<element name="detail" type="medicinecard20150101:detailType">
+		<annotation>
+			<documentation xml:lang="en-GB">Details of a fault</documentation>
+			<documentation xml:lang="da-DK">Detaljer for en fault</documentation>
+		</annotation>
+	</element>
+	<complexType name="detailType">
+		<sequence>
+			<element ref="medcom:FaultCode"/>
+			<element name="FaultText" type="medicinecard20150101:FaultTextType" minOccurs="0"/>
+			<element name="FaultDetails" type="medicinecard20150101:FaultDetailsType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PersonIdentifier.xsd"/>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrderedEffectuationDetails.xsd"/>
 	<include schemaLocation="OrderedPrescriptionMedicationDetails.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/MoreAvailableOrders.xsd"/>
+	<include schemaLocation="MoreAvailableOrders.xsd"/>
 	<element name="GetOrderedEffectuationsResponse" type="medicinecard20150101:GetOrderedEffectuationsResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Get ordered effectuations</documentation>
@@ -15,13 +15,13 @@
 			<element name="Patient" minOccurs="0" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
-						<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+						<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
 						<element name="OrderedPrescriptionMedication" type="medicinecard20150101:OrderedPrescriptionMedicationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
 						<element name="OrderedEffectuation" type="medicinecard20150101:OrderedEffectuationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
 					</sequence>
 				</complexType>
 			</element>
-			<element name="MoreAvailable" type="medicinecard20120601:MoreAvailableOrdersType" minOccurs="0"/>
+			<element name="MoreAvailable" type="medicinecard20150101:MoreAvailableOrdersType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

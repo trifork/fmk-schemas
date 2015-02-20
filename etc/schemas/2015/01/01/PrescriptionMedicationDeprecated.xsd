@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DeprecatedDateTime.xsd"/>
+	<element name="PrescriptionMedicationDeprecated" type="medicinecard20150101:PrescriptionMedicationDeprecatedType">
+		<annotation>
+			<documentation xml:lang="en-GB">Marks that the prescription medication is no longer relevant</documentation>
+			<documentation xml:lang="da-DK">Markerer at recept ordinationen ikke længere er relevant</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionMedicationDeprecatedType">
+		<sequence>
+			<element name="DateTime" type="medicinecard20150101:DeprecatedDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>

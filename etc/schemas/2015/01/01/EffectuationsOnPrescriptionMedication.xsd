@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="EffectuationOnPrescriptionMedication.xsd"/>
 	<include schemaLocation="InvalidEffectuation.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<element name="EffectuationsOnPrescriptionMedication" type="medicinecard20150101:EffectuationsOnPrescriptionMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Grouping effectuations on a prescription medication</documentation>
@@ -11,7 +11,7 @@
 	</element>
 	<complexType name="EffectuationsOnPrescriptionMedicationType">
 		<sequence>
-			<element name="Identifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType"/>
+			<element name="Identifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType"/>
 			<element name="Effectuation" type="medicinecard20150101:EffectuationOnPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidEffectuation" type="medicinecard20150101:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>			
 		</sequence>

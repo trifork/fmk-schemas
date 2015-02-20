@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Source.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SourceDate.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/SourceYearAndWeek.xsd"/>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
 	<element name="ActiveSubstanceCode" type="medicinecard20150101:ActiveSubstanceCodeType">
 		<annotation>
 			<documentation xml:lang="en-GB">Indicates the code of theactive substance</documentation>
@@ -13,8 +13,8 @@
 		<simpleContent>
 			<extension base="medicinecard20150101:ActiveSubstanceCodeValueType">
 				<attribute name="source" type="medicinecard20150101:ActiveSubstanceSourceType" use="required"/>
-				<attribute name="date" type="medicinecard20120601:SourceDateType" use="optional"/>
-				<attribute name="yearAndWeek" type="medicinecard20120601:SourceYearAndWeekType" use="optional"/>
+				<attribute name="date" type="medicinecard20150101:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="medicinecard20150101:SourceYearAndWeekType" use="optional"/>
 			</extension>
 		</simpleContent>
 	</complexType>
@@ -25,10 +25,10 @@
 		</restriction>
 	</simpleType>
 	<simpleType name="ActiveSubstanceSourceType">
-		<union memberTypes="medicinecard20150101:ActiveSubstancePredefinedSourceType medicinecard20120601:UndefinedSourceType"/>
+		<union memberTypes="medicinecard20150101:ActiveSubstancePredefinedSourceType medicinecard20150101:UndefinedSourceType"/>
 	</simpleType>
 	<simpleType name="ActiveSubstancePredefinedSourceType">
-		<restriction base="medicinecard20120601:UndefinedSourceType">
+		<restriction base="medicinecard20150101:UndefinedSourceType">
 			<enumeration value="Medicinpriser"/>
 			<enumeration value="Local"/>
 		</restriction>

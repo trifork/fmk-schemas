@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="EffectuationDateTime.xsd"/>
+	<include schemaLocation="NegativeConsentRequest.xsd"/>
+	<element name="SearchEffectuationsRequest" type="medicinecard20150101:SearchEffectuationsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for effectuations
+			</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter effektueringer
+			</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchEffectuationsRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+			<element name="FromDateTime" type="medicinecard20150101:EffectuationDateTimeType" minOccurs="0"/>
+			<element name="ToDateTime" type="medicinecard20150101:EffectuationDateTimeType" minOccurs="0"/>
+			<element name="IncludeEffectuationsOnDrugMedications" type="boolean" minOccurs="0"/>
+			<element name="IncludeEffectuationsOnPrescriptionMedicationsOnDrugMedications" type="boolean" minOccurs="0"/>
+			<element name="IncludeEffectuationsNotOnDrugMedications" type="boolean" minOccurs="0"/>
+			<element name="NegativeConsent" type="medicinecard20150101:NegativeConsentRequestType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DrugMedicationIdentifier.xsd"/>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="CreateEffectuation.xsd"/>
 	<element name="CreateEffectuationOnDrugMedication" type="medicinecard20150101:CreateEffectuationOnDrugMedicationType">
 		<annotation>
@@ -10,7 +10,7 @@
 	</element>
 	<complexType name="CreateEffectuationOnDrugMedicationType">
 		<sequence>
-			<element name="Identifier" type="medicinecard20120601:DrugMedicationIdentifierType"/>
+			<element name="Identifier" type="medicinecard20150101:DrugMedicationIdentifierType"/>
 			<element name="Effectuation" type="medicinecard20150101:CreateEffectuationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

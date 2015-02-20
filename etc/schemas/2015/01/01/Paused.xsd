@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedFromDate.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedFromDateTime.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedToDate.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PausedToDateTime.xsd"/>	
+	<include schemaLocation="PausedFromDate.xsd"/>
+	<include schemaLocation="PausedFromDateTime.xsd"/>
+	<include schemaLocation="PausedToDate.xsd"/>
+	<include schemaLocation="PausedToDateTime.xsd"/>	
 	<element name="Paused" type="medicinecard20150101:PausedType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element containing information about which organisation and possibly doctor who paused the document this element is in (e.g. drug prescription) as well as the date it ocurred.</documentation>
@@ -14,12 +14,12 @@
 	<complexType name="PausedType">
 		<sequence>
 			<choice minOccurs="0">
-				<element name="FromDate" type="medicinecard20120601:PausedFromDateType"/>
-				<element name="FromDateTime" type="medicinecard20120601:PausedFromDateTimeType"/>
+				<element name="FromDate" type="medicinecard20150101:PausedFromDateType"/>
+				<element name="FromDateTime" type="medicinecard20150101:PausedFromDateTimeType"/>
 			</choice>
 			<choice minOccurs="0">
-				<element name="ToDate" type="medicinecard20120601:PausedToDateType"/>
-				<element name="ToDateTime" type="medicinecard20120601:PausedToDateTimeType"/>
+				<element name="ToDate" type="medicinecard20150101:PausedToDateType"/>
+				<element name="ToDateTime" type="medicinecard20150101:PausedToDateTimeType"/>
 			</choice>
 			<element name="By" type="medicinecard20150101:ModificatorType"/>
 			<element name="DateTime" type="dateTime"/>

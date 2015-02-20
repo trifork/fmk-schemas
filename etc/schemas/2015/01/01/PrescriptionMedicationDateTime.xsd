@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PrescriptionMedicationDateTime" type="medicinecard20150101:PrescriptionMedicationDateTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Date and time when a prescription mediciation is made</documentation>
+			<documentation xml:lang="da-DK">Dato og tid, hvor lægemiddelordinationen er oprettet</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PrescriptionMedicationDateTimeType">
+		<restriction base="dateTime">
+			<minInclusive value="2000-01-01T00:00:00Z"/>
+		</restriction>
+	</simpleType>
+</schema>

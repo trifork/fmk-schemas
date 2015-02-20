@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="OrderedEffectuation.xsd"/>
+	<include schemaLocation="OrderedPrescriptionMedication.xsd"/>
+	<element name="OrderEffectuationResponse" type="medicinecard20150101:OrderEffectuationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document contaning information about </documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at genbestille receptordinationer fra lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderEffectuationResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+			<element name="VersionMismatchWarning" type="medicinecard20150101:VersionMismatchWarningType" minOccurs="0"/>
+			<choice maxOccurs="unbounded">
+				<element name="OrderedPrescriptionMedication" type="medicinecard20150101:OrderedPrescriptionMedicationType"/>
+				<element name="OrderedEffectuation" type="medicinecard20150101:OrderedEffectuationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

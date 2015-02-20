@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DosageQuantityUnitText.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/DoseQuantity.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationDateTime.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationIdentifier.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/EffectuationMethod.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/IsEffectuatedAccordingToDrugMedication.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageNumber.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageSize.xsd"/>
-	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PackageQuantity.xsd"/>
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="EffectuationDateTime.xsd"/>
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="EffectuationMethod.xsd"/>
+	<include schemaLocation="IsEffectuatedAccordingToDrugMedication.xsd"/>
+	<include schemaLocation="PackageNumber.xsd"/>
+	<include schemaLocation="PackageSize.xsd"/>
+	<include schemaLocation="PackageQuantity.xsd"/>
 	<element name="Effectuation" type="medicinecard20150101:EffectuationType">
 		<annotation>
 			<documentation xml:lang="en-GB">The actual effectuation of the drug medication. It could be to administer the drug into the patient or that a doctor hands medication out to the patient</documentation>
@@ -20,16 +20,16 @@
 	</element>
 	<complexType name="EffectuationType">
 		<sequence>
-			<element name="Identifier" type="medicinecard20120601:EffectuationIdentifierType"/>
-			<element name="DateTime" type="medicinecard20120601:EffectuationDateTimeType"/>
-			<element name="EffectuationMethod" type="medicinecard20120601:EffectuationMethodType" minOccurs="0"/>
+			<element name="Identifier" type="medicinecard20150101:EffectuationIdentifierType"/>
+			<element name="DateTime" type="medicinecard20150101:EffectuationDateTimeType"/>
+			<element name="EffectuationMethod" type="medicinecard20150101:EffectuationMethodType" minOccurs="0"/>
 			<element name="Created" type="medicinecard20150101:CreatedType"/>
 			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
 			<choice>
 				<sequence>
 					<!-- A drug was effectuated, with the dose and unit below. This overrides whatever is stated as drug and dosage on the prescription or drug medication -->
-					<element name="DoseQuantity" type="medicinecard20120601:DoseQuantityType"/>
-					<element name="DosageQuantityUnitText" type="medicinecard20120601:DosageQuantityUnitTextType"/>
+					<element name="DoseQuantity" type="medicinecard20150101:DoseQuantityType"/>
+					<element name="DosageQuantityUnitText" type="medicinecard20150101:DosageQuantityUnitTextType"/>
 					<element name="Drug" type="medicinecard20150101:DrugType"/>
 				</sequence>
 				<sequence>
@@ -38,13 +38,13 @@
 				</sequence>
 				<sequence>
 					<!-- A drug was effectuated, one or more packages was given to the patient -->
-					<element name="PackageQuantity" type="medicinecard20120601:PackageQuantityType" minOccurs="0"/>
-					<element name="PackageNumber" type="medicinecard20120601:PackageNumberType"/>
-					<element name="PackageSize" type="medicinecard20120601:PackageSizeType" minOccurs="0"/>
+					<element name="PackageQuantity" type="medicinecard20150101:PackageQuantityType" minOccurs="0"/>
+					<element name="PackageNumber" type="medicinecard20150101:PackageNumberType"/>
+					<element name="PackageSize" type="medicinecard20150101:PackageSizeType" minOccurs="0"/>
 					<element name="Drug" type="medicinecard20150101:DrugType" minOccurs="0"/>
 				</sequence>
 				<!-- A drug was effectuated, the drug and dosage was given as stated on the drug medication -->
-				<element name="IsEffectuatedAccordingToDrugMedication" type="medicinecard20120601:IsEffectuatedAccordingToDrugMedicationType"/>
+				<element name="IsEffectuatedAccordingToDrugMedication" type="medicinecard20150101:IsEffectuatedAccordingToDrugMedicationType"/>
 			</choice>
 		</sequence>
 	</complexType>

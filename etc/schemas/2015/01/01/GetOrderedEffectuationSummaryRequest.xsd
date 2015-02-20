@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="IncludeOrderedEffectuations.xsd"/>
+	<include schemaLocation="IncludeOrderedPrescriptionMedications.xsd"/>
+	<include schemaLocation="OrderedDateTime.xsd"/>
+	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
+	<include schemaLocation="OrderEffectuationOrPrescriptionMedication.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="GetOrderedEffectuationSummaryRequest" type="medicinecard20150101:GetOrderedEffectuationSummaryRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Get a summary of the ordered effectuations</documentation>
+			<documentation xml:lang="da-DK">Opslag på bestilte udleveringer på opsummeret form</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetOrderedEffectuationSummaryRequestType">
+		<sequence>
+			<choice>
+				<sequence>
+					<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+					<element name="FromDateTime" type="medicinecard20150101:OrderedDateTimeType" minOccurs="0"/>
+					<element name="ToDateTime" type="medicinecard20150101:OrderedDateTimeType" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="IncludeOnly">
+							<complexType>
+								<sequence>
+									<element name="Identifier" type="medicinecard20150101:OrderedEffectuationIdentifierType" maxOccurs="unbounded"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="Exclude">
+							<complexType>
+								<sequence>
+									<element name="Identifier" type="medicinecard20150101:OrderedEffectuationIdentifierType" maxOccurs="unbounded"/>
+								</sequence>
+							</complexType>
+						</element>
+					</choice>
+				</sequence>
+				<sequence>
+					<choice>
+						<element name="OrderingOrganisation" type="medicinecard20150101:OrganisationType"/>
+						<element name="PrescribingOrganisation" type="medicinecard20150101:OrganisationType"/>
+					</choice>
+					<element name="FromDateTime" type="medicinecard20150101:OrderedDateTimeType" minOccurs="0"/>
+					<element name="ToDateTime" type="medicinecard20150101:OrderedDateTimeType" minOccurs="0"/>
+				</sequence>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
