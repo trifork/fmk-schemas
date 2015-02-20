@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="OrderedDateTime.xsd"/>
+	<element name="MoreAvailableOrders" type="medicinecard20150101:MoreAvailableOrdersType">
+		<annotation>
+			<documentation xml:lang="en-GB">A warning of that the resultset has been limited. There are more orders on the server which satisfies the search criteria.</documentation>
+			<documentation xml:lang="da-DK">En advarsel om at resultatet er begrænset, der findes flere ordre på serveren der opfylder søgekriterierne.</documentation>
+		</annotation>
+	</element>
+	<complexType name="MoreAvailableOrdersType">
+        <sequence>
+            <element name="LastDate" type="medicinecard20150101:OrderedDateTimeType"/>
+        </sequence>
+    </complexType>
+</schema>
