@@ -2,7 +2,6 @@
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                  xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
                   xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
                   xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
                   xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
@@ -21,72 +20,6 @@
             <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
         </xs:schema>
 
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified">
-
-            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-                       schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/AttachOrDetachPrescriptionMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/CancelPrescriptionMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/CreateDrugMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/CreateEffectuationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/CreatePrescriptionMedicationForUseInPracticeResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/CreatePrescriptionMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/CreatePrescriptionMedicationWithoutCPRResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/DeleteEffectuationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetDrugMedicationRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardAsPDFResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardVersionRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetMedicineCardVersionResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetPrescriptionMedicationRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/MarkPrescriptionMedicationDeprecatedResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/PauseDrugMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/SetMedicineCardReviewedResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/UpdateMedicineCardResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/SearchEffectuationsRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/UnpauseDrugMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/UnwithdrawDrugMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/UpdateDrugMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/WithdrawDrugMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetPermissionsRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/GetPermissionsResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/UnmarkPrescriptionMedicationDeprecatedResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2012/06/01/PrescriptionReplicationStatus.xsd"/>
-
-        </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified">
 
@@ -94,36 +27,74 @@
                        schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/AttachOrDetachPrescriptionMedicationRequest.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/01/01/AttachOrDetachPrescriptionMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/CancelPrescriptionMedicationRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/CancelPrescriptionMedicationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/CreateDrugMedicationRequest.xsd"/>
+
+             <xs:include schemaLocation="../schemas/2015/01/01/CreateDrugMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/CreateEffectuationRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/CreateEffectuationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationForUseInPracticeRequest.xsd"/>
+
+             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationForUseInPracticeResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationWithoutCPRRequest.xsd"/>
+
+             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationWithoutCPRResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/DeleteEffectuationRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/DeleteEffectuationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardAsPDFRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardAsPDFResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardVersionRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardVersionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/GetPrescriptionMedicationRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/GetPrescriptionMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/MarkPrescriptionMedicationDeprecatedRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/MarkPrescriptionMedicationDeprecatedResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/OnBehalfOf.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/PauseDrugMedicationRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/PauseDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/SearchEffectuationsRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/SearchEffectuationsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/SetMedicineCardNotReviewedRequest.xsd"/>
 
@@ -131,17 +102,39 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/SetMedicineCardReviewedRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/SetMedicineCardReviewedResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/UnmarkPrescriptionMedicationDeprecatedRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/UnpauseDrugMedicationRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/UnpauseDrugMedicationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/UnwithdrawDrugMedicationRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/UnwithdrawDrugMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/UpdateMedicineCardRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/UpdateMedicineCardResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/UpdateDrugMedicationRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/UpdateDrugMedicationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/WithdrawDrugMedicationRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/WithdrawDrugMedicationResponse.xsd"/>
+
+             <xs:include schemaLocation="../schemas/2015/01/01/GetPermissionsRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/GetPermissionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/UnmarkPrescriptionMedicationDeprecatedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/TimingList.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/PrescriptionReplicationStatus.xsd"/>
         </xs:schema>
 
     </wsdl:types>
@@ -159,11 +152,11 @@
     </wsdl:message>
 
     <wsdl:message name="TimingHeader">
-        <wsdl:part name="TimingHeader" element="medicinecard20120601:TimingList"/>
+        <wsdl:part name="TimingHeader" element="medicinecard20150101:TimingList"/>
     </wsdl:message>
 
     <wsdl:message name="ReplicationStatusHeader">
-        <wsdl:part name="ReplicationStatusHeader" element="medicinecard20120601:PrescriptionReplicationStatus"/>
+        <wsdl:part name="ReplicationStatusHeader" element="medicinecard20150101:PrescriptionReplicationStatus"/>
     </wsdl:message>
 
     <wsdl:message name="OnBehalfOfHeader">
@@ -171,7 +164,7 @@
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardRequest_2015_01_01">
-        <wsdl:part name="GetMedicineCardRequest" element="medicinecard20120601:GetMedicineCardRequest"/>
+        <wsdl:part name="GetMedicineCardRequest" element="medicinecard20150101:GetMedicineCardRequest"/>
     </wsdl:message>
     <wsdl:message name="GetMedicineCardResponse_2015_01_01">
         <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150101:GetMedicineCardResponse"/>
@@ -181,21 +174,21 @@
         <wsdl:part name="GetMedicineCardAsPDFRequest" element="medicinecard20150101:GetMedicineCardAsPDFRequest"/>
     </wsdl:message>
     <wsdl:message name="GetMedicineCardAsPDFResponse_2015_01_01">
-        <wsdl:part name="GetMedicineCardAsPDFResponse" element="medicinecard20120601:GetMedicineCardAsPDFResponse"/>
+        <wsdl:part name="GetMedicineCardAsPDFResponse" element="medicinecard20150101:GetMedicineCardAsPDFResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardVersionRequest_2012_06_01">
-        <wsdl:part name="GetMedicineCardVersionRequest" element="medicinecard20120601:GetMedicineCardVersionRequest"/>
+        <wsdl:part name="GetMedicineCardVersionRequest" element="medicinecard20150101:GetMedicineCardVersionRequest"/>
     </wsdl:message>
     <wsdl:message name="GetMedicineCardVersionResponse_2012_06_01">
-        <wsdl:part name="GetMedicineCardVersionResponse" element="medicinecard20120601:GetMedicineCardVersionResponse"/>
+        <wsdl:part name="GetMedicineCardVersionResponse" element="medicinecard20150101:GetMedicineCardVersionResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdateMedicineCardRequest_2015_01_01">
         <wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20150101:UpdateMedicineCardRequest"/>
     </wsdl:message>
     <wsdl:message name="UpdateMedicineCardResponse_2015_01_01">
-        <wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20120601:UpdateMedicineCardResponse"/>
+        <wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20150101:UpdateMedicineCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SetMedicineCardNotReviewedRequest_2015_01_01">
@@ -209,11 +202,11 @@
         <wsdl:part name="SetMedicineCardReviewedRequest" element="medicinecard20150101:SetMedicineCardReviewedRequest"/>
     </wsdl:message>
     <wsdl:message name="SetMedicineCardReviewedResponse_2015_01_01">
-        <wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20120601:SetMedicineCardReviewedResponse"/>
+        <wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20150101:SetMedicineCardReviewedResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationRequest_2015_01_01">
-        <wsdl:part name="GetDrugMedicationRequest" element="medicinecard20120601:GetDrugMedicationRequest"/>
+        <wsdl:part name="GetDrugMedicationRequest" element="medicinecard20150101:GetDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="GetDrugMedicationResponse_2015_01_01">
         <wsdl:part name="GetDrugMedicationResponse" element="medicinecard20150101:GetDrugMedicationResponse"/>
@@ -223,14 +216,14 @@
         <wsdl:part name="PauseDrugMedicationRequest" element="medicinecard20150101:PauseDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="PauseDrugMedicationResponse_2015_01_01">
-        <wsdl:part name="PauseDrugMedicationResponse" element="medicinecard20120601:PauseDrugMedicationResponse"/>
+        <wsdl:part name="PauseDrugMedicationResponse" element="medicinecard20150101:PauseDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreateDrugMedicationRequest_2015_01_01">
         <wsdl:part name="CreateDrugMedicationRequest" element="medicinecard20150101:CreateDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="CreateDrugMedicationResponse_2015_01_01">
-        <wsdl:part name="CreateDrugMedicationResponse" element="medicinecard20120601:CreateDrugMedicationResponse"/>
+        <wsdl:part name="CreateDrugMedicationResponse" element="medicinecard20150101:CreateDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="AttachOrDetachPrescriptionMedicationRequest_2015_01_01">
@@ -239,14 +232,14 @@
     </wsdl:message>
     <wsdl:message name="AttachOrDetachPrescriptionMedicationResponse_2015_01_01">
         <wsdl:part name="AttachOrDetachPrescriptionMedicationResponse"
-                   element="medicinecard20120601:AttachOrDetachPrescriptionMedicationResponse"/>
+                   element="medicinecard20150101:AttachOrDetachPrescriptionMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreateEffectuationRequest_2015_01_01">
         <wsdl:part name="CreateEffectuationRequest" element="medicinecard20150101:CreateEffectuationRequest"/>
     </wsdl:message>
     <wsdl:message name="CreateEffectuationResponse_2015_01_01">
-        <wsdl:part name="CreateEffectuationResponse" element="medicinecard20120601:CreateEffectuationResponse"/>
+        <wsdl:part name="CreateEffectuationResponse" element="medicinecard20150101:CreateEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePrescriptionMedicationRequest_2015_01_01">
@@ -255,12 +248,12 @@
     </wsdl:message>
     <wsdl:message name="CreatePrescriptionMedicationResponse_2015_01_01">
         <wsdl:part name="CreatePrescriptionMedicationResponse"
-                   element="medicinecard20120601:CreatePrescriptionMedicationResponse"/>
+                   element="medicinecard20150101:CreatePrescriptionMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPrescriptionMedicationRequest_2015_01_01">
         <wsdl:part name="GetPrescriptionMedicationRequest"
-                   element="medicinecard20120601:GetPrescriptionMedicationRequest"/>
+                   element="medicinecard20150101:GetPrescriptionMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="GetPrescriptionMedicationResponse_2015_01_01">
         <wsdl:part name="GetPrescriptionMedicationResponse"
@@ -269,32 +262,32 @@
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_2012_06_01">
         <wsdl:part name="SearchWithdrawnDrugMedicationsRequest"
-                   element="medicinecard20120601:SearchWithdrawnDrugMedicationsRequest"/>
+                   element="medicinecard20150101:SearchWithdrawnDrugMedicationsRequest"/>
     </wsdl:message>
     <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_2012_06_01">
         <wsdl:part name="SearchWithdrawnDrugMedicationsResponse"
-                   element="medicinecard20120601:SearchWithdrawnDrugMedicationsResponse"/>
+                   element="medicinecard20150101:SearchWithdrawnDrugMedicationsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UnpauseDrugMedicationRequest_2015_01_01">
         <wsdl:part name="UnpauseDrugMedicationRequest" element="medicinecard20150101:UnpauseDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="UnpauseDrugMedicationResponse_2015_01_01">
-        <wsdl:part name="UnpauseDrugMedicationResponse" element="medicinecard20120601:UnpauseDrugMedicationResponse"/>
+        <wsdl:part name="UnpauseDrugMedicationResponse" element="medicinecard20150101:UnpauseDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdateDrugMedicationRequest_2015_01_01">
         <wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20150101:UpdateDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="UpdateDrugMedicationResponse_2015_01_01">
-        <wsdl:part name="UpdateDrugMedicationResponse" element="medicinecard20120601:UpdateDrugMedicationResponse"/>
+        <wsdl:part name="UpdateDrugMedicationResponse" element="medicinecard20150101:UpdateDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="WithdrawDrugMedicationRequest_2015_01_01">
         <wsdl:part name="WithdrawDrugMedicationRequest" element="medicinecard20150101:WithdrawDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="WithdrawDrugMedicationResponse_2015_01_01">
-        <wsdl:part name="WithdrawDrugMedicationResponse" element="medicinecard20120601:WithdrawDrugMedicationResponse"/>
+        <wsdl:part name="WithdrawDrugMedicationResponse" element="medicinecard20150101:WithdrawDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UnwithdrawDrugMedicationRequest_2015_01_01">
@@ -302,11 +295,11 @@
     </wsdl:message>
 
     <wsdl:message name="UnwithdrawDrugMedicationResponse_2015_01_01">
-        <wsdl:part name="UnwithdrawDrugMedicationResponse" element="medicinecard20120601:UnwithdrawDrugMedicationResponse"/>
+        <wsdl:part name="UnwithdrawDrugMedicationResponse" element="medicinecard20150101:UnwithdrawDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchEffectuationsRequest_2015_01_01">
-        <wsdl:part name="SearchEffectuationsRequest" element="medicinecard20120601:SearchEffectuationsRequest"/>
+        <wsdl:part name="SearchEffectuationsRequest" element="medicinecard20150101:SearchEffectuationsRequest"/>
     </wsdl:message>
     <wsdl:message name="SearchEffectuationsResponse_2015_01_01">
         <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20150101:SearchEffectuationsResponse"/>
@@ -318,7 +311,7 @@
     </wsdl:message>
     <wsdl:message name="CreatePrescriptionMedicationForUseInPracticeResponse_2015_01_01">
         <wsdl:part name="CreatePrescriptionMedicationForUseInPracticeResponse"
-                   element="medicinecard20120601:CreatePrescriptionMedicationForUseInPracticeResponse"/>
+                   element="medicinecard20150101:CreatePrescriptionMedicationForUseInPracticeResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01">
@@ -327,42 +320,42 @@
     </wsdl:message>
     <wsdl:message name="CreatePrescriptionMedicationWithoutCPRResponse_2015_01_01">
         <wsdl:part name="CreatePrescriptionMedicationWithoutCPRResponse"
-                   element="medicinecard20120601:CreatePrescriptionMedicationWithoutCPRResponse"/>
+                   element="medicinecard20150101:CreatePrescriptionMedicationWithoutCPRResponse"/>
     </wsdl:message>
 
     <wsdl:message name="DeleteEffectuationRequest_2015_01_01">
         <wsdl:part name="DeleteEffectuationRequest" element="medicinecard20150101:DeleteEffectuationRequest"/>
     </wsdl:message>
     <wsdl:message name="DeleteEffectuationResponse_2015_01_01">
-        <wsdl:part name="DeleteEffectuationResponse" element="medicinecard20120601:DeleteEffectuationResponse"/>
+        <wsdl:part name="DeleteEffectuationResponse" element="medicinecard20150101:DeleteEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPermissionsRequest_2012_06_01">
-        <wsdl:part name="GetPermissionsRequest" element="medicinecard20120601:GetPermissionsRequest"/>
+        <wsdl:part name="GetPermissionsRequest" element="medicinecard20150101:GetPermissionsRequest"/>
     </wsdl:message>
     <wsdl:message name="GetPermissionsResponse_2012_06_01">
-        <wsdl:part name="GetPermissionsResponse" element="medicinecard20120601:GetPermissionsResponse"/>
+        <wsdl:part name="GetPermissionsResponse" element="medicinecard20150101:GetPermissionsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="MarkPrescriptionMedicationDeprecatedRequest_2015_01_01">
         <wsdl:part name="MarkPrescriptionMedicationDeprecatedRequest" element="medicinecard20150101:MarkPrescriptionMedicationDeprecatedRequest"/>
     </wsdl:message>
     <wsdl:message name="MarkPrescriptionMedicationDeprecatedResponse_2015_01_01">
-        <wsdl:part name="MarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20120601:MarkPrescriptionMedicationDeprecatedResponse"/>
+        <wsdl:part name="MarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20150101:MarkPrescriptionMedicationDeprecatedResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UnmarkPrescriptionMedicationDeprecatedRequest_2015_01_01">
         <wsdl:part name="UnmarkPrescriptionMedicationDeprecatedRequest" element="medicinecard20150101:UnmarkPrescriptionMedicationDeprecatedRequest"/>
     </wsdl:message>
     <wsdl:message name="UnmarkPrescriptionMedicationDeprecatedResponse_2015_01_01">
-        <wsdl:part name="UnmarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20120601:UnmarkPrescriptionMedicationDeprecatedResponse"/>
+        <wsdl:part name="UnmarkPrescriptionMedicationDeprecatedResponse" element="medicinecard20150101:UnmarkPrescriptionMedicationDeprecatedResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CancelPrescriptionMedicationRequest_2015_01_01">
         <wsdl:part name="CancelPrescriptionMedicationRequest" element="medicinecard20150101:CancelPrescriptionMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="CancelPrescriptionMedicationResponse_2015_01_01">
-        <wsdl:part name="CancelPrescriptionMedicationResponse" element="medicinecard20120601:CancelPrescriptionMedicationResponse"/>
+        <wsdl:part name="CancelPrescriptionMedicationResponse" element="medicinecard20150101:CancelPrescriptionMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="DGWSFault">

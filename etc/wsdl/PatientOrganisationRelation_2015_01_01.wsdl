@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd" xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:sdsd201306="http://www.sdsd.dk/dgws/2013/06" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01">
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd" xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01">
 	<wsdl:types>
 		<xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
 			<xs:include schemaLocation="../schemas/2008/06/01/medcom.xsd"/>
 		</xs:schema>
-		<xs:schema targetNamespace="http://www.sdsd.dk/dgws/2013/06">
-			<xs:include schemaLocation="../schemas/sdsd/2013/06/WhitelistingHeader.xsd"/>
-		</xs:schema>
-		<xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
-			<xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
-		</xs:schema>
-		<xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified">
-			<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/OnBehalfOf.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/RegisterPatientOrganisationRelationResponse.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/RemovePatientOrganisationRelationResponse.xsd"/>
+		<xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
+			<xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
 		</xs:schema>
 		<xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified">
+			<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" schemaLocation="../schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"/>
+			<xs:include schemaLocation="../schemas/2015/01/01/OnBehalfOf.xsd"/>
+			<xs:include schemaLocation="../schemas/2015/01/01/TimingList.xsd"/>
 			<xs:include schemaLocation="../schemas/2015/01/01/GetPatientOrganisationRelationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2015/01/01/GetPatientOrganisationRelationResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2015/01/01/RegisterPatientOrganisationRelationRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2015/01/01/RegisterPatientOrganisationRelationResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationRequest.xsd"/>
+			<xs:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationResponse.xsd"/>
 		</xs:schema>
 	</wsdl:types>
 	<wsdl:message name="SecurityHeader">
@@ -31,15 +26,15 @@
 		<wsdl:part name="MedcomHeader" element="medcom:Header"/>
 	</wsdl:message>
 	<wsdl:message name="WhitelistingHeader">
-		<wsdl:part name="WhitelistingHeader" element="sdsd201306:WhitelistingHeader"/>
+		<wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
 	</wsdl:message>
 
     <wsdl:message name="TimingHeader">
-        <wsdl:part name="TimingHeader" element="medicinecard20120601:TimingList"/>
+        <wsdl:part name="TimingHeader" element="medicinecard20150101:TimingList"/>
     </wsdl:message>
 
     <wsdl:message name="OnBehalfOfHeader">
-        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20120601:OnBehalfOf"/>
+        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20150101:OnBehalfOf"/>
     </wsdl:message>
 
     <wsdl:message name="GetPatientOrganisationRelationRequest_2015_01_01">
@@ -53,14 +48,14 @@
         <wsdl:part name="RegisterPatientOrganisationRelationRequest" element="medicinecard20150101:RegisterPatientOrganisationRelationRequest"/>
     </wsdl:message>
     <wsdl:message name="RegisterPatientOrganisationRelationResponse_2015_01_01">
-        <wsdl:part name="RegisterPatientOrganisationRelationResponse" element="medicinecard20120601:RegisterPatientOrganisationRelationResponse"/>
+        <wsdl:part name="RegisterPatientOrganisationRelationResponse" element="medicinecard20150101:RegisterPatientOrganisationRelationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="RemovePatientOrganisationRelationRequest_2015_01_01">
         <wsdl:part name="RemovePatientOrganisationRelationRequest" element="medicinecard20150101:RemovePatientOrganisationRelationRequest"/>
     </wsdl:message>
     <wsdl:message name="RemovePatientOrganisationRelationResponse_2015_01_01">
-        <wsdl:part name="RemovePatientOrganisationRelationResponse" element="medicinecard20120601:RemovePatientOrganisationRelationResponse"/>
+        <wsdl:part name="RemovePatientOrganisationRelationResponse" element="medicinecard20150101:RemovePatientOrganisationRelationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="DGWSFault">
