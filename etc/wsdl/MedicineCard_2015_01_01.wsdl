@@ -58,9 +58,13 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/DeleteEffectuationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationVersionsRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationVersionsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationHistoryRequest.xsd"/>
 
@@ -225,6 +229,13 @@
     </wsdl:message>
     <wsdl:message name="GetDrugMedicationResponse_2015_01_01">
         <wsdl:part name="GetDrugMedicationResponse" element="medicinecard20150101:GetDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationVersionsRequest_2015_01_01">
+        <wsdl:part name="GetDrugMedicationVersionsRequest" element="medicinecard20150101:GetDrugMedicationVersionsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDrugMedicationVersionsResponse_2015_01_01">
+        <wsdl:part name="GetDrugMedicationVersionsResponse" element="medicinecard20150101:GetDrugMedicationVersionsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationHistoryRequest_2015_01_01">
@@ -445,6 +456,13 @@
                          message="tns:GetDrugMedicationResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationVersions_2015_01_01">
+            <wsdl:input name="GetDrugMedicationVersionsRequest_2015_01_01" message="tns:GetDrugMedicationVersionsRequest_2015_01_01"/>
+            <wsdl:output name="GetDrugMedicationVersionsResponse_2015_01_01"
+                         message="tns:GetDrugMedicationVersionsResponse_2015_01_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>       
 
         <wsdl:operation name="GetDrugMedicationHistory_2015_01_01">
             <wsdl:input name="GetDrugMedicationHistoryRequest_2015_01_01" message="tns:GetDrugMedicationHistoryRequest_2015_01_01"/>
@@ -753,6 +771,26 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDrugMedicationResponse_2015_01_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationVersions_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetDrugMedicationVersions"
+                            style="document"/>
+            <wsdl:input name="GetDrugMedicationVersionsRequest_2015_01_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationVersionsResponse_2015_01_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
