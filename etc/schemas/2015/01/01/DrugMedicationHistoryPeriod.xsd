@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="DrugMedicationVersion.xsd"/>
+    <include schemaLocation="DrugMedicationHistoryPeriodStartDateTime.xsd"/>
+    <include schemaLocation="DrugMedicationHistoryPeriodEndDateTime.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="Dosage.xsd"/>
+    <include schemaLocation="DosageTranslation.xsd"/>
+    <element name="DrugMedicationHistoryPeriod" type="medicinecard20150101:DrugMedicationHistoryPeriodType">
+        <annotation>
+            <documentation xml:lang="en-GB">A specific period in the history of a drugmedication</documentation>
+            <documentation xml:lang="da-DK">En specifik periode i historikken for en lægemiddelordination</documentation>
+        </annotation>
+    </element>
+    <complexType name="DrugMedicationHistoryPeriodType">
+        <sequence>
+            <element name="PeriodStartDateTime" type="medicinecard20150101:DrugMedicationHistoryPeriodStartDateTimeType" maxOccurs="unbounded"/>
+            <element name="PeriodEndDateTime" type="medicinecard20150101:DrugMedicationHistoryPeriodEndDateTimeType" maxOccurs="unbounded"/>
+            <element name="Version" type="medicinecard20150101:DrugMedicationVersionType"/>
+            <element name="Drug" type="medicinecard20150101:DrugType" minOccurs="0"/>
+            <element name="Dosage" type="medicinecard20150101:DosageType" minOccurs="0"/>
+            <element name="DosageTranslation" type="medicinecard20150101:DosageTranslationType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>
