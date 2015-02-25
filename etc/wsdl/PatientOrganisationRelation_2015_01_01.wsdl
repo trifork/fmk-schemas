@@ -17,7 +17,13 @@
 			<xs:include schemaLocation="../schemas/2015/01/01/RegisterPatientOrganisationRelationResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationResponse.xsd"/>
-		</xs:schema>
+            <xs:include schemaLocation="../schemas/2015/01/01/GetPatientRegistrationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/GetPatientRegistrationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/CreatePatientRegistrationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/CreatePatientRegistrationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/RemovePatientRegistrationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/RemovePatientRegistrationResponse.xsd"/>
+        </xs:schema>
 	</wsdl:types>
 	<wsdl:message name="SecurityHeader">
 		<wsdl:part name="SecurityHeader" element="wsse:Security"/>
@@ -58,6 +64,27 @@
         <wsdl:part name="RemovePatientOrganisationRelationResponse" element="medicinecard20150101:RemovePatientOrganisationRelationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetPatientRegistrationRequest_2015_01_01">
+        <wsdl:part name="GetPatientRegistrationRequest" element="medicinecard20150101:GetPatientRegistrationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPatientRegistrationResponse_2015_01_01">
+        <wsdl:part name="GetPatientRegistrationResponse" element="medicinecard20150101:GetPatientRegistrationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePatientRegistrationRequest_2015_01_01">
+        <wsdl:part name="CreatePatientRegistrationRequest" element="medicinecard20150101:CreatePatientRegistrationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePatientRegistrationResponse_2015_01_01">
+        <wsdl:part name="CreatePatientRegistrationResponse" element="medicinecard20150101:CreatePatientRegistrationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RemovePatientRegistrationRequest_2015_01_01">
+        <wsdl:part name="RemovePatientRegistrationRequest" element="medicinecard20150101:RemovePatientRegistrationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RemovePatientRegistrationResponse_2015_01_01">
+        <wsdl:part name="RemovePatientRegistrationResponse" element="medicinecard20150101:RemovePatientRegistrationResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="DGWSFault">
         <wsdl:part name="fault" element="medcom:FaultCode"/>
     </wsdl:message>
@@ -80,6 +107,24 @@
         <wsdl:operation name="RemovePatientOrganisationRelation_2015_01_01">
             <wsdl:input name="RemovePatientOrganisationRelationRequest_2015_01_01" message="medicinecard20150101:RemovePatientOrganisationRelationRequest_2015_01_01"/>
             <wsdl:output name="RemovePatientOrganisationRelationResponse_2015_01_01" message="medicinecard20150101:RemovePatientOrganisationRelationResponse_2015_01_01"/>
+            <wsdl:fault name="DGWSFault" message="medicinecard20150101:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPatientRegistration_2015_01_01">
+            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01" message="medicinecard20150101:GetPatientRegistrationRequest_2015_01_01"/>
+            <wsdl:output name="GetPatientRegistrationResponse_2015_01_01" message="medicinecard20150101:GetPatientRegistrationResponse_2015_01_01"/>
+            <wsdl:fault name="DGWSFault" message="medicinecard20150101:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePatientRegistration_2015_01_01">
+            <wsdl:input name="CreatePatientRegistrationRequest_2015_01_01" message="medicinecard20150101:CreatePatientRegistrationRequest_2015_01_01"/>
+            <wsdl:output name="CreatePatientRegistrationResponse_2015_01_01" message="medicinecard20150101:CreatePatientRegistrationResponse_2015_01_01"/>
+            <wsdl:fault name="DGWSFault" message="medicinecard20150101:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="RemovePatientRegistration_2015_01_01">
+            <wsdl:input name="RemovePatientRegistrationRequest_2015_01_01" message="medicinecard20150101:RemovePatientRegistrationRequest_2015_01_01"/>
+            <wsdl:output name="RemovePatientRegistrationResponse_2015_01_01" message="medicinecard20150101:RemovePatientRegistrationResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="medicinecard20150101:DGWSFault"/>
         </wsdl:operation>
 
@@ -143,8 +188,62 @@
                 <soap:fault name="DGWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
-    </wsdl:binding>
 
+    <wsdl:operation name="GetPatientRegistration_2015_01_01">
+        <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetPatientRegistration" style="document"/>
+        <wsdl:input name="GetPatientRegistrationRequest_2015_01_01">
+            <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
+            <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
+            <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
+            <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
+            <soap:body use="literal"/>
+        </wsdl:input>
+        <wsdl:output name="GetPatientRegistrationResponse_2015_01_01">
+            <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
+            <soap:body use="literal"/>
+        </wsdl:output>
+        <wsdl:fault name="DGWSFault">
+            <soap:fault name="DGWSFault" use="literal"/>
+        </wsdl:fault>
+    </wsdl:operation>
+
+    <wsdl:operation name="CreatePatientRegistration_2015_01_01">
+        <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CreatePatientRegistration" style="document"/>
+        <wsdl:input name="CreatePatientRegistrationRequest_2015_01_01">
+            <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
+            <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
+            <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
+            <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
+            <soap:body use="literal"/>
+        </wsdl:input>
+        <wsdl:output name="CreatePatientRegistrationResponse_2015_01_01">
+            <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
+            <soap:body use="literal"/>
+        </wsdl:output>
+        <wsdl:fault name="DGWSFault">
+            <soap:fault name="DGWSFault" use="literal"/>
+        </wsdl:fault>
+    </wsdl:operation>
+
+    <wsdl:operation name="RemovePatientRegistration_2015_01_01">
+        <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#RemovePatientRegistration" style="document"/>
+        <wsdl:input name="RemovePatientRegistrationRequest_2015_01_01">
+            <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
+            <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
+            <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
+            <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
+            <soap:body use="literal"/>
+        </wsdl:input>
+        <wsdl:output name="RemovePatientRegistrationResponse_2015_01_01">
+            <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
+            <soap:body use="literal"/>
+        </wsdl:output>
+        <wsdl:fault name="DGWSFault">
+            <soap:fault name="DGWSFault" use="literal"/>
+        </wsdl:fault>
+    </wsdl:operation>
+    </wsdl:binding>
+    
     <wsdl:service name="PatientRelation">
         <wsdl:port name="PatientRelationPort" binding="tns:PatientRelationBinding">
             <soap:address location="https://test1.fmk.netic.dk/fmk12/ws/PatientOrganisationRelation"/>

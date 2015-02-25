@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+    <element name="RemoveINR" type="medicinecard20150101:RemoveINRType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element for removing an INR registration</documentation>
+            <documentation xml:lang="da-DK">Element til at fjerne INR registrering</documentation>
+        </annotation>
+    </element>
+    <complexType name="RemoveINRType">
+		<sequence>
+			<element name="ModifiedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

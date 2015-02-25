@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="INRStartDate" type="medicinecard20150101:INRStartDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">The start date of the period wherein the INR-interval is relevant</documentation>
+			<documentation xml:lang="da-DK">Startdato for den periode hvor INR-intervallet er relevant</documentation>
+		</annotation>
+	</element>
+	<simpleType name="INRStartDateType">
+		<restriction base="date">
+            <minInclusive value="2000-01-01Z"/>
+		</restriction>
+	</simpleType>
+</schema>
