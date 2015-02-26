@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ModificationDetails.xsd"/>
+	<include schemaLocation="PatientRegistrationModificationAction.xsd"/>
+	<include schemaLocation="PatientRegistrationIdentifiers.xsd"/>
+	<element name="PatientRegistrationModification" type="medicinecard20150101:PatientRegistrationModificationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a modification of a patient-registration</documentation>
+			<documentation xml:lang="da-DK">Information omkring en oprettelse/redigering af patient data</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientRegistrationModificationType">
+		<sequence>
+			<element name="Action" type="medicinecard20150101:PatientRegistrationModificationActionType"/>
+			<element name="Details" type="medicinecard20150101:ModificationDetailsType" minOccurs="0"/>
+			<element name="RegistrationIdentifier" type="medicinecard20150101:PatientRegistrationIdentifiersType"/>
+			<any minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
