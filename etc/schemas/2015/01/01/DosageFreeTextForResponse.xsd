@@ -4,9 +4,7 @@
 	<include schemaLocation="DosageStartedPreviously.xsd"/>	
 	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
 	<include schemaLocation="DosageTimesEndDate.xsd"/>
-	<include schemaLocation="DosageTimesEndDateTime.xsd"/>
 	<include schemaLocation="DosageTimesStartDate.xsd"/>
-	<include schemaLocation="DosageTimesStartDateTime.xsd"/>
 	<element name="DosageFreeTextForResponse" type="medicinecard20150101:DosageFreeTextForResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Free text for dosage</documentation>
@@ -17,12 +15,10 @@
 		<sequence>
 			<choice>
 				<element name="StartDate" type="medicinecard20150101:DosageTimesStartDateType"/>
-				<element name="StartDateTime" type="medicinecard20150101:DosageTimesStartDateTimeType"/>
-				<element name="DosageStartedPreviously" type="medicinecard20150101:DosageStartedPreviouslyType"/>				
+				<element name="DosageStartedPreviously" type="medicinecard20150101:DosageStartedPreviouslyType"/>
 			</choice>
 			<choice>
 				<element name="EndDate" type="medicinecard20150101:DosageTimesEndDateType"/>
-				<element name="EndDateTime" type="medicinecard20150101:DosageTimesEndDateTimeType"/>
 				<element name="DosageEndingUndetermined" type="medicinecard20150101:DosageTimesDosageEndingUndeterminedType"/>
 			</choice>
 			<element name="Text" type="medicinecard20150101:DosageFreeTextTextType"/>

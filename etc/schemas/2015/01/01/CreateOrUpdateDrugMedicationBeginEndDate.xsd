@@ -2,10 +2,8 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedicationCreatedDateTime.xsd"/>
 	<include schemaLocation="DrugMedicationTreatmentStartDate.xsd"/>
-	<include schemaLocation="DrugMedicationTreatmentStartDateTime.xsd"/>
 	<include schemaLocation="DrugMedicationTreatmentStartedPreviously.xsd"/>
 	<include schemaLocation="DrugMedicationTreatmentEndDate.xsd"/>
-	<include schemaLocation="DrugMedicationTreatmentEndDateTime.xsd"/>
 	<include schemaLocation="DrugMedicationTreatmentEndingUndetermined.xsd"/>
 	<element name="CreateOrUpdateDrugMedicationBeginEndDate" type="medicinecard20150101:CreateOrUpdateDrugMedicationBeginEndDateType">
 		<annotation>
@@ -17,12 +15,10 @@
 		<sequence>
 			<choice>
 				<element name="TreatmentStartDate" type="medicinecard20150101:DrugMedicationTreatmentStartDateType"/>
-				<element name="TreatmentStartDateTime" type="medicinecard20150101:DrugMedicationTreatmentStartDateTimeType"/>
 				<element name="TreatmentStartedPreviously" type="medicinecard20150101:DrugMedicationTreatmentStartedPreviouslyType"/>
 			</choice>
 			<choice>
 				<element name="TreatmentEndDate" type="medicinecard20150101:DrugMedicationTreatmentEndDateType"/>
-				<element name="TreatmentEndDateTime" type="medicinecard20150101:DrugMedicationTreatmentEndDateTimeType"/>
 				<element name="TreatmentEndingUndetermined" type="medicinecard20150101:DrugMedicationTreatmentEndingUndeterminedType"/>
 			</choice>
 		</sequence>
