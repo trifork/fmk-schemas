@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="PatientRegistrationIdentification.xsd"/>
 	<element name="GetPatientRegistrationRequest" type="medicinecard20150101:GetPatientRegistrationRequestType">
         <annotation>
             <documentation xml:lang="en-GB">Request document to get registrations for a patient</documentation>
@@ -10,6 +11,7 @@
     <complexType name="GetPatientRegistrationRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+            <element name="Identification" type="medicinecard20150101:PatientRegistrationIdentificationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

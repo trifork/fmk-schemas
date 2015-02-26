@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PatientRegistrationType.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PatientRegistrationIdentifier.xsd"/>
+    <include schemaLocation="INR.xsd"/>
+	<element name="PatientRegistration" type="medicinecard20150101:PatientRegistrationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Patient registration</documentation>
+			<documentation xml:lang="da-DK">Patient registrering</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientRegistrationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150101:PatientRegistrationIdentifierType"/>
+			<element name="CreatedBy" type="medicinecard20150101:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="Type" type="medicinecard20150101:PatientRegistrationTypeType"/>
+            <choice>
+                <element name="INR" type="medicinecard20150101:INRType"/>
+            </choice>
+		</sequence>
+	</complexType>
+</schema>

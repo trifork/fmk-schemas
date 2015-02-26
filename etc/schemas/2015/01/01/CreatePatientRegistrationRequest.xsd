@@ -18,7 +18,9 @@
             <element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
             <element name="CreatedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
             <element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
-            <element name="INR" type="medicinecard20150101:CreateINRType"/>
+            <choice>
+                <element name="INR" type="medicinecard20150101:CreateINRType"/>
+            </choice>
         </sequence>
     </complexType>
 </schema>
