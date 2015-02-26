@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
     <include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="RemoveINR.xsd"/>
+    <include schemaLocation="RemovePatientRegistration.xsd"/>
     <element name="RemovePatientRegistrationRequest" type="medicinecard20150101:RemovePatientRegistrationRequestType">
         <annotation>
             <documentation xml:lang="en-GB">Request for removing patient registration</documentation>
@@ -14,7 +14,7 @@
 			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
 			<element name="ModifiedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
-			<element name="INR" type="medicinecard20150101:RemoveINRType"/>
-		</sequence>
+            <element name="Registration" type="medicinecard20150101:RemovePatientRegistrationType" maxOccurs="unbounded"/>
+        </sequence>
 	</complexType>
 </schema>
