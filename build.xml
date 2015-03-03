@@ -161,6 +161,18 @@
 		<mkdir dir="${standard.target.dir}/wsdl" />
 		<mkdir dir="${standard.work.dir}" />
 
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
+            <classpath>
+                <path location="${build.dir}"/>
+                <fileset dir="lib/build" excludes="*gwt*"/>
+            </classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
+            <sysproperty key="WsdlName" value="Advis"/>
+        </java>
+        <zip destfile="${standard.target.dir}/wsdl/Advis-collection.zip"
+             basedir="${standard.target.dir}/wsdl/Advis"/>
+
+
 		<java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
 			<classpath>
 				<path location="${build.dir}"/>

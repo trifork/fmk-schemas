@@ -62,8 +62,12 @@ public class SchemaLoader {
 
     private static void makeWsdlXsdCollectionZip(Collection<Set<SchemaFile>> schemaFilesCollection) throws IOException {
         System.out.println("Make WSDL + XSD collection zip-file");
-
-        File outputDir = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "_" + System.getProperty("VersionDate"));
+        File outputDir;
+        if (System.getProperty("VersionDate") != null) {
+            outputDir = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "_" + System.getProperty("VersionDate"));
+        } else {
+            outputDir = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName"));
+        }
         outputDir.mkdirs();
 
         File schemadir = new File(outputDir.getAbsolutePath() + "/schemas");
@@ -277,7 +281,12 @@ public class SchemaLoader {
         organizeIncludesAndImports(wsdl);
 
         wsdl.normalize();
-        File wsdlOut = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "-inline_" + System.getProperty("VersionDate") + ".wsdl");
+        File wsdlOut;
+        if (System.getProperty("VersionDate") != null) {
+            wsdlOut = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "-inline_" + System.getProperty("VersionDate") + ".wsdl");
+        } else {
+            wsdlOut = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "-inline.wsdl");
+        }
 
         FileOutputStream fw = new FileOutputStream(wsdlOut);
         IOUtils.write(XmlUtil.node2String(wsdl, true, true), fw, "UTF-8");
@@ -288,7 +297,10 @@ public class SchemaLoader {
     }
 
     private static String getWsdlFilename() {
-        return "etc/wsdl/" + System.getProperty("WsdlName") + "_" + System.getProperty("VersionDate") + ".wsdl";
+        if (System.getProperty("VersionDate") != null) {
+            return "etc/wsdl/" + System.getProperty("WsdlName") + "_" + System.getProperty("VersionDate") + ".wsdl";
+        }
+        return "etc/wsdl/" + System.getProperty("WsdlName") + ".wsdl";
     }
 
     private static void organizeIncludesAndImports(Element wsdl) {

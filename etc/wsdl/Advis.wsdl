@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
+    <wsdl:types>
+
+        <!-- Just to keep track of all sub xsd's, contains no actual services -->
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
+                   elementFormDefault="qualified">
+            <xs:include schemaLocation="../schemas/2012/06/01/LostAdvis.xsd"/>
+            <xs:include schemaLocation="../schemas/2012/06/01/MedicineCardModification.xsd"/>
+            <xs:include schemaLocation="../schemas/2012/06/01/OrderedEffectuationModification.xsd"/>
+            <xs:include schemaLocation="../schemas/2012/06/01/PatientOrganisationRelationModification.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01">
+            <xs:include schemaLocation="../schemas/2014/06/01/PrescriptionModification.xsd"/>
+        </xs:schema>
+
+    </wsdl:types>
+
+</wsdl:definitions>
