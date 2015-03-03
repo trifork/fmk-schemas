@@ -3,6 +3,8 @@
     <include schemaLocation="DrugMedicationVersion.xsd"/>
     <include schemaLocation="DrugMedicationHistoryPeriodStartDateTime.xsd"/>
     <include schemaLocation="DrugMedicationHistoryPeriodEndDateTime.xsd"/>
+    <include schemaLocation="DrugMedicationPaused.xsd"/>
+    <include schemaLocation="Hospitalized.xsd"/>
     <include schemaLocation="Drug.xsd"/>
     <include schemaLocation="Dosage.xsd"/>
     <include schemaLocation="DosageTranslation.xsd"/>
@@ -17,9 +19,17 @@
             <element name="PeriodStartDateTime" type="medicinecard20150101:DrugMedicationHistoryPeriodStartDateTimeType" maxOccurs="unbounded"/>
             <element name="PeriodEndDateTime" type="medicinecard20150101:DrugMedicationHistoryPeriodEndDateTimeType" maxOccurs="unbounded"/>
             <element name="Version" type="medicinecard20150101:DrugMedicationVersionType"/>
-            <element name="Drug" type="medicinecard20150101:DrugType" minOccurs="0"/>
-            <element name="Dosage" type="medicinecard20150101:DosageType" minOccurs="0"/>
-            <element name="DosageTranslation" type="medicinecard20150101:DosageTranslationType" minOccurs="0"/>
+            <choice>
+                <sequence>
+                    <element name="Drug" type="medicinecard20150101:DrugType" minOccurs="0"/>
+                    <sequence minOccurs="0">
+                        <element name="Dosage" type="medicinecard20150101:DosageType"/>
+                        <element name="DosageTranslation" type="medicinecard20150101:DosageTranslationType"/>
+                    </sequence>
+                </sequence>
+                <element name="Paused" type="medicinecard20150101:DrugMedicationPausedType"/>
+                <element name="Hospitalized" type="medicinecard20150101:HospitalizedType"/>
+            </choice>
         </sequence>
     </complexType>
 </schema>
