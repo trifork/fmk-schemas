@@ -4,10 +4,9 @@
     <include schemaLocation="DrugMedicationHistoryPeriodStartDateTime.xsd"/>
     <include schemaLocation="DrugMedicationHistoryPeriodEndDateTime.xsd"/>
     <include schemaLocation="DrugMedicationPaused.xsd"/>
+    <include schemaLocation="DosageForResponse.xsd"/>
     <include schemaLocation="Hospitalized.xsd"/>
     <include schemaLocation="Drug.xsd"/>
-    <include schemaLocation="Dosage.xsd"/>
-    <include schemaLocation="DosageTranslation.xsd"/>
     <element name="DrugMedicationHistoryPeriod" type="medicinecard20150101:DrugMedicationHistoryPeriodType">
         <annotation>
             <documentation xml:lang="en-GB">A specific period in the history of a drugmedication</documentation>
@@ -21,11 +20,8 @@
             <element name="Version" type="medicinecard20150101:DrugMedicationVersionType"/>
             <choice>
                 <sequence>
-                    <element name="Drug" type="medicinecard20150101:DrugType" minOccurs="0"/>
-                    <sequence minOccurs="0">
-                        <element name="Dosage" type="medicinecard20150101:DosageType"/>
-                        <element name="DosageTranslation" type="medicinecard20150101:DosageTranslationType"/>
-                    </sequence>
+                    <element name="Drug" type="medicinecard20150101:DrugType"/>
+                    <element name="Dosage" type="medicinecard20150101:DosageForResponseType"/>
                 </sequence>
                 <element name="Paused" type="medicinecard20150101:DrugMedicationPausedType"/>
                 <element name="Hospitalized" type="medicinecard20150101:HospitalizedType"/>
