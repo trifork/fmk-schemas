@@ -18,14 +18,10 @@
             <element name="PeriodStartDateTime" type="medicinecard20150101:DrugMedicationHistoryPeriodStartDateTimeType"/>
             <element name="PeriodEndDateTime" type="medicinecard20150101:DrugMedicationHistoryPeriodEndDateTimeType"/>
             <element name="Version" type="medicinecard20150101:DrugMedicationVersionType"/>
-            <choice>
-                <sequence>
-                    <element name="Drug" type="medicinecard20150101:DrugType"/>
-                    <element name="Dosage" type="medicinecard20150101:DosageForResponseType"/>
-                </sequence>
-                <element name="Paused" type="medicinecard20150101:DrugMedicationPausedType"/>
-                <element name="Hospitalized" type="medicinecard20150101:HospitalizedType"/>
-            </choice>
+            <element name="Drug" type="medicinecard20150101:DrugType"/>
+            <element name="Dosage" type="medicinecard20150101:DosageForResponseType"/>
+            <element name="Paused" type="medicinecard20150101:DrugMedicationPausedType" minOccurs="0"/>
+            <element name="Hospitalized" type="medicinecard20150101:HospitalizedType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>
