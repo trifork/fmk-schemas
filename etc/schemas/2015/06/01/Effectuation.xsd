@@ -22,18 +22,16 @@
     </element>
 	<complexType name="EffectuationType">
 		<sequence>
-			<element name="Identifier" type="EffectuationIdentifierType"/>
-			<element name="Version" type="EffectuationVersionType"/>
-			<element name="PreviousVersion" type="EffectuationVersionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="NextVersion" type="EffectuationVersionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="Created" type="CreatedType"/>
-			<element name="ReportedBy" type="ModificatorType" minOccurs="0"/>
-			<element name="Modified" type="ModifiedType" minOccurs="0"/>
-			<element name="EffectuationMethod" type="EffectuationMethodType" minOccurs="0"/>
+			<element name="Identifier" type="medicinecard20150601:EffectuationIdentifierType"/>
+			<element name="Version" type="medicinecard20150601:EffectuationVersionType"/>
+			<element name="Created" type="medicinecard20150601:CreatedType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
+			<element name="EffectuationMethod" type="medicinecard20150601:EffectuationMethodType" minOccurs="0"/>
 			<choice>
-				<element name="DoseDispensed" type="DoseDispensedType"/>
-                <element name="PackageDispensed" type="PackageDispensedType"/>
-                <element name="IsEffectuatedAccordingToDrugMedication" type="IsEffectuatedAccordingToDrugMedicationType"/>
+				<element name="DoseDispensed" type="medicinecard20150601:DoseDispensedType"/>
+                <element name="PackageDispensed" type="medicinecard20150601:PackageDispensedType"/>
+                <element name="IsEffectuatedAccordingToDrugMedication" type="medicinecard20150601:IsEffectuatedAccordingToDrugMedicationType"/>
             </choice>
 		</sequence>
 	</complexType>
