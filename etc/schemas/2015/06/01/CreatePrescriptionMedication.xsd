@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
-        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified"
         attributeFormDefault="unqualified">
     <include schemaLocation="Modificator.xsd"/>
     <include schemaLocation="AuthorisationDateTime.xsd"/>
@@ -18,7 +18,7 @@
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="SystemName.xsd"/>
 
-    <element name="CreatePrescriptionMedication" type="medicinecard20150101:CreatePrescriptionMedicationType">
+    <element name="CreatePrescriptionMedication" type="medicinecard20150601:CreatePrescriptionMedicationType">
         <annotation>
             <documentation xml:lang="en-GB">Request document for creating a
                 PrescriptionMedication from a DrugMedication. When used in the service call where the
@@ -34,17 +34,17 @@
     </element>
     <complexType name="CreatePrescriptionMedicationType">
         <sequence>
-            <element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType"
+            <element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"
                      minOccurs="0"/>
-            <element name="OrderedEffectuationIdentifier" type="medicinecard20150101:OrderedEffectuationIdentifierType"
+            <element name="OrderedEffectuationIdentifier" type="medicinecard20150601:OrderedEffectuationIdentifierType"
                      minOccurs="0"/>
-            <element name="CreatedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
-            <element name="ModificationMetadata" type="medicinecard20150101:ModificationMetadataType" minOccurs="0"/>
-            <element name="AuthorisationDateTime" type="medicinecard20150101:AuthorisationDateTimeType"/>
-            <element name="SystemName" type="medicinecard20150101:SystemNameType"/>
+            <element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+            <element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>
+            <element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
+            <element name="SystemName" type="medicinecard20150601:SystemNameType"/>
             <element name="ValidFromDate" type="medicinecard20140601:ValidDateType" minOccurs="0"/>
             <element name="ValidToDate" type="medicinecard20140601:ValidDateType"/>
-            <element name="Dosage" type="medicinecard20150101:DosageType" minOccurs="0"/>
+            <element name="Dosage" type="medicinecard20150601:DosageType" minOccurs="0"/>
             <choice>
                 <element name="PackageRestriction" type="medicinecard20140601:PackageRestrictionType"/>
                 <element name="DoseDispensedRestriction" type="medicinecard20140601:DoseDispensedRestrictionType"/>

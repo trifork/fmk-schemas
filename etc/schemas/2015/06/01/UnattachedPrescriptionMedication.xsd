@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="CreateDoseDispensedPrescriptionDispensing.xsd"/>
@@ -15,7 +15,7 @@
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="SupplementaryInformation.xsd"/>
 	<include schemaLocation="SystemName.xsd"/>
-	<element name="UnattachedPrescriptionMedication" type="medicinecard20150101:UnattachedPrescriptionMedicationType">
+	<element name="UnattachedPrescriptionMedication" type="medicinecard20150601:UnattachedPrescriptionMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document for creating an unattached PrescriptionMedication.</documentation>
 			<documentation xml:lang="da-DK">Request-dokument til at oprette en løs receptordination.</documentation>
@@ -23,21 +23,21 @@
 	</element>
 	<complexType name="UnattachedPrescriptionMedicationType">
 		<sequence>
-			<element name="CreatedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
-			<element name="ModificationMetadata" type="medicinecard20150101:ModificationMetadataType" minOccurs="0"/>			
-			<element name="AuthorisationDateTime" type="medicinecard20150101:AuthorisationDateTimeType"/>
-			<element name="SystemName" type="medicinecard20150101:SystemNameType"/>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>			
+			<element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
+			<element name="SystemName" type="medicinecard20150601:SystemNameType"/>
             <element name="ValidFromDate" type="medicinecard20140601:ValidDateType" minOccurs="0"/>
             <element name="ValidToDate" type="medicinecard20140601:ValidDateType"/>
-            <element name="ReimbursementClause" type="medicinecard20150101:ReimbursementClauseType" minOccurs="0"/>
-            <element name="Dosage" type="medicinecard20150101:DosageType" minOccurs="0"/>
+            <element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
+            <element name="Dosage" type="medicinecard20150601:DosageType" minOccurs="0"/>
             <choice>
                 <element name="PackageRestriction" type="medicinecard20140601:PackageRestrictionType"/>
                 <element name="DoseDispensedRestriction" type="medicinecard20140601:DoseDispensedRestrictionType"/>
 			</choice>
-			<element name="Indication" type="medicinecard20150101:IndicationType" minOccurs="0"/>
-			<element name="SubstitutionAllowed" type="medicinecard20150101:SubstitutionAllowedType"/>
-			<element name="SupplementaryInformation" type="medicinecard20150101:SupplementaryInformationType" minOccurs="0"/>
+			<element name="Indication" type="medicinecard20150601:IndicationType" minOccurs="0"/>
+			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType"/>
+			<element name="SupplementaryInformation" type="medicinecard20150601:SupplementaryInformationType" minOccurs="0"/>
             <element name="Order" type="medicinecard20150601:OrderType" minOccurs="0"/>
 		</sequence>
 	</complexType>
