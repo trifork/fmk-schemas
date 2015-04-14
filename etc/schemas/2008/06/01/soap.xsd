@@ -13,6 +13,7 @@
 	xmlns:mc2009="http://www.dkma.dk/medicinecard/xml.schema/2009/01/01"
     xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
     xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01"
+    xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
 	xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
 	targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" elementFormDefault="qualified">
 	<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
@@ -51,6 +52,8 @@
                schemaLocation="../../../2012/06/01/OnBehalfOf.xsd"/>
     <xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01"
                schemaLocation="../../../2013/06/01/OnBehalfOf.xsd"/>
+	<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+               schemaLocation="../../../2015/01/01/FMKConfigurationList.xsd"/>
 	<xs:import namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing"
  		schemaLocation="wsa-specialized.xsd" />
 	<xs:element name="Envelope">
@@ -94,6 +97,7 @@
 				<xs:element ref="medcom:FlowStatus" minOccurs="0" maxOccurs="1"/>       <!-- RESP -->
 				<xs:element ref="mc2009:PrescriptionReplicationStatusStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
 				<xs:element ref="mc2008:TimingListStructure" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
+				<xs:element ref="medicinecard20150101:FMKConfigurationList" minOccurs="0" maxOccurs="1"/> <!-- RESP -->
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
