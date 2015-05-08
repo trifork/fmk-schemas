@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="UndefinedPrintType.xsd"/>
+	<element name="PredefinedPrintType" type="medicinecard20150101:PredefinedPrintType">
+		<annotation>
+			<documentation xml:lang="da-DK">Foruddefineret print typer</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PredefinedPrintType">
+		<restriction base="medicinecard20150101:UndefinedPrintType">
+			<enumeration value="læge"/>
+			<enumeration value="borger"/>
+        </restriction>
+	</simpleType>
+</schema>
