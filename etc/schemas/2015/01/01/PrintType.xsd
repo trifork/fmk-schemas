@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="PredefinedPermission.xsd"/>
-	<include schemaLocation="UndefinedPermission.xsd"/>
+	<include schemaLocation="PredefinedPrintType.xsd"/>
+	<include schemaLocation="UndefinedPrintType.xsd"/>
 	<element name="PrintType" type="medicinecard20150101:PrintTypeType">
 		<annotation>
 			<documentation xml:lang="en-GB">Type of print to return</documentation>
@@ -9,6 +9,6 @@
 		</annotation>
 	</element>
 	<simpleType name="PrintTypeType">
-		<union memberTypes="medicinecard20150101:PredefinedPermission medicinecard20150101:UndefinedPermission"/>
+		<union memberTypes="medicinecard20150101:PredefinedPrintType medicinecard20150101:UndefinedPrintType"/>
 	</simpleType>
 </schema>
