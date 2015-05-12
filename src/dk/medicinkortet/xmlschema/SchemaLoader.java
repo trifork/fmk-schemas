@@ -2,6 +2,7 @@ package dk.medicinkortet.xmlschema;
 
 import dk.medicinkortet.xmlschema.FindReferencedSchemaFiles.SchemaFile;
 import dk.sosi.seal.xml.XmlUtil;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
@@ -13,6 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URI;
@@ -409,22 +411,37 @@ public class SchemaLoader {
         ns.setAttribute("xmlns:" + newPrefix, attr.getNodeValue());
         childDoc.removeAttribute(attr.getNodeValue());
 
-        NodeList elements = childDoc.getElementsByTagNameNS(SCHEMA_NS, "element");
-        for (int j = 0; j < elements.getLength(); j++) {
-            Element el = (Element) elements.item(j);
-
-            String refAttr = el.getAttribute("ref");
-            if (refAttr != null && refAttr.startsWith(oldPrefix + ":")) {
-                el.setAttribute("ref", newPrefix + ":" + refAttr.substring((oldPrefix + ":").length()));
-            }
-            String typeAttr = el.getAttribute("type");
-            if (typeAttr != null && typeAttr.startsWith(oldPrefix + ":")) {
-                el.setAttribute("type", newPrefix + ":" + typeAttr.substring((oldPrefix + ":").length()));
-            }
-        }
+        replacePrefixUsages(oldPrefix, newPrefix, childDoc);
     }
 
-    private static String findOrDeclarePrefix(Element top, String namespace) {
+    private static void replacePrefixUsages(String oldPrefix, String newPrefix, Element element) {
+
+        NodeList elements = element.getChildNodes();
+        for (int i = 0; i < elements.getLength(); i++) {
+            Node node = elements.item(i);
+            if (node instanceof Element) {
+            	Element el = (Element) node;
+            	NamedNodeMap attributes = el.getAttributes();
+            	for (int j = 0; j < attributes.getLength(); j++) {
+            		Node attribute = attributes.item(j);
+            		String name = attribute.getLocalName();
+            		String value = attribute.getNodeValue();
+                	if (value != null && value.contains(oldPrefix + ":")) {
+                		
+                		// An attribute value may refer multiple times to the same prefix (e.g., 
+                		// <union memberTypes="sdsd201008:PredefinedRequestedRole sdsd201008:UndefinedRequestedRole"/>)
+                		// Below, we replace prefix, but only if its at start of string or is following a space character
+                		String newValue = value.replaceAll("(^| )" + oldPrefix + ":", "$1" + newPrefix + ":");
+                		el.setAttribute(name, newValue);
+                	}
+            	}
+
+            	replacePrefixUsages(oldPrefix, newPrefix, el);
+            }
+        }
+	}
+
+	private static String findOrDeclarePrefix(Element top, String namespace) {
         NamedNodeMap attributes = top.getAttributes();
         for (int i = 0; i < attributes.getLength(); i++) {
             Node attr = attributes.item(i);
