@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
-	<include schemaLocation="MedicineCardVersionInformation.xsd"/>
+	<include schemaLocation="MedicineCardInformationChange.xsd"/>
 	<element name="GetMedicineCardVersionResponse" type="medicinecard20150101:GetMedicineCardVersionResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a response for a medicinecards version</documentation>
@@ -13,7 +13,8 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="medicinecard20150101:MedicineCardVersionType"/>
-			<element name="MedicineCardVersionInformation" type="medicinecard20150101:MedicineCardVersionInformationType" />
+			<element name="MedicineCardInformationChange" type="medicinecard20150101:MedicineCardInformationChangeType" 
+					minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
