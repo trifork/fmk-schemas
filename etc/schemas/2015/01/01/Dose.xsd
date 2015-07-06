@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DoseTime.xsd"/>
 	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="IsAccordingToNeed.xsd"/>
 	<element name="Dose" type="medicinecard20150101:DoseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of a dose element, when and how much</documentation>
@@ -18,6 +19,7 @@
 					<element name="MaximalQuantity" type="medicinecard20150101:DoseQuantityType"/>
 				</sequence>
 			</choice>
+			<element name="IsAccordingToNeed" type="medicinecard20150101:IsAccordingToNeedType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
