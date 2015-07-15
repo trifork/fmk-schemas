@@ -20,6 +20,7 @@
 		<xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified">
 			<xs:include schemaLocation="../schemas/2013/06/01/GetPatientOrganisationRelationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2013/06/01/GetPatientOrganisationRelationResponse.xsd"/>
+			<xs:include schemaLocation="../schemas/2013/06/01/GetPatientOrganisationRelationWithCreatedDateResponse.xsd"/>
 			<xs:include schemaLocation="../schemas/2013/06/01/RegisterPatientOrganisationRelationRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2013/06/01/RemovePatientOrganisationRelationRequest.xsd"/>
 		</xs:schema>
@@ -49,6 +50,10 @@
         <wsdl:part name="GetPatientOrganisationRelationResponse" element="medicinecard20130601:GetPatientOrganisationRelationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetPatientOrganisationRelationWithCreatedDateResponse_2013_06_01">
+        <wsdl:part name="GetPatientOrganisationRelationWithCreatedDateResponse" element="medicinecard20130601:GetPatientOrganisationRelationWithCreatedDateResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="RegisterPatientOrganisationRelationRequest_2013_06_01">
         <wsdl:part name="RegisterPatientOrganisationRelationRequest" element="medicinecard20130601:RegisterPatientOrganisationRelationRequest"/>
     </wsdl:message>
@@ -73,6 +78,12 @@
         <wsdl:operation name="GetPatientOrganisationRelation_2013_06_01">
             <wsdl:input name="GetPatientOrganisationRelationRequest_2013_06_01" message="medicinecard20130601:GetPatientOrganisationRelationRequest_2013_06_01"/>
             <wsdl:output name="GetPatientOrganisationRelationResponse_2013_06_01" message="medicinecard20130601:GetPatientOrganisationRelationResponse_2013_06_01"/>
+            <wsdl:fault name="DGWSFault" message="medicinecard20130601:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPatientOrganisationRelationWithCreatedDate_2013_06_01">
+            <wsdl:input name="GetPatientOrganisationRelationRequest_2013_06_01" message="medicinecard20130601:GetPatientOrganisationRelationRequest_2013_06_01"/>
+            <wsdl:output name="GetPatientOrganisationRelationWithCreatedDateResponse_2013_06_01" message="medicinecard20130601:GetPatientOrganisationRelationWithCreatedDateResponse_2013_06_01"/>
             <wsdl:fault name="DGWSFault" message="medicinecard20130601:DGWSFault"/>
         </wsdl:operation>
 
@@ -105,6 +116,24 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPatientOrganisationRelationResponse_2013_06_01">
+                <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPatientOrganisationRelationWithCreatedDate_2013_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01#GetPatientOrganisationRelationWithCreatedDate" style="document"/>
+            <wsdl:input name="GetPatientOrganisationRelationRequest_2013_06_01">
+                <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
+                <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
+                <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
+                <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPatientOrganisationRelationWithCreatedDateResponse_2013_06_01">
                 <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
                 <soap:body use="literal"/>
             </wsdl:output>

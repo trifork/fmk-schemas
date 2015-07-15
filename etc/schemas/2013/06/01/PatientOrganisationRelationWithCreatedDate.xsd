@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
+ xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/Organisation.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/PatientOrganisationRelationIdentifier.xsd"/>
+	<import namespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" schemaLocation="../../../2012/06/01/CreatedDateTime.xsd"/>
+	<element name="PatientOrganisationRelationWithCreatedDate" type="medicinecard20130601:PatientOrganisationRelationWithCreatedDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">A relation between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Registrering af en relation mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientOrganisationRelationWithCreatedDateType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:PatientOrganisationRelationIdentifierType"/>
+			<element name="CreatedDateTime" type="medicinecard20120601:CreatedDateTimeType"/>
+			<element name="CreatedBy" type="medicinecard20130601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20130601:ModificatorType" minOccurs="0"/>
+			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
+			<element name="Type" type="medicinecard20130601:PatientOrganisationRelationTypeType"/>
+		</sequence>
+	</complexType>
+</schema>
