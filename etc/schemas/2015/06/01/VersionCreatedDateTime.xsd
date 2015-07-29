@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="VersionCreatedDateTime" type="medicinecard20150601:VersionCreatedDateTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Version created date time</documentation>
+			<documentation xml:lang="da-DK">Oprettelsesdato og tid for versionen</documentation>
+		</annotation>
+	</element>
+	<simpleType name="VersionCreatedDateTimeType">
+		<restriction base="dateTime">
+			<minInclusive value="2000-01-01T00:00:00Z"/>
+		</restriction>
+	</simpleType>
+</schema>

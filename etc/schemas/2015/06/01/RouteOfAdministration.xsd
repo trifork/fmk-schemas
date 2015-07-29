@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="RouteOfAdministrationText.xsd"/>
+	<include schemaLocation="RouteOfAdministrationCode.xsd"/>
+	<element name="RouteOfAdministration" type="medicinecard20150601:RouteOfAdministrationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates the route of administration for the drug as code and text</documentation>
+			<documentation xml:lang="da-DK">Angiver medicinens administrationsvej som kode og tekst</documentation>
+		</annotation>
+	</element>
+	<complexType name="RouteOfAdministrationType">
+		<sequence>
+			<element name="Code" type="medicinecard20150601:RouteOfAdministrationCodeType"/>
+			<element name="Text" type="medicinecard20150601:RouteOfAdministrationTextType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

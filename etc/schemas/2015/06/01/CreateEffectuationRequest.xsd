@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="CreateEffectuationOnDrugMedication.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<element name="CreateEffectuationRequest" type="medicinecard20150601:CreateEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to add a effecutation</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel for at tilføje en effektuering</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateEffectuationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="DrugMedication" type="medicinecard20150601:CreateEffectuationOnDrugMedicationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

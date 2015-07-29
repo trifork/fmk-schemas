@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ActiveSubstanceCode.xsd"/>
+	<include schemaLocation="ActiveSubstanceTextWithoutSource.xsd"/>
+	<include schemaLocation="ActiveSubstanceText.xsd"/>
+	<include schemaLocation="ActiveSubstanceFreeText.xsd"/>
+	<element name="ActiveSubstance" type="medicinecard20150601:ActiveSubstanceType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains information for one active substance</documentation>
+			<documentation xml:lang="da-DK">Indeholder information omkring en aktiv substans</documentation>
+		</annotation>
+	</element>
+	<complexType name="ActiveSubstanceType">
+		<choice>
+			<sequence>
+				<element name="Code" type="medicinecard20150601:ActiveSubstanceCodeType"/>
+				<element name="Text" type="medicinecard20150601:ActiveSubstanceTextWithoutSourceType"/>
+			</sequence>
+			<element name="SubstanceText" type="medicinecard20150601:ActiveSubstanceTextType"/>
+			<element name="FreeText" type="medicinecard20150601:ActiveSubstanceFreeTextType"/>
+		</choice>
+	</complexType>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="WithdrawnDateTime.xsd"/>
+	<element name="Withdrawn" type="medicinecard20150601:WithdrawnType">
+		<annotation>
+			<documentation xml:lang="en-GB">Informations about who, when and why the drug medication was withdrawn</documentation>
+			<documentation xml:lang="da-DK">Information om hvem, hvornår og hvorfor lægemiddelordination er seponeret </documentation>
+		</annotation>
+	</element>
+	<complexType name="WithdrawnType">
+		<sequence>
+			<element name="By" type="medicinecard20150601:ModificatorType"/>
+			<element name="DateTime" type="medicinecard20150601:WithdrawnDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>

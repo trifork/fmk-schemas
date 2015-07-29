@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="OrderEffectuation.xsd"/>
+	<include schemaLocation="OrderEffectuationOrPrescriptionMedication.xsd"/>
+	<include schemaLocation="OrderPrescriptionMedication.xsd"/>
+	<element name="OrderEffectuationRequest" type="medicinecard20150601:OrderEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for reordering prescription medications from drug medications</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at genbestille receptordinationer fra lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderEffectuationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="OrderedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<choice maxOccurs="unbounded">
+				<element name="OrderPrescriptionMedication" type="medicinecard20150601:OrderPrescriptionMedicationType"/>
+				<element name="OrderEffectuation" type="medicinecard20150601:OrderEffectuationType"/>
+				<element name="OrderPrescriptionMedicationOrEffectuation" type="medicinecard20150601:OrderEffectuationOrPrescriptionMedicationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

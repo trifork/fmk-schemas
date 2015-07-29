@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="LatestReplicationDateTime.xsd"/>
+	<element name="PrescriptionReplicationStatus" type="medicinecard20150601:PrescriptionReplicationStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">Structure containing status for the replication of prescriptions.</documentation>
+			<documentation xml:lang="da-DK">En structur der indeholder status for replikeringen af recepter</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionReplicationStatusType">
+		<sequence>
+			<element name="LatestReplicationDateTime" type="medicinecard20150601:LatestReplicationDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>

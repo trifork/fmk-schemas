@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="CreatedDrugMedication.xsd"/>
+	<element name="CreateDrugMedicationResponse" type="medicinecard20150601:CreateDrugMedicationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response returned on a request which creates a new drug medication</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar returneret på en forespørgsel der opretter en ny lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateDrugMedicationResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+			<element name="DrugMedication" type="medicinecard20150601:CreatedDrugMedicationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

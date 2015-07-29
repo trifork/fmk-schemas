@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="MedicineCardInformationChange.xsd"/>
+	<element name="GetMedicineCardVersionResponse" type="medicinecard20150601:GetMedicineCardVersionResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response for a medicinecards version</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel efter et medicinkorts version</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetMedicineCardVersionResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="MedicineCardInformationChange" type="medicinecard20150601:MedicineCardInformationChangeType"
+					minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

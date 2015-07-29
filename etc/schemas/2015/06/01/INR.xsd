@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"  xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="INRStartDate.xsd"/>
+	<include schemaLocation="INREndDate.xsd"/>
+	<include schemaLocation="INRValue.xsd"/>
+	<include schemaLocation="INRComment.xsd"/>
+    <element name="INR" type="medicinecard20150601:INRType">
+        <annotation>
+            <documentation xml:lang="en-GB">The outer element of an INR registration</documentation>
+            <documentation xml:lang="da-DK">Det ydre element for en INR registrering</documentation>
+        </annotation>
+    </element>
+	<complexType name="INRType">
+		<sequence>
+            <element name="StartDate" type="medicinecard20150601:INRStartDateType"/>
+            <element name="EndDate" type="medicinecard20150601:INREndDateType"/>
+			<element name="MinimalTerapeuticalINRLevel" type="medicinecard20150601:INRValueType"/>
+			<element name="MaximalTerapeuticalINRLevel" type="medicinecard20150601:INRValueType"/>
+			<element name="Comment" type="medicinecard20150601:INRCommentType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

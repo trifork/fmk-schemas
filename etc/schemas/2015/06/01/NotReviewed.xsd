@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ReviewedDateTime.xsd"/>
+	<element name="NotReviewed" type="medicinecard20150601:NotReviewedType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about who marked the medicine card not reviewed, at admission to hospital, including a timestamp when this occurred</documentation>
+			<documentation xml:lang="da-DK">Information hvem der markerede medicinkortet manglede medicinkort-gennemgang, typisk ved indlæggelse på sygehus, inklusiv tidspunktet</documentation>
+		</annotation>
+	</element>
+	<complexType name="NotReviewedType">
+		<sequence>
+			<element name="By" type="medicinecard20150601:ModificatorType"/>
+			<element name="DateTime" type="medicinecard20150601:ReviewedDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>

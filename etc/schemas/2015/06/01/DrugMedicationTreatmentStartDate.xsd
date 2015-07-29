@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="DrugMedicationTreatmentStartDate" type="medicinecard20150601:DrugMedicationTreatmentStartDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">The date the drug medication treatment is started</documentation>
+			<documentation xml:lang="da-DK">Den dato lægemiddelordinationbehandlingen påbegyndes</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DrugMedicationTreatmentStartDateType">
+		<restriction base="date">
+			<minInclusive value="1890-01-01"/>
+		</restriction>
+	</simpleType>
+</schema>

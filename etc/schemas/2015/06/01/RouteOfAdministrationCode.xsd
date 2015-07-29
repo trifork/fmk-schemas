@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+	<element name="RouteOfAdministrationCode" type="medicinecard20150601:RouteOfAdministrationCodeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates the code of the formulations route of administration. Sourcec: "Taksten" LMS11 field 2</documentation>
+			<documentation xml:lang="da-DK">Angiver kode for medicinens administrationsvej. Kilde: Taksten, LMS11 felt 2</documentation>
+		</annotation>
+	</element>
+	<complexType name="RouteOfAdministrationCodeType">
+		<simpleContent>
+			<extension base="medicinecard20150601:RouteOfAdministrationCodeValueType">
+				<attribute name="source" type="medicinecard20150601:RouteOfAdministrationSourceType" use="required"/>
+				<attribute name="date" type="medicinecard20150601:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="medicinecard20150601:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="RouteOfAdministrationCodeValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RouteOfAdministrationSourceType">
+		<union memberTypes="medicinecard20150601:RouteOfAdministrationPredefinedSourceType medicinecard20150601:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="RouteOfAdministrationPredefinedSourceType">
+		<restriction base="medicinecard20150601:UndefinedSourceType">
+			<enumeration value="Medicinpriser"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PredefinedPrintType.xsd"/>
+	<include schemaLocation="UndefinedPrintType.xsd"/>
+	<element name="PrintType" type="medicinecard20150601:PrintTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Type of print to return</documentation>
+			<documentation xml:lang="da-DK">Type af udskrift der skal returneres</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PrintTypeType">
+		<union memberTypes="medicinecard20150601:PredefinedPrintType medicinecard20150601:UndefinedPrintType"/>
+	</simpleType>
+</schema>

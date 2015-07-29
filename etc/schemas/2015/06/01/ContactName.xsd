@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="ContactName" type="medicinecard20150601:ContactNameType">
+		<annotation>
+			<documentation xml:lang="en-GB">Other name for delivery of drugs from the pharmacy, e.g. a nursing home</documentation>
+			<documentation xml:lang="da-DK">Andet navn for levering af lægemidler fra apoteket, f.eks. et plejehjem</documentation>
+		</annotation>
+	</element>
+	<simpleType name="ContactNameType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+</schema>

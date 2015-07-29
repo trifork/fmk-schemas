@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>	
+	<element name="SuspendMedicineCard" type="medicinecard20150601:SuspendMedicineCardType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about admission to hospital</documentation>
+			<documentation xml:lang="da-DK">Information omkring indlæggelse på sygehus</documentation>
+		</annotation>
+	</element>
+	<complexType name="SuspendMedicineCardType">
+		<sequence>
+			<element name="SuspendedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="AttachPrescriptionMedication.xsd"/>
+	<include schemaLocation="CancelPrescriptionMedication.xsd"/>
+	<include schemaLocation="CreateDrugMedication.xsd"/>
+	<include schemaLocation="CreateEffectuationOnDrugMedication.xsd"/>
+    <include schemaLocation="CreatePrescriptionMedication.xsd"/>
+	<include schemaLocation="DetachPrescriptionMedication.xsd"/>
+	<include schemaLocation="DeleteEffectuation.xsd"/>
+	<include schemaLocation="MarkPrescriptionMedicationDeprecated.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PauseDrugMedication.xsd"/>
+	<include schemaLocation="SetMedicineCardReviewed.xsd"/>
+	<include schemaLocation="SetMedicineCardNotReviewed.xsd"/>
+	<include schemaLocation="UnmarkPrescriptionMedicationDeprecated.xsd"/>
+	<include schemaLocation="UnpauseDrugMedication.xsd"/>
+	<include schemaLocation="UnwithdrawDrugMedication.xsd"/>
+	<include schemaLocation="UpdateDrugMedication.xsd"/>
+	<include schemaLocation="WithdrawDrugMedication.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="UpdateMedicineCardRequest" type="medicinecard20150601:UpdateMedicineCardRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en batchforespørgsel for at opdatere et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="UpdateMedicineCardRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<sequence maxOccurs="unbounded">
+				<choice minOccurs="0">
+					<element name="SetMedicineCardReviewed" type="medicinecard20150601:SetMedicineCardReviewedType"/>
+					<element name="SetMedicineCardNotReviewed" type="medicinecard20150601:SetMedicineCardNotReviewedType"/>
+				</choice>
+				<element name="CreateDrugMedication" type="medicinecard20150601:CreateDrugMedicationType" minOccurs="0"/>
+				<element name="UpdateDrugMedication" type="medicinecard20150601:UpdateDrugMedicationType" minOccurs="0"/>
+				<element name="WithdrawDrugMedication" type="medicinecard20150601:WithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="UnwithdrawDrugMedication" type="medicinecard20150601:UnwithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="PauseDrugMedication" type="medicinecard20150601:PauseDrugMedicationType" minOccurs="0"/>
+				<element name="UnpauseDrugMedication" type="medicinecard20150601:UnpauseDrugMedicationType" minOccurs="0"/>
+				<element name="CreatePrescriptionMedication" type="medicinecard20150601:CreatePrescriptionMedicationType" minOccurs="0"/>
+				<element name="AttachPrescriptionMedication" type="medicinecard20150601:AttachPrescriptionMedicationType" minOccurs="0"/>
+				<element name="DetachPrescriptionMedication" type="medicinecard20150601:DetachPrescriptionMedicationType" minOccurs="0"/>
+				<element name="MarkPrescriptionMedicationDeprecated" type="medicinecard20150601:MarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
+				<element name="UnmarkPrescriptionMedicationDeprecated" type="medicinecard20150601:UnmarkPrescriptionMedicationDeprecatedType" minOccurs="0"/>
+				<element name="CancelPrescriptionMedication" type="medicinecard20150601:CancelPrescriptionMedicationType" minOccurs="0"/>
+				<element name="CreateEffectuationOnDrugMedication" type="medicinecard20150601:CreateEffectuationOnDrugMedicationType" minOccurs="0"/>
+				<element name="DeleteEffectuation" type="medicinecard20150601:DeleteEffectuationType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

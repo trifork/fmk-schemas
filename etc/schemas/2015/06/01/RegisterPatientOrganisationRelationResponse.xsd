@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
+	<element name="RegisterPatientOrganisationRelationResponse" type="medicinecard20150601:RegisterPatientOrganisationRelationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document to register at relation between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Request-dokument for at registrere en relation mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="RegisterPatientOrganisationRelationResponseType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PatientOrganisationRelationIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

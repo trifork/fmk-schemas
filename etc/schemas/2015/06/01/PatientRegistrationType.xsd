@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PatientRegistrationType" type="medicinecard20150601:PatientRegistrationTypeType">
+		<annotation>
+			<documentation xml:lang="da-DK">Typen af  mellem patient og organisation</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PatientRegistrationTypeType">
+		<union memberTypes="medicinecard20150601:PredefinedPatientRegistrationTypeType medicinecard20150601:UndefinedPatientRegistrationTypeType"/>
+	</simpleType>
+	<simpleType name="PredefinedPatientRegistrationTypeType">
+		<restriction base="string">
+			<enumeration value="INR"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedPatientRegistrationTypeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

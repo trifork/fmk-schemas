@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PatientOrganisationRelation.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="GetPatientOrganisationRelationResponse" type="medicinecard20150601:GetPatientOrganisationRelationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">A set of relations between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Et antal relationer mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPatientOrganisationRelationResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="Relation" type="medicinecard20150601:PatientOrganisationRelationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

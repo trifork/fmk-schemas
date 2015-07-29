@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="PatientRegistrationIdentifier.xsd"/>
+	<element name="RemovePatientRegistration" type="medicinecard20150601:RemovePatientRegistrationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Inner element for patient registration removal requests</documentation>
+			<documentation xml:lang="da-DK">Indre element til forespørgsel til sletning af patient registreringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="RemovePatientRegistrationType">
+		<sequence>
+			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>
+            <element name="Identifier" type="medicinecard20150601:PatientRegistrationIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>

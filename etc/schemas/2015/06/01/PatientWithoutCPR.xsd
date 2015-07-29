@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="SimplePersonWithoutCPR.xsd"/>
+	<include schemaLocation="Address.xsd"/>
+	<element name="PatientWithoutCPR" type="medicinecard20150601:PatientWithoutCPRType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of the patient</documentation>
+			<documentation xml:lang="da-DK">Patientoplysninger</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientWithoutCPRType">
+		<sequence>
+			<element name="Person" type="medicinecard20150601:SimplePersonWithoutCPRType"/>
+			<element name="Address" type="medicinecard20150601:AddressType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DosageAnyDay.xsd"/>
+	<include schemaLocation="DosageDay.xsd"/>
+	<include schemaLocation="DosageIsNotIterated.xsd"/>
+	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+	<include schemaLocation="DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DosageTimesIterationInterval.xsd"/>
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
+	<include schemaLocation="DosageSupplementaryText.xsd"/>
+	<element name="DosageStructureForRequest" type="medicinecard20150601:DosageStructureForRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageStructureForRequestType">
+		<sequence>
+			<choice>
+				<element name="IterationInterval" type="medicinecard20150601:DosageTimesIterationIntervalType"/>
+				<element name="NotIterated" type="medicinecard20150601:DosageIsNotIteratedType"/>
+			</choice>
+			<choice>
+				<element name="StartDate" type="medicinecard20150601:DosageTimesStartDateType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="medicinecard20150601:DosageTimesEndDateType"/>
+				<element name="DosageEndingUndetermined" type="medicinecard20150601:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+			<element name="SupplementaryText" type="medicinecard20150601:DosageSupplementaryTextType" minOccurs="0"/>
+			<choice>
+				<!-- A convoluted construction for either AnyDay or one or more Day, or both, bot not neither -->
+				<sequence>
+					<element name="AnyDay" type="medicinecard20150601:DosageAnyDayType"/>
+					<element name="Day" type="medicinecard20150601:DosageDayType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<element name="Day" type="medicinecard20150601:DosageDayType" maxOccurs="unbounded"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DoseForAnyDay.xsd"/>
+	<element name="AnyDosageDay" type="medicinecard20150601:DosageAnyDayType">
+		<annotation>
+			<documentation xml:lang="en-GB">Group of dosage times for the same day</documentation>
+			<documentation xml:lang="da-DK">Gruppering af doseringstidspunkter på samme dag</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageAnyDayType">
+		<sequence>
+			<sequence>
+				<element name="Dose" type="medicinecard20150601:DoseForAnyDayType" maxOccurs="unbounded"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

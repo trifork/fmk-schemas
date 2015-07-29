@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DosageFreeTextForResponse.xsd"/>
+	<include schemaLocation="DosageStructuresForResponse.xsd"/>
+	<include schemaLocation="DosageType.xsd"/>
+	<include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForResponse.xsd"/>
+	<element name="DosageForResponse" type="medicinecard20150601:DosageForResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">How often and when the drug should be given</documentation>
+			<documentation xml:lang="da-DK">Angivelse af hvor ofte og hvornår et lægemiddel skal gives</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageForResponseType">
+		<sequence>
+			<choice>
+				<element name="Structures" type="medicinecard20150601:DosageStructuresForResponseType"/>
+				<element name="FreeText" type="medicinecard20150601:DosageFreeTextForResponseType"/>
+				<element name="AdministrationAccordingToSchemaInLocalSystem" type="medicinecard20150601:AdministrationAccordingToSchemaInLocalSystemForResponseType"/>
+			</choice>
+			<element name="Type" type="medicinecard20150601:DosageTypeType"/>
+		</sequence>
+	</complexType>
+</schema>

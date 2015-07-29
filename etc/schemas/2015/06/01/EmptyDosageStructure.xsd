@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+	<include schemaLocation="DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
+	<element name="EmptyDosageStructure" type="medicinecard20150601:EmptyDosageStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of an interval in the treatment where the drug is not given</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en periode i behandlingen hvor lægemidlet ikke gives</documentation>
+		</annotation>
+	</element>
+	<complexType name="EmptyDosageStructureType">
+		<sequence>
+			<choice>
+				<element name="StartDate" type="medicinecard20150601:DosageTimesStartDateType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="medicinecard20150601:DosageTimesEndDateType"/>
+				<element name="DosageEndingUndetermined" type="medicinecard20150601:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

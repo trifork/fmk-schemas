@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonName.xsd"/>
+	<include schemaLocation="BirthDate.xsd"/>
+	<include schemaLocation="Gender.xsd"/>
+	<element name="SimplePersonWithoutCPR" type="medicinecard20150601:SimplePersonWithoutCPRType"/>
+	<complexType name="SimplePersonWithoutCPRType">
+		<sequence>
+			<element name="Name" type="medicinecard20150601:PersonNameType"/>
+			<element name="BirthDate" type="medicinecard20150601:BirthDateType"/>
+			<element name="Gender" type="medicinecard20150601:GenderType"/>
+		</sequence>
+	</complexType>
+</schema>

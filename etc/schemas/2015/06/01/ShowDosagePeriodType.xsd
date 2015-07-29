@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+	<include schemaLocation="DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DosageTimesIterationInterval.xsd"/>
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
+	<element name="ShowDosagePeriod" type="medicinecard20150601:ShowDosagePeriodType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information on the timeperiod for showing dosage informations</documentation>
+			<documentation xml:lang="da-DK">Information om tidsintervallet for visning af doseingsinformationer </documentation>
+		</annotation>
+	</element>
+	<complexType name="ShowDosagePeriodType">
+		<sequence>
+			<choice>
+				<element name="StartDate" type="medicinecard20150601:DosageTimesStartDateType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="medicinecard20150601:DosageTimesEndDateType"/>
+				<element name="DosageEndingUndetermined" type="medicinecard20150601:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

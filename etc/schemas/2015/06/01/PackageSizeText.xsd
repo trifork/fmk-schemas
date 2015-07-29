@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PackageSizeText" type="medicinecard20150601:PackageSizeTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Package size, clear text from (LMS02 field 6) if from the DKMA price list</documentation>
+			<documentation xml:lang="da-DK">Pakningsstørrelse, klartekst fra (LMS02 felt 6) hvis kilden er LMS takst</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PackageSizeTextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
+		</restriction>
+	</simpleType>
+</schema>

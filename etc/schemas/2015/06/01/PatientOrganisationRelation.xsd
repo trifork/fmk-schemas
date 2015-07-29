@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
+	<element name="PatientOrganisationRelation" type="medicinecard20150601:PatientOrganisationRelationType">
+		<annotation>
+			<documentation xml:lang="en-GB">A relation between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Registrering af en relation mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientOrganisationRelationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PatientOrganisationRelationIdentifierType"/>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Organisation" type="medicinecard20150601:OrganisationType"/>
+			<element name="Type" type="medicinecard20150601:PatientOrganisationRelationTypeType"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PauseDrugMedication.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="PauseDrugMedicationRequest" type="medicinecard20150601:PauseDrugMedicationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to pause one or more drugmedications</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der pauserer en eller flere lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="PauseDrugMedicationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="PausedBy" type="medicinecard20150601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="DrugMedication" type="medicinecard20150601:PauseDrugMedicationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
