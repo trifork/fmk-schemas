@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Source.xsd"/>
+	<element name="TrackingIdentifier" type="medicinecard20150601:TrackingIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Unique delivery tracking ID.</documentation>
+			<documentation xml:lang="da-DK">Unikt ID til sporing af levering.</documentation>
+		</annotation>
+	</element>
+	<complexType name="TrackingIdentifierType">
+		<simpleContent>
+			<extension base="medicinecard20150601:TrackingIdentifierValueType">
+				<attribute name="source" type="medicinecard20150601:TrackingIdentifierSourceType" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="TrackingIdentifierValueType">
+		<restriction base="string">
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TrackingIdentifierSourceType">
+		<union memberTypes="medicinecard20150601:TrackingIdentifierPredefinedSourceType medicinecard20150601:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="TrackingIdentifierPredefinedSourceType">
+		<restriction base="medicinecard20150601:UndefinedSourceType">
+			<!-- Specific source types can be added here as they become known. Adding new will be backwards compatible
+				because TrackingIdentifierSourceType is a union of this and UndefinedSourceType, so clients will be
+				prepared for unknown values. -->
+			<!--
+			<enumeration value="source1"/>
+			<enumeration value="source2"/>
+			-->
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"  xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="Modified.xsd"/>
+	<include schemaLocation="Created.xsd"/>
+	<!--include schemaLocation="EffectuationVersion.xsd"/-->
+	<complexType name="EmptyEffectuationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:EffectuationIdentifierType"/>
+			<!--element name="Version" type="medicinecard20150601:EffectuationVersionType"/>
+			<element name="PreviousVersion" type="medicinecard20150601:EffectuationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NextVersion" type="medicinecard20150601:EffectuationVersionType" minOccurs="0" maxOccurs="unbounded"/-->
+			<element name="Created" type="medicinecard20150601:CreatedType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
+		</sequence>	
+	</complexType>
+</schema>

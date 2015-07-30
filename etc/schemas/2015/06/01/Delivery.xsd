@@ -8,9 +8,9 @@
     <include schemaLocation="DeliverySite.xsd"/>
     <include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
     <include schemaLocation="StatusInformation.xsd"/>
-    <include schemaLocation="TrackingID.xsd"/>
-    <include schemaLocation="TrackingSource.xsd"/>
-	<element name="Delivery" type="medicinecard20150601::DeliveryType">
+    <include schemaLocation="TrackingIdentifier.xsd"/>
+    <include schemaLocation="TrackingUrl.xsd"/>
+	<element name="Delivery" type="medicinecard20150601:DeliveryType">
 		<annotation>
 			<documentation xml:lang="en-GB">Delivery information</documentation>
 			<documentation xml:lang="da-DK">Leveringsinformation</documentation>
@@ -18,22 +18,22 @@
 	</element>
 	<complexType name="DeliveryType">
 		<sequence>
-			<element name="Priority" type="medicinecard20150601::DeliveryPriorityType"/>
+			<element name="Priority" type="medicinecard20150601:DeliveryPriorityType"/>
             <choice>
                 <sequence>
                     <choice minOccurs="0">
-                        <element name="StreetName" type="medicinecard20150601::StreetNameType"/>
-                        <element name="PseudoAddress" type="medicinecard20150601::PseudoAddressType"/>
+                        <element name="StreetName" type="medicinecard20150601:StreetNameType"/>
+                        <element name="PseudoAddress" type="medicinecard20150601:PseudoAddressType"/>
                     </choice>
-                    <element name="PostCode" type="medicinecard20150601::PostCodeType" minOccurs="0"/>
-                    <element name="ContactName" type="medicinecard20150601::ContactNameType" minOccurs="0"/>
+                    <element name="PostCode" type="medicinecard20150601:PostCodeType" minOccurs="0"/>
+                    <element name="ContactName" type="medicinecard20150601:ContactNameType" minOccurs="0"/>
                 </sequence>
-                <element name="DeliverySite" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
+                <element name="DeliverySite" type="medicinecard20150601:DeliverySiteType" minOccurs="0"/>
             </choice>
-            <element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType"/>
-            <element name="StatusInformation" type="medicinecard20150601:StatusInformationType"/>
-            <element name="TrackingID" type="medicinecard20150601:TrackingIDType"/>
-            <element name="TrackingSource" type="medicinecard20150601:TrackingSourceType"/>
+            <element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+            <element name="StatusInformation" type="medicinecard20150601:StatusInformationType" minOccurs="0"/>
+            <element name="TrackingIdentifier" type="medicinecard20150601:TrackingIdentifierType" minOccurs="0"/>
+            <element name="TrackingUrl" type="medicinecard20150601:TrackingUrlType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

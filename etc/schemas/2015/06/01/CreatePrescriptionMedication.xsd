@@ -11,10 +11,13 @@
     <include schemaLocation="CreateSinglePrescriptionDispensing.xsd"/>
     <include schemaLocation="Delivery.xsd"/>
     <include schemaLocation="DeliveryInformation.xsd"/>
+    <include schemaLocation="DoseDispensedRestriction.xsd"/>
     <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="Order.xsd"/>
     <include schemaLocation="OrderInstruction.xsd"/>
     <include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
     <include schemaLocation="Organisation.xsd"/>
+    <include schemaLocation="PackageRestriction.xsd"/>
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="SystemName.xsd"/>
 
@@ -34,20 +37,19 @@
     </element>
     <complexType name="CreatePrescriptionMedicationType">
         <sequence>
-            <element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"
-                     minOccurs="0"/>
+            <element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType" minOccurs="0"/>
             <element name="OrderedEffectuationIdentifier" type="medicinecard20150601:OrderedEffectuationIdentifierType"
                      minOccurs="0"/>
             <element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
             <element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>
             <element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
             <element name="SystemName" type="medicinecard20150601:SystemNameType"/>
-            <element name="ValidFromDate" type="medicinecard20140601:ValidDateType" minOccurs="0"/>
-            <element name="ValidToDate" type="medicinecard20140601:ValidDateType"/>
-            <element name="Dosage" type="medicinecard20150601:DosageType" minOccurs="0"/>
+            <element name="ValidFromDate" type="medicinecard20150601:ValidDateType" minOccurs="0"/>
+            <element name="ValidToDate" type="medicinecard20150601:ValidDateType" minOccurs="0"/>
+            <!-- TODO: element name="Dosage" type="medicinecard20150601:DosageType" minOccurs="0"/-->
             <choice>
-                <element name="PackageRestriction" type="medicinecard20140601:PackageRestrictionType"/>
-                <element name="DoseDispensedRestriction" type="medicinecard20140601:DoseDispensedRestrictionType"/>
+                <element name="PackageRestriction" type="medicinecard20150601:PackageRestrictionType"/>
+                <element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
             </choice>
             <element name="Order" type="medicinecard20150601:OrderType" minOccurs="0"/>
         </sequence>

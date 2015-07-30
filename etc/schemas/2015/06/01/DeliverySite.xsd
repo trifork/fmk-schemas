@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01" xmlns:medicinecard20140601="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2014/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="ShortOrganisationName.xsd"/>
 	<include schemaLocation="OrganisationName.xsd"/>
 	<include schemaLocation="AddressLine.xsd"/>
@@ -10,15 +10,15 @@
 	<include schemaLocation="ValidDate.xsd"/>
 	<complexType name="DeliverySiteType">
 		<sequence>
-			<element name="ShortName" type="medicinecard20140601:ShortOrganisationNameType"/>
-			<element name="Name" type="medicinecard20120601:OrganisationNameType" minOccurs="0"/>
-			<element name="AddressLine" type="medicinecard20140601:AddressLineType" minOccurs="0" maxOccurs="5"/>
-			<element name="TelephoneNumber" type="medicinecard20120601:TelephoneNumberType" minOccurs="0"/>
-			<element name="EmailAddress" type="medicinecard20120601:EmailAddressType" minOccurs="0"/>
-			<element name="Type" type="medicinecard20140601:OrganisationTypeType"/>
-			<element name="Identifier" type="medicinecard20140601:OrganisationIdentifierType"/>
-			<element name="ValidFrom" type="medicinecard20140601:ValidDateType"/>
-			<element name="ValidTo" type="medicinecard20140601:ValidDateType" minOccurs="0"/>
+			<element name="ShortName" type="medicinecard20150601:ShortOrganisationNameType"/>
+			<element name="Name" type="medicinecard20150601:OrganisationNameType" minOccurs="0"/>
+			<element name="AddressLine" type="medicinecard20150601:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<element name="TelephoneNumber" type="medicinecard20150601:TelephoneNumberType" minOccurs="0"/>
+			<element name="EmailAddress" type="medicinecard20150601:EmailAddressType" minOccurs="0"/>
+			<element name="Type" type="medicinecard20150601:OrganisationTypeType"/>
+			<element name="Identifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			<element name="ValidFrom" type="medicinecard20150601:ValidDateType"/>
+			<element name="ValidTo" type="medicinecard20150601:ValidDateType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

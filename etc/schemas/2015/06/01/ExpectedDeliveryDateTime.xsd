@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<element name="EffectuationDateTime" type="medicinecard20150601:EffectuationDateTimeType">
+	<element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType">
 		<annotation>
-			<documentation xml:lang="en-GB">Date and time when the drug medication is effectuated</documentation>
-			<documentation xml:lang="da-DK">Dato og tid, hvor lægemiddelordinationen er effektueret</documentation>
+			<documentation xml:lang="en-GB">Expected date time of delivery. Can be set by the supplier (the pharmacy).</documentation>
+			<documentation xml:lang="da-DK">Forventet dato og tidspunkt for levering. Kan sættes af leverandøren (apoteket).</documentation>
 		</annotation>
 	</element>
-	<simpleType name="EffectuationDateTimeType">
+	<simpleType name="ExpectedDeliveryDateTimeType">
 		<restriction base="dateTime">
 			<minInclusive value="2000-01-01T00:00:00Z"/>
 		</restriction>
