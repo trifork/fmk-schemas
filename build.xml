@@ -3,9 +3,11 @@
 <project name="medicinkortet-schema" default="all" basedir="." xmlns:ivy="antlib:fr.jayasoft.ivy.ant" >
 
 	<property name="ivy.checksums" value=""/>
-	
-	<property file="build.properties"/>
-	<property name="trifork-common" value="${basedir}/../trifork-common"/>
+    <property name="sourceversion" value="1.8"/>
+    <property name="targetversion" value="1.8"/>
+
+    <property file="build.properties"/>
+    <property name="trifork-common" value="${basedir}/../trifork-common"/>
 	<import file="${trifork-common}/etc/build-common.xml"/>
 
     <property name="target.dir" value="${basedir}/target" />
@@ -19,9 +21,6 @@
 
     <property name="standard.target.dir" value="${target.dir}/standard/target" />
     <property name="standard.work.dir" value="${target.dir}/standard/workdir" />
-
-    <property name="sourceversion" value="1.8"/>
-    <property name="targetversion" value="1.8"/>
 
     <path id="classpath">
         <fileset dir="lib/build">
