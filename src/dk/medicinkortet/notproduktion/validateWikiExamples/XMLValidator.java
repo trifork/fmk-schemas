@@ -3,6 +3,7 @@ package dk.medicinkortet.notproduktion.validateWikiExamples;
 import dk.medicinkortet.notproduktion.validateWikiExamples.xmlvalidator.SchemaValidator;
 import org.apache.commons.io.IOUtils;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,6 +75,8 @@ public class XMLValidator {
         // Validate
         try {
             validator.validate(xml);
+        } catch (SAXParseException e) {
+            System.out.println("    XML validation error: " + e.getMessage() + ", line " + e.getLineNumber() + " column " + e.getColumnNumber());
         } catch (SAXException e) {
             System.out.println("    XML validation error: " + e.getMessage());
         }
