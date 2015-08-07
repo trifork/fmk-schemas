@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="DrugStrengthValue.xsd"/>
+	<include schemaLocation="DrugStrengthUnitText.xsd"/>
+	<include schemaLocation="DrugStrengthText.xsd"/>
+	<include schemaLocation="DrugStrengthUnitCode.xsd"/>
+	<complexType name="CreateDrugStrengthType">
+		<choice>
+			<sequence>
+				<element name="Value" type="medicinecard20150601:DrugStrengthValueType"/>
+				<element name="UnitCode" type="medicinecard20150601:DrugStrengthUnitCodeType"/>
+				<element name="UnitText" type="medicinecard20150601:DrugStrengthUnitTextType" minOccurs="0"/>
+				<element name="Text" type="medicinecard20150601:DrugStrengthTextType" minOccurs="0"/>
+			</sequence>
+			<element name="Text" type="medicinecard20150601:DrugStrengthTextType"/>
+		</choice>
+	</complexType>
+</schema>

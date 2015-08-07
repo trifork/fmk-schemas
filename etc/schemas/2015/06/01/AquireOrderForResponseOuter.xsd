@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="AquireOrderOnDrugMedicationAndWarrantForResponse.xsd"/>
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="AquireOrderIdentifier.xsd"/>
+	<include schemaLocation="AquireOrderVersion.xsd"/>
+
+	<complexType name="AquireOrderForResponseOuterType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:AquireOrderIdentifierType"/>
+			<element name="Version" type="medicinecard20150601:AquireOrderVersionType"/>
+			<element name="PreviousVersion" type="medicinecard20150601:AquireOrderVersionType" minOccurs="0"/>
+			<element name="NextVersion" type="medicinecard20150601:AquireOrderVersionType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20150601:CreatedType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="DrugMedication" type="medicinecard20150601:AquireOrderOnDrugMedicationAndWarrantForResponseType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

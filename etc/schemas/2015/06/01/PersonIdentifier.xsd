@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Source.xsd"/>
+
 	<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a person identifier, according to the Danish CPR format.</documentation>
 			<documentation xml:lang="da-DK">Element for er CPR-nummer</documentation>
 		</annotation>
 	</element>
-	<simpleType name="PersonIdentifierType">
+	<complexType name="PersonIdentifierType">
+		<simpleContent>
+			<extension base="medicinecard20150601:PersonIdentifierValueType">
+				<attribute name="source" type="medicinecard20150601:PersonIdentifierSourceType" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="PersonIdentifierValueType">
 		<restriction base="string">
-			<pattern value="((((0[1-9]|1[0-9]|2[0-9]|3[0-1])(01|03|05|07|08|10|12))|((0[1-9]|1[0-9]|2[0-9]|30)(04|06|09|11))|((0[1-9]|1[0-9]|2[0-9])(02)))[0-9]{6})"/>
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierSourceType">
+		<union memberTypes="medicinecard20150601:PersonIdentifierPredefinedSourceType medicinecard20150601:UndefinedSourceType"/>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierPredefinedSourceType">
+		<restriction base="medicinecard20150601:UndefinedSourceType">
+			<enumeration value="CPR"/>
+			<enumeration value="Erstatnings-CPR"/>
 		</restriction>
 	</simpleType>
 </schema>

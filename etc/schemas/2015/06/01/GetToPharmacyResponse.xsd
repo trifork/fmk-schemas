@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationsForPersonOrOrganisation.xsd"/>
+	<include schemaLocation="AquireOrderForResponseOuter.xsd"/>
+
+	<element name="GetToPharmacyResponse" type="medicinecard20150601:GetToPharmacyResponseType"/>
+	<complexType name="GetToPharmacyResponseType">
+		<sequence>
+			<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			<choice maxOccurs="unbounded">
+				<element name="DrugMedications" type="medicinecard20150601:DrugMedicationsForPersonOrOrganisationType"/>
+				<element name="AquireOrder" type="medicinecard20150601:AquireOrderForResponseOuterType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="UpdateEffectuation.xsd"/>
+	<include schemaLocation="DoseDispensingDate.xsd"/>
+	<include schemaLocation="ProductionDay.xsd"/>
+	<include schemaLocation="PackingGroup.xsd"/>
+	<include schemaLocation="DeliveryInstructionText.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="Delivery.xsd"/>
+	
+	<complexType name="UpdateOrderWithDrugMedicationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
+			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
+			<element name="DoseDispensing" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="PackedAtOrganisation" type="medicinecard20150601:OrganisationType"/>
+						<element name="DeadlineDate" type="medicinecard20150601:DoseDispensingDateType"/>
+						<element name="ExpectedFirstDosageDate" type="medicinecard20150601:DoseDispensingDateType"/>
+						<element name="ExpectedLastDosageDate" type="medicinecard20150601:DoseDispensingDateType"/>
+						<element name="ProductionDay" type="medicinecard20150601:ProductionDayType" minOccurs="0"/>
+						<element name="PackingGroup" type="medicinecard20150601:PackingGroupType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
+			<element name="DeliveryInstructionText" type="medicinecard20150601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
+			<element name="Effectuation" type="medicinecard20150601:UpdateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

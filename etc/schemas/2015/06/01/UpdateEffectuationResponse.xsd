@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationVersion.xsd"/>
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionMedicationVersion.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+
+	<element name="UpdateEffectuationResponse" type="medicinecard20150601:UpdateEffectuationResponseType"/>
+
+	<complexType name="UpdateEffectuationResponseType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="PreviousVersion" type="medicinecard20150601:MedicineCardVersionType" maxOccurs="unbounded"/>
+			<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+			<element name="DrugMedication" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
+						<element name="Version" type="medicinecard20150601:DrugMedicationVersionType"/>
+						<element name="PreviousVersion" type="medicinecard20150601:DrugMedicationVersionType" maxOccurs="unbounded"/>
+						<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+						<element name="PrescriptionMedication" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+									<element name="Version" type="medicinecard20150601:PrescriptionMedicationVersionType"/>
+									<element name="PreviousVersion" type="medicinecard20150601:PrescriptionMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+									<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+									<element name="Order" maxOccurs="unbounded">
+										<complexType>
+											<sequence>
+												<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
+												<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+												<element name="Effectuation" maxOccurs="unbounded">
+													<complexType>
+														<sequence>
+															<element name="Identifier" type="medicinecard20150601:EffectuationIdentifierType"/>
+															<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+														</sequence>
+													</complexType>
+												</element>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

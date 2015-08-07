@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PackageSizeValue.xsd"/>
+	<include schemaLocation="PackageSizeUnitCode.xsd"/>
+	<include schemaLocation="PackageSizeUnitText.xsd"/>
+
+	<complexType name="CreatePackageSizeType">
+		<sequence>
+			<element name="Value" type="medicinecard20150601:PackageSizeValueType"/>
+			<element name="UnitCode" type="medicinecard20150601:PackageSizeUnitCodeType"/>
+			<element name="UnitText" type="medicinecard20150601:PackageSizeUnitTextType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
