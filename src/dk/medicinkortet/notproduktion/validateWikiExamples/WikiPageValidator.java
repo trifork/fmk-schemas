@@ -79,7 +79,7 @@ public class WikiPageValidator {
             String filename = m.group(2);
 
             URL xmlURL = new URL(url, xmlRelativeUrl);
-            System.out.println("  --- Process XML snippet '" + filename + "'"); //+ "' at url='" + xmlURL + "' relativeURL=" + xmlRelativeUrl);
+            System.out.println("  --- XML snippet '" + filename + "'"); //+ "' at url='" + xmlURL + "' relativeURL=" + xmlRelativeUrl);
             try {
                 result = xmlValidator.validateXml(xmlURL) || result; // Rækkefølgen er ikke ligegyldig - hvis 1. arg er true så evalueres 2. arg ikke!
             } catch (Exception e) {

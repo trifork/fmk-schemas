@@ -90,13 +90,13 @@ public class SchemaValidator {
 	public Document validate(String xml) throws SAXException {
 		Validator validator = schema.newValidator();
 		validator.setResourceResolver(resolver);
+        validator.setErrorHandler(new DefaultValidationErrorHandler());
 
 		try {
 			DocumentBuilder builder = builderFactory.get().newDocumentBuilder();
 			Document doc = builder.parse(new InputSource(new StringReader(xml)));
-			removeDebugHeadersFromDocument(doc);			
-			validator.validate(new DOMSource(doc));
-			
+			removeDebugHeadersFromDocument(doc);
+            validator.validate(new DOMSource(doc));
 			return doc;
 		} catch (ParserConfigurationException e) {
 			logger.error("Unable to parse", e);
@@ -107,11 +107,29 @@ public class SchemaValidator {
 	
 	}
 
+//    public void newValidator(String xml) {
+//        try {
+//            DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
+//            f.setValidating(true); // Default is false
+//            f.setSchema(schema);
+//            DocumentBuilder b = f.newDocumentBuilder();
+//            b.setErrorHandler(new DefaultValidationErrorHandler());
+//            //b.setEntityResolver(resolver);
+//            Document d = b.parse(new InputSource(new StringReader(xml)));
+//        } catch (ParserConfigurationException e) {
+//            System.out.println(e.toString());
+//        } catch (SAXException e) {
+//            System.out.println(e.toString());
+//        } catch (IOException e) {
+//            System.out.println(e.toString());
+//        }
+//    }
+
 	public void validate(Source xmlSource) throws SAXException {
         validate(xmlSource, null);
 	}
 
-	public org.xml.sax.SAXParseException[] validate(Source xmlSource, DefaultValidationErrorHandler errorHandler) throws SAXException {
+	public void validate(Source xmlSource, DefaultValidationErrorHandler errorHandler) throws SAXException {
 		Validator validator = schema.newValidator();
 		validator.setResourceResolver(resolver);
         if (errorHandler != null) {
@@ -120,11 +138,6 @@ public class SchemaValidator {
 
 		try {
 			validator.validate(xmlSource);
-            if (errorHandler == null) {
-                return null;
-            } else {
-                return errorHandler.getErrors();
-            }
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -133,21 +146,16 @@ public class SchemaValidator {
     //'Borrowed' from org.springframework.xml.validation.Jaxp13ValidatorFactory.DefaultValidationErrorHandler
     private static class DefaultValidationErrorHandler implements ErrorHandler {
 
-        private List<SAXParseException> errors = new ArrayList<SAXParseException>();
-
-        public SAXParseException[] getErrors() {
-            return errors.toArray(new SAXParseException[errors.size()]);
+        public void warning(SAXParseException e) throws SAXException {
+			System.out.println("    WARNING: " + e.getMessage() + "  Line " + e.getLineNumber() + " column " + e.getColumnNumber());
         }
 
-        public void warning(SAXParseException ex) throws SAXException {
+        public void error(SAXParseException e) throws SAXException {
+			System.out.println("    ERROR: " + e.getMessage() + "  Line " + e.getLineNumber() + " column " + e.getColumnNumber());
         }
 
-        public void error(SAXParseException ex) throws SAXException {
-            errors.add(ex);
-        }
-
-        public void fatalError(SAXParseException ex) throws SAXException {
-            errors.add(ex);
+        public void fatalError(SAXParseException e) throws SAXException {
+			System.out.println("    FATAL ERROR: " + e.getMessage() + "  Line " + e.getLineNumber() + " column " + e.getColumnNumber());
         }
     }
 

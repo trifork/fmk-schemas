@@ -65,7 +65,6 @@ public class XMLValidator {
         }
 
         xml = insertNamespace(xml);
-        //System.out.println("+++++++  XML for url: " + url + "\n" + xml);
 
         if (xml.contains("2014/06/01")) {
             System.out.println("    WARNING: XML uses draft 1.4.6 namespace (http://www.dkma.dk/medicinecard/xml.schema/2014/06/01)");
@@ -76,9 +75,9 @@ public class XMLValidator {
         try {
             validator.validate(xml);
         } catch (SAXParseException e) {
-            System.out.println("    XML validation error: " + e.getMessage() + ", line " + e.getLineNumber() + " column " + e.getColumnNumber());
+            System.out.println("    Validation error: " + e.getMessage() + "  Line " + e.getLineNumber() + " column " + e.getColumnNumber());
         } catch (SAXException e) {
-            System.out.println("    XML validation error: " + e.getMessage());
+            System.out.println("    Exception: " + e.getMessage());
         }
 
         return result;
@@ -97,7 +96,7 @@ public class XMLValidator {
             if (postfix.trim().isEmpty()) {
                 String newElement = "<" + elementName + " xmlns=\"" + assumedNamespace + "\">";
                 String newXml = newElement + xml.substring(matchString.length());
-                System.out.println("    Replaced '" + matchString + "' with '" + newElement + "'");
+                //System.out.println("    Replaced '" + matchString + "' with '" + newElement + "'");
                 return newXml;
             }
         }

@@ -75,7 +75,7 @@ public class WikiSitemapValidator {
             }
 
             URL pageURL = new URL(sitemapURL, pageUrlStr);
-            System.out.println("*** Process page '" + text + "' at url='" + pageURL + "'");
+            System.out.println("\n*** Page '" + text + "' at url='" + pageURL + "'");
             try {
                 result = pageValidator.validatePage(pageURL) || result; // Rækkefølgen er ikke ligegyldig - hvis 1. arg er true så evalueres 2. arg ikke!
             } catch (Exception e) {
