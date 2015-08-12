@@ -11,7 +11,6 @@
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionMedicationVersion.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 
 	<element name="UpdateEffectuationResponse" type="medicinecard20150601:UpdateEffectuationResponseType"/>
@@ -36,19 +35,14 @@
 							<complexType>
 								<sequence>
 									<element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
-									<element name="Version" type="medicinecard20150601:PrescriptionMedicationVersionType"/>
-									<element name="PreviousVersion" type="medicinecard20150601:PrescriptionMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
-									<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
 									<element name="Order" maxOccurs="unbounded">
 										<complexType>
 											<sequence>
 												<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
-												<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
 												<element name="Effectuation" maxOccurs="unbounded">
 													<complexType>
 														<sequence>
 															<element name="Identifier" type="medicinecard20150601:EffectuationIdentifierType"/>
-															<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
 														</sequence>
 													</complexType>
 												</element>

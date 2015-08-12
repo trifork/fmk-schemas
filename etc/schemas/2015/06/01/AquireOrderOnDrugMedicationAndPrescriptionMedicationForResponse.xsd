@@ -5,13 +5,13 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersion.xsd"/>
-	<include schemaLocation="AquireOrderOnWarrantForResponse.xsd"/>
+	<include schemaLocation="AquireOrderOnPrescriptionMedicationForResponse.xsd"/>
 
-	<complexType name="AquireOrderOnDrugMedicationAndWarrantForResponseType">
+	<complexType name="AquireOrderOnDrugMedicationAndPrescriptionMedicationForResponseType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
 			<element name="Version" type="medicinecard20150601:DrugMedicationVersionType"/>
-			<element name="Warrant" type="medicinecard20150601:AquireOrderOnWarrantForResponseType" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20150601:AquireOrderOnPrescriptionMedicationForResponseType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

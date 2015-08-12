@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="CreatedWithoutPerson.xsd"/>
-	<include schemaLocation="DosageQuantityUnitText.xsd"/>
-	<include schemaLocation="DoseQuantity.xsd"/>
-	<include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="EffectuationDateTime.xsd"/>
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
 	<include schemaLocation="EffectuationMethod.xsd"/>
-	<include schemaLocation="IsEffectuatedAccordingToDrugMedication.xsd"/>
-	<include schemaLocation="ModificatorWithOptionalAuthorisationIdentifier.xsd"/>
-	<include schemaLocation="PackageNumber.xsd"/>
-	<include schemaLocation="PackageSize.xsd"/>
-	<include schemaLocation="PackageQuantity.xsd"/>
+    <include schemaLocation="PackageDispensed.xsd"/>
 	<element name="EffectuationOnPrescriptionMedication" type="medicinecard20150601:EffectuationOnPrescriptionMedicationType">
 		<annotation>
-			<documentation xml:lang="en-GB">An effectuation on the prescription medication. It has been created by the pharamacy, so there is no doctor element. The possibilities for how the effectuation is done is limited, there is always effectuated one or more packages.</documentation>
+			<documentation xml:lang="en-GB">An effectuation on the prescription medication. It has been created by the pharamacy, so there is no doctor element. There is either effectuated one or more packages or effectuated via Dose Dispensing.</documentation>
+			<documentation xml:lang="da-DK">En effektuering (udlevering) på receptordinationen. Den er oprettet på apoteket, så der er ingen reference til en læge. Der er enten effektueret en eller flere pakninger eller effektueret via Dosisdispensing.</documentation>
 		</annotation>
 	</element>
 	<complexType name="EffectuationOnPrescriptionMedicationType">
@@ -24,10 +19,10 @@
 			<element name="EffectuationMethod" type="medicinecard20150601:EffectuationMethodType" minOccurs="0"/>
 			<element name="Created" type="medicinecard20150601:CreatedWithoutPersonType"/>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorWithoutPersonType" minOccurs="0"/>
-			<element name="PackageQuantity" type="medicinecard20150601:PackageQuantityType" minOccurs="0"/>
-			<element name="PackageNumber" type="medicinecard20150601:PackageNumberType"/>
-			<element name="PackageSize" type="medicinecard20150601:PackageSizeType" minOccurs="0"/>
-			<element name="Drug" type="medicinecard20150601:DrugType" minOccurs="0"/>
+            <choice>
+                <element name="DoseDispensed" type="medicinecard20150601:DoseDispensedType"/>
+                <element name="PackageDispensed" type="medicinecard20150601:PackageDispensedType"/>
+            </choice>
 		</sequence>
 	</complexType>
 </schema>
