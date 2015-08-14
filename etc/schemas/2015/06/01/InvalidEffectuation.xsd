@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
-	<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType">
-		<annotation>
-			<documentation xml:lang="en-GB">An invalid effectuation</documentation>
-			<documentation xml:lang="da-DK">En ugyldig effektuering</documentation>
-		</annotation>
-	</element>
+	<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType"/>
 	<complexType name="InvalidEffectuationType">
+		<annotation>
+			<documentation xml:lang="en-GB">An invalid effectuation. If clients have a local copy of an effectuation and receives an InvalidEffectuation with matching identifier, it is a sign that the effectuation should be deleted.</documentation>
+			<documentation xml:lang="da-DK">En ugyldig effektuering. Hvis en klient har en lokal af en effektuering og modtager en InvalidEffectuation med matchende identifier, så er det et tegn på at effektueringen bør slettes.</documentation>
+		</annotation>
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:EffectuationIdentifierType"/>
 		</sequence>

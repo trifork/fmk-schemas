@@ -11,6 +11,7 @@
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="LatestEffectuationDateTime.xsd"/>
 	<include schemaLocation="ModificatorWithOptionalAuthorisationIdentifier.xsd"/>
+	<include schemaLocation="Order.xsd"/>
 	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="DeprecatedDateTime.xsd"/>
@@ -55,8 +56,7 @@
 			<element name="ReceiverEAN" type="medicinecard20150601:ReceiverEANType" minOccurs="0"/>
 			<element name="Status" type="medicinecard20150601:PrescriptionMedicationStatusType"/>
 			<element name="Deprecated" type="medicinecard20150601:DeprecatedDateTimeType" minOccurs="0"/>
-			<element name="Effectuation" type="medicinecard20150601:EffectuationOnPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Order" type="medicinecard20150601:OrderType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

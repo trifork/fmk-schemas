@@ -5,13 +5,12 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="DoseDispensingDate.xsd"/>
-	<include schemaLocation="ProductionDay.xsd"/>
-	<include schemaLocation="PackingGroup.xsd"/>
+	<include schemaLocation="DoseDispensing.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="OrderStatus.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
+
 	<complexType name="UpdateOrderType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
@@ -19,19 +18,8 @@
 			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
 			<element name="Status" type="medicinecard20150601:OrderStatusType"/>
 
-            <!-- Disse elementer forventes ikke anvendt i apotekernes "fase 1" implementation (uden forbedringer vedr. dosisdispensering) -->
-			<element name="DoseDispensing" minOccurs="0">
-				<complexType>
-					<sequence>
-						<element name="PackedAtOrganisation" type="medicinecard20150601:OrganisationType"/>
-						<element name="DeadlineDate" type="medicinecard20150601:DoseDispensingDateType"/>
-						<element name="ExpectedFirstDosageDate" type="medicinecard20150601:DoseDispensingDateType"/>
-						<element name="ExpectedLastDosageDate" type="medicinecard20150601:DoseDispensingDateType"/>
-						<element name="ProductionDay" type="medicinecard20150601:ProductionDayType" minOccurs="0"/>
-						<element name="PackingGroup" type="medicinecard20150601:PackingGroupType" minOccurs="0"/>
-					</sequence>
-				</complexType>
-			</element>
+            <!-- Dette element forventes ikke anvendt i apotekernes "fase 1" implementation (uden forbedringer vedr. dosisdispensering) -->
+            <element name="DoseDispensing" type="medicinecard20150601:DoseDispensingType" minOccurs="0"/>
 
 			<element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
 			<element name="DeliveryInstructionText" type="medicinecard20150601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
