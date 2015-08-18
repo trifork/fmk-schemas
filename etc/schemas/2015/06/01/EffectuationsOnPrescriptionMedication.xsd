@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="EffectuationOnPrescriptionMedication.xsd"/>
-	<include schemaLocation="InvalidEffectuation.xsd"/>
+	<include schemaLocation="Order.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<element name="EffectuationsOnPrescriptionMedication" type="medicinecard20150601:EffectuationsOnPrescriptionMedicationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Grouping effectuations on a prescription medication</documentation>
-			<documentation xml:lang="da-DK">Grupperer effektueringer på en receptordination</documentation>
+			<documentation xml:lang="en-GB">Grouping orders and their effectuations on a prescription medication</documentation>
+			<documentation xml:lang="da-DK">Grupperer bestillinger og deres effektueringer på en receptordination</documentation>
 		</annotation>
 	</element>
 	<complexType name="EffectuationsOnPrescriptionMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
-			<element name="Effectuation" type="medicinecard20150601:EffectuationOnPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Order" type="medicinecard20150601:OrderType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
