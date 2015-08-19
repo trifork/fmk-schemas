@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
 	<simpleType name="ProductionDayType">
-		<restriction base="string">
+		<union memberTypes="medicinecard20150601:PredefinedProductionDayType medicinecard20150601:UndefinedProductionDayType"/>
+	</simpleType>
+
+	<simpleType name="PredefinedProductionDayType">
+		<restriction base="medicinecard20150601:UndefinedProductionDayType">
 			<enumeration value="Mandag ulige uger"/>
 			<enumeration value="Tirsdag ulige uger"/>
 			<enumeration value="Onsdag ulige uger"/>
@@ -16,6 +21,13 @@
 			<enumeration value="Fredag lige uger"/>
 			<enumeration value="Lørdag lige uger"/>
 			<enumeration value="Søndag lige uger"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedProductionDayType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
 		</restriction>
 	</simpleType>
 </schema>
