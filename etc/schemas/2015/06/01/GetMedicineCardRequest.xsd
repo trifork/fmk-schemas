@@ -3,8 +3,6 @@
     <include schemaLocation="CompleteConsentGiven.xsd"/>
     <include schemaLocation="IncludeEffectuations.xsd"/>
     <include schemaLocation="IncludeNonRelevantPrescriptionMedications.xsd"/>
-    <include schemaLocation="IncludeOnlyDoseDispensableContent.xsd"/>
-    <include schemaLocation="IncludeOnlyEffectuatableContent.xsd"/>
     <include schemaLocation="IncludePrescriptionMedications.xsd"/>
     <include schemaLocation="MedicineCardVersion.xsd"/>
     <include schemaLocation="ModifiedDateTime.xsd"/>
@@ -22,17 +20,9 @@
             <element name="Version" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="DateTime" type="medicinecard20150601:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="NegativeConsent" type="medicinecard20150601:NegativeConsentRequestType" minOccurs="0"/>
-            <choice>
-                <sequence>
-                    <element name="IncludePrescriptionMedications" type="medicinecard20150601:IncludePrescriptionMedicationsType"/>
-                    <element name="IncludeEffectuations" type="medicinecard20150601:IncludeEffectuationsType"/>
-                    <element name="IncludeNonRelevantPrescriptionMedications" type="medicinecard20150601:IncludeNonRelevantPrescriptionMedicationsType"/>
-                </sequence>
-                <choice>
-                    <element name="IncludeOnlyEffectuatableContent" type="medicinecard20150601:IncludeOnlyEffectuatableContentType"/>   <!-- Ikke boolean, men bare element -->
-                    <element name="IncludeOnlyDoseDispensableContent" type="medicinecard20150601:IncludeOnlyDoseDispensableContentType"/> <!-- Ikke boolean, men bare element -->
-                </choice>
-            </choice>
+            <element name="IncludePrescriptionMedications" type="medicinecard20150601:IncludePrescriptionMedicationsType"/>
+            <element name="IncludeEffectuations" type="medicinecard20150601:IncludeEffectuationsType"/>
+            <element name="IncludeNonRelevantPrescriptionMedications" type="medicinecard20150601:IncludeNonRelevantPrescriptionMedicationsType"/>
             <element name="CompleteConsentGiven" type="medicinecard20150601:CompleteConsentGivenType" minOccurs="0"/>
         </sequence>
     </complexType>
