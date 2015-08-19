@@ -3,7 +3,7 @@
         xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
         targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="UpdateOrder_DrugMedicationAndPrescriptionMedication.xsd"/>
+	<include schemaLocation="UpdateOrder_PrescriptionMedication.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
@@ -20,7 +20,7 @@
 			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
 			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="DrugMedication" type="medicinecard20150601:UpdateOrder_DrugMedicationAndPrescriptionMedicationType" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20150601:UpdateOrder_PrescriptionMedicationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -24,30 +24,20 @@
 			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
 			<element name="PreviousVersion" type="medicinecard20150601:MedicineCardVersionType" maxOccurs="unbounded"/>
 			<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
-			<element name="DrugMedication" maxOccurs="unbounded">
-				<complexType>
-					<sequence>
-						<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
-						<element name="Version" type="medicinecard20150601:DrugMedicationVersionType"/>
-						<element name="PreviousVersion" type="medicinecard20150601:DrugMedicationVersionType" maxOccurs="unbounded"/>
-						<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
-						<element name="PrescriptionMedication" maxOccurs="unbounded">
-							<complexType>
-								<sequence>
-									<element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
-									<element name="Order" maxOccurs="unbounded">
-										<complexType>
-											<sequence>
-												<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
-											</sequence>
-										</complexType>
-									</element>
-								</sequence>
-							</complexType>
-						</element>
-					</sequence>
-				</complexType>
-			</element>
+            <element name="PrescriptionMedication" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+                        <element name="Order" maxOccurs="unbounded">
+                            <complexType>
+                                <sequence>
+                                    <element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
+                                </sequence>
+                            </complexType>
+                        </element>
+                    </sequence>
+                </complexType>
+            </element>
 		</sequence>
 	</complexType>
 </schema>
