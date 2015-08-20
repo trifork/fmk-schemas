@@ -26,6 +26,7 @@
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="SupplementaryInformation.xsd"/>
 	<include schemaLocation="TerminatedDateTime.xsd"/>
+	<include schemaLocation="ValidDate.xsd"/>
 
 	<element name="PrescriptionMedication" type="medicinecard20150601:PrescriptionMedicationType"/>
 
@@ -44,6 +45,8 @@
 			<element name="LatestEffectuationDateTime" type="medicinecard20150601:LatestEffectuationDateTimeType" minOccurs="0"/>
 			<element name="TerminatedDateTime" type="medicinecard20150601:TerminatedDateTimeType" minOccurs="0"/>
 			<element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
+            <element name="ValidFromDate" type="medicinecard20150601:ValidDateType"/>
+            <element name="ValidToDate" type="medicinecard20150601:ValidDateType"/>
 			<choice>
                 <element name="PackageRestriction" type="medicinecard20150601:PackageRestrictionType"/>
                 <element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
