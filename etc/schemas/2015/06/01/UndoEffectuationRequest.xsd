@@ -6,14 +6,14 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="UpdateEffectuation_PrescriptionMedicationAndOrder.xsd"/>
+	<include schemaLocation="UndoEffectuationOnPrescriptionMedicationAndOrder.xsd"/>
 
-	<element name="UpdateEffectuationRequest" type="medicinecard20150601:UpdateEffectuationRequestType"/>
+	<element name="UndoEffectuationRequest" type="medicinecard20150601:UndoEffectuationRequestType"/>
 
-	<complexType name="UpdateEffectuationRequestType">
+	<complexType name="UndoEffectuationRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Service request for updating an existing pharmacy effectutation</documentation>
-			<documentation xml:lang="da-DK">Service kald til at opdatere en eksisterende apoteks ekspedition</documentation>
+			<documentation xml:lang="en-GB">Service request for undoing an existing pharmacy effectutation</documentation>
+			<documentation xml:lang="da-DK">Service kald til at tilbageføre en eksisterende apoteks ekspedition</documentation>
 		</annotation>
 		<sequence>
 			<choice>
@@ -22,7 +22,7 @@
 			</choice>
 			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="PrescriptionMedication" type="medicinecard20150601:UpdateEffectuation_PrescriptionMedicationAndOrderType" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20150601:UndoEffectuationOnPrescriptionMedicationAndOrderType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
