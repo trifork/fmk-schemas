@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="GetPatientOrganisationRelationRequest" type="medicinecard20120601:GetPatientOrganisationRelationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document to get relations between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Request-dokument for at hente relationer mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPatientOrganisationRelationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
+			<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Type" type="medicinecard20120601:PatientOrganisationRelationTypeType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Identifier" type="medicinecard20120601:PatientOrganisationRelationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
