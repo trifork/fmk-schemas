@@ -4,6 +4,7 @@
 	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="IncludeRemovedRelations.xsd"/>
 	<element name="GetPatientOrganisationRelationRequest" type="medicinecard20120601:GetPatientOrganisationRelationRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document to get relations between a patient and an organisation</documentation>
@@ -16,6 +17,7 @@
 			<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="Type" type="medicinecard20120601:PatientOrganisationRelationTypeType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="Identifier" type="medicinecard20120601:PatientOrganisationRelationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="IncludeRemovedRelations" type="medicinecard20120601:IncludeRemovedRelationsType"/>
 		</sequence>
 	</complexType>
 </schema>

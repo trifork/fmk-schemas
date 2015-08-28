@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="PatientOrganisationRelationWithCreatedDate.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationWithDates.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<element name="GetPatientOrganisationRelationWithCreatedDateResponse" type="medicinecard20120601:GetPatientOrganisationRelationWithCreatedDateResponseType">
+	<element name="GetPatientOrganisationRelationWithDatesResponse" type="medicinecard20120601:GetPatientOrganisationRelationWithDatesResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">A set of relations between a patient and an organisation</documentation>
 			<documentation xml:lang="da-DK">Et antal relationer mellem en patient og en organisation</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetPatientOrganisationRelationWithCreatedDateResponseType">
+	<complexType name="GetPatientOrganisationRelationWithDatesResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
-			<element name="Relation" type="medicinecard20120601:PatientOrganisationRelationWithCreatedDateType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Relation" type="medicinecard20120601:PatientOrganisationRelationWithDatesType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

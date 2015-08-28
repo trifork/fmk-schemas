@@ -4,16 +4,17 @@
 	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
 	<include schemaLocation="CreatedDateTime.xsd"/>
-	<element name="PatientOrganisationRelationWithCreatedDate" type="medicinecard20120601:PatientOrganisationRelationWithCreatedDateType">
+	<element name="PatientOrganisationRelationWithDates" type="medicinecard20120601:PatientOrganisationRelationWithDatesType">
 		<annotation>
 			<documentation xml:lang="en-GB">A relation between a patient and an organisation</documentation>
 			<documentation xml:lang="da-DK">Registrering af en relation mellem en patient og en organisation</documentation>
 		</annotation>
 	</element>
-	<complexType name="PatientOrganisationRelationWithCreatedDateType">
+	<complexType name="PatientOrganisationRelationWithDatesType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20120601:PatientOrganisationRelationIdentifierType"/>
 			<element name="CreatedDateTime" type="medicinecard20120601:CreatedDateTimeType"/>
+			<element name="RemovedDateTime" type="medicinecard20120601:CreatedDateTimeType" minOccurs="0"/>
 			<element name="Organisation" type="medicinecard20120601:OrganisationType"/>
 			<element name="Type" type="medicinecard20120601:PatientOrganisationRelationTypeType"/>
 		</sequence>
