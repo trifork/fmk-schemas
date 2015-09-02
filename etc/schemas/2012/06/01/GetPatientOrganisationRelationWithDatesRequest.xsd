@@ -5,13 +5,14 @@
 	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="IncludeRemovedRelations.xsd"/>
-	<element name="GetPatientOrganisationRelationRequest" type="medicinecard20120601:GetPatientOrganisationRelationRequestType">
+	<element name="GetPatientOrganisationRelationWithDatesRequest"
+             type="medicinecard20120601:GetPatientOrganisationRelationWithDatesRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document to get relations between a patient and an organisation</documentation>
 			<documentation xml:lang="da-DK">Request-dokument for at hente relationer mellem en patient og en organisation</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetPatientOrganisationRelationRequestType">
+	<complexType name="GetPatientOrganisationRelationWithDatesRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20120601:PersonIdentifierType"/>
 			<element name="OrganisationIdentifier" type="medicinecard20120601:OrganisationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
