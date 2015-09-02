@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="EffectuationIdentifier.xsd"/>
+    <include schemaLocation="OrderIdentifier.xsd"/>
+    <include schemaLocation="OrderStatus.xsd"/>
+    <include schemaLocation="Organisation.xsd"/>
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+    <include schemaLocation="PrescriptionMedicationStatus.xsd"/>
+
+    <complexType name="PrescriptionMedicationErrorType">
+        <annotation>
+            <documentation xml:lang="en-GB">Error object that refer to a specific error type and description on a given prescription medication, and possible also with reference to a specific order and effectuation.</documentation>
+            <documentation xml:lang="da-DK">Fejl-struktur som refererer til en specifik fejltype og beskrivelse på en given receptordination, og muligvis også med reference til en specifik bestilling og effektuering.</documentation>
+        </annotation>
+        <sequence>
+            <element name="PrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+            <element name="ReasonCode" type="medicinecard20150601:ReasonCodeType"/>
+            <element name="ReasonText" type="medicinecard20150601:ReasonTextType"/>
+            <element name="PrescriptionMedicationStatus" type="medicinecard20150601:PrescriptionMedicationStatusType" minOccurs="0"/>
+            <element name="OrderIdentifier" type="medicinecard20150601:OrderIdentifierType" minOccurs="0"/>
+            <element name="OrderStatus" type="medicinecard20150601:OrderStatusType" minOccurs="0"/>
+            <element name="InProgressAtPharmacy" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
+            <element name="EffectuationIdentifier" type="medicinecard20150601:EffectuationIdentifierType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="ReasonCodeType">
+        <restriction base="long"/>
+    </simpleType>
+
+    <simpleType name="ReasonTextType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="100"/>
+        </restriction>
+    </simpleType>
+
+</schema>
