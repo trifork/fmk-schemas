@@ -3,17 +3,17 @@
 		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="DrugMedication.xsd"/>
+	<include schemaLocation="PrescriptionMedication.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="Patient.xsd"/>
 
-	<complexType name="DrugMedicationsForPersonOrOrganisationType">
+	<complexType name="PrescriptionMedicationsForPersonOrOrganisationType">
 		<sequence>
 			<choice>
 				<element name="Patient" type="medicinecard20150601:PatientType"/>
 				<element name="Organisation" type="medicinecard20150601:OrganisationType"/>
 			</choice>
-			<element name="DrugMedication" type="medicinecard20150601:DrugMedicationType" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20150601:PrescriptionMedicationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

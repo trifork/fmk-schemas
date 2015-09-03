@@ -4,17 +4,13 @@
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="DrugMedicationsForPersonOrOrganisation.xsd"/>
-	<include schemaLocation="AquireOrderForResponseOuter.xsd"/>
+	<include schemaLocation="PrescriptionMedicationsForPersonOrOrganisation.xsd"/>
 
-	<element name="GetToPharmacyResponse" type="medicinecard20150601:GetToPharmacyResponseType"/>
-	<complexType name="GetToPharmacyResponseType">
+	<element name="GetNewOrdersResponse" type="medicinecard20150601:GetNewOrdersResponseType"/>
+	<complexType name="GetNewOrdersResponseType">
 		<sequence>
 			<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
-			<choice maxOccurs="unbounded">
-				<element name="DrugMedications" type="medicinecard20150601:DrugMedicationsForPersonOrOrganisationType"/>
-				<element name="AquireOrder" type="medicinecard20150601:AquireOrderForResponseOuterType"/>
-			</choice>
+			<element name="PrescriptionMedications" type="medicinecard20150601:PrescriptionMedicationsForPersonOrOrganisationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
