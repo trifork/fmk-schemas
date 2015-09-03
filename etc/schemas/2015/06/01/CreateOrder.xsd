@@ -7,14 +7,12 @@
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="DoseDispensing.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
-	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="OrderStatus.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
 
-	<complexType name="UpdateOrderType">
+	<complexType name="CreateOrderType">
 		<sequence>
-			<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
-			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
 			<element name="Status" type="medicinecard20150601:OrderStatusType"/>
 			<element name="DoseDispensing" type="medicinecard20150601:DoseDispensingType" minOccurs="0"/>
