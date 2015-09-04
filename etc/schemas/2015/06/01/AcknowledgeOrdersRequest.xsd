@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+    <element name="AcknowledgeOrdersRequest" type="medicinecard20150601:AcknowledgeOrdersRequestType">
+    </element>
+    <complexType name="AcknowledgeOrdersRequestType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element for a request to acknowledge that new orders have been received by a pharmacy</documentation>
+            <documentation xml:lang="da-DK">Element for en kvittering for at nye bestillinger er blevet modtaget af et apotek</documentation>
+        </annotation>
+        <sequence>
+            <element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+            <element name="Order" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="PrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+                        <element name="OrderIdentifier" type="medicinecard20150601:OrderIdentifierType"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+</schema>
