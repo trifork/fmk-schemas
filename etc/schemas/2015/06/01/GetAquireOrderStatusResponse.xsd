@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="AquireOrderRequested.xsd"/>
-	<include schemaLocation="AquireOrderResponse.xsd"/>
+	<include schemaLocation="AquireOrderReply.xsd"/>
 
 	<element name="GetAquireOrderStatusResponse" type="medicinecard20150601:GetAquireOrderStatusResponseType"/>
 	<complexType name="GetAquireOrderStatusResponseType">
@@ -17,8 +17,8 @@
 			<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
                         <choice minOccurs="0" maxOccurs="unbounded">
                                 <element name="AquireOrderRequested" type="medicinecard20150601:AquireOrderRequestedType"/>
-                                <element name="AquireOrderPendingResponse" type="medicinecard20150601:AquireOrderResponseType"/>
-                                <element name="AquireOrderResponse" type="medicinecard20150601:AquireOrderResponseType"/>
+                                <element name="AquireOrderPendingResponse" type="medicinecard20150601:AquireOrderReplyType"/>
+                                <element name="AquireOrderResponse" type="medicinecard20150601:AquireOrderReplyType"/>
                         </choice>
 
 		</sequence>

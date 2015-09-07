@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="AquireOrder.xsd"/>
+    <element name="AquireOrderRequest" type="medicinecard20150601:AquireOrderRequestType">
+    </element>
+    <complexType name="AquireOrderRequestType">
+        <annotation>
+            <documentation xml:lang="en-GB">Request from one Pharmacy to aquire one or more orders issued to another pharmacy</documentation>
+            <documentation xml:lang="da-DK">Forespørgsel fra et apotek om at overtage en eller flere bestillinger til et andet apotek</documentation>
+        </annotation>
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+            <element name="CreatedBy" type="medicinecard20150601:ModificatorType"/>
+            <element name="AquireOrder" type="medicinecard20150601:AquireOrderType" maxOccurs="unbounded" /> 
+        </sequence>
+    </complexType>
+</schema>
