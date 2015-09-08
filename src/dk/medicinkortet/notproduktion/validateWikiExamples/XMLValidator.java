@@ -83,7 +83,7 @@ public class XMLValidator {
         return result;
     }
 
-    private static Pattern firstElementPattern = Pattern.compile("^\\s*<\\s*([A-Za-z]+)([^>]*)>");
+    private static Pattern firstElementPattern = Pattern.compile("^\\s*<\\s*([A-Za-z]+)([^/>]*)(/?)>");
 
     private String insertNamespace(String xml) {
 
@@ -92,9 +92,10 @@ public class XMLValidator {
             String matchString = m.group(0);
             String elementName = m.group(1);
             String postfix = m.group(2);
+            String endtag = m.group(3);
 
             if (postfix.trim().isEmpty()) {
-                String newElement = "<" + elementName + " xmlns=\"" + assumedNamespace + "\">";
+                String newElement = "<" + elementName + " xmlns=\"" + assumedNamespace + "\" " + endtag + ">";
                 String newXml = newElement + xml.substring(matchString.length());
                 //System.out.println("    Replaced '" + matchString + "' with '" + newElement + "'");
                 return newXml;
