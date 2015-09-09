@@ -11,7 +11,10 @@
 		</annotation>
 		<sequence>
 			<sequence>
-				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<choice>
+					<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+					<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+				</choice>
 				<element name="PrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			</sequence>
 		</sequence>

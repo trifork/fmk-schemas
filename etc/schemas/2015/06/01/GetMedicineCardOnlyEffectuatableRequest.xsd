@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-    <include schemaLocation="IncludeOnlyDoseDispensableContent.xsd"/>
-    <include schemaLocation="PersonIdentifier.xsd"/>
-    <element name="GetMedicineCardOnlyEffectuatableRequest" type="medicinecard20150601:GetMedicineCardOnlyEffectuatableRequestType">
-        <annotation>
-            <documentation xml:lang="en-GB">Element for a request for a medicinecard filtered to prescription medications, that is effectuatable by a pharmacy</documentation>
-            <documentation xml:lang="da-DK">Element for en forespørgsel efter et medicinkort kun indeholdende ordinationer, der kan ekspederes på et apotek</documentation>
-        </annotation>
-    </element>
-    <complexType name="GetMedicineCardOnlyEffectuatableRequestType">
-        <sequence>
-            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-            <element name="IncludeOnlyDoseDispensableContent" type="medicinecard20150601:IncludeOnlyDoseDispensableContentType" minOccurs="0" /> <!-- Ikke boolean, men bare element -->
-        </sequence>
-    </complexType>
+	<include schemaLocation="IncludeOnlyDoseDispensableContent.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="GetMedicineCardOnlyEffectuatableRequest" type="medicinecard20150601:GetMedicineCardOnlyEffectuatableRequestType">
+	</element>
+	<complexType name="GetMedicineCardOnlyEffectuatableRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a medicinecard filtered to prescription medications, that is effectuatable by a pharmacy</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter et medicinkort kun indeholdende ordinationer, der kan ekspederes på et apotek</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="IncludeOnlyDoseDispensableContent" type="medicinecard20150601:IncludeOnlyDoseDispensableContentType" minOccurs="0"/> <!-- Ikke boolean, men bare element -->
+		</sequence>
+	</complexType>
 </schema>

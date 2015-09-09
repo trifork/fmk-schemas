@@ -8,16 +8,20 @@
 	<include schemaLocation="ModifiedDateTime.xsd"/>	
 	<include schemaLocation="NegativeConsentRequest.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PrintType.xsd"/>
 	<element name="GetMedicineCardAsPDFRequest" type="medicinecard20150601:GetMedicineCardAsPDFRequestType">
+	</element>
+	<complexType name="GetMedicineCardAsPDFRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request for a medicinecard returned as PDF</documentation>
 			<documentation xml:lang="da-DK">Element for en forespørgsel efter et medicinkort der returneres som PDF</documentation>
 		</annotation>
-	</element>
-	<complexType name="GetMedicineCardAsPDFRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
 			<element name="Version" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrintType" type="medicinecard20150601:PrintTypeType"/>
 			<element name="DateTime" type="medicinecard20150601:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>

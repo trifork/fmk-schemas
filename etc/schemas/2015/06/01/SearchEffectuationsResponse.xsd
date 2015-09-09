@@ -6,14 +6,17 @@
 	<include schemaLocation="DrugMedicationWithNegativeConsent.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<element name="SearchEffectuationsResponse" type="medicinecard20150601:SearchEffectuationsResponseType">
+	</element>
+	<complexType name="SearchEffectuationsResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response containing effectuations</documentation>
 			<documentation xml:lang="da-DK">Svar indeholdende effektueringer</documentation>
 		</annotation>
-	</element>
-	<complexType name="SearchEffectuationsResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
 			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20150601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="medicinecard20150601:EffectuationsOnDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrescriptionMedication" type="medicinecard20150601:EffectuationsOnPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>

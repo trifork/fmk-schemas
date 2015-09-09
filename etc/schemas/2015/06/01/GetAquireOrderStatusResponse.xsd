@@ -14,13 +14,13 @@
 	            <documentation xml:lang="da-DK">Svar element for en forespørgsel efter alle indkommende og udgående anmodninger om at overtage en bestilling fra et andet apotek</documentation>
 	        </annotation>
 		<sequence>
-			<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
-                        <choice minOccurs="0" maxOccurs="unbounded">
-                                <element name="AquireOrderRequested" type="medicinecard20150601:AquireOrderRequestedType"/>
-                                <element name="AquireOrderPendingReply" type="medicinecard20150601:AquireOrderReplyType"/>
-                                <element name="AquireOrderReply" type="medicinecard20150601:AquireOrderReplyType"/>
-                        </choice>
-
-		</sequence>
+			<element name="OrganisationIdentifier"
+				type="medicinecard20150601:OrganisationIdentifierType" />
+			<choice minOccurs="0" maxOccurs="unbounded">
+				<element name="AquireOrderRequested" type="medicinecard20150601:AquireOrderRequestedType" />
+				<element name="AquireOrderPendingReply" type="medicinecard20150601:AquireOrderReplyType" />
+				<element name="AquireOrderReply" type="medicinecard20150601:AquireOrderReplyType" />
+			</choice>
+	</sequence>
 	</complexType>
 </schema>

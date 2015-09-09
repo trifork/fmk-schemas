@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PrescriptionMedication.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="InvalidPrescriptionMedication.xsd"/>	
 	<element name="GetPrescriptionMedicationResponse" type="medicinecard20150601:GetPrescriptionMedicationResponseType">
 		<annotation>
@@ -11,7 +12,10 @@
 	</element>
 	<complexType name="GetPrescriptionMedicationResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
 			<element name="PrescriptionMedication" type="medicinecard20150601:PrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidPrescriptionMedication" type="medicinecard20150601:InvalidPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

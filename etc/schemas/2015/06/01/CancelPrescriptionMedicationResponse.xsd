@@ -14,7 +14,10 @@
 	<complexType name="CancelPrescriptionMedicationResponseType">
 		<sequence>
 			<sequence>
-				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<choice>
+					<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+					<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+				</choice>
 				<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
 				<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
 				<element name="PrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>

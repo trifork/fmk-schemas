@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
 	<element name="UnmarkPrescriptionMedicationDeprecatedResponse" type="medicinecard20150601:UnmarkPrescriptionMedicationDeprecatedResponseType">
@@ -12,7 +13,10 @@
 	<complexType name="UnmarkPrescriptionMedicationDeprecatedResponseType">
 		<sequence>
 			<sequence>
-				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<choice>
+					<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+					<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+				</choice>
 				<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
 				<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
 			</sequence>
