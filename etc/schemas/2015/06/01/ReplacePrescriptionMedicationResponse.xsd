@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<element name="ReplacePrescriptionMedicationResponse" type="medicinecard20150601:ReplacePrescriptionMedicationResponseType">
+	</element>
+	<complexType name="ReplacePrescriptionMedicationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response from replacing prescription medications</documentation>
+			<documentation xml:lang="da-DK">Svar på erstatning af receptordination</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="PrescriptionMedication" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="NewPrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+						<element name="ReplacedPrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
