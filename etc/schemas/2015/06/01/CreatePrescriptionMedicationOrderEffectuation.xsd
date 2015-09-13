@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="DosageForRequest.xsd"/>
 	<include schemaLocation="DoseDispensedRestriction.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
-	<include schemaLocation="CreateOrder.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>	
+	<include schemaLocation="CreateOrderAndEffectuation.xsd"/>
 	<include schemaLocation="PackageRestriction.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="SupplementaryInformation.xsd"/>
 	<include schemaLocation="SystemName.xsd"/>
-	<include schemaLocation="InvalidationReasonText.xsd"/>
-
-	<complexType name="ReplacePrescriptionMedicationType">
+	<include schemaLocation="ValidDate.xsd"/>
+	<element name="CreatePrescriptionMedicationOrderEffectuation" type="medicinecard20150601:CreatePrescriptionMedicationOrderEffectuationType">
+	</element>
+	<complexType name="CreatePrescriptionMedicationOrderEffectuationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for replacing a PrescriptionMedication with a new one</documentation>
-			<documentation xml:lang="da-DK">Element til at angive at en receptordination skal erstattes af en ny</documentation>
+			<documentation xml:lang="en-GB">Request document for creating a PrescriptionMedication together with an effectuation</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til at oprette en receptordination med en tilhørende udlevering</documentation>
 		</annotation>
 		<sequence>
-			<element name="ReplacePrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>			
 			<element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
 			<element name="SystemName" type="medicinecard20150601:SystemNameType"/>
             <element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
@@ -33,8 +36,7 @@
             <element name="Dosage" type="medicinecard20150601:DosageForRequestType" minOccurs="0"/>
 			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType"/>
 			<element name="SupplementaryInformation" type="medicinecard20150601:SupplementaryInformationType" minOccurs="0"/>
-            <element name="Order" type="medicinecard20150601:CreateOrderType" minOccurs="0"/>
-            <element name="ReasonText" type="medicinecard20150601:InvalidationReasonTextType" minOccurs="0"/>
+            <element name="Order" type="medicinecard20150601:CreateOrderAndEffectuationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
