@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="CreatedWithoutPerson.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
+	<include schemaLocation="EffectuationDateTime.xsd"/>
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="EffectuationMethod.xsd"/>
+	<include schemaLocation="PackageDispensed.xsd"/>
+
+	<complexType name="CreatePharmacyEffectuationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Create an effectuation on the prescription medication. There is either effectuated one or more packages or effectuated via Dose Dispensing.</documentation>
+			<documentation xml:lang="da-DK">Opret en effektuering (udlevering) på receptordinationen. Der er enten effektueret en eller flere pakninger eller effektueret via Dosisdispensing.</documentation>
+		</annotation>
+		<sequence>
+			<element name="DateTime" type="medicinecard20150601:EffectuationDateTimeType"/>
+			<choice>
+				<element name="DoseDispensed" type="medicinecard20150601:DoseDispensedType"/>
+				<element name="PackageDispensed" type="medicinecard20150601:PackageDispensedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
