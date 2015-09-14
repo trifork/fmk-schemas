@@ -586,7 +586,7 @@
         </jar>
     </target>
 
-    <target name="validateDokuWikiXML" depends="organize-schemas">
+    <target name="doValidateDokuWikiXML">
         <java classname="dk.medicinkortet.notproduktion.validateWikiExamples.WikiSitemapValidator" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
             <classpath>
                 <path location="${build.dir}"/>
@@ -597,6 +597,8 @@
             <arg value="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>                       <!-- Namespace for 1.4.6 which will be added to the XML snippets -->
         </java>
     </target>
+
+    <target name="validateDokuWikiXML" depends="organize-schemas, doValidateDokuWikiXML"/>
 
     <target name="validateDokuWikiXML-1-4-4" depends="organize-schemas">
         <java classname="dk.medicinkortet.notproduktion.validateWikiExamples.WikiSitemapValidator" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
