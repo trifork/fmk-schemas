@@ -388,18 +388,27 @@
              basedir="${standard.target.dir}"
              includes="schemas/**, wsdl/**" />
 	</target>
-
+	
     <target name="medicinecard_dist_zips" depends="organize-schemas, organize-schemas_idws">
 
         <mkdir dir="${target.dir}/wsdl"/>
+
+        <!-- Dist collection for Advis -->
+        <property name="advis_dist_file" value="${target.dir}/wsdl/Advis-collection-dist.zip"/>
+           <zip destfile="${advis_dist_file}"
+                 description="Dist collection for Advis"
+                 update="false"
+                 basedir="${standard.target.dir}/wsdl" includes="Advis*-collection.zip"
+            />
+
         <!-- Dist collection for MedicineCard 2012_06_01 -->
-        <property name="medicinecard_2012_06_01_dist_file" value="${target.dir}/wsdl/MedicineCard_2012_06_01-collection-dist.zip"/>
+    	<property name="medicinecard_2012_06_01_dist_file" value="${target.dir}/wsdl/MedicineCard_2012_06_01-collection-dist.zip"/>
         <zip destfile="${medicinecard_2012_06_01_dist_file}"
              description="Dist collection for MedicineCard 2012_06_01 (1.4.0)"
              update="false"
              basedir="${standard.target.dir}/wsdl" includes="MedicineCard*_2012_06_01-collection.zip"
         />
-        <zip destfile="${medicinecard_2012_06_01_dist_file}"
+    	<zip destfile="${medicinecard_2012_06_01_dist_file}"
              description="Dist collection for MedicineCard 2012_06_01 (1.4.0)"
              update="true"
              basedir="${idws.target.dir}/wsdl" includes="MedicineCard*_2012_06_01-collection.zip"
