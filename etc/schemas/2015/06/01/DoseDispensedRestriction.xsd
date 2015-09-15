@@ -2,7 +2,13 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <include schemaLocation="PackageNumber.xsd"/>
 
+	<element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
+
 	<complexType name="DoseDispensedRestrictionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indication by the doctor that a prescription medication, should be effectuated dosedispensed</documentation>
+			<documentation xml:lang="da-DK">Indikation fra lægen om at recept ordinationen, skal udleveres dosisdispenseret</documentation>
+		</annotation>
         <sequence>
             <element name="PackageNumber" type="medicinecard20150601:PackageNumberType" minOccurs="0"/>
         </sequence>
