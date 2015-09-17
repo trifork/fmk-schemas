@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" 
-		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
-		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
-		elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="CreateSubstitutedDrug.xsd"/>
 	<include schemaLocation="EffectuationDateTime.xsd"/>
-	<include schemaLocation="PackageNumber.xsd"/>
-	<include schemaLocation="CreatePackageSize.xsd"/>
-	<include schemaLocation="PackageQuantity.xsd"/>
-	<include schemaLocation="DoseDispensedQuantity.xsd"/>
-	<include schemaLocation="LabelText.xsd"/>
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
+	<include schemaLocation="PackageDispensed.xsd"/>
 
 	<complexType name="UpdateEffectuationType">
 		<sequence>
@@ -19,31 +12,8 @@
 			<element name="DateTime" type="medicinecard20150601:EffectuationDateTimeType"/>
 			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<choice>
-				<!-- A drug was effectuated, one or more packages was given to the patient -->
-				<element name="PackageDispensed">
-					<complexType>
-						<sequence>
-							<element name="PackageQuantity" type="medicinecard20150601:PackageQuantityType"/>
-							<element name="PackageNumber" type="medicinecard20150601:PackageNumberType"/>
-							<element name="PackageSize" type="medicinecard20150601:CreatePackageSizeType"/>
-							<element name="SubstitutedDrug" type="medicinecard20150601:CreateSubstitutedDrugType" minOccurs="0"/>
-							<element name="LabelText" type="medicinecard20150601:LabelTextType" minOccurs="0"/>
-						</sequence>
-					</complexType>
-				</element>
-				<!-- A drug was effectuated using dose dispensing -->
-				<element name="DoseDispensed">
-					<complexType>
-						<sequence>
-							<element name="DoseDispensedQuantity" type="medicinecard20150601:DoseDispensedQuantityType"/>
-							<element name="SubstitutedDrug" type="medicinecard20150601:CreateSubstitutedDrugType" minOccurs="0"/>
-						</sequence>
-					</complexType>
-				</element>
-				<!-- The effectuation was returned or the order wasn't fulfilled in some other way -->
-				<element name="Empty">
-					<complexType/>
-				</element>
+				<element name="DoseDispensed" type="medicinecard20150601:DoseDispensedType"/>
+				<element name="PackageDispensed" type="medicinecard20150601:PackageDispensedType"/>
 			</choice>
 		</sequence>
 	</complexType>
