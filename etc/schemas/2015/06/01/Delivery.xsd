@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DeliveryPriority.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="StreetName.xsd"/>
 	<include schemaLocation="PseudoAddress.xsd"/>
 	<include schemaLocation="PostCode.xsd"/>
 	<include schemaLocation="ContactName.xsd"/>
-    <include schemaLocation="DeliverySite.xsd"/>
     <include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
     <include schemaLocation="StatusInformation.xsd"/>
     <include schemaLocation="TrackingIdentifier.xsd"/>
@@ -28,7 +28,7 @@
                     <element name="PostCode" type="medicinecard20150601:PostCodeType" minOccurs="0"/>
                     <element name="ContactName" type="medicinecard20150601:ContactNameType" minOccurs="0"/>
                 </sequence>
-                <element name="DeliverySite" type="medicinecard20150601:DeliverySiteType" minOccurs="0"/>
+                <element name="DeliverySite" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
             </choice>
             <element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0"/>
             <element name="StatusInformation" type="medicinecard20150601:StatusInformationType" minOccurs="0"/>
