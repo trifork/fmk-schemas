@@ -12,9 +12,9 @@
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="SupplementaryInformation.xsd"/>
 	<include schemaLocation="SystemName.xsd"/>
-	<include schemaLocation="ValidDate.xsd"/>
-	<element name="CreatePrescriptionMedicationOrderEffectuation" type="medicinecard20150601:CreatePrescriptionMedicationOrderEffectuationType">
-	</element>
+	<include schemaLocation="ValidFromDate.xsd"/>
+	<include schemaLocation="ValidToDate.xsd"/>
+
 	<complexType name="CreatePrescriptionMedicationOrderEffectuationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document for creating a PrescriptionMedication together with an effectuation</documentation>
@@ -26,8 +26,8 @@
 			<element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
 			<element name="SystemName" type="medicinecard20150601:SystemNameType"/>
             <element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
-            <element name="ValidFromDate" type="medicinecard20150601:ValidDateType" minOccurs="0"/>
-            <element name="ValidToDate" type="medicinecard20150601:ValidDateType"/>
+            <element name="ValidFromDate" type="medicinecard20150601:ValidFromDateType" minOccurs="0"/>
+            <element name="ValidToDate" type="medicinecard20150601:ValidToDateType" minOccurs="0"/>
             <choice>
                 <element name="PackageRestriction" type="medicinecard20150601:PackageRestrictionType"/>
                 <element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
