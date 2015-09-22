@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="MedicineCardVersion.xsd"/>
+    <include schemaLocation="RetractConsentDrugMedication.xsd"/>
+	<element name="RetractConsentRequest" type="medicinecard20150601:RetractConsentRequestType">
+		<annotation>
+            <documentation xml:lang="en-GB">Request for marking one or more drugmedications with negative consent</documentation>
+            <documentation xml:lang="da-DK">Request til at markere en eller flere lægemiddelordinationer som privatmarkeret</documentation>
+		</annotation>
+	</element>
+	<complexType name="RetractConsentRequestType">
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+            <element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+            <element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
+            <element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+            <element name="DrugMedication" type="medicinecard20150601:RetractConsentDrugMedicationType" maxOccurs="unbounded"/>
+        </sequence>
+	</complexType>
+</schema>

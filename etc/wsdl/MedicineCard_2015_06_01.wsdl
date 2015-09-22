@@ -90,6 +90,10 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/PrescriptionReplicationStatus.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/RetractConsentRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/RetractConsentResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/SearchEffectuationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/SearchEffectuationsResponse.xsd"/>
 
@@ -109,6 +113,10 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/UnpauseDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/UnpauseDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UnretractConsentRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UnretractConsentResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/UnwithdrawDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/UnwithdrawDrugMedicationResponse.xsd"/>
@@ -372,6 +380,21 @@
         <wsdl:part name="CancelPrescriptionMedicationResponse" element="medicinecard20150601:CancelPrescriptionMedicationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RetractConsentRequest_2015_06_01">
+        <wsdl:part name="RetractConsentRequest" element="medicinecard20150601:RetractConsentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RetractConsentResponse_2015_06_01">
+        <wsdl:part name="RetractConsentResponse" element="medicinecard20150601:RetractConsentResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnretractConsentRequest_2015_06_01">
+        <wsdl:part name="UnretractConsentRequest" element="medicinecard20150601:UnretractConsentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UnretractConsentResponse_2015_06_01">
+        <wsdl:part name="UnretractConsentResponse" element="medicinecard20150601:UnretractConsentResponse"/>
+    </wsdl:message>
+
+
     <wsdl:message name="DGWSFault">
         <wsdl:part name="fault" element="medcom:FaultCode"/>
     </wsdl:message>
@@ -599,6 +622,19 @@
             <wsdl:output name="CancelPrescriptionMedicationResponse_2015_06_01" message="tns:CancelPrescriptionMedicationResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
+
+        <wsdl:operation name="RetractConsent_2015_06_01">
+            <wsdl:input name="RetractConsentRequest_2015_06_01" message="tns:RetractConsentRequest_2015_06_01"/>
+            <wsdl:output name="RetractConsentResponse_2015_06_01" message="tns:RetractConsentResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnretractConsent_2015_06_01">
+            <wsdl:input name="UnretractConsentRequest_2015_06_01" message="tns:UnretractConsentRequest_2015_06_01"/>
+            <wsdl:output name="UnretractConsentResponse_2015_06_01" message="tns:UnretractConsentResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
 
     </wsdl:portType>
 
@@ -1210,7 +1246,50 @@
                 <soap:fault name="DGWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
+
+        <wsdl:operation name="RetractConsent_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#RetractConsent"
+                            style="document"/>
+            <wsdl:input name="RetractConsentRequest_2015_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RetractConsentResponse_2015_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnretractConsent_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UnretractConsent"
+                            style="document"/>
+            <wsdl:input name="UnretractConsentRequest_2015_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnretractConsentResponse_2015_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+
     </wsdl:binding>
+
 
     <wsdl:service name="MedicineCard">
         <wsdl:port name="MedicineCardPort" binding="tns:MedicineCardBinding">
