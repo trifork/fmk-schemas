@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<simpleType name="EffectuationInvalidationReasonType">
+		<annotation>
+			<documentation xml:lang="en-GB">Reason that an effectuation has been ivalidated</documentation>
+			<documentation xml:lang="da-DK">Årsag til at en effektuering er ugyldig</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20150601:EffectuationInvalidationReasonPredefinedType medicinecard20150601:EffectuationInvalidationReasonUndefinedType"/>
+	</simpleType>
+	<simpleType name="EffectuationInvalidationReasonPredefinedType">
+		<restriction base="medicinecard20150601:EffectuationInvalidationReasonUndefinedType">
+			<enumeration value="Slettet"/>
+			<enumeration value="Tilbageført"/>
+			<enumeration value="Administrativt slettet"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="EffectuationInvalidationReasonUndefinedType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="25"/>
+		</restriction>
+	</simpleType>
+</schema>
