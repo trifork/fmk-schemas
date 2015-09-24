@@ -3,13 +3,13 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
-	<element name="UnretractConsentDrugMedication" type="medicinecard20150601:UnretractConsentDrugMedicationType">
+	<element name="RemoveConsentDrugMedication" type="medicinecard20150601:RemoveConsentDrugMedicationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for a request removing negative consent on a drugmedication</documentation>
-			<documentation xml:lang="da-DK">Element for en forespørgsel der fjerner privarmarkering af en lægemiddelordination</documentation>
+			<documentation xml:lang="en-GB">Element for a request to mark a drugmedication with negative consent</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel der markerer en lægemiddelordination som privatmarkeret</documentation>
 		</annotation>
 	</element>
-	<complexType name="UnretractConsentDrugMedicationType">
+	<complexType name="RemoveConsentDrugMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
 			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>

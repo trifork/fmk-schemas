@@ -4,13 +4,13 @@
     <include schemaLocation="MedicineCardVersion.xsd"/>
     <include schemaLocation="VersionMismatchWarning.xsd"/>
     <include schemaLocation="UpdatedDrugMedication.xsd"/>
-	<element name="RetractConsentResponse" type="medicinecard20150601:RetractConsentResponseType">
+	<element name="GiveConsentResponse" type="medicinecard20150601:GiveConsentResponseType">
 		<annotation>
-            <documentation xml:lang="en-GB">Response for marking one or more drugmedications with negative consent</documentation>
-            <documentation xml:lang="da-DK">Svar på at markere en eller flere lægemiddelordinationer som privatmarkeret</documentation>
+            <documentation xml:lang="en-GB">Response for removing negative consent on one or more drugmedications</documentation>
+            <documentation xml:lang="da-DK">Svar på at fjerne privarmarkering af en eller flere lægemiddelordinationer</documentation>
 		</annotation>
 	</element>
-	<complexType name="RetractConsentResponseType">
+	<complexType name="GiveConsentResponseType">
 		<sequence>
 			<sequence>
                 <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
