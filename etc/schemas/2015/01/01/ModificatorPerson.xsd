@@ -2,7 +2,12 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified">
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="PersonName.xsd"/>
-	<element name="ModificatorPerson" type="medicinecard20150101:ModificatorPersonType"/>
+	<element name="ModificatorPerson" type="medicinecard20150101:ModificatorPersonType">
+		<annotation>
+			<documentation xml:lang="en-GB">A FMK user that is not an authorised healthchare professional</documentation>
+			<documentation xml:lang="da-DK">En FMK aktør, der ikke er en autoriseret sundhedsperson</documentation>
+		</annotation>
+	</element>
 	<complexType name="ModificatorPersonType">
 		<sequence>
 			<element name="Name" type="medicinecard20150101:PersonNameType"/>

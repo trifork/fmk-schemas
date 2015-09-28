@@ -3,7 +3,12 @@
 	<include schemaLocation="PersonName.xsd"/>
 	<include schemaLocation="BirthDate.xsd"/>
 	<include schemaLocation="Gender.xsd"/>
-	<element name="SimplePersonWithoutCPR" type="medicinecard20150101:SimplePersonWithoutCPRType"/>
+	<element name="SimplePersonWithoutCPR" type="medicinecard20150101:SimplePersonWithoutCPRType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a person without known CPR</documentation>
+			<documentation xml:lang="da-DK">Oplysninger om en person uden kendt CPR</documentation>
+		</annotation>
+	</element>
 	<complexType name="SimplePersonWithoutCPRType">
 		<sequence>
 			<element name="Name" type="medicinecard20150101:PersonNameType"/>
