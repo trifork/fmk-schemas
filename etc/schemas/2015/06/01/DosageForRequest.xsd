@@ -13,7 +13,10 @@
 	<complexType name="DosageForRequestType">
 		<sequence>
 			<choice>
-				<element name="Structures" type="medicinecard20150601:DosageStructuresForRequestType"/>
+				<sequence>
+					<element name="StructuresFixed" type="medicinecard20150601:DosageStructuresForRequestType" minOccurs="0" maxOccurs="1"/>
+					<element name="StructuresAccordingToNeed" type="medicinecard20150601:DosageStructuresForRequestType" minOccurs="0" maxOccurs="1"/>
+				</sequence>
 				<element name="FreeText" type="medicinecard20150601:DosageFreeTextForRequestType"/>
 				<element name="AdministrationAccordingToSchemaInLocalSystem" type="medicinecard20150601:AdministrationAccordingToSchemaInLocalSystemForRequestType"/>
 			</choice>
