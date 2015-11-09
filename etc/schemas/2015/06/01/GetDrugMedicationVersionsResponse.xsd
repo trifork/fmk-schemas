@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersionInfo.xsd"/>
 	<element name="GetDrugMedicationVersionsResponse" type="medicinecard20150601:GetDrugMedicationVersionsResponseType">
 		<annotation>
@@ -11,6 +12,7 @@
 	<complexType name="GetDrugMedicationVersionsResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
             <element name="DrugMedicationVersionInfo" type="medicinecard20150601:DrugMedicationVersionInfoType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
