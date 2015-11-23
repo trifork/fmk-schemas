@@ -131,6 +131,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/WithdrawDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/WithdrawDrugMedicationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/RemoveConsentRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/RemoveConsentResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/OnBehalfOf.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/PrescriptionReplicationStatus.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/TimingList.xsd"/>
@@ -395,6 +398,20 @@
         <wsdl:part name="CancelPrescriptionMedicationResponse" element="medicinecard20150601:CancelPrescriptionMedicationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RemoveConsentRequest_2015_06_01">
+        <wsdl:part name="RemoveConsentRequest" element="medicinecard20150601:RemoveConsentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RemoveConsentResponse_2015_06_01">
+        <wsdl:part name="RemoveConsentResponse" element="medicinecard20150601:RemoveConsentResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GiveConsentRequest_2015_06_01">
+        <wsdl:part name="GiveConsentRequest" element="medicinecard20150601:GiveConsentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GiveConsentResponse_2015_06_01">
+        <wsdl:part name="GiveConsentResponse" element="medicinecard20150601:GiveConsentResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="IDWSFault">
         <wsdl:part name="fault" element="sbf:IDWSFault" />
     </wsdl:message>
@@ -623,6 +640,17 @@
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
+        <wsdl:operation name="RemoveConsent_2015_06_01">
+            <wsdl:input name="RemoveConsentRequest_2015_06_01" message="tns:RemoveConsentRequest_2015_06_01"/>
+            <wsdl:output name="RemoveConsentResponse_2015_06_01" message="tns:RemoveConsentResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GiveConsent_2015_06_01">
+            <wsdl:input name="GiveConsentRequest_2015_06_01" message="tns:GiveConsentRequest_2015_06_01"/>
+            <wsdl:output name="GiveConsentResponse_2015_06_01" message="tns:GiveConsentResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
     </wsdl:portType>
 
 
@@ -1472,6 +1500,64 @@
                 <soap:fault name="IDWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
+
+        <wsdl:operation name="RemoveConsent_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#RemoveConsent"
+                            style="document"/>
+            <wsdl:input name="RemoveConsentRequest_2015_06_01">
+              <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+              <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+              <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+              <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+              <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+              <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+              <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+              <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RemoveConsentResponse_2015_06_01">
+              <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+              <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+              <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+              <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+              <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+              <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+              <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
+              <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GiveConsent_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GiveConsent"
+                            style="document"/>
+            <wsdl:input name="GiveConsentRequest_2015_06_01">
+              <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+              <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+              <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+              <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+              <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+              <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+              <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+              <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GiveConsentResponse_2015_06_01">
+              <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+              <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+              <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+              <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+              <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+              <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+              <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
+              <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+
     </wsdl:binding>
 
     <wsdl:service name="MedicineCard">
