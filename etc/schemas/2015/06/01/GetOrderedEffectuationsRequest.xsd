@@ -14,40 +14,26 @@
     </element>
     <complexType name="GetOrderedEffectuationsRequestType">
         <sequence>
-            <choice>
-                <sequence>
-                    <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-                    <element name="FromDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
-                    <element name="ToDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
-                    <element name="IncludeOrderedPrescriptionMedications" type="medicinecard20150601:IncludeOrderedPrescriptionMedicationsType" minOccurs="0"/>
-                    <element name="IncludeOrderedEffectuations" type="medicinecard20150601:IncludeOrderedEffectuationsType" minOccurs="0"/>
-                    <choice minOccurs="0">
-                        <element name="IncludeOnly">
-                            <complexType>
-                                <sequence>
-                                    <element name="Identifier" type="medicinecard20150601:OrderedEffectuationIdentifierType" maxOccurs="unbounded"/>
-                                </sequence>
-                            </complexType>
-                        </element>
-                        <element name="Exclude">
-                            <complexType>
-                                <sequence>
-                                    <element name="Identifier" type="medicinecard20150601:OrderedEffectuationIdentifierType" maxOccurs="unbounded"/>
-                                </sequence>
-                            </complexType>
-                        </element>
-                    </choice>
-                </sequence>
-                <sequence>
-                    <choice>
-                        <element name="OrderingOrganisation" type="medicinecard20150601:OrganisationType"/>
-                        <element name="PrescribingOrganisation" type="medicinecard20150601:OrganisationType"/>
-                    </choice>
-                    <element name="FromDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
-                    <element name="ToDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
-                    <element name="IncludeOrderedPrescriptionMedications" type="medicinecard20150601:IncludeOrderedPrescriptionMedicationsType" minOccurs="0"/>
-                    <element name="IncludeOrderedEffectuations" type="medicinecard20150601:IncludeOrderedEffectuationsType" minOccurs="0"/>
-                </sequence>
+            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+            <element name="FromDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
+            <element name="ToDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
+            <element name="IncludeOrderedPrescriptionMedications" type="medicinecard20150601:IncludeOrderedPrescriptionMedicationsType" minOccurs="0"/>
+            <element name="IncludeOrderedEffectuations" type="medicinecard20150601:IncludeOrderedEffectuationsType" minOccurs="0"/>
+            <choice minOccurs="0">
+                <element name="IncludeOnly">
+                    <complexType>
+                        <sequence>
+                            <element name="Identifier" type="medicinecard20150601:OrderedEffectuationIdentifierType" maxOccurs="unbounded"/>
+                        </sequence>
+                    </complexType>
+                </element>
+                <element name="Exclude">
+                    <complexType>
+                        <sequence>
+                            <element name="Identifier" type="medicinecard20150601:OrderedEffectuationIdentifierType" maxOccurs="unbounded"/>
+                        </sequence>
+                    </complexType>
+                </element>
             </choice>
         </sequence>
     </complexType>
