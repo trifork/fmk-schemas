@@ -15,11 +15,11 @@
 	<complexType name="DosageForRequestType">
 		<sequence>
 			<choice>
-				<choice>
-					<element name="UnitText" type="medicinecard20150601:DosageQuantityUnitTextType"/>
-					<element name="UnitTexts" type="medicinecard20150601:DosageQuantityUnitTextsType"/>
-				</choice>
 				<sequence>
+					<choice>
+						<element name="UnitText" type="medicinecard20150601:DosageQuantityUnitTextType"/>
+						<element name="UnitTexts" type="medicinecard20150601:DosageQuantityUnitTextsType"/>
+					</choice>
 					<element name="StructuresFixed" type="medicinecard20150601:DosageStructuresForRequestType" minOccurs="0" maxOccurs="1"/>
 					<element name="StructuresAccordingToNeed" type="medicinecard20150601:DosageStructuresForRequestType" minOccurs="0" maxOccurs="1"/>
 				</sequence>
