@@ -4,6 +4,8 @@
 	<include schemaLocation="DosageStructuresForRequest.xsd"/>
 	<include schemaLocation="DosageType.xsd"/>
 	<include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForRequest.xsd"/>
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
 	<element name="DosageForRequest" type="medicinecard20150601:DosageForRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">How often and when the drug should be given</documentation>
@@ -13,6 +15,10 @@
 	<complexType name="DosageForRequestType">
 		<sequence>
 			<choice>
+				<choice>
+					<element name="UnitText" type="medicinecard20150601:DosageQuantityUnitTextType"/>
+					<element name="UnitTexts" type="medicinecard20150601:DosageQuantityUnitTextsType"/>
+				</choice>
 				<sequence>
 					<element name="StructuresFixed" type="medicinecard20150601:DosageStructuresForRequestType" minOccurs="0" maxOccurs="1"/>
 					<element name="StructuresAccordingToNeed" type="medicinecard20150601:DosageStructuresForRequestType" minOccurs="0" maxOccurs="1"/>
