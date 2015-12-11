@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150101E1="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+        xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+    <import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+    <element name="RemoveConsentResponse" type="medicinecard20150101E1:RemoveConsentResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Response for removing negative consent on one or more drugmedications</documentation>
+            <documentation xml:lang="da-DK">Svar på at fjerne privarmarkering af en eller flere lægemiddelordinationer</documentation>
+        </annotation>
+    </element>
+    <complexType name="RemoveConsentResponseType">
+        <sequence>
+            <sequence>
+                <element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+                <element name="MedicineCardVersion" type="medicinecard20150101:MedicineCardVersionType"/>
+                <element name="VersionMismatchWarning" type="medicinecard20150101:VersionMismatchWarningType" minOccurs="0"/>
+                <element name="DrugMedication" type="medicinecard20150101:UpdatedDrugMedicationType" maxOccurs="unbounded"/>
+            </sequence>
+        </sequence>
+    </complexType>
+</schema>

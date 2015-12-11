@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+        xmlns:medicinecard20150101E1="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+    <import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+    <include schemaLocation="GiveConsentDrugMedication.xsd"/>
+    <element name="GiveConsentRequest" type="medicinecard20150101E1:GiveConsentRequestType">
+		<annotation>
+            <documentation xml:lang="en-GB">Request for removing negative consent on one or more drugmedications</documentation>
+            <documentation xml:lang="da-DK">Request til at fjerne privarmarkering af en eller flere lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GiveConsentRequestType">
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+            <element name="MedicineCardVersion" type="medicinecard20150101:MedicineCardVersionType"/>
+            <element name="ModifiedBy" type="medicinecard20150101:ModificatorType"/>
+            <element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+            <element name="DrugMedication" type="medicinecard20150101E1:GiveConsentDrugMedicationType" maxOccurs="unbounded"/>
+        </sequence>
+	</complexType>
+</schema>
