@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101E1="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<element name="GetPatientOrganisationRelationRequest" type="medicinecard20150101E1:GetPatientOrganisationRelationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document to get relations between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Request-dokument for at hente relationer mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPatientOrganisationRelationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+			<choice>
+				<element name="Identifier" type="medicinecard20150101:PatientOrganisationRelationIdentifierType" minOccurs="1" maxOccurs="unbounded"/>
+				<sequence>
+					<element name="OrganisationIdentifier" type="medicinecard20150101:OrganisationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="Type" type="medicinecard20150101:PatientOrganisationRelationTypeType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</choice>
+			<element name="IncludeRemovedRelations" type="medicinecard20150101:IncludeRemovedRelationsType"/>
+		</sequence>
+	</complexType>
+</schema>

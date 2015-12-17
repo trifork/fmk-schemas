@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101E1="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<element name="MedicineCardVersionListItem" type="medicinecard20150101E1:MedicineCardVersionListItemType">
+		<annotation>
+			<documentation xml:lang="en-GB">Medicine card version information for a patient.</documentation>
+			<documentation xml:lang="da-DK">Medicinkortinformation for en patient.</documentation>
+		</annotation>
+	</element>
+	<complexType name="MedicineCardVersionListItemType">
+		<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+		<element name="MedicineCardVersion" type="medicinecard20150101:MedicineCardVersionType"/>
+		<element name="MedicineCardInformationChange" type="medicinecard20150101:MedicineCardInformationChangeType" minOccurs="0" maxOccurs="unbounded"/>
+	</complexType>
+</schema>

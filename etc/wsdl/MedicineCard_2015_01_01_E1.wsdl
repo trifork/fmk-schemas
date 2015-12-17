@@ -64,9 +64,6 @@
             <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardAsPDFRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardAsPDFResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardVersionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/GetMedicineCardVersionResponse.xsd"/>
 
@@ -76,7 +73,6 @@
             <xs:include schemaLocation="../schemas/2015/01/01/GetPermissionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/GetPermissionsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/GetPrescriptionMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/GetPrescriptionMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/MarkPrescriptionMedicationDeprecatedRequest.xsd"/>
@@ -122,10 +118,18 @@
             <xs:include schemaLocation="../schemas/2015/01/01/WithdrawDrugMedicationResponse.xsd"/>
         </xs:schema>
 
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
-                   elementFormDefault="qualified">
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1" elementFormDefault="qualified">
+            <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardVersionListRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardVersionListResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E1/GetPrescriptionMedicationRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/E1/GiveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E1/GiveConsentResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/E1/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E1/RemoveConsentResponse.xsd"/>
 
@@ -157,11 +161,11 @@
         <wsdl:part name="OnBehalfOfHeader" element="medicinecard20150101:OnBehalfOf"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardRequest_2015_01_01">
-        <wsdl:part name="GetMedicineCardRequest" element="medicinecard20150101:GetMedicineCardRequest"/>
+    <wsdl:message name="GetMedicineCardRequest_2015_01_01_E1">
+        <wsdl:part name="GetMedicineCardRequest" element="medicinecard20150101E1:GetMedicineCardRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetMedicineCardResponse_2015_01_01">
-        <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150101:GetMedicineCardResponse"/>
+    <wsdl:message name="GetMedicineCardResponse_2015_01_01_E1">
+        <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150101E1:GetMedicineCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardAsPDFRequest_2015_01_01">
@@ -184,6 +188,13 @@
     <wsdl:message name="GetMedicineCardVersionsResponse_2015_01_01">
         <wsdl:part name="GetMedicineCardVersionsResponse"
                    element="medicinecard20150101:GetMedicineCardVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionListRequest_2015_01_01_E1">
+        <wsdl:part name="GetMedicineCardVersionListRequest" element="medicinecard20150101E1:GetMedicineCardVersionListRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardVersionListResponse_2015_01_01_E1">
+        <wsdl:part name="GetMedicineCardVersionListResponse" element="medicinecard20150101E1:GetMedicineCardVersionListResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdateMedicineCardRequest_2015_01_01">
@@ -274,9 +285,9 @@
                    element="medicinecard20150101:CreatePrescriptionMedicationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescriptionMedicationRequest_2015_01_01">
+    <wsdl:message name="GetPrescriptionMedicationRequest_2015_01_01_E1">
         <wsdl:part name="GetPrescriptionMedicationRequest"
-                   element="medicinecard20150101:GetPrescriptionMedicationRequest"/>
+                   element="medicinecard20150101E1:GetPrescriptionMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="GetPrescriptionMedicationResponse_2015_01_01">
         <wsdl:part name="GetPrescriptionMedicationResponse"
@@ -413,9 +424,9 @@
 
     <wsdl:portType name="MedicineCardPortType">
 
-        <wsdl:operation name="GetMedicineCard_2015_01_01">
-            <wsdl:input name="GetMedicineCardRequest_2015_01_01" message="tns:GetMedicineCardRequest_2015_01_01"/>
-            <wsdl:output name="GetMedicineCardResponse_2015_01_01" message="tns:GetMedicineCardResponse_2015_01_01"/>
+        <wsdl:operation name="GetMedicineCard_2015_01_01_E1">
+            <wsdl:input name="GetMedicineCardRequest_2015_01_01_E1" message="tns:GetMedicineCardRequest_2015_01_01_E1"/>
+            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E1" message="tns:GetMedicineCardResponse_2015_01_01_E1"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -440,6 +451,12 @@
                         message="tns:GetMedicineCardVersionsRequest_2015_01_01"/>
             <wsdl:output name="GetMedicineCardVersionsResponse_2015_01_01"
                          message="tns:GetMedicineCardVersionsResponse_2015_01_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E1">
+            <wsdl:input name="GetMedicineCardVersionListRequest_2015_01_01_E1" message="tns:GetMedicineCardVersionListRequest_2015_01_01_E1"/>
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E1" message="tns:GetMedicineCardVersionListResponse_2015_01_01_E1"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -528,9 +545,9 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionMedication_2015_01_01">
-            <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01"
-                        message="tns:GetPrescriptionMedicationRequest_2015_01_01"/>
+        <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E1">
+            <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01_E1"
+                        message="tns:GetPrescriptionMedicationRequest_2015_01_01_E1"/>
             <wsdl:output name="GetPrescriptionMedicationResponse_2015_01_01"
                          message="tns:GetPrescriptionMedicationResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -656,10 +673,10 @@
 
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-        <wsdl:operation name="GetMedicineCard_2015_01_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetMedicineCard"
+        <wsdl:operation name="GetMedicineCard_2015_01_01_E1">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1#GetMedicineCard"
                             style="document"/>
-            <wsdl:input name="GetMedicineCardRequest_2015_01_01">
+            <wsdl:input name="GetMedicineCardRequest_2015_01_01_E1">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
@@ -667,7 +684,7 @@
                              wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardResponse_2015_01_01">
+            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E1">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
@@ -731,6 +748,27 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardVersionsResponse_2015_01_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E1">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1#GetMedicineCardVersionList"
+                            style="document"/>
+            <wsdl:input name="GetMedicineCardVersionListRequest_2015_01_01_E1">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
+                             wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E1">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
@@ -974,10 +1012,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionMedication_2015_01_01">
+        <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E1">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetPrescriptionMedication"
                             style="document"/>
-            <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01">
+            <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01_E1">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
