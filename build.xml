@@ -314,22 +314,22 @@
         <delete dir="${standard.target.dir}/gentestsrc"/>
         <mkdir dir="${standard.target.dir}/gentestsrc-tmp"/>
 
-        <codegen-macro wsdlfilename="PatientOrganisationRelation-inline_2012_06_01.wsdl"/>
-        <codegen-macro wsdlfilename="PatientOrganisationRelation-inline_2013_06_01.wsdl"/>
-    	<codegen-macro wsdlfilename="PatientRegistration-inline_2015_01_01.wsdl"/>
-        <codegen-macro wsdlfilename="MedicineCard-inline_2012_01_01.wsdl"/>
-        <codegen-macro wsdlfilename="MedicineCard-inline_2012_06_01.wsdl"/>
-        <codegen-macro wsdlfilename="MedicineCard-inline_2013_06_01.wsdl"/>
-    	<codegen-macro wsdlfilename="MedicineCard-inline_2015_01_01.wsdl"/>
-        <codegen-macro wsdlfilename="MedicineCard-inline_2015_01_01_E1.wsdl"/>
-        <codegen-macro wsdlfilename="MedicineCard-inline_2015_06_01.wsdl"/>
-        <codegen-macro wsdlfilename="EffectuationOrdering-inline_2012_06_01.wsdl"/>
-        <codegen-macro wsdlfilename="EffectuationOrdering-inline_2013_06_01.wsdl"/>
-    	<codegen-macro wsdlfilename="EffectuationOrdering-inline_2015_01_01.wsdl"/>
-        <codegen-macro wsdlfilename="EffectuationOrdering-inline_2013_pem.wsdl"/>
-        <codegen-macro wsdlfilename="PEMAuditLog_2009_01_01.wsdl"/>
-        <codegen-macro wsdlfilename="DumpRestore-inline_2013_01_01.wsdl"/>
-        <codegen-macro wsdlfilename="VersionService-inline_2014_08_01.wsdl"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/PatientOrganisationRelation-inline_2012_06_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/PatientOrganisationRelation-inline_2013_06_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+    	<codegen wsdlfilename="${standard.target.dir}/wsdl/PatientRegistration-inline_2015_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2012_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2012_06_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2013_06_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+    	<codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2015_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2015_01_01_E1.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2015_06_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2012_06_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2013_06_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+    	<codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2013_pem.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/PEMAuditLog_2009_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/DumpRestore-inline_2013_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/VersionService-inline_2014_08_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
 
         <copy todir="${standard.target.dir}/gentestsrc" encoding="${codegen-encoding}" outputencoding="UTF-8">
             <fileset dir="${standard.target.dir}/gentestsrc-tmp" includes="**/*.java"/>
@@ -389,12 +389,4 @@
         <delete dir="lib/build"/>
         <delete dir="lib/test"/>
     </target>
-
-    <macrodef name="codegen-macro">
-        <attribute name="wsdlfilename"/>
-        <sequential>
-            <taskdef name="codegen" classname="org.apache.axis2.tool.ant.AntCodegenTask" classpathref="classpath"/>
-            <codegen wsdlfilename="${standard.target.dir}/wsdl/@{wsdlfilename}" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
-        </sequential>
-    </macrodef>
 </project>
