@@ -7,6 +7,7 @@
 		attributeFormDefault="unqualified">
 	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
 	<include schemaLocation="IncludeWithdrawnDrugMedications.xsd"/>
+	<include schemaLocation="IncludeCancelledPrescriptionMedications.xsd"/>
 	<element name="GetMedicineCardRequest" type="medicinecard20150101E1:GetMedicineCardRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request for a medicinecard</documentation>
@@ -22,6 +23,7 @@
 			<element name="IncludePrescriptionMedications" type="medicinecard20150101:IncludePrescriptionMedicationsType"/>
 			<element name="IncludeEffectuations" type="medicinecard20150101:IncludeEffectuationsType"/>
 			<element name="IncludeNonRelevantPrescriptionMedications" type="medicinecard20150101:IncludeNonRelevantPrescriptionMedicationsType"/>
+			<element name="IncludeCancelledPrescriptionMedications" type="medicinecard20150101E1:IncludeCancelledPrescriptionMedicationsType"/>
 			<element name="IncludeWithdrawnDrugMedications" type="medicinecard20150101E1:IncludeWithdrawnDrugMedicationsType" minOccurs="0"/>
 		</sequence>
 	</complexType>
