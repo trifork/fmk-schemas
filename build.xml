@@ -392,23 +392,26 @@
         <delete dir="lib/test"/>
     </target>
 	
-    <property name="paramprefix" value="-"/>
     
     <condition property="paramprefix" value="/">
         <isset property="windows"/>
     </condition>
-    
+	
+	<property name="paramprefix" value="-"/>
+	
     <macrodef name="validatewsdl-macro">
         <attribute name="wsdlfilename"/>
 		<sequential>
-			<exec executable="wsdl" errorproperty="error_@{wsdlfilename}" resultproperty="result_@{wsdlfilename}">
+			<exec executable="wsdl.bat" errorproperty="error_@{wsdlfilename}" resultproperty="result_@{wsdlfilename}">
 				<arg line="${paramprefix}nologo"/>
 				<arg line="${standard.target.dir}/wsdl/@{wsdlfilename}.wsdl"/>
 				<arg line="${paramprefix}out:@{wsdlfilename}.cs"/>
 			</exec>
 			<fail message="WSDL-valideringen er fejlet:${error_@{wsdlfilename}} Hvis wsdl.exe ikke har returneret en sigende fejlmeddelelse men kun efterladt et stracktrace, se da https://wall.trifork.com/display/fmk/WSDL-validering">
 				<condition>
-					<equals arg1="${result_@{wsdlfilename}}" arg2="1"/>
+					<not>
+						<equals arg1="${result_@{wsdlfilename}}" arg2="0"/>
+					</not>
 			     </condition>
 			</fail>
     	</sequential>
