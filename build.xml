@@ -398,89 +398,39 @@
         <isset property="windows"/>
     </condition>
     
+    <macrodef name="validatewsdl-macro">
+        <attribute name="wsdlfilename"/>
+		<sequential>
+			<exec executable="wsdl" errorproperty="error_@{wsdlfilename}" resultproperty="result_@{wsdlfilename}">
+				<arg line="${paramprefix}nologo"/>
+				<arg line="${standard.target.dir}/wsdl/@{wsdlfilename}.wsdl"/>
+				<arg line="${paramprefix}out:@{wsdlfilename}.cs"/>
+			</exec>
+			<fail message="WSDL-valideringen er fejlet:${error_@{wsdlfilename}} Hvis wsdl.exe ikke har returneret en sigende fejlmeddelelse men kun efterladt et stracktrace, se da https://wall.trifork.com/display/fmk/WSDL-validering">
+				<condition>
+					<equals arg1="${result_@{wsdlfilename}}" arg2="1"/>
+			     </condition>
+			</fail>
+    	</sequential>
+    </macrodef>
+	
 	<target name="validate-wsdl">
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/PatientOrganisationRelation-inline_2012_06_01.wsdl"/>
-			<arg line="${paramprefix}out:POR_2012_06_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/PatientOrganisationRelation-inline_2013_06_01.wsdl"/>
-			<arg line="${paramprefix}out:POR_2013_06_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/PatientRegistration-inline_2015_01_01.wsdl"/>
-			<arg line="${paramprefix}out:POR_2015_01_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl//MedicineCard-inline_2012_01_01.wsdl"/>
-			<arg line="${paramprefix}out:MC_2012_01_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/MedicineCard-inline_2012_06_01.wsdl"/>
-			<arg line="${paramprefix}out:MC_2012_06_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/MedicineCard-inline_2013_06_01.wsdl"/>
-			<arg line="${paramprefix}out:MC_2013_06_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/MedicineCard-inline_2015_01_01.wsdl"/>
-			<arg line="${paramprefix}out:MC_2015_01_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/MedicineCard-inline_2015_01_01_E1.wsdl"/>
-			<arg line="${paramprefix}out:MC_2015_01_01_E1.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/MedicineCard-inline_2015_06_01.wsdl"/>
-			<arg line="${paramprefix}out:MC_2015_06_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2012_06_01.wsdl"/>
-			<arg line="${paramprefix}out:EO_2012_06_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2013_06_01.wsdl"/>
-			<arg line="${paramprefix}out:EO_2013_06_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01.wsdl"/>
-			<arg line="${paramprefix}out:EO_2015_01_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2013_pem.wsdl"/>
-			<arg line="${paramprefix}out:EOPEM_2013.cs"/>
-		</exec>
-		<!-- Omitted, due to error 
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/PEMAuditLog_2009_01_01.wsdl"/>
-			<arg line="${paramprefix}out:PEMAuditLog_2009_01_01.cs"/>
-		</exec> -->
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/DumpRestore-inline_2013_01_01.wsdl"/>
-			<arg line="${paramprefix}out:DumpRestore_2013_01_01.cs"/>
-		</exec>
-		<exec executable="wsdl">
-			<arg line="${paramprefix}nologo"/>
-			<arg line="${standard.target.dir}/wsdl/VersionService-inline_2014_08_01.wsdl"/>
-			<arg line="${paramprefix}out:VersionService_2014_08_01.cs"/>
-		</exec>
+		<validatewsdl-macro wsdlfilename="PatientOrganisationRelation-inline_2012_06_01"/>
+		<validatewsdl-macro wsdlfilename="PatientOrganisationRelation-inline_2013_06_01"/>
+		<validatewsdl-macro wsdlfilename="PatientRegistration-inline_2015_01_01"/>
+		<validatewsdl-macro wsdlfilename="MedicineCard-inline_2012_01_01"/>
+		<validatewsdl-macro wsdlfilename="MedicineCard-inline_2012_06_01"/>
+		<validatewsdl-macro wsdlfilename="MedicineCard-inline_2013_06_01"/>
+		<validatewsdl-macro wsdlfilename="MedicineCard-inline_2015_01_01"/>
+		<validatewsdl-macro wsdlfilename="MedicineCard-inline_2015_01_01_E1"/>
+		<validatewsdl-macro wsdlfilename="MedicineCard-inline_2015_06_01"/>
+		<validatewsdl-macro wsdlfilename="EffectuationOrdering-inline_2012_06_01"/>
+		<validatewsdl-macro wsdlfilename="EffectuationOrdering-inline_2013_06_01"/>
+		<validatewsdl-macro wsdlfilename="EffectuationOrdering-inline_2015_01_01"/>
+		<validatewsdl-macro wsdlfilename="EffectuationOrdering-inline_2013_pem"/>
+		<!-- Omitted, due to (irrelevant) error 
+		<validatewsdl-macro wsdlfilename="PEMAuditLog_2009_01_01"/> -->
+		<validatewsdl-macro wsdlfilename="DumpRestore-inline_2013_01_01"/>
+		<validatewsdl-macro wsdlfilename="VersionService-inline_2014_08_01"/>
 	</target>
-
-
 </project>
