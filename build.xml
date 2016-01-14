@@ -402,7 +402,7 @@
     <macrodef name="validatewsdl-macro">
         <attribute name="wsdlfilename"/>
 		<sequential>
-			<exec executable="wsdl" errorproperty="error_@{wsdlfilename}" resultproperty="result_@{wsdlfilename}">
+			<exec executable="wsdl.bat" errorproperty="error_@{wsdlfilename}" resultproperty="result_@{wsdlfilename}">
 				<arg line="${paramprefix}nologo"/>
 				<arg line="${standard.target.dir}/wsdl/@{wsdlfilename}.wsdl"/>
 				<arg line="${paramprefix}out:@{wsdlfilename}.cs"/>
