@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <include schemaLocation="PackageNumber.xsd"/>
+	<include schemaLocation="DosageText.xsd"/>
 
 	<element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
 
@@ -11,6 +12,7 @@
 		</annotation>
         <sequence>
             <element name="PackageNumber" type="medicinecard20150601:PackageNumberType" minOccurs="0"/>
+			<element name="DosageText" type="medicinecard20150601:DosageTextType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>
