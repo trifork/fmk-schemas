@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:medicinecard20150101E1="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
-
-	<include schemaLocation="MaximumNumberOfResults.xsd"/>
-	<element name="IncludePrescriptionMedications" type="medicinecard20150101E1:IncludePrescriptionMedicationsType">
-		<annotation>
-			<documentation xml:lang="en-GB">Indicates that current prescription medication should be included in the response. The response can be extented to also show cancelled prescriptions.</documentation>
-			<documentation xml:lang="da-DK">Angiver at aktuelle recepter skal includeres i svaret. Svaret kan udvides med aflyste recepter.</documentation>
-		</annotation>
-	</element>
 	<complexType name="IncludePrescriptionMedicationsType">
+		<annotation>
+			<documentation xml:lang="en-GB">Marker type used to indicate whether all or only open prescriptions should be included in the result.</documentation>
+			<documentation xml:lang="da-DK">Markeringstype der angiver svaret inkludere alle recepter eller kun åbne.</documentation>
+		</annotation>
 	</complexType>
 </schema>

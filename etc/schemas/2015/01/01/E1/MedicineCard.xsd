@@ -10,13 +10,11 @@
 	<include schemaLocation="LatestDosageDispensingEffectuation.xsd"/>
 	<include schemaLocation="PatientOrganisationRelation.xsd"/>
 	<include schemaLocation="HasOpenDosageDispensingPrescriptions.xsd"/>
-	<element name="MedicineCard" type="medicinecard20150101E1:MedicineCardType">
+	<complexType name="MedicineCardType">
 		<annotation>
 			<documentation xml:lang="en-GB">Virtual card where a patient's medications are documented, except effectuations</documentation>
 			<documentation xml:lang="da-DK">Virtuelt kort hvori en patients medicineringer dokumenteres, undtaget effektueringer</documentation>
 		</annotation>
-	</element>
-	<complexType name="MedicineCardType">
 		<sequence>
 			<element name="Patient" type="medicinecard20150101:PatientType"/>
 			<element name="Version" type="medicinecard20150101:MedicineCardVersionType"/>
