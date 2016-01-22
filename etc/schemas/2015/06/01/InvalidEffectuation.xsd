@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
-	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="Modified.xsd"/>
 	<include schemaLocation="EffectuationInvalidationReason.xsd"/>
 
 	<complexType name="InvalidEffectuationType">
@@ -11,7 +11,7 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:EffectuationIdentifierType"/>
-            <element name="InvalidatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+            <element name="Invalidated" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
             <element name="InvalidationReason" type="medicinecard20150601:EffectuationInvalidationReasonType" minOccurs="0"/>
 		</sequence>
 	</complexType>
