@@ -12,6 +12,8 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="DrugMedicationWithNegativeConsent.xsd"/>
 	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="LatestDosageDispensingEffectuation.xsd"/>
+	<include schemaLocation="HasOpenDosageDispensingPrescriptions.xsd"/>
 	<element name="MedicineCard" type="medicinecard20150601:MedicineCardType">
 		<annotation>
 			<documentation xml:lang="en-GB">Virtual card where a patient's medications are documented, except effectuations</documentation>
@@ -35,6 +37,8 @@
 			<element name="InvalidDrugMedication" type="medicinecard20150601:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrescriptionMedication" type="medicinecard20150601:PrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidPrescriptionMedication" type="medicinecard20150601:InvalidPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="LatestDosageDispensingEffectuation" type="medicinecard20150601:LatestDosageDispensingEffectuationType" minOccurs="0"/>
+			<element name="HasOpenDosageDispensingPrescriptions" type="medicinecard20150601:HasOpenDosageDispensingPrescriptionsType"/>
 		</sequence>
 	</complexType>
 </schema>

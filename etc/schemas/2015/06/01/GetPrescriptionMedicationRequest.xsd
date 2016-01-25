@@ -4,7 +4,8 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<include schemaLocation="IncludeEffectuations.xsd"/>
-	<include schemaLocation="IncludePrescriptionMedications.xsd"/>
+	<include schemaLocation="IncludeOpenPrescriptions.xsd"/>
+	<include schemaLocation="IncludeAllPrescriptions.xsd"/>
 	<element name="GetPrescriptionMedicationRequest" type="medicinecard20150601:GetPrescriptionMedicationRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request for a prescription medication</documentation>
@@ -19,8 +20,8 @@
 			</choice>
 			<choice>
 				<element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType" maxOccurs="50"/>
-				<element name="IncludeOpenPrescriptionMedications" type="medicinecard20150601:IncludePrescriptionMedicationsType"/>
-				<element name="IncludeAllPrescriptionMedications" type="medicinecard20150601:IncludePrescriptionMedicationsType"/>
+				<element name="IncludeOpenPrescriptions" type="medicinecard20150601:IncludeOpenPrescriptionsType"/>
+				<element name="IncludeAllPrescriptions" type="medicinecard20150601:IncludeAllPrescriptionsType"/>
 			</choice>
 			<element name="IncludeEffectuations" type="medicinecard20150601:IncludeEffectuationsType"/>
 		</sequence>

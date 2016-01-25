@@ -9,6 +9,7 @@
 	<include schemaLocation="NegativeConsentRequest.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="IncludeWithdrawnDrugMedications.xsd"/>
 	<element name="GetMedicineCardRequest" type="medicinecard20150601:GetMedicineCardRequestType">
 	</element>
 	<complexType name="GetMedicineCardRequestType">
@@ -28,6 +29,7 @@
 			<element name="IncludeEffectuations" type="medicinecard20150601:IncludeEffectuationsType"/>
 			<element name="IncludeNonRelevantPrescriptionMedications" type="medicinecard20150601:IncludeNonRelevantPrescriptionMedicationsType"/>
 			<element name="CompleteConsentGiven" type="medicinecard20150601:CompleteConsentGivenType" minOccurs="0"/>
+			<element name="IncludeWithdrawnDrugMedications" type="medicinecard20150601:IncludeWithdrawnDrugMedicationsType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

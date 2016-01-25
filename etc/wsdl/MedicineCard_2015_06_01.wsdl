@@ -6,7 +6,6 @@
                   xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
                   xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
                   xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
-                  xmlns:dglws="http://www.medcom.dk/dglws/1.0/xsd"
                   xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                   targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
 
@@ -73,6 +72,9 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionListRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionListResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/GetPermissionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetPermissionsResponse.xsd"/>
@@ -242,6 +244,13 @@
     </wsdl:message>
     <wsdl:message name="GetMedicineCardVersionsResponse_2015_06_01">
         <wsdl:part name="GetMedicineCardVersionsResponse" element="medicinecard20150601:GetMedicineCardVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionListRequest_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionListRequest" element="medicinecard20150601:GetMedicineCardVersionListRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardVersionListResponse_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionListResponse" element="medicinecard20150601:GetMedicineCardVersionListResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdateMedicineCardRequest_2015_06_01">
@@ -605,6 +614,14 @@
                         message="tns:GetMedicineCardVersionsRequest_2015_06_01"/>
             <wsdl:output name="GetMedicineCardVersionsResponse_2015_06_01"
                          message="tns:GetMedicineCardVersionsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_2015_06_01">
+            <wsdl:input name="GetMedicineCardVersionListRequest_2015_06_01"
+                        message="tns:GetMedicineCardVersionListRequest_2015_06_01"/>
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_06_01"
+                         message="tns:GetMedicineCardVersionListResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
@@ -1023,6 +1040,27 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardVersionsResponse_2015_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardVersionList"
+                            style="document"/>
+            <wsdl:input name="GetMedicineCardVersionListRequest_2015_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
+                             wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
