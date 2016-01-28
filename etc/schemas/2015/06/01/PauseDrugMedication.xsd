@@ -16,14 +16,8 @@
 	<complexType name="PauseDrugMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
-			<choice minOccurs="0">
-				<element name="FromDate" type="medicinecard20150601:PausedFromDateType"/>
-				<element name="FromDateTime" type="medicinecard20150601:PausedFromDateTimeType"/>
-			</choice>
-			<choice minOccurs="0">
-				<element name="ToDate" type="medicinecard20150601:PausedToDateType"/>
-				<element name="ToDateTime" type="medicinecard20150601:PausedToDateTimeType"/>
-			</choice>
+			<element name="FromDate" type="medicinecard20150601:PausedFromDateType" minOccurs="0"/>
+			<element name="ToDate" type="medicinecard20150601:PausedToDateType" minOccurs="0"/>
 			<element name="PausedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>
 		</sequence>
