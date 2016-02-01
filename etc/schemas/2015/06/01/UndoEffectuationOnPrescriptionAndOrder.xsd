@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="UndoEffectuationOnOrder.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="TerminatePrescription.xsd"/>
+
+	<complexType name="UndoEffectuationOnPrescriptionAndOrderType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for undoing a single pharmacy effectutation on a prescription medication</documentation>
+			<documentation xml:lang="da-DK">Element til tilbageførsel af en enkelt apoteks-ekspedition på en receptordination</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+			<element name="Order" type="medicinecard20150601:UndoEffectuationOnOrderType"/>
+			<element name="Terminate" type="medicinecard20150601:TerminatePrescriptionType"/>
+		</sequence>
+	</complexType>
+</schema>

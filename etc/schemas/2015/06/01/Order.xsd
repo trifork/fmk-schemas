@@ -10,7 +10,7 @@
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="InvalidEffectuation.xsd"/>
-	<include schemaLocation="EffectuationOnPrescriptionMedication.xsd"/>
+	<include schemaLocation="EffectuationOnPrescription.xsd"/>
 
     <element name="Order" type="medicinecard20150601:OrderType"/>
 
@@ -30,7 +30,7 @@
 			<element name="DeliveryInstructionText" type="medicinecard20150601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
 			<choice minOccurs="0">
-				<element name="Effectuation" type="medicinecard20150601:EffectuationOnPrescriptionMedicationType"/>
+				<element name="Effectuation" type="medicinecard20150601:EffectuationOnPrescriptionType"/>
 				<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType"/>
 			</choice>
 		</sequence>

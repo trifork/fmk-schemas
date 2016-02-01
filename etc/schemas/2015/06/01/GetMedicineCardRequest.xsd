@@ -2,8 +2,8 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="CompleteConsentGiven.xsd"/>
 	<include schemaLocation="IncludeEffectuations.xsd"/>
-	<include schemaLocation="IncludeNonRelevantPrescriptionMedications.xsd"/>
-	<include schemaLocation="IncludePrescriptionMedications.xsd"/>
+	<include schemaLocation="IncludeNonRelevantPrescriptions.xsd"/>
+	<include schemaLocation="IncludePrescriptions.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="ModifiedDateTime.xsd"/>
 	<include schemaLocation="NegativeConsentRequest.xsd"/>
@@ -25,9 +25,9 @@
 			<element name="Version" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DateTime" type="medicinecard20150601:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="NegativeConsent" type="medicinecard20150601:NegativeConsentRequestType" minOccurs="0"/>
-			<element name="IncludePrescriptionMedications" type="medicinecard20150601:IncludePrescriptionMedicationsType"/>
+			<element name="IncludePrescriptions" type="medicinecard20150601:IncludePrescriptionsType"/>
 			<element name="IncludeEffectuations" type="medicinecard20150601:IncludeEffectuationsType"/>
-			<element name="IncludeNonRelevantPrescriptionMedications" type="medicinecard20150601:IncludeNonRelevantPrescriptionMedicationsType"/>
+			<element name="IncludeNonRelevantPrescriptions" type="medicinecard20150601:IncludeNonRelevantPrescriptionsType"/>
 			<element name="CompleteConsentGiven" type="medicinecard20150601:CompleteConsentGivenType" minOccurs="0"/>
 			<element name="IncludeWithdrawnDrugMedications" type="medicinecard20150601:IncludeWithdrawnDrugMedicationsType" minOccurs="0"/>
 		</sequence>

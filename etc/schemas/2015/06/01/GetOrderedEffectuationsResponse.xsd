@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrderedEffectuationDetails.xsd"/>
-	<include schemaLocation="OrderedPrescriptionMedicationDetails.xsd"/>
+	<include schemaLocation="OrderedPrescriptionDetails.xsd"/>
 	<include schemaLocation="MoreAvailableOrders.xsd"/>
 	<element name="GetOrderedEffectuationsResponse" type="medicinecard20150601:GetOrderedEffectuationsResponseType">
 		<annotation>
@@ -16,7 +16,7 @@
 				<complexType>
 					<sequence>
 						<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-						<element name="OrderedPrescriptionMedication" type="medicinecard20150601:OrderedPrescriptionMedicationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="OrderedPrescription" type="medicinecard20150601:OrderedPrescriptionDetailsType" minOccurs="0" maxOccurs="unbounded"/>
 						<element name="OrderedEffectuation" type="medicinecard20150601:OrderedEffectuationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
 					</sequence>
 				</complexType>

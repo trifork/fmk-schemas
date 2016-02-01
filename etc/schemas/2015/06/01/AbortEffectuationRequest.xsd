@@ -3,7 +3,7 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 
 	<element name="AbortEffectuationRequest" type="medicinecard20150601:AbortEffectuationRequestType"/>
 
@@ -18,10 +18,10 @@
 				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
 			</choice>
 			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="PrescriptionMedication" maxOccurs="unbounded">
+			<element name="Prescription" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
-						<element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+						<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
 						<element name="Order">
 							<complexType>
 								<sequence>

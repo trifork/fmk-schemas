@@ -8,7 +8,7 @@
 	<include schemaLocation="OrderedDateTime.xsd"/>
 	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<element name="OrderedEffectuationDetails" type="medicinecard20150601:OrderedEffectuationDetailsType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response on an order, response for the order request</documentation>
@@ -19,7 +19,7 @@
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:OrderedEffectuationIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
-			<element name="PrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType" minOccurs="0"/>
+			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
 			<element name="OrderedBy" type="medicinecard20150601:ModificatorType"/>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="ReceiverOrganisation" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
@@ -30,7 +30,7 @@
 			</choice>
 			<element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
 			<element name="OrderedDateTime" type="medicinecard20150601:OrderedDateTimeType"/>
-			<element name="ExistingPrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+			<element name="ExistingPrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
 			<element name="OrderedEffectuationIdentifier" type="medicinecard20150601:OrderedEffectuationIdentifierType" minOccurs="0"/>
 		</sequence>
 	</complexType>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<element name="ReopenPrescriptionRequest" type="medicinecard20150601:ReopenPrescriptionRequestType">
+	</element>
+	<complexType name="ReopenPrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Reopen one or more prescription medications that has been closed er invalidated</documentation>
+			<documentation xml:lang="da-DK">Genåbn en eller flere receptordinationer der tidligere er blevet afsluttet eller ugyldiggjort</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

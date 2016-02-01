@@ -3,7 +3,7 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="Effectuation.xsd"/>
 	<include schemaLocation="InvalidEffectuation.xsd"/>
-	<include schemaLocation="EffectuationsOnPrescriptionMedication.xsd"/>
+	<include schemaLocation="EffectuationsOnPrescription.xsd"/>
 	<element name="EffectuationsOnDrugMedication" type="medicinecard20150601:EffectuationsOnDrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Grouping effectuations on a drug medication</documentation>
@@ -15,7 +15,7 @@
 			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
 			<element name="Effectuation" type="medicinecard20150601:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="PrescriptionMedication" type="medicinecard20150601:EffectuationsOnPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Prescription" type="medicinecard20150601:EffectuationsOnPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

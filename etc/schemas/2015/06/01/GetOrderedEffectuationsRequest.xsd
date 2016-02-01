@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <include schemaLocation="IncludeOrderedEffectuations.xsd"/>
-    <include schemaLocation="IncludeOrderedPrescriptionMedications.xsd"/>
+    <include schemaLocation="IncludeOrderedPrescriptions.xsd"/>
     <include schemaLocation="OrderedDateTime.xsd"/>
     <include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
-    <include schemaLocation="OrderEffectuationOrPrescriptionMedication.xsd"/>
+    <include schemaLocation="OrderEffectuationOrPrescription.xsd"/>
     <include schemaLocation="PersonIdentifier.xsd"/>
     <element name="GetOrderedEffectuationsRequest" type="medicinecard20150601:GetOrderedEffectuationsRequestType">
         <annotation>
@@ -17,7 +17,7 @@
             <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
             <element name="FromDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
             <element name="ToDateTime" type="medicinecard20150601:OrderedDateTimeType" minOccurs="0"/>
-            <element name="IncludeOrderedPrescriptionMedications" type="medicinecard20150601:IncludeOrderedPrescriptionMedicationsType" minOccurs="0"/>
+            <element name="IncludeOrderedPrescriptions" type="medicinecard20150601:IncludeOrderedPrescriptionsType" minOccurs="0"/>
             <element name="IncludeOrderedEffectuations" type="medicinecard20150601:IncludeOrderedEffectuationsType" minOccurs="0"/>
             <choice minOccurs="0">
                 <element name="IncludeOnly">

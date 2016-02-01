@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+
+	<element name="InvalidPrescription" type="medicinecard20150601:InvalidPrescriptionType"/>
+
+	<complexType name="InvalidPrescriptionType">
+		<annotation>
+			<documentation xml:lang="en-GB">An invalid prescription medication. Is delivered so that the client can delete a possible local copy.</documentation>
+			<documentation xml:lang="da-DK">En ugyldig receptordination. Leveres mhp. at klienten kan slette evt. lokal kopi.</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -3,7 +3,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 
 	<element name="UndoEffectuationResponse" type="medicinecard20150601:UndoEffectuationResponseType"/>
@@ -18,10 +18,10 @@
 				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
 			</choice>
-			<element name="PrescriptionMedication" maxOccurs="unbounded">
+			<element name="Prescription" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
-						<element name="Identifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+						<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
 						<element name="Order" maxOccurs="unbounded">
 							<complexType>
 								<sequence>

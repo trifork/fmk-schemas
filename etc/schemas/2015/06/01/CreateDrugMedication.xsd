@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="CreateEffectuation.xsd"/>
-    <include schemaLocation="CreatePrescriptionMedication.xsd"/>
+    <include schemaLocation="CreatePrescription.xsd"/>
 	<include schemaLocation="DosageForRequest.xsd"/>
     <include schemaLocation="FollowUpDates.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
@@ -11,7 +11,7 @@
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="Pause.xsd"/>
-	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
     <include schemaLocation="ReimbursementClause.xsd"/>
@@ -36,8 +36,8 @@
 			<element name="Dosage" type="medicinecard20150601:DosageForRequestType"/>
 			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType"/>
 			<element name="Effectuation" type="medicinecard20150601:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="CreatePrescriptionMedication" type="medicinecard20150601:CreatePrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="AttachPrescriptionMedication" type="medicinecard20150601:PrescriptionMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="CreatePrescription" type="medicinecard20150601:CreatePrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AttachPrescription" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
 		</sequence>
 	</complexType>

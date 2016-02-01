@@ -3,7 +3,7 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="UndoEffectuationOnPrescriptionMedicationAndOrder.xsd"/>
+	<include schemaLocation="UndoEffectuationOnPrescriptionAndOrder.xsd"/>
 
 	<element name="UndoEffectuationRequest" type="medicinecard20150601:UndoEffectuationRequestType"/>
 
@@ -19,7 +19,7 @@
 			</choice>
 			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="PrescriptionMedication" type="medicinecard20150601:UndoEffectuationOnPrescriptionMedicationAndOrderType" maxOccurs="unbounded"/>
+			<element name="Prescription" type="medicinecard20150601:UndoEffectuationOnPrescriptionAndOrderType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

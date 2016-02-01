@@ -4,7 +4,7 @@
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="OrderIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 
 	<complexType name="AquireOrderType">
@@ -14,7 +14,7 @@
 		</annotation>
 	
 		<sequence>
-			<element name="PrescriptionMedicationIdentifier" type="medicinecard20150601:PrescriptionMedicationIdentifierType"/>
+			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
 			<element name="OrderIdentifier" type="medicinecard20150601:OrderIdentifierType"/>
 			<element name="AquireToPharmacy" type="medicinecard20150601:OrganisationType"/>
 		</sequence>
