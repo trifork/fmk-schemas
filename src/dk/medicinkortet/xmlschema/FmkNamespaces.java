@@ -32,12 +32,11 @@ public class FmkNamespaces {
 		namespaces.addNamespace("itst2005", "http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/");
 		namespaces.addNamespace("itst", "http://rep.oio.dk/itst.dk/xml/schemas/2006/01/17/");
 		namespaces.addNamespace("dkcc2005-2", "http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/13/");
-		namespaces.addNamespace("xs", "http://www.w3.org/2001/XMLSchema");
 		namespaces.addNamespace("rs", "http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/");
 		namespaces.addNamespace("pem", "http://dkma.dk/receptserver/apotekssnitflade/xml/schemas/");
 		namespaces.addNamespace("dkma", "http://rep.oio.dk/dkma.dk/xml/schemas/2006/01/15/");
 		namespaces.addNamespace("sundcom", "http://rep.oio.dk/sundcom.dk/medcom.dk/xml/schemas/2005/08/07/");
-		namespaces.addNamespace("xsd", "http://www.w3.org/2001/XMLSchema");
+		namespaces.addNamespace("xs", "http://www.w3.org/2001/XMLSchema");
 		namespaces.addNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
 		namespaces.addNamespace("ean", "http://rep.oio.dk/ean/xml/schemas/2005/01/10/");
 		namespaces.addNamespace("sdsd", "http://www.sdsd.dk/dgws/2010/08");

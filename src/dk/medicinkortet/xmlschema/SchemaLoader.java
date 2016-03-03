@@ -9,6 +9,7 @@ import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -38,6 +39,11 @@ public class SchemaLoader {
 
     private static HashMap<String, Integer> uniquePrefixIdx = new HashMap<String, Integer>();
 
+    private static HashMap<String, String> ns2Prefix = new HashMap<String, String>();
+    private static HashMap<String, String> prefix2NS = new HashMap<String, String>();
+
+    private static HashSet<String> globalPrefixes = new HashSet<>();
+    
     private static String targetDir() {
         String targetDir = System.getProperty("target.dir");
         if (targetDir != null) return targetDir;
@@ -267,6 +273,13 @@ public class SchemaLoader {
             types.removeChild(types.getFirstChild());
         }
 
+        collectGlobalPrefixes(wsdlDoc);
+
+        for (QName qn: FmkNamespaces.getNamespaces()) {
+        	prefix2NS.put(qn.getPrefix(), qn.getNamespaceURI());
+        	ns2Prefix.put(qn.getNamespaceURI(), qn.getPrefix());
+        }
+        
         // Insert new schema sections to the <types> element of the WSDL file
         for (Map.Entry<String, Set<SchemaFile>> entry : ns2schemaFilesMap.entrySet()) {
             String targetNamespace = entry.getKey();
@@ -275,7 +288,7 @@ public class SchemaLoader {
 
             Element ns = addSchemaToWsdl(types, wsdlDoc, targetNamespace);
             for (SchemaFile schemaFile : entry.getValue()) {
-                //System.out.println("  - including " + schemaFile);
+//                System.out.println("  - including " + schemaFile.location);
                 insertSchema(builder, wsdlDoc, ns, schemaFile);
             }
         }
@@ -298,7 +311,27 @@ public class SchemaLoader {
         return ns2schemaFilesMap;
     }
 
-    private static String getWsdlFilename() {
+    private static void collectGlobalPrefixes(Document wsdlDoc) {
+        NamedNodeMap attributes = wsdlDoc.getDocumentElement().getAttributes();
+        for (int i = 0; i < attributes.getLength(); i++) {
+            Node attr = attributes.item(i);
+
+            if (NS_NS.equals(attr.getNamespaceURI())) { 
+
+                String expectedPrefix = ns2Prefix.get(attr.getNodeValue());
+                String prefix = attr.getLocalName();
+                
+                if (!"xmlns".equals(prefix)) {
+                	if (expectedPrefix != null && !prefix.equals(ns2Prefix.get(attr.getNodeValue()))) {
+                		System.err.println("Unexpected global prefix binding: " + prefix + "=\"" + attr.getNodeValue() + "\" (expected prefix: " + expectedPrefix);
+                	}
+                	globalPrefixes.add(attr.getLocalName());
+                }
+            }
+        }
+	}
+
+	private static String getWsdlFilename() {
         if (System.getProperty("VersionDate") != null) {
             return "etc/wsdl/" + System.getProperty("WsdlName") + "_" + System.getProperty("VersionDate") + ".wsdl";
         }
@@ -341,9 +374,6 @@ public class SchemaLoader {
         }
     }
 
-    private static HashMap<String, String> ns2Prefix = new HashMap<String, String>();
-    private static HashMap<String, String> prefix2NS = new HashMap<String, String>();
-
     private static void insertSchema(DocumentBuilder builder, Document wsdlDoc, Element ns, SchemaFile schemaFile) throws SAXException, IOException {
         if (ns == null) {
             System.err.println("Ignoring schemaFile because given schema section is null");
@@ -351,53 +381,52 @@ public class SchemaLoader {
         }
         Element childDoc = schemaFile.domSchemaNode;
 
-        NamedNodeMap attributes = childDoc.getAttributes();
-        for (int i = 0; i < attributes.getLength(); i++) {
-            Node attr = attributes.item(i);
+        NamedNodeMap attrNodeMap = childDoc.getAttributes();
+        Node[] attributes = new Node[attrNodeMap.getLength()];
+        
+        for (int i = 0; i < attrNodeMap.getLength(); i++) {
+        	attributes[i] = attrNodeMap.item(i);
+        }
+        for (Node attr: attributes) {
 
-            if (NS_NS.equals(attr.getNamespaceURI()) && "xmlns".equals(attr.getLocalName()) && !ns.hasAttributeNS(NS_NS, "xmlns")) {
-                ns.setAttribute("xmlns", attr.getNodeValue());
-            } else if (NS_NS.equals(attr.getNamespaceURI())) { //&& !ns.hasAttributeNS(NS_NS, attr.getLocalName())) {
+            if (NS_NS.equals(attr.getNamespaceURI())) { 
 
+                String oldPrefix;
+                
                 String prefix = ns2Prefix.get(attr.getNodeValue());
-                String ns1 = prefix2NS.get(attr.getLocalName());
+                
+                if ("xmlns".equals(attr.getLocalName())) {
+                	// attr.getNodeValue() is defined as the default namespace
+                	oldPrefix = null;
+                	
+                } else {
+                    oldPrefix = attr.getLocalName();
 
-                if (ns1 != null && !ns1.equals(attr.getNodeValue())) {
-                    // same prefix, different namespace. Rewrite.
-
-                    // only make up a prefix if namespace hasn't previously been bound to another prefix
                     if (prefix == null) {
-                        prefix = makeUniquePrefix(attr.getLocalName());
+                    	// First time we see this namespace - just accept the prefix
+                    	prefix = oldPrefix;
+                        prefix2NS.put(prefix, attr.getNodeValue());
+                        ns2Prefix.put(attr.getNodeValue(), prefix);
                     }
                 }
 
+                // only make up a prefix if namespace hasn't previously been bound to another prefix
                 if (prefix == null) {
-                    prefix = attr.getLocalName();
+                    prefix = makeUniquePrefix(attr.getLocalName());
+                    prefix2NS.put(prefix, attr.getNodeValue());
+                    ns2Prefix.put(attr.getNodeValue(), prefix);
+                }
+                
+                if (!prefix.equals(oldPrefix)) {
+//                	System.out.println("Rewrite prefix, old=" + oldPrefix + ", new=" + prefix + ", schema=" + schemaFile.location + ", ns=" + attr.getNodeValue());
+                	rewritePrefix(oldPrefix, prefix, ns, attr, childDoc);
                 }
 
-                if (!prefix.equals(attr.getLocalName())) {
-                    rewritePrefix(attr.getLocalName(), prefix, ns, attr, childDoc);
-                }
-                ns.setAttribute("xmlns:" + prefix, attr.getNodeValue());
-
-                ns2Prefix.put(attr.getNodeValue(), prefix);
-                prefix2NS.put(prefix, attr.getNodeValue());
-            }
-        }
-
-        if (childDoc.getAttribute("xmlns") != null && childDoc.getAttribute("xmlns").length() > 0) {
-            String defaultPrefix = findOrDeclarePrefix(ns, childDoc.getAttribute("xmlns"));
-            ns.setAttribute("xmlns:" + defaultPrefix, childDoc.getAttribute("xmlns"));
-            NodeList childElements = childDoc.getElementsByTagNameNS(SCHEMA_NS, "element");
-            for (int j = 0; j < childElements.getLength(); j++) {
-                Element el = (Element) childElements.item(j);
-                String refAttr = el.getAttribute("type");
-                if (refAttr != null && refAttr.length() > 0 && refAttr.indexOf(':') == -1) {
-                    el.setAttribute("type", defaultPrefix + ":" + refAttr);
+                if (!globalPrefixes.contains(prefix)) {
+                	ns.setAttribute("xmlns:" + prefix, attr.getNodeValue());
                 }
             }
         }
-
 
         NodeList elements = childDoc.getChildNodes();
         for (int i = 0; i < elements.getLength(); i++) {
@@ -409,39 +438,60 @@ public class SchemaLoader {
                                       Element ns, Node attr, Element childDoc) {
 
         ns.setAttribute("xmlns:" + newPrefix, attr.getNodeValue());
-        childDoc.removeAttribute(attr.getNodeValue());
+    	childDoc.removeAttribute("xmlns" + (oldPrefix != null ? ":" + oldPrefix : ""));
 
-        replacePrefixUsages(oldPrefix, newPrefix, childDoc);
+        replacePrefixUsages(oldPrefix, newPrefix, childDoc, attr.getNodeValue());
     }
 
-    private static void replacePrefixUsages(String oldPrefix, String newPrefix, Element element) {
+    private static void replacePrefixUsages(String oldPrefix, String newPrefix, Element element, String namespace) {
 
         NodeList elements = element.getChildNodes();
         for (int i = 0; i < elements.getLength(); i++) {
             Node node = elements.item(i);
-            if (node instanceof Element) {
+
+    		if (node instanceof Element) {
             	Element el = (Element) node;
+
+            	if (namespace.equals(el.getNamespaceURI())) {
+            		el.setPrefix(newPrefix);
+        		}
+                
             	NamedNodeMap attributes = el.getAttributes();
-            	for (int j = 0; j < attributes.getLength(); j++) {
-            		Node attribute = attributes.item(j);
-            		String name = attribute.getLocalName();
-            		String value = attribute.getNodeValue();
-                	if (value != null && value.contains(oldPrefix + ":")) {
-                		
-                		// An attribute value may refer multiple times to the same prefix (e.g., 
-                		// <union memberTypes="sdsd201008:PredefinedRequestedRole sdsd201008:UndefinedRequestedRole"/>)
-                		// Below, we replace prefix, but only if its at start of string or is following a space character
-                		String newValue = value.replaceAll("(^| )" + oldPrefix + ":", "$1" + newPrefix + ":");
-                		el.setAttribute(name, newValue);
-                	}
+            	if (oldPrefix != null) {
+            		for (int j = 0; j < attributes.getLength(); j++) {
+            			Node attribute = attributes.item(j);
+            			String name = attribute.getLocalName();
+            			String value = attribute.getNodeValue();
+            			if (value != null && value.contains(oldPrefix + ":")) {
+            				
+            				// An attribute value may refer multiple times to the same prefix (e.g., 
+            				// <union memberTypes="sdsd201008:PredefinedRequestedRole sdsd201008:UndefinedRequestedRole"/>)
+            				// Below, we replace prefix, but only if its at start of string or is following a space character
+            				String newValue = value.replaceAll("(^| )" + oldPrefix + ":", "$1" + newPrefix + ":");
+            				el.setAttribute(name, newValue);
+            			}
+            			
+            		}
+            	} else {
+            		if (SCHEMA_NS.equals(element.getNamespaceURI())) {
+            			// TODO: This should be generalized
+            			String typeAttr = el.getAttribute("type");
+                        if (typeAttr != null && typeAttr.length() > 0 && typeAttr.indexOf(':') == -1) {
+                            el.setAttribute("type", newPrefix + ":" + typeAttr);
+                        }
+                        String baseAttr = el.getAttribute("base");
+                        if (baseAttr != null && baseAttr.length() > 0 && baseAttr.indexOf(':') == -1) {
+                            el.setAttribute("base", newPrefix + ":" + baseAttr);
+                        }
+            		}
             	}
 
-            	replacePrefixUsages(oldPrefix, newPrefix, el);
+            	replacePrefixUsages(oldPrefix, newPrefix, el, namespace);
             }
         }
 	}
 
-	private static String findOrDeclarePrefix(Element top, String namespace) {
+	private static String findDeclaredPrefix(Element top, String namespace) {
         NamedNodeMap attributes = top.getAttributes();
         for (int i = 0; i < attributes.getLength(); i++) {
             Node attr = attributes.item(i);
@@ -449,6 +499,10 @@ public class SchemaLoader {
                 return attr.getNodeName().substring(6);
             }
         }
+        return ns2Prefix.get(namespace);
+    }
+
+	private static String declarePrefix(Element top, String namespace) {
         String defaultPrefix = makeUniquePrefix("def");
         top.setAttribute("xmlns:" + defaultPrefix, namespace);
         return defaultPrefix;
