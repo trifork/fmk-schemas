@@ -75,9 +75,6 @@
         <copy todir="${idws.work.dir}/etc" flatten="false" description="Adding non-specialized schemas to ${idws.work.dir}/etc/schemas">
             <fileset refid="schemas_excluding_specialized_schemas"/>
         </copy>
-        <copy todir="${idws.work.dir}/etc/schemas" flatten="false" description="Adding IDWS schemas to ${idws.work.dir}/etc/schemas" overwrite="true">
-            <fileset dir="${basedir}/etc/${idws.schemas}"/>
-        </copy>
         <replace file="${idws.work.dir}/etc/wsdl/MedicineCard_Idws_2012_06_01.wsdl"
                  token="/${idws.schemas}/" value="/schemas/"
                  description="Fix paths to referenced schemas"
