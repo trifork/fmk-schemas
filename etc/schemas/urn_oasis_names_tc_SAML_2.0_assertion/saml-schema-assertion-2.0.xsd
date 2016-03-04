@@ -41,21 +41,22 @@
     <element name="AssertionURIRef" type="anyURI"/>
     <element name="Assertion" type="saml:AssertionType"/>
     <complexType name="AssertionType">
-        <sequence>
+    	<!-- Note: Loosened up in order to allow dgws-assertions -->
+        <choice minOccurs="0" maxOccurs="unbounded">
             <element ref="saml:Issuer"/>
-            <element ref="ds:Signature" minOccurs="0"/>
-            <element ref="saml:Subject" minOccurs="0"/>
-            <element ref="saml:Conditions" minOccurs="0"/>
-            <element ref="saml:Advice" minOccurs="0"/>
-            <choice minOccurs="0" maxOccurs="unbounded">
-                <element ref="saml:Statement"/>
-                <element ref="saml:AuthnStatement"/>
-                <element ref="saml:AuthzDecisionStatement"/>
-                <element ref="saml:AttributeStatement"/>
-            </choice>
-        </sequence>
+            <element ref="ds:Signature"/>
+            <element ref="saml:Subject"/>
+            <element ref="saml:Conditions"/>
+            <element ref="saml:Advice"/>
+            <element ref="saml:Statement"/>
+            <element ref="saml:AuthnStatement"/>
+            <element ref="saml:AuthzDecisionStatement"/>
+            <element ref="saml:AttributeStatement"/>
+        </choice>
         <attribute name="Version" type="string" use="required"/>
-        <attribute name="ID" type="ID" use="required"/>
+		<!--  Note: ID made optional and id allowed in order to allow dgws-assertions -->
+        <attribute name="ID" type="ID" use="optional"/>
+        <attribute name="id" type="NCName" use="optional"/>
         <attribute name="IssueInstant" type="dateTime" use="required"/>
     </complexType>
     <element name="Subject" type="saml:SubjectType"/>
@@ -80,10 +81,20 @@
                 <element ref="saml:NameID"/>
                 <element ref="saml:EncryptedID"/>
             </choice>
+            <!-- Note: Added optional ConfirmationMethod in order to allow dgws assertions -->
+			<element ref="saml:ConfirmationMethod" minOccurs="0"/>
             <element ref="saml:SubjectConfirmationData" minOccurs="0"/>
         </sequence>
-        <attribute name="Method" type="anyURI" use="required"/>
+        <!-- Note: Method attribute made optional in order to allow dgws assertions -->
+        <attribute name="Method" type="anyURI" use="optional"/>
     </complexType>
+	<element name="ConfirmationMethod">
+		<simpleType>
+			<restriction base="anyURI">
+				<enumeration value="urn:oasis:names:tc:SAML:2.0:cm:holder-of-key"/>
+			</restriction>
+		</simpleType>
+	</element>
     <element name="SubjectConfirmationData" type="saml:SubjectConfirmationDataType"/>
     <complexType name="SubjectConfirmationDataType" mixed="true">
         <complexContent>
@@ -250,6 +261,16 @@
                     <element ref="saml:Attribute"/>
                     <element ref="saml:EncryptedAttribute"/>
                 </choice>
+                <!-- Note: Optional id attribute added in order to allow dgws assertions -->
+				<attribute name="id" use="optional">
+					<simpleType>
+						<restriction base="NCName">
+							<enumeration value="IDCardData"/>
+							<enumeration value="UserLog"/>
+							<enumeration value="SystemLog"/>
+						</restriction>
+					</simpleType>
+				</attribute>
             </extension>
         </complexContent>
     </complexType>
