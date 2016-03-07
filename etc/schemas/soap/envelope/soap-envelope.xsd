@@ -45,7 +45,9 @@ The name and trademarks of copyright holders may NOT be used in advertising or p
       <xs:element ref="tns:Body" minOccurs="1" />
       <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded" processContents="lax" />
     </xs:sequence>
-    <xs:anyAttribute namespace="##other" processContents="lax" />
+    <!-- Note: Loosened up in order to allow dgws-requests -->
+ 	<!-- xs:anyAttribute namespace="##other" processContents="lax" /-->
+    <xs:anyAttribute processContents="lax" />
   </xs:complexType>
 
   <xs:element name="Header" type="tns:Header" />
