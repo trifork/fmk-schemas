@@ -106,6 +106,8 @@ The name and trademarks of copyright holders may NOT be used in advertising or p
 	</xs:annotation>
     <xs:sequence>
       <xs:element name="faultcode" type="xs:QName" />
+	  <!-- Note: Allow detail element here in order to allow dgws-requests -->
+      <xs:element name="detail" type="tns:detail" minOccurs="0" />      
       <xs:element name="faultstring" type="xs:string" />
       <xs:element name="faultactor" type="xs:anyURI" minOccurs="0" />
       <xs:element name="detail" type="tns:detail" minOccurs="0" />      
