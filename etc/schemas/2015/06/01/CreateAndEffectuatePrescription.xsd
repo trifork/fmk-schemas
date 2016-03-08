@@ -15,13 +15,12 @@
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 
-	<complexType name="CreatePrescriptionOrderEffectuationType">
+	<complexType name="CreateAndEffectuatePrescriptionType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document for creating a Prescription together with an effectuation</documentation>
 			<documentation xml:lang="da-DK">Request-dokument til at oprette en recept med en tilhørende udlevering</documentation>
 		</annotation>
 		<sequence>
-			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>			
 			<element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
 			<element name="SystemName" type="medicinecard20150601:SystemNameType"/>
