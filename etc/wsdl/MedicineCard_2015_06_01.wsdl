@@ -476,11 +476,11 @@
         <wsdl:part name="UpdateEffectuationResponse" element="medicinecard20150601:UpdateEffectuationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionOrderEffectuationRequest_2015_06_01">
-        <wsdl:part name="CreatePrescriptionOrderEffectuationRequest" element="medicinecard20150601:CreatePrescriptionOrderEffectuationRequest"/>
+    <wsdl:message name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
+        <wsdl:part name="CreateAndEffectuatePrescriptionRequest" element="medicinecard20150601:CreateAndEffectuatePrescriptionRequest"/>
     </wsdl:message>
-    <wsdl:message name="CreatePrescriptionOrderEffectuationResponse_2015_06_01">
-        <wsdl:part name="CreatePrescriptionOrderEffectuationResponse" element="medicinecard20150601:CreatePrescriptionOrderEffectuationResponse"/>
+    <wsdl:message name="CreateAndEffectuatePrescriptionResponse_2015_06_01">
+        <wsdl:part name="CreateAndEffectuatePrescriptionResponse" element="medicinecard20150601:CreateAndEffectuatePrescriptionResponse"/>
     </wsdl:message>
 
     <wsdl:message name="TerminatePrescriptionRequest_2015_06_01">
@@ -846,9 +846,9 @@
         </wsdl:operation>
 
 
-        <wsdl:operation name="CreatePrescriptionOrderEffectuation_2015_06_01">
-            <wsdl:input name="CreatePrescriptionOrderEffectuationRequest_2015_06_01" message="tns:CreatePrescriptionOrderEffectuationRequest_2015_06_01"/>
-            <wsdl:output name="CreatePrescriptionOrderEffectuationResponse_2015_06_01" message="tns:CreatePrescriptionOrderEffectuationResponse_2015_06_01"/>
+        <wsdl:operation name="CreateAndEffectuatePrescription_2015_06_01">
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01" message="tns:CreateAndEffectuatePrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01" message="tns:CreateAndEffectuatePrescriptionResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1674,17 +1674,17 @@
             </wsdl:fault>
         </wsdl:operation>
 
-       <wsdl:operation name="CreatePrescriptionOrderEffectuation_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionOrderEffectuation"
+       <wsdl:operation name="CreateAndEffectuatePrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateAndEffectuatePrescription"
                             style="document"/>
-            <wsdl:input name="CreatePrescriptionOrderEffectuationRequest_2015_06_01">
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePrescriptionOrderEffectuationResponse_2015_06_01">
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>

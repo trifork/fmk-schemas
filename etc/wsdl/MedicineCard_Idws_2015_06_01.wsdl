@@ -485,11 +485,11 @@
         <wsdl:part name="UpdateEffectuationResponse" element="medicinecard20150601:UpdateEffectuationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionOrderEffectuationRequest_2015_06_01">
-        <wsdl:part name="CreatePrescriptionOrderEffectuationRequest" element="medicinecard20150601:CreatePrescriptionOrderEffectuationRequest"/>
+    <wsdl:message name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
+        <wsdl:part name="CreateAndEffectuatePrescriptionRequest" element="medicinecard20150601:CreateAndEffectuatePrescriptionRequest"/>
     </wsdl:message>
-    <wsdl:message name="CreatePrescriptionOrderEffectuationResponse_2015_06_01">
-        <wsdl:part name="CreatePrescriptionOrderEffectuationResponse" element="medicinecard20150601:CreatePrescriptionOrderEffectuationResponse"/>
+    <wsdl:message name="CreateAndEffectuatePrescriptionResponse_2015_06_01">
+        <wsdl:part name="CreateAndEffectuatePrescriptionResponse" element="medicinecard20150601:CreateAndEffectuatePrescriptionResponse"/>
     </wsdl:message>
 
     <wsdl:message name="TerminatePrescriptionRequest_2015_06_01">
@@ -841,9 +841,9 @@
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionOrderEffectuation_2015_06_01">
-            <wsdl:input name="CreatePrescriptionOrderEffectuationRequest_2015_06_01" message="tns:CreatePrescriptionOrderEffectuationRequest_2015_06_01"/>
-            <wsdl:output name="CreatePrescriptionOrderEffectuationResponse_2015_06_01" message="tns:CreatePrescriptionOrderEffectuationResponse_2015_06_01"/>
+        <wsdl:operation name="CreateAndEffectuatePrescription_2015_06_01">
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01" message="tns:CreateAndEffectuatePrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01" message="tns:CreateAndEffectuatePrescriptionResponse_2015_06_01"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -1914,10 +1914,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionOrderEffectuation_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionOrderEffectuation"
+        <wsdl:operation name="CreateAndEffectuatePrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateAndEffectuatePrescription"
                             style="document"/>
-            <wsdl:input name="CreatePrescriptionOrderEffectuationRequest_2015_06_01">
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                 <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
@@ -1927,7 +1927,7 @@
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePrescriptionOrderEffectuationResponse_2015_06_01">
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
