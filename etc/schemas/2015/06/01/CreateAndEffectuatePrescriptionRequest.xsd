@@ -4,6 +4,7 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="PatientWithoutCPR.xsd"/>
 	<element name="CreateAndEffectuatePrescriptionRequest" type="medicinecard20150601:CreateAndEffectuatePrescriptionRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document containing one or more documents for creating prescriptions together with effectuations in one go</documentation>
@@ -15,6 +16,7 @@
 			<choice>
 				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+				<element name="Patient" type="medicinecard20150601:PatientWithoutCPRType"/> 				
 			</choice>
 			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" />
 			<element name="EffectuatedBy" type="medicinecard20150601:ModificatorType" />
