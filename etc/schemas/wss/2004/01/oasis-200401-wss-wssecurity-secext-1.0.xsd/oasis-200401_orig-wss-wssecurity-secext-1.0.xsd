@@ -123,7 +123,9 @@ This document and the information contained herein is provided on an “AS IS”
 				</xsd:annotation>
 			</xsd:any>
 		</xsd:sequence>
-		<xsd:anyAttribute namespace="##other" processContents="lax"/>
+		<!-- Note: Allowing attribute from any namespace to allow dgws requests -->
+		<!-- xsd:anyAttribute namespace="##other" processContents="lax"/-->
+		<xsd:anyAttribute namespace="##any" processContents="lax"/>
 	</xsd:complexType>
 	<xsd:complexType name="TransformationParametersType">
 		<xsd:annotation>
