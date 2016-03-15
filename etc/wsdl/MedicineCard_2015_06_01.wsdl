@@ -146,9 +146,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/UndoEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/UndoEffectuationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/UpdateEffectuationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/UpdateEffectuationResponse.xsd"/>
-            
             <xs:include schemaLocation="../schemas/2015/06/01/CreateAndEffectuatePrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CreateAndEffectuatePrescriptionResponse.xsd"/>
             
@@ -469,13 +466,6 @@
     </wsdl:message>
     <wsdl:message name="UndoEffectuationResponse_2015_06_01">
         <wsdl:part name="UndoEffectuationResponse" element="medicinecard20150601:UndoEffectuationResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="UpdateEffectuationRequest_2015_06_01">
-        <wsdl:part name="UpdateEffectuationRequest" element="medicinecard20150601:UpdateEffectuationRequest"/>
-    </wsdl:message>
-    <wsdl:message name="UpdateEffectuationResponse_2015_06_01">
-        <wsdl:part name="UpdateEffectuationResponse" element="medicinecard20150601:UpdateEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
@@ -837,13 +827,6 @@
         <wsdl:operation name="UndoEffectuation_2015_06_01">
             <wsdl:input name="UndoEffectuationRequest_2015_06_01" message="tns:UndoEffectuationRequest_2015_06_01"/>
             <wsdl:output name="UndoEffectuationResponse_2015_06_01" message="tns:UndoEffectuationResponse_2015_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-
-        <wsdl:operation name="UpdateEffectuation_2015_06_01">
-            <wsdl:input name="UpdateEffectuationRequest_2015_06_01" message="tns:UpdateEffectuationRequest_2015_06_01"/>
-            <wsdl:output name="UpdateEffectuationResponse_2015_06_01" message="tns:UpdateEffectuationResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1647,26 +1630,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UndoEffectuationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-       <wsdl:operation name="UpdateEffectuation_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateEffectuation"
-                            style="document"/>
-            <wsdl:input name="UpdateEffectuationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UpdateEffectuationResponse_2015_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
