@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="CreateOrder.xsd"/>
 	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="OrderWithDoseDispensing.xsd"/>
+	<include schemaLocation="DeliveryInstructionText.xsd"/>
+	<include schemaLocation="Delivery.xsd"/>
 
 	<complexType name="CreateOrderPrescriptionType">
 		<annotation>
@@ -10,7 +13,10 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
-			<element name="Order" type="medicinecard20150601:CreateOrderType"/>
+			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
+			<element name="DoseDispensing" type="medicinecard20150601:OrderWithDoseDispensingType" minOccurs="0"/>
+			<element name="DeliveryInstructionText" type="medicinecard20150601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
+			<element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
