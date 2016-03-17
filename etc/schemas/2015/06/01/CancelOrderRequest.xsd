@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 
-	<element name="CreateOrderResponse" type="medicinecard20150601:CreateOrderResponseType"/>
 
-	<complexType name="CreateOrderResponseType">
+	<element name="CancelOrderRequest" type="medicinecard20150601:CancelOrderRequestType"/>
+
+	<complexType name="CancelOrderRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for creating orders on prescriptions</documentation>
-			<documentation xml:lang="da-DK">Svar på oprettelse bestillinger på recepter </documentation>
+			<documentation xml:lang="en-GB">Request for cancelling orders on prescriptions</documentation>
+			<documentation xml:lang="da-DK">Request til at annullere bestillinger på recepter</documentation>
 		</annotation>
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
 			</choice>
+			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
 			<element name="Order" maxOccurs="unbounded">
 				<complexType>
 					<sequence>

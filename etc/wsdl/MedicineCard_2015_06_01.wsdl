@@ -161,7 +161,10 @@
             
             <xs:include schemaLocation="../schemas/2015/06/01/CreateOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CreateOrderResponse.xsd"/>
-            
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/UpdateOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/UpdateOrderResponse.xsd"/>
             
@@ -506,6 +509,13 @@
     </wsdl:message>
     <wsdl:message name="CreateOrderResponse_2015_06_01">
         <wsdl:part name="CreateOrderResponse" element="medicinecard20150601:CreateOrderResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelOrderRequest_2015_06_01">
+        <wsdl:part name="CancelOrderRequest" element="medicinecard20150601:CancelOrderRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelOrderResponse_2015_06_01">
+        <wsdl:part name="CancelOrderResponse" element="medicinecard20150601:CancelOrderResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdateOrderRequest_2015_06_01">
@@ -870,6 +880,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
+        <wsdl:operation name="CancelOrder_2015_06_01">
+            <wsdl:input name="CancelOrderRequest_2015_06_01" message="tns:CancelOrderRequest_2015_06_01"/>
+            <wsdl:output name="CancelOrderResponse_2015_06_01" message="tns:CancelOrderResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
 
         <wsdl:operation name="UpdateOrder_2015_06_01">
             <wsdl:input name="UpdateOrderRequest_2015_06_01" message="tns:UpdateOrderRequest_2015_06_01"/>
@@ -1757,7 +1772,28 @@
             </wsdl:fault>
         </wsdl:operation>
 
-       <wsdl:operation name="UpdateOrder_2015_06_01">
+        <wsdl:operation name="CancelOrder_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelOrder"
+                            style="document"/>
+            <wsdl:input name="CancelOrderRequest_2015_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelOrderResponse_2015_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+
+        <wsdl:operation name="UpdateOrder_2015_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateOrder"
                             style="document"/>
             <wsdl:input name="UpdateOrderRequest_2015_06_01">
