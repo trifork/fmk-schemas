@@ -62,14 +62,52 @@
             <wsdl:output name="DumpPatientsResponse" message="tns:DumpPatientsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
+        
         <wsdl:operation name="RestorePatients">
             <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#RestorePatients" style="document"/>
             <wsdl:input name="RestorePatientsRequest" message="tns:RestorePatientsRequest"/>
             <wsdl:output name="RestorePatientsResponse" message="tns:RestorePatientsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
+        <wsdl:operation name="RestorePatientsFMK">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#RestorePatientsFMK" style="document"/>
+            <wsdl:input name="RestorePatientsRequest" message="tns:RestorePatientsRequest"/>
+            <wsdl:output name="RestorePatientsResponse" message="tns:RestorePatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="RestorePatientsEO">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#RestorePatientsEO" style="document"/>
+            <wsdl:input name="RestorePatientsRequest" message="tns:RestorePatientsRequest"/>
+            <wsdl:output name="RestorePatientsResponse" message="tns:RestorePatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="RestorePatientsPOR">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#RestorePatientsPOR" style="document"/>
+            <wsdl:input name="RestorePatientsRequest" message="tns:RestorePatientsRequest"/>
+            <wsdl:output name="RestorePatientsResponse" message="tns:RestorePatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        
         <wsdl:operation name="ResetPatients">
             <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#ResetPatients" style="document"/>
+            <wsdl:input name="ResetPatientsRequest" message="tns:ResetPatientsRequest"/>
+            <wsdl:output name="ResetPatientsResponse" message="tns:ResetPatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPatientsFMK">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#ResetPatientsFMK" style="document"/>
+            <wsdl:input name="ResetPatientsRequest" message="tns:ResetPatientsRequest"/>
+            <wsdl:output name="ResetPatientsResponse" message="tns:ResetPatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPatientsPOR">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#ResetPatientsPOR" style="document"/>
+            <wsdl:input name="ResetPatientsRequest" message="tns:ResetPatientsRequest"/>
+            <wsdl:output name="ResetPatientsResponse" message="tns:ResetPatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPatientsEO">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2013/01/01#ResetPatientsEO" style="document"/>
             <wsdl:input name="ResetPatientsRequest" message="tns:ResetPatientsRequest"/>
             <wsdl:output name="ResetPatientsResponse" message="tns:ResetPatientsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -94,8 +132,45 @@
             <wsdl:output name="RestorePatientsResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="RestorePatientsFMK">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#RestorePatientsFMK" style="document"/>
+            <wsdl:input name="RestorePatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="RestorePatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="RestorePatientsPOR">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#RestorePatientsPOR" style="document"/>
+            <wsdl:input name="RestorePatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="RestorePatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="RestorePatientsEO">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#RestorePatientsEO" style="document"/>
+            <wsdl:input name="RestorePatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="RestorePatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+        
 		<wsdl:operation name="ResetPatients">
         	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#ResetPatients" style="document"/>
+            <wsdl:input name="ResetPatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="ResetPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPatientsFMK">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#ResetPatientsFMK" style="document"/>
+            <wsdl:input name="ResetPatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="ResetPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPatientsPOR">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#ResetPatientsPOR" style="document"/>
+            <wsdl:input name="ResetPatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="ResetPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ResetPatientsEO">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2013/01/01#ResetPatientsEO" style="document"/>
             <wsdl:input name="ResetPatientsRequest"><soap:body use="literal"/></wsdl:input>
             <wsdl:output name="ResetPatientsResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
