@@ -8,6 +8,8 @@
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
 	<include schemaLocation="EffectuationMethod.xsd"/>
 	<include schemaLocation="PackageDispensed.xsd"/>
+	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
+	<include schemaLocation="PharmacyComment.xsd"/>
 
 	<complexType name="CreatePharmacyEffectuationType">
 		<annotation>
@@ -20,6 +22,8 @@
 				<element name="DoseDispensed" type="medicinecard20150601:DoseDispensedType"/>
 				<element name="PackageDispensed" type="medicinecard20150601:PackageDispensedType"/>
 			</choice>
+			<element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+			<element name="PharmacyComment" type="medicinecard20150601:PharmacyCommentType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
