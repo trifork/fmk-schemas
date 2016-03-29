@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="InvalidEffectuation.xsd"/>
+	<include schemaLocation="InvalidationReasonText.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="CreatedWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="DosageForResponse.xsd"/>
@@ -55,6 +56,7 @@
 			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType"/>
 			<element name="SupplementaryInformation" type="medicinecard20150601:SupplementaryInformationType" minOccurs="0"/>
 			<element name="Status" type="medicinecard20150601:PrescriptionStatusType"/>
+			<element name="InvalidationReasonText" type="medicinecard20150601:InvalidationReasonTextType" minOccurs="0"/>
 			<element name="Deprecated" type="medicinecard20150601:DeprecatedDateTimeType" minOccurs="0"/>
 			<element name="ReplacesPrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
 			<element name="ReplacedByPrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
