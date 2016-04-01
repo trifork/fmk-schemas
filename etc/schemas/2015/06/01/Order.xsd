@@ -21,7 +21,10 @@
         </annotation>
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
-			<element name="Created" type="medicinecard20150601:CreatedType"/>
+			<choice>
+				<element name="CreatedWithoutPerson" type="medicinecard20150601:CreatedWithoutPersonType"/>
+				<element name="Created" type="medicinecard20150601:CreatedType"/>
+			</choice>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
 			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
