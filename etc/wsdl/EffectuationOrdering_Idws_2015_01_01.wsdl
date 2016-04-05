@@ -2,15 +2,15 @@
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                  xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
-                  xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
+                  xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01"
                   xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
                   xmlns:wsseorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                   xmlns:wsuorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
                   xmlns:wsa="http://www.w3.org/2005/08/addressing"
                   xmlns:sbf="urn:liberty:sb"
 
-                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
+                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01">
 
     <wsdl:types>
 
@@ -42,24 +42,34 @@
             <xs:include schemaLocation="../schemas/2001/10/xml-exc-c14n/xml-exc-c14n.xsd"/>
         </xs:schema>
 
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
                    elementFormDefault="qualified">
-            <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2012/06/01/GetOrderedEffectuationsRequest.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/GetOrderedEffectuationsResponse.xsd"/>
+            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+            
+			<xs:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationsRequest.xsd"/>
 
-			<xs:include schemaLocation="../schemas/2012/06/01/GetOrderedEffectuationSummaryRequest.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/GetOrderedEffectuationSummaryResponse.xsd"/>
+			<xs:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationsResponse.xsd"/>
 			
-			<xs:include schemaLocation="../schemas/2012/06/01/OrderEffectuationRequest.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/OrderEffectuationResponse.xsd"/>
-			
-			<xs:include schemaLocation="../schemas/2012/06/01/CancelOrderedEffectuationRequest.xsd"/>
-			<xs:include schemaLocation="../schemas/2012/06/01/CancelOrderedEffectuationResponse.xsd"/>
+			<xs:include schemaLocation="../schemas/2015/01/01/OrderEffectuationRequest.xsd"/>
 
-			<xs:include schemaLocation="../schemas/2012/06/01/OnBehalfOf.xsd"/>
+			<xs:include schemaLocation="../schemas/2015/01/01/OrderEffectuationResponse.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationSummaryRequest.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationSummaryResponse.xsd"/>
+			
+			<xs:include schemaLocation="../schemas/2015/01/01/CancelOrderedEffectuationRequest.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/01/01/CancelOrderedEffectuationResponse.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/01/01/OnBehalfOf.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/TimingList.xsd"/>
+
         </xs:schema>
+
     </wsdl:types>
 
     <wsdl:message name="MessageIDHeader">
@@ -85,77 +95,78 @@
     </wsdl:message>
 
     <wsdl:message name="TimingHeader">
-        <wsdl:part name="TimingHeader" element="medicinecard20120601:TimingList"/>
+        <wsdl:part name="TimingHeader" element="medicinecard20150101:TimingList"/>
+    </wsdl:message>
+
+    
+    <wsdl:message name="GetOrderedEffectuationsIdwsRequest_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationsRequest" element="medicinecard20150101:GetOrderedEffectuationsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrderedEffectuationsIdwsResponse_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationsResponse" element="medicinecard20150101:GetOrderedEffectuationsResponse"/>
     </wsdl:message>
     
-    <wsdl:message name="GetOrderedEffectuationsIdwsRequest_2012_06_01">
-        <wsdl:part name="GetOrderedEffectuationsRequest" element="medicinecard20120601:GetOrderedEffectuationsRequest"/>
+    <wsdl:message name="GetOrderedEffectuationSummaryIdwsRequest_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationSummaryRequest" element="medicinecard20150101:GetOrderedEffectuationSummaryRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetOrderedEffectuationsIdwsResponse_2012_06_01">
-        <wsdl:part name="GetOrderedEffectuationsResponse" element="medicinecard20120601:GetOrderedEffectuationsResponse"/>
+    <wsdl:message name="GetOrderedEffectuationSummaryIdwsResponse_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationSummaryResponse" element="medicinecard20150101:GetOrderedEffectuationSummaryResponse"/>
     </wsdl:message>
-    
-    <wsdl:message name="GetOrderedEffectuationSummaryIdwsRequest2012_06_01">
-        <wsdl:part name="GetOrderedEffectuationSummaryRequest" element="medicinecard20120601:GetOrderedEffectuationSummaryRequest"/>
+        
+    <wsdl:message name="OrderEffectuationIdwsRequest_2015_01_01">
+        <wsdl:part name="OrderEffectuationRequest" element="medicinecard20150101:OrderEffectuationRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetOrderedEffectuationSummaryIdwsResponse_2012_06_01">
-        <wsdl:part name="GetOrderedEffectuationSummaryResponse" element="medicinecard20120601:GetOrderedEffectuationSummaryResponse"/>
-    </wsdl:message>
-    
-    <wsdl:message name="OrderEffectuationIdwsRequest_2012_06_01">
-        <wsdl:part name="OrderEffectuationRequest" element="medicinecard20120601:OrderEffectuationRequest"/>
-    </wsdl:message>
-    <wsdl:message name="OrderEffectuationIdwsResponse_2012_06_01">
-        <wsdl:part name="OrderEffectuationResponse" element="medicinecard20120601:OrderEffectuationResponse"/>
+    <wsdl:message name="OrderEffectuationIdwsResponse_2015_01_01">
+        <wsdl:part name="OrderEffectuationResponse" element="medicinecard20150101:OrderEffectuationResponse"/>
     </wsdl:message>
     
-    <wsdl:message name="CancelOrderedEffectuationIdwsRequest_2012_06_01">
-        <wsdl:part name="CancelOrderedEffectuationRequest" element="medicinecard20120601:CancelOrderedEffectuationRequest"/>
+    <wsdl:message name="CancelOrderedEffectuationIdwsRequest_2015_01_01">
+        <wsdl:part name="CancelOrderedEffectuationRequest" element="medicinecard20150101:CancelOrderedEffectuationRequest"/>
     </wsdl:message>
-    <wsdl:message name="CancelOrderedEffectuationIdwsResponse_2012_06_01">
-        <wsdl:part name="CancelOrderedEffectuationResponse" element="medicinecard20120601:CancelOrderedEffectuationResponse"/>
+    <wsdl:message name="CancelOrderedEffectuationIdwsResponse_2015_01_01">
+        <wsdl:part name="CancelOrderedEffectuationResponse" element="medicinecard20150101:CancelOrderedEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="IDWSFault">
         <wsdl:part name="fault" element="sbf:IDWSFault" />
     </wsdl:message>
 
+
     <wsdl:portType name="EffectuationOrderingPortType">
 
-        <wsdl:operation name="GetOrderedEffectuationsIdws_2012_06_01">
-            <wsdl:input name="GetOrderedEffectuationsIdwsRequest_2012_06_01"
-            			message="tns:GetOrderedEffectuationsIdwsRequest_2012_06_01"/>
+        <wsdl:operation name="GetOrderedEffectuationsIdws_2015_01_01">
+            <wsdl:input name="GetOrderedEffectuationsRequest_2015_01_01" 
+            			message="tns:GetOrderedEffectuationsIdwsRequest_2015_01_01"/>
             
-            <wsdl:output name="GetOrderedEffectuationsIdwsResponse_2012_06_01" 
-            			 message="tns:GetOrderedEffectuationsIdwsResponse_2012_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetOrderedEffectuationSummaryIdws_2012_06_01">
-            <wsdl:input name="GetOrderedEffectuationSummaryIdwsRequest_2012_06_01" 
-            			message="tns:GetOrderedEffectuationSummaryIdwsRequest2012_06_01"/>
-            
-            <wsdl:output name="GetOrderedEffectuationSummaryIdwsResponse_2012_06_01" 
-            			 message="tns:GetOrderedEffectuationSummaryIdwsResponse_2012_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
-        </wsdl:operation>
-
-        
-        <wsdl:operation name="OrderEffectuationIdws_2012_06_01">
-            <wsdl:input name="OrderEffectuationIdwsRequest_2012_06_01" 
-            			message="tns:OrderEffectuationIdwsRequest_2012_06_01"/>
-            
-            <wsdl:output name="OrderEffectuationIdwsResponse_2012_06_01" 
-            			 message="tns:OrderEffectuationIdwsResponse_2012_06_01"/>
+            <wsdl:output name="GetOrderedEffectuationsIdwsResponse_2015_01_01"
+            			 message="tns:GetOrderedEffectuationsIdwsResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
         
-        <wsdl:operation name="CancelOrderedEffectuationIdws_2012_06_01">
-            <wsdl:input name="CancelOrderedEffectuationIdwsRequest_2012_06_01" 
-            			message="tns:CancelOrderedEffectuationIdwsRequest_2012_06_01"/>
+          <wsdl:operation name="GetOrderedEffectuationSummaryIdws_2015_01_01">
+            <wsdl:input name="GetOrderedEffectuationSummaryIdwsRequest_2015_01_01"
+            			message="tns:GetOrderedEffectuationSummaryIdwsRequest_2015_01_01"/>
             
-            <wsdl:output name="CancelOrderedEffectuationIdwsResponse_2012_06_01" 
-            			 message="tns:CancelOrderedEffectuationIdwsResponse_2012_06_01"/>
+            <wsdl:output name="GetOrderedEffectuationSummaryIdwsResponse_2015_01_01"
+            			 message="tns:GetOrderedEffectuationSummaryIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="OrderEffectuationIdws_2015_01_01">
+            <wsdl:input name="OrderEffectuationIdwsRequest_2015_01_01"
+            			message="tns:OrderEffectuationIdwsRequest_2015_01_01"/>
+            
+            <wsdl:output name="OrderEffectuationIdwsResponse_2015_01_01"
+            			 message="tns:OrderEffectuationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="CancelOrderedEffectuationIdws_2015_01_01">
+            <wsdl:input name="CancelOrderedEffectuationIdwsRequest_2015_01_01"
+            			message="tns:CancelOrderedEffectuationIdwsRequest_2015_01_01"/>
+            
+            <wsdl:output name="CancelOrderedEffectuationIdwsResponse_2015_01_01"
+            			 message="tns:CancelOrderedEffectuationIdwsResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
         
@@ -166,18 +177,18 @@
 
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-        <wsdl:operation name="GetOrderedEffectuationsIdws_2012_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetOrderedEffectuations"
+        <wsdl:operation name="GetOrderedEffectuationsIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetOrderedEffectuations"
                             style="document"/>
             <wsdl:input
-                    name="GetOrderedEffectuationsRequest_2012_06_01">
+                    name="GetOrderedEffectuationsRequest_2015_01_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetOrderedEffectuationsResponse_2012_06_01">
+            <wsdl:output name="GetOrderedEffectuationsResponse_2015_01_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -186,39 +197,18 @@
             </wsdl:fault>
         </wsdl:operation>
         
-         <wsdl:operation name="GetOrderedEffectuationSummaryIdws_2012_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetOrderedEffectuationSummary"
+         <wsdl:operation name="GetOrderedEffectuationSummaryIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetOrderedEffectuationSummary"
                             style="document"/>
             <wsdl:input
-                    name="GetOrderedEffectuationSummaryRequest_2012_06_01">
+                    name="GetOrderedEffectuationSummaryRequest_2015_01_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2012_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-         
-        
-        <wsdl:operation name="OrderEffectuationIdws_2012_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#OrderEffectuation"
-                            style="document"/>
-            <wsdl:input
-                    name="OrderEffectuationRequest_2012_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="OrderEffectuationResponse_2012_06_01">
+            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2015_01_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -227,18 +217,38 @@
             </wsdl:fault>
         </wsdl:operation>
         
-        <wsdl:operation name="CancelOrderedEffectuationIdws_2012_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CancelOrderedEffectuation"
+        <wsdl:operation name="OrderEffectuationIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#OrderEffectuation"
                             style="document"/>
             <wsdl:input
-                    name="CancelOrderedEffectuationRequest_2012_06_01">
+                    name="OrderEffectuationRequest_2015_01_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CancelOrderedEffectuationResponse_2012_06_01">
+            <wsdl:output name="OrderEffectuationResponse_2015_01_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="CancelOrderedEffectuationIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CancelOrderedEffectuation"
+                            style="document"/>
+            <wsdl:input
+                    name="CancelOrderedEffectuationRequest_2015_01_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelOrderedEffectuationResponse_2015_01_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>

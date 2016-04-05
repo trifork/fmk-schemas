@@ -47,11 +47,12 @@ public class FmkNamespaces {
 		namespaces.addNamespace("saml", "urn:oasis:names:tc:SAML:2.0:assertion");
 		namespaces.addNamespace("wsse", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd");
 		namespaces.addNamespace("wsu", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd");
-		namespaces.addNamespace("wsa", "http://schemas.xmlsoap.org/ws/2004/08/addressing");
 		namespaces.addNamespace("wst", "http://schemas.xmlsoap.org/ws/2005/02/trust");
 		namespaces.addNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
 		namespaces.addNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
-		
+		namespaces.addNamespace("wsa","http://www.w3.org/2005/08/addressing");
+		namespaces.addNamespace("xenc","http://www.w3.org/2001/04/xmlenc#");
+		namespaces.addNamespace("sbf","urn:liberty:sb");
 		return namespaces;
 	}
 	

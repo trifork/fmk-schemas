@@ -108,12 +108,20 @@
 		<mkdir dir="${idws.work.dir}"  />
 		<mkdir dir="${idws.target.dir}/wsdl"  />
 
-        <organize-idws-schemas-macro versiondate="2012_06_01"/>
-        <organize-idws-schemas-macro versiondate="2013_06_01"/>
-        <organize-idws-schemas-macro versiondate="2015_01_01"/>
-        <organize-idws-schemas-macro versiondate="2015_01_01_E1"/>
-        <organize-idws-schemas-macro versiondate="2015_06_01"/>
+        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2012_06_01"/>
+        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2013_06_01"/>
+        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01"/>
+        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E1"/>
+        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01"/>
 
+        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2012_06_01"/>
+        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2013_06_01"/>
+        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01"/>
+
+        <organize-idws-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2012_06_01"/>
+        <organize-idws-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2013_06_01"/>
+        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01"/>
+        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01_E1"/>
 
         <copy todir="${idws.target.dir}">
             <fileset dir="${idws.target.dir}/gensrc/META-INF" includes="schemas/**"/>
@@ -127,6 +135,7 @@
 
     <macrodef name="organize-idws-schemas-macro">
         <attribute name="versiondate"/>
+        <attribute name="wsdlname"/>
 
         <sequential>
             <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${idws.work.dir}">
@@ -136,12 +145,12 @@
                 </classpath>
                 <sysproperty key="target.dir" value="${idws.target.dir}" />
                 <sysproperty key="VersionDate" value="Idws_@{versiondate}"/>
-                <sysproperty key="WsdlName" value="MedicineCard"/>
+                <sysproperty key="WsdlName" value="@{wsdlname}"/>
             </java>
-            <copy todir="${idws.target.dir}/wsdl/MedicineCard_Idws_@{versiondate}">
+            <copy todir="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}">
                 <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
             </copy>
-            <zip destfile="${idws.target.dir}/wsdl/MedicineCard_Idws_@{versiondate}-collection.zip" basedir="${idws.target.dir}/wsdl/MedicineCard_Idws_@{versiondate}"/>
+            <zip destfile="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}-collection.zip" basedir="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}"/>
         </sequential>
     </macrodef>
 
