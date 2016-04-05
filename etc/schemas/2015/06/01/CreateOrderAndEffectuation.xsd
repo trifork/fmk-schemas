@@ -2,6 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="ForeignOrganisation.xsd"/>
 	<include schemaLocation="DoseDispensing.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="OrderStatus.xsd"/>
@@ -14,7 +15,10 @@
 			<documentation xml:lang="da-DK">Request-dokument til at oprette en bestilling sammen med en effektuering</documentation>
 		</annotation>
 		<sequence>
-			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
+			<choice>
+				<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
+				<element name="OrderedAbroad" type="medicinecard20150601:ForeignOrganisationType"/>
+			</choice>	
 			<element name="DoseDispensing" type="medicinecard20150601:DoseDispensingType" minOccurs="0"/>
 			<element name="DeliveryInstructionText" type="medicinecard20150601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>

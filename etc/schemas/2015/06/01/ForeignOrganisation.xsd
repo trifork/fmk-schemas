@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="AddressLine.xsd"/>
+	<include schemaLocation="EmailAddress.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="OrganisationName.xsd"/>
+	<include schemaLocation="OrganisationType.xsd"/>
+	<include schemaLocation="TelephoneNumber.xsd"/>
+	<include schemaLocation="CountryName.xsd"/>
+	<complexType name="ForeignOrganisationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Describes an organisation outside Denmark.</documentation>
+			<documentation xml:lang="da-DK">Beskriver en udenlandsk organisation</documentation>
+		</annotation>
+		<sequence>
+			<element name="Name" type="medicinecard20150601:OrganisationNameType"/>
+			<element name="AddressLine" type="medicinecard20150601:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<element name="TelephoneNumber" type="medicinecard20150601:TelephoneNumberType" minOccurs="0"/>
+			<element name="EmailAddress" type="medicinecard20150601:EmailAddressType" minOccurs="0"/>
+			<element name="Type" type="medicinecard20150601:OrganisationTypeType"/>
+			<element name="CountryName" type="medicinecard20150601:CountryNameType"/>
+		</sequence>
+	</complexType>
+</schema>
