@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionsForPersonOrOrganisation.xsd"/>
-
+	<include schemaLocation="MoreAvailableOrders.xsd"/>
 	<element name="GetNewOrdersResponse" type="medicinecard20150601:GetNewOrdersResponseType"/>
 	<complexType name="GetNewOrdersResponseType">
 	        <annotation>
@@ -15,6 +15,7 @@
 		<sequence>
 			<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
 			<element name="Prescriptions" type="medicinecard20150601:PrescriptionsForPersonOrOrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreAvailable" type="medicinecard20150601:MoreAvailableOrdersType"/>
 		</sequence>
 	</complexType>
 </schema>
