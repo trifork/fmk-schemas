@@ -6,13 +6,18 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="CreatedWithoutPerson.xsd"/>
+	
 	<complexType name="LatestDosageDispensingEffectuationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Virtual card where a patient's medications are documented, except effectuations</documentation>
-			<documentation xml:lang="da-DK">Virtuelt kort hvori en patients medicineringer dokumenteres, undtaget effektueringer</documentation>
+			<documentation xml:lang="en-GB">Indication of when the latest dosedispensed effectuation was made, and by whom</documentation>
+			<documentation xml:lang="da-DK">Angivelse af tidspunktet for den seneste dosisdispenserede effektuering samt hvem der udførte den</documentation>
 		</annotation>
 		<sequence>
-			<element name="Created" type="medicinecard20150601:CreatedType"/>
+			<choice>
+				<element name="CreatedWithoutPerson" type="medicinecard20150601:CreatedWithoutPersonType"/>
+				<element name="Created" type="medicinecard20150601:CreatedType"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>

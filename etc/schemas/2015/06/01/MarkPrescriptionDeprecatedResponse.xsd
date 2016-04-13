@@ -4,6 +4,7 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<element name="MarkPrescriptionDeprecatedResponse" type="medicinecard20150601:MarkPrescriptionDeprecatedResponseType">
 	</element>
 	<complexType name="MarkPrescriptionDeprecatedResponseType">
@@ -18,6 +19,7 @@
 			</choice>
 			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
 			<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
