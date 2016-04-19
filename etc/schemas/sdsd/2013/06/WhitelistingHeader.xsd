@@ -8,6 +8,7 @@
     <import namespace="http://www.sdsd.dk/dgws/2010/08" schemaLocation="../../2010/08/OrgUsingName.xsd" />
     <import namespace="http://www.sdsd.dk/dgws/2010/08" schemaLocation="../../2010/08/OrgUsingID.xsd" />
     <import namespace="http://www.sdsd.dk/dgws/2010/08" schemaLocation="../../2010/08/RequestedRole.xsd" />
+    <import namespace="http://www.sdsd.dk/dgws/2010/08" schemaLocation="../../2010/08/BorgerOpslag.xsd" />
 
     <element name="WhitelistingHeader" type="sdsd201306:WhitelistingHeader">
         <annotation>
@@ -20,9 +21,14 @@
            <element ref="sdsd:SystemOwnerName" minOccurs="1" maxOccurs="1" />
            <element ref="sdsd:SystemName" minOccurs="1" maxOccurs="1" />
            <element ref="sdsd:SystemVersion" minOccurs="1" maxOccurs="1" />
-           <element ref="sdsd:OrgResponsibleName" minOccurs="1" maxOccurs="1" />
-           <element ref="sdsd:OrgUsingName" minOccurs="1" maxOccurs="1" />
-           <element ref="sdsd:OrgUsingID" minOccurs="1" maxOccurs="1" />
+           <choice>
+		      <sequence>
+		         <element ref="sdsd:OrgResponsibleName" minOccurs="1" maxOccurs="1" />
+        		 <element ref="sdsd:OrgUsingName" minOccurs="1" maxOccurs="1" />
+	          	 <element ref="sdsd:OrgUsingID" minOccurs="1" maxOccurs="1" />
+        	  </sequence>
+	          <element ref="sdsd:BorgerOpslag" minOccurs="1" maxOccurs="1" />
+           </choice>
            <choice>
 	           <element ref="sdsd:RequestedRole" minOccurs="1" maxOccurs="1" />
 	           <element ref="sdsd201306:SystemType" minOccurs="1" maxOccurs="1" />
