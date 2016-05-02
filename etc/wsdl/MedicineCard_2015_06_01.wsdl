@@ -103,6 +103,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/SearchEffectuationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/SearchEffectuationsResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchMedicineCardResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
 
@@ -386,6 +389,13 @@
     </wsdl:message>
     <wsdl:message name="SearchEffectuationsResponse_2015_06_01">
         <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20150601:SearchEffectuationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchMedicineCardRequest_2015_06_01">
+        <wsdl:part name="SearchMedicineCardRequest" element="medicinecard20150601:SearchMedicineCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchMedicineCardResponse_2015_06_01">
+        <wsdl:part name="SearchMedicineCardResponse" element="medicinecard20150601:SearchMedicineCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePrescriptionForUseInPracticeRequest_2015_06_01">
@@ -761,6 +771,14 @@
                         message="tns:SearchEffectuationsRequest_2015_06_01"/>
             <wsdl:output name="SearchEffectuationsResponse_2015_06_01"
                          message="tns:SearchEffectuationsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchMedicineCard_2015_06_01">
+            <wsdl:input name="SearchMedicineCardRequest_2015_06_01"
+                        message="tns:SearchMedicineCardRequest_2015_06_01"/>
+            <wsdl:output name="SearchMedicineCardResponse_2015_06_01"
+                         message="tns:SearchMedicineCardResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1402,6 +1420,25 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchEffectuationsResponse_2015_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchMedicineCard_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchMedicineCard" style="document"/>
+            <wsdl:input name="SearchMedicineCardRequest_2015_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchMedicineCardResponse_2015_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
                 <soap:body use="literal"/>
