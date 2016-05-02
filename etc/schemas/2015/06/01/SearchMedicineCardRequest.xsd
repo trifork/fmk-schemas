@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="SearchPerson.xsd"/>
+	<include schemaLocation="PageSize.xsd"/>
+	<include schemaLocation="PageOffset.xsd"/>
+	<element name="SearchMedicineCardRequest" type="medicinecard20150601:SearchMedicineCardRequestType"/>
+	<complexType name="SearchMedicineCardRequestType">
+		<sequence>
+			<element name="SearchPerson" type="medicinecard20150601:SearchPersonType"/>
+			<element name="PageSize" type="medicinecard20150601:PageSizeType" minOccurs="0"/>
+			<element name="PageOffset" type="medicinecard20150601:PageOffsetType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
