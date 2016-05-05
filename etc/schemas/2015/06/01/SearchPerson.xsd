@@ -11,6 +11,7 @@
 	<include schemaLocation="AuthorisationIdentifier.xsd"/>
 	<include schemaLocation="OrganisationName.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="AuthorisedHealthcareProfessionalName.xsd"/>
 	<complexType name="SearchPersonType">
 		<sequence>
 			<element name="Person" minOccurs="0">
@@ -40,16 +41,15 @@
 							<complexType>
 								<sequence>
 									<element name="AuthorisationIdentifier" type="medicinecard20150601:AuthorisationIdentifierType" minOccurs="0"/>
-									<element name="GivenName" type="medicinecard20150601:PersonGivenNameType" minOccurs="0"/>
-									<element name="Surname" type="medicinecard20150601:PersonSurnameType" minOccurs="0"/>
+									<element name="Name" type="medicinecard20150601:AuthorisedHealthcareProfessionalNameType" minOccurs="0"/>
 								</sequence>
 							</complexType>
 						</element>
 						<element name="Organisation" minOccurs="0">
 							<complexType>
 								<sequence>
-									<element name="Name" type="medicinecard20150601:OrganisationNameType" minOccurs="0"/>
 									<element name="Identifier" type="medicinecard20150601:OrganisationIdentifierType" minOccurs="0"/>
+									<element name="Name" type="medicinecard20150601:OrganisationNameType" minOccurs="0"/>
 								</sequence>
 							</complexType>
 						</element>
