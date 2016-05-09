@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="Created.xsd"/>
+	<element name="PrescriptionFor" type="medicinecard20150601:PrescriptionForType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains information about who a prescription is issued to, and by whom</documentation>
+			<documentation xml:lang="da-DK">Indeholder information om hvem en recept er udstedt til, og af hvem</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionForType">
+		<sequence>
+			<element name="Patient" type="medicinecard20150601:PatientType" />
+			<element name="Created" type="medicinecard20150601:CreatedType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

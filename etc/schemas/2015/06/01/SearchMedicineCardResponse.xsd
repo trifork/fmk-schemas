@@ -3,12 +3,13 @@
 	<include schemaLocation="Patient.xsd"/>
 	<include schemaLocation="PageOffset.xsd"/>
 	<include schemaLocation="MoreAvailable.xsd"/>
+	<include schemaLocation="PrescriptionFor.xsd"/>
 	<element name="SearchMedicineCardResponse" type="medicinecard20150601:SearchMedicineCardResponseType"/>
 	<complexType name="SearchMedicineCardResponseType">
 		<sequence>
 			<element name="PageNumber" type="medicinecard20150601:PageOffsetType" />
 			<element name="MoreAvailable" type="medicinecard20150601:MoreAvailableType" minOccurs="0" />
-			<element name="Person" type="medicinecard20150601:PatientType" minOccurs="0" maxOccurs="100"/>
+			<element name="PrescriptionFor" type="medicinecard20150601:PrescriptionForType" minOccurs="0" maxOccurs="100" />
 		</sequence>
 	</complexType>
 </schema>
