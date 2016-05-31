@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<include schemaLocation="SearchPerson.xsd"/>
-	<include schemaLocation="PageSize.xsd"/>
-	<include schemaLocation="PageOffset.xsd"/>
+	<include schemaLocation="PersonGivenName.xsd"/>
+	<include schemaLocation="PersonSurname.xsd"/>
+	<include schemaLocation="BirthDate.xsd"/>
+	<include schemaLocation="IsPersonWithoutCPR.xsd"/>
+	<include schemaLocation="StreetName.xsd"/>
+	<include schemaLocation="StreetBuildingIdentifier.xsd"/>
+	<include schemaLocation="PostCodeIdentifier.xsd"/>
+	<include schemaLocation="DistrictName.xsd"/>
+	<include schemaLocation="AuthorisationIdentifier.xsd"/>
+	<include schemaLocation="AuthorisedHealthcareProfessionalName.xsd"/>
+	<include schemaLocation="OrganisationName.xsd"/>
+	<include schemaLocation="OrganisationType.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<element name="SearchMedicineCardRequest" type="medicinecard20150601:SearchMedicineCardRequestType"/>
 	<complexType name="SearchMedicineCardRequestType">
 		<sequence>
-			<element name="SearchPerson" type="medicinecard20150601:SearchPersonType"/>
-			<element name="PageSize" type="medicinecard20150601:PageSizeType" minOccurs="0"/>
-			<element name="PageNumber" type="medicinecard20150601:PageOffsetType" minOccurs="0"/>
+			<element name="Person" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="GivenName" type="medicinecard20150601:PersonGivenNameType" minOccurs="0"/>
+						<element name="Surname" type="medicinecard20150601:PersonSurnameType" minOccurs="0"/>
+						<element name="BirthDate" type="medicinecard20150601:BirthDateType"  minOccurs="0"/>
+						<element name="IsPersonWithoutCPR" type="medicinecard20150601:IsPersonWithoutCPRType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="Address" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="StreetName" type="medicinecard20150601:StreetNameType" minOccurs="0"/>
+						<element name="StreetBuildingIdentifier" type="medicinecard20150601:StreetBuildingIdentifierType" minOccurs="0"/>
+						<element name="PostCodeIdentifier" type="medicinecard20150601:PostCodeIdentifierType"  minOccurs="0"/>
+						<element name="DistrictName" type="medicinecard20150601:DistrictNameType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="IssuedBy" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="AuthorisedHealthcareProfessional" minOccurs="0">
+							<complexType>
+								<sequence>
+									<element name="AuthorisationIdentifier" type="medicinecard20150601:AuthorisationIdentifierType" minOccurs="0"/>
+									<element name="Name" type="medicinecard20150601:AuthorisedHealthcareProfessionalNameType" minOccurs="0"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="Organisation" minOccurs="0">
+							<complexType>
+								<sequence>
+									<element name="Name" type="medicinecard20150601:OrganisationNameType" minOccurs="0"/>
+									<sequence minOccurs="0">
+										<element name="Type" type="medicinecard20150601:OrganisationTypeType"/>
+										<element name="Identifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+									</sequence>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
 		</sequence>
 	</complexType>
 </schema>
