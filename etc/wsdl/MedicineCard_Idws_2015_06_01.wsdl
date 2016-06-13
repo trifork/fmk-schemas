@@ -192,6 +192,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/GiveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GiveConsentResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/GetAuthorisationDateForNewestOpenPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetAuthorisationDateForNewestOpenPrescriptionResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/OnBehalfOf.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/PrescriptionReplicationStatus.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/TimingList.xsd"/>
@@ -589,6 +592,13 @@
         <wsdl:part name="GiveConsentResponse" element="medicinecard20150601:GiveConsentResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01">
+        <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionRequest" element="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01">
+        <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionResponse" element="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="IDWSFault">
         <wsdl:part name="fault" element="sbf:IDWSFault" />
     </wsdl:message>
@@ -928,6 +938,12 @@
         <wsdl:operation name="GiveConsent_2015_06_01">
             <wsdl:input name="GiveConsentRequest_2015_06_01" message="tns:GiveConsentRequest_2015_06_01"/>
             <wsdl:output name="GiveConsentResponse_2015_06_01" message="tns:GiveConsentResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAuthorisationDateForNewestOpenPrescription_2015_06_01">
+            <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01" message="tns:GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01" message="tns:GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
     </wsdl:portType>
@@ -2312,6 +2328,25 @@
             </wsdl:fault>
         </wsdl:operation>
 
+        <wsdl:operation name="GetAuthorisationDateForNewestOpenPrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetAuthorisationDateForNewestOpenPrescription"
+                            style="document"/>
+            <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
 
     </wsdl:binding>
 

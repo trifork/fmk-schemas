@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="AuthorisationDate.xsd"/>
+	<element name="GetAuthorisationDateForNewestOpenPrescriptionResponse" type="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response for getting the authorisation date of the newest open prescription</documentation>
+			<documentation xml:lang="da-DK">Svar til at hente udstedelsesdato for nyeste åbne recept</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetAuthorisationDateForNewestOpenPrescriptionResponseType">
+		<sequence>
+			<element name="AuthorisationDate" type="medicinecard20150601:AuthorisationDateType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
