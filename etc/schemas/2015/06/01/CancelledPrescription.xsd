@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionError.xsd"/>
 	<element name="CancelledPrescription" type="medicinecard20150601:CancelledPrescriptionType">
 		<annotation>
 			<documentation xml:lang="en-GB">For use in bulk service: Result of marking one or more prescriptions as invalid</documentation>
@@ -9,7 +10,8 @@
 	</element>
 	<complexType name="CancelledPrescriptionType">
 		<sequence>
-			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType" maxOccurs="unbounded"/>
+			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"  maxOccurs="unbounded"/>
+			<element name="CancelPrescriptionFailed" type="medicinecard20150601:PrescriptionErrorType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
