@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<complexType name="RemoveConsentType">
+		<annotation>
+			<documentation xml:lang="en-GB">For use in bulk service: Remove consent for one or more drug medication</documentation>
+			<documentation xml:lang="da-DK">Til brug i bulk service: Fjerne samtykke til en eller flere lægemiddelordinationer</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
+			<element name="Modificator" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

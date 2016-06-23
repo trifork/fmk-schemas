@@ -12,6 +12,8 @@
 	<include schemaLocation="CreatedPrescription.xsd"/>
 	<include schemaLocation="UnwithdrawnDrugMedication.xsd"/>
 	<include schemaLocation="CancelledPrescription.xsd"/>
+	<include schemaLocation="ConsentWasGiven.xsd"/>
+	<include schemaLocation="ConsentWasRemoved.xsd"/>
 	<element name="UpdateMedicineCardResponse" type="medicinecard20150601:UpdateMedicineCardResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
@@ -33,6 +35,8 @@
 				<element name="CreatedPrescription" type="medicinecard20150601:CreatedPrescriptionType" minOccurs="0"/>
 				<element name="CreatedEffectuationOnDrugMedication" type="medicinecard20150601:CreatedEffectuationOnDrugMedicationType" minOccurs="0"/>
 				<element name="CancelledPrescription" type="medicinecard20150601:CancelledPrescriptionType" minOccurs="0"/>
+				<element name="ConsentGiven" type="medicinecard20150601:ConsentWasGivenType" minOccurs="0"/>
+				<element name="ConsentRemoved" type="medicinecard20150601:ConsentWasRemovedType" minOccurs="0"/>
 			</sequence>
 		</sequence>
 	</complexType>

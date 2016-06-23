@@ -20,6 +20,9 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="GiveConsent.xsd"/>
+	<include schemaLocation="RemoveConsent.xsd"/>
+
 	<element name="UpdateMedicineCardRequest" type="medicinecard20150601:UpdateMedicineCardRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
@@ -51,6 +54,8 @@
 				<element name="CancelPrescription" type="medicinecard20150601:CancelPrescriptionType" minOccurs="0"/>
 				<element name="CreateEffectuationOnDrugMedication" type="medicinecard20150601:CreateEffectuationOnDrugMedicationType" minOccurs="0"/>
 				<element name="DeleteEffectuation" type="medicinecard20150601:DeleteEffectuationType" minOccurs="0"/>
+				<element name="GiveConsent" type="medicinecard20150601:GiveConsentType" minOccurs="0"/>
+				<element name="RemoveConsent" type="medicinecard20150601:RemoveConsentType" minOccurs="0"/>
 			</sequence>
 		</sequence>
 	</complexType>
