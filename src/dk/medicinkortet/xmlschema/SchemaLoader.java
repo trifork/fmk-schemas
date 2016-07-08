@@ -1,29 +1,51 @@
 package dk.medicinkortet.xmlschema;
 
-import dk.medicinkortet.xmlschema.FindReferencedSchemaFiles.SchemaFile;
-import dk.sosi.seal.xml.XmlUtil;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.filefilter.FileFilterUtils;
-import org.w3c.dom.*;
-import org.xml.sax.SAXException;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamSource;
 
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import dk.medicinkortet.xmlschema.FindReferencedSchemaFiles.SchemaFile;
+import dk.sosi.seal.xml.XmlUtil;
 
 /**
  * This class goes through the schemas in etc/schemas and places them in the correct structure in target/gensrc/META-INF.
@@ -248,13 +270,14 @@ public class SchemaLoader {
         }
     }
 
-    private static Map<String, Set<SchemaFile>> generateInlineWsdl(DocumentBuilder builder) throws IOException, SAXException {
+    private static Map<String, Set<SchemaFile>> generateInlineWsdl(DocumentBuilder builder) throws IOException, SAXException, TransformerException, ParserConfigurationException {
         String inputFilename = getWsdlFilename();
         System.out.println("Generating Inline WSDL file: " + inputFilename);
 
         File wsdlFile = new File(inputFilename);
         File basedir = wsdlFile.getParentFile();
         Document wsdlDoc = builder.parse(wsdlFile);
+        wsdlDoc = removeXmlBaseFromExternalEntities(builder, wsdlDoc);
         Element wsdl = wsdlDoc.getDocumentElement();
 
         NodeList typeElements = wsdl.getElementsByTagNameNS("http://schemas.xmlsoap.org/wsdl/", "types");
@@ -311,7 +334,29 @@ public class SchemaLoader {
         return ns2schemaFilesMap;
     }
 
-    private static void collectGlobalPrefixes(Document wsdlDoc) {
+    // Using external entities in XML causes the Xerces parser to insert an "xml:base" attribute to all imported tags in
+    // the resulting DOM. This tag contains the absolute file path to the XML entity being imported, which is not very
+    // elegant. This method finds and removes those (irrelevant) attributes using xslt.
+    // See http://stackoverflow.com/questions/15673059/how-can-i-suppress-xmlbase-attribute-that-the-java-xml-transformer-is-adding-to
+    private static Document removeXmlBaseFromExternalEntities(DocumentBuilder builder, Document wsdlDoc) throws TransformerException, ParserConfigurationException {
+        Transformer tr = TransformerFactory.newInstance().newTransformer();
+        DOMResult domResult = new DOMResult();
+        tr.transform(new DOMSource(wsdlDoc), domResult);
+
+        StreamSource source = new StreamSource(SchemaLoader.class.getResourceAsStream("removexmlbase.xslt"));
+        Transformer tr2 = TransformerFactory.newInstance().newTransformer(source);
+        tr2.setOutputProperty(OutputKeys.INDENT, "yes");
+        tr2.setOutputProperty(OutputKeys.METHOD, "xml");
+        tr2.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        tr2.setOutputProperty(OutputKeys.STANDALONE, "yes");
+        //tr2.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+        Document doc = builder.newDocument();
+        Result result = new DOMResult(doc);
+        tr2.transform(new DOMSource(domResult.getNode()), result);
+        return doc;
+	}
+
+	private static void collectGlobalPrefixes(Document wsdlDoc) {
         NamedNodeMap attributes = wsdlDoc.getDocumentElement().getAttributes();
         for (int i = 0; i < attributes.getLength(); i++) {
             Node attr = attributes.item(i);

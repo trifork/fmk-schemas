@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="ConsentDate.xsd"/>
+	<include schemaLocation="ConsentType.xsd"/>
+	<include schemaLocation="ConsentSource.xsd"/>
+	<include schemaLocation="Content.xsd"/>
+	
+	<element name="Consent" type="medicinecard20150601:ConsentType">
+		<annotation>
+			<documentation xml:lang="en-GB">Specifies consent to apply for this request</documentation>
+			<documentation xml:lang="da-DK">Angiver samtykke der knytter sig til denne forespørgsel</documentation>
+		</annotation>
+	</element>
+	
+	<complexType name="ConsentType">
+		<complexContent>
+			<extension base="medicinecard20150601:ConsentValueType">
+				<attribute name="source" type="medicinecard20150601:ConsentSourceType" use="required"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="ConsentValueType">
+		<sequence>
+			<element name="FromDate" type="medicinecard20150601:ConsentDateType"/>
+			<element name="ToDate" type="medicinecard20150601:ConsentDateType"/>
+			<element name="ConsentType" type="medicinecard20150601:ConsentTypeType" />
+			<element name="Content" type="medicinecard20150601:ContentType" />
+		</sequence>
+	</complexType>
+
+</schema>

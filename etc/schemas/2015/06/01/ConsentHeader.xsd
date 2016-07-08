@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Consent.xsd"/>
+	
+	<element name="ConsentHeader" type="medicinecard20150601:ConsentHeaderType" />
+	
+	<complexType name="ConsentHeaderType">
+		<annotation>
+			<documentation xml:lang="en-GB">Tells a service what kind of consent is provided (and by whom) to access data or perform some action</documentation>
+			<documentation xml:lang="da-DK">Beskriver for en service hvad der er givet af samtykke (og af hvem) til adgang til data eller udførsel af specifikke handlinger</documentation>
+		</annotation>
+		<sequence>
+			<element name="Consent" type="medicinecard20150601:ConsentType" minOccurs="1" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+</schema>

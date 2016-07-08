@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<attribute name="ConsentSource" type="medicinecard20150601:ConsentSourceType">
+		<annotation>
+			<documentation xml:lang="en-GB">Specifies who provided the consent</documentation>
+			<documentation xml:lang="da-DK">Angiver hvem der har givet samtykket</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="ConsentSourceType">
+		<union memberTypes="medicinecard20150601:PredefinedConsentSourceType medicinecard20150601:UndefinedConsentSourceType"/>
+	</simpleType>
+	<simpleType name="PredefinedConsentSourceType">
+		<restriction base="medicinecard20150601:UndefinedConsentSourceType">
+			<enumeration value="User"/>
+        </restriction>
+	</simpleType>
+	<simpleType name="UndefinedConsentSourceType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

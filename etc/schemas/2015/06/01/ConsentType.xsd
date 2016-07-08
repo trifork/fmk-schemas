@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<attribute name="ConsentType" type="medicinecard20150601:ConsentTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Defines consent types</documentation>
+			<documentation xml:lang="da-DK">Definerer typer af samtykke</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="ConsentTypeType">
+		<union memberTypes="medicinecard20150601:PredefinedConsentTypeType medicinecard20150601:UndefinedConsentTypeType"/>
+	</simpleType>
+	<simpleType name="PredefinedConsentTypeType">
+		<restriction base="medicinecard20150601:UndefinedConsentTypeType">
+			<enumeration value="ConsentGiven"/>
+			<enumeration value="ConsentOverridden"/>
+			<enumeration value="MedicineReviewConsent"/>
+        </restriction>
+	</simpleType>
+	<simpleType name="UndefinedConsentTypeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

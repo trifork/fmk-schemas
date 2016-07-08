@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+<!ENTITY fmkStandardSOAPRequestHeaders SYSTEM "externalEntities/fmkStandardSOAPRequestHeaders.xml">
+<!ENTITY fmkStandardSOAPResponseHeaders SYSTEM "externalEntities/fmkStandardSOAPResponseHeaders.xml">
+]>
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -18,7 +22,7 @@
         <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
             <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
         </xs:schema>
-
+        
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified">
 
             <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
@@ -116,7 +120,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/SetMedicineCardReviewedResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/TimingList.xsd"/>
-
+ 
+            <xs:include schemaLocation="../schemas/2015/06/01/ConsentHeader.xsd"/>
+            
             <xs:include schemaLocation="../schemas/2015/06/01/UnmarkPrescriptionDeprecatedRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/UnmarkPrescriptionDeprecatedResponse.xsd"/>
 
@@ -203,6 +209,10 @@
 
     <wsdl:message name="WhitelistingHeader">
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="ConsentHeader">
+        <wsdl:part name="ConsentHeader" element="medicinecard20150601:ConsentHeader"/>
     </wsdl:message>
 
     <wsdl:message name="TimingHeader">
@@ -974,7 +984,6 @@
         </wsdl:operation>
     </wsdl:portType>
 
-
     <wsdl:binding name="MedicineCardBinding" type="tns:MedicineCardPortType">
 
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
@@ -983,15 +992,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCard"
                             style="document"/>
             <wsdl:input name="GetMedicineCardRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1003,15 +1008,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardOnlyEffectuatable"
                             style="document"/>
             <wsdl:input name="GetMedicineCardOnlyEffectuatableRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardOnlyEffectuatableResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1023,15 +1024,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardAsPDF"
                             style="document"/>
             <wsdl:input name="GetMedicineCardAsPDFRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1043,15 +1040,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardVersion"
                             style="document"/>
             <wsdl:input name="GetMedicineCardVersionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardVersionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1063,15 +1056,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardVersions"
                             style="document"/>
             <wsdl:input name="GetMedicineCardVersionsRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardVersionsResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1083,16 +1072,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardVersionList"
                             style="document"/>
             <wsdl:input name="GetMedicineCardVersionListRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
-                             wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardVersionListResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1104,15 +1088,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateMedicineCard"
                             style="document"/>
             <wsdl:input name="UpdateMedicineCardRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UpdateMedicineCardResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1124,15 +1104,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SetMedicineCardNotReviewed"
                             style="document"/>
             <wsdl:input name="SetMedicineCardNotReviewedRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SetMedicineCardNotReviewedResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1144,15 +1120,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SetMedicineCardReviewed"
                             style="document"/>
             <wsdl:input name="SetMedicineCardReviewedRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SetMedicineCardReviewedResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1164,15 +1136,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDrugMedication"
                             style="document"/>
             <wsdl:input name="GetDrugMedicationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDrugMedicationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1184,15 +1152,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDrugMedicationVersions"
                             style="document"/>
             <wsdl:input name="GetDrugMedicationVersionsRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDrugMedicationVersionsResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1204,15 +1168,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDrugMedicationHistory"
                             style="document"/>
             <wsdl:input name="GetDrugMedicationHistoryRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDrugMedicationHistoryResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1224,15 +1184,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#PauseDrugMedication"
                             style="document"/>
             <wsdl:input name="PauseDrugMedicationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="PauseDrugMedicationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1244,15 +1200,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateDrugMedication"
                             style="document"/>
             <wsdl:input name="CreateDrugMedicationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreateDrugMedicationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1265,15 +1217,11 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AttachOrDetachPrescription"
                     style="document"/>
             <wsdl:input name="AttachOrDetachPrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AttachOrDetachPrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1285,15 +1233,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateEffectuation"
                             style="document"/>
             <wsdl:input name="CreateEffectuationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreateEffectuationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1306,15 +1250,11 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescription"
                     style="document"/>
             <wsdl:input name="CreatePrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1326,15 +1266,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetPrescription"
                             style="document"/>
             <wsdl:input name="GetPrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1347,15 +1283,11 @@
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchWithdrawnDrugMedications"
                     style="document"/>
             <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1367,15 +1299,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UnpauseDrugMedication"
                             style="document"/>
             <wsdl:input name="UnpauseDrugMedicationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UnpauseDrugMedicationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1387,15 +1315,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateDrugMedication"
                             style="document"/>
              <wsdl:input name="UpdateDrugMedicationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UpdateDrugMedicationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1407,15 +1331,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#WithdrawDrugMedication"
                             style="document"/>
             <wsdl:input name="WithdrawDrugMedicationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="WithdrawDrugMedicationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1427,15 +1347,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchEffectuations"
                             style="document"/>
             <wsdl:input name="SearchEffectuationsRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchEffectuationsResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1446,15 +1362,11 @@
         <wsdl:operation name="SearchMedicineCard_2015_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchMedicineCard" style="document"/>
             <wsdl:input name="SearchMedicineCardRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchMedicineCardResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1466,15 +1378,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UnwithdrawDrugMedication"
                             style="document"/>
             <wsdl:input name="UnwithdrawDrugMedicationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UnwithdrawDrugMedicationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1487,15 +1395,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionForUseInPractice"
                     style="document"/>
             <wsdl:input name="CreatePrescriptionForUseInPracticeRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionForUseInPracticeResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1507,15 +1411,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionWithoutCPR"
                     style="document"/>
             <wsdl:input name="CreatePrescriptionWithoutCPRRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionWithoutCPRResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1527,15 +1427,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#DeleteEffectuation"
                             style="document"/>
             <wsdl:input name="DeleteEffectuationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="DeleteEffectuationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1547,15 +1443,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetPermissions"
                             style="document"/>
             <wsdl:input name="GetPermissionsRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPermissionsResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1567,15 +1459,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#MarkPrescriptionDeprecated"
                             style="document"/>
             <wsdl:input name="MarkPrescriptionDeprecatedRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="MarkPrescriptionDeprecatedResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1587,15 +1475,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UnmarkPrescriptionDeprecated"
                             style="document"/>
             <wsdl:input name="UnmarkPrescriptionDeprecatedRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UnmarkPrescriptionDeprecatedResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1607,15 +1491,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelPrescription"
                             style="document"/>
             <wsdl:input name="CancelPrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CancelPrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1627,15 +1507,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#StartEffectuation"
                             style="document"/>
             <wsdl:input name="StartEffectuationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="StartEffectuationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1647,15 +1523,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePharmacyEffectuation"
                             style="document"/>
             <wsdl:input name="CreatePharmacyEffectuationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePharmacyEffectuationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1667,15 +1539,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AbortEffectuation"
                             style="document"/>
             <wsdl:input name="AbortEffectuationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AbortEffectuationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1687,15 +1555,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UndoEffectuation"
                             style="document"/>
             <wsdl:input name="UndoEffectuationRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UndoEffectuationResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1707,15 +1571,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateAndEffectuatePrescription"
                             style="document"/>
             <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1727,15 +1587,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#TerminatePrescription"
                             style="document"/>
             <wsdl:input name="TerminatePrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="TerminatePrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1747,15 +1603,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#InvalidatePrescription"
                             style="document"/>
             <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="InvalidatePrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1767,15 +1619,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#ReopenPrescription"
                             style="document"/>
             <wsdl:input name="ReopenPrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="ReopenPrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1787,15 +1635,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#ReplacePrescription"
                             style="document"/>
             <wsdl:input name="ReplacePrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="ReplacePrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1807,15 +1651,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateOrder"
                             style="document"/>
             <wsdl:input name="CreateOrderRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreateOrderResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1827,15 +1667,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelOrder"
                             style="document"/>
             <wsdl:input name="CancelOrderRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CancelOrderResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1848,15 +1684,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateOrder"
                             style="document"/>
             <wsdl:input name="UpdateOrderRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UpdateOrderResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1868,15 +1700,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetNewOrders"
                             style="document"/>
             <wsdl:input name="GetNewOrdersRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetNewOrdersResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1888,15 +1716,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AcknowledgeOrders"
                             style="document"/>
             <wsdl:input name="AcknowledgeOrdersRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AcknowledgeOrdersResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1908,15 +1732,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AquireOrder"
                             style="document"/>
             <wsdl:input name="AquireOrderRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AquireOrderResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1928,15 +1748,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AcknowledgeAquireOrderStatus"
                             style="document"/>
             <wsdl:input name="AcknowledgeAquireOrderStatusRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AcknowledgeAquireOrderStatusResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1948,15 +1764,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetAquireOrderStatus"
                             style="document"/>
             <wsdl:input name="GetAquireOrderStatusRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetAquireOrderStatusResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1968,15 +1780,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#RemoveConsent"
                             style="document"/>
             <wsdl:input name="RemoveConsentRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="RemoveConsentResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -1988,15 +1796,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GiveConsent"
                             style="document"/>
             <wsdl:input name="GiveConsentRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GiveConsentResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -2008,15 +1812,11 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetAuthorisationDateForNewestOpenPrescription"
                             style="document"/>
             <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01">
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
