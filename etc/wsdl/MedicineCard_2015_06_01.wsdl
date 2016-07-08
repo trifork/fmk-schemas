@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE definitions [
-<!ENTITY fmkStandardSOAPRequestHeaders SYSTEM "externalEntities/fmkStandardSOAPRequestHeaders.xml">
-<!ENTITY fmkStandardSOAPResponseHeaders SYSTEM "externalEntities/fmkStandardSOAPResponseHeaders.xml">
+<!ENTITY fmkStandardSOAPRequestHeaders "
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+                <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
+                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
+                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+">
+<!ENTITY fmkStandardSOAPResponseHeaders "
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
+                <soap:header use='literal' part='ReplicationStatusHeader' message='tns:ReplicationStatusHeader'/>
+">
 ]>
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
