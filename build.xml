@@ -231,20 +231,20 @@
         <attribute name="file" default="${target.dir}/wsdl/MedicineCard_@{version-yymmdd}-collection-dist.zip"/>
         <attribute name="file-inline" default="${target.dir}/wsdl/MedicineCard-inline_@{version-yymmdd}-collection-dist.zip"/>
         <sequential>
-            <zip destfile="@{file}"
+            <zip destfile="@{file}" comment="releasedate ${DSTAMP}"
                  description="Dist collection for MedicineCard @{version-yymmdd} (@{version})"
                  update="false"
                  basedir="${standard.target.dir}/wsdl" includes="MedicineCard*@{version-yymmdd}-collection.zip"/>
-            <zip destfile="@{file}"
+            <zip destfile="@{file}" comment="releasedate ${DSTAMP}"
                  description="Dist collection for MedicineCard @{version-yymmdd} (@{version})"
                  update="true"
                  basedir="${idws.target.dir}/wsdl" includes="MedicineCard*@{version-yymmdd}-collection.zip"/>
             <!-- Pack inlined wsdl-files -->
-            <zip destfile="@{file-inline}"
+            <zip destfile="@{file-inline}" comment="releasedate ${DSTAMP}"
                  description="Dist collection for inlined @{version-yymmdd} MedicineCard wsdl files (@{version})"
                  update="false"
                  basedir="${standard.target.dir}/wsdl" includes="MedicineCard-inline*_@{version-yymmdd}.wsdl"/>
-            <zip destfile="@{file-inline}"
+            <zip destfile="@{file-inline}" comment="releasedate ${DSTAMP}"
                  update="true"
                  basedir="${idws.target.dir}/wsdl" includes="MedicineCard-inline*_@{version-yymmdd}.wsdl"/>
         </sequential>
