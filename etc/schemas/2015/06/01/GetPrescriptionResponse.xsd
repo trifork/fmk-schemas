@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Prescription.xsd"/>
-	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="InvalidPrescription.xsd"/>
+	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="PrivatePrescription.xsd"/>
+	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+
 	<element name="GetPrescriptionResponse" type="medicinecard20150601:GetPrescriptionResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a response with one or more prescriptions</documentation>
@@ -13,11 +16,13 @@
 	<complexType name="GetPrescriptionResponseType">
 		<sequence>
 			<choice>
-				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+				<element name="Person" type="medicinecard20150601:PatientType"/>
+				<element name="Organisation" type="medicinecard20150601:OrganisationType"/>
 			</choice>
+			<element name="IsInvalid" type="medicinecard20150601:MedicineCardIsInvalidType" minOccurs="0"/>
 			<element name="Prescription" type="medicinecard20150601:PrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidPrescription" type="medicinecard20150601:InvalidPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrivatePrescription" type="medicinecard20150601:PrivatePrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
