@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PrescriptionRequestIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionRequestStatus.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="Order.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PackageRestriction.xsd"/>
+
+	<element name="PrescriptionRequest" type="medicinecard20150601:PrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element which describes a prescriptionrequest</documentation>
+			<documentation xml:lang="da-DK">Element der beskriver en receptanmodning</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionRequestType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PrescriptionRequestIdentifierType" />
+			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType" />
+			<element name="Created" type="medicinecard20150601:CreatedType" />
+			<element name="PrescribingOrganisation" type="medicinecard20150601:OrganisationType" />
+			<element name="PackageRestriction" type="medicinecard20150601:PackageRestrictionType" />
+			<element name="Order" type="medicinecard20150601:OrderType" />
+			<element name="Status" type="medicinecard20150601:PrescriptionRequestStatusType" />
+			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" />
+		</sequence>
+	</complexType>
+</schema>
