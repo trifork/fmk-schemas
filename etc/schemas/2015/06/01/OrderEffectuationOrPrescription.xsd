@@ -10,18 +10,16 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
 	<element name="OrderEffectuationOrPrescription" type="medicinecard20150601:OrderEffectuationOrPrescriptionType">
 		<annotation>
 			<documentation xml:lang="en-GB">Order for a new effectuation on the pharmacy or prescription to be created by the doctor</documentation>
-			<documentation xml:lang="da-DK">Bestilling for en en ny effektuering på apoteket eller recept til oprettelse hos lægen</documentation>
+			<documentation xml:lang="da-DK">Bestilling for en effektuering på apoteket eller recept til oprettelse hos lægen</documentation>
 		</annotation>
 	</element>
 	<complexType name="OrderEffectuationOrPrescriptionType">
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
-			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
 			<element name="OrderedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0"/>
 			<element name="PrescribingOrganisation" type="medicinecard20150601:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>

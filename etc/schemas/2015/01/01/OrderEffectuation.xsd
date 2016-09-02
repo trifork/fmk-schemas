@@ -7,17 +7,15 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="OrderInstruction.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
 	<element name="OrderEffectuation" type="medicinecard20150101:OrderEffectuationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Order for a new effectuation on the pharmacy</documentation>
-			<documentation xml:lang="da-DK">Bestilling for en en ny effektuering på apoteket</documentation>
+			<documentation xml:lang="da-DK">Bestilling for en ny effektuering på apoteket</documentation>
 		</annotation>
 	</element>
 	<complexType name="OrderEffectuationType">
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType"/>
-			<element name="PrescriptionMedicationIdentifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType" minOccurs="0"/>
 			<element name="OrderedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20150101:ModificationMetadataType" minOccurs="0"/>
 			<element name="EffectuatingOrganisation" type="medicinecard20150101:OrganisationType"/>
