@@ -3,6 +3,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionRequest.xsd"/>
 	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
+	<include schemaLocation="MoreAvailablePrescriptionRequests.xsd"/>
 
 	<element name="GetPrescriptionRequestsResponse" type="medicinecard20150601:GetPrescriptionRequestsResponseType">
 		<annotation>
@@ -14,6 +15,7 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType" />
 			<element name="PrescriptionRequest" type="medicinecard20150601:PrescriptionRequestType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreAvailable" type="medicinecard20150601:MoreAvailablePrescriptionRequestsType" minOccurs="0" />
 		</sequence>
 	</complexType>
 </schema>
