@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PageNumber" type="medicinecard20150601:PageNumberType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates which page number to request or which page number was returned, for services that support paginaged lists</documentation>
+			<documentation xml:lang="da-DK">Indikerer hvilket sidenummer der skal hentes eller hvilket sidenummer der blev returneret for services der understøtter paginerede lister</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PageNumberType">
+		<restriction base="integer">
+			<minInclusive value="1"/>
+		</restriction>
+	</simpleType>
+</schema>

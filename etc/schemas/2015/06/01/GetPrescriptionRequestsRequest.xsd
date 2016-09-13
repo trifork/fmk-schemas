@@ -3,6 +3,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="GetPrescriptionRequestsFromDateTime.xsd"/>
 	<include schemaLocation="GetPrescriptionRequestsToDateTime.xsd"/>
+	<include schemaLocation="PageNumber.xsd"/>
 	<element name="GetPrescriptionRequestsRequest" type="medicinecard20150601:GetPrescriptionRequestsType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request for one or more prescriptionrequests for a personidentifier</documentation>
@@ -14,6 +15,7 @@
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
 			<element name="FromDateTime" type="medicinecard20150601:GetPrescriptionRequestsFromDateTimeType" minOccurs="0"/>
 			<element name="ToDateTime" type="medicinecard20150601:GetPrescriptionRequestsToDateTimeType" minOccurs="0"/>
+			<element name="PageNumber" type="medicinecard20150601:PageNumberType" minOccurs="0" />
 		</sequence>
 	</complexType>
 </schema>
