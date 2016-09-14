@@ -8,6 +8,7 @@
 	<include schemaLocation="CreateOrder.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PackageRestriction.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 
 	<element name="PrescriptionRequest" type="medicinecard20150601:PrescriptionRequestType">
 		<annotation>
@@ -25,6 +26,7 @@
 			<element name="Order" type="medicinecard20150601:CreateOrderType" minOccurs="0"/>
 			<element name="Status" type="medicinecard20150601:PrescriptionRequestStatusType" />
 			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
+			<element name="CancelledBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
