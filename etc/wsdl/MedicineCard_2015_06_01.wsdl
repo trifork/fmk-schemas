@@ -155,6 +155,8 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/StartEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/StartEffectuationResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/AutomatedStartEffectuationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePharmacyEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePharmacyEffectuationResponse.xsd"/>
@@ -490,6 +492,10 @@
     </wsdl:message>
     <wsdl:message name="StartEffectuationResponse_2015_06_01">
         <wsdl:part name="StartEffectuationResponse" element="medicinecard20150601:StartEffectuationResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="AutomatedStartEffectuationResponse_2015_06_01">
+        <wsdl:part name="AutomatedStartEffectuationResponse" element="medicinecard20150601:AutomatedStartEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePharmacyEffectuationRequest_2015_06_01">
@@ -884,6 +890,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
+        <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
+            <wsdl:input name="StartEffectuationRequest_2015_06_01" message="tns:StartEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01" message="tns:AutomatedStartEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
 
         <wsdl:operation name="CreatePharmacyEffectuation_2015_06_01">
             <wsdl:input name="CreatePharmacyEffectuationRequest_2015_06_01" message="tns:CreatePharmacyEffectuationRequest_2015_06_01"/>
@@ -1556,6 +1567,22 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="StartEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AutomatedStartEffectuation"
+                            style="document"/>
+            <wsdl:input name="StartEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

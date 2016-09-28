@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionError.xsd"/>
+	
+	<element name="AutomatedStartEffectuationResponse" type="medicinecard20150601:AutomatedStartEffectuationResponseType"/>
+	
+	<complexType name="OrderWithOnlyIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">An order structure that contains only the identifier</documentation>
+			<documentation xml:lang="da-DK">En bestillingsstruktur med alene bestillingsidentifier</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="PrescriptionAndOrderIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">A prescription identifier along with any order identifiers</documentation>
+			<documentation xml:lang="da-DK">En receptidentifier med eventuelle tilhørende bestillingsidentifiers</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+            <element name="Order" type="medicinecard20150601:OrderWithOnlyIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="AutomatedStartEffectuationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response for the request to start effectuating one or more prescriptions</documentation>
+			<documentation xml:lang="da-DK">Svar på forespørgsel på at påbegynde ekspedition af en eller flere recepter</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="Prescription" type="medicinecard20150601:PrescriptionAndOrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="StartEffectuationFailed" type="medicinecard20150601:PrescriptionErrorType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
