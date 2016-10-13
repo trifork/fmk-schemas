@@ -102,6 +102,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/GetPrescriptionRequestsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetPrescriptionRequestsResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchPrescriptionRequestsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchPrescriptionRequestsResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestResponse.xsd"/>
 
@@ -374,6 +377,15 @@
     <wsdl:message name="GetPrescriptionRequestsResponse_2015_06_01">
         <wsdl:part name="GetPrescriptionRequestsResponse"
                    element="medicinecard20150601:GetPrescriptionRequestsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchPrescriptionRequestsRequest_2015_06_01">
+        <wsdl:part name="SearchPrescriptionRequestsRequest"
+                   element="medicinecard20150601:SearchPrescriptionRequestsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchPrescriptionRequestsResponse_2015_06_01">
+        <wsdl:part name="SearchPrescriptionRequestsResponse"
+                   element="medicinecard20150601:SearchPrescriptionRequestsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePrescriptionRequestRequest_2015_06_01">
@@ -761,6 +773,14 @@
                         message="tns:GetPrescriptionRequestsRequest_2015_06_01"/>
             <wsdl:output name="GetPrescriptionRequestsResponse_2015_06_01"
                          message="tns:GetPrescriptionRequestsResponse_2015_06_01"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPrescriptionRequests_2015_06_01">
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_06_01"
+                        message="tns:SearchPrescriptionRequestsRequest_2015_06_01"/>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_06_01"
+                         message="tns:SearchPrescriptionRequestsResponse_2015_06_01"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -1483,6 +1503,33 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescriptionRequestsResponse_2015_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="SearchPrescriptionRequests_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchPrescriptionRequests"
+                            style="document"/>
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />

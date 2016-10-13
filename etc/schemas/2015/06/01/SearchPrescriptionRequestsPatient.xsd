@@ -1,0 +1,26 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+    <include schemaLocation="PersonIdentifier.xsd"/>
+
+    <complexType name="SearchPrescriptionRequestsPatientType">
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+            <element name="OldestUnhandledCreatedDateTime" type="medicinecard20150601:OldestUnhandledCreatedDateTimeType"/>
+            <element name="NumberOfUnhandled" type="medicinecard20150601:NumberOfUnhandledType"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="OldestUnhandledCreatedDateTimeType">
+        <restriction base="dateTime"/>
+    </simpleType>
+
+    <simpleType name="NumberOfUnhandledType">
+        <restriction base="long">
+            <minInclusive value="0"/>
+        </restriction>
+    </simpleType>
+ 
+</schema>
