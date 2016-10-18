@@ -4,6 +4,7 @@
 	<include schemaLocation="PrescriptionRequest.xsd"/>
 	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
 	<include schemaLocation="PageNumber.xsd"/>
+	<include schemaLocation="MoreAvailable.xsd"/>
 
 	<element name="GetPrescriptionRequestsResponse" type="medicinecard20150601:GetPrescriptionRequestsResponseType">
 		<annotation>
@@ -16,7 +17,7 @@
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType" />
 			<element name="PrescriptionRequest" type="medicinecard20150601:PrescriptionRequestType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PageNumber" type="medicinecard20150601:PageNumberType" />
-			<element name="MaxPageNumber" type="medicinecard20150601:PageNumberType" />
+			<element name="MoreAvailable" type="medicinecard20150601:MoreAvailableType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
