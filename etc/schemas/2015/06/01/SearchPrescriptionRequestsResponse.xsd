@@ -5,7 +5,7 @@
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
 
-	<include schemaLocation="MoreAvailableWithDate.xsd"/>
+	<include schemaLocation="SearchPrescriptionRequestsMoreAvailable.xsd"/>
 	<include schemaLocation="SearchPrescriptionRequestsPatient.xsd"/>
 
 	<element name="SearchPrescriptionRequestsResponse" type="medicinecard20150601:SearchPrescriptionRequestsResponseType">
@@ -18,7 +18,7 @@
 	<complexType name="SearchPrescriptionRequestsResponseType">
 		<sequence>
 			<element name="Patient" type="medicinecard20150601:SearchPrescriptionRequestsPatientType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="MoreAvailable" type="medicinecard20150601:MoreAvailableWithDateType" minOccurs="0"/>
+			<element name="MoreAvailable" type="medicinecard20150601:SearchPrescriptionRequestsMoreAvailableType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

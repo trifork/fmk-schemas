@@ -4,23 +4,17 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
     <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="CreatedDateTime.xsd"/>
+    <include schemaLocation="NumberOfUnhandledPrescriptionRequests.xsd"/>
+
 
     <complexType name="SearchPrescriptionRequestsPatientType">
         <sequence>
             <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-            <element name="OldestUnhandledCreatedDateTime" type="medicinecard20150601:OldestUnhandledCreatedDateTimeType"/>
-            <element name="NumberOfUnhandled" type="medicinecard20150601:NumberOfUnhandledType"/>
+            <element name="OldestUnhandledCreatedDateTime" type="medicinecard20150601:CreatedDateTimeType"/>
+            <element name="NumberOfUnhandled" type="medicinecard20150601:NumberOfUnhandledPrescriptionRequestsType"/>
         </sequence>
     </complexType>
 
-    <simpleType name="OldestUnhandledCreatedDateTimeType">
-        <restriction base="dateTime"/>
-    </simpleType>
 
-    <simpleType name="NumberOfUnhandledType">
-        <restriction base="long">
-            <minInclusive value="0"/>
-        </restriction>
-    </simpleType>
- 
 </schema>

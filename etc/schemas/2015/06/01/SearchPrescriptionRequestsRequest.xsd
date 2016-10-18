@@ -4,21 +4,24 @@
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
-	<include schemaLocation="SearchPrescriptionsRequestsOrganisation.xsd"/>
+	<include schemaLocation="SearchPrescriptionRequestsOrganisation.xsd"/>
+	<include schemaLocation="CreatedDateTime.xsd"/>
+
 
 	<element name="SearchPrescriptionRequestsRequest" type="medicinecard20150601:SearchPrescriptionRequestsRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">An element for requesting prescription requests given an organisation which is either requesting the prescriptions or handling the prescription requests</documentation>
-			<documentation xml:lang="da-DK">Et element til forespørgsel efter receptbestillinger givet en organisation som enten har bestilt recepterne eller hos hvilken bestillingerne skal udføres</documentation>
+			<documentation xml:lang="en-GB">An element for requesting prescription requests given an organisation which is either an ordering or a prescribing organisation</documentation>
+			<documentation xml:lang="da-DK">Et element til forespørgsel efter receptanmodninger givet en anmodende eller anmodede organisation</documentation>
 		</annotation>
 	</element>
 
 	<complexType name="SearchPrescriptionRequestsRequestType">
 		<sequence>
 			<choice>
-				<element name="PrescribingOrganisation" type="medicinecard20150601:SearchPrescriptionsRequestsOrganisationType"/>
-				<element name="OrderingOrganisation" type="medicinecard20150601:SearchPrescriptionsRequestsOrganisationType"/>
+				<element name="PrescribingOrganisation" type="medicinecard20150601:SearchPrescriptionRequestsOrganisationType"/>
+				<element name="OrderingOrganisation" type="medicinecard20150601:SearchPrescriptionRequestsOrganisationType"/>
 			</choice>
+			<element name="FromDateTime" type="medicinecard20150601:CreatedDateTimeType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
