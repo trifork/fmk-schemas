@@ -1363,11 +1363,27 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetPrescriptionRequests"
                             style="document"/>
             <wsdl:input name="GetPrescriptionRequestsRequest_2015_06_01">
-&fmkStandardSOAPRequestHeaders;
+                &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescriptionRequestsResponse_2015_06_01">
-&fmkStandardSOAPResponseHeaders;
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionRequest_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="CreatePrescriptionRequestRequest_2015_06_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01">
+                &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
