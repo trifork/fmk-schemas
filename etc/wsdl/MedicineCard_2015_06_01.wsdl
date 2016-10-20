@@ -106,6 +106,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedResponse.xsd"/>
 
@@ -406,6 +409,15 @@
     <wsdl:message name="CreatePrescriptionRequestResponse_2015_06_01">
         <wsdl:part name="CreatePrescriptionRequestResponse"
                    element="medicinecard20150601:CreatePrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionRequestRequest_2015_06_01">
+        <wsdl:part name="CancelPrescriptionRequestRequest"
+                   element="medicinecard20150601:CancelPrescriptionRequestRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelPrescriptionRequestResponse_2015_06_01">
+        <wsdl:part name="CancelPrescriptionRequestResponse"
+                   element="medicinecard20150601:CancelPrescriptionRequestResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_2015_06_01">
@@ -819,6 +831,14 @@
                         message="tns:CreatePrescriptionRequestRequest_2015_06_01"/>
             <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01"
                          message="tns:CreatePrescriptionRequestResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01"
+                        message="tns:CancelPrescriptionRequestRequest_2015_06_01"/>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_06_01"
+                         message="tns:CancelPrescriptionRequestResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1383,6 +1403,22 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelPrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_06_01">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

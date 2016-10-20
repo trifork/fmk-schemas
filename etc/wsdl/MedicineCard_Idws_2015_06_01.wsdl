@@ -108,6 +108,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedResponse.xsd"/>
 
@@ -395,6 +398,15 @@
     <wsdl:message name="CreatePrescriptionRequestResponse_2015_06_01">
         <wsdl:part name="CreatePrescriptionRequestResponse"
                    element="medicinecard20150601:CreatePrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionRequestRequest_2015_06_01">
+        <wsdl:part name="CancelPrescriptionRequestRequest"
+                   element="medicinecard20150601:CancelPrescriptionRequestRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelPrescriptionRequestResponse_2015_06_01">
+        <wsdl:part name="CancelPrescriptionRequestResponse"
+                   element="medicinecard20150601:CancelPrescriptionRequestResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_2015_06_01">
@@ -789,6 +801,14 @@
                         message="tns:CreatePrescriptionRequestRequest_2015_06_01"/>
             <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01"
                          message="tns:CreatePrescriptionRequestResponse_2015_06_01"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01"
+                        message="tns:CancelPrescriptionRequestRequest_2015_06_01"/>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_06_01"
+                         message="tns:CancelPrescriptionRequestResponse_2015_06_01"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -1557,6 +1577,34 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelPrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
