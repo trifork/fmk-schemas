@@ -19,46 +19,69 @@
 
     <RequestDateTime>2016-10-28T12:00:00Z</RequestDateTime>
 
+    <!--
+       Kriteriet for at LMO/Recept opfattes som tilhørende samme dosisdispenseringskort er flg.
+        - Udleveringsapotek og pakkeapotek skal være det samme
+        - PeriodStartDate, PeriodEndDate, Deadline, EffectuationDate skal være angivet ens
+        - Hvis pakkegruppe er angivet skal de være ens
+        - Leveringsinformation skal være ens (???)
+    -->
+
     <DoseDispensingCard>
         <Delivery> ??? </Delivery>
-        <PackingGroup>
-            <Identifier>13245</Identifier>
-            <Name>Hvilely + Aldersro</Name>
-            <OrderedAtPharmacy>
-                <Name>Århus Jernbane Apotek</Name>
-                <AddressLine>Banegårdsplads 8</AddressLine>
-                <AddressLine>8000 Århus</AddressLine>
-                <Type>Apotek</Type>
-                <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
-            </OrderedAtPharmacy>
-            <PackedAtOrganisation>
-                <Name>Århus Stjerne Apotek</Name>
-                <AddressLine>Funch Thomsensgade 3</AddressLine>
-                <AddressLine>8200 Århus N</AddressLine>
-                <Type>Apotek</Type>
-                <Identifier source="EAN-Lokationsnummer">5790000173525</Identifier>
-            </PackedAtOrganisation>
-            <ProductionDay>onsdag ulige uger</ProductionDay>
-        </PackingGroup>
+        <PackingGroupIdentifier>13245</PackingGroupIdentifier>     <!-- Udfyldes ikke i første fase -->
+        <PackingGroupName>Hvilely + Aldersro</PackingGroupName>    <!-- Udfyldes hvis info er tilgængelig i ikke-modstridende form -->
+        <ProductionDay>onsdag ulige uger</ProductionDay>           <!-- Udfyldes hvis info er tilgængelig i ikke-modstridende form -->
+        <OrderedAtPharmacy>
+            <Name>Århus Jernbane Apotek</Name>
+            <AddressLine>Banegårdsplads 8</AddressLine>
+            <AddressLine>8000 Århus</AddressLine>
+            <Type>Apotek</Type>
+            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+        </OrderedAtPharmacy>
+        <PackedAtOrganisation>
+            <Name>Århus Stjerne Apotek</Name>
+            <AddressLine>Funch Thomsensgade 3</AddressLine>
+            <AddressLine>8200 Århus N</AddressLine>
+            <Type>Apotek</Type>
+            <Identifier source="EAN-Lokationsnummer">5790000173525</Identifier>
+        </PackedAtOrganisation>
 
         <Pause> ??? </Pause>
 
         Modificators?
         Privatmarkering?
 
+        <!-- Servicen kan bede om enten:
+             (1) kun aktuelle periode
+             (2) perioder frem til næste deadline
+             (3) perioder som overlapper med en angiven periode.
+
+            Her returneres perioder, som der haves specifik information om.
+            Specifikt returneres fx ingen data om perioder langt ude i fremtiden, selvom det efterspørges, hvis der ikke er viden tilgængelig om dem!
+            På kort sigt kan det betyde at der i visse tilfælde ikke kan returneres en eksplicit periode, hvor deadline ligger i fremtiden.
+            Fx hvis deadline er overskredet for den kommende periode, fordi pakkeapoteket arbejder på med pakningen, og der endnu ikke er lavet
+            bestillinger til den næst-kommende periode.
+        -->
+
         <Period>
             <PeriodStartDate>2016-06-06</PeriodStartDate>
             <PeriodEndDate>2016-06-19</PeriodEndDate>
             <Deadline>2016-06-03T13:30Z</Deadline>
+            <EffectuationDate>2016-06-04</EffectuationDate>    <!-- Kan måske give mening hvis periode start og slut ikke haves, fx på historiske data? -->
 
             <DoseDispensedMedicationWithNegativeConsent>
+                <Index>1</Index>
                 <Identifier source="DrugMedication">13143641281027</Identifier>
                 <Version>134140408122001001</Version>
+                <Warning>Dosisdispenseringskortet vises uden detaljer om dette præparat!</Warning>
             </DoseDispensedMedicationWithNegativeConsent>
             <DoseDispensedMedication>
+                <Index>2</Index>
                 <Identifier source="DrugMedication">13143641280998</Identifier>
                 <Version>1341404071666006001</Version>
                 <ModifiedDateTime>2016-02-19T09:30:47.0Z</ModifiedDateTime>
+
                 <Drug>
                     <Identifier source="Medicinpriser" date="2016-06-03">28100902676</Identifier>
                     <Name>Kaleorid</Name>
@@ -73,18 +96,22 @@
                         <Text>750 mg</Text>
                     </Strength>
                 </Drug>
-                <Dosage>
+                <PlannedAdministration>
                     <Structures>
                         <UnitText source="Doseringsforslag">tablet</UnitText>
                         <Structure>
                             <IterationInterval>1</IterationInterval>
-                            <StartDate>2015-10-18</StartDate>
-                            <EndDate>2017-03-30</EndDate>
+                            <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
+                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
                             <Day>
                                 <Number>1</Number>
                                 <Dose>
                                     <Time>morning</Time>
                                     <Quantity>1</Quantity>
+                                    <!--
+                                      Hvad med kommentarer som fx "tages 30 min. efter morgenmaden"???
+                                      Hvis det skal ind her, så kan doseringsstrukturen ikke genbruges!
+                                    -->
                                 </Dose>
                                 <Dose>
                                     <Time>evening</Time>
@@ -101,10 +128,48 @@
                         </Structure>
                     </Structures>
                     <Type>fast</Type>
-                </Dosage>
+                </PlannedAdministration>
+                <TotalNumberOfDoseDispensedQuantity>28</TotalNumberOfDoseDispensedQuantity>
                 <SubstitutionAllowed>true</SubstitutionAllowed>
                 <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+                <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
+                <ValidTo>2016-08-25</ValidTo>
+                <Warning>Dosering er ikke specifik nok til dosispakning!</Warning>
+                <Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
+                <Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
+                <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
             </DoseDispensedMedication>
+            <DoseDispensedMedication>
+                <Index>3</Index>
+                ...
+            </DoseDispensedMedication>
+
+
+            <!-- Servicen kan valgfrit returnere/undlade SpecificDays med parameteren IncludeSpecificDays=true/false. -->
+            <DetailedSpecification>
+                <Bag>
+                    <Date>2016-06-06</Date>
+                    <Time>morning</Time>
+                    <MedicationRef>
+                        <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                        <Quantity>1</Quantity>
+                    </MedicationRef>
+                    <MedicationRef>
+                        <Index>3</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                        <Quantity>1</Quantity>
+                    </MedicationRef>
+                </Bag>
+                <Bag>
+                    <Date>2016-06-06</Date>
+                    <Time>evening</Time>
+                    <MedicationRef>
+                        <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                        <Quantity>1</Quantity>
+                    </MedicationRef>
+                </Bag>
+                ... <!-- Tilsvarende poser for de øvrige dage -->
+            </DetailedSpecification>
+
         </Period>
 
 
