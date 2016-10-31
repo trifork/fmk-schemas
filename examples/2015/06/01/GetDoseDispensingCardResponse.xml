@@ -28,7 +28,9 @@
     -->
 
     <DoseDispensingCard>
+        <!-- MAYBE: <Modified>...</Modified> -->
         <Delivery> ??? </Delivery>
+
         <PackingGroupIdentifier>13245</PackingGroupIdentifier>     <!-- Udfyldes ikke i første fase -->
         <PackingGroupName>Hvilely + Aldersro</PackingGroupName>    <!-- Udfyldes hvis info er tilgængelig i ikke-modstridende form -->
         <ProductionDay>onsdag ulige uger</ProductionDay>           <!-- Udfyldes hvis info er tilgængelig i ikke-modstridende form -->
@@ -47,15 +49,17 @@
             <Identifier source="EAN-Lokationsnummer">5790000173525</Identifier>
         </PackedAtOrganisation>
 
-        <Pause> ??? </Pause>
-
-        Modificators?
-        Privatmarkering?
+        <!-- 0, 1 eller mange af disse strukturer kan leveres. Er kun med hvis EndDate ligger senere end første PeriodStartDate. -->
+        <DoseDispensingOnHold>
+            <StartDate>2016-06-01</StartDate>
+            <EndDate>2016-06-05</EndDate>
+        </DoseDispensingOnHold>
 
         <!-- Servicen kan bede om enten:
              (1) kun aktuelle periode
              (2) perioder frem til næste deadline
              (3) perioder som overlapper med en angiven periode.
+             (4) hent som det så ud, da "påbegynd ekspedition" blev kaldt
 
             Her returneres perioder, som der haves specifik information om.
             Specifikt returneres fx ingen data om perioder langt ude i fremtiden, selvom det efterspørges, hvis der ikke er viden tilgængelig om dem!
@@ -81,7 +85,12 @@
                 <Identifier source="DrugMedication">13143641280998</Identifier>
                 <Version>1341404071666006001</Version>
                 <ModifiedDateTime>2016-02-19T09:30:47.0Z</ModifiedDateTime>
+                <PrescriptionIdentifier>131436412825367</PrescriptionIdentifier>
+                <OrderIdentifier>131436412825367</OrderIdentifier>
+                <PrescriptionCreated>...</PrescriptionCreated>
+                <Modified>...</Modified>
 
+                <DrugShortDescription>Kalerorid tbl. 750 mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
                 <Drug>
                     <Identifier source="Medicinpriser" date="2016-06-03">28100902676</Identifier>
                     <Name>Kaleorid</Name>
@@ -103,15 +112,12 @@
                             <IterationInterval>1</IterationInterval>
                             <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
                             <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
+                            <SupplementaryText>Synkes hele</SupplementaryText>
                             <Day>
                                 <Number>1</Number>
                                 <Dose>
                                     <Time>morning</Time>
                                     <Quantity>1</Quantity>
-                                    <!--
-                                      Hvad med kommentarer som fx "tages 30 min. efter morgenmaden"???
-                                      Hvis det skal ind her, så kan doseringsstrukturen ikke genbruges!
-                                    -->
                                 </Dose>
                                 <Dose>
                                     <Time>evening</Time>
@@ -120,7 +126,7 @@
                             </Day>
                             <DosageTranslation>
                                 <ShortText>1 tablet morgen og aften</ShortText>
-                                <LongText>Doseringsforløbet starter mandag den 18. november 2013 og gentages hver dag:
+                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
                                     Doseringsforløb:
                                     1 tablet morgen og aften</LongText>
                                 <AverageDailyDosage>2</AverageDailyDosage>
@@ -138,6 +144,7 @@
                 <Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
                 <Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
                 <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
+                <Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
             </DoseDispensedMedication>
             <DoseDispensedMedication>
                 <Index>3</Index>
@@ -147,27 +154,32 @@
 
             <!-- Servicen kan valgfrit returnere/undlade SpecificDays med parameteren IncludeSpecificDays=true/false. -->
             <DetailedSpecification>
-                <Bag>
+                <DispensableUnit>
                     <Date>2016-06-06</Date>
                     <Time>morning</Time>
-                    <MedicationRef>
-                        <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
-                        <Quantity>1</Quantity>
-                    </MedicationRef>
-                    <MedicationRef>
-                        <Index>3</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
-                        <Quantity>1</Quantity>
-                    </MedicationRef>
-                </Bag>
-                <Bag>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
                     <Date>2016-06-06</Date>
                     <Time>evening</Time>
                     <MedicationRef>
                         <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
                         <Quantity>1</Quantity>
                     </MedicationRef>
-                </Bag>
-                ... <!-- Tilsvarende poser for de øvrige dage -->
+                </DispensableUnit>
+                ... <!-- Tilsvarende DispensableUnits for de øvrige dage -->
             </DetailedSpecification>
 
         </Period>
