@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GetDoseDispensingCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
+<GetDoseDispensingCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+                               xmlns:fmk146="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+                               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                               xsi:schemaLocation="../../../../etc/schemas/2015/06/01/GetDoseDispensingCardResponse.xsd">
     <Patient>
         <Person>
             <Name>
                 <GivenName>Rob</GivenName>
                 <Surname>Müller</Surname>
             </Name>
-            <PersonIdentifier>1403837853</PersonIdentifier>
+            <PersonIdentifier source="CPR">1403837853</PersonIdentifier>
         </Person>
         <Address>
             <StreetName>Magnolievej</StreetName>
@@ -69,8 +72,8 @@
         -->
 
         <Period>
-            <PeriodStartDate>2016-06-06</PeriodStartDate>
-            <PeriodEndDate>2016-06-19</PeriodEndDate>
+            <StartDate>2016-06-06</StartDate>
+            <EndDate>2016-06-19</EndDate>
             <Deadline>2016-06-03T13:30Z</Deadline>
             <EffectuationDate>2016-06-04</EffectuationDate>    <!-- Kan måske give mening hvis periode start og slut ikke haves, fx på historiske data? -->
 
@@ -84,11 +87,16 @@
                 <Index>2</Index>
                 <Identifier source="DrugMedication">13143641280998</Identifier>
                 <Version>1341404071666006001</Version>
+                <Warning>Dosering er ikke specifik nok til dosispakning!</Warning>
+                <Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
+                <Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
+                <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
+                <Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
                 <ModifiedDateTime>2016-02-19T09:30:47.0Z</ModifiedDateTime>
                 <PrescriptionIdentifier>131436412825367</PrescriptionIdentifier>
                 <OrderIdentifier>131436412825367</OrderIdentifier>
                 <PrescriptionCreated>...</PrescriptionCreated>
-                <Modified>...</Modified>
+                <MedicationModified>...</MedicationModified>
 
                 <DrugShortDescription>Kalerorid tbl. 750 mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
                 <Drug>
@@ -139,12 +147,7 @@
                 <SubstitutionAllowed>true</SubstitutionAllowed>
                 <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
                 <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
-                <ValidTo>2016-08-25</ValidTo>
-                <Warning>Dosering er ikke specifik nok til dosispakning!</Warning>
-                <Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
-                <Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
-                <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
-                <Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
+                <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
             </DoseDispensedMedication>
             <DoseDispensedMedication>
                 <Index>3</Index>
@@ -174,10 +177,13 @@
                 <DispensableUnit>
                     <Date>2016-06-06</Date>
                     <Time>evening</Time>
-                    <MedicationRef>
-                        <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
-                        <Quantity>1</Quantity>
-                    </MedicationRef>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
                 </DispensableUnit>
                 ... <!-- Tilsvarende DispensableUnits for de øvrige dage -->
             </DetailedSpecification>

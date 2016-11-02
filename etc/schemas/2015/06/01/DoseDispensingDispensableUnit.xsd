@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DoseDispensingPeriodDate.xsd"/>
+    <include schemaLocation="DoseTime.xsd"/>
+    <include schemaLocation="MedicationGroup.xsd"/>
+
+    <complexType name="DoseDispensingDetailedSpecificationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Detailed specification of a dose dispensing period, i.e. contents of each dispensable unit (typically a sealed plastic bag).</documentation>
+            <documentation xml:lang="da-DK">Detaljeret specifikation af en dosisdispenseringsperiode, dvs. indholdet a hver enkelt "dispenserbare enhed" (typisk a forseglet plastikpose).</documentation>
+        </annotation>
+        <sequence>
+            <element name="Date" type="medicinecard20150601:DoseDispensingPeriodDateType"/>
+            <element name="Time" type="medicinecard20150601:DoseTimeType"/>
+
+            <!-- MedicationsGroups with references to DoseDispensedMedications, grouped by supplementary text -->
+            <element name="MedicationGroup" type="medicinecard20150601:MedicationGroupType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

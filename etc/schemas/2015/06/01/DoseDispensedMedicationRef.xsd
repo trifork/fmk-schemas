@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DoseDispensedMedicationIndex.xsd"/>
+    <include schemaLocation="DoseQuantity.xsd"/>
+
+    <complexType name="DoseDispensedMedicationRefType">
+        <annotation>
+            <documentation xml:lang="en-GB">Reference to a dose dispensed medication via its local index, and a specification of the quantity to be packed into a specific dispensable unit (e.g. bag).</documentation>
+            <documentation xml:lang="da-DK">Reference til et dosisdispenseret lægemiddel via dets lokale index, og en specifikation af den mængde som skal pakkes i en specifik dispenserbar enhed (fx pose).</documentation>
+        </annotation>
+        <sequence>
+            <element name="Index" type="medicinecard20150601:DoseDispensedMedicationIndexType"/>
+            <element name="Quantity" type="medicinecard20150601:DoseQuantityType"/>
+        </sequence>
+    </complexType>
+</schema>

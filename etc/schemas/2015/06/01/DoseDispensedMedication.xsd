@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DoseDispensedMedicationIndex.xsd"/>
+    <include schemaLocation="DoseDispensedMedicationIdentifier.xsd"/>
+    <include schemaLocation="DrugMedicationVersion.xsd"/>
+    <include schemaLocation="DoseDispensingWarning.xsd"/>
+    <include schemaLocation="PrescriptionIdentifier.xsd"/>
+    <include schemaLocation="OrderIdentifier.xsd"/>
+    <include schemaLocation="OrderIdentifier.xsd"/>
+    <include schemaLocation="EffectuationIdentifier.xsd"/>
+    <include schemaLocation="Created.xsd"/>
+    <include schemaLocation="Modified.xsd"/>
+    <include schemaLocation="DoseDispensedDrugShortDescription.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="DosageForResponse.xsd"/>
+    <include schemaLocation="DoseQuantity.xsd"/>
+    <include schemaLocation="SubstitutionAllowed.xsd"/>
+    <include schemaLocation="ReimbursementClause.xsd"/>
+    <include schemaLocation="DoseDispensingRequestedByDoctor.xsd"/>
+    <include schemaLocation="DoseDispensingEndDate.xsd"/>
+
+    <complexType name="DoseDispensedMedicationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dose dispensing medication.</documentation>
+            <documentation xml:lang="da-DK">Dosisdispenseret lægemiddel.</documentation>
+        </annotation>
+        <sequence>
+            <element name="Index" type="medicinecard20150601:DoseDispensedMedicationIndexType"/>
+            <element name="Identifier" type="medicinecard20150601:DoseDispensedMedicationIdentifierType"/>
+            <element name="Version" type="medicinecard20150601:DrugMedicationVersionType" minOccurs="0"/>   <!-- Bør denne være obligatorisk ??? Bør den have en ny DD-specifik type?-->
+            <element name="Warning" type="medicinecard20150601:DoseDispensingWarningType" minOccurs="0"/>
+
+            <!-- Denne er udfyldt, hvis en recept ligger til grund for dosisdispenseringen -->
+            <element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
+
+            <!-- Denne er udfyldt, hvis en recept ligger til grund for dosisdispenseringen, og der foreligger en aktuel bestilling med status "ekspedition påbegyndt". Mhp. ekspedition. -->
+            <element name="OrderIdentifier" type="medicinecard20150601:OrderIdentifierType" minOccurs="0"/>
+
+            <!-- Denne er udfyldt, hvis en recept ligger til grund for dosisdispenseringen, og der foreligger en udlevering for den aktuelle periode. Mhp. evt. tilbagefør. -->
+            <element name="EffectuationIdentifier" type="medicinecard20150601:EffectuationIdentifierType" minOccurs="0"/>
+
+
+            <element name="PrescriptionCreated" type="medicinecard20150601:CreatedType" minOccurs="0"/>   <!-- Fra recept. -->
+            <element name="MedicationModified" type="medicinecard20150601:ModifiedType"/>   <!-- Fra LMO. -->
+
+            <element name="DrugShortDescription" type="medicinecard20150601:DoseDispensedDrugShortDescriptionType"/>
+            <element name="Drug" type="medicinecard20150601:DrugType" minOccurs="0"/>
+            <element name="PlannedAdministration" type="medicinecard20150601:DosageForResponseType"/>
+
+            <element name="TotalNumberOfDoseDispensedQuantity" type="medicinecard20150601:DoseQuantityType" minOccurs="0"/>
+
+            <!-- Denne er udfyldt, hvis en recept ligger til grund for dosisdispenseringen. -->
+            <element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType" minOccurs="0"/>
+
+            <element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
+            <element name="DoseDispensingRequestedByDoctor" type="medicinecard20150601:DoseDispensingRequestedByDoctorType"/>
+            <element name="DoseDispensingEndDate" type="medicinecard20150601:DoseDispensingEndDateType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>
