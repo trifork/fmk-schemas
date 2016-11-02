@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GetDoseDispensingCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-                               xmlns:fmk146="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                               xsi:schemaLocation="../../../../etc/schemas/2015/06/01/GetDoseDispensingCardResponse.xsd">
+                               xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../../etc/schemas/2015/06/01/GetDoseDispensingCardResponse.xsd">
     <Patient>
         <Person>
             <Name>
@@ -92,7 +91,6 @@
                 <Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
                 <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
                 <Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
-                <ModifiedDateTime>2016-02-19T09:30:47.0Z</ModifiedDateTime>
                 <PrescriptionIdentifier>131436412825367</PrescriptionIdentifier>
                 <OrderIdentifier>131436412825367</OrderIdentifier>
                 <PrescriptionCreated>...</PrescriptionCreated>
@@ -110,12 +108,12 @@
                         <Value>750</Value>
                         <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
                         <UnitText>mg</UnitText>
-                        <Text>750 mg</Text>
+                        <Text source="Medicinpriser" date="2016-06-03">750 mg</Text>
                     </Strength>
                 </Drug>
                 <PlannedAdministration>
-                    <Structures>
-                        <UnitText source="Doseringsforslag">tablet</UnitText>
+                    <UnitText source="Doseringsforslag">tablet</UnitText>
+                    <StructuresFixed>
                         <Structure>
                             <IterationInterval>1</IterationInterval>
                             <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
@@ -140,7 +138,7 @@
                                 <AverageDailyDosage>2</AverageDailyDosage>
                             </DosageTranslation>
                         </Structure>
-                    </Structures>
+                    </StructuresFixed>
                     <Type>fast</Type>
                 </PlannedAdministration>
                 <TotalNumberOfDoseDispensedQuantity>28</TotalNumberOfDoseDispensedQuantity>
@@ -149,11 +147,12 @@
                 <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
                 <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
             </DoseDispensedMedication>
+            <!--
             <DoseDispensedMedication>
                 <Index>3</Index>
                 ...
             </DoseDispensedMedication>
-
+            -->
 
             <!-- Servicen kan valgfrit returnere/undlade SpecificDays med parameteren IncludeSpecificDays=true/false. -->
             <DetailedSpecification>
@@ -185,7 +184,7 @@
                         </MedicationRef>
                     </MedicationGroup>
                 </DispensableUnit>
-                ... <!-- Tilsvarende DispensableUnits for de øvrige dage -->
+                <!-- Tilsvarende DispensableUnits for de øvrige dage -->
             </DetailedSpecification>
 
         </Period>
