@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GetDoseDispensingCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-                               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                               xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../../etc/schemas/2015/06/01/GetDoseDispensingCardResponse.xsd">
+<GetDoseDispensingCardResponse
+        xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../../etc/schemas/2015/06/01/GetDoseDispensingCardResponse.xsd">
     <Patient>
         <Person>
             <Name>
@@ -31,7 +32,9 @@
 
     <DoseDispensingCard>
         <!-- MAYBE: <Modified>...</Modified> -->
-        <Delivery> ??? </Delivery>
+        <Delivery>
+            <Priority>send til patientadresse samme dag</Priority>
+        </Delivery>
 
         <PackingGroupIdentifier>13245</PackingGroupIdentifier>     <!-- Udfyldes ikke i første fase -->
         <PackingGroupName>Hvilely + Aldersro</PackingGroupName>    <!-- Udfyldes hvis info er tilgængelig i ikke-modstridende form -->
@@ -92,11 +95,43 @@
                 <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
                 <Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
                 <PrescriptionIdentifier>131436412825367</PrescriptionIdentifier>
-                <OrderIdentifier>131436412825367</OrderIdentifier>
-                <PrescriptionCreated>...</PrescriptionCreated>
-                <MedicationModified>...</MedicationModified>
+                <OrderIdentifier>131436412825368</OrderIdentifier>
+                <PrescriptionCreated>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:06Z</DateTime>
+                </PrescriptionCreated>
+                <MedicationModified>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:05Z</DateTime>
+                </MedicationModified>
 
-                <DrugShortDescription>Kalerorid tbl. 750 mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
+                <DrugShortDescription>Kalerorid tbl. 750mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
                 <Drug>
                     <Identifier source="Medicinpriser" date="2016-06-03">28100902676</Identifier>
                     <Name>Kaleorid</Name>
@@ -109,6 +144,102 @@
                         <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
                         <UnitText>mg</UnitText>
                         <Text source="Medicinpriser" date="2016-06-03">750 mg</Text>
+                    </Strength>
+                </Drug>
+                <PlannedAdministration>
+                    <UnitText source="Doseringsforslag">tablet</UnitText>
+                    <StructuresFixed>
+                        <Structure>
+                            <IterationInterval>1</IterationInterval>
+                            <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
+                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
+                            <SupplementaryText>Synkes hele</SupplementaryText>
+                            <Day>
+                                <Number>1</Number>
+                                <Dose>
+                                    <Time>morning</Time>
+                                    <Quantity>1</Quantity>
+                                </Dose>
+                                <Dose>
+                                    <Time>noon</Time>
+                                    <Quantity>1</Quantity>
+                                </Dose>
+                                <Dose>
+                                    <Time>evening</Time>
+                                    <Quantity>1</Quantity>
+                                </Dose>
+                            </Day>
+                            <DosageTranslation>
+                                <ShortText>1 tablet morgen, middag og aften</ShortText>
+                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+                                    Doseringsforløb:
+                                    1 tablet morgen, middag og aften</LongText>
+                                <AverageDailyDosage>3</AverageDailyDosage>
+                            </DosageTranslation>
+                        </Structure>
+                    </StructuresFixed>
+                    <Type>fast</Type>
+                </PlannedAdministration>
+                <TotalNumberOfDoseDispensedQuantity>42</TotalNumberOfDoseDispensedQuantity>
+                <SubstitutionAllowed>true</SubstitutionAllowed>
+                <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+                <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
+                <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
+            </DoseDispensedMedication>
+            <DoseDispensedMedication>
+                <Index>3</Index>
+                <Identifier source="DrugMedication">13143641280898</Identifier>
+                <Version>1341404071666005001</Version>
+                <PrescriptionIdentifier>131436412824367</PrescriptionIdentifier>
+                <OrderIdentifier>131436412824368</OrderIdentifier>
+                <PrescriptionCreated>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:06Z</DateTime>
+                </PrescriptionCreated>
+                <MedicationModified>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:05Z</DateTime>
+                </MedicationModified>
+
+                <DrugShortDescription>Corodil tbl. 10mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
+                <Drug>
+                    <Identifier source="Medicinpriser" date="2016-06-03">28101440691</Identifier>
+                    <Name>Corodil</Name>
+                    <Form>
+                        <Code source="Medicinpriser" date="2016-06-03">TAB</Code>
+                        <Text>tabletter</Text>
+                    </Form>
+                    <Strength>
+                        <Value>10</Value>
+                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
+                        <UnitText>mg</UnitText>
+                        <Text source="Medicinpriser" date="2016-06-03">10 mg</Text>
                     </Strength>
                 </Drug>
                 <PlannedAdministration>
@@ -147,15 +278,186 @@
                 <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
                 <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
             </DoseDispensedMedication>
-            <!--
             <DoseDispensedMedication>
-                <Index>3</Index>
-                ...
+                <Index>4</Index>
+                <Identifier source="DrugMedication">13143641280898</Identifier>
+                <Version>1341404071666005001</Version>
+                <PrescriptionIdentifier>131436412824367</PrescriptionIdentifier>
+                <OrderIdentifier>131436412824368</OrderIdentifier>
+                <PrescriptionCreated>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:06Z</DateTime>
+                </PrescriptionCreated>
+                <MedicationModified>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:05Z</DateTime>
+                </MedicationModified>
+
+                <DrugShortDescription>Lansoprazol kp. 15mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
+                <Drug>
+                    <Identifier source="Medicinpriser" date="2016-06-03">28103789105</Identifier>
+                    <Name>Lansoprazol "KRKA"</Name>
+                    <Form>
+                        <Code source="Medicinpriser" date="2016-06-03">TAB</Code>
+                        <Text>tabletter</Text>
+                    </Form>
+                    <Strength>
+                        <Value>15</Value>
+                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
+                        <UnitText>mg</UnitText>
+                        <Text source="Medicinpriser" date="2016-06-03">15 mg</Text>
+                    </Strength>
+                </Drug>
+                <PlannedAdministration>
+                    <UnitText source="Doseringsforslag">tablet</UnitText>
+                    <StructuresFixed>
+                        <Structure>
+                            <IterationInterval>1</IterationInterval>
+                            <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
+                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
+                            <SupplementaryText>Synkes hele</SupplementaryText>
+                            <Day>
+                                <Number>1</Number>
+                                <Dose>
+                                    <Time>evening</Time>
+                                    <Quantity>1</Quantity>
+                                </Dose>
+                            </Day>
+                            <DosageTranslation>
+                                <ShortText>1 tablet morgen og aften</ShortText>
+                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+                                    Doseringsforløb:
+                                    1 tablet morgen og aften</LongText>
+                                <AverageDailyDosage>1</AverageDailyDosage>
+                            </DosageTranslation>
+                        </Structure>
+                    </StructuresFixed>
+                    <Type>fast</Type>
+                </PlannedAdministration>
+                <TotalNumberOfDoseDispensedQuantity>14</TotalNumberOfDoseDispensedQuantity>
+                <SubstitutionAllowed>true</SubstitutionAllowed>
+                <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+                <DoseDispensingRequestedByDoctor>false</DoseDispensingRequestedByDoctor>
+                <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
             </DoseDispensedMedication>
-            -->
+            <DoseDispensedMedication>
+                <Index>5</Index>
+                <Identifier source="DrugMedication">13143641280898</Identifier>
+                <Version>1341404071666005001</Version>
+                <PrescriptionIdentifier>131436412824367</PrescriptionIdentifier>
+                <OrderIdentifier>131436412824368</OrderIdentifier>
+                <PrescriptionCreated>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:06Z</DateTime>
+                </PrescriptionCreated>
+                <MedicationModified>
+                    <By>
+                        <AuthorisedHealthcareProfessional>
+                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+                            <Name>Lars Larsen</Name>
+                        </AuthorisedHealthcareProfessional>
+                        <Organisation>
+                            <Name>Lægerne Strandvejen 83</Name>
+                            <AddressLine>Strandvejen 83</AddressLine>
+                            <AddressLine>3390 Hundested</AddressLine>
+                            <TelephoneNumber>47982525</TelephoneNumber>
+                            <Type>Yder</Type>
+                            <Identifier source="Yder">18244</Identifier>
+                        </Organisation>
+                    </By>
+                    <DateTime>2016-06-06T12:31:05Z</DateTime>
+                </MedicationModified>
+
+                <DrugShortDescription>Simvastatin tbl.10mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
+                <Drug>
+                    <Identifier source="Medicinpriser" date="2016-06-03">28104426208</Identifier>
+                    <Name>Simvastatin "Actavis"</Name>
+                    <Form>
+                        <Code source="Medicinpriser" date="2016-06-03">TABFILM</Code>
+                        <Text>filmovertrukne tabletter</Text>
+                    </Form>
+                    <Strength>
+                        <Value>10</Value>
+                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
+                        <UnitText>mg</UnitText>
+                        <Text source="Medicinpriser" date="2016-06-03">10 mg</Text>
+                    </Strength>
+                </Drug>
+                <PlannedAdministration>
+                    <UnitText source="Doseringsforslag">tablet</UnitText>
+                    <StructuresFixed>
+                        <Structure>
+                            <IterationInterval>1</IterationInterval>
+                            <StartDate>2016-06-16</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
+                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
+                            <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+                            <Day>
+                                <Number>1</Number>
+                                <Dose>
+                                    <Time>night</Time>
+                                    <Quantity>1</Quantity>
+                                </Dose>
+                            </Day>
+                            <DosageTranslation>
+                                <ShortText>1 tablet ved sengetid</ShortText>
+                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+                                    Doseringsforløb:
+                                    1 tablet ved sengetid</LongText>
+                                <AverageDailyDosage>1</AverageDailyDosage>
+                            </DosageTranslation>
+                        </Structure>
+                    </StructuresFixed>
+                    <Type>fast</Type>
+                </PlannedAdministration>
+                <TotalNumberOfDoseDispensedQuantity>14</TotalNumberOfDoseDispensedQuantity>
+                <SubstitutionAllowed>false</SubstitutionAllowed>
+                <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
+                <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
+            </DoseDispensedMedication>
 
             <!-- Servicen kan valgfrit returnere/undlade SpecificDays med parameteren IncludeSpecificDays=true/false. -->
+            <!-- Index nummer refererer til DoseDispensedMedication elementerne ovenfor. -->
             <DetailedSpecification>
+                <!-- New day -->
                 <DispensableUnit>
                     <Date>2016-06-06</Date>
                     <Time>morning</Time>
@@ -164,11 +466,23 @@
                     <MedicationGroup>
                         <SupplementaryText>Synkes hele</SupplementaryText>
                         <MedicationRef>
-                            <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                            <Index>2</Index>
                             <Quantity>1</Quantity>
                         </MedicationRef>
                         <MedicationRef>
-                            <Index>3</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-06</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
                             <Quantity>1</Quantity>
                         </MedicationRef>
                     </MedicationGroup>
@@ -179,16 +493,760 @@
 
                     <MedicationGroup>
                         <MedicationRef>
-                            <Index>2</Index>     <!-- Refererer til Index nummer i DoseDispensedMedication elementerne ovenfor. -->
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
                             <Quantity>1</Quantity>
                         </MedicationRef>
                     </MedicationGroup>
                 </DispensableUnit>
-                <!-- Tilsvarende DispensableUnits for de øvrige dage -->
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-07</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-07</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-07</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-08</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-08</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-08</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-09</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-09</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-09</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-10</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-10</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-10</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-11</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-11</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-11</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-12</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-12</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-12</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-13</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-13</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-13</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-14</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-14</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-14</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-15</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-15</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-15</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-16</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-16</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-16</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-16</Date>
+                    <Time>night</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+                        <MedicationRef>
+                            <Index>5</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-17</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-17</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-17</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-17</Date>
+                    <Time>night</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+                        <MedicationRef>
+                            <Index>5</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-18</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-18</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-18</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-18</Date>
+                    <Time>night</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+                        <MedicationRef>
+                            <Index>5</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+
+                <!-- New day -->
+                <DispensableUnit>
+                    <Date>2016-06-19</Date>
+                    <Time>morning</Time>
+
+                    <!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-19</Date>
+                    <Time>noon</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-19</Date>
+                    <Time>evening</Time>
+
+                    <MedicationGroup>
+                        <MedicationRef>
+                            <Index>4</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                    <MedicationGroup>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <MedicationRef>
+                            <Index>2</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                        <MedicationRef>
+                            <Index>3</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
+                <DispensableUnit>
+                    <Date>2016-06-19</Date>
+                    <Time>night</Time>
+
+                    <MedicationGroup>
+                        <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+                        <MedicationRef>
+                            <Index>5</Index>
+                            <Quantity>1</Quantity>
+                        </MedicationRef>
+                    </MedicationGroup>
+                </DispensableUnit>
             </DetailedSpecification>
-
         </Period>
-
-
     </DoseDispensingCard>
 </GetDoseDispensingCardResponse>
