@@ -531,7 +531,10 @@
     <wsdl:message name="StartEffectuationResponse_2015_06_01">
         <wsdl:part name="StartEffectuationResponse" element="medicinecard20150601:StartEffectuationResponse"/>
     </wsdl:message>
-    
+
+    <wsdl:message name="AutomatedStartEffectuationRequest_2015_06_01">
+        <wsdl:part name="AutomatedStartEffectuationRequest" element="medicinecard20150601:StartEffectuationRequest"/>
+    </wsdl:message>
     <wsdl:message name="AutomatedStartEffectuationResponse_2015_06_01">
         <wsdl:part name="AutomatedStartEffectuationResponse" element="medicinecard20150601:AutomatedStartEffectuationResponse"/>
     </wsdl:message>
@@ -952,7 +955,7 @@
         </wsdl:operation>
 
         <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
-            <wsdl:input name="StartEffectuationRequest_2015_06_01" message="tns:StartEffectuationRequest_2015_06_01"/>
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01" message="tns:AutomatedStartEffectuationRequest_2015_06_01"/>
             <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01" message="tns:AutomatedStartEffectuationResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
@@ -1687,7 +1690,7 @@
        <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AutomatedStartEffectuation"
                             style="document"/>
-            <wsdl:input name="StartEffectuationRequest_2015_06_01">
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
