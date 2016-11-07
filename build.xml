@@ -43,7 +43,7 @@
 
 	<target name="publish" depends="clean, all, publish-from-jenkins"/>
 
-	<target name="all" depends="clean, all-idws, all-standard, medicinecard_dist_zips"/>
+	<target name="all" depends="clean, all-idws, all-standard, build-admin-jar,  medicinecard_dist_zips"/>
 	<target name="all-standard" depends="resolve-build, organize-schemas, generate, generate-namespace-oracle"/>
 	<target name="all-idws" depends="resolve-build, organize-schemas_idws"/>
 
@@ -310,6 +310,33 @@
         <!-- else -->
         <property name="codegen-encoding" value="ISO-8859-1"/>
         <echo>codegen-encoding set to '${codegen-encoding}'</echo>
+    </target>
+
+    <target name="build-admin-jar" >
+        <property name ="target.admin.dir" value="${target.dir}/admin"/>
+        <copy todir="${target.admin.dir}/schemas">
+            <fileset dir="./etc/admin-schemas"/>
+        </copy>
+        <mkdir dir="${target.admin.dir}/src"/>
+
+        <exec executable="xjc">
+            <arg value="${target.dir}/admin/schemas"/>
+            <arg value="-d"/>
+            <arg value="${target.admin.dir}/src"/>
+            <arg value="-p"/>
+            <arg value="dk.medicinkortet.rest.resources.jaxb.admin"/>
+        </exec>
+
+        <mkdir dir="${target.admin.dir}/classes"/>
+        <javac debug="true" destdir="${target.admin.dir}/classes" encoding="UTF-8">
+            <src path="${target.admin.dir}/src"/>
+        </javac>
+
+        <jar basedir="${target.admin.dir}/classes" destfile="${target.dir}/fmk-schema-admin-classes.jar">
+            <fileset dir="${target.admin.dir}/classes">
+                <include name="**/*.class"/>
+            </fileset>
+        </jar>
     </target>
 
     <target name="generate" depends="set-codegen-encoding-property, check-generate, axis-init, resolve-build" unless="generated_files_present">
