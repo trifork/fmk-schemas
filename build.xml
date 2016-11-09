@@ -317,6 +317,11 @@
         <copy todir="${target.admin.dir}/schemas">
             <fileset dir="./etc/admin-schemas"/>
         </copy>
+
+        <zip destfile="${target.dir}/fmk-schema-admin.zip">
+            <fileset dir="${target.admin.dir}/schemas"/>
+        </zip>
+
         <mkdir dir="${target.admin.dir}/src"/>
 
         <exec executable="xjc">
