@@ -64,6 +64,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/DeleteEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/DeleteEffectuationResponse.xsd"/>
 
+			<xs:include schemaLocation="../schemas/2015/06/01/GetDoseDispensingCardRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/GetDoseDispensingCardResponse.xsd" />
+	
             <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationResponse.xsd"/>
 
@@ -269,6 +272,13 @@
     </wsdl:message>
     <wsdl:message name="GetMedicineCardAsPDFResponse_2015_06_01">
         <wsdl:part name="GetMedicineCardAsPDFResponse" element="medicinecard20150601:GetMedicineCardAsPDFResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01">
+        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601:GetDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDoseDispensingCardResponse_2015_06_01">
+        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601:GetDoseDispensingCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardVersionRequest_2015_06_01">
@@ -696,6 +706,12 @@
                         message="tns:GetMedicineCardAsPDFRequest_2015_06_01"/>
             <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01"
                          message="tns:GetMedicineCardAsPDFResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01">
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01" message="tns:GetDoseDispensingCardRequest_2015_06_01"/>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01" message="tns:GetDoseDispensingCardResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1132,6 +1148,22 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+dosedispensing
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
