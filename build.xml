@@ -318,8 +318,10 @@
             <fileset dir="./etc/admin-schemas"/>
         </copy>
 
-        <zip destfile="${target.dir}/fmk-schema-admin.zip">
-            <fileset dir="${target.admin.dir}/schemas"/>
+        <zip destfile="${target.dir}/fmk-schema-admin.zip" >
+            <fileset dir="${target.admin.dir}">
+                <include name="schemas/**/*.xsd"/>
+            </fileset>
         </zip>
 
         <mkdir dir="${target.admin.dir}/src"/>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:admin20161101="http://www.dkma.dk/medicinecard/xml.schema/2016/11/01"
+            targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2016/11/01"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:element name="CallingSystemAuthorisations" type="admin20161101:CallingSystemAuthorisationsType"/>
+
+
+    <xsd:complexType name="CallingSystemAuthorisationsType">
+        <xsd:sequence>
+            <xsd:element name="CallingSystemAuthorisations" type="admin20161101:CallingSystemAuthorisationType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="CallingSystemAuthorisationType">
+        <xsd:sequence>
+            <xsd:element name="AuthorisationId" type="xsd:long"/>
+
+            <xsd:element name="SystemOwnerName" type="xsd:string"/>
+            <xsd:element name="SystemName" type="xsd:string"/>
+
+            <xsd:element name="ExtraInfo" type="xsd:string"/>
+            <xsd:element name="SuspenderTextOff" type="xsd:boolean"/>
+            <xsd:element name="DDFixOff" type="xsd:boolean"/>
+
+            <xsd:element name="SystemVersion" type="xsd:string"/>
+            <xsd:element name="FMKVersion" type="xsd:string"/>
+            <xsd:element name="Trusted" type="xsd:boolean"/>
+            <xsd:element name="CVRNumbersTrustedWithAssistants" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="CVRNumbersTrusted" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="ServicesAllowed" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="PatientModificatorSupported" type="xsd:boolean"/>
+            <xsd:element name="AllowedOrgUsingIdFormats" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
