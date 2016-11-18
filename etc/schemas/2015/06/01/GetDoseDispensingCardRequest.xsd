@@ -3,8 +3,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="CurrentDoseDispensingPeriodFlag.xsd"/>
 	<include schemaLocation="CurrentAndUpcommingDoseDispensingPeriodsFlag.xsd"/>
-	<include schemaLocation="DoseDispensingRequestStartDate.xsd"/>
-	<include schemaLocation="DoseDispensingRequestEndDate.xsd"/>
+	<include schemaLocation="DoseDispensingRequestedDate.xsd"/>
 	<element name="GetDoseDispensingCardRequest" type="medicinecard20150601:GetDoseDispensingCardRequestType">
 	</element>
 	<complexType name="GetDoseDispensingCardRequestType">
@@ -19,10 +18,7 @@
 					<choice>
 						<element name="CurrentPeriod" type="medicinecard20150601:CurrentDoseDispensingPeriodFlagType"/>
 						<element name="CurrentAndUpcommingPeriods" type="medicinecard20150601:CurrentAndUpcommingDoseDispensingPeriodsFlagType"/>
-						<sequence>
-							<element name="RequestedStartDate" type="medicinecard20150601:DoseDispensingRequestStartDateType"/>
-							<element name="RequestedEndDate" type="medicinecard20150601:DoseDispensingRequestEndDateType"/>
-						</sequence>
+						<element name="RequestedDate" type="medicinecard20150601:DoseDispensingRequestedDateType"/>
 					</choice>
 				</complexType>
 			</element>
