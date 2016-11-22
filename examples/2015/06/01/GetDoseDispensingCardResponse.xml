@@ -10,6 +10,8 @@
                 <Surname>Müller</Surname>
             </Name>
             <PersonIdentifier source="CPR">1403837853</PersonIdentifier>
+            <BirthDate>1983-03-14</BirthDate>
+			<Gender>male</Gender>
         </Person>
         <Address>
             <StreetName>Magnolievej</StreetName>
@@ -20,7 +22,7 @@
         </Address>
     </Patient>
 
-    <RequestDateTime>2016-10-28T12:00:00Z</RequestDateTime>
+    <RequestDateTime>2016-06-10T12:00:00Z</RequestDateTime>
 
     <!--
        Kriteriet for at LMO/Recept opfattes som tilhørende samme dosisdispenseringskort er flg.
@@ -77,7 +79,7 @@
         <Period>
             <StartDate>2016-06-06</StartDate>
             <EndDate>2016-06-19</EndDate>
-            <Deadline>2016-06-03T13:30Z</Deadline>
+            <Deadline>2016-06-03T13:30:00Z</Deadline>
             <EffectuationDate>2016-06-04</EffectuationDate>    <!-- Kan måske give mening hvis periode start og slut ikke haves, fx på historiske data? -->
 
             <DoseDispensedMedicationWithNegativeConsent>
@@ -88,72 +90,61 @@
             </DoseDispensedMedicationWithNegativeConsent>
             <DoseDispensedMedication>
                 <Index>2</Index>
-                <Identifier source="DrugMedication">13143641280998</Identifier>
-                <Version>1341404071666006001</Version>
-                <Warning>Dosering er ikke specifik nok til dosispakning!</Warning>
-                <Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
-                <Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
-                <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
-                <Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
-                <PrescriptionIdentifier>131436412825367</PrescriptionIdentifier>
-                <OrderIdentifier>131436412825368</OrderIdentifier>
-                <PrescriptionCreated>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:06Z</DateTime>
-                </PrescriptionCreated>
-                <MedicationModified>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:05Z</DateTime>
-                </MedicationModified>
-
-                <DrugShortDescription>Kalerorid tbl. 750mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
-                <Drug>
-                    <Identifier source="Medicinpriser" date="2016-06-03">28100902676</Identifier>
-                    <Name>Kaleorid</Name>
-                    <Form>
-                        <Code source="Medicinpriser" date="2016-06-03">TAB</Code>
-                        <Text>tabletter</Text>
-                    </Form>
-                    <Strength>
-                        <Value>750</Value>
-                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
-                        <UnitText>mg</UnitText>
-                        <Text source="Medicinpriser" date="2016-06-03">750 mg</Text>
-                    </Strength>
-                </Drug>
-                <PlannedAdministration>
-                    <UnitText source="Doseringsforslag">tablet</UnitText>
+                <DrugMedication>
+                    <Identifier>1280998</Identifier>
+		            <Version>1341404071666006001</Version>
+		            <PreviousVersion>1341404070012003001</PreviousVersion>
+		            <Created>
+	                    <By>
+	                        <AuthorisedHealthcareProfessional>
+	                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+	                            <Name>Lars Larsen</Name>
+	                        </AuthorisedHealthcareProfessional>
+	                        <Organisation>
+	                            <Name>Lægerne Strandvejen 83</Name>
+	                            <AddressLine>Strandvejen 83</AddressLine>
+	                            <AddressLine>3390 Hundested</AddressLine>
+	                            <TelephoneNumber>47982525</TelephoneNumber>
+	                            <Type>Yder</Type>
+	                            <Identifier source="Yder">18244</Identifier>
+	                        </Organisation>
+	                    </By>
+                    <DateTime>2016-03-04T12:31:06Z</DateTime>
+		            </Created>
+		            <BeginEndDate>
+		                <TreatmentStartDate>2016-03-07</TreatmentStartDate>
+		                <TreatmentEndDate>2017-03-07</TreatmentEndDate>
+		            </BeginEndDate>
+		            <Indication>
+		                <Code source="Medicinpriser" date="2016-02-22">121</Code>
+		            </Indication>
+		            <RouteOfAdministration>
+		                <Code source="Medicinpriser" date="2016-02-22">OR</Code>
+		            </RouteOfAdministration>
+	                <Drug>
+	                    <Identifier source="Medicinpriser" date="2016-02-22">28100902676</Identifier>
+	                    <Name>Kaleorid</Name>
+	                    <Form>
+	                        <Code source="Medicinpriser" date="2016-02-22">TAB</Code>
+	                        <Text>tabletter</Text>
+	                    </Form>
+	                    <Strength>
+	                        <Value>750</Value>
+	                        <UnitCode source="Medicinpriser" date="2016-02-22">MG</UnitCode>
+	                        <UnitText>mg</UnitText>
+	                        <Text source="Medicinpriser" date="2016-02-22">750 mg</Text>
+	                    </Strength>
+	                </Drug>
+		            <Dosage>
+		            <UnitTexts source="Doseringsforslag">
+		                <Singular>tablet</Singular>
+		                <Plural>tabletter</Plural>
+		            </UnitTexts>
                     <StructuresFixed>
                         <Structure>
                             <IterationInterval>1</IterationInterval>
-                            <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
-                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
+                            <StartDate>2016-03-07</StartDate> 
+                            <EndDate>2017-03-07</EndDate>     
                             <SupplementaryText>Synkes hele</SupplementaryText>
                             <Day>
                                 <Number>1</Number>
@@ -172,7 +163,7 @@
                             </Day>
                             <DosageTranslation>
                                 <ShortText>1 tablet morgen, middag og aften</ShortText>
-                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+                                <LongText>Doseringsforløbet starter mandag den 7. marts 2016 og gentages hver dag:
                                     Doseringsforløb:
                                     1 tablet morgen, middag og aften</LongText>
                                 <AverageDailyDosage>3</AverageDailyDosage>
@@ -180,280 +171,916 @@
                         </Structure>
                     </StructuresFixed>
                     <Type>fast</Type>
+		            </Dosage>
+		            <SubstitutionAllowed>true</SubstitutionAllowed>
+	                <Prescription>
+				        <Identifier>21298478</Identifier>
+				        <AttachedToDrugMedicationIdentifier>1280998</AttachedToDrugMedicationIdentifier>
+				        <CreatedFromDrugMedicationVersion>1341404071666006001</CreatedFromDrugMedicationVersion>
+				        <AuthorisationDateTime>2016-03-04T09:30:47.0Z</AuthorisationDateTime>
+			            <Created>
+		                    <By>
+		                        <AuthorisedHealthcareProfessional>
+		                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+		                            <Name>Lars Larsen</Name>
+		                        </AuthorisedHealthcareProfessional>
+		                        <Organisation>
+		                            <Name>Lægerne Strandvejen 83</Name>
+		                            <AddressLine>Strandvejen 83</AddressLine>
+		                            <AddressLine>3390 Hundested</AddressLine>
+		                            <TelephoneNumber>47982525</TelephoneNumber>
+		                            <Type>Yder</Type>
+		                            <Identifier source="Yder">18244</Identifier>
+		                        </Organisation>
+		                    </By>
+		                    <DateTime>2016-03-04T12:31:06Z</DateTime>
+			            </Created>
+				        <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+				        <ValidFromDate>2016-06-06</ValidFromDate>
+				        <ValidToDate>2017-06-06</ValidToDate>
+				        <DoseDispensedRestriction>
+				        </DoseDispensedRestriction>
+			            <Indication>
+			                <Code source="Medicinpriser" date="2016-02-22">121</Code>
+			            </Indication>
+		                <Drug>
+		                    <Identifier source="Medicinpriser" date="2016-02-22">28100902676</Identifier>
+		                    <Name>Kaleorid</Name>
+		                    <Form>
+		                        <Code source="Medicinpriser" date="2016-02-22">TAB</Code>
+		                        <Text>tabletter</Text>
+		                    </Form>
+		                    <Strength>
+		                        <Value>750</Value>
+		                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
+		                        <UnitText>mg</UnitText>
+		                        <Text source="Medicinpriser" date="2016-06-03">750 mg</Text>
+		                    </Strength>
+		                </Drug>
+				        <DosageText>3 tabletter dagligt ved måltid</DosageText>
+				        <Dosage>
+				            <UnitTexts source="Doseringsforslag">
+				                <Singular>tablet</Singular>
+				                <Plural>tabletter</Plural>
+				            </UnitTexts>
+				            <StructuresFixed>
+		                        <Structure>
+		                            <IterationInterval>1</IterationInterval>
+		                            <StartDate>2016-03-07</StartDate> 
+		                            <EndDate>2017-03-07</EndDate>     
+		                            <SupplementaryText>Synkes hele</SupplementaryText>
+		                            <Day>
+		                                <Number>1</Number>
+		                                <Dose>
+		                                    <Time>morning</Time>
+		                                    <Quantity>1</Quantity>
+		                                </Dose>
+		                                <Dose>
+		                                    <Time>noon</Time>
+		                                    <Quantity>1</Quantity>
+		                                </Dose>
+		                                <Dose>
+		                                    <Time>evening</Time>
+		                                    <Quantity>1</Quantity>
+		                                </Dose>
+		                            </Day>
+		                            <DosageTranslation>
+		                                <ShortText>1 tablet morgen, middag og aften</ShortText>
+		                                <LongText>Doseringsforløbet starter mandag den 7. marts 2016 og gentages hver dag:
+		                                    Doseringsforløb:
+		                                    1 tablet morgen, middag og aften</LongText>
+		                                <AverageDailyDosage>3</AverageDailyDosage>
+		                            </DosageTranslation>
+		                        </Structure>
+				            </StructuresFixed>
+				            <Type>fast</Type>
+				        </Dosage>
+				        <SubstitutionAllowed>true</SubstitutionAllowed>
+				        <Status>åben</Status>
+				        <Order>
+				            <Identifier>1341404069112002004</Identifier>
+				            <Created>
+			                    <By>
+			                        <AuthorisedHealthcareProfessional>
+			                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+			                            <Name>Lars Larsen</Name>
+			                        </AuthorisedHealthcareProfessional>
+			                        <Organisation>
+			                            <Name>Lægerne Strandvejen 83</Name>
+			                            <AddressLine>Strandvejen 83</AddressLine>
+			                            <AddressLine>3390 Hundested</AddressLine>
+			                            <TelephoneNumber>47982525</TelephoneNumber>
+			                            <Type>Yder</Type>
+			                            <Identifier source="Yder">18244</Identifier>
+			                        </Organisation>
+			                    </By>
+			                    <DateTime>2016-03-04T12:31:06Z</DateTime>
+				            </Created>
+					        <OrderedAtPharmacy>
+					            <Name>Århus Jernbane Apotek</Name>
+					            <AddressLine>Banegårdsplads 8</AddressLine>
+					            <AddressLine>8000 Århus</AddressLine>
+					            <Type>Apotek</Type>
+					            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+					        </OrderedAtPharmacy>
+				            <Status>Åben</Status>
+				            <DeliveryInstructionText>Til plejehjemmet</DeliveryInstructionText>
+				            <DeliveryInstructionText>Leveres sammen med øvrige bestillinger,</DeliveryInstructionText>
+				            <DeliveryInstructionText>se separat besked</DeliveryInstructionText>
+				            <Delivery>
+				                <Priority>send til anden adresse pr post</Priority>
+				                <StreetName>Søkildevej 6</StreetName>
+				                <PostCode>8660</PostCode>
+				                <ContactName>Anders Andersen</ContactName>
+				            </Delivery>
+				            <Effectuation>
+				                <Identifier>21298478</Identifier>
+				                <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                <CreatedWithoutPerson>
+				                    <By>
+				                        <Organisation>
+								            <Name>Århus Jernbane Apotek</Name>
+								            <AddressLine>Banegårdsplads 8</AddressLine>
+								            <AddressLine>8000 Århus</AddressLine>
+								            <Type>Apotek</Type>
+								            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+				                        </Organisation>
+				                    </By>
+				                    <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                </CreatedWithoutPerson>
+				                <DoseDispensed>
+				                    <DoseQuantity>1</DoseQuantity>
+				                    <DosageQuantityUnitText source="Medicinpriser" date="2016-02-22">tabletter</DosageQuantityUnitText>
+				                </DoseDispensed>
+				                <LabelText>Kaleorid 750 mg</LabelText>
+				            </Effectuation>
+				        </Order>
+				        <Version>34567</Version>
+				    </Prescription>
+		            <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+                </DrugMedication>
+
+                <Warning>Dosering er ikke specifik nok til dosispakning!</Warning>
+                <Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
+                <Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
+                <Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
+                <Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
+
+                <PlannedAdministration>
+		            <UnitTexts source="Doseringsforslag">
+		                <Singular>tablet</Singular>
+		                <Plural>tabletter</Plural>
+		            </UnitTexts>
+                    <AdministrationStructure>
+                        <IterationInterval>1</IterationInterval>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <Day>
+                            <Number>1</Number>
+                            <Dose>
+                                <Time>morning</Time>
+                                <Quantity>1</Quantity>
+                            </Dose>
+                            <Dose>
+                                <Time>noon</Time>
+                                <Quantity>1</Quantity>
+                            </Dose>
+                            <Dose>
+                                <Time>evening</Time>
+                                <Quantity>1</Quantity>
+                            </Dose>
+                        </Day>
+                    </AdministrationStructure>
                 </PlannedAdministration>
                 <TotalNumberOfDoseDispensedQuantity>42</TotalNumberOfDoseDispensedQuantity>
-                <SubstitutionAllowed>true</SubstitutionAllowed>
-                <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
-                <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
-                <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
+                <DoseDispensingEndDate>2017-03-07</DoseDispensingEndDate>
             </DoseDispensedMedication>
+            
+            
+            
             <DoseDispensedMedication>
                 <Index>3</Index>
-                <Identifier source="DrugMedication">13143641280898</Identifier>
-                <Version>1341404071666005001</Version>
-                <PrescriptionIdentifier>131436412824367</PrescriptionIdentifier>
-                <OrderIdentifier>131436412824368</OrderIdentifier>
-                <PrescriptionCreated>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:06Z</DateTime>
-                </PrescriptionCreated>
-                <MedicationModified>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:05Z</DateTime>
-                </MedicationModified>
+                <DrugMedication>
+                    <Identifier>1380002</Identifier>
+		            <Version>1341404071666007001</Version>
+		            <Created>
+	                    <By>
+	                        <AuthorisedHealthcareProfessional>
+	                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+	                            <Name>Lars Larsen</Name>
+	                        </AuthorisedHealthcareProfessional>
+	                        <Organisation>
+	                            <Name>Lægerne Strandvejen 83</Name>
+	                            <AddressLine>Strandvejen 83</AddressLine>
+	                            <AddressLine>3390 Hundested</AddressLine>
+	                            <TelephoneNumber>47982525</TelephoneNumber>
+	                            <Type>Yder</Type>
+	                            <Identifier source="Yder">18244</Identifier>
+	                        </Organisation>
+	                    </By>
+                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+		            </Created>
+		            <BeginEndDate>
+		                <TreatmentStartDate>2015-10-18</TreatmentStartDate>
+		                <TreatmentEndDate>2017-03-30</TreatmentEndDate>
+		            </BeginEndDate>
+		            <Indication>
+		                <Code source="Medicinpriser" date="2015-10-01">121</Code>
+		            </Indication>
+		            <RouteOfAdministration>
+		                <Code source="Medicinpriser" date="2015-10-01">OR</Code>
+		            </RouteOfAdministration>
+	                <Drug>
+	                    <Identifier source="Medicinpriser" date="2015-10-01">28101440691</Identifier>
+	                    <Name>Corodil</Name>
+	                    <Form>
+	                        <Code source="Medicinpriser" date="2015-10-01">TAB</Code>
+	                        <Text>tabletter</Text>
+	                    </Form>
+	                    <Strength>
+	                        <Value>10</Value>
+	                        <UnitCode source="Medicinpriser" date="2015-10-01">MG</UnitCode>
+	                        <UnitText>mg</UnitText>
+	                        <Text source="Medicinpriser" date="2015-10-01">10 mg</Text>
+	                    </Strength>
+	                </Drug>
+		            <Dosage>
+		            <UnitTexts source="Doseringsforslag">
+		                <Singular>tablet</Singular>
+		                <Plural>tabletter</Plural>
+		            </UnitTexts>
+	                    <StructuresFixed>
+	                        <Structure>
+	                            <IterationInterval>1</IterationInterval>
+	                            <StartDate>2015-10-18</StartDate>
+	                            <EndDate>2017-03-30</EndDate>    
+	                            <SupplementaryText>Synkes hele</SupplementaryText>
+	                            <Day>
+	                                <Number>1</Number>
+	                                <Dose>
+	                                    <Time>morning</Time>
+	                                    <Quantity>1</Quantity>
+	                                </Dose>
+	                                <Dose>
+	                                    <Time>evening</Time>
+	                                    <Quantity>1</Quantity>
+	                                </Dose>
+	                            </Day>
+	                            <DosageTranslation>
+	                                <ShortText>1 tablet morgen og aften</ShortText>
+	                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+	                                    Doseringsforløb:
+	                                    1 tablet morgen og aften</LongText>
+	                                <AverageDailyDosage>2</AverageDailyDosage>
+	                            </DosageTranslation>
+	                        </Structure>
+	                    </StructuresFixed>
+	                    <Type>fast</Type>
+		            </Dosage>
+		            <SubstitutionAllowed>true</SubstitutionAllowed>
+	                <Prescription>
+				        <Identifier>21298478</Identifier>
+				        <AttachedToDrugMedicationIdentifier>1380002</AttachedToDrugMedicationIdentifier>
+				        <CreatedFromDrugMedicationVersion>1341404071666007001</CreatedFromDrugMedicationVersion>
+				        <AuthorisationDateTime>2016-03-04T09:30:47.0Z</AuthorisationDateTime>
+			            <Created>
+		                    <By>
+		                        <AuthorisedHealthcareProfessional>
+		                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+		                            <Name>Lars Larsen</Name>
+		                        </AuthorisedHealthcareProfessional>
+		                        <Organisation>
+		                            <Name>Lægerne Strandvejen 83</Name>
+		                            <AddressLine>Strandvejen 83</AddressLine>
+		                            <AddressLine>3390 Hundested</AddressLine>
+		                            <TelephoneNumber>47982525</TelephoneNumber>
+		                            <Type>Yder</Type>
+		                            <Identifier source="Yder">18244</Identifier>
+		                        </Organisation>
+		                    </By>
+		                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+			            </Created>
+				        <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+				        <ValidFromDate>2016-06-06</ValidFromDate>
+				        <ValidToDate>2017-06-06</ValidToDate>
+				        <DoseDispensedRestriction>
+				        </DoseDispensedRestriction>
+			            <Indication>
+			                <Code source="Medicinpriser" date="2015-10-01">121</Code>
+			            </Indication>
+		                <Drug>
+		                    <Identifier source="Medicinpriser" date="2015-10-01">28101440691</Identifier>
+		                    <Name>Corodil</Name>
+		                    <Form>
+		                        <Code source="Medicinpriser" date="2015-10-01">TAB</Code>
+		                        <Text>tabletter</Text>
+		                    </Form>
+		                    <Strength>
+		                        <Value>10</Value>
+		                        <UnitCode source="Medicinpriser" date="2015-10-01">MG</UnitCode>
+		                        <UnitText>mg</UnitText>
+		                        <Text source="Medicinpriser" date="2015-10-01">10 mg</Text>
+		                    </Strength>
+		                </Drug>
+				        <DosageText>3 tabletter dagligt ved måltid</DosageText>
+				        <Dosage>
+				            <UnitTexts source="Doseringsforslag">
+				                <Singular>tablet</Singular>
+				                <Plural>tabletter</Plural>
+				            </UnitTexts>
+				            <StructuresFixed>
+		                        <Structure>
+		                            <IterationInterval>1</IterationInterval>
+		                            <StartDate>2015-10-18</StartDate>
+		                            <EndDate>2017-03-30</EndDate>    
+		                            <SupplementaryText>Synkes hele</SupplementaryText>
+		                            <Day>
+		                                <Number>1</Number>
+		                                <Dose>
+		                                    <Time>morning</Time>
+		                                    <Quantity>1</Quantity>
+		                                </Dose>
+		                                <Dose>
+		                                    <Time>evening</Time>
+		                                    <Quantity>1</Quantity>
+		                                </Dose>
+		                            </Day>
+		                            <DosageTranslation>
+		                                <ShortText>1 tablet morgen og aften</ShortText>
+		                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+		                                    Doseringsforløb:
+		                                    1 tablet morgen og aften</LongText>
+		                                <AverageDailyDosage>2</AverageDailyDosage>
+		                            </DosageTranslation>
+		                        </Structure>
+				            </StructuresFixed>
+				            <Type>fast</Type>
+				        </Dosage>
+				        <SubstitutionAllowed>true</SubstitutionAllowed>
+				        <Status>åben</Status>
+				        <Order>
+				            <Identifier>1341404069112002004</Identifier>
+				            <Created>
+			                    <By>
+			                        <AuthorisedHealthcareProfessional>
+			                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+			                            <Name>Lars Larsen</Name>
+			                        </AuthorisedHealthcareProfessional>
+			                        <Organisation>
+			                            <Name>Lægerne Strandvejen 83</Name>
+			                            <AddressLine>Strandvejen 83</AddressLine>
+			                            <AddressLine>3390 Hundested</AddressLine>
+			                            <TelephoneNumber>47982525</TelephoneNumber>
+			                            <Type>Yder</Type>
+			                            <Identifier source="Yder">18244</Identifier>
+			                        </Organisation>
+			                    </By>
+			                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+				            </Created>
+					        <OrderedAtPharmacy>
+					            <Name>Århus Jernbane Apotek</Name>
+					            <AddressLine>Banegårdsplads 8</AddressLine>
+					            <AddressLine>8000 Århus</AddressLine>
+					            <Type>Apotek</Type>
+					            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+					        </OrderedAtPharmacy>
+				            <Status>Åben</Status>
+				            <DeliveryInstructionText>Til plejehjemmet</DeliveryInstructionText>
+				            <DeliveryInstructionText>Leveres sammen med øvrige bestillinger,</DeliveryInstructionText>
+				            <DeliveryInstructionText>se separat besked</DeliveryInstructionText>
+				            <Delivery>
+				                <Priority>send til anden adresse pr post</Priority>
+				                <StreetName>Søkildevej 6</StreetName>
+				                <PostCode>8660</PostCode>
+				                <ContactName>Anders Andersen</ContactName>
+				            </Delivery>
+				            <Effectuation>
+				                <Identifier>21298478</Identifier>
+				                <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                <CreatedWithoutPerson>
+				                    <By>
+				                        <Organisation>
+								            <Name>Århus Jernbane Apotek</Name>
+								            <AddressLine>Banegårdsplads 8</AddressLine>
+								            <AddressLine>8000 Århus</AddressLine>
+								            <Type>Apotek</Type>
+								            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+				                        </Organisation>
+				                    </By>
+				                    <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                </CreatedWithoutPerson>
+				                <DoseDispensed>
+				                    <DoseQuantity>28</DoseQuantity>
+				                    <DosageQuantityUnitText source="Medicinpriser" date="2016-06-01">tabletter</DosageQuantityUnitText>
+				                </DoseDispensed>
+				                <LabelText>Corodil tbl. 10mg</LabelText>
+				            </Effectuation>
+				        </Order>
+				        <Version>34567</Version>
+				    </Prescription>
+		            <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+                </DrugMedication>
 
-                <DrugShortDescription>Corodil tbl. 10mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
-                <Drug>
-                    <Identifier source="Medicinpriser" date="2016-06-03">28101440691</Identifier>
-                    <Name>Corodil</Name>
-                    <Form>
-                        <Code source="Medicinpriser" date="2016-06-03">TAB</Code>
-                        <Text>tabletter</Text>
-                    </Form>
-                    <Strength>
-                        <Value>10</Value>
-                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
-                        <UnitText>mg</UnitText>
-                        <Text source="Medicinpriser" date="2016-06-03">10 mg</Text>
-                    </Strength>
-                </Drug>
                 <PlannedAdministration>
-                    <UnitText source="Doseringsforslag">tablet</UnitText>
-                    <StructuresFixed>
-                        <Structure>
-                            <IterationInterval>1</IterationInterval>
-                            <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
-                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
-                            <SupplementaryText>Synkes hele</SupplementaryText>
-                            <Day>
-                                <Number>1</Number>
-                                <Dose>
-                                    <Time>morning</Time>
-                                    <Quantity>1</Quantity>
-                                </Dose>
-                                <Dose>
-                                    <Time>evening</Time>
-                                    <Quantity>1</Quantity>
-                                </Dose>
-                            </Day>
-                            <DosageTranslation>
-                                <ShortText>1 tablet morgen og aften</ShortText>
-                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
-                                    Doseringsforløb:
-                                    1 tablet morgen og aften</LongText>
-                                <AverageDailyDosage>2</AverageDailyDosage>
-                            </DosageTranslation>
-                        </Structure>
-                    </StructuresFixed>
-                    <Type>fast</Type>
+		            <UnitTexts source="Doseringsforslag">
+		                <Singular>tablet</Singular>
+		                <Plural>tabletter</Plural>
+		            </UnitTexts>
+                    <AdministrationStructure>
+                        <IterationInterval>1</IterationInterval>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <Day>
+                            <Number>1</Number>
+                            <Dose>
+                                <Time>morning</Time>
+                                <Quantity>1</Quantity>
+                            </Dose>
+                            <Dose>
+                                <Time>evening</Time>
+                                <Quantity>1</Quantity>
+                            </Dose>
+                        </Day>
+                    </AdministrationStructure>
                 </PlannedAdministration>
                 <TotalNumberOfDoseDispensedQuantity>28</TotalNumberOfDoseDispensedQuantity>
-                <SubstitutionAllowed>true</SubstitutionAllowed>
-                <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
-                <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
                 <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
             </DoseDispensedMedication>
+            
+            
+            
             <DoseDispensedMedication>
                 <Index>4</Index>
-                <Identifier source="DrugMedication">13143641280898</Identifier>
-                <Version>1341404071666005001</Version>
-                <PrescriptionIdentifier>131436412824367</PrescriptionIdentifier>
-                <OrderIdentifier>131436412824368</OrderIdentifier>
-                <PrescriptionCreated>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:06Z</DateTime>
-                </PrescriptionCreated>
-                <MedicationModified>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:05Z</DateTime>
-                </MedicationModified>
+                <DrugMedication>
+                    <Identifier>14364128</Identifier>
+		            <Version>1431404071666007001</Version>
+		            <Created>
+	                    <By>
+	                        <AuthorisedHealthcareProfessional>
+	                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+	                            <Name>Lars Larsen</Name>
+	                        </AuthorisedHealthcareProfessional>
+	                        <Organisation>
+	                            <Name>Lægerne Strandvejen 83</Name>
+	                            <AddressLine>Strandvejen 83</AddressLine>
+	                            <AddressLine>3390 Hundested</AddressLine>
+	                            <TelephoneNumber>47982525</TelephoneNumber>
+	                            <Type>Yder</Type>
+	                            <Identifier source="Yder">18244</Identifier>
+	                        </Organisation>
+	                    </By>
+                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+		            </Created>
+		            <BeginEndDate>
+		                <TreatmentStartDate>2015-10-18</TreatmentStartDate>
+		                <TreatmentEndDate>2017-03-30</TreatmentEndDate>
+		            </BeginEndDate>
+		            <Indication>
+		                <Code source="Medicinpriser" date="2015-10-01">121</Code>
+		            </Indication>
+		            <RouteOfAdministration>
+		                <Code source="Medicinpriser" date="2015-10-01">OR</Code>
+		            </RouteOfAdministration>
+	                <Drug>
+	                    <Identifier source="Medicinpriser" date="2015-10-01">28103789105</Identifier>
+	                    <Name>Lansoprazol "KRKA"</Name>
+	                    <Form>
+	                        <Code source="Medicinpriser" date="2015-10-01">TAB</Code>
+	                        <Text>tabletter</Text>
+	                    </Form>
+	                    <Strength>
+	                        <Value>15</Value>
+	                        <UnitCode source="Medicinpriser" date="2015-10-01">MG</UnitCode>
+	                        <UnitText>mg</UnitText>
+	                        <Text source="Medicinpriser" date="2015-10-01">15 mg</Text>
+	                    </Strength>
+	                </Drug>
+		            <Dosage>
+			            <UnitTexts source="Doseringsforslag">
+			                <Singular>tablet</Singular>
+			                <Plural>tabletter</Plural>
+			            </UnitTexts>
+	                    <StructuresFixed>
+	                        <Structure>
+	                            <IterationInterval>1</IterationInterval>
+	                            <StartDate>2015-10-18</StartDate>
+	                            <EndDate>2017-03-30</EndDate>    
+	                            <SupplementaryText>Synkes hele</SupplementaryText>
+	                            <Day>
+	                                <Number>1</Number>
+	                                <Dose>
+	                                    <Time>evening</Time>
+	                                    <Quantity>1</Quantity>
+	                                </Dose>
+	                            </Day>
+	                            <DosageTranslation>
+	                                <ShortText>1 tablet aften</ShortText>
+	                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+	                                    Doseringsforløb:
+	                                    1 tablet aften</LongText>
+	                                <AverageDailyDosage>1</AverageDailyDosage>
+	                            </DosageTranslation>
+	                        </Structure>
+	                    </StructuresFixed>
+	                    <Type>fast</Type>
+		            </Dosage>
+		            <SubstitutionAllowed>true</SubstitutionAllowed>
+	                <Prescription>
+				        <Identifier>2113298478</Identifier>
+				        <AttachedToDrugMedicationIdentifier>14364128</AttachedToDrugMedicationIdentifier>
+				        <CreatedFromDrugMedicationVersion>1431404071666007001</CreatedFromDrugMedicationVersion>
+				        <AuthorisationDateTime>2016-03-04T09:30:47.0Z</AuthorisationDateTime>
+			            <Created>
+		                    <By>
+		                        <AuthorisedHealthcareProfessional>
+		                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+		                            <Name>Lars Larsen</Name>
+		                        </AuthorisedHealthcareProfessional>
+		                        <Organisation>
+		                            <Name>Lægerne Strandvejen 83</Name>
+		                            <AddressLine>Strandvejen 83</AddressLine>
+		                            <AddressLine>3390 Hundested</AddressLine>
+		                            <TelephoneNumber>47982525</TelephoneNumber>
+		                            <Type>Yder</Type>
+		                            <Identifier source="Yder">18244</Identifier>
+		                        </Organisation>
+		                    </By>
+		                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+			            </Created>
+				        <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+				        <ValidFromDate>2016-06-06</ValidFromDate>
+				        <ValidToDate>2017-06-06</ValidToDate>
+				        <DoseDispensedRestriction>
+				        </DoseDispensedRestriction>
+			            <Indication>
+			                <Code source="Medicinpriser" date="2015-10-01">121</Code>
+			            </Indication>
+		                <Drug>
+		                    <Identifier source="Medicinpriser" date="2015-10-01">28103789105</Identifier>
+		                    <Name>Lansoprazol "KRKA"</Name>
+		                    <Form>
+		                        <Code source="Medicinpriser" date="2015-10-01">TAB</Code>
+		                        <Text>tabletter</Text>
+		                    </Form>
+		                    <Strength>
+		                        <Value>15</Value>
+		                        <UnitCode source="Medicinpriser" date="2015-10-01">MG</UnitCode>
+		                        <UnitText>mg</UnitText>
+		                        <Text source="Medicinpriser" date="2015-10-01">15 mg</Text>
+		                    </Strength>
+		                </Drug>
+				        <DosageText>2 tabletter dagligt</DosageText>
+				        <Dosage>
+				            <UnitTexts source="Doseringsforslag">
+				                <Singular>tablet</Singular>
+				                <Plural>tabletter</Plural>
+				            </UnitTexts>
+				            <StructuresFixed>
+		                        <Structure>
+		                            <IterationInterval>1</IterationInterval>
+		                            <StartDate>2015-10-18</StartDate>
+		                            <EndDate>2017-03-30</EndDate>    
+		                            <SupplementaryText>Synkes hele</SupplementaryText>
+		                            <Day>
+		                                <Number>1</Number>
+		                                <Dose>
+		                                    <Time>evening</Time>
+		                                    <Quantity>1</Quantity>
+		                                </Dose>
+		                            </Day>
+		                            <DosageTranslation>
+		                                <ShortText>1 tablet aften</ShortText>
+		                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+		                                    Doseringsforløb:
+		                                    1 tablet aften</LongText>
+		                                <AverageDailyDosage>1</AverageDailyDosage>
+		                            </DosageTranslation>
+		                        </Structure>
+				            </StructuresFixed>
+				            <Type>fast</Type>
+				        </Dosage>
+				        <SubstitutionAllowed>true</SubstitutionAllowed>
+				        <Status>åben</Status>
+				        <Order>
+				            <Identifier>1341404069112002004</Identifier>
+				            <Created>
+			                    <By>
+			                        <AuthorisedHealthcareProfessional>
+			                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+			                            <Name>Lars Larsen</Name>
+			                        </AuthorisedHealthcareProfessional>
+			                        <Organisation>
+			                            <Name>Lægerne Strandvejen 83</Name>
+			                            <AddressLine>Strandvejen 83</AddressLine>
+			                            <AddressLine>3390 Hundested</AddressLine>
+			                            <TelephoneNumber>47982525</TelephoneNumber>
+			                            <Type>Yder</Type>
+			                            <Identifier source="Yder">18244</Identifier>
+			                        </Organisation>
+			                    </By>
+			                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+				            </Created>
+					        <OrderedAtPharmacy>
+					            <Name>Århus Jernbane Apotek</Name>
+					            <AddressLine>Banegårdsplads 8</AddressLine>
+					            <AddressLine>8000 Århus</AddressLine>
+					            <Type>Apotek</Type>
+					            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+					        </OrderedAtPharmacy>
+				            <Status>Åben</Status>
+				            <DeliveryInstructionText>Til plejehjemmet</DeliveryInstructionText>
+				            <DeliveryInstructionText>Leveres sammen med øvrige bestillinger,</DeliveryInstructionText>
+				            <DeliveryInstructionText>se separat besked</DeliveryInstructionText>
+				            <Delivery>
+				                <Priority>send til anden adresse pr post</Priority>
+				                <StreetName>Søkildevej 6</StreetName>
+				                <PostCode>8660</PostCode>
+				                <ContactName>Anders Andersen</ContactName>
+				            </Delivery>
+				            <Effectuation>
+				                <Identifier>21298478</Identifier>
+				                <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                <CreatedWithoutPerson>
+				                    <By>
+				                        <Organisation>
+								            <Name>Århus Jernbane Apotek</Name>
+								            <AddressLine>Banegårdsplads 8</AddressLine>
+								            <AddressLine>8000 Århus</AddressLine>
+								            <Type>Apotek</Type>
+								            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+				                        </Organisation>
+				                    </By>
+				                    <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                </CreatedWithoutPerson>
+				                <DoseDispensed>
+				                    <DoseQuantity>14</DoseQuantity>
+				                    <DosageQuantityUnitText source="Medicinpriser" date="2016-02-22">tabletter</DosageQuantityUnitText>
+				                </DoseDispensed>
+				                <LabelText>Lansoprazol kp. 15mg</LabelText>
+				            </Effectuation>
+				        </Order>
+				        <Version>34567</Version>
+				    </Prescription>
+		            <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+                </DrugMedication>
 
-                <DrugShortDescription>Lansoprazol kp. 15mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
-                <Drug>
-                    <Identifier source="Medicinpriser" date="2016-06-03">28103789105</Identifier>
-                    <Name>Lansoprazol "KRKA"</Name>
-                    <Form>
-                        <Code source="Medicinpriser" date="2016-06-03">TAB</Code>
-                        <Text>tabletter</Text>
-                    </Form>
-                    <Strength>
-                        <Value>15</Value>
-                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
-                        <UnitText>mg</UnitText>
-                        <Text source="Medicinpriser" date="2016-06-03">15 mg</Text>
-                    </Strength>
-                </Drug>
                 <PlannedAdministration>
-                    <UnitText source="Doseringsforslag">tablet</UnitText>
-                    <StructuresFixed>
-                        <Structure>
-                            <IterationInterval>1</IterationInterval>
-                            <StartDate>2015-10-18</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
-                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
-                            <SupplementaryText>Synkes hele</SupplementaryText>
-                            <Day>
-                                <Number>1</Number>
-                                <Dose>
-                                    <Time>evening</Time>
-                                    <Quantity>1</Quantity>
-                                </Dose>
-                            </Day>
-                            <DosageTranslation>
-                                <ShortText>1 tablet morgen og aften</ShortText>
-                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
-                                    Doseringsforløb:
-                                    1 tablet morgen og aften</LongText>
-                                <AverageDailyDosage>1</AverageDailyDosage>
-                            </DosageTranslation>
-                        </Structure>
-                    </StructuresFixed>
-                    <Type>fast</Type>
+		            <UnitTexts source="Doseringsforslag">
+		                <Singular>tablet</Singular>
+		                <Plural>tabletter</Plural>
+		            </UnitTexts>
+                    <AdministrationStructure>
+                        <IterationInterval>1</IterationInterval>
+                        <SupplementaryText>Synkes hele</SupplementaryText>
+                        <Day>
+                            <Number>1</Number>
+                            <Dose>
+                                <Time>evening</Time>
+                                <Quantity>1</Quantity>
+                            </Dose>
+                        </Day>
+                    </AdministrationStructure>
                 </PlannedAdministration>
                 <TotalNumberOfDoseDispensedQuantity>14</TotalNumberOfDoseDispensedQuantity>
-                <SubstitutionAllowed>true</SubstitutionAllowed>
-                <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
-                <DoseDispensingRequestedByDoctor>false</DoseDispensingRequestedByDoctor>
                 <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
             </DoseDispensedMedication>
+            
+            
+            
             <DoseDispensedMedication>
                 <Index>5</Index>
-                <Identifier source="DrugMedication">13143641280898</Identifier>
-                <Version>1341404071666005001</Version>
-                <PrescriptionIdentifier>131436412824367</PrescriptionIdentifier>
-                <OrderIdentifier>131436412824368</OrderIdentifier>
-                <PrescriptionCreated>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:06Z</DateTime>
-                </PrescriptionCreated>
-                <MedicationModified>
-                    <By>
-                        <AuthorisedHealthcareProfessional>
-                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-                            <Name>Lars Larsen</Name>
-                        </AuthorisedHealthcareProfessional>
-                        <Organisation>
-                            <Name>Lægerne Strandvejen 83</Name>
-                            <AddressLine>Strandvejen 83</AddressLine>
-                            <AddressLine>3390 Hundested</AddressLine>
-                            <TelephoneNumber>47982525</TelephoneNumber>
-                            <Type>Yder</Type>
-                            <Identifier source="Yder">18244</Identifier>
-                        </Organisation>
-                    </By>
-                    <DateTime>2016-06-06T12:31:05Z</DateTime>
-                </MedicationModified>
+                <DrugMedication>
+                    <Identifier>14364228</Identifier>
+		            <Version>1431404071666017001</Version>
+		            <Created>
+	                    <By>
+	                        <AuthorisedHealthcareProfessional>
+	                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+	                            <Name>Lars Larsen</Name>
+	                        </AuthorisedHealthcareProfessional>
+	                        <Organisation>
+	                            <Name>Lægerne Strandvejen 83</Name>
+	                            <AddressLine>Strandvejen 83</AddressLine>
+	                            <AddressLine>3390 Hundested</AddressLine>
+	                            <TelephoneNumber>47982525</TelephoneNumber>
+	                            <Type>Yder</Type>
+	                            <Identifier source="Yder">18244</Identifier>
+	                        </Organisation>
+	                    </By>
+                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+		            </Created>
+		            <BeginEndDate>
+		                <TreatmentStartDate>2015-10-18</TreatmentStartDate>
+		                <TreatmentEndDate>2017-03-30</TreatmentEndDate>
+		            </BeginEndDate>
+		            <Indication>
+		                <Code source="Medicinpriser" date="2015-10-01">121</Code>
+		            </Indication>
+		            <RouteOfAdministration>
+		                <Code source="Medicinpriser" date="2015-10-01">OR</Code>
+		            </RouteOfAdministration>
+	                <Drug>
+	                    <Identifier source="Medicinpriser" date="2015-10-01">28104426208</Identifier>
+	                    <Name>Simvastatin "Actavis"</Name>
+	                    <Form>
+	                        <Code source="Medicinpriser" date="2015-10-01">TABFILM</Code>
+	                        <Text>filmovertrukne tabletter</Text>
+	                    </Form>
+	                    <Strength>
+	                        <Value>10</Value>
+	                        <UnitCode source="Medicinpriser" date="2015-10-01">MG</UnitCode>
+	                        <UnitText>mg</UnitText>
+	                        <Text source="Medicinpriser" date="2015-10-01">10 mg</Text>
+	                    </Strength>
+	                </Drug>
+		            <Dosage>
+			            <UnitTexts source="Doseringsforslag">
+			                <Singular>tablet</Singular>
+			                <Plural>tabletter</Plural>
+			            </UnitTexts>
+	                    <StructuresFixed>
+	                        <Structure>
+	                            <IterationInterval>1</IterationInterval>
+	                            <StartDate>2015-10-18</StartDate>
+	                            <EndDate>2017-03-30</EndDate>    
+	                            <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+	                            <Day>
+	                                <Number>1</Number>
+	                                <Dose>
+	                                    <Time>night</Time>
+	                                    <Quantity>1</Quantity>
+	                                </Dose>
+	                            </Day>
+	                            <DosageTranslation>
+	                                <ShortText>1 tablet ved sengetid</ShortText>
+	                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+	                                    Doseringsforløb:
+	                                    1 tablet ved sengetid</LongText>
+	                                <AverageDailyDosage>1</AverageDailyDosage>
+	                            </DosageTranslation>
+	                        </Structure>
+	                    </StructuresFixed>
+	                    <Type>fast</Type>
+		            </Dosage>
+		            <SubstitutionAllowed>true</SubstitutionAllowed>
+	                <Prescription>
+				        <Identifier>2121298478</Identifier>
+				        <AttachedToDrugMedicationIdentifier>14364228</AttachedToDrugMedicationIdentifier>
+				        <CreatedFromDrugMedicationVersion>1431404071666017001</CreatedFromDrugMedicationVersion>
+				        <AuthorisationDateTime>2016-03-04T09:30:47.0Z</AuthorisationDateTime>
+			            <Created>
+		                    <By>
+		                        <AuthorisedHealthcareProfessional>
+		                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+		                            <Name>Lars Larsen</Name>
+		                        </AuthorisedHealthcareProfessional>
+		                        <Organisation>
+		                            <Name>Lægerne Strandvejen 83</Name>
+		                            <AddressLine>Strandvejen 83</AddressLine>
+		                            <AddressLine>3390 Hundested</AddressLine>
+		                            <TelephoneNumber>47982525</TelephoneNumber>
+		                            <Type>Yder</Type>
+		                            <Identifier source="Yder">18244</Identifier>
+		                        </Organisation>
+		                    </By>
+		                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+			            </Created>
+				        <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+				        <ValidFromDate>2016-06-06</ValidFromDate>
+				        <ValidToDate>2017-06-06</ValidToDate>
+				        <DoseDispensedRestriction>
+				        </DoseDispensedRestriction>
+			            <Indication>
+			                <Code source="Medicinpriser" date="2015-10-01">121</Code>
+			            </Indication>
+		                <Drug>
+		                    <Identifier source="Medicinpriser" date="2015-10-01">28104426208</Identifier>
+		                    <Name>Simvastatin "Actavis"</Name>
+		                    <Form>
+		                        <Code source="Medicinpriser" date="2015-10-01">TABFILM</Code>
+		                        <Text>filmovertrukne tabletter</Text>
+		                    </Form>
+		                    <Strength>
+		                        <Value>10</Value>
+		                        <UnitCode source="Medicinpriser" date="2015-10-01">MG</UnitCode>
+		                        <UnitText>mg</UnitText>
+		                        <Text source="Medicinpriser" date="2015-10-01">10 mg</Text>
+		                    </Strength>
+		                </Drug>
+				        <DosageText>2 tabletter dagligt</DosageText>
+				        <Dosage>
+				            <UnitTexts source="Doseringsforslag">
+				                <Singular>tablet</Singular>
+				                <Plural>tabletter</Plural>
+				            </UnitTexts>
+				            <StructuresFixed>
+		                        <Structure>
+		                            <IterationInterval>1</IterationInterval>
+		                            <StartDate>2015-10-18</StartDate>
+		                            <EndDate>2017-03-30</EndDate>    
+		                            <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+		                            <Day>
+		                                <Number>1</Number>
+		                                <Dose>
+		                                    <Time>night</Time>
+		                                    <Quantity>1</Quantity>
+		                                </Dose>
+		                            </Day>
+		                            <DosageTranslation>
+		                                <ShortText>1 tablet ved sengetid</ShortText>
+		                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
+		                                    Doseringsforløb:
+		                                    1 tablet ved sengetid</LongText>
+		                                <AverageDailyDosage>1</AverageDailyDosage>
+		                            </DosageTranslation>
+		                        </Structure>
+				            </StructuresFixed>
+				            <Type>fast</Type>
+				        </Dosage>
+				        <SubstitutionAllowed>true</SubstitutionAllowed>
+				        <Status>åben</Status>
+				        <Order>
+				            <Identifier>1341404069112002004</Identifier>
+				            <Created>
+			                    <By>
+			                        <AuthorisedHealthcareProfessional>
+			                            <AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+			                            <Name>Lars Larsen</Name>
+			                        </AuthorisedHealthcareProfessional>
+			                        <Organisation>
+			                            <Name>Lægerne Strandvejen 83</Name>
+			                            <AddressLine>Strandvejen 83</AddressLine>
+			                            <AddressLine>3390 Hundested</AddressLine>
+			                            <TelephoneNumber>47982525</TelephoneNumber>
+			                            <Type>Yder</Type>
+			                            <Identifier source="Yder">18244</Identifier>
+			                        </Organisation>
+			                    </By>
+			                    <DateTime>2015-10-10T12:31:06Z</DateTime>
+				            </Created>
+					        <OrderedAtPharmacy>
+					            <Name>Århus Jernbane Apotek</Name>
+					            <AddressLine>Banegårdsplads 8</AddressLine>
+					            <AddressLine>8000 Århus</AddressLine>
+					            <Type>Apotek</Type>
+					            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+					        </OrderedAtPharmacy>
+				            <Status>Åben</Status>
+				            <DeliveryInstructionText>Til plejehjemmet</DeliveryInstructionText>
+				            <DeliveryInstructionText>Leveres sammen med øvrige bestillinger,</DeliveryInstructionText>
+				            <DeliveryInstructionText>se separat besked</DeliveryInstructionText>
+				            <Delivery>
+				                <Priority>send til anden adresse pr post</Priority>
+				                <StreetName>Søkildevej 6</StreetName>
+				                <PostCode>8660</PostCode>
+				                <ContactName>Anders Andersen</ContactName>
+				            </Delivery>
+				            <Effectuation>
+				                <Identifier>21298478</Identifier>
+				                <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                <CreatedWithoutPerson>
+				                    <By>
+				                        <Organisation>
+								            <Name>Århus Jernbane Apotek</Name>
+								            <AddressLine>Banegårdsplads 8</AddressLine>
+								            <AddressLine>8000 Århus</AddressLine>
+								            <Type>Apotek</Type>
+								            <Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+				                        </Organisation>
+				                    </By>
+				                    <DateTime>2016-06-04T15:59:12.0Z</DateTime>
+				                </CreatedWithoutPerson>
+				                <DoseDispensed>
+				                    <DoseQuantity>14</DoseQuantity>
+				                    <DosageQuantityUnitText source="Medicinpriser" date="2016-02-22">tabletter</DosageQuantityUnitText>
+				                </DoseDispensed>
+				                <LabelText>Simvastatin tbl.10mg</LabelText>
+				            </Effectuation>
+				        </Order>
+				        <Version>34567</Version>
+				    </Prescription>
+		            <ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
+                </DrugMedication>
 
-                <DrugShortDescription>Simvastatin tbl.10mg</DrugShortDescription>   <!-- Kræver at pakkeapoteker leveres deres def. af korte beskrivelser som stamdata. -->
-                <Drug>
-                    <Identifier source="Medicinpriser" date="2016-06-03">28104426208</Identifier>
-                    <Name>Simvastatin "Actavis"</Name>
-                    <Form>
-                        <Code source="Medicinpriser" date="2016-06-03">TABFILM</Code>
-                        <Text>filmovertrukne tabletter</Text>
-                    </Form>
-                    <Strength>
-                        <Value>10</Value>
-                        <UnitCode source="Medicinpriser" date="2016-06-03">MG</UnitCode>
-                        <UnitText>mg</UnitText>
-                        <Text source="Medicinpriser" date="2016-06-03">10 mg</Text>
-                    </Strength>
-                </Drug>
                 <PlannedAdministration>
-                    <UnitText source="Doseringsforslag">tablet</UnitText>
-                    <StructuresFixed>
-                        <Structure>
-                            <IterationInterval>1</IterationInterval>
-                            <StartDate>2016-06-16</StartDate>          <!-- Skal StartDate/EndDate kun udfyldes hvis de ligger i dosisperioden? -->
-                            <EndDate>2017-03-30</EndDate>              <!-- Eller skal de tolkes som doseringsperiodens start/slut, ligesom på en LMO?? -->
-                            <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
-                            <Day>
-                                <Number>1</Number>
-                                <Dose>
-                                    <Time>night</Time>
-                                    <Quantity>1</Quantity>
-                                </Dose>
-                            </Day>
-                            <DosageTranslation>
-                                <ShortText>1 tablet ved sengetid</ShortText>
-                                <LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
-                                    Doseringsforløb:
-                                    1 tablet ved sengetid</LongText>
-                                <AverageDailyDosage>1</AverageDailyDosage>
-                            </DosageTranslation>
-                        </Structure>
-                    </StructuresFixed>
-                    <Type>fast</Type>
+		            <UnitTexts source="Doseringsforslag">
+		                <Singular>tablet</Singular>
+		                <Plural>tabletter</Plural>
+		            </UnitTexts>
+                    <AdministrationStructure>
+                        <IterationInterval>1</IterationInterval>
+                        <SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
+                        <Day>
+                            <Number>1</Number>
+                            <Dose>
+                                <Time>night</Time>
+                                <Quantity>1</Quantity>
+                            </Dose>
+                        </Day>
+                    </AdministrationStructure>
                 </PlannedAdministration>
                 <TotalNumberOfDoseDispensedQuantity>14</TotalNumberOfDoseDispensedQuantity>
-                <SubstitutionAllowed>false</SubstitutionAllowed>
-                <DoseDispensingRequestedByDoctor>true</DoseDispensingRequestedByDoctor>
                 <DoseDispensingEndDate>2016-08-25</DoseDispensingEndDate>
             </DoseDispensedMedication>
+            
 
             <!-- Servicen kan valgfrit returnere/undlade SpecificDays med parameteren IncludeSpecificDays=true/false. -->
             <!-- Index nummer refererer til DoseDispensedMedication elementerne ovenfor. -->
