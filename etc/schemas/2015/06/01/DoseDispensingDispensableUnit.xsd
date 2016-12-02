@@ -7,7 +7,8 @@
 
     <include schemaLocation="DoseDispensingPeriodDate.xsd"/>
     <include schemaLocation="DoseTime.xsd"/>
-    <include schemaLocation="MedicationGroup.xsd"/>
+    <include schemaLocation="DosageSupplementaryText.xsd"/>
+    <include schemaLocation="DoseDispensedMedicationRef.xsd"/>
 
     <complexType name="DoseDispensingDispensableUnitType">
         <annotation>
@@ -18,8 +19,9 @@
             <element name="Date" type="medicinecard20150601:DoseDispensingPeriodDateType"/>
             <element name="Time" type="medicinecard20150601:DoseTimeType"/>
 
-            <!-- MedicationsGroups with references to DoseDispensedMedications, grouped by supplementary text -->
-            <element name="MedicationGroup" type="medicinecard20150601:MedicationGroupType" maxOccurs="unbounded"/>
+	        <element name="SupplementaryText" type="medicinecard20150601:DosageSupplementaryTextType" minOccurs="0"/>
+
+            <element name="MedicationRef" type="medicinecard20150601:DoseDispensedMedicationRefType" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>
