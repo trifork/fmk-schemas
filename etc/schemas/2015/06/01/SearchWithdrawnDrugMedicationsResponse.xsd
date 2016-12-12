@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
-	<include schemaLocation="DrugMedicationWithNegativeConsent.xsd"/>
+	<include schemaLocation="PrivateDrugMedication.xsd"/>
 	<element name="SearchWithdrawnDrugMedicationsResponse" type="medicinecard20150601:SearchWithdrawnDrugMedicationsResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response from a search request for withdrawn drug medications</documentation>
@@ -12,7 +12,7 @@
 	<complexType name="SearchWithdrawnDrugMedicationsResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="NegativeConsent" type="medicinecard20150601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrivateDrugMedication" type="medicinecard20150601:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

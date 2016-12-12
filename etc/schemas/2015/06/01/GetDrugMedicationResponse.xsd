@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="InvalidDrugMedication.xsd"/>
-	<include schemaLocation="DrugMedicationWithNegativeConsent.xsd"/>
+	<include schemaLocation="PrivateDrugMedication.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<element name="GetDrugMedicationResponse" type="medicinecard20150601:GetDrugMedicationResponseType">
 		<annotation>
@@ -13,7 +13,7 @@
 	<complexType name="GetDrugMedicationResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20150601:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrivateDrugMedication" type="medicinecard20150601:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="medicinecard20150601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidDrugMedication" type="medicinecard20150601:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

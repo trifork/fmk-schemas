@@ -2,13 +2,13 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersion.xsd"/>
-	<element name="DrugMedicationWithNegativeConsent" type="medicinecard20150601:DrugMedicationWithNegativeConsentType">
+	<element name="PrivateDrugMedication" type="medicinecard20150601:PrivateDrugMedicationType">
 		<annotation>
-			<documentation xml:lang="en-GB">This structure contains drug medication identifiers and version for drug medications with negative consent.</documentation>
-			<documentation xml:lang="da-DK">Denne struktur indeholder drug id'er og version for lægemiddelordinationer med negativt samtykke.</documentation>
+			<documentation xml:lang="en-GB">This structure contains drug medication identifiers and version for drug medications that are marked as private.</documentation>
+			<documentation xml:lang="da-DK">Denne struktur indeholder drug id'er og version for lægemiddelordinationer der er privatmarkerede.</documentation>
 		</annotation>
 	</element>
-	<complexType name="DrugMedicationWithNegativeConsentType">
+	<complexType name="PrivateDrugMedicationType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
 			<element name="Version" type="medicinecard20150601:DrugMedicationVersionType"/>
