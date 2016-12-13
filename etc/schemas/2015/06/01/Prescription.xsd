@@ -28,6 +28,7 @@
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 	<include schemaLocation="PrescriptionVersion.xsd"/>
+	<include schemaLocation="IsPrivatePrescription.xsd"/>
 
 	<element name="Prescription" type="medicinecard20150601:PrescriptionType"/>
 
@@ -69,6 +70,7 @@
 			<element name="ReplacedByPrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
             <element name="Order" type="medicinecard20150601:OrderType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="Version" type="medicinecard20150601:PrescriptionVersionType" minOccurs="0"/>
+			<element name="IsPrivatePrescription" type="medicinecard20150601:IsPrivatePrescriptionType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
