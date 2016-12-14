@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+    <include schemaLocation="DoseQuantity.xsd"/>
+    <include schemaLocation="DosageQuantityUnitText.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="DoseDispensing.xsd"/>
+
+    <complexType name="CreateDoseDispensedType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dose dispensed effectuation details for creating pharmacy effectuations</documentation>
+            <documentation xml:lang="da-DK">Detaljer for oprettelse af dosisdispenseret apotekseffektuering</documentation>
+        </annotation>
+        <sequence>
+            <element name="DoseQuantity" type="medicinecard20150601:DoseQuantityType"/>
+            <element name="DosageQuantityUnitText" type="medicinecard20150601:DosageQuantityUnitTextType"/>
+            <element name="SubstitutedDrug" type="medicinecard20150601:DrugType" minOccurs="0"/>
+            <element name="CurrentDoseDispensing" type="medicinecard20150601:DoseDispensingType" minOccurs="0"/>
+            <element name="NextDoseDispensing" type="medicinecard20150601:DoseDispensingType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

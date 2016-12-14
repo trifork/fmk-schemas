@@ -3,7 +3,7 @@
 
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="CreatedWithoutPerson.xsd"/>
-	<include schemaLocation="DoseDispensed.xsd"/>
+	<include schemaLocation="CreateDoseDispensed.xsd"/>
 	<include schemaLocation="EffectuationDateTime.xsd"/>
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
 	<include schemaLocation="EffectuationMethod.xsd"/>
@@ -20,7 +20,7 @@
 		<sequence>
 			<element name="DateTime" type="medicinecard20150601:EffectuationDateTimeType"/>
 			<choice>
-				<element name="DoseDispensed" type="medicinecard20150601:DoseDispensedType"/>
+				<element name="DoseDispensed" type="medicinecard20150601:CreateDoseDispensedType"/>
 				<element name="PackageDispensed" type="medicinecard20150601:PackageDispensedType"/>
 			</choice>
 			<element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0"/>
