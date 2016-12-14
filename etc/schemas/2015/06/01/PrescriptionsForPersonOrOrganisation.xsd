@@ -6,6 +6,7 @@
 	<include schemaLocation="Prescription.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
 
 	<complexType name="PrescriptionsForPersonOrOrganisationType">
 		<annotation>
@@ -17,6 +18,7 @@
 				<element name="Patient" type="medicinecard20150601:PatientType"/>
 				<element name="Organisation" type="medicinecard20150601:OrganisationType"/>
 			</choice>
+			<element name="IsInvalid" type="medicinecard20150601:MedicineCardIsInvalidType" minOccurs="0"/>
 			<element name="Prescription" type="medicinecard20150601:PrescriptionType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
