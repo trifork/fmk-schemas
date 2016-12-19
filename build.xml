@@ -455,6 +455,24 @@
     	</sequential>
     </macrodef>
 	
+	 <macrodef name="validateidwswsdl-macro">
+	        <attribute name="wsdlfilename"/>
+			<sequential>
+				<exec executable="wsdl" errorproperty="error_@{wsdlfilename}" resultproperty="result_@{wsdlfilename}">
+					<arg line="${paramprefix}nologo"/>
+					<arg line="${idws.target.dir}/wsdl/@{wsdlfilename}.wsdl"/>
+					<arg line="${paramprefix}out:@{wsdlfilename}.cs"/>
+				</exec>
+				<fail message="WSDL-valideringen er fejlet:${error_@{wsdlfilename}} Hvis wsdl.exe ikke har returneret en sigende fejlmeddelelse men kun efterladt et stracktrace, se da https://wall.trifork.com/display/fmk/WSDL-validering">
+					<condition>
+						<not>
+							<equals arg1="${result_@{wsdlfilename}}" arg2="0"/>
+						</not>
+				     </condition>
+				</fail>
+	    	</sequential>
+	    </macrodef>
+	
 	<target name="validate-wsdl">
 		<validatewsdl-macro wsdlfilename="PatientOrganisationRelation-inline_2012_06_01"/>
 		<validatewsdl-macro wsdlfilename="PatientOrganisationRelation-inline_2013_06_01"/>
@@ -479,7 +497,7 @@
 		<validatewsdl-macro wsdlfilename="EffectuationOrdering-inline_2013_06_01"/>
 		<validatewsdl-macro wsdlfilename="EffectuationOrdering-inline_2015_01_01"/>
 		
-		<validatewsdl-macro wsdlfilename="EffectuationOrdering-inline_Idws_2015_01_01"/>
+		<validateidwswsdl-macro wsdlfilename="EffectuationOrdering-inline_Idws_2015_01_01"/>
 
 		<validatewsdl-macro wsdlfilename="DumpRestore-inline_2013_01_01"/>
 		<validatewsdl-macro wsdlfilename="VersionService-inline_2014_08_01"/>
