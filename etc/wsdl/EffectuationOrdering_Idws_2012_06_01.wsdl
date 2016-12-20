@@ -4,6 +4,7 @@
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
                   xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
+                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
                   xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
                   xmlns:wsseorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                   xmlns:wsuorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
@@ -80,10 +81,16 @@
     <wsdl:message name="SecurityHeader">
         <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
     </wsdl:message>
+    
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
     <wsdl:message name="WhitelistingHeader">
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
     </wsdl:message>
-
+   <wsdl:message name="OnBehalfOfHeader">
+        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20120601:OnBehalfOf"/>
+    </wsdl:message>
     <wsdl:message name="TimingHeader">
         <wsdl:part name="TimingHeader" element="medicinecard20120601:TimingList"/>
     </wsdl:message>
@@ -170,14 +177,14 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetOrderedEffectuations"
                             style="document"/>
             <wsdl:input
-                    name="GetOrderedEffectuationsRequest_2012_06_01">
+                    name="GetOrderedEffectuationsIdwsRequest_2012_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetOrderedEffectuationsResponse_2012_06_01">
+            <wsdl:output name="GetOrderedEffectuationsIdwsResponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -190,14 +197,14 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#GetOrderedEffectuationSummary"
                             style="document"/>
             <wsdl:input
-                    name="GetOrderedEffectuationSummaryRequest_2012_06_01">
+                    name="GetOrderedEffectuationSummaryIdwsRequest_2012_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetOrderedEffectuationSummaryResponse_2012_06_01">
+            <wsdl:output name="GetOrderedEffectuationSummaryIdwsResponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -211,14 +218,14 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#OrderEffectuation"
                             style="document"/>
             <wsdl:input
-                    name="OrderEffectuationRequest_2012_06_01">
+                    name="OrderEffectuationIdwsRequest_2012_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="OrderEffectuationResponse_2012_06_01">
+            <wsdl:output name="OrderEffectuationIdwsResponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -231,14 +238,14 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01#CancelOrderedEffectuation"
                             style="document"/>
             <wsdl:input
-                    name="CancelOrderedEffectuationRequest_2012_06_01">
+                    name="CancelOrderedEffectuationIdwsRequest_2012_06_01">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CancelOrderedEffectuationResponse_2012_06_01">
+            <wsdl:output name="CancelOrderedEffectuationIdwsResponse_2012_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>

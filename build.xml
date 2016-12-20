@@ -431,11 +431,13 @@
     </target>
 	
     
+	<property name="paramprefix" value="-"/>
+	
     <condition property="paramprefix" value="/">
         <isset property="windows"/>
     </condition>
 	
-	<property name="paramprefix" value="-"/>
+	
 	
     <macrodef name="validatewsdl-macro">
         <attribute name="wsdlfilename"/>
@@ -455,6 +457,7 @@
     	</sequential>
     </macrodef>
 	
+	
 	 <macrodef name="validateidwswsdl-macro">
 	        <attribute name="wsdlfilename"/>
 			<sequential>
@@ -473,6 +476,27 @@
 	    	</sequential>
 	    </macrodef>
 	
+
+	<target name="validate-all-wsdl">
+		<mkdir dir="cssrc"/>
+		<apply executable="wsdl" relative="true" dir="${standard.target.dir}/wsdl" verbose="true" failonerror="true"> <!-- errorproperty="error_@{wsdlfilename}" resultproperty="result_@{wsdlfilename}"  -->
+			<fileset dir="${standard.target.dir}/wsdl" includes="*.wsdl" excludes="${standard.target.dir}/wsdl/Advis-inline.wsdl"></fileset>
+			<arg value="${paramprefix}nologo"/>
+			<arg value="${paramprefix}verbose"/>
+			<targetfile/>
+			 <mapper type="regexp" from="(.*)" to="${paramprefix}out:../../../../cssrc/\1.cs" />
+		</apply>
+		<!-- Hvis wsdl.exe ikke har returneret en sigende fejlmeddelelse men kun efterladt et stracktrace, se da https://wall.trifork.com/display/fmk/WSDL-validering" -->
+		<apply executable="wsdl" relative="true" dir="${idws.target.dir}/wsdl" verbose="true" failonerror="true" >
+			<fileset dir="${idws.target.dir}/wsdl" includes="*.wsdl"></fileset>
+			<arg value="${paramprefix}nologo"/>
+			<arg value="${paramprefix}verbose"	/>
+			<targetfile/>
+			 <mapper type="regexp" from="(.*)" to="${paramprefix}out:../../../../cssrc/\1.cs" />
+		</apply>
+		<!-- Hvis wsdl.exe ikke har returneret en sigende fejlmeddelelse men kun efterladt et stracktrace, se da https://wall.trifork.com/display/fmk/WSDL-validering" -->
+	</target>
+			
 	<target name="validate-wsdl">
 		<validatewsdl-macro wsdlfilename="PatientOrganisationRelation-inline_2012_06_01"/>
 		<validatewsdl-macro wsdlfilename="PatientOrganisationRelation-inline_2013_06_01"/>
