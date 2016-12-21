@@ -5,13 +5,12 @@
                   xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
                   xmlns:medicinecard20130601="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01"
                   xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01"
-                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
                   xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
                   xmlns:wsseorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                   xmlns:wsuorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
                   xmlns:wsa="http://www.w3.org/2005/08/addressing"
                   xmlns:sbf="urn:liberty:sb"
-
+                  
                   targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2013/06/01">
 
     <wsdl:types>
@@ -40,9 +39,6 @@
             <xs:include schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd/oasis-200401_orig-wss-wssecurity-utility-1.0.xsd" />
         </xs:schema>
 
-        <xs:schema targetNamespace="http://www.w3.org/2001/10/xml-exc-c14n#">
-            <xs:include schemaLocation="../schemas/2001/10/xml-exc-c14n/xml-exc-c14n.xsd"/>
-        </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01"
                    elementFormDefault="qualified">
@@ -99,9 +95,6 @@
     <wsdl:message name="OnBehalfOfHeader">
         <wsdl:part name="OnBehalfOfHeader" element="medicinecard20120601:OnBehalfOf"/>
     </wsdl:message>
-    <wsdl:message name="MedComHeader">
-        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
-    </wsdl:message>
     <wsdl:message name="TimingHeader">
         <wsdl:part name="TimingHeader" element="medicinecard20120601:TimingList"/>
     </wsdl:message>
@@ -146,7 +139,7 @@
             
             <wsdl:output name="GetOrderedEffectuationsIdwsResponse_2013_06_01" 
             			 message="tns:GetOrderedEffectuationsIdwsResponse_2013_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetOrderedEffectuationSummaryIdws_2013_06_01">
@@ -155,7 +148,7 @@
             
             <wsdl:output name="GetOrderedEffectuationSummaryIdwsResponse_2013_06_01" 
             			 message="tns:GetOrderedEffectuationSummaryIdwsResponse_2013_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
         
@@ -165,7 +158,7 @@
             
             <wsdl:output name="OrderEffectuationIdwsResponse_2013_06_01" 
             			 message="tns:OrderEffectuationIdwsResponse_2013_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
         
         <wsdl:operation name="CancelOrderedEffectuationIdws_2013_06_01">
@@ -174,7 +167,7 @@
             
             <wsdl:output name="CancelOrderedEffectuationIdwsResponse_2013_06_01" 
             			 message="tns:CancelOrderedEffectuationIdwsResponse_2013_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
         
     </wsdl:portType>
@@ -189,18 +182,26 @@
                             style="document"/>
             <wsdl:input
                     name="GetOrderedEffectuationsIdwsRequest_2013_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetOrderedEffectuationsIdwsResponse_2013_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
         
@@ -209,18 +210,26 @@
                             style="document"/>
             <wsdl:input
                     name="GetOrderedEffectuationSummaryIdwsRequest_2013_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetOrderedEffectuationSummaryIdwsResponse_2013_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
          
@@ -230,18 +239,26 @@
                             style="document"/>
             <wsdl:input
                     name="OrderEffectuationIdwsRequest_2013_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="OrderEffectuationIdwsResponse_2013_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
         
@@ -250,18 +267,26 @@
                             style="document"/>
             <wsdl:input
                     name="CancelOrderedEffectuationIdwsRequest_2013_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
                 <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CancelOrderedEffectuationIdwsResponse_2013_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
             </wsdl:fault>
         </wsdl:operation>
 

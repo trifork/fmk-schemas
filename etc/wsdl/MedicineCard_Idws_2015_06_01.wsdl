@@ -39,10 +39,6 @@
         <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
                    schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
 
-        <xs:schema targetNamespace="http://www.w3.org/2001/10/xml-exc-c14n#">
-			<xs:include schemaLocation="../schemas/2001/10/xml-exc-c14n/xml-exc-c14n.xsd"/>
-		</xs:schema>
-
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified">
 
             <xs:include schemaLocation="../schemas/2015/06/01/AttachOrDetachPrescriptionRequest.xsd"/>
@@ -2524,11 +2520,14 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetAuthorisationDateForNewestOpenPrescription"
                             style="document"/>
             <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
-                <soap:body use="literal"/>
+              <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+              <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+              <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+              <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+              <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+              <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+              <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+              <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01">
                 <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>

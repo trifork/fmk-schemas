@@ -347,7 +347,7 @@
     </target>
 
     <target name="generate" depends="set-codegen-encoding-property, check-generate, axis-init, resolve-build" unless="generated_files_present">
-        <taskdef name="codegen" classname="org.apache.axis2.tool.ant.AntCodegenTask" classpathref="classpath"/>
+        <taskdef name="codegen" classname="org.apache.axis2.tool.ant.AntCodegenTask" classpathref="classpath" />
         <mkdir dir="${standard.target.dir}/genclasses"/>
         <delete dir="${standard.target.dir}/gentestsrc"/>
         <mkdir dir="${standard.target.dir}/gentestsrc-tmp"/>

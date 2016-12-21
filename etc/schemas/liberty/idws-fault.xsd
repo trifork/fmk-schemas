@@ -2,13 +2,14 @@
 <xs:schema targetNamespace="urn:liberty:sb"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns="urn:liberty:sb"
+           xmlns:sbf="urn:liberty:sb"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified">
 
     <xs:complexType name="IDWSFaultType">
         <xs:sequence>
-            <xs:element ref="faultcode" minOccurs="0" />
-            <xs:element ref="faultstring" minOccurs="0" />
+            <xs:element ref="sbf:faultcode" minOccurs="0" />
+            <xs:element ref="sbf:faultstring" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
     <xs:element name="IDWSFault" type="IDWSFaultType"/>
