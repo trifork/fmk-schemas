@@ -79,9 +79,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardOnlyEffectuatableRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardOnlyEffectuatableResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionResponse.xsd"/>
 
@@ -255,13 +252,6 @@
     </wsdl:message>
     <wsdl:message name="GetMedicineCardResponse_2015_06_01">
         <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150601:GetMedicineCardResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetMedicineCardOnlyEffectuatableRequest_2015_06_01">
-        <wsdl:part name="GetMedicineCardOnlyEffectuatableRequest" element="medicinecard20150601:GetMedicineCardOnlyEffectuatableRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetMedicineCardOnlyEffectuatableResponse_2015_06_01">
-        <wsdl:part name="GetMedicineCardOnlyEffectuatableResponse" element="medicinecard20150601:GetMedicineCardOnlyEffectuatableResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardAsPDFRequest_2015_06_01">
@@ -685,12 +675,6 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardOnlyEffectuatable_2015_06_01">
-            <wsdl:input name="GetMedicineCardOnlyEffectuatableRequest_2015_06_01" message="tns:GetMedicineCardOnlyEffectuatableRequest_2015_06_01"/>
-            <wsdl:output name="GetMedicineCardOnlyEffectuatableResponse_2015_06_01" message="tns:GetMedicineCardOnlyEffectuatableResponse_2015_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
         <wsdl:operation name="GetMedicineCardAsPDF_2015_06_01">
             <wsdl:input name="GetMedicineCardAsPDFRequest_2015_06_01"
                         message="tns:GetMedicineCardAsPDFRequest_2015_06_01"/>
@@ -1100,22 +1084,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardResponse_2015_06_01">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetMedicineCardOnlyEffectuatable_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardOnlyEffectuatable"
-                            style="document"/>
-            <wsdl:input name="GetMedicineCardOnlyEffectuatableRequest_2015_06_01">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetMedicineCardOnlyEffectuatableResponse_2015_06_01">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
