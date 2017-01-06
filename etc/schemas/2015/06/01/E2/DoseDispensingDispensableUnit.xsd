@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
     <include schemaLocation="DoseDispensingPeriodDate.xsd"/>
-    <include schemaLocation="DoseTime.xsd"/>
-    <include schemaLocation="DosageSupplementaryText.xsd"/>
+	<import  schemaLocation="../DoseTime.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import  schemaLocation="../DosageSupplementaryText.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="DoseDispensedMedicationRef.xsd"/>
 
     <complexType name="DoseDispensingDispensableUnitType">
@@ -16,12 +17,12 @@
             <documentation xml:lang="da-DK">Detaljeret specifikation af en dosisdispenseringsperiode, dvs. indholdet a hver enkelt "dispenserbare enhed" (typisk a forseglet plastikpose).</documentation>
         </annotation>
         <sequence>
-            <element name="Date" type="medicinecard20150601:DoseDispensingPeriodDateType"/>
+            <element name="Date" type="medicinecard20150601E2:DoseDispensingPeriodDateType"/>
             <element name="Time" type="medicinecard20150601:DoseTimeType"/>
 
 	        <element name="SupplementaryText" type="medicinecard20150601:DosageSupplementaryTextType" minOccurs="0"/>
 
-            <element name="MedicationRef" type="medicinecard20150601:DoseDispensedMedicationRefType" maxOccurs="unbounded"/>
+            <element name="MedicationRef" type="medicinecard20150601E2:DoseDispensedMedicationRefType" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

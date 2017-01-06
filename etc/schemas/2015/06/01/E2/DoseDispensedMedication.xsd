@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
     <include schemaLocation="DoseDispensedMedicationIndex.xsd"/>
     <include schemaLocation="DoseDispensedMedicationIdentifier.xsd"/>
-    <include schemaLocation="DrugMedication.xsd"/>
+    <import  schemaLocation="../DrugMedication.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="DoseDispensingWarning.xsd"/>
     <include schemaLocation="PlannedAdministration.xsd"/>
-    <include schemaLocation="DoseQuantity.xsd"/>
-    <include schemaLocation="DoseDispensingEndDate.xsd"/>
+    <import  schemaLocation="../DoseQuantity.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import  schemaLocation="../DoseDispensingEndDate.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 
     <complexType name="DoseDispensedMedicationType">
         <annotation>
@@ -19,10 +20,10 @@
             <documentation xml:lang="da-DK">Dosisdispenseret lægemiddel.</documentation>
         </annotation>
         <sequence>
-            <element name="Index" type="medicinecard20150601:DoseDispensedMedicationIndexType"/>
+            <element name="Index" type="medicinecard20150601E2:DoseDispensedMedicationIndexType"/>
             <element name="DrugMedication" type="medicinecard20150601:DrugMedicationType"/>
-            <element name="Warning" type="medicinecard20150601:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="PlannedAdministration" type="medicinecard20150601:PlannedAdministrationType" minOccurs="0"/>
+            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="PlannedAdministration" type="medicinecard20150601E2:PlannedAdministrationType" minOccurs="0"/>
             <element name="TotalNumberOfDoseDispensedQuantity" type="medicinecard20150601:DoseQuantityType" minOccurs="0"/>
             <element name="DoseDispensingEndDate" type="medicinecard20150601:DoseDispensingEndDateType" minOccurs="0"/>     
         </sequence>

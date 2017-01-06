@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
     <include schemaLocation="DoseDispensedMedicationIndex.xsd"/>
     <include schemaLocation="DoseDispensedMedicationIdentifier.xsd"/>
-    <include schemaLocation="DrugMedicationVersion.xsd"/>
+    <import  schemaLocation="../DrugMedicationVersion.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="DoseDispensingWarning.xsd"/>
 
     <complexType name="DoseDispensedMedicationWithNegativeConsentType">
@@ -16,10 +17,10 @@
             <documentation xml:lang="da-DK">Dosisdispenseret lægemiddel som er privatmarkeret.</documentation>
         </annotation>
         <sequence>
-            <element name="Index" type="medicinecard20150601:DoseDispensedMedicationIndexType"/>
-            <element name="Identifier" type="medicinecard20150601:DoseDispensedMedicationIdentifierType"/>
+            <element name="Index" type="medicinecard20150601E2:DoseDispensedMedicationIndexType"/>
+            <element name="Identifier" type="medicinecard20150601E2:DoseDispensedMedicationIdentifierType"/>
             <element name="Version" type="medicinecard20150601:DrugMedicationVersionType" minOccurs="0"/>   <!-- Bør denne være obligatorisk ??? -->
-            <element name="Warning" type="medicinecard20150601:DoseDispensingWarningType" minOccurs="0"/>
+            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>

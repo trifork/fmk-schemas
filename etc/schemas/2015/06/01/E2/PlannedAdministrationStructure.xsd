@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="PlannedDosageAnyDay.xsd"/>
+	<include schemaLocation="PlannedDosageDay.xsd"/>
+	<import  schemaLocation="../DosageIsNotIterated.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import  schemaLocation="../DosageTimesEndDate.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import  schemaLocation="../DosageTimesIterationInterval.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import  schemaLocation="../DosageTimesStartDate.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import  schemaLocation="../DosageSupplementaryText.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<complexType name="PlannedAdministrationStructureType">
+		<annotation>
+			<documentation xml:lang="en-GB">Structure for a period in the planned Administration</documentation>
+			<documentation xml:lang="da-DK">En Periode i den planlagte administration</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="IterationInterval" type="medicinecard20150601:DosageTimesIterationIntervalType"/>
+				<element name="NotIterated" type="medicinecard20150601:DosageIsNotIteratedType"/>
+			</choice>
+			<element name="StartDate" type="medicinecard20150601:DosageTimesStartDateType" minOccurs="0"/>
+			<element name="EndDate" type="medicinecard20150601:DosageTimesEndDateType" minOccurs="0"/>
+			<element name="SupplementaryText" type="medicinecard20150601:DosageSupplementaryTextType" minOccurs="0"/>
+			<choice>
+				<!-- A convoluted construction for either AnyDay or one or more Day, or both, bot not neither -->
+				<sequence>
+					<element name="AnyDay" type="medicinecard20150601E2:PlannedDosageAnyDayType"/>
+					<element name="Day" type="medicinecard20150601E2:PlannedDosageDayType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<element name="Day" type="medicinecard20150601E2:PlannedDosageDayType" maxOccurs="unbounded"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

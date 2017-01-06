@@ -208,6 +208,13 @@
             <xs:include schemaLocation="../schemas/2015/06/01/TimingList.xsd"/>
         </xs:schema>
 
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" elementFormDefault="qualified">
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
+
+        </xs:schema>
+
     </wsdl:types>
 
     <wsdl:message name="MessageIDHeader">
@@ -263,6 +270,13 @@
     </wsdl:message>
     <wsdl:message name="GetMedicineCardAsPDFResponse_2015_06_01">
         <wsdl:part name="GetMedicineCardAsPDFResponse" element="medicinecard20150601:GetMedicineCardAsPDFResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01_E2">
+        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601E2:GetDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDoseDispensingCardResponse_2015_06_01_E2">
+        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardVersionRequest_2015_06_01">
@@ -666,6 +680,14 @@
                         message="tns:GetMedicineCardAsPDFRequest_2015_06_01"/>
             <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01"
                          message="tns:GetMedicineCardAsPDFResponse_2015_06_01"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" 
+            			message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" 
+            			message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -1099,6 +1121,34 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01">                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="Delivery.xsd"/>
+    <import  schemaLocation="../Delivery.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import  schemaLocation="../Organisation.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="RequestDateTime.xsd"/>
     <include schemaLocation="PackingGroupIdentifier.xsd"/>
-    <include schemaLocation="PackingGroup.xsd"/>
-    <include schemaLocation="ProductionDay.xsd"/>
+    <import  schemaLocation="../PackingGroup.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="DoseDispensingOnHold.xsd"/>
     <include schemaLocation="DoseDispensingPeriod.xsd"/>
 
@@ -20,12 +21,12 @@
         </annotation>
         <sequence>
             <element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
-            <element name="PackingGroupIdentifier" type="medicinecard20150601:PackingGroupIdentifierType" minOccurs="0"/>
+            <element name="PackingGroupIdentifier" type="medicinecard20150601E2:PackingGroupIdentifierType" minOccurs="0"/>
             <element name="PackingGroupName" type="medicinecard20150601:PackingGroupType" minOccurs="0"/>
             <element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
             <element name="PackedAtOrganisation" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
-            <element name="DoseDispensingOnHold" type="medicinecard20150601:DoseDispensingOnHoldType" minOccurs="0"/>
-            <element name="Period" type="medicinecard20150601:DoseDispensingPeriodType" maxOccurs="unbounded"/>
+            <element name="DoseDispensingOnHold" type="medicinecard20150601E2:DoseDispensingOnHoldType" minOccurs="0"/>
+            <element name="Period" type="medicinecard20150601E2:DoseDispensingPeriodType" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>
