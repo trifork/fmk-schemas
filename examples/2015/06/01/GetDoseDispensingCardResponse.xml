@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GetDoseDispensingCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01 ../../../../etc/schemas/2015/06/01/GetDoseDispensingCardResponse.xsd">
+<GetDoseDispensingCardResponse xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+							   xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+							   xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+							   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							   xsi:schemaLocation="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2 ../../../../etc/schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd">
 	<Patient>
-		<Person>
-			<Name>
-				<GivenName>Rob</GivenName>
-				<Surname>Müller</Surname>
-			</Name>
-			<PersonIdentifier source="CPR">1403837853</PersonIdentifier>
-			<BirthDate>1983-03-14</BirthDate>
-			<Gender>male</Gender>
-		</Person>
-		<Address>
-			<StreetName>Magnolievej</StreetName>
-			<StreetBuildingIdentifier>842</StreetBuildingIdentifier>
-			<FloorIdentifier>4</FloorIdentifier>
-			<PostCodeIdentifier>8653</PostCodeIdentifier>
-			<DistrictName>Them</DistrictName>
-		</Address>
+		<medicinecard20150601:Person>
+			<medicinecard20150601:Name>
+				<medicinecard20150601:GivenName>Rob</medicinecard20150601:GivenName>
+				<medicinecard20150601:Surname>Müller</medicinecard20150601:Surname>
+			</medicinecard20150601:Name>
+			<medicinecard20150601:PersonIdentifier source="CPR">1403837853</medicinecard20150601:PersonIdentifier>
+			<medicinecard20150601:BirthDate>1983-03-14</medicinecard20150601:BirthDate>
+			<medicinecard20150601:Gender>male</medicinecard20150601:Gender>
+		</medicinecard20150601:Person>
+		<medicinecard20150601:Address>
+			<medicinecard20150601:StreetName>Magnolievej</medicinecard20150601:StreetName>
+			<medicinecard20150601:StreetBuildingIdentifier>842</medicinecard20150601:StreetBuildingIdentifier>
+			<medicinecard20150601:FloorIdentifier>4</medicinecard20150601:FloorIdentifier>
+			<medicinecard20150601:PostCodeIdentifier>8653</medicinecard20150601:PostCodeIdentifier>
+			<medicinecard20150601:DistrictName>Them</medicinecard20150601:DistrictName>
+		</medicinecard20150601:Address>
 	</Patient>
 
 	<RequestDateTime>2016-06-10T12:00:00Z</RequestDateTime>
 
     <!--
-       Kriteriet for at LMO/Recept opfattes som tilhørende samme dosisdispenseringskort er flg.
+       Kriteriet for at LMO/Recept opfattes som tilhørende samme dosisdispenseringskort er:
         - Udleveringsapotek og pakkeapotek skal være det samme
-        - PeriodStartDate, PeriodEndDate, Deadline, EffectuationDate skal være angivet ens
-        - Hvis pakkegruppe er angivet skal de være ens
-        - Leveringsinformation skal være ens (???)
+
+       Kriteriet for at bestilling/udlevering opfattes som tilhørende samme dosisdispenseringsperiode er:
+        - PeriodStartDate, PeriodEndDate skal være angivet ens, ELLER
+        - EffectuationDate skal være angivet ens (hvis der ikke er angivet PeriodStartDate/PeriodEndDate)
     -->
 
 	<DoseDispensingCard>
+		<DoseDispensingCardIdentifier>763418</DoseDispensingCardIdentifier>  <!-- Udfyldes ikke i første fase -->
+		<Description>Hjemme</Description>                                    <!-- Udfyldes ikke i første fase -->
+
 		<!-- MAYBE: <Modified>...</Modified> -->
 		<Delivery>
 			<Priority>send til patientadresse samme dag</Priority>
@@ -37,20 +45,19 @@
 
 		<PackingGroupIdentifier>13245</PackingGroupIdentifier>     <!-- Udfyldes ikke i første fase -->
 		<PackingGroupName>Hvilely + Aldersro</PackingGroupName>    <!-- Udfyldes hvis info er tilgængelig i ikke-modstridende form -->
-		<ProductionDay>onsdag ulige uger</ProductionDay>           <!-- Udfyldes hvis info er tilgængelig i ikke-modstridende form -->
 		<OrderedAtPharmacy>
-			<Name>Århus Jernbane Apotek</Name>
-			<AddressLine>Banegårdsplads 8</AddressLine>
-			<AddressLine>8000 Århus</AddressLine>
-			<Type>Apotek</Type>
-			<Identifier source="EAN-Lokationsnummer">5790000171323</Identifier>
+			<medicinecard20150601:Name>Århus Jernbane Apotek</medicinecard20150601:Name>
+			<medicinecard20150601:AddressLine>Banegårdsplads 8</medicinecard20150601:AddressLine>
+			<medicinecard20150601:AddressLine>8000 Århus</medicinecard20150601:AddressLine>
+			<medicinecard20150601:Type>Apotek</medicinecard20150601:Type>
+			<medicinecard20150601:Identifier source="EAN-Lokationsnummer">5790000171323</medicinecard20150601:Identifier>
 		</OrderedAtPharmacy>
 		<PackedAtOrganisation>
-			<Name>Århus Stjerne Apotek</Name>
-			<AddressLine>Funch Thomsensgade 3</AddressLine>
-			<AddressLine>8200 Århus N</AddressLine>
-			<Type>Apotek</Type>
-			<Identifier source="EAN-Lokationsnummer">5790000173525</Identifier>
+			<medicinecard20150601:Name>Århus Stjerne Apotek</medicinecard20150601:Name>
+			<medicinecard20150601:AddressLine>Funch Thomsensgade 3</medicinecard20150601:AddressLine>
+			<medicinecard20150601:AddressLine>8200 Århus N</medicinecard20150601:AddressLine>
+			<medicinecard20150601:Type>Apotek</medicinecard20150601:Type>
+			<medicinecard20150601:Identifier source="EAN-Lokationsnummer">5790000173525</medicinecard20150601:Identifier>
 		</PackedAtOrganisation>
 
 		<!-- 0, 1 eller mange af disse strukturer kan leveres. Er kun med hvis EndDate ligger senere end første PeriodStartDate. -->
@@ -80,14 +87,13 @@
 			<EffectuationDate>2016-06-04</EffectuationDate>    <!-- Kan måske give mening hvis periode start og slut ikke haves, fx på historiske data? -->
 
 			<DoseDispensedMedicationWithNegativeConsent>
-				<Index>1</Index>
-				<Identifier source="DrugMedication">13143641281027</Identifier>
+				<medicinecard20150601:DrugMedicationIdentifier>13143641281027</medicinecard20150601:DrugMedicationIdentifier>
 				<Version>134140408122001001</Version>
 				<Warning>Dosisdispenseringskortet vises uden detaljer om dette præparat!</Warning>
 			</DoseDispensedMedicationWithNegativeConsent>
 			<DoseDispensedMedication>
-				<Index>2</Index>
-				<DrugMedication>
+				<NotPrescribedByDoctor/>                       <!-- Udfyldes ikke i første fase -->
+				<medicinecard20150601E2:DrugMedication xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
 					<Identifier>1280998</Identifier>
 					<Version>1341404071666006001</Version>
 					<PreviousVersion>1341404070012003001</PreviousVersion>
@@ -315,7 +321,7 @@
 						<Version>34567</Version>
 					</Prescription>
 					<ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
-				</DrugMedication>
+				</medicinecard20150601E2:DrugMedication>
 
 				<Warning>Dosering er ikke specifik nok til dosispakning!</Warning>
 				<Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
@@ -355,8 +361,7 @@
 
 
 			<DoseDispensedMedication>
-				<Index>3</Index>
-				<DrugMedication>
+				<medicinecard20150601E2:DrugMedication xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
 					<Identifier>1380002</Identifier>
 					<Version>1341404071666007001</Version>
 					<Created>
@@ -575,7 +580,7 @@
 						<Version>34567</Version>
 					</Prescription>
 					<ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
-				</DrugMedication>
+				</medicinecard20150601E2:DrugMedication>
 
 				<PlannedAdministration>
 					<UnitTexts source="Doseringsforslag">
@@ -605,7 +610,6 @@
 
 
 			<DoseDispensedMedication>
-				<Index>4</Index>
 				<DrugMedication>
 					<Identifier>14364128</Identifier>
 					<Version>1431404071666007001</Version>
@@ -843,8 +847,7 @@
 
 
 			<DoseDispensedMedication>
-				<Index>5</Index>
-				<DrugMedication>
+				<medicinecard20150601E2:DrugMedication xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
 					<Identifier>14364228</Identifier>
 					<Version>1431404071666017001</Version>
 					<Created>
@@ -1055,7 +1058,7 @@
 						<Version>34567</Version>
 					</Prescription>
 					<ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
-				</DrugMedication>
+				</medicinecard20150601E2:DrugMedication>
 
 				<PlannedAdministration>
 					<UnitTexts source="Doseringsforslag">
@@ -1088,11 +1091,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1101,28 +1104,28 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
-						<Quantity>1</Quantity>
-					</MedicationRef>
-				</DispensableUnit>
-				<DispensableUnit>
-					<Date>2016-06-06</Date>
-					<Time>evening</Time>
-					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
 				<DispensableUnit>
 					<Date>2016-06-06</Date>
 					<Time>evening</Time>
+					<MedicationRef>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
+						<Quantity>1</Quantity>
+					</MedicationRef>
+				</DispensableUnit>
+				<DispensableUnit>
+					<Date>2016-06-06</Date>
+					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1133,11 +1136,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1146,28 +1149,28 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
-						<Quantity>1</Quantity>
-					</MedicationRef>
-				</DispensableUnit>
-				<DispensableUnit>
-					<Date>2016-06-07</Date>
-					<Time>evening</Time>
-					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
 				<DispensableUnit>
 					<Date>2016-06-07</Date>
 					<Time>evening</Time>
+					<MedicationRef>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
+						<Quantity>1</Quantity>
+					</MedicationRef>
+				</DispensableUnit>
+				<DispensableUnit>
+					<Date>2016-06-07</Date>
+					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1178,11 +1181,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1191,28 +1194,28 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
-						<Quantity>1</Quantity>
-					</MedicationRef>
-				</DispensableUnit>
-				<DispensableUnit>
-					<Date>2016-06-08</Date>
-					<Time>evening</Time>
-					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
 				<DispensableUnit>
 					<Date>2016-06-08</Date>
 					<Time>evening</Time>
+					<MedicationRef>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
+						<Quantity>1</Quantity>
+					</MedicationRef>
+				</DispensableUnit>
+				<DispensableUnit>
+					<Date>2016-06-08</Date>
+					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1223,11 +1226,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1236,28 +1239,28 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
-						<Quantity>1</Quantity>
-					</MedicationRef>
-				</DispensableUnit>
-				<DispensableUnit>
-					<Date>2016-06-09</Date>
-					<Time>evening</Time>
-					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
 				<DispensableUnit>
 					<Date>2016-06-09</Date>
 					<Time>evening</Time>
+					<MedicationRef>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
+						<Quantity>1</Quantity>
+					</MedicationRef>
+				</DispensableUnit>
+				<DispensableUnit>
+					<Date>2016-06-09</Date>
+					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1268,11 +1271,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1282,28 +1285,28 @@
 
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
-						<Quantity>1</Quantity>
-					</MedicationRef>
-				</DispensableUnit>
-				<DispensableUnit>
-					<Date>2016-06-10</Date>
-					<Time>evening</Time>
-					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
 				<DispensableUnit>
 					<Date>2016-06-10</Date>
 					<Time>evening</Time>
+					<MedicationRef>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
+						<Quantity>1</Quantity>
+					</MedicationRef>
+				</DispensableUnit>
+				<DispensableUnit>
+					<Date>2016-06-10</Date>
+					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1314,11 +1317,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1327,28 +1330,28 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
-						<Quantity>1</Quantity>
-					</MedicationRef>
-				</DispensableUnit>
-				<DispensableUnit>
-					<Date>2016-06-11</Date>
-					<Time>evening</Time>
-					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
 				<DispensableUnit>
 					<Date>2016-06-11</Date>
 					<Time>evening</Time>
+					<MedicationRef>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
+						<Quantity>1</Quantity>
+					</MedicationRef>
+				</DispensableUnit>
+				<DispensableUnit>
+					<Date>2016-06-11</Date>
+					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1359,11 +1362,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1372,28 +1375,28 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
-						<Quantity>1</Quantity>
-					</MedicationRef>
-				</DispensableUnit>
-				<DispensableUnit>
-					<Date>2016-06-12</Date>
-					<Time>evening</Time>
-					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
 				<DispensableUnit>
 					<Date>2016-06-12</Date>
 					<Time>evening</Time>
+					<MedicationRef>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
+						<Quantity>1</Quantity>
+					</MedicationRef>
+				</DispensableUnit>
+				<DispensableUnit>
+					<Date>2016-06-12</Date>
+					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1404,11 +1407,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1417,7 +1420,7 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1425,7 +1428,7 @@
 					<Date>2016-06-13</Date>
 					<Time>evening</Time>
 					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1434,11 +1437,11 @@
 					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1449,11 +1452,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1462,7 +1465,7 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1470,7 +1473,7 @@
 					<Date>2016-06-14</Date>
 					<Time>evening</Time>
 					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1479,11 +1482,11 @@
 					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1494,11 +1497,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1507,7 +1510,7 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1515,7 +1518,7 @@
 					<Date>2016-06-15</Date>
 					<Time>evening</Time>
 					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1524,11 +1527,11 @@
 					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1539,11 +1542,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1552,7 +1555,7 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1560,7 +1563,7 @@
 					<Date>2016-06-16</Date>
 					<Time>evening</Time>
 					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1569,11 +1572,11 @@
 					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1582,7 +1585,7 @@
 					<Time>night</Time>
 					<SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
 					<MedicationRef>
-						<Index>5</Index>
+						<DrugMedicationIdentifier>14364228</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1595,11 +1598,11 @@
 					<!-- Grupper medicin efter hvilke der har samme supplerende tekst -->
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1609,7 +1612,7 @@
 
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1617,7 +1620,7 @@
 					<Date>2016-06-17</Date>
 					<Time>evening</Time>
 					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1626,11 +1629,11 @@
 					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1640,7 +1643,7 @@
 
 					<SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
 					<MedicationRef>
-						<Index>5</Index>
+						<DrugMedicationIdentifier>14364228</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1651,11 +1654,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1664,7 +1667,7 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1672,7 +1675,7 @@
 					<Date>2016-06-18</Date>
 					<Time>evening</Time>
 					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1681,11 +1684,11 @@
 					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1694,7 +1697,7 @@
 					<Time>night</Time>
 					<SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
 					<MedicationRef>
-						<Index>5</Index>
+						<DrugMedicationIdentifier>14364228</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1705,11 +1708,11 @@
 					<Time>morning</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1718,7 +1721,7 @@
 					<Time>noon</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1726,7 +1729,7 @@
 					<Date>2016-06-19</Date>
 					<Time>evening</Time>
 					<MedicationRef>
-						<Index>4</Index>
+						<DrugMedicationIdentifier>14364128</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1735,11 +1738,11 @@
 					<Time>evening</Time>
 					<SupplementaryText>Synkes hele</SupplementaryText>
 					<MedicationRef>
-						<Index>2</Index>
+						<DrugMedicationIdentifier>1280998</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 					<MedicationRef>
-						<Index>3</Index>
+						<DrugMedicationIdentifier>1380002</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
@@ -1748,7 +1751,7 @@
 					<Time>night</Time>
 					<SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
 					<MedicationRef>
-						<Index>5</Index>
+						<DrugMedicationIdentifier>14364228</DrugMedicationIdentifier>
 						<Quantity>1</Quantity>
 					</MedicationRef>
 				</DispensableUnit>
