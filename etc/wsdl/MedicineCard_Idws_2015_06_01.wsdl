@@ -182,15 +182,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/AcknowledgeOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/AcknowledgeOrdersResponse.xsd"/>
             
-            <xs:include schemaLocation="../schemas/2015/06/01/AquireOrderRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/AquireOrderResponse.xsd"/>
-            
-            <xs:include schemaLocation="../schemas/2015/06/01/AcknowledgeAquireOrderStatusRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/AcknowledgeAquireOrderStatusResponse.xsd"/>
-            
-            <xs:include schemaLocation="../schemas/2015/06/01/GetAquireOrderStatusRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/GetAquireOrderStatusResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/06/01/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/RemoveConsentResponse.xsd"/>
 
@@ -591,27 +582,6 @@
         <wsdl:part name="AcknowledgeOrdersResponse" element="medicinecard20150601:AcknowledgeOrdersResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="AquireOrderRequest_2015_06_01">
-        <wsdl:part name="AquireOrderRequest" element="medicinecard20150601:AquireOrderRequest"/>
-    </wsdl:message>
-    <wsdl:message name="AquireOrderResponse_2015_06_01">
-        <wsdl:part name="AquireOrderResponse" element="medicinecard20150601:AquireOrderResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="AcknowledgeAquireOrderStatusRequest_2015_06_01">
-        <wsdl:part name="AcknowledgeAquireOrderStatusRequest" element="medicinecard20150601:AcknowledgeAquireOrderStatusRequest"/>
-    </wsdl:message>
-    <wsdl:message name="AcknowledgeAquireOrderStatusResponse_2015_06_01">
-        <wsdl:part name="AcknowledgeAquireOrderStatusResponse" element="medicinecard20150601:AcknowledgeAquireOrderStatusResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetAquireOrderStatusRequest_2015_06_01">
-        <wsdl:part name="GetAquireOrderStatusRequest" element="medicinecard20150601:GetAquireOrderStatusRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetAquireOrderStatusResponse_2015_06_01">
-        <wsdl:part name="GetAquireOrderStatusResponse" element="medicinecard20150601:GetAquireOrderStatusResponse"/>
-    </wsdl:message>
-    
     <wsdl:message name="RemoveConsentRequest_2015_06_01">
         <wsdl:part name="RemoveConsentRequest" element="medicinecard20150601:RemoveConsentRequest"/>
     </wsdl:message>
@@ -968,24 +938,6 @@
         <wsdl:operation name="AcknowledgeOrders_2015_06_01">
             <wsdl:input name="AcknowledgeOrdersRequest_2015_06_01" message="tns:AcknowledgeOrdersRequest_2015_06_01"/>
             <wsdl:output name="AcknowledgeOrdersResponse_2015_06_01" message="tns:AcknowledgeOrdersResponse_2015_06_01"/>
-            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="AquireOrder_2015_06_01">
-            <wsdl:input name="AquireOrderRequest_2015_06_01" message="tns:AquireOrderRequest_2015_06_01"/>
-            <wsdl:output name="AquireOrderResponse_2015_06_01" message="tns:AquireOrderResponse_2015_06_01"/>
-            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="AcknowledgeAquireOrderStatus_2015_06_01">
-            <wsdl:input name="AcknowledgeAquireOrderStatusRequest_2015_06_01" message="tns:AcknowledgeAquireOrderStatusRequest_2015_06_01"/>
-            <wsdl:output name="AcknowledgeAquireOrderStatusResponse_2015_06_01" message="tns:AcknowledgeAquireOrderStatusResponse_2015_06_01"/>
-            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetAquireOrderStatus_2015_06_01">
-            <wsdl:input name="GetAquireOrderStatusRequest_2015_06_01" message="tns:GetAquireOrderStatusRequest_2015_06_01"/>
-            <wsdl:output name="GetAquireOrderStatusResponse_2015_06_01" message="tns:GetAquireOrderStatusResponse_2015_06_01"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -2315,90 +2267,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AcknowledgeOrdersResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="AquireOrder_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AquireOrder"
-                            style="document"/>
-            <wsdl:input name="AquireOrderRequest_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="AquireOrderResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="AcknowledgeAquireOrderStatus_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AcknowledgeAquireOrderStatus"
-                            style="document"/>
-            <wsdl:input name="AcknowledgeAquireOrderStatusRequest_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="AcknowledgeAquireOrderStatusResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
-                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetAquireOrderStatus_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetAquireOrderStatus"
-                            style="document"/>
-            <wsdl:input name="GetAquireOrderStatusRequest_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetAquireOrderStatusResponse_2015_06_01">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
