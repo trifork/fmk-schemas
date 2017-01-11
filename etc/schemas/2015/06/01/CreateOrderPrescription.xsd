@@ -5,6 +5,7 @@
 	<include schemaLocation="OrderWithDoseDispensing.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<complexType name="CreateOrderPrescriptionType">
 		<annotation>
@@ -13,6 +14,7 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
 			<element name="DoseDispensing" type="medicinecard20150601:OrderWithDoseDispensingType" minOccurs="0"/>
 			<element name="DeliveryInstructionText" type="medicinecard20150601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>

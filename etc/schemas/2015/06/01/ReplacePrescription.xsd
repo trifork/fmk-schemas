@@ -14,6 +14,7 @@
 	<include schemaLocation="InvalidationReasonText.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<complexType name="ReplacePrescriptionType">
 		<annotation>
@@ -22,6 +23,7 @@
 		</annotation>
 		<sequence>
 			<element name="ReplacePrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
 			<element name="SystemName" type="medicinecard20150601:SystemNameType"/>
             <element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>

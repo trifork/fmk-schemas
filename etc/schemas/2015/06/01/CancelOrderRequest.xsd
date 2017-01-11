@@ -5,7 +5,7 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
-
+	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<element name="CancelOrderRequest" type="medicinecard20150601:CancelOrderRequestType"/>
 
@@ -25,6 +25,7 @@
 					<sequence>
 						<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
 						<element name="OrderIdentifier" type="medicinecard20150601:OrderIdentifierType"/>
+						<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 					</sequence>
 				</complexType>
 			</element>

@@ -3,6 +3,7 @@
 	<include schemaLocation="UndoEffectuationOnOrder.xsd"/>
 	<include schemaLocation="PrescriptionIdentifier.xsd"/>
 	<include schemaLocation="TerminatePrescription.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<complexType name="UndoEffectuationOnPrescriptionAndOrderType">
 		<annotation>
@@ -11,6 +12,7 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="Order" type="medicinecard20150601:UndoEffectuationOnOrderType"/>
 			<element name="Terminate" type="medicinecard20150601:TerminatePrescriptionType"/>
 		</sequence>

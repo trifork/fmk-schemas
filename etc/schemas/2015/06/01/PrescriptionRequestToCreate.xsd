@@ -5,6 +5,7 @@
 	<include schemaLocation="CreateOrder.xsd"/>
 	<include schemaLocation="PackageRestriction.xsd"/>
 	<include schemaLocation="DoseDispensedRestriction.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<element name="PrescriptionRequestToCreate" type="medicinecard20150601:PrescriptionRequestToCreateType">
 		<annotation>
@@ -15,6 +16,7 @@
 	<complexType name="PrescriptionRequestToCreateType">
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType" />
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrescribingOrganisation" type="medicinecard20150601:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 			<choice minOccurs="0">
 				<element name="PackageRestriction" type="medicinecard20150601:PackageRestrictionType"/>
