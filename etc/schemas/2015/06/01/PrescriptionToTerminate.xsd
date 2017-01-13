@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="ModificationMetadata.xsd"/>
+    <include schemaLocation="PrescriptionIdentifier.xsd"/>
+    <complexType name="PrescriptionToTerminateType">
+        <annotation>
+            <documentation xml:lang="en-GB">Referenced to prescriptions to mark as terminated</documentation>
+            <documentation xml:lang="da-DK">Referencer til recepter der skal markeres afsluttet</documentation>
+        </annotation>
+        <sequence>
+            <element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+            <element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

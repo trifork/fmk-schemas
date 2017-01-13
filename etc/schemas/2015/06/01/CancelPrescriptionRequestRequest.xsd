@@ -8,7 +8,7 @@
     <include schemaLocation="MedicineCardVersion.xsd"/>
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="Modificator.xsd"/>
-    <include schemaLocation="PrescriptionRequestIdentifier.xsd"/>
+    <include schemaLocation="PrescriptionRequestToCancel.xsd"/>
     <element name="CancelPrescriptionRequestRequest" type="medicinecard20150601:CancelPrescriptionRequestRequestType">
         <annotation>
             <documentation xml:lang="en-GB">Cancel prescription request</documentation>
@@ -21,7 +21,7 @@
             <element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
             <element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
             <element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-            <element name="Identifier" type="medicinecard20150601:PrescriptionRequestIdentifierType" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="Prescription" type="medicinecard20150601:PrescriptionRequestToCancelType" minOccurs="1" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

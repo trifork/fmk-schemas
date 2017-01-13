@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionToTerminate.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<element name="TerminatePrescriptionRequest" type="medicinecard20150601:TerminatePrescriptionRequestType">
 	</element>
@@ -16,7 +16,7 @@
 				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
 			</choice>
 			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
-			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" maxOccurs="unbounded"/>
+			<element name="Prescription" type="medicinecard20150601:PrescriptionToTerminateType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
