@@ -34,6 +34,27 @@
         - EffectuationDate skal være angivet ens (hvis der ikke er angivet PeriodStartDate/PeriodEndDate)
     -->
 
+	<!-- Denne struktur er kun med hvis DD er sat i bero på kaldstidspunktet (uanset hvilken periode der vises). -->
+	<DoseDispensingOnHold>
+		<Created>
+			<By>
+				<AuthorisedHealthcareProfessional>
+					<AuthorisationIdentifier>J0184</AuthorisationIdentifier>
+					<Name>Lars Larsen</Name>
+				</AuthorisedHealthcareProfessional>
+				<Organisation>
+					<Name>Lægerne Strandvejen 83</Name>
+					<AddressLine>Strandvejen 83</AddressLine>
+					<AddressLine>3390 Hundested</AddressLine>
+					<TelephoneNumber>47982525</TelephoneNumber>
+					<Type>Yder</Type>
+					<Identifier source="Yder">18244</Identifier>
+				</Organisation>
+			</By>
+			<DateTime>2016-06-01T10:21:06Z</DateTime>
+		</Created>
+	</DoseDispensingOnHold>
+
 	<DoseDispensingCard>
 		<DoseDispensingCardIdentifier>763418</DoseDispensingCardIdentifier>  <!-- Udfyldes ikke i første fase -->
 		<Description>Hjemme</Description>                                    <!-- Udfyldes ikke i første fase -->
@@ -59,12 +80,6 @@
 			<medicinecard20150601:Type>Apotek</medicinecard20150601:Type>
 			<medicinecard20150601:Identifier source="EAN-Lokationsnummer">5790000173525</medicinecard20150601:Identifier>
 		</PackedAtOrganisation>
-
-		<!-- 0, 1 eller mange af disse strukturer kan leveres. Er kun med hvis EndDate ligger senere end første PeriodStartDate. -->
-		<DoseDispensingOnHold>
-			<StartDate>2016-06-01</StartDate>
-			<EndDate>2016-06-05</EndDate>
-		</DoseDispensingOnHold>
 
         <!-- Servicen kan bede om enten:
              (1) kun aktuelle periode
@@ -1083,7 +1098,7 @@
 
 
 			<!-- Servicen kan valgfrit returnere/undlade SpecificDays med parameteren IncludeSpecificDays=true/false. -->
-			<!-- Index nummer refererer til DoseDispensedMedication elementerne ovenfor. -->
+			<!-- DrugMedicationIdentifiers refererer til DoseDispensedMedication elementerne ovenfor. -->
 			<DetailedSpecification>
 				<!-- New day -->
 				<DispensableUnit>
