@@ -214,6 +214,12 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
 
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingResponse.xsd" />
+
         </xs:schema>
 
     </wsdl:types>
@@ -258,13 +264,6 @@
     </wsdl:message>
     <wsdl:message name="GetMedicineCardAsPDFResponse_2015_06_01">
         <wsdl:part name="GetMedicineCardAsPDFResponse" element="medicinecard20150601:GetMedicineCardAsPDFResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01_E2">
-        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601E2:GetDoseDispensingCardRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDoseDispensingCardResponse_2015_06_01_E2">
-        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardVersionRequest_2015_06_01">
@@ -647,6 +646,27 @@
         <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionResponse" element="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01_E2">
+        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601E2:GetDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDoseDispensingCardResponse_2015_06_01_E2">
+        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetDoseDispensingOnHoldRequest_2015_06_01_E2">
+        <wsdl:part name="SetDoseDispensingOnHoldRequest" element="medicinecard20150601E2:SetDoseDispensingOnHoldRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SetDoseDispensingOnHoldResponse_2015_06_01_E2">
+        <wsdl:part name="SetDoseDispensingOnHoldResponse" element="medicinecard20150601E2:SetDoseDispensingOnHoldResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ResumeDoseDispensingRequest_2015_06_01_E2">
+        <wsdl:part name="ResumeDoseDispensingRequest" element="medicinecard20150601E2:ResumeDoseDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ResumeDoseDispensingResponse_2015_06_01_E2">
+        <wsdl:part name="ResumeDoseDispensingResponse" element="medicinecard20150601E2:ResumeDoseDispensingResponse"/>
+    </wsdl:message>
+
 
     <wsdl:message name="DGWSFault">
         <wsdl:part name="fault" element="medcom:FaultCode"/>
@@ -665,12 +685,6 @@
                         message="tns:GetMedicineCardAsPDFRequest_2015_06_01"/>
             <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01"
                          message="tns:GetMedicineCardAsPDFResponse_2015_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
-            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -941,13 +955,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-
         <wsdl:operation name="AbortEffectuation_2015_06_01">
             <wsdl:input name="AbortEffectuationRequest_2015_06_01" message="tns:AbortEffectuationRequest_2015_06_01"/>
             <wsdl:output name="AbortEffectuationResponse_2015_06_01" message="tns:AbortEffectuationResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-
 
         <wsdl:operation name="UndoEffectuation_2015_06_01">
             <wsdl:input name="UndoEffectuationRequest_2015_06_01" message="tns:UndoEffectuationRequest_2015_06_01"/>
@@ -955,13 +967,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-
         <wsdl:operation name="CreateAndEffectuatePrescription_2015_06_01">
             <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01" message="tns:CreateAndEffectuatePrescriptionRequest_2015_06_01"/>
             <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01" message="tns:CreateAndEffectuatePrescriptionResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-
 
         <wsdl:operation name="TerminatePrescription_2015_06_01">
             <wsdl:input name="TerminatePrescriptionRequest_2015_06_01" message="tns:TerminatePrescriptionRequest_2015_06_01"/>
@@ -969,13 +979,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-
         <wsdl:operation name="InvalidatePrescription_2015_06_01">
             <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01" message="tns:InvalidatePrescriptionRequest_2015_06_01"/>
             <wsdl:output name="InvalidatePrescriptionResponse_2015_06_01" message="tns:InvalidatePrescriptionResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-
 
         <wsdl:operation name="ReopenPrescription_2015_06_01">
             <wsdl:input name="ReopenPrescriptionRequest_2015_06_01" message="tns:ReopenPrescriptionRequest_2015_06_01"/>
@@ -983,13 +991,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-
         <wsdl:operation name="ReplacePrescription_2015_06_01">
             <wsdl:input name="ReplacePrescriptionRequest_2015_06_01" message="tns:ReplacePrescriptionRequest_2015_06_01"/>
             <wsdl:output name="ReplacePrescriptionResponse_2015_06_01" message="tns:ReplacePrescriptionResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-
 
         <wsdl:operation name="CreateOrder_2015_06_01">
             <wsdl:input name="CreateOrderRequest_2015_06_01" message="tns:CreateOrderRequest_2015_06_01"/>
@@ -1009,13 +1015,11 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-
         <wsdl:operation name="GetNewOrders_2015_06_01">
             <wsdl:input name="GetNewOrdersRequest_2015_06_01" message="tns:GetNewOrdersRequest_2015_06_01"/>
             <wsdl:output name="GetNewOrdersResponse_2015_06_01" message="tns:GetNewOrdersResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-
 
         <wsdl:operation name="AcknowledgeOrders_2015_06_01">
             <wsdl:input name="AcknowledgeOrdersRequest_2015_06_01" message="tns:AcknowledgeOrdersRequest_2015_06_01"/>
@@ -1040,6 +1044,25 @@
             <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01" message="tns:GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetDoseDispensingOnHold_2015_06_01_E2">
+            <wsdl:input name="SetDoseDispensingOnHoldRequest_2015_06_01_E2" message="tns:SetDoseDispensingOnHoldRequest_2015_06_01_E2"/>
+            <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_06_01_E2" message="tns:SetDoseDispensingOnHoldResponse_2015_06_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="ResumeDoseDispensing_2015_06_01_E2">
+            <wsdl:input name="ResumeDoseDispensingRequest_2015_06_01_E2" message="tns:ResumeDoseDispensingRequest_2015_06_01_E2"/>
+            <wsdl:output name="ResumeDoseDispensingResponse_2015_06_01_E2" message="tns:ResumeDoseDispensingResponse_2015_06_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
     </wsdl:portType>
 
     <wsdl:binding name="MedicineCardBinding" type="tns:MedicineCardPortType">
@@ -1070,22 +1093,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetDoseDispensingCard"
-                            style="document"/>
-            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -1906,6 +1913,54 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetDoseDispensingOnHold_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#SetDoseDispensingOnHold"
+                            style="document"/>
+            <wsdl:input name="SetDoseDispensingOnHoldRequest_2015_06_01_E2">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_06_01_E2">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="ResumeDoseDispensing_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#ResumeDoseDispensing"
+                            style="document"/>
+            <wsdl:input name="ResumeDoseDispensingRequest_2015_06_01_E2">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ResumeDoseDispensingResponse_2015_06_01_E2">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
