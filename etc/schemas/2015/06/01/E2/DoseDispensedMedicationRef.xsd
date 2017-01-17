@@ -6,16 +6,16 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="DoseDispensedMedicationIndex.xsd"/>
+    <import schemaLocation="../DrugMedicationIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <import schemaLocation="../DoseQuantity.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 
     <complexType name="DoseDispensedMedicationRefType">
         <annotation>
-            <documentation xml:lang="en-GB">Reference to a dose dispensed medication via its local index, and a specification of the quantity to be packed into a specific dispensable unit (e.g. bag).</documentation>
-            <documentation xml:lang="da-DK">Reference til et dosisdispenseret lægemiddel via dets lokale index, og en specifikation af den mængde som skal pakkes i en specifik dispenserbar enhed (fx pose).</documentation>
+            <documentation xml:lang="en-GB">Reference to a dose dispensed medication, and a specification of the quantity to be packed into a specific dispensable unit (e.g. bag).</documentation>
+            <documentation xml:lang="da-DK">Reference til et dosisdispenseret lægemiddel, og en specifikation af den mængde som skal pakkes i en specifik dispenserbar enhed (fx pose).</documentation>
         </annotation>
         <sequence>
-            <element name="Index" type="medicinecard20150601E2:DoseDispensedMedicationIndexType"/>
+			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
             <element name="Quantity" type="medicinecard20150601:DoseQuantityType"/>
         </sequence>
     </complexType>

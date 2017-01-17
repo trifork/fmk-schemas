@@ -6,9 +6,8 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="DoseDispensedMedicationIndex.xsd"/>
-    <include schemaLocation="DoseDispensedMedicationIdentifier.xsd"/>
     <import  schemaLocation="../DrugMedicationVersion.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import  schemaLocation="../DrugMedicationIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="DoseDispensingWarning.xsd"/>
 
     <complexType name="DoseDispensedMedicationWithNegativeConsentType">
@@ -17,10 +16,9 @@
             <documentation xml:lang="da-DK">Dosisdispenseret lægemiddel som er privatmarkeret.</documentation>
         </annotation>
         <sequence>
-            <element name="Index" type="medicinecard20150601E2:DoseDispensedMedicationIndexType"/>
-            <element name="Identifier" type="medicinecard20150601E2:DoseDispensedMedicationIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
             <element name="Version" type="medicinecard20150601:DrugMedicationVersionType" minOccurs="0"/>   <!-- Bør denne være obligatorisk ??? -->
-            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0"/>
+            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>
