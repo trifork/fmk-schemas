@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
 		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
         targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="DoseDispensingOnHoldStartDate.xsd"/>
-    <include schemaLocation="DoseDispensingOnHoldEndDate.xsd"/>
+	<import  schemaLocation="../Created.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import  schemaLocation="../Modificator.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 
     <complexType name="DoseDispensingOnHoldType">
         <annotation>
@@ -14,8 +15,8 @@
             <documentation xml:lang="da-DK">Sat i bero periode for dosisdispenseringskort</documentation>
         </annotation>
         <sequence>
-            <element name="StartDate" type="medicinecard20150601E2:DoseDispensingOnHoldStartDateType"/>
-            <element name="EndDate" type="medicinecard20150601E2:DoseDispensingOnHoldEndDateType" minOccurs="0"/>
-        </sequence>
+			<element name="Created" type="medicinecard20150601:CreatedType" />
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+		</sequence>
     </complexType>
 </schema>
