@@ -8,7 +8,7 @@
 
 	<import  schemaLocation="../PersonIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 	<include schemaLocation="CurrentDoseDispensingPeriodFlag.xsd"/>
-	<include schemaLocation="CurrentAndUpcommingDoseDispensingPeriodsFlag.xsd"/>
+	<include schemaLocation="CurrentAndPendingDoseDispensingPeriodsFlag.xsd"/>
 	<include schemaLocation="DoseDispensingRequestedDate.xsd"/>
 	<element name="GetDoseDispensingCardRequest" type="medicinecard20150601E2:GetDoseDispensingCardRequestType"/>
 
@@ -23,7 +23,7 @@
 				<complexType>
 					<choice>
 						<element name="CurrentPeriod" type="medicinecard20150601E2:CurrentDoseDispensingPeriodFlagType"/>
-						<element name="CurrentAndUpcommingPeriods" type="medicinecard20150601E2:CurrentAndUpcommingDoseDispensingPeriodsFlagType"/>
+						<element name="CurrentAndPendingPeriods" type="medicinecard20150601E2:CurrentAndPendingDoseDispensingPeriodsFlagType"/>
 						<element name="RequestedDate" type="medicinecard20150601E2:DoseDispensingRequestedDateType"/>
 					</choice>
 				</complexType>

@@ -5,14 +5,17 @@
 		elementFormDefault="qualified" 
 		attributeFormDefault="unqualified">
 		
-    <simpleType name="DoseDispensingWarningType">
+    <include schemaLocation="DoseDispensingWarningCode.xsd"/>
+    <include schemaLocation="DoseDispensingWarningText.xsd"/>
+
+    <complexType name="DoseDispensingWarningType">
         <annotation>
-            <documentation xml:lang="en-GB">Warning text related to dose dispensing.</documentation>
-            <documentation xml:lang="da-DK">Advarselstekst som er knyttet til dosisdispensering.</documentation>
+            <documentation xml:lang="en-GB">Warning related to dose dispensing.</documentation>
+            <documentation xml:lang="da-DK">Advarsel som er knyttet til dosisdispensering.</documentation>
         </annotation>
-        <restriction base="string">
-            <minLength value="1"/>
-            <maxLength value="100"/>
-        </restriction>
-    </simpleType>
+        <sequence>
+        	<element name="WarningCode" type="medicinecard20150601E2:DoseDispensingWarningCodeType"/>
+            <element name="WarningText" type="medicinecard20150601E2:DoseDispensingWarningTextType"/>
+        </sequence>
+    </complexType>
 </schema>

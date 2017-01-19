@@ -6,6 +6,7 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
+	<include schemaLocation="DoseDispensingNotPrescribedByDoctorFlag.xsd"/>
     <import  schemaLocation="../DrugMedication.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="DoseDispensingWarning.xsd"/>
     <include schemaLocation="PlannedAdministration.xsd"/>
@@ -18,6 +19,7 @@
             <documentation xml:lang="da-DK">Dosisdispenseret lægemiddel.</documentation>
         </annotation>
         <sequence>
+        	<element name="NotPrescribedByDoctor" type="medicinecard20150601E2:DoseDispensingNotPrescribedByDoctorFlagType" minOccurs="0"/>
             <element name="DrugMedication" type="medicinecard20150601:DrugMedicationType"/>
             <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="PlannedAdministration" type="medicinecard20150601E2:PlannedAdministrationType" minOccurs="0"/>

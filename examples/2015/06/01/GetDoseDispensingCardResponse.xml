@@ -37,31 +37,31 @@
 	<!-- Denne struktur er kun med hvis DD er sat i bero på kaldstidspunktet (uanset hvilken periode der vises). -->
 	<DoseDispensingOnHold>
 		<Created>
-			<By>
-				<AuthorisedHealthcareProfessional>
-					<AuthorisationIdentifier>J0184</AuthorisationIdentifier>
-					<Name>Lars Larsen</Name>
-				</AuthorisedHealthcareProfessional>
-				<Organisation>
-					<Name>Lægerne Strandvejen 83</Name>
-					<AddressLine>Strandvejen 83</AddressLine>
-					<AddressLine>3390 Hundested</AddressLine>
-					<TelephoneNumber>47982525</TelephoneNumber>
-					<Type>Yder</Type>
-					<Identifier source="Yder">18244</Identifier>
-				</Organisation>
-			</By>
-			<DateTime>2016-06-01T10:21:06Z</DateTime>
+			<medicinecard20150601:By>
+				<medicinecard20150601:AuthorisedHealthcareProfessional>
+					<medicinecard20150601:AuthorisationIdentifier>J0184</medicinecard20150601:AuthorisationIdentifier>
+					<medicinecard20150601:Name>Lars Larsen</medicinecard20150601:Name>
+				</medicinecard20150601:AuthorisedHealthcareProfessional>
+				<medicinecard20150601:Organisation>
+					<medicinecard20150601:Name>Lægerne Strandvejen 83</medicinecard20150601:Name>
+					<medicinecard20150601:AddressLine>Strandvejen 83</medicinecard20150601:AddressLine>
+					<medicinecard20150601:AddressLine>3390 Hundested</medicinecard20150601:AddressLine>
+					<medicinecard20150601:TelephoneNumber>47982525</medicinecard20150601:TelephoneNumber>
+					<medicinecard20150601:Type>Yder</medicinecard20150601:Type>
+					<medicinecard20150601:Identifier source="Yder">18244</medicinecard20150601:Identifier>
+				</medicinecard20150601:Organisation>
+			</medicinecard20150601:By>
+			<medicinecard20150601:DateTime>2016-06-01T10:21:06Z</medicinecard20150601:DateTime>
 		</Created>
 	</DoseDispensingOnHold>
 
 	<DoseDispensingCard>
-		<DoseDispensingCardIdentifier>763418</DoseDispensingCardIdentifier>  <!-- Udfyldes ikke i første fase -->
-		<Description>Hjemme</Description>                                    <!-- Udfyldes ikke i første fase -->
+		<Identifier>763418</Identifier>  
+		<Description>Hjemme</Description>                                    
 
 		<!-- MAYBE: <Modified>...</Modified> -->
 		<Delivery>
-			<Priority>send til patientadresse samme dag</Priority>
+			<medicinecard20150601:Priority>send til patientadresse samme dag</medicinecard20150601:Priority>
 		</Delivery>
 
 		<PackingGroupIdentifier>13245</PackingGroupIdentifier>     <!-- Udfyldes ikke i første fase -->
@@ -102,9 +102,12 @@
 			<EffectuationDate>2016-06-04</EffectuationDate>    <!-- Kan måske give mening hvis periode start og slut ikke haves, fx på historiske data? -->
 
 			<DoseDispensedMedicationWithNegativeConsent>
-				<medicinecard20150601:DrugMedicationIdentifier>13143641281027</medicinecard20150601:DrugMedicationIdentifier>
+				<DrugMedicationIdentifier>13143641281027</DrugMedicationIdentifier>
 				<Version>134140408122001001</Version>
-				<Warning>Dosisdispenseringskortet vises uden detaljer om dette præparat!</Warning>
+				<Warning>
+					<WarningCode>2233</WarningCode>
+					<WarningText>Dosisdispenseringskortet vises uden detaljer om dette præparat!</WarningText>
+				</Warning>
 			</DoseDispensedMedicationWithNegativeConsent>
 			<DoseDispensedMedication>
 				<NotPrescribedByDoctor/>                       <!-- Udfyldes ikke i første fase -->
@@ -236,43 +239,6 @@
 							</Strength>
 						</Drug>
 						<DosageText>3 tabletter dagligt ved måltid</DosageText>
-						<Dosage>
-							<UnitTexts source="Doseringsforslag">
-								<Singular>tablet</Singular>
-								<Plural>tabletter</Plural>
-							</UnitTexts>
-							<StructuresFixed>
-								<Structure>
-									<IterationInterval>1</IterationInterval>
-									<StartDate>2016-03-07</StartDate>
-									<EndDate>2017-03-07</EndDate>
-									<SupplementaryText>Synkes hele</SupplementaryText>
-									<Day>
-										<Number>1</Number>
-										<Dose>
-											<Time>morning</Time>
-											<Quantity>1</Quantity>
-										</Dose>
-										<Dose>
-											<Time>noon</Time>
-											<Quantity>1</Quantity>
-										</Dose>
-										<Dose>
-											<Time>evening</Time>
-											<Quantity>1</Quantity>
-										</Dose>
-									</Day>
-									<DosageTranslation>
-										<ShortText>1 tablet morgen, middag og aften</ShortText>
-										<LongText>Doseringsforløbet starter mandag den 7. marts 2016 og gentages hver dag:
-		                                    Doseringsforløb:
-		                                    1 tablet morgen, middag og aften</LongText>
-										<AverageDailyDosage>3</AverageDailyDosage>
-									</DosageTranslation>
-								</Structure>
-							</StructuresFixed>
-							<Type>fast</Type>
-						</Dosage>
 						<SubstitutionAllowed>true</SubstitutionAllowed>
 						<Status>åben</Status>
 						<Order>
@@ -338,16 +304,31 @@
 					<ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
 				</medicinecard20150601E2:DrugMedication>
 
-				<Warning>Dosering er ikke specifik nok til dosispakning!</Warning>
-				<Warning>Dosisdispensering foretaget ud fra en papirrecept!</Warning>
-				<Warning>Recept dækker ikke udlevering af det aktuelle lægemiddel!</Warning>
-				<Warning>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</Warning>
-				<Warning>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</Warning>
+				<Warning>
+					<WarningCode>3344</WarningCode>
+					<WarningText>Dosering er ikke specifik nok til dosispakning!</WarningText>
+				</Warning>
+				<Warning>
+					<WarningCode>4567</WarningCode>
+					<WarningText>Dosisdispensering foretaget ud fra en papirrecept!</WarningText>
+				</Warning>
+				<Warning>
+					<WarningCode>5432</WarningCode>
+					<WarningText>Recept dækker ikke udlevering af det aktuelle lægemiddel!</WarningText>
+				</Warning>
+				<Warning>
+					<WarningCode>6644</WarningCode>
+					<WarningText>Leveringsoplysninger er ikke konsistent angivet på alle bestillinger!</WarningText>
+				</Warning>
+				<Warning>
+					<WarningCode>7777</WarningCode>
+					<WarningText>Behandlingen starter/slutter før/efter doseringen! DD baseres på doseringens start/slut datoer.</WarningText>
+				</Warning>
 
 				<PlannedAdministration>
 					<UnitTexts source="Doseringsforslag">
-						<Singular>tablet</Singular>
-						<Plural>tabletter</Plural>
+						<medicinecard20150601:Singular>tablet</medicinecard20150601:Singular>
+						<medicinecard20150601:Plural>tabletter</medicinecard20150601:Plural>
 					</UnitTexts>
 					<AdministrationStructure>
 						<IterationInterval>1</IterationInterval>
@@ -499,39 +480,6 @@
 							</Strength>
 						</Drug>
 						<DosageText>3 tabletter dagligt ved måltid</DosageText>
-						<Dosage>
-							<UnitTexts source="Doseringsforslag">
-								<Singular>tablet</Singular>
-								<Plural>tabletter</Plural>
-							</UnitTexts>
-							<StructuresFixed>
-								<Structure>
-									<IterationInterval>1</IterationInterval>
-									<StartDate>2015-10-18</StartDate>
-									<EndDate>2017-03-30</EndDate>
-									<SupplementaryText>Synkes hele</SupplementaryText>
-									<Day>
-										<Number>1</Number>
-										<Dose>
-											<Time>morning</Time>
-											<Quantity>1</Quantity>
-										</Dose>
-										<Dose>
-											<Time>evening</Time>
-											<Quantity>1</Quantity>
-										</Dose>
-									</Day>
-									<DosageTranslation>
-										<ShortText>1 tablet morgen og aften</ShortText>
-										<LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
-		                                    Doseringsforløb:
-		                                    1 tablet morgen og aften</LongText>
-										<AverageDailyDosage>2</AverageDailyDosage>
-									</DosageTranslation>
-								</Structure>
-							</StructuresFixed>
-							<Type>fast</Type>
-						</Dosage>
 						<SubstitutionAllowed>true</SubstitutionAllowed>
 						<Status>åben</Status>
 						<Order>
@@ -599,8 +547,8 @@
 
 				<PlannedAdministration>
 					<UnitTexts source="Doseringsforslag">
-						<Singular>tablet</Singular>
-						<Plural>tabletter</Plural>
+						<medicinecard20150601:Singular>tablet</medicinecard20150601:Singular>
+						<medicinecard20150601:Plural>tabletter</medicinecard20150601:Plural>
 					</UnitTexts>
 					<AdministrationStructure>
 						<IterationInterval>1</IterationInterval>
@@ -625,7 +573,7 @@
 
 
 			<DoseDispensedMedication>
-				<DrugMedication>
+				<medicinecard20150601E2:DrugMedication xmlns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
 					<Identifier>14364128</Identifier>
 					<Version>1431404071666007001</Version>
 					<Created>
@@ -744,35 +692,6 @@
 							</Strength>
 						</Drug>
 						<DosageText>2 tabletter dagligt</DosageText>
-						<Dosage>
-							<UnitTexts source="Doseringsforslag">
-								<Singular>tablet</Singular>
-								<Plural>tabletter</Plural>
-							</UnitTexts>
-							<StructuresFixed>
-								<Structure>
-									<IterationInterval>1</IterationInterval>
-									<StartDate>2015-10-18</StartDate>
-									<EndDate>2017-03-30</EndDate>
-									<SupplementaryText>Synkes hele</SupplementaryText>
-									<Day>
-										<Number>1</Number>
-										<Dose>
-											<Time>evening</Time>
-											<Quantity>1</Quantity>
-										</Dose>
-									</Day>
-									<DosageTranslation>
-										<ShortText>1 tablet aften</ShortText>
-										<LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
-		                                    Doseringsforløb:
-		                                    1 tablet aften</LongText>
-										<AverageDailyDosage>1</AverageDailyDosage>
-									</DosageTranslation>
-								</Structure>
-							</StructuresFixed>
-							<Type>fast</Type>
-						</Dosage>
 						<SubstitutionAllowed>true</SubstitutionAllowed>
 						<Status>åben</Status>
 						<Order>
@@ -836,12 +755,12 @@
 						<Version>34567</Version>
 					</Prescription>
 					<ReimbursementClause>klausulbetingelse opfyldt</ReimbursementClause>
-				</DrugMedication>
+				</medicinecard20150601E2:DrugMedication>
 
 				<PlannedAdministration>
 					<UnitTexts source="Doseringsforslag">
-						<Singular>tablet</Singular>
-						<Plural>tabletter</Plural>
+						<medicinecard20150601:Singular>tablet</medicinecard20150601:Singular>
+						<medicinecard20150601:Plural>tabletter</medicinecard20150601:Plural>
 					</UnitTexts>
 					<AdministrationStructure>
 						<IterationInterval>1</IterationInterval>
@@ -981,35 +900,6 @@
 							</Strength>
 						</Drug>
 						<DosageText>2 tabletter dagligt</DosageText>
-						<Dosage>
-							<UnitTexts source="Doseringsforslag">
-								<Singular>tablet</Singular>
-								<Plural>tabletter</Plural>
-							</UnitTexts>
-							<StructuresFixed>
-								<Structure>
-									<IterationInterval>1</IterationInterval>
-									<StartDate>2015-10-18</StartDate>
-									<EndDate>2017-03-30</EndDate>
-									<SupplementaryText>Tages 30 min. før sengetid</SupplementaryText>
-									<Day>
-										<Number>1</Number>
-										<Dose>
-											<Time>night</Time>
-											<Quantity>1</Quantity>
-										</Dose>
-									</Day>
-									<DosageTranslation>
-										<ShortText>1 tablet ved sengetid</ShortText>
-										<LongText>Doseringsforløbet starter mandag den 18. oktober 2015 og gentages hver dag:
-		                                    Doseringsforløb:
-		                                    1 tablet ved sengetid</LongText>
-										<AverageDailyDosage>1</AverageDailyDosage>
-									</DosageTranslation>
-								</Structure>
-							</StructuresFixed>
-							<Type>fast</Type>
-						</Dosage>
 						<SubstitutionAllowed>true</SubstitutionAllowed>
 						<Status>åben</Status>
 						<Order>
@@ -1077,8 +967,8 @@
 
 				<PlannedAdministration>
 					<UnitTexts source="Doseringsforslag">
-						<Singular>tablet</Singular>
-						<Plural>tabletter</Plural>
+						<medicinecard20150601:Singular>tablet</medicinecard20150601:Singular>
+						<medicinecard20150601:Plural>tabletter</medicinecard20150601:Plural>
 					</UnitTexts>
 					<AdministrationStructure>
 						<IterationInterval>1</IterationInterval>

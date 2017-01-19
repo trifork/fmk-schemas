@@ -9,6 +9,7 @@
     <import  schemaLocation="../Patient.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <include schemaLocation="RequestDateTime.xsd"/>
     <include schemaLocation="DoseDispensingCard.xsd"/>
+    <include schemaLocation="DoseDispensingOnHold.xsd"/>
 
 
     <element name="GetDoseDispensingCardResponse" type="medicinecard20150601E2:GetDoseDispensingCardResponseType"/>
@@ -21,6 +22,7 @@
         <sequence>
             <element name="Patient" type="medicinecard20150601:PatientType"/>
             <element name="RequestDateTime" type="medicinecard20150601E2:RequestDateTimeType"/>
+            <element name="DoseDispensingOnHold" type="medicinecard20150601E2:DoseDispensingOnHoldType" minOccurs="0"/>
             <element name="DoseDispensingCard" type="medicinecard20150601E2:DoseDispensingCardType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
