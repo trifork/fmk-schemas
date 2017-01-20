@@ -214,9 +214,6 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
 
-			<xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldRequest.xsd" />
-			<xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldResponse.xsd" />
-
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingResponse.xsd" />
 
@@ -653,13 +650,6 @@
         <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="SetDoseDispensingOnHoldRequest_2015_06_01_E2">
-        <wsdl:part name="SetDoseDispensingOnHoldRequest" element="medicinecard20150601E2:SetDoseDispensingOnHoldRequest"/>
-    </wsdl:message>
-    <wsdl:message name="SetDoseDispensingOnHoldResponse_2015_06_01_E2">
-        <wsdl:part name="SetDoseDispensingOnHoldResponse" element="medicinecard20150601E2:SetDoseDispensingOnHoldResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="ResumeDoseDispensingRequest_2015_06_01_E2">
         <wsdl:part name="ResumeDoseDispensingRequest" element="medicinecard20150601E2:ResumeDoseDispensingRequest"/>
     </wsdl:message>
@@ -1048,12 +1038,6 @@
         <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
             <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
             <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="SetDoseDispensingOnHold_2015_06_01_E2">
-            <wsdl:input name="SetDoseDispensingOnHoldRequest_2015_06_01_E2" message="tns:SetDoseDispensingOnHoldRequest_2015_06_01_E2"/>
-            <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_06_01_E2" message="tns:SetDoseDispensingOnHoldResponse_2015_06_01_E2"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1929,22 +1913,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="SetDoseDispensingOnHold_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#SetDoseDispensingOnHold"
-                            style="document"/>
-            <wsdl:input name="SetDoseDispensingOnHoldRequest_2015_06_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_06_01_E2">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
