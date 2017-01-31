@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
 		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
 		elementFormDefault="qualified" 
 		attributeFormDefault="unqualified">
 
+    <import schemaLocation="../PersonIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 	<element name="ResumeDoseDispensingResponse" type="medicinecard20150601E2:ResumeDoseDispensingResponseType"/>
 
 	<complexType name="ResumeDoseDispensingResponseType">
@@ -12,5 +14,8 @@
 			<documentation xml:lang="en-GB">Response for the request for dose dispensing be resumed for a specific patient</documentation>
 			<documentation xml:lang="da-DK">Svar på en anmodning om at gentoptage dosisdispensering for en given patient</documentation>
 		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+		</sequence>
 	</complexType>
 </schema>

@@ -56,6 +56,8 @@
                    elementFormDefault="qualified">
             <xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingResponse.xsd"/>
         </xs:schema>
     </wsdl:types>
     
@@ -92,6 +94,15 @@
     <wsdl:message name="SetDoseDispensingOnHoldIdwsResponse_2015_06_01_E2">
         <wsdl:part name="SetDoseDispensingOnHoldResponse"
                    element="medicinecard20150601E2:SetDoseDispensingOnHoldResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ResumeDoseDispensingIdwsRequest_2015_06_01_E2">
+        <wsdl:part name="ResumeDoseDispensingRequest"
+                   element="medicinecard20150601E2:ResumeDoseDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ResumeDoseDispensingIdwsResponse_2015_06_01_E2">
+        <wsdl:part name="ResumeDoseDispensingResponse"
+                   element="medicinecard20150601E2:ResumeDoseDispensingResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPatientOrganisationRelationIdwsRequest_2015_06_01">
@@ -157,6 +168,14 @@
                         message="tns:SetDoseDispensingOnHoldIdwsRequest_2015_06_01_E2"/>
             <wsdl:output name="SetDoseDispensingOnHoldIdwsResponse_2015_06_01_E2"
                          message="tns:SetDoseDispensingOnHoldIdwsResponse_2015_06_01_E2"/>
+          <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="ResumeDoseDispensingIdws_2015_06_01_E2">
+            <wsdl:input name="ResumeDoseDispensingIdwsRequest_2015_06_01_E2"
+                        message="tns:ResumeDoseDispensingIdwsRequest_2015_06_01_E2"/>
+            <wsdl:output name="ResumeDoseDispensingIdwsResponse_2015_06_01_E2"
+                         message="tns:ResumeDoseDispensingIdwsResponse_2015_06_01_E2"/>
           <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -229,6 +248,33 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SetDoseDispensingOnHoldIdwsResponse_2015_06_01_E2">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="ResumeDoseDispensingIdws_2015_06_01_E2">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#ResumeDoseDispensing"
+                    style="document"/>
+            <wsdl:input name="ResumeDoseDispensingIdwsRequest_2015_06_01_E2">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ResumeDoseDispensingIdwsResponse_2015_06_01_E2">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />

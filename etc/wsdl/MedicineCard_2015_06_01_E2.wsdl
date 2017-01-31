@@ -210,13 +210,8 @@
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" elementFormDefault="qualified">
-
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
-
-			<xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingRequest.xsd" />
-			<xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingResponse.xsd" />
-
         </xs:schema>
 
     </wsdl:types>
@@ -650,14 +645,6 @@
         <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="ResumeDoseDispensingRequest_2015_06_01_E2">
-        <wsdl:part name="ResumeDoseDispensingRequest" element="medicinecard20150601E2:ResumeDoseDispensingRequest"/>
-    </wsdl:message>
-    <wsdl:message name="ResumeDoseDispensingResponse_2015_06_01_E2">
-        <wsdl:part name="ResumeDoseDispensingResponse" element="medicinecard20150601E2:ResumeDoseDispensingResponse"/>
-    </wsdl:message>
-
-
     <wsdl:message name="DGWSFault">
         <wsdl:part name="fault" element="medcom:FaultCode"/>
     </wsdl:message>
@@ -1038,12 +1025,6 @@
         <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
             <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
             <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="ResumeDoseDispensing_2015_06_01_E2">
-            <wsdl:input name="ResumeDoseDispensingRequest_2015_06_01_E2" message="tns:ResumeDoseDispensingRequest_2015_06_01_E2"/>
-            <wsdl:output name="ResumeDoseDispensingResponse_2015_06_01_E2" message="tns:ResumeDoseDispensingResponse_2015_06_01_E2"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1921,21 +1902,6 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="ResumeDoseDispensing_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#ResumeDoseDispensing"
-                            style="document"/>
-            <wsdl:input name="ResumeDoseDispensingRequest_2015_06_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="ResumeDoseDispensingResponse_2015_06_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
     </wsdl:binding>
 
 

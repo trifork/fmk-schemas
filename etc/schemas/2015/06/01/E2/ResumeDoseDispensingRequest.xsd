@@ -7,6 +7,7 @@
 		attributeFormDefault="unqualified">
 
 	<import  schemaLocation="../PersonIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import  schemaLocation="../Modificator.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 	<element name="ResumeDoseDispensingRequest" type="medicinecard20150601E2:ResumeDoseDispensingRequestType"/>
 
 	<complexType name="ResumeDoseDispensingRequestType">
@@ -16,6 +17,8 @@
 		</annotation>
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" />
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

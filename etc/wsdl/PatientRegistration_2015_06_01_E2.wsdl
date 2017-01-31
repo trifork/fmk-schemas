@@ -41,6 +41,8 @@
                    elementFormDefault="qualified">
             <xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E2/SetDoseDispensingOnHoldResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/ResumeDoseDispensingResponse.xsd"/>
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="SecurityHeader">
@@ -68,6 +70,15 @@
     <wsdl:message name="SetDoseDispensingOnHoldResponse_2015_06_01_E2">
         <wsdl:part name="SetDoseDispensingOnHoldResponse"
                    element="medicinecard20150601E2:SetDoseDispensingOnHoldResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="ResumeDoseDispensingRequest_2015_06_01_E2">
+        <wsdl:part name="ResumeDoseDispensingRequest"
+                   element="medicinecard20150601E2:ResumeDoseDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ResumeDoseDispensingResponse_2015_06_01_E2">
+        <wsdl:part name="ResumeDoseDispensingResponse"
+                   element="medicinecard20150601E2:ResumeDoseDispensingResponse"/>
     </wsdl:message>
     
     <wsdl:message name="GetPatientOrganisationRelationRequest_2015_06_01">
@@ -134,6 +145,14 @@
                         message="tns:SetDoseDispensingOnHoldRequest_2015_06_01_E2"/>
             <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_06_01_E2"
                          message="tns:SetDoseDispensingOnHoldResponse_2015_06_01_E2"/>
+          <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="ResumeDoseDispensing_2015_06_01_E2">
+            <wsdl:input name="ResumeDoseDispensingRequest_2015_06_01_E2"
+                        message="tns:ResumeDoseDispensingRequest_2015_06_01_E2"/>
+            <wsdl:output name="ResumeDoseDispensingResponse_2015_06_01_E2"
+                         message="tns:ResumeDoseDispensingResponse_2015_06_01_E2"/>
           <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -204,6 +223,26 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_06_01_E2">
+                <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="ResumeDoseDispensing_2015_06_01_E2">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#ResumeDoseDispensing"
+                    style="document"/>
+            <wsdl:input name="ResumeDoseDispensingRequest_2015_06_01_E2">
+                <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
+                <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
+                <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
+                <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ResumeDoseDispensingResponse_2015_06_01_E2">
                 <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
                 <soap:body use="literal"/>
             </wsdl:output>
