@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" 
+		xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" 
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+		
+	<include schemaLocation="PlannedAdministrationStructure.xsd"/>
+	<import  schemaLocation="../EmptyDosageStructure.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import  schemaLocation="../DosageQuantityUnitText.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import  schemaLocation="../DosageQuantityUnitTexts.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<complexType name="PlannedAdministrationType">
+		<annotation>
+			<documentation xml:lang="en-GB">How often and when the drug is planned to be given</documentation>
+			<documentation xml:lang="da-DK">Angivelse af hvor ofte og hvornår et lægemiddel planlægges til indtagelse</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="UnitText" type="medicinecard20150101:DosageQuantityUnitTextType" minOccurs="0" maxOccurs="1"/>
+				<element name="UnitTexts" type="medicinecard20150101:DosageQuantityUnitTextsType" minOccurs="0" maxOccurs="1"/>
+			</choice>
+			<choice maxOccurs="unbounded">
+				<element name="EmptyStructure" type="medicinecard20150101:EmptyDosageStructureType"/>
+				<element name="AdministrationStructure" type="medicinecard20150101E2:PlannedAdministrationStructureType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
