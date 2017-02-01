@@ -20,7 +20,10 @@
         </annotation>
         <sequence>
         	<element name="NotPrescribedByDoctor" type="medicinecard20150601E2:DoseDispensingNotPrescribedByDoctorFlagType" minOccurs="0"/>
-            <element name="DrugMedication" type="medicinecard20150601:DrugMedicationType"/>
+        	<choice>
+            	<element name="DrugMedication" type="medicinecard20150601:DrugMedicationType"/>
+				<element name="Prescription" type="medicinecard20150601:PrescriptionType"/>
+            </choice>
             <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="PlannedAdministration" type="medicinecard20150601E2:PlannedAdministrationType" minOccurs="0"/>
             <element name="TotalNumberOfDoseDispensedQuantity" type="medicinecard20150601:DoseQuantityType" minOccurs="0"/>
