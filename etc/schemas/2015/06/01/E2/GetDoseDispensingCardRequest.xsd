@@ -22,16 +22,14 @@
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
 			<element name="RequestedPeriod">
 				<complexType>
-			        <sequence>
-						<choice>
-							<element name="CurrentPeriod" type="medicinecard20150601E2:CurrentDoseDispensingPeriodFlagType"/>
-							<element name="CurrentAndPendingPeriods" type="medicinecard20150601E2:CurrentAndPendingDoseDispensingPeriodsFlagType"/>
-							<element name="RequestedDate" type="medicinecard20150601E2:DoseDispensingRequestedDateType"/>
-						</choice>
-						<element name="IncludeDetailedSpecification" type="medicinecard20150601E2:IncludeDetailedSpecificationFlagType" minOccurs="0"/>
-			        </sequence>
+					<choice>
+						<element name="CurrentPeriod" type="medicinecard20150601E2:CurrentDoseDispensingPeriodFlagType"/>
+						<element name="CurrentAndPendingPeriods" type="medicinecard20150601E2:CurrentAndPendingDoseDispensingPeriodsFlagType"/>
+						<element name="RequestedDate" type="medicinecard20150601E2:DoseDispensingRequestedDateType"/>
+					</choice>
 				</complexType>
 			</element>
+			<element name="IncludeDetailedSpecification" type="medicinecard20150601E2:IncludeDetailedSpecificationFlagType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
