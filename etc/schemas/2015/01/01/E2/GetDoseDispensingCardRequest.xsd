@@ -9,6 +9,7 @@
 	<import  schemaLocation="../PersonIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
 	<include schemaLocation="CurrentDoseDispensingPeriodFlag.xsd"/>
 	<include schemaLocation="CurrentAndPendingDoseDispensingPeriodsFlag.xsd"/>
+	<include schemaLocation="IncludeDetailedSpecificationFlag.xsd"/>
 	<include schemaLocation="DoseDispensingRequestedDate.xsd"/>
 	<element name="GetDoseDispensingCardRequest" type="medicinecard20150101E2:GetDoseDispensingCardRequestType"/>
 
@@ -21,11 +22,14 @@
 			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
 			<element name="RequestedPeriod">
 				<complexType>
-					<choice>
-						<element name="CurrentPeriod" type="medicinecard20150101E2:CurrentDoseDispensingPeriodFlagType"/>
-						<element name="CurrentAndPendingPeriods" type="medicinecard20150101E2:CurrentAndPendingDoseDispensingPeriodsFlagType"/>
-						<element name="RequestedDate" type="medicinecard20150101E2:DoseDispensingRequestedDateType"/>
-					</choice>
+			        <sequence>
+						<choice>
+							<element name="CurrentPeriod" type="medicinecard20150101E2:CurrentDoseDispensingPeriodFlagType"/>
+							<element name="CurrentAndPendingPeriods" type="medicinecard20150101E2:CurrentAndPendingDoseDispensingPeriodsFlagType"/>
+							<element name="RequestedDate" type="medicinecard20150101E2:DoseDispensingRequestedDateType"/>
+						</choice>
+						<element name="IncludeDetailedSpecification" type="medicinecard20150101E2:IncludeDetailedSpecificationFlagType" minOccurs="0"/>
+			        </sequence>
 				</complexType>
 			</element>
 		</sequence>
