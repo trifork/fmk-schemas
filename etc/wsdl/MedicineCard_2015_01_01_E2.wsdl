@@ -56,26 +56,21 @@
             <xs:include schemaLocation="../schemas/2015/01/01/CancelPrescriptionMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/CancelPrescriptionMedicationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/CreateDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/CreateDrugMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/CreateEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/CreateEffectuationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationForUseInPracticeRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationForUseInPracticeResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationWithoutCPRRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/CreatePrescriptionMedicationWithoutCPRResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/DeleteEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/DeleteEffectuationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/GetDrugMedicationVersionsResponse.xsd"/>
@@ -94,8 +89,6 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/GetPermissionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/GetPermissionsResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2015/01/01/GetPrescriptionMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/MarkPrescriptionMedicationDeprecatedRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/MarkPrescriptionMedicationDeprecatedResponse.xsd"/>
@@ -130,7 +123,6 @@
             <xs:include schemaLocation="../schemas/2015/01/01/UnwithdrawDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/UnwithdrawDrugMedicationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/UpdateMedicineCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/UpdateMedicineCardResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/UpdateDrugMedicationRequest.xsd"/>
@@ -142,7 +134,6 @@
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1" elementFormDefault="qualified">
             <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardVersionListRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardVersionListResponse.xsd"/>
@@ -157,8 +148,24 @@
         </xs:schema>
         
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified">
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreateDrugMedicationRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionMedicationForUseInPracticeRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionMedicationRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionMedicationWithoutCPRRequest.xsd"/>
+
 			<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDoseDispensingCardResponse.xsd" />
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionMedicationResponse.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/01/01/E2/UpdateMedicineCardRequest.xsd"/>
         </xs:schema>
 
     </wsdl:types>
@@ -194,8 +201,8 @@
     <wsdl:message name="GetMedicineCardRequest_2015_01_01_E1">
         <wsdl:part name="GetMedicineCardRequest" element="medicinecard20150101E1:GetMedicineCardRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetMedicineCardResponse_2015_01_01_E1">
-        <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150101E1:GetMedicineCardResponse"/>
+    <wsdl:message name="GetMedicineCardResponse_2015_01_01_E2">
+        <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150101E2:GetMedicineCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardAsPDFRequest_2015_01_01">
@@ -227,8 +234,8 @@
         <wsdl:part name="GetMedicineCardVersionListResponse" element="medicinecard20150101E1:GetMedicineCardVersionListResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UpdateMedicineCardRequest_2015_01_01">
-        <wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20150101:UpdateMedicineCardRequest"/>
+    <wsdl:message name="UpdateMedicineCardRequest_2015_01_01_E2">
+        <wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20150101E2:UpdateMedicineCardRequest"/>
     </wsdl:message>
     <wsdl:message name="UpdateMedicineCardResponse_2015_01_01">
         <wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20150101:UpdateMedicineCardResponse"/>
@@ -254,8 +261,8 @@
     <wsdl:message name="GetDrugMedicationRequest_2015_01_01">
         <wsdl:part name="GetDrugMedicationRequest" element="medicinecard20150101:GetDrugMedicationRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetDrugMedicationResponse_2015_01_01">
-        <wsdl:part name="GetDrugMedicationResponse" element="medicinecard20150101:GetDrugMedicationResponse"/>
+    <wsdl:message name="GetDrugMedicationResponse_2015_01_01_E2">
+        <wsdl:part name="GetDrugMedicationResponse" element="medicinecard20150101E2:GetDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationVersionsRequest_2015_01_01">
@@ -283,8 +290,8 @@
         <wsdl:part name="PauseDrugMedicationResponse" element="medicinecard20150101:PauseDrugMedicationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreateDrugMedicationRequest_2015_01_01">
-        <wsdl:part name="CreateDrugMedicationRequest" element="medicinecard20150101:CreateDrugMedicationRequest"/>
+    <wsdl:message name="CreateDrugMedicationRequest_2015_01_01_E2">
+        <wsdl:part name="CreateDrugMedicationRequest" element="medicinecard20150101E2:CreateDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="CreateDrugMedicationResponse_2015_01_01">
         <wsdl:part name="CreateDrugMedicationResponse" element="medicinecard20150101:CreateDrugMedicationResponse"/>
@@ -306,9 +313,9 @@
         <wsdl:part name="CreateEffectuationResponse" element="medicinecard20150101:CreateEffectuationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionMedicationRequest_2015_01_01">
+    <wsdl:message name="CreatePrescriptionMedicationRequest_2015_01_01_E2">
         <wsdl:part name="CreatePrescriptionMedicationRequest"
-                   element="medicinecard20150101:CreatePrescriptionMedicationRequest"/>
+                   element="medicinecard20150101E2:CreatePrescriptionMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="CreatePrescriptionMedicationResponse_2015_01_01">
         <wsdl:part name="CreatePrescriptionMedicationResponse"
@@ -319,9 +326,9 @@
         <wsdl:part name="GetPrescriptionMedicationRequest"
                    element="medicinecard20150101E1:GetPrescriptionMedicationRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetPrescriptionMedicationResponse_2015_01_01">
+    <wsdl:message name="GetPrescriptionMedicationResponse_2015_01_01_E2">
         <wsdl:part name="GetPrescriptionMedicationResponse"
-                   element="medicinecard20150101:GetPrescriptionMedicationResponse"/>
+                   element="medicinecard20150101E2:GetPrescriptionMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_2015_01_01">
@@ -371,18 +378,18 @@
         <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20150101:SearchEffectuationsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01">
+    <wsdl:message name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E2">
         <wsdl:part name="CreatePrescriptionMedicationForUseInPracticeRequest"
-                   element="medicinecard20150101:CreatePrescriptionMedicationForUseInPracticeRequest"/>
+                   element="medicinecard20150101E2:CreatePrescriptionMedicationForUseInPracticeRequest"/>
     </wsdl:message>
     <wsdl:message name="CreatePrescriptionMedicationForUseInPracticeResponse_2015_01_01">
         <wsdl:part name="CreatePrescriptionMedicationForUseInPracticeResponse"
                    element="medicinecard20150101:CreatePrescriptionMedicationForUseInPracticeResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01">
+    <wsdl:message name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01_E2">
         <wsdl:part name="CreatePrescriptionMedicationWithoutCPRRequest"
-                   element="medicinecard20150101:CreatePrescriptionMedicationWithoutCPRRequest"/>
+                   element="medicinecard20150101E2:CreatePrescriptionMedicationWithoutCPRRequest"/>
     </wsdl:message>
     <wsdl:message name="CreatePrescriptionMedicationWithoutCPRResponse_2015_01_01">
         <wsdl:part name="CreatePrescriptionMedicationWithoutCPRResponse"
@@ -461,9 +468,9 @@
 
     <wsdl:portType name="MedicineCardPortType">
 
-        <wsdl:operation name="GetMedicineCard_2015_01_01_E1">
+        <wsdl:operation name="GetMedicineCard_2015_01_01_E2">
             <wsdl:input name="GetMedicineCardRequest_2015_01_01_E1" message="tns:GetMedicineCardRequest_2015_01_01_E1"/>
-            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E1" message="tns:GetMedicineCardResponse_2015_01_01_E1"/>
+            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E2" message="tns:GetMedicineCardResponse_2015_01_01_E2"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -497,8 +504,8 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="UpdateMedicineCard_2015_01_01">
-            <wsdl:input name="UpdateMedicineCardRequest_2015_01_01" message="tns:UpdateMedicineCardRequest_2015_01_01"/>
+        <wsdl:operation name="UpdateMedicineCard_2015_01_01_E2">
+            <wsdl:input name="UpdateMedicineCardRequest_2015_01_01_E2" message="tns:UpdateMedicineCardRequest_2015_01_01_E2"/>
             <wsdl:output name="UpdateMedicineCardResponse_2015_01_01"
                          message="tns:UpdateMedicineCardResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -520,10 +527,10 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedication_2015_01_01">
+        <wsdl:operation name="GetDrugMedication_2015_01_01_E2">
             <wsdl:input name="GetDrugMedicationRequest_2015_01_01" message="tns:GetDrugMedicationRequest_2015_01_01"/>
-            <wsdl:output name="GetDrugMedicationResponse_2015_01_01"
-                         message="tns:GetDrugMedicationResponse_2015_01_01"/>
+            <wsdl:output name="GetDrugMedicationResponse_2015_01_01_E2"
+                         message="tns:GetDrugMedicationResponse_2015_01_01_E2"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -551,9 +558,9 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="CreateDrugMedication_2015_01_01">
-            <wsdl:input name="CreateDrugMedicationRequest_2015_01_01"
-                        message="tns:CreateDrugMedicationRequest_2015_01_01"/>
+        <wsdl:operation name="CreateDrugMedication_2015_01_01_E2">
+            <wsdl:input name="CreateDrugMedicationRequest_2015_01_01_E2"
+                        message="tns:CreateDrugMedicationRequest_2015_01_01_E2"/>
             <wsdl:output name="CreateDrugMedicationResponse_2015_01_01"
                          message="tns:CreateDrugMedicationResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -574,19 +581,19 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionMedication_2015_01_01">
-            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01"
-                        message="tns:CreatePrescriptionMedicationRequest_2015_01_01"/>
+        <wsdl:operation name="CreatePrescriptionMedication_2015_01_01_E2">
+            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01_E2"
+                        message="tns:CreatePrescriptionMedicationRequest_2015_01_01_E2"/>
             <wsdl:output name="CreatePrescriptionMedicationResponse_2015_01_01"
                          message="tns:CreatePrescriptionMedicationResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E1">
+        <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E2">
             <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01_E1"
                         message="tns:GetPrescriptionMedicationRequest_2015_01_01_E1"/>
-            <wsdl:output name="GetPrescriptionMedicationResponse_2015_01_01"
-                         message="tns:GetPrescriptionMedicationResponse_2015_01_01"/>
+            <wsdl:output name="GetPrescriptionMedicationResponse_2015_01_01_E2"
+                         message="tns:GetPrescriptionMedicationResponse_2015_01_01_E2"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -638,17 +645,17 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionMedicationForUseInPractice_2015_01_01">
-            <wsdl:input name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01"
-                        message="tns:CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01"/>
+        <wsdl:operation name="CreatePrescriptionMedicationForUseInPractice_2015_01_01_E2">
+            <wsdl:input name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E2"
+                        message="tns:CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E2"/>
             <wsdl:output name="CreatePrescriptionMedicationForUseInPracticeResponse_2015_01_01"
                          message="tns:CreatePrescriptionMedicationForUseInPracticeResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionMedicationWithoutCPR_2015_01_01">
-            <wsdl:input name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01"
-                        message="tns:CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01"/>
+        <wsdl:operation name="CreatePrescriptionMedicationWithoutCPR_2015_01_01_E2">
+            <wsdl:input name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01_E2"
+                        message="tns:CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01_E2"/>
             <wsdl:output name="CreatePrescriptionMedicationWithoutCPRResponse_2015_01_01"
                          message="tns:CreatePrescriptionMedicationWithoutCPRResponse_2015_01_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -716,14 +723,14 @@
 
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-        <wsdl:operation name="GetMedicineCard_2015_01_01_E1">
+        <wsdl:operation name="GetMedicineCard_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1#GetMedicineCard"
                             style="document"/>
             <wsdl:input name="GetMedicineCardRequest_2015_01_01_E1">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E1">
+            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E2">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -796,10 +803,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="UpdateMedicineCard_2015_01_01">
+        <wsdl:operation name="UpdateMedicineCard_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#UpdateMedicineCard"
                             style="document"/>
-            <wsdl:input name="UpdateMedicineCardRequest_2015_01_01">
+            <wsdl:input name="UpdateMedicineCardRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -845,14 +852,14 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedication_2015_01_01">
+        <wsdl:operation name="GetDrugMedication_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetDrugMedication"
                             style="document"/>
             <wsdl:input name="GetDrugMedicationRequest_2015_01_01">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedicationResponse_2015_01_01">
+            <wsdl:output name="GetDrugMedicationResponse_2015_01_01_E2">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -909,10 +916,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="CreateDrugMedication_2015_01_01">
+        <wsdl:operation name="CreateDrugMedication_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CreateDrugMedication"
                             style="document"/>
-            <wsdl:input name="CreateDrugMedicationRequest_2015_01_01">
+            <wsdl:input name="CreateDrugMedicationRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -958,11 +965,11 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionMedication_2015_01_01">
+        <wsdl:operation name="CreatePrescriptionMedication_2015_01_01_E2">
             <soap:operation
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CreatePrescriptionMedication"
                     style="document"/>
-            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01">
+            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -975,14 +982,14 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E1">
+        <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1#GetPrescriptionMedication"
                             style="document"/>
             <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01_E1">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPrescriptionMedicationResponse_2015_01_01">
+            <wsdl:output name="GetPrescriptionMedicationResponse_2015_01_01_E2">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -1089,11 +1096,11 @@
         </wsdl:operation>
 
 
-        <wsdl:operation name="CreatePrescriptionMedicationForUseInPractice_2015_01_01">
+        <wsdl:operation name="CreatePrescriptionMedicationForUseInPractice_2015_01_01_E2">
             <soap:operation
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CreatePrescriptionMedicationForUseInPractice"
                     style="document"/>
-            <wsdl:input name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01">
+            <wsdl:input name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1106,11 +1113,11 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionMedicationWithoutCPR_2015_01_01">
+        <wsdl:operation name="CreatePrescriptionMedicationWithoutCPR_2015_01_01_E2">
             <soap:operation
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CreatePrescriptionMedicationWithoutCPR"
                     style="document"/>
-            <wsdl:input name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01">
+            <wsdl:input name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>

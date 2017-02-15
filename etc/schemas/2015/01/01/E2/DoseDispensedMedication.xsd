@@ -7,12 +7,12 @@
         attributeFormDefault="unqualified">
 
 	<include schemaLocation="DoseDispensingNotPrescribedByDoctorFlag.xsd"/>
-    <import  schemaLocation="../DrugMedication.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
     <include schemaLocation="DoseDispensingWarning.xsd"/>
     <include schemaLocation="PlannedAdministration.xsd"/>
     <import  schemaLocation="../DoseQuantity.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
     <import  schemaLocation="../DoseDispensingEndDate.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
-    <import  schemaLocation="../PrescriptionMedication.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+    <include schemaLocation="PrescriptionMedication.xsd" />
+    <include schemaLocation="DrugMedication.xsd" />
 
     <complexType name="DoseDispensedMedicationType">
         <annotation>
@@ -22,8 +22,8 @@
         <sequence>
         	<element name="NotPrescribedByDoctor" type="medicinecard20150101E2:DoseDispensingNotPrescribedByDoctorFlagType" minOccurs="0"/>
         	<choice>
-            	<element name="DrugMedication" type="medicinecard20150101:DrugMedicationType"/>
-				<element name="Prescription" type="medicinecard20150101:PrescriptionMedicationType"/>
+            	<element name="DrugMedication" type="medicinecard20150101E2:DrugMedicationType"/>
+				<element name="Prescription" type="medicinecard20150101E2:PrescriptionMedicationType"/>
             </choice>
             <element name="Warning" type="medicinecard20150101E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="PlannedAdministration" type="medicinecard20150101E2:PlannedAdministrationType" minOccurs="0"/>
