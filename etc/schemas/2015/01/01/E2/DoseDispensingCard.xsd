@@ -11,6 +11,7 @@
     <include schemaLocation="RequestDateTime.xsd"/>
     <include schemaLocation="DoseDispensingCardIdentifier.xsd"/>
     <include schemaLocation="DoseDispensingCardDescription.xsd"/>
+    <include schemaLocation="DoseDispensingWarning.xsd"/>
     <include schemaLocation="PackingGroupIdentifier.xsd"/>
     <include schemaLocation="PackingGroup.xsd"/>
     <include schemaLocation="DoseDispensingPeriod.xsd"/>
@@ -23,6 +24,7 @@
         <sequence>
         	<element name="Identifier" type="medicinecard20150101E2:DoseDispensingCardIdentifierType" minOccurs="0"/>
         	<element name="Description" type="medicinecard20150101E2:DoseDispensingCardDescriptionType"/>
+            <element name="Warning" type="medicinecard20150101E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="Delivery" type="medicinecard20150101:DeliveryType" minOccurs="0"/>
             <element name="PackingGroupIdentifier" type="medicinecard20150101E2:PackingGroupIdentifierType" minOccurs="0"/>
             <element name="PackingGroupName" type="medicinecard20150101E2:PackingGroupType" minOccurs="0"/>
