@@ -43,7 +43,7 @@
 
 	<target name="publish" depends="clean, all, publish-from-jenkins"/>
 
-	<target name="all" depends="clean, all-idws, all-standard, build-admin-jar,  medicinecard_dist_zips"/>
+	<target name="all" depends="clean, all-idws, all-standard, build-admin-jar, build-testtool-jar,  medicinecard_dist_zips"/>
 	<target name="all-standard" depends="resolve-build, organize-schemas, generate, generate-namespace-oracle"/>
 	<target name="all-idws" depends="resolve-build, organize-schemas_idws"/>
 
@@ -359,6 +359,40 @@
 
         <jar basedir="${target.admin.dir}/classes" destfile="${target.dir}/fmk-schema-admin-classes.jar">
             <fileset dir="${target.admin.dir}/classes">
+                <include name="**/*.class"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="build-testtool-jar" >
+        <property name ="target.testtool.dir" value="${target.dir}/testtool"/>
+        <copy todir="${target.testtool.dir}/schemas">
+            <fileset dir="./etc/testtool-schemas"/>
+        </copy>
+
+        <zip destfile="${target.dir}/fmk-schema-testtool.zip" >
+            <fileset dir="${target.testtool.dir}">
+                <include name="schemas/**/*.xsd"/>
+            </fileset>
+        </zip>
+
+        <mkdir dir="${target.testtool.dir}/src"/>
+
+        <exec executable="xjc">
+            <arg value="${target.dir}/testtool/schemas"/>
+            <arg value="-d"/>
+            <arg value="${target.testtool.dir}/src"/>
+            <arg value="-p"/>
+            <arg value="dk.medicinkortet.rest.resources.jaxb.testtool"/>
+        </exec>
+
+        <mkdir dir="${target.testtool.dir}/classes"/>
+        <javac debug="true" destdir="${target.testtool.dir}/classes" encoding="UTF-8">
+            <src path="${target.testtool.dir}/src"/>
+        </javac>
+
+        <jar basedir="${target.testtool.dir}/classes" destfile="${target.dir}/fmk-schema-testtool-classes.jar">
+            <fileset dir="${target.testtool.dir}/classes">
                 <include name="**/*.class"/>
             </fileset>
         </jar>
