@@ -15,9 +15,16 @@
             <xsd:element name="OnBehalfOf" type="xsd:string" minOccurs="0"/>
             <xsd:element name="ValidateResponse" type="xsd:boolean"/>
             <xsd:element name="Consent" type="testtool20170222:ConsentType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="OrgUsingID" type="testtool20170222:OrgUsingIDType"/>
         </xsd:sequence>
     </xsd:complexType>
 
+    <xsd:complexType name="OrgUsingIDType">
+        <xsd:sequence>
+            <xsd:element name="Value" type="xsd:string"/>
+            <xsd:element name="Format" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
     <xsd:complexType name="ConsentType">
         <xsd:sequence>
