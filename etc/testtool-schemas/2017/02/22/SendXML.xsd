@@ -68,7 +68,16 @@
     <xsd:element name="GetRolesResponse" type="testtool20170222:GetRolesResponseType"/>
     <xsd:complexType name="GetRolesResponseType">
         <xsd:sequence>
-            <xsd:element name="Roles" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Roles" type="testtool20170222:RoleType" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
+
+    <xsd:complexType name="RoleType">
+        <xsd:choice>
+            <xsd:element name="DanishName" type="xsd:string"/>
+            <xsd:element name="EnglishName" type="xsd:string"/>
+        </xsd:choice>
+    </xsd:complexType>
+
 </xsd:schema>
+
