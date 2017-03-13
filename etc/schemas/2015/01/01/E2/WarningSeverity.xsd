@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<simpleType name="WarningSeverityType">
+		<annotation>
+			<documentation xml:lang="en-GB">The severity level of a warning</documentation>
+			<documentation xml:lang="da-DK">Indikation af hvor alvolig en advarsel er</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20150101E2:PredefinedWarningSeverityType medicinecard20150101E2:UndefinedWarningSeverityType"/>
+	</simpleType>
+	<simpleType name="PredefinedWarningSeverityType">
+		<restriction base="medicinecard20150101E2:UndefinedWarningSeverityType">
+			<enumeration value="high"/>
+			<enumeration value="medium"/>
+			<enumeration value="low"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedWarningSeverityType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
+		</restriction>
+	</simpleType>
+</schema>

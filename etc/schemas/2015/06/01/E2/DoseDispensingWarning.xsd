@@ -7,6 +7,7 @@
 		
     <include schemaLocation="DoseDispensingWarningCode.xsd"/>
     <include schemaLocation="DoseDispensingWarningText.xsd"/>
+    <include schemaLocation="WarningSeverity.xsd"/>
 
     <complexType name="DoseDispensingWarningType">
         <annotation>
@@ -16,6 +17,7 @@
         <sequence>
         	<element name="WarningCode" type="medicinecard20150601E2:DoseDispensingWarningCodeType"/>
             <element name="WarningText" type="medicinecard20150601E2:DoseDispensingWarningTextType"/>
+        	<element name="Severity" type="medicinecard20150601E2:WarningSeverityType"/>
         </sequence>
     </complexType>
 </schema>
