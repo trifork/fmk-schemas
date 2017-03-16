@@ -26,14 +26,7 @@
 			<element name="StartDate" type="medicinecard20150601:DosageTimesStartDateType" minOccurs="0"/>
 			<element name="EndDate" type="medicinecard20150601:DosageTimesEndDateType" minOccurs="0"/>
 			<element name="SupplementaryText" type="medicinecard20150601:DosageSupplementaryTextType" minOccurs="0"/>
-			<choice>
-				<!-- A convoluted construction for either AnyDay or one or more Day, or both, bot not neither -->
-				<sequence>
-					<element name="AnyDay" type="medicinecard20150601E2:PlannedDosageAnyDayType"/>
-					<element name="Day" type="medicinecard20150601E2:PlannedDosageDayType" minOccurs="0" maxOccurs="unbounded"/>
-				</sequence>
-				<element name="Day" type="medicinecard20150601E2:PlannedDosageDayType" maxOccurs="unbounded"/>
-			</choice>
+			<element name="Day" type="medicinecard20150601E2:PlannedDosageDayType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
