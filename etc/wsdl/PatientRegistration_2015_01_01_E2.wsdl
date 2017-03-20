@@ -29,24 +29,20 @@
             <xs:include schemaLocation="../schemas/2015/01/01/RegisterPatientOrganisationRelationResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationResponse.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/GetPatientRegistrationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/GetPatientRegistrationResponse.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/CreatePatientRegistrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/CreatePatientRegistrationResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/RemovePatientRegistrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/RemovePatientRegistrationResponse.xsd"/>
-        </xs:schema>
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
-                   elementFormDefault="qualified">
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/SetDoseDispensingOnHoldRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/SetDoseDispensingOnHoldResponse.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/ResumeDoseDispensingRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/ResumeDoseDispensingResponse.xsd"/>
         </xs:schema>
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
                    elementFormDefault="qualified">
             <xs:include schemaLocation="../schemas/2015/01/01/E1/GetPatientOrganisationRelationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E1/GetPatientOrganisationRelationResponse.xsd"/>
+        </xs:schema>
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+                   elementFormDefault="qualified">
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePatientRegistrationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientRegistrationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientRegistrationResponse.xsd"/>
         </xs:schema>
     </wsdl:types>
     <wsdl:message name="SecurityHeader">
@@ -67,24 +63,6 @@
         <wsdl:part name="OnBehalfOfHeader" element="medicinecard20150101:OnBehalfOf"/>
     </wsdl:message>
 
-    <wsdl:message name="SetDoseDispensingOnHoldRequest_2015_01_01_E2">
-        <wsdl:part name="SetDoseDispensingOnHoldRequest"
-                   element="medicinecard20150101E2:SetDoseDispensingOnHoldRequest"/>
-    </wsdl:message>
-    <wsdl:message name="SetDoseDispensingOnHoldResponse_2015_01_01_E2">
-        <wsdl:part name="SetDoseDispensingOnHoldResponse"
-                   element="medicinecard20150101E2:SetDoseDispensingOnHoldResponse"/>
-    </wsdl:message>
-    
-    <wsdl:message name="ResumeDoseDispensingRequest_2015_01_01_E2">
-        <wsdl:part name="ResumeDoseDispensingRequest"
-                   element="medicinecard20150101E2:ResumeDoseDispensingRequest"/>
-    </wsdl:message>
-    <wsdl:message name="ResumeDoseDispensingResponse_2015_01_01_E2">
-        <wsdl:part name="ResumeDoseDispensingResponse"
-                   element="medicinecard20150101E2:ResumeDoseDispensingResponse"/>
-    </wsdl:message>
-    
     <wsdl:message name="GetPatientOrganisationRelationRequest_2015_01_01_E1">
         <wsdl:part name="GetPatientOrganisationRelationRequest"
                    element="medicinecard20150101E1:GetPatientOrganisationRelationRequest"/>
@@ -112,16 +90,16 @@
                    element="medicinecard20150101:RemovePatientOrganisationRelationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientRegistrationRequest_2015_01_01">
-        <wsdl:part name="GetPatientRegistrationRequest" element="medicinecard20150101:GetPatientRegistrationRequest"/>
+    <wsdl:message name="GetPatientRegistrationRequest_2015_01_01_E2">
+        <wsdl:part name="GetPatientRegistrationRequest" element="medicinecard20150101E2:GetPatientRegistrationRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetPatientRegistrationResponse_2015_01_01">
-        <wsdl:part name="GetPatientRegistrationResponse" element="medicinecard20150101:GetPatientRegistrationResponse"/>
+    <wsdl:message name="GetPatientRegistrationResponse_2015_01_01_E2">
+        <wsdl:part name="GetPatientRegistrationResponse" element="medicinecard20150101E2:GetPatientRegistrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePatientRegistrationRequest_2015_01_01">
+    <wsdl:message name="CreatePatientRegistrationRequest_2015_01_01_E2">
         <wsdl:part name="CreatePatientRegistrationRequest"
-                   element="medicinecard20150101:CreatePatientRegistrationRequest"/>
+                   element="medicinecard20150101E2:CreatePatientRegistrationRequest"/>
     </wsdl:message>
     <wsdl:message name="CreatePatientRegistrationResponse_2015_01_01">
         <wsdl:part name="CreatePatientRegistrationResponse"
@@ -144,22 +122,6 @@
 
     <wsdl:portType name="PatientRelationPortType">
 
-        <wsdl:operation name="SetDoseDispensingOnHold_2015_01_01_E2">
-            <wsdl:input name="SetDoseDispensingOnHoldRequest_2015_01_01_E2"
-                        message="tns:SetDoseDispensingOnHoldRequest_2015_01_01_E2"/>
-            <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_01_01_E2"
-                         message="tns:SetDoseDispensingOnHoldResponse_2015_01_01_E2"/>
-          <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="ResumeDoseDispensing_2015_01_01_E2">
-            <wsdl:input name="ResumeDoseDispensingRequest_2015_01_01_E2"
-                        message="tns:ResumeDoseDispensingRequest_2015_01_01_E2"/>
-            <wsdl:output name="ResumeDoseDispensingResponse_2015_01_01_E2"
-                         message="tns:ResumeDoseDispensingResponse_2015_01_01_E2"/>
-          <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-        
         <wsdl:operation name="GetPatientOrganisationRelation_2015_01_01_E1">
             <wsdl:input name="GetPatientOrganisationRelationRequest_2015_01_01_E1"
                         message="tns:GetPatientOrganisationRelationRequest_2015_01_01_E1"/>
@@ -184,17 +146,17 @@
           <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientRegistration_2015_01_01">
-            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01"
-                        message="tns:GetPatientRegistrationRequest_2015_01_01"/>
-            <wsdl:output name="GetPatientRegistrationResponse_2015_01_01"
-                         message="tns:GetPatientRegistrationResponse_2015_01_01"/>
+        <wsdl:operation name="GetPatientRegistration_2015_01_01_E2">
+            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01_E2"
+                        message="tns:GetPatientRegistrationRequest_2015_01_01_E2"/>
+            <wsdl:output name="GetPatientRegistrationResponse_2015_01_01_E2"
+                         message="tns:GetPatientRegistrationResponse_2015_01_01_E2"/>
           <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePatientRegistration_2015_01_01">
-            <wsdl:input name="CreatePatientRegistrationRequest_2015_01_01"
-                        message="tns:CreatePatientRegistrationRequest_2015_01_01"/>
+        <wsdl:operation name="CreatePatientRegistration_2015_01_01_E2">
+            <wsdl:input name="CreatePatientRegistrationRequest_2015_01_01_E2"
+                        message="tns:CreatePatientRegistrationRequest_2015_01_01_E2"/>
             <wsdl:output name="CreatePatientRegistrationResponse_2015_01_01"
                          message="tns:CreatePatientRegistrationResponse_2015_01_01"/>
           <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -215,46 +177,6 @@
 
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-        <wsdl:operation name="SetDoseDispensingOnHold_2015_01_01_E2">
-            <soap:operation
-                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SetDoseDispensingOnHold"
-                    style="document"/>
-            <wsdl:input name="SetDoseDispensingOnHoldRequest_2015_01_01_E2">
-                <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
-                <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
-                <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
-                <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SetDoseDispensingOnHoldResponse_2015_01_01_E2">
-                <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        
-        <wsdl:operation name="ResumeDoseDispensing_2015_01_01_E2">
-            <soap:operation
-                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#ResumeDoseDispensing"
-                    style="document"/>
-            <wsdl:input name="ResumeDoseDispensingRequest_2015_01_01_E2">
-                <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
-                <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
-                <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
-                <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="ResumeDoseDispensingResponse_2015_01_01_E2">
-                <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        
         <wsdl:operation name="GetPatientOrganisationRelation_2015_01_01_E1">
             <soap:operation
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1#GetPatientOrganisationRelation"
@@ -315,17 +237,17 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientRegistration_2015_01_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetPatientRegistration"
+        <wsdl:operation name="GetPatientRegistration_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetPatientRegistration"
                             style="document"/>
-            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01">
+            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01_E2">
                 <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
                 <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
                 <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>
                 <soap:header message="tns:WhitelistingHeader" part="WhitelistingHeader" use="literal"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPatientRegistrationResponse_2015_01_01">
+            <wsdl:output name="GetPatientRegistrationResponse_2015_01_01_E2">
                 <soap:header message="tns:TimingHeader" part="TimingHeader" use="literal"/>
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -334,10 +256,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePatientRegistration_2015_01_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CreatePatientRegistration"
+        <wsdl:operation name="CreatePatientRegistration_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreatePatientRegistration"
                             style="document"/>
-            <wsdl:input name="CreatePatientRegistrationRequest_2015_01_01">
+            <wsdl:input name="CreatePatientRegistrationRequest_2015_01_01_E2">
                 <soap:header message="tns:SecurityHeader" part="SecurityHeader" use="literal"/>
                 <soap:header message="tns:MedComHeader" part="MedcomHeader" use="literal"/>
                 <soap:header message="tns:OnBehalfOfHeader" part="OnBehalfOfHeader" use="literal"/>

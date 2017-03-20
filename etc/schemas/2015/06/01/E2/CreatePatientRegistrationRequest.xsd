@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="../Modificator.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="../ModificationMetadata.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="../PersonIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="../CreateINR.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    
+    <include schemaLocation="SetDoseDispensingOnHold.xsd" />
+    
+    <element name="CreatePatientRegistrationRequest" type="medicinecard20150601E2:CreatePatientRegistrationRequestType">
+        <annotation>
+            <documentation xml:lang="en-GB">Request document to create registrations for a patient</documentation>
+            <documentation xml:lang="da-DK">Request-dokument til at oprette patient-registreringer</documentation>
+        </annotation>
+    </element>
+    <complexType name="CreatePatientRegistrationRequestType">
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+            <element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+            <element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+            <choice>
+                <element name="INR" type="medicinecard20150601:CreateINRType"/>
+                <element name="SetDoseDispensingOnHold" type="medicinecard20150601E2:SetDoseDispensingOnHoldType"/>
+            </choice>
+        </sequence>
+    </complexType>
+</schema>
