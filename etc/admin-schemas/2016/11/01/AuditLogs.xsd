@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:admin20161101="http://www.dkma.dk/medicinecard/xml.schema/2016/11/01"
+            targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2016/11/01"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:element name="GetMethodsResponse" type="admin20161101:GetMethodsResponse"/>
+
+    <xsd:complexType name="GetMethodsResponse">
+        <xsd:sequence>
+            <xsd:element name="Method" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="SearchRequest" type="admin20161101:SearchRequest"/>
+
+    <xsd:complexType name="SearchRequest">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0">
+                <xsd:element name="Person" type="xsd:string"/>
+                <xsd:element name="User" type="xsd:string"/>
+                <xsd:element name="Doctor" type="xsd:string" minOccurs="0"/>
+            </xsd:choice>
+            <xsd:element name="Method" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Interval" type="admin20161101:IntervalType" minOccurs="0"/>
+            <xsd:element name="IncludeFailedCalls" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="IntervalType">
+        <xsd:sequence>
+            <xsd:element name="Start" type="xsd:dateTime"/>
+            <xsd:element name="End" type="xsd:dateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="SearchResponse" type="admin20161101:SearchResponse"/>
+
+    <xsd:complexType name="SearchResponse">
+        <xsd:sequence>
+            <xsd:element name="AuditLog" type="admin20161101:AuditLogType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AuditLogType">
+        <xsd:sequence>
+            <xsd:element name="Date" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="Method" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ServiceVersion" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CPR" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="User" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Role" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="OnBehalfOf" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="OrgCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="OrgName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="AccessType" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Exception" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ProcTime" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="SubProcTime" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="System" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Request" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Response" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CVR" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="VersionWarning" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="AdditionalUserInfo" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="ResponseDetails" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="GetPersonResponse" type="admin20161101:GetPersonResponse"/>
+
+    <xsd:complexType name="GetPersonResponse">
+        <xsd:sequence>
+            <xsd:element name="Name" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="GetMaxDateIntervalResponse" type="admin20161101:GetMaxDateIntervalResponse"/>
+
+    <xsd:complexType name="GetMaxDateIntervalResponse">
+        <xsd:sequence>
+            <xsd:element name="Milliseconds" type="xsd:long"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+</xsd:schema>
