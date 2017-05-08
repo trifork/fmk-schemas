@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3" 
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+	<include schemaLocation="PackingGroupElement.xsd"/>
+	<element name="GetPackingGroupResponse" type="medicinecard20150601E3:GetPackingGroupResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with the contents of a packing group</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel på en pakkegruppes indhold</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPackingGroupResponseType">
+		<sequence>
+			<element name="DoseDispensingCard" type="medicinecard20150601E3:PackingGroupElementType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

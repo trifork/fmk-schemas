@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import  schemaLocation="../E2/DoseDispensingCardIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <import schemaLocation="../PersonIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+
+    <complexType name="PackingGroupElementType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element with identifiers (person and dosedispensing card) for a dosedispensingcard within a packing group</documentation>
+            <documentation xml:lang="da-DK">Element med identifikation (CPR og dosisdispenseringskort-ID) for et element i en pakkegruppe</documentation>
+        </annotation>
+        <sequence>
+        	<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/> 
+        	<element name="Identifier" type="medicinecard20150601E2:DoseDispensingCardIdentifierType"/>
+        </sequence>
+    </complexType>
+</schema>

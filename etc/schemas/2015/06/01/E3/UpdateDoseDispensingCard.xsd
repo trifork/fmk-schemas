@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import  schemaLocation="../Delivery.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import  schemaLocation="../Organisation.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import  schemaLocation="../E2/DoseDispensingCardIdentifier.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <import  schemaLocation="../E2/DoseDispensingCardDescription.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <import  schemaLocation="../PackingGroup.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+
+    <complexType name="UpdateDoseDispensingCardType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element for updating a Dose dispensing card for a specific person</documentation>
+            <documentation xml:lang="da-DK">Opdatering af et Dosisdispenseringskort for en given person</documentation>
+        </annotation>
+        <sequence>
+        	<element name="Identifier" type="medicinecard20150601E2:DoseDispensingCardIdentifierType" minOccurs="0"/>
+        	<element name="Description" type="medicinecard20150601E2:DoseDispensingCardDescriptionType"/>
+            <element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
+            <element name="PackingGroupName" type="medicinecard20150601:PackingGroupType" minOccurs="0"/>
+            <element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
+            <element name="PackedAtOrganisation" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

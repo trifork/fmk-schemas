@@ -1,0 +1,2047 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+<!ENTITY fmkStandardSOAPRequestHeaders "
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+                <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
+                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
+                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+">
+<!ENTITY fmkStandardSOAPResponseHeaders "
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
+                <soap:header use='literal' part='ReplicationStatusHeader' message='tns:ReplicationStatusHeader'/>
+">
+]>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+                  xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+                  xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+                  xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+                  xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3">
+
+    <wsdl:types>
+
+        <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+			<xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd" />
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
+            <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
+        </xs:schema>
+        
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified">
+
+            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+
+            <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
+                       schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/AttachOrDetachPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/AttachOrDetachPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionForUseInPracticeRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionForUseInPracticeResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionWithoutCPRRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionWithoutCPRResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/DeleteEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/DeleteEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationVersionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationVersionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationHistoryRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationHistoryResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardAsPDFRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardAsPDFResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionListRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionListResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetPermissionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetPermissionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GetPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetPrescriptionResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/GetPrescriptionRequestsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetPrescriptionRequestsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchPrescriptionRequestsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchPrescriptionRequestsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/OnBehalfOf.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/PauseDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/PauseDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/PrescriptionReplicationStatus.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/RemoveConsentRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/RemoveConsentResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/GiveConsentRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GiveConsentResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchEffectuationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchEffectuationsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/SetMedicineCardNotReviewedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SetMedicineCardNotReviewedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/SetMedicineCardReviewedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/SetMedicineCardReviewedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/TimingList.xsd"/>
+ 
+            <xs:include schemaLocation="../schemas/2015/06/01/ConsentHeader.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/UnmarkPrescriptionDeprecatedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/UnmarkPrescriptionDeprecatedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UnpauseDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/UnpauseDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UnwithdrawDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/UnwithdrawDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UpdateMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/UpdateMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UpdateDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/UpdateDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/WithdrawDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/WithdrawDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/StartEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/StartEffectuationResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/AutomatedStartEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePharmacyEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreatePharmacyEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/AbortEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/AbortEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UndoEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/UndoEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateAndEffectuatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateAndEffectuatePrescriptionResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/TerminatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/TerminatePrescriptionResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/ReopenPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/ReopenPrescriptionResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/ReplacePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/ReplacePrescriptionResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateOrderRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CreateOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/UpdateOrderRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/UpdateOrderResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/GetNewOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetNewOrdersResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/AcknowledgeOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/AcknowledgeOrdersResponse.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/06/01/GetAuthorisationDateForNewestOpenPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/GetAuthorisationDateForNewestOpenPrescriptionResponse.xsd"/>
+
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" elementFormDefault="qualified">
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3" elementFormDefault="qualified">
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingCardRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingCardResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdateDoseDispensingCardRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdateDoseDispensingCardResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CloseDoseDispensingCardRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CloseDoseDispensingCardResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupResponse.xsd" />
+			
+        </xs:schema>
+
+    </wsdl:types>
+
+    <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
+
+    <wsdl:message name="WhitelistingHeader">
+        <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="ConsentHeader">
+        <wsdl:part name="ConsentHeader" element="medicinecard20150601:ConsentHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="TimingHeader">
+        <wsdl:part name="TimingHeader" element="medicinecard20150601:TimingList"/>
+    </wsdl:message>
+
+    <wsdl:message name="ReplicationStatusHeader">
+        <wsdl:part name="ReplicationStatusHeader" element="medicinecard20150601:PrescriptionReplicationStatus"/>
+    </wsdl:message>
+
+    <wsdl:message name="OnBehalfOfHeader">
+        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20150601:OnBehalfOf"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardRequest_2015_06_01">
+        <wsdl:part name="GetMedicineCardRequest" element="medicinecard20150601:GetMedicineCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardResponse_2015_06_01">
+        <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150601:GetMedicineCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardAsPDFRequest_2015_06_01">
+        <wsdl:part name="GetMedicineCardAsPDFRequest" element="medicinecard20150601:GetMedicineCardAsPDFRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardAsPDFResponse_2015_06_01">
+        <wsdl:part name="GetMedicineCardAsPDFResponse" element="medicinecard20150601:GetMedicineCardAsPDFResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionRequest_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionRequest" element="medicinecard20150601:GetMedicineCardVersionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardVersionResponse_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionResponse" element="medicinecard20150601:GetMedicineCardVersionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionsRequest_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionsRequest" element="medicinecard20150601:GetMedicineCardVersionsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardVersionsResponse_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionsResponse" element="medicinecard20150601:GetMedicineCardVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionListRequest_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionListRequest" element="medicinecard20150601:GetMedicineCardVersionListRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardVersionListResponse_2015_06_01">
+        <wsdl:part name="GetMedicineCardVersionListResponse" element="medicinecard20150601:GetMedicineCardVersionListResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateMedicineCardRequest_2015_06_01">
+        <wsdl:part name="UpdateMedicineCardRequest" element="medicinecard20150601:UpdateMedicineCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateMedicineCardResponse_2015_06_01">
+        <wsdl:part name="UpdateMedicineCardResponse" element="medicinecard20150601:UpdateMedicineCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetMedicineCardNotReviewedRequest_2015_06_01">
+        <wsdl:part name="SetMedicineCardNotReviewedRequest" element="medicinecard20150601:SetMedicineCardNotReviewedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SetMedicineCardNotReviewedResponse_2015_06_01">
+        <wsdl:part name="SetMedicineCardNotReviewedResponse" element="medicinecard20150601:SetMedicineCardNotReviewedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetMedicineCardReviewedRequest_2015_06_01">
+        <wsdl:part name="SetMedicineCardReviewedRequest" element="medicinecard20150601:SetMedicineCardReviewedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SetMedicineCardReviewedResponse_2015_06_01">
+        <wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20150601:SetMedicineCardReviewedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationRequest_2015_06_01">
+        <wsdl:part name="GetDrugMedicationRequest" element="medicinecard20150601:GetDrugMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDrugMedicationResponse_2015_06_01">
+        <wsdl:part name="GetDrugMedicationResponse" element="medicinecard20150601:GetDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationVersionsRequest_2015_06_01">
+        <wsdl:part name="GetDrugMedicationVersionsRequest" element="medicinecard20150601:GetDrugMedicationVersionsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDrugMedicationVersionsResponse_2015_06_01">
+        <wsdl:part name="GetDrugMedicationVersionsResponse" element="medicinecard20150601:GetDrugMedicationVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationHistoryRequest_2015_06_01">
+        <wsdl:part name="GetDrugMedicationHistoryRequest" element="medicinecard20150601:GetDrugMedicationHistoryRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDrugMedicationHistoryResponse_2015_06_01">
+        <wsdl:part name="GetDrugMedicationHistoryResponse" element="medicinecard20150601:GetDrugMedicationHistoryResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="PauseDrugMedicationRequest_2015_06_01">
+        <wsdl:part name="PauseDrugMedicationRequest" element="medicinecard20150601:PauseDrugMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="PauseDrugMedicationResponse_2015_06_01">
+        <wsdl:part name="PauseDrugMedicationResponse" element="medicinecard20150601:PauseDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDrugMedicationRequest_2015_06_01">
+        <wsdl:part name="CreateDrugMedicationRequest" element="medicinecard20150601:CreateDrugMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateDrugMedicationResponse_2015_06_01">
+        <wsdl:part name="CreateDrugMedicationResponse" element="medicinecard20150601:CreateDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AttachOrDetachPrescriptionRequest_2015_06_01">
+        <wsdl:part name="AttachOrDetachPrescriptionRequest"
+                   element="medicinecard20150601:AttachOrDetachPrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AttachOrDetachPrescriptionResponse_2015_06_01">
+        <wsdl:part name="AttachOrDetachPrescriptionResponse"
+                   element="medicinecard20150601:AttachOrDetachPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateEffectuationRequest_2015_06_01">
+        <wsdl:part name="CreateEffectuationRequest" element="medicinecard20150601:CreateEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateEffectuationResponse_2015_06_01">
+        <wsdl:part name="CreateEffectuationResponse" element="medicinecard20150601:CreateEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionRequest_2015_06_01">
+        <wsdl:part name="CreatePrescriptionRequest"
+                   element="medicinecard20150601:CreatePrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePrescriptionResponse_2015_06_01">
+        <wsdl:part name="CreatePrescriptionResponse"
+                   element="medicinecard20150601:CreatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequest_2015_06_01">
+        <wsdl:part name="GetPrescriptionRequest"
+                   element="medicinecard20150601:GetPrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPrescriptionResponse_2015_06_01">
+        <wsdl:part name="GetPrescriptionResponse"
+                   element="medicinecard20150601:GetPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestsRequest_2015_06_01">
+        <wsdl:part name="GetPrescriptionRequestsRequest"
+                   element="medicinecard20150601:GetPrescriptionRequestsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestsResponse_2015_06_01">
+        <wsdl:part name="GetPrescriptionRequestsResponse"
+                   element="medicinecard20150601:GetPrescriptionRequestsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchPrescriptionRequestsRequest_2015_06_01">
+        <wsdl:part name="SearchPrescriptionRequestsRequest"
+                   element="medicinecard20150601:SearchPrescriptionRequestsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchPrescriptionRequestsResponse_2015_06_01">
+        <wsdl:part name="SearchPrescriptionRequestsResponse"
+                   element="medicinecard20150601:SearchPrescriptionRequestsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionRequestRequest_2015_06_01">
+        <wsdl:part name="CreatePrescriptionRequestRequest"
+                   element="medicinecard20150601:CreatePrescriptionRequestRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePrescriptionRequestResponse_2015_06_01">
+        <wsdl:part name="CreatePrescriptionRequestResponse"
+                   element="medicinecard20150601:CreatePrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionRequestRequest_2015_06_01">
+        <wsdl:part name="CancelPrescriptionRequestRequest"
+                   element="medicinecard20150601:CancelPrescriptionRequestRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelPrescriptionRequestResponse_2015_06_01">
+        <wsdl:part name="CancelPrescriptionRequestResponse"
+                   element="medicinecard20150601:CancelPrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_2015_06_01">
+        <wsdl:part name="SearchWithdrawnDrugMedicationsRequest"
+                   element="medicinecard20150601:SearchWithdrawnDrugMedicationsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_2015_06_01">
+        <wsdl:part name="SearchWithdrawnDrugMedicationsResponse"
+                   element="medicinecard20150601:SearchWithdrawnDrugMedicationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnpauseDrugMedicationRequest_2015_06_01">
+        <wsdl:part name="UnpauseDrugMedicationRequest" element="medicinecard20150601:UnpauseDrugMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UnpauseDrugMedicationResponse_2015_06_01">
+        <wsdl:part name="UnpauseDrugMedicationResponse" element="medicinecard20150601:UnpauseDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDrugMedicationRequest_2015_06_01">
+        <wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20150601:UpdateDrugMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateDrugMedicationResponse_2015_06_01">
+        <wsdl:part name="UpdateDrugMedicationResponse" element="medicinecard20150601:UpdateDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="WithdrawDrugMedicationRequest_2015_06_01">
+        <wsdl:part name="WithdrawDrugMedicationRequest" element="medicinecard20150601:WithdrawDrugMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="WithdrawDrugMedicationResponse_2015_06_01">
+        <wsdl:part name="WithdrawDrugMedicationResponse" element="medicinecard20150601:WithdrawDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnwithdrawDrugMedicationRequest_2015_06_01">
+        <wsdl:part name="UnwithdrawDrugMedicationRequest" element="medicinecard20150601:UnwithdrawDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnwithdrawDrugMedicationResponse_2015_06_01">
+        <wsdl:part name="UnwithdrawDrugMedicationResponse" element="medicinecard20150601:UnwithdrawDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchEffectuationsRequest_2015_06_01">
+        <wsdl:part name="SearchEffectuationsRequest" element="medicinecard20150601:SearchEffectuationsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchEffectuationsResponse_2015_06_01">
+        <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20150601:SearchEffectuationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchMedicineCardRequest_2015_06_01">
+        <wsdl:part name="SearchMedicineCardRequest" element="medicinecard20150601:SearchMedicineCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchMedicineCardResponse_2015_06_01">
+        <wsdl:part name="SearchMedicineCardResponse" element="medicinecard20150601:SearchMedicineCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionForUseInPracticeRequest_2015_06_01">
+        <wsdl:part name="CreatePrescriptionForUseInPracticeRequest"
+                   element="medicinecard20150601:CreatePrescriptionForUseInPracticeRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePrescriptionForUseInPracticeResponse_2015_06_01">
+        <wsdl:part name="CreatePrescriptionForUseInPracticeResponse"
+                   element="medicinecard20150601:CreatePrescriptionForUseInPracticeResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionWithoutCPRRequest_2015_06_01">
+        <wsdl:part name="CreatePrescriptionWithoutCPRRequest"
+                   element="medicinecard20150601:CreatePrescriptionWithoutCPRRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePrescriptionWithoutCPRResponse_2015_06_01">
+        <wsdl:part name="CreatePrescriptionWithoutCPRResponse"
+                   element="medicinecard20150601:CreatePrescriptionWithoutCPRResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteEffectuationRequest_2015_06_01">
+        <wsdl:part name="DeleteEffectuationRequest" element="medicinecard20150601:DeleteEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DeleteEffectuationResponse_2015_06_01">
+        <wsdl:part name="DeleteEffectuationResponse" element="medicinecard20150601:DeleteEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPermissionsRequest_2015_06_01">
+        <wsdl:part name="GetPermissionsRequest" element="medicinecard20150601:GetPermissionsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPermissionsResponse_2015_06_01">
+        <wsdl:part name="GetPermissionsResponse" element="medicinecard20150601:GetPermissionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="MarkPrescriptionDeprecatedRequest_2015_06_01">
+        <wsdl:part name="MarkPrescriptionDeprecatedRequest" element="medicinecard20150601:MarkPrescriptionDeprecatedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="MarkPrescriptionDeprecatedResponse_2015_06_01">
+        <wsdl:part name="MarkPrescriptionDeprecatedResponse" element="medicinecard20150601:MarkPrescriptionDeprecatedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnmarkPrescriptionDeprecatedRequest_2015_06_01">
+        <wsdl:part name="UnmarkPrescriptionDeprecatedRequest" element="medicinecard20150601:UnmarkPrescriptionDeprecatedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UnmarkPrescriptionDeprecatedResponse_2015_06_01">
+        <wsdl:part name="UnmarkPrescriptionDeprecatedResponse" element="medicinecard20150601:UnmarkPrescriptionDeprecatedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionRequest_2015_06_01">
+        <wsdl:part name="CancelPrescriptionRequest" element="medicinecard20150601:CancelPrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelPrescriptionResponse_2015_06_01">
+        <wsdl:part name="CancelPrescriptionResponse" element="medicinecard20150601:CancelPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="StartEffectuationRequest_2015_06_01">
+        <wsdl:part name="StartEffectuationRequest" element="medicinecard20150601:StartEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="StartEffectuationResponse_2015_06_01">
+        <wsdl:part name="StartEffectuationResponse" element="medicinecard20150601:StartEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AutomatedStartEffectuationRequest_2015_06_01">
+        <wsdl:part name="AutomatedStartEffectuationRequest" element="medicinecard20150601:StartEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AutomatedStartEffectuationResponse_2015_06_01">
+        <wsdl:part name="AutomatedStartEffectuationResponse" element="medicinecard20150601:AutomatedStartEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePharmacyEffectuationRequest_2015_06_01">
+        <wsdl:part name="CreatePharmacyEffectuationRequest" element="medicinecard20150601:CreatePharmacyEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePharmacyEffectuationResponse_2015_06_01">
+        <wsdl:part name="CreatePharmacyEffectuationResponse" element="medicinecard20150601:CreatePharmacyEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortEffectuationRequest_2015_06_01">
+        <wsdl:part name="AbortEffectuationRequest" element="medicinecard20150601:AbortEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AbortEffectuationResponse_2015_06_01">
+        <wsdl:part name="AbortEffectuationResponse" element="medicinecard20150601:AbortEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoEffectuationRequest_2015_06_01">
+        <wsdl:part name="UndoEffectuationRequest" element="medicinecard20150601:UndoEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UndoEffectuationResponse_2015_06_01">
+        <wsdl:part name="UndoEffectuationResponse" element="medicinecard20150601:UndoEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
+        <wsdl:part name="CreateAndEffectuatePrescriptionRequest" element="medicinecard20150601:CreateAndEffectuatePrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateAndEffectuatePrescriptionResponse_2015_06_01">
+        <wsdl:part name="CreateAndEffectuatePrescriptionResponse" element="medicinecard20150601:CreateAndEffectuatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="TerminatePrescriptionRequest_2015_06_01">
+        <wsdl:part name="TerminatePrescriptionRequest" element="medicinecard20150601:TerminatePrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="TerminatePrescriptionResponse_2015_06_01">
+        <wsdl:part name="TerminatePrescriptionResponse" element="medicinecard20150601:TerminatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="InvalidatePrescriptionRequest_2015_06_01">
+        <wsdl:part name="InvalidatePrescriptionRequest" element="medicinecard20150601:InvalidatePrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="InvalidatePrescriptionResponse_2015_06_01">
+        <wsdl:part name="InvalidatePrescriptionResponse" element="medicinecard20150601:InvalidatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ReopenPrescriptionRequest_2015_06_01">
+        <wsdl:part name="ReopenPrescriptionRequest" element="medicinecard20150601:ReopenPrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ReopenPrescriptionResponse_2015_06_01">
+        <wsdl:part name="ReopenPrescriptionResponse" element="medicinecard20150601:ReopenPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ReplacePrescriptionRequest_2015_06_01">
+        <wsdl:part name="ReplacePrescriptionRequest" element="medicinecard20150601:ReplacePrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ReplacePrescriptionResponse_2015_06_01">
+        <wsdl:part name="ReplacePrescriptionResponse" element="medicinecard20150601:ReplacePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateOrderRequest_2015_06_01">
+        <wsdl:part name="CreateOrderRequest" element="medicinecard20150601:CreateOrderRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateOrderResponse_2015_06_01">
+        <wsdl:part name="CreateOrderResponse" element="medicinecard20150601:CreateOrderResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelOrderRequest_2015_06_01">
+        <wsdl:part name="CancelOrderRequest" element="medicinecard20150601:CancelOrderRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelOrderResponse_2015_06_01">
+        <wsdl:part name="CancelOrderResponse" element="medicinecard20150601:CancelOrderResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateOrderRequest_2015_06_01">
+        <wsdl:part name="UpdateOrderRequest" element="medicinecard20150601:UpdateOrderRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateOrderResponse_2015_06_01">
+        <wsdl:part name="UpdateOrderResponse" element="medicinecard20150601:UpdateOrderResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetNewOrdersRequest_2015_06_01">
+        <wsdl:part name="GetNewOrdersRequest" element="medicinecard20150601:GetNewOrdersRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetNewOrdersResponse_2015_06_01">
+        <wsdl:part name="GetNewOrdersResponse" element="medicinecard20150601:GetNewOrdersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AcknowledgeOrdersRequest_2015_06_01">
+        <wsdl:part name="AcknowledgeOrdersRequest" element="medicinecard20150601:AcknowledgeOrdersRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AcknowledgeOrdersResponse_2015_06_01">
+        <wsdl:part name="AcknowledgeOrdersResponse" element="medicinecard20150601:AcknowledgeOrdersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RemoveConsentRequest_2015_06_01">
+        <wsdl:part name="RemoveConsentRequest" element="medicinecard20150601:RemoveConsentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RemoveConsentResponse_2015_06_01">
+        <wsdl:part name="RemoveConsentResponse" element="medicinecard20150601:RemoveConsentResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GiveConsentRequest_2015_06_01">
+        <wsdl:part name="GiveConsentRequest" element="medicinecard20150601:GiveConsentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GiveConsentResponse_2015_06_01">
+        <wsdl:part name="GiveConsentResponse" element="medicinecard20150601:GiveConsentResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01">
+        <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionRequest" element="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01">
+        <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionResponse" element="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01_E2">
+        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601E2:GetDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDoseDispensingCardResponse_2015_06_01_E2">
+        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDoseDispensingCardRequest_2015_06_01_E3">
+        <wsdl:part name="CreateDoseDispensingCardRequest" element="medicinecard20150601E3:CreateDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateDoseDispensingCardResponse_2015_06_01_E3">
+        <wsdl:part name="CreateDoseDispensingCardResponse" element="medicinecard20150601E3:CreateDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDoseDispensingCardRequest_2015_06_01_E3">
+        <wsdl:part name="UpdateDoseDispensingCardRequest" element="medicinecard20150601E3:UpdateDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateDoseDispensingCardResponse_2015_06_01_E3">
+        <wsdl:part name="UpdateDoseDispensingCardResponse" element="medicinecard20150601E3:UpdateDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CloseDoseDispensingCardRequest_2015_06_01_E3">
+        <wsdl:part name="CloseDoseDispensingCardRequest" element="medicinecard20150601E3:CloseDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CloseDoseDispensingCardResponse_2015_06_01_E3">
+        <wsdl:part name="CloseDoseDispensingCardResponse" element="medicinecard20150601E3:CloseDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingGroupRequest_2015_06_01_E3">
+        <wsdl:part name="GetPackingGroupRequest" element="medicinecard20150601E3:GetPackingGroupRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPackingGroupResponse_2015_06_01_E3">
+        <wsdl:part name="GetPackingGroupResponse" element="medicinecard20150601E3:GetPackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DGWSFault">
+        <wsdl:part name="fault" element="medcom:FaultCode"/>
+    </wsdl:message>
+
+    <wsdl:portType name="MedicineCardPortType">
+
+        <wsdl:operation name="GetMedicineCard_2015_06_01">
+            <wsdl:input name="GetMedicineCardRequest_2015_06_01" message="tns:GetMedicineCardRequest_2015_06_01"/>
+            <wsdl:output name="GetMedicineCardResponse_2015_06_01" message="tns:GetMedicineCardResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardAsPDF_2015_06_01">
+            <wsdl:input name="GetMedicineCardAsPDFRequest_2015_06_01"
+                        message="tns:GetMedicineCardAsPDFRequest_2015_06_01"/>
+            <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01"
+                         message="tns:GetMedicineCardAsPDFResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersion_2015_06_01">
+            <wsdl:input name="GetMedicineCardVersionRequest_2015_06_01"
+                        message="tns:GetMedicineCardVersionRequest_2015_06_01"/>
+            <wsdl:output name="GetMedicineCardVersionResponse_2015_06_01"
+                         message="tns:GetMedicineCardVersionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersions_2015_06_01">
+            <wsdl:input name="GetMedicineCardVersionsRequest_2015_06_01"
+                        message="tns:GetMedicineCardVersionsRequest_2015_06_01"/>
+            <wsdl:output name="GetMedicineCardVersionsResponse_2015_06_01"
+                         message="tns:GetMedicineCardVersionsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_2015_06_01">
+            <wsdl:input name="GetMedicineCardVersionListRequest_2015_06_01"
+                        message="tns:GetMedicineCardVersionListRequest_2015_06_01"/>
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_06_01"
+                         message="tns:GetMedicineCardVersionListResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="UpdateMedicineCard_2015_06_01">
+            <wsdl:input name="UpdateMedicineCardRequest_2015_06_01" message="tns:UpdateMedicineCardRequest_2015_06_01"/>
+            <wsdl:output name="UpdateMedicineCardResponse_2015_06_01"
+                         message="tns:UpdateMedicineCardResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardNotReviewed_2015_06_01">
+            <wsdl:input name="SetMedicineCardNotReviewedRequest_2015_06_01"
+                        message="tns:SetMedicineCardNotReviewedRequest_2015_06_01"/>
+            <wsdl:output name="SetMedicineCardNotReviewedResponse_2015_06_01"
+                         message="tns:SetMedicineCardNotReviewedResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardReviewed_2015_06_01">
+            <wsdl:input name="SetMedicineCardReviewedRequest_2015_06_01"
+                        message="tns:SetMedicineCardReviewedRequest_2015_06_01"/>
+            <wsdl:output name="SetMedicineCardReviewedResponse_2015_06_01"
+                         message="tns:SetMedicineCardReviewedResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedication_2015_06_01">
+            <wsdl:input name="GetDrugMedicationRequest_2015_06_01" message="tns:GetDrugMedicationRequest_2015_06_01"/>
+            <wsdl:output name="GetDrugMedicationResponse_2015_06_01"
+                         message="tns:GetDrugMedicationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationVersions_2015_06_01">
+            <wsdl:input name="GetDrugMedicationVersionsRequest_2015_06_01" message="tns:GetDrugMedicationVersionsRequest_2015_06_01"/>
+            <wsdl:output name="GetDrugMedicationVersionsResponse_2015_06_01"
+                         message="tns:GetDrugMedicationVersionsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>       
+
+        <wsdl:operation name="GetDrugMedicationHistory_2015_06_01">
+            <wsdl:input name="GetDrugMedicationHistoryRequest_2015_06_01" message="tns:GetDrugMedicationHistoryRequest_2015_06_01"/>
+            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_06_01"
+                         message="tns:GetDrugMedicationHistoryResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="PauseDrugMedication_2015_06_01">
+            <wsdl:input name="PauseDrugMedicationRequest_2015_06_01"
+                        message="tns:PauseDrugMedicationRequest_2015_06_01"/>
+            <wsdl:output name="PauseDrugMedicationResponse_2015_06_01"
+                         message="tns:PauseDrugMedicationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDrugMedication_2015_06_01">
+            <wsdl:input name="CreateDrugMedicationRequest_2015_06_01"
+                        message="tns:CreateDrugMedicationRequest_2015_06_01"/>
+            <wsdl:output name="CreateDrugMedicationResponse_2015_06_01"
+                         message="tns:CreateDrugMedicationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="AttachOrDetachPrescription_2015_06_01">
+            <wsdl:input name="AttachOrDetachPrescriptionRequest_2015_06_01"
+                        message="tns:AttachOrDetachPrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="AttachOrDetachPrescriptionResponse_2015_06_01"
+                         message="tns:AttachOrDetachPrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateEffectuation_2015_06_01">
+            <wsdl:input name="CreateEffectuationRequest_2015_06_01" message="tns:CreateEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="CreateEffectuationResponse_2015_06_01"
+                         message="tns:CreateEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescription_2015_06_01">
+            <wsdl:input name="CreatePrescriptionRequest_2015_06_01"
+                        message="tns:CreatePrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="CreatePrescriptionResponse_2015_06_01"
+                         message="tns:CreatePrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescription_2015_06_01">
+            <wsdl:input name="GetPrescriptionRequest_2015_06_01"
+                        message="tns:GetPrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="GetPrescriptionResponse_2015_06_01"
+                         message="tns:GetPrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequests_2015_06_01">
+            <wsdl:input name="GetPrescriptionRequestsRequest_2015_06_01"
+                        message="tns:GetPrescriptionRequestsRequest_2015_06_01"/>
+            <wsdl:output name="GetPrescriptionRequestsResponse_2015_06_01"
+                         message="tns:GetPrescriptionRequestsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="SearchPrescriptionRequests_2015_06_01">
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_06_01"
+                        message="tns:SearchPrescriptionRequestsRequest_2015_06_01"/>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_06_01"
+                         message="tns:SearchPrescriptionRequestsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="CreatePrescriptionRequest_2015_06_01">
+            <wsdl:input name="CreatePrescriptionRequestRequest_2015_06_01"
+                        message="tns:CreatePrescriptionRequestRequest_2015_06_01"/>
+            <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01"
+                         message="tns:CreatePrescriptionRequestResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01"
+                        message="tns:CancelPrescriptionRequestRequest_2015_06_01"/>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_06_01"
+                         message="tns:CancelPrescriptionRequestResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchWithdrawnDrugMedications_2015_06_01">
+            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_2015_06_01"
+                        message="tns:SearchWithdrawnDrugMedicationsRequest_2015_06_01"/>
+            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_2015_06_01"
+                         message="tns:SearchWithdrawnDrugMedicationsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnpauseDrugMedication_2015_06_01">
+            <wsdl:input name="UnpauseDrugMedicationRequest_2015_06_01"
+                        message="tns:UnpauseDrugMedicationRequest_2015_06_01"/>
+            <wsdl:output name="UnpauseDrugMedicationResponse_2015_06_01"
+                         message="tns:UnpauseDrugMedicationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDrugMedication_2015_06_01">
+            <wsdl:input name="UpdateDrugMedicationRequest_2015_06_01"
+                        message="tns:UpdateDrugMedicationRequest_2015_06_01"/>
+            <wsdl:output name="UpdateDrugMedicationResponse_2015_06_01"
+                         message="tns:UpdateDrugMedicationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="WithdrawDrugMedication_2015_06_01">
+            <wsdl:input name="WithdrawDrugMedicationRequest_2015_06_01"
+                        message="tns:WithdrawDrugMedicationRequest_2015_06_01"/>
+            <wsdl:output name="WithdrawDrugMedicationResponse_2015_06_01"
+                         message="tns:WithdrawDrugMedicationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnwithdrawDrugMedication_2015_06_01">
+            <wsdl:input name="UnwithdrawDrugMedicationRequest_2015_06_01"
+                        message="tns:UnwithdrawDrugMedicationRequest_2015_06_01"/>
+            <wsdl:output name="UnwithdrawDrugMedicationResponse_2015_06_01"
+                         message="tns:UnwithdrawDrugMedicationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchEffectuations_2015_06_01">
+            <wsdl:input name="SearchEffectuationsRequest_2015_06_01"
+                        message="tns:SearchEffectuationsRequest_2015_06_01"/>
+            <wsdl:output name="SearchEffectuationsResponse_2015_06_01"
+                         message="tns:SearchEffectuationsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchMedicineCard_2015_06_01">
+            <wsdl:input name="SearchMedicineCardRequest_2015_06_01"
+                        message="tns:SearchMedicineCardRequest_2015_06_01"/>
+            <wsdl:output name="SearchMedicineCardResponse_2015_06_01"
+                         message="tns:SearchMedicineCardResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionForUseInPractice_2015_06_01">
+            <wsdl:input name="CreatePrescriptionForUseInPracticeRequest_2015_06_01"
+                        message="tns:CreatePrescriptionForUseInPracticeRequest_2015_06_01"/>
+            <wsdl:output name="CreatePrescriptionForUseInPracticeResponse_2015_06_01"
+                         message="tns:CreatePrescriptionForUseInPracticeResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionWithoutCPR_2015_06_01">
+            <wsdl:input name="CreatePrescriptionWithoutCPRRequest_2015_06_01"
+                        message="tns:CreatePrescriptionWithoutCPRRequest_2015_06_01"/>
+            <wsdl:output name="CreatePrescriptionWithoutCPRResponse_2015_06_01"
+                         message="tns:CreatePrescriptionWithoutCPRResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteEffectuation_2015_06_01">
+            <wsdl:input name="DeleteEffectuationRequest_2015_06_01" message="tns:DeleteEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="DeleteEffectuationResponse_2015_06_01"
+                         message="tns:DeleteEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPermissions_2015_06_01">
+            <wsdl:input name="GetPermissionsRequest_2015_06_01" message="tns:GetPermissionsRequest_2015_06_01"/>
+            <wsdl:output name="GetPermissionsResponse_2015_06_01" message="tns:GetPermissionsResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="MarkPrescriptionDeprecated_2015_06_01">
+            <wsdl:input name="MarkPrescriptionDeprecatedRequest_2015_06_01" message="tns:MarkPrescriptionDeprecatedRequest_2015_06_01"/>
+            <wsdl:output name="MarkPrescriptionDeprecatedResponse_2015_06_01" message="tns:MarkPrescriptionDeprecatedResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnmarkPrescriptionDeprecated_2015_06_01">
+            <wsdl:input name="UnmarkPrescriptionDeprecatedRequest_2015_06_01" message="tns:UnmarkPrescriptionDeprecatedRequest_2015_06_01"/>
+            <wsdl:output name="UnmarkPrescriptionDeprecatedResponse_2015_06_01" message="tns:UnmarkPrescriptionDeprecatedResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescription_2015_06_01">
+            <wsdl:input name="CancelPrescriptionRequest_2015_06_01" message="tns:CancelPrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="CancelPrescriptionResponse_2015_06_01" message="tns:CancelPrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="StartEffectuation_2015_06_01">
+            <wsdl:input name="StartEffectuationRequest_2015_06_01" message="tns:StartEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="StartEffectuationResponse_2015_06_01" message="tns:StartEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01" message="tns:AutomatedStartEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01" message="tns:AutomatedStartEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePharmacyEffectuation_2015_06_01">
+            <wsdl:input name="CreatePharmacyEffectuationRequest_2015_06_01" message="tns:CreatePharmacyEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="CreatePharmacyEffectuationResponse_2015_06_01" message="tns:CreatePharmacyEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortEffectuation_2015_06_01">
+            <wsdl:input name="AbortEffectuationRequest_2015_06_01" message="tns:AbortEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="AbortEffectuationResponse_2015_06_01" message="tns:AbortEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoEffectuation_2015_06_01">
+            <wsdl:input name="UndoEffectuationRequest_2015_06_01" message="tns:UndoEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="UndoEffectuationResponse_2015_06_01" message="tns:UndoEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateAndEffectuatePrescription_2015_06_01">
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01" message="tns:CreateAndEffectuatePrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01" message="tns:CreateAndEffectuatePrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="TerminatePrescription_2015_06_01">
+            <wsdl:input name="TerminatePrescriptionRequest_2015_06_01" message="tns:TerminatePrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="TerminatePrescriptionResponse_2015_06_01" message="tns:TerminatePrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="InvalidatePrescription_2015_06_01">
+            <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01" message="tns:InvalidatePrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="InvalidatePrescriptionResponse_2015_06_01" message="tns:InvalidatePrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="ReopenPrescription_2015_06_01">
+            <wsdl:input name="ReopenPrescriptionRequest_2015_06_01" message="tns:ReopenPrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="ReopenPrescriptionResponse_2015_06_01" message="tns:ReopenPrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="ReplacePrescription_2015_06_01">
+            <wsdl:input name="ReplacePrescriptionRequest_2015_06_01" message="tns:ReplacePrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="ReplacePrescriptionResponse_2015_06_01" message="tns:ReplacePrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateOrder_2015_06_01">
+            <wsdl:input name="CreateOrderRequest_2015_06_01" message="tns:CreateOrderRequest_2015_06_01"/>
+            <wsdl:output name="CreateOrderResponse_2015_06_01" message="tns:CreateOrderResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrder_2015_06_01">
+            <wsdl:input name="CancelOrderRequest_2015_06_01" message="tns:CancelOrderRequest_2015_06_01"/>
+            <wsdl:output name="CancelOrderResponse_2015_06_01" message="tns:CancelOrderResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateOrder_2015_06_01">
+            <wsdl:input name="UpdateOrderRequest_2015_06_01" message="tns:UpdateOrderRequest_2015_06_01"/>
+            <wsdl:output name="UpdateOrderResponse_2015_06_01" message="tns:UpdateOrderResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetNewOrders_2015_06_01">
+            <wsdl:input name="GetNewOrdersRequest_2015_06_01" message="tns:GetNewOrdersRequest_2015_06_01"/>
+            <wsdl:output name="GetNewOrdersResponse_2015_06_01" message="tns:GetNewOrdersResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="AcknowledgeOrders_2015_06_01">
+            <wsdl:input name="AcknowledgeOrdersRequest_2015_06_01" message="tns:AcknowledgeOrdersRequest_2015_06_01"/>
+            <wsdl:output name="AcknowledgeOrdersResponse_2015_06_01" message="tns:AcknowledgeOrdersResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="RemoveConsent_2015_06_01">
+            <wsdl:input name="RemoveConsentRequest_2015_06_01" message="tns:RemoveConsentRequest_2015_06_01"/>
+            <wsdl:output name="RemoveConsentResponse_2015_06_01" message="tns:RemoveConsentResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GiveConsent_2015_06_01">
+            <wsdl:input name="GiveConsentRequest_2015_06_01" message="tns:GiveConsentRequest_2015_06_01"/>
+            <wsdl:output name="GiveConsentResponse_2015_06_01" message="tns:GiveConsentResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAuthorisationDateForNewestOpenPrescription_2015_06_01">
+            <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01" message="tns:GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01"/>
+            <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01" message="tns:GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingCard_2015_06_01_E3">
+            <wsdl:input name="CreateDoseDispensingCardRequest_2015_06_01_E3" message="tns:CreateDoseDispensingCardRequest_2015_06_01_E3"/>
+            <wsdl:output name="CreateDoseDispensingCardResponse_2015_06_01_E3" message="tns:CreateDoseDispensingCardResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingCard_2015_06_01_E3">
+            <wsdl:input name="UpdateDoseDispensingCardRequest_2015_06_01_E3" message="tns:UpdateDoseDispensingCardRequest_2015_06_01_E3"/>
+            <wsdl:output name="UpdateDoseDispensingCardResponse_2015_06_01_E3" message="tns:UpdateDoseDispensingCardResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CloseDoseDispensingCard_2015_06_01_E3">
+            <wsdl:input name="CloseDoseDispensingCardRequest_2015_06_01_E3" message="tns:CloseDoseDispensingCardRequest_2015_06_01_E3"/>
+            <wsdl:output name="CloseDoseDispensingCardResponse_2015_06_01_E3" message="tns:CloseDoseDispensingCardResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingGroup_2015_06_01_E3">
+            <wsdl:input name="GetPackingGroupRequest_2015_06_01_E3" message="tns:GetPackingGroupRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetPackingGroupResponse_2015_06_01_E3" message="tns:GetPackingGroupResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="MedicineCardBinding" type="tns:MedicineCardPortType">
+
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="GetMedicineCard_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCard"
+                            style="document"/>
+            <wsdl:input name="GetMedicineCardRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardAsPDF_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardAsPDF"
+                            style="document"/>
+            <wsdl:input name="GetMedicineCardAsPDFRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardAsPDFResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersion_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardVersion"
+                            style="document"/>
+            <wsdl:input name="GetMedicineCardVersionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersions_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardVersions"
+                            style="document"/>
+            <wsdl:input name="GetMedicineCardVersionsRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionsResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetMedicineCardVersionList"
+                            style="document"/>
+            <wsdl:input name="GetMedicineCardVersionListRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateMedicineCard_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateMedicineCard"
+                            style="document"/>
+            <wsdl:input name="UpdateMedicineCardRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateMedicineCardResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardNotReviewed_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SetMedicineCardNotReviewed"
+                            style="document"/>
+            <wsdl:input name="SetMedicineCardNotReviewedRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetMedicineCardNotReviewedResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardReviewed_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SetMedicineCardReviewed"
+                            style="document"/>
+            <wsdl:input name="SetMedicineCardReviewedRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetMedicineCardReviewedResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedication_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDrugMedication"
+                            style="document"/>
+            <wsdl:input name="GetDrugMedicationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationVersions_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDrugMedicationVersions"
+                            style="document"/>
+            <wsdl:input name="GetDrugMedicationVersionsRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationVersionsResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationHistory_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDrugMedicationHistory"
+                            style="document"/>
+            <wsdl:input name="GetDrugMedicationHistoryRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="PauseDrugMedication_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#PauseDrugMedication"
+                            style="document"/>
+            <wsdl:input name="PauseDrugMedicationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="PauseDrugMedicationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDrugMedication_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateDrugMedication"
+                            style="document"/>
+            <wsdl:input name="CreateDrugMedicationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateDrugMedicationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="AttachOrDetachPrescription_2015_06_01">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AttachOrDetachPrescription"
+                    style="document"/>
+            <wsdl:input name="AttachOrDetachPrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AttachOrDetachPrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateEffectuation"
+                            style="document"/>
+            <wsdl:input name="CreateEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescription_2015_06_01">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescription"
+                    style="document"/>
+            <wsdl:input name="CreatePrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetPrescription"
+                            style="document"/>
+            <wsdl:input name="GetPrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequests_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetPrescriptionRequests"
+                            style="document"/>
+            <wsdl:input name="GetPrescriptionRequestsRequest_2015_06_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionRequestsResponse_2015_06_01">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionRequest_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="CreatePrescriptionRequestRequest_2015_06_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelPrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_06_01">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPrescriptionRequests_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchPrescriptionRequests"
+                            style="document"/>
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_06_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_06_01">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchWithdrawnDrugMedications_2015_06_01">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchWithdrawnDrugMedications"
+                    style="document"/>
+            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnpauseDrugMedication_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UnpauseDrugMedication"
+                            style="document"/>
+            <wsdl:input name="UnpauseDrugMedicationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnpauseDrugMedicationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDrugMedication_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateDrugMedication"
+                            style="document"/>
+             <wsdl:input name="UpdateDrugMedicationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateDrugMedicationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="WithdrawDrugMedication_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#WithdrawDrugMedication"
+                            style="document"/>
+            <wsdl:input name="WithdrawDrugMedicationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="WithdrawDrugMedicationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchEffectuations_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchEffectuations"
+                            style="document"/>
+            <wsdl:input name="SearchEffectuationsRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchEffectuationsResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchMedicineCard_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#SearchMedicineCard" style="document"/>
+            <wsdl:input name="SearchMedicineCardRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchMedicineCardResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UnwithdrawDrugMedication_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UnwithdrawDrugMedication"
+                            style="document"/>
+            <wsdl:input name="UnwithdrawDrugMedicationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnwithdrawDrugMedicationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+
+        <wsdl:operation name="CreatePrescriptionForUseInPractice_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionForUseInPractice"
+                    style="document"/>
+            <wsdl:input name="CreatePrescriptionForUseInPracticeRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionForUseInPracticeResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionWithoutCPR_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePrescriptionWithoutCPR"
+                    style="document"/>
+            <wsdl:input name="CreatePrescriptionWithoutCPRRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionWithoutCPRResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#DeleteEffectuation"
+                            style="document"/>
+            <wsdl:input name="DeleteEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="GetPermissions_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetPermissions"
+                            style="document"/>
+            <wsdl:input name="GetPermissionsRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPermissionsResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="MarkPrescriptionDeprecated_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#MarkPrescriptionDeprecated"
+                            style="document"/>
+            <wsdl:input name="MarkPrescriptionDeprecatedRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="MarkPrescriptionDeprecatedResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="UnmarkPrescriptionDeprecated_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UnmarkPrescriptionDeprecated"
+                            style="document"/>
+            <wsdl:input name="UnmarkPrescriptionDeprecatedRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnmarkPrescriptionDeprecatedResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="CancelPrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelPrescription"
+                            style="document"/>
+            <wsdl:input name="CancelPrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelPrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="StartEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#StartEffectuation"
+                            style="document"/>
+            <wsdl:input name="StartEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="StartEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AutomatedStartEffectuation"
+                            style="document"/>
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="CreatePharmacyEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePharmacyEffectuation"
+                            style="document"/>
+            <wsdl:input name="CreatePharmacyEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePharmacyEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="AbortEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AbortEffectuation"
+                            style="document"/>
+            <wsdl:input name="AbortEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AbortEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="UndoEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UndoEffectuation"
+                            style="document"/>
+            <wsdl:input name="UndoEffectuationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoEffectuationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="CreateAndEffectuatePrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateAndEffectuatePrescription"
+                            style="document"/>
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="TerminatePrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#TerminatePrescription"
+                            style="document"/>
+            <wsdl:input name="TerminatePrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="TerminatePrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="InvalidatePrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#InvalidatePrescription"
+                            style="document"/>
+            <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="InvalidatePrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="ReopenPrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#ReopenPrescription"
+                            style="document"/>
+            <wsdl:input name="ReopenPrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReopenPrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="ReplacePrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#ReplacePrescription"
+                            style="document"/>
+            <wsdl:input name="ReplacePrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReplacePrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="CreateOrder_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateOrder"
+                            style="document"/>
+            <wsdl:input name="CreateOrderRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateOrderResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrder_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelOrder"
+                            style="document"/>
+            <wsdl:input name="CancelOrderRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelOrderResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+
+        <wsdl:operation name="UpdateOrder_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateOrder"
+                            style="document"/>
+            <wsdl:input name="UpdateOrderRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateOrderResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="GetNewOrders_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetNewOrders"
+                            style="document"/>
+            <wsdl:input name="GetNewOrdersRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetNewOrdersResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+       <wsdl:operation name="AcknowledgeOrders_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AcknowledgeOrders"
+                            style="document"/>
+            <wsdl:input name="AcknowledgeOrdersRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AcknowledgeOrdersResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="RemoveConsent_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#RemoveConsent"
+                            style="document"/>
+            <wsdl:input name="RemoveConsentRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RemoveConsentResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GiveConsent_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GiveConsent"
+                            style="document"/>
+            <wsdl:input name="GiveConsentRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GiveConsentResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAuthorisationDateForNewestOpenPrescription_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetAuthorisationDateForNewestOpenPrescription"
+                            style="document"/>
+            <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingCard_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CreateDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="CreateDoseDispensingCardRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateDoseDispensingCardResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingCard_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UpdateDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="UpdateDoseDispensingCardRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateDoseDispensingCardResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CloseDoseDispensingCard_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CloseDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="CloseDoseDispensingCardRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CloseDoseDispensingCardResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingGroup_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetPackingGroup"
+                            style="document"/>
+            <wsdl:input name="GetPackingGroupRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingGroupResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+
+    <wsdl:service name="MedicineCard">
+        <wsdl:port name="MedicineCardPort" binding="tns:MedicineCardBinding">
+            <soap:address location="https://test1.fmk.netic.dk/fmk12/ws/medicinecard"/>
+        </wsdl:port>
+
+    </wsdl:service>
+
+</wsdl:definitions>
