@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<element name="SetMedicineCardNotReviewedRequest" type="medicinecard20150101E2:SetMedicineCardNotReviewedRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request to set a date and time for marking the medicine card not reviewed</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel til at sætte dato og tid for markering af at manglende medicinkort-gennemgang</documentation>
+		</annotation>
+	</element>
+	<complexType name="SetMedicineCardNotReviewedRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType" />
+			<element name="MedicineCardVersion" type="medicinecard20150101:MedicineCardVersionType"/>
+			<element name="NotReviewedBy" type="medicinecard20150101:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="NotReviewedDateTime" type="medicinecard20150101:ReviewedDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>

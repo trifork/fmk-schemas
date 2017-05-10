@@ -6,13 +6,9 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="DoseDispensingPeriodStartDate.xsd" />
-    <include schemaLocation="DoseDispensingPeriodEndDate.xsd" />
-    <include schemaLocation="DoseDispensingDeadline.xsd" />
-    <include schemaLocation="DoseDispensedEffectuationDate.xsd"/>
-    <include schemaLocation="PrivateDoseDispensedMedication.xsd"/>
-    <include schemaLocation="DoseDispensedMedication.xsd"/>
-    <include schemaLocation="DoseDispensingDetailedSpecification.xsd"/>
+    <import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
 
     <complexType name="DoseDispensingPeriodType">
         <annotation>

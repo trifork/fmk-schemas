@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101E1="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<element name="GetPrescriptionMedicationRequest" type="medicinecard20150101E2:GetPrescriptionMedicationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a prescription medication</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter en receptordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPrescriptionMedicationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType" />
+			<choice>
+				<element name="Identifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType" maxOccurs="50"/>
+				<element name="IncludeOpenPrescriptionMedications" type="medicinecard20150101E1:IncludeOpenPrescriptionMedicationsType"/>
+				<element name="IncludeAllPrescriptionMedications" type="medicinecard20150101E1:IncludeAllPrescriptionMedicationsType"/>
+			</choice>
+			<element name="IncludeEffectuations" type="medicinecard20150101:IncludeEffectuationsType"/>
+		</sequence>
+	</complexType>
+</schema>

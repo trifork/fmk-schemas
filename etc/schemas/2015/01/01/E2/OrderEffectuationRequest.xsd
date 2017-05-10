@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<element name="OrderEffectuationRequest" type="medicinecard20150101E2:OrderEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for reordering prescription medications from drug medications</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at genbestille receptordinationer fra lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderEffectuationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType" />
+			<element name="MedicineCardVersion" type="medicinecard20150101:MedicineCardVersionType"/>
+			<element name="OrderedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<choice maxOccurs="unbounded">
+				<element name="OrderPrescriptionMedication" type="medicinecard20150101:OrderPrescriptionMedicationType"/>
+				<element name="OrderEffectuation" type="medicinecard20150101:OrderEffectuationType"/>
+				<element name="OrderPrescriptionMedicationOrEffectuation" type="medicinecard20150101:OrderEffectuationOrPrescriptionMedicationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

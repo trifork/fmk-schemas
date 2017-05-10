@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<element name="ModificatorPerson" type="medicinecard20150101E2:ModificatorPersonType">
+		<annotation>
+			<documentation xml:lang="en-GB">A FMK user that is not an authorised healthchare professional</documentation>
+			<documentation xml:lang="da-DK">En FMK aktør, der ikke er en autoriseret sundhedsperson</documentation>
+		</annotation>
+	</element>
+	<complexType name="ModificatorPersonType">
+		<sequence>
+			<element name="Name" type="medicinecard20150101:PersonNameType"/>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType"  minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

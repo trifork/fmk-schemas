@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<element name="GetMedicineCardVersionsRequest" type="medicinecard20150101E2:GetMedicineCardVersionsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request for all the versionnumbers of a medicinecard</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel efter alle versionsnumre for et medicinkorts</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetMedicineCardVersionsRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType" />
+		</sequence>
+	</complexType>
+</schema>
