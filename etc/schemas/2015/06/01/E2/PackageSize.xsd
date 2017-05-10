@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="PackageSizeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Package size in strucured form</documentation>
+			<documentation xml:lang="da-DK">Pakningsstørrelse på struktureret form</documentation>
+		</annotation>
+		<sequence>
+			<element name="Value" type="medicinecard20150601:PackageSizeValueType" minOccurs="0"/>
+			<element name="UnitCode" type="medicinecard20150601:PackageSizeUnitCodeType" minOccurs="0"/>
+			<element name="UnitText" type="medicinecard20150601:PackageSizeUnitTextType" minOccurs="0"/>
+			<element name="PackageSizeText" type="medicinecard20150601:PackageSizeTextType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

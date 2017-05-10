@@ -3,15 +3,10 @@
 		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
 		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
-		elementFormDefault="qualified" 
-		attributeFormDefault="unqualified">
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
 
-	<include schemaLocation="PlannedDosageDay.xsd"/>
-	<import  schemaLocation="../DosageIsNotIterated.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
-	<import  schemaLocation="../DosageTimesEndDate.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
-	<import  schemaLocation="../DosageTimesIterationInterval.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
-	<import  schemaLocation="../DosageTimesStartDate.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
-	<import  schemaLocation="../DosageSupplementaryText.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 	<complexType name="PlannedAdministrationStructureType">
 		<annotation>
 			<documentation xml:lang="en-GB">Structure for a period in the planned Administration</documentation>

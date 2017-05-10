@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<element name="CreatePharmacyEffectuationRequest" type="medicinecard20150601E2:CreatePharmacyEffectuationRequestType"/>
+
+	<complexType name="CreatePharmacyEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request for creating one or more effectuation by a pharmacy on prescripionmedications</documentation>
+			<documentation xml:lang="da-DK">Request til at oprette en eller flere effektueringer af et apotek på recepter </documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Prescription" type="medicinecard20150601E2:CreatePharmacyEffectuationOnPrescriptionType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

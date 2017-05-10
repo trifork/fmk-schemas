@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="EffectuationOnPrescriptionType">
+		<annotation>
+			<documentation xml:lang="en-GB">An effectuation on the prescription created by the pharamacy. There is either effectuated one or more packages or effectuated via Dose Dispensing.</documentation>
+			<documentation xml:lang="da-DK">En effektuering (udlevering) på recepten oprettet på apoteket. Der er enten effektueret en eller flere pakninger eller effektueret via Dosisdispensing.</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:EffectuationIdentifierType"/>
+			<element name="DateTime" type="medicinecard20150601:EffectuationDateTimeType"/>
+			<element name="EffectuationMethod" type="medicinecard20150601:EffectuationMethodType" minOccurs="0"/>
+            <choice>
+			    <element name="CreatedWithoutPerson" type="medicinecard20150601:CreatedWithoutPersonType"/>
+                <element name="Created" type="medicinecard20150601:CreatedType"/>
+            </choice>
+            <element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+            <choice>
+                <element name="DoseDispensed" type="medicinecard20150601:DoseDispensedType"/>
+                <element name="PackageDispensed" type="medicinecard20150601E2:PackageDispensedType"/>
+            </choice>
+			<element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+			<element name="PharmacyComment" type="medicinecard20150601:PharmacyCommentType" minOccurs="0"/>
+			<element name="LabelText" type="medicinecard20150601:LabelTextType" minOccurs="0"/>
+			<element name="DeliverySite" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

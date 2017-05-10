@@ -3,13 +3,10 @@
 		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
 		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
-		elementFormDefault="qualified" 
-		attributeFormDefault="unqualified">
-		
-	<include schemaLocation="PlannedAdministrationStructure.xsd"/>
-	<import  schemaLocation="../EmptyDosageStructure.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
-	<import  schemaLocation="../DosageQuantityUnitText.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
-	<import  schemaLocation="../DosageQuantityUnitTexts.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
 	<complexType name="PlannedAdministrationType">
 		<annotation>
 			<documentation xml:lang="en-GB">How often and when the drug is planned to be given</documentation>

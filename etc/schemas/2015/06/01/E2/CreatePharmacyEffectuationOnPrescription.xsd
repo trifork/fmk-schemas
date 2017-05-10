@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="CreatePharmacyEffectuationOnPrescriptionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for creating a single effectuation on a prescription</documentation>
+			<documentation xml:lang="da-DK">Element til oprettelse af en enkelt effektuering på en recept</documentation>
+		</annotation>
+		<sequence>
+			<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+			<element name="OrderIdentifier" type="medicinecard20150601:OrderIdentifierType"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Effectuation" type="medicinecard20150601E2:CreatePharmacyEffectuationType"/>
+			<element name="Terminate" type="medicinecard20150601:TerminatePrescriptionType"/>
+		</sequence>
+	</complexType>
+</schema>

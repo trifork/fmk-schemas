@@ -10,14 +10,11 @@
 	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
 	<include schemaLocation="importsFrom20150101E2.xsd"/>
 
-	<element name="CreateDrugMedication" type="medicinecard20150101E2:CreateDrugMedicationType">
+	<complexType name="CreateDrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Instructions of which drug to use, how much to give (drug dosage), for how long (startdate and enddate), how to administrate it and motivation (indication)</documentation>
 			<documentation xml:lang="da-DK">Anvisning af hvilken medicin der skal anvendes (lægemiddel) hvor meget der skal gives (lægemiddeldosering), hvor længe (startdato og slutdato), hvordan den skal tilføres (administrationsvej) og hvorfor (indikation)</documentation>
 		</annotation>
-	</element>
-	
-	<complexType name="CreateDrugMedicationType">
 		<sequence>
 			<element name="ParentIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType" minOccurs="0"/>
 			<element name="CreatedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
@@ -31,7 +28,7 @@
 			<element name="Drug" type="medicinecard20150101:DrugType"/>
 			<element name="Dosage" type="medicinecard20150101:DosageForRequestType"/>
 			<element name="SubstitutionAllowed" type="medicinecard20150101:SubstitutionAllowedType"/>
-			<element name="Effectuation" type="medicinecard20150101:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Effectuation" type="medicinecard20150101E2:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="CreatePrescriptionMedication" type="medicinecard20150101E2:CreatePrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AttachPrescriptionMedication" type="medicinecard20150101:PrescriptionMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="ReimbursementClause" type="medicinecard20150101:ReimbursementClauseType" minOccurs="0"/>

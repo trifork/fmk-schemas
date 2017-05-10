@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="CreateEffectuationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Document for creation of a new effectuation of a drug</documentation>
+			<documentation xml:lang="da-DK">Dokument til oprettelse af en ny effektuering af et lægemiddel</documentation>
+		</annotation>
+		<sequence>
+			<element name="DateTime" type="medicinecard20150601:EffectuationDateTimeType"/>
+			<element name="EffectuationMethod" type="medicinecard20150601:EffectuationMethodType"/>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<choice>
+				<sequence>
+					<!-- A drug was effectuated, with the dose and unit below. This overrides whatever is stated as drug and dosage on the prescription or drug medication -->
+					<element name="DoseQuantity" type="medicinecard20150601:DoseQuantityType"/>
+					<element name="DosageQuantityUnitText" type="medicinecard20150601:DosageQuantityUnitTextType"/>
+					<element name="Drug" type="medicinecard20150601:DrugType"/>
+				</sequence>
+				<sequence>
+					<!-- A drug was effectuated, with a drug substituted as below. This overrides whatever is stated as drug on the prescription or drug medication -->
+					<element name="Drug" type="medicinecard20150601:DrugType"/>
+				</sequence>
+				<sequence>
+					<!-- A drug was effectuated, one or more packages was given to the patient -->
+					<element name="PackageQuantity" type="medicinecard20150601:PackageQuantityType" minOccurs="0"/>
+					<element name="PackageNumber" type="medicinecard20150601:PackageNumberType"/>
+					<element name="PackageSize" type="medicinecard20150601E2:PackageSizeType" minOccurs="0"/>
+					<element name="Drug" type="medicinecard20150601:DrugType" minOccurs="0"/>
+				</sequence>
+				<!-- A drug was effectuated, the drug and dosage was given as stated on the drug medication -->
+				<element name="IsEffectuatedAccordingToDrugMedication" type="medicinecard20150601:IsEffectuatedAccordingToDrugMedicationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

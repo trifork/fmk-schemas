@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="PrescriptionType">
+		<annotation>
+			<documentation xml:lang="en-GB">A prescription (a medication on a prescription)</documentation>
+			<documentation xml:lang="da-DK">En recept (en ordination på en recept)</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+            <element name="AttachedToDrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType" minOccurs="0"/>
+            <element name="CreatedFromDrugMedicationVersion" type="medicinecard20150601:DrugMedicationVersionType" minOccurs="0"/>
+			<element name="OrderedEffectuationIdentifier" type="medicinecard20150601:OrderedEffectuationIdentifierType" minOccurs="0"/>
+			<element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
+			<element name="Created" type="medicinecard20150601:CreatedWithOptionalAuthorisationIdentifierType"/>
+			<choice minOccurs="0">
+				<element name="ReportedByWithoutPerson" type="medicinecard20150601:ModificatorWithoutPersonType"/>
+				<element name="ReportedBy" type="medicinecard20150601:ModificatorType"/>
+			</choice>
+			<element name="LatestEffectuationDateTime" type="medicinecard20150601:LatestEffectuationDateTimeType" minOccurs="0"/>
+			<element name="TerminatedDateTime" type="medicinecard20150601:TerminatedDateTimeType" minOccurs="0"/>
+			<element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
+            <element name="ValidFromDate" type="medicinecard20150601:ValidFromDateType"/>
+            <element name="ValidToDate" type="medicinecard20150601:ValidToDateType"/>
+			<choice>
+                <element name="PackageRestriction" type="medicinecard20150601E2:PackageRestrictionType"/>
+                <element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
+			</choice>
+			<element name="Indication" type="medicinecard20150601:IndicationType" minOccurs="0"/>
+			<element name="Drug" type="medicinecard20150601:DrugType"/>
+			<element name="DosageText" type="medicinecard20150601:DosageTextType" minOccurs="0"/>
+			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType"/>
+			<element name="SupplementaryInformation" type="medicinecard20150601:SupplementaryInformationType" minOccurs="0"/>
+			<element name="Status" type="medicinecard20150601:PrescriptionStatusType"/>
+			<element name="InvalidationReasonText" type="medicinecard20150601:InvalidationReasonTextType" minOccurs="0"/>
+			<element name="Deprecated" type="medicinecard20150601:DeprecatedDateTimeType" minOccurs="0"/>
+			<element name="ReplacesPrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
+			<element name="ReplacedByPrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0"/>
+            <element name="Order" type="medicinecard20150601E2:OrderType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Version" type="medicinecard20150601:PrescriptionVersionType" minOccurs="0"/>
+			<element name="IsPrivatePrescription" type="medicinecard20150601:IsPrivatePrescriptionType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

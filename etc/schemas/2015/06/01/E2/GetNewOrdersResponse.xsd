@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<element name="GetNewOrdersResponse" type="medicinecard20150601E2:GetNewOrdersResponseType"/>
+	<complexType name="GetNewOrdersResponseType">
+	        <annotation>
+	            <documentation xml:lang="en-GB">Response element for a request to receive all new orders for a pharmacy</documentation>
+	            <documentation xml:lang="da-DK">Svar på en forespørgsel efter nye bestillinger til et apotek</documentation>
+	        </annotation>
+		<sequence>
+			<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			<element name="Prescriptions" type="medicinecard20150601E2:PrescriptionsForPersonOrOrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreAvailable" type="medicinecard20150601:MoreAvailableType"  minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

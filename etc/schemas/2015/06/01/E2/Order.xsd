@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="OrderType">
+        <annotation>
+            <documentation xml:lang="en-GB">Order of an effectuation on a prescription</documentation>
+            <documentation xml:lang="da-DK">Bestilling af en udlevering på en recept</documentation>
+        </annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
+			<choice>
+				<element name="CreatedWithoutPerson" type="medicinecard20150601:CreatedWithoutPersonType"/>
+				<element name="Created" type="medicinecard20150601:CreatedType"/>
+			</choice>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
+			<element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType"/>
+			<element name="Status" type="medicinecard20150601:OrderStatusType"/>
+			<element name="DoseDispensing" type="medicinecard20150601:DoseDispensingType" minOccurs="0"/>
+			<element name="DeliveryInstructionText" type="medicinecard20150601:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
+			<element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="Effectuation" type="medicinecard20150601E2:EffectuationOnPrescriptionType"/>
+				<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

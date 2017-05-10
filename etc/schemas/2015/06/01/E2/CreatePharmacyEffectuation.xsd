@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="CreatePharmacyEffectuationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Create an effectuation on the prescription. There is either effectuated one or more packages or effectuated via Dose Dispensing.</documentation>
+			<documentation xml:lang="da-DK">Opret en effektuering (udlevering) på recepten. Der er enten effektueret en eller flere pakninger eller effektueret via Dosisdispensing.</documentation>
+		</annotation>
+		<sequence>
+			<element name="DateTime" type="medicinecard20150601:EffectuationDateTimeType"/>
+			<choice>
+				<element name="DoseDispensed" type="medicinecard20150601:CreateDoseDispensedType"/>
+				<element name="PackageDispensed" type="medicinecard20150601E2:PackageDispensedType"/>
+			</choice>
+			<element name="ExpectedDeliveryDateTime" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+			<element name="PharmacyComment" type="medicinecard20150601:PharmacyCommentType" minOccurs="0"/>
+			<element name="LabelText" type="medicinecard20150601:LabelTextType" minOccurs="0"/>
+			<element name="DeliverySite" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

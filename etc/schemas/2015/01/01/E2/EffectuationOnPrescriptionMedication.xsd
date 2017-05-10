@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<complexType name="EffectuationOnPrescriptionMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">An effectuation on the prescription medication. It has been created by the pharamacy.</documentation>
+			<documentation xml:lang="da-DK">En apoteksudlevering af en recept</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150101:EffectuationIdentifierType"/>
+			<element name="DateTime" type="medicinecard20150101:EffectuationDateTimeType"/>
+			<element name="EffectuationMethod" type="medicinecard20150101:EffectuationMethodType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20150101:CreatedWithoutPersonType"/>
+			<element name="ReportedBy" type="medicinecard20150101:ModificatorWithoutPersonType" minOccurs="0"/>
+			<element name="PackageQuantity" type="medicinecard20150101:PackageQuantityType" minOccurs="0"/>
+			<element name="PackageNumber" type="medicinecard20150101:PackageNumberType"/>
+			<element name="PackageSize" type="medicinecard20150101E2:PackageSizeType" minOccurs="0"/>
+			<element name="Drug" type="medicinecard20150101:DrugType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
