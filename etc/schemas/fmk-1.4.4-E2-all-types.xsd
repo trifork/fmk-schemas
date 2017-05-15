@@ -1,24 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
-	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		   elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:import namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1" schemaLocation="fmk-1.4.4-E1-all-types.xsd" />
 
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardRequest.xsd" />
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardResponse.xsd" />
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/AttachOrDetachPrescriptionMedicationRequest.xsd"/>
 
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardVersionListRequest.xsd" />
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardVersionListResponse.xsd" />
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/AttachOrDetachPrescriptionMedicationResponse.xsd"/>
 
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/GetPrescriptionMedicationRequest.xsd" />
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderedEffectuationRequest.xsd"/>
 
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/GiveConsentRequest.xsd" />
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/GiveConsentResponse.xsd" />
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderedEffectuationResponse.xsd"/>
 
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/RemoveConsentRequest.xsd" />
-	<xs:include schemaLocation="../schemas/2015/01/01/E1/RemoveConsentResponse.xsd" />
-	
-	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDoseDispensingCardRequest.xsd" />
-	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDoseDispensingCardResponse.xsd" />
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CancelPrescriptionMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CancelPrescriptionMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreateDrugMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreateDrugMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreateEffectuationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreateEffectuationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePatientRegistrationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionMedicationForUseInPracticeRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionMedicationWithoutCPRRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/DeleteEffectuationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/DeleteEffectuationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDoseDispensingCardRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDoseDispensingCardResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationHistoryRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationHistoryResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationVersionsRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationVersionsResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardAsPDFRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardVersionListRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardVersionRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardVersionResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardVersionsRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetMedicineCardVersionsResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetOrderedEffectuationSummaryRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetOrderedEffectuationSummaryResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetOrderedEffectuationsRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetOrderedEffectuationsResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientOrganisationRelationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientOrganisationRelationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientRegistrationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientRegistrationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GiveConsentRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/GiveConsentResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/MarkPrescriptionMedicationDeprecatedRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/MarkPrescriptionMedicationDeprecatedResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/OrderEffectuationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/OrderEffectuationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/PauseDrugMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/PauseDrugMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/RegisterPatientOrganisationRelationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/RemoveConsentRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/RemoveConsentResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/RemovePatientOrganisationRelationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/RemovePatientRegistrationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/ResuspendMedicineCardRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/ResuspendMedicineCardResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SearchEffectuationsRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SearchEffectuationsResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SearchWithdrawnDrugMedicationsRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SearchWithdrawnDrugMedicationsResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardNotReviewedRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardNotReviewedResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardReviewedRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardReviewedResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SuspendMedicineCardRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/SuspendMedicineCardResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnmarkPrescriptionMedicationDeprecatedRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnmarkPrescriptionMedicationDeprecatedResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnpauseDrugMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnpauseDrugMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnsuspendMedicineCardRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnsuspendMedicineCardResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnwithdrawDrugMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UnwithdrawDrugMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UpdateDrugMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UpdateDrugMedicationResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UpdateMedicineCardRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/UpdateMedicineCardResponse.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/WithdrawDrugMedicationRequest.xsd"/>
+
+	<xs:include schemaLocation="../schemas/2015/01/01/E2/WithdrawDrugMedicationResponse.xsd"/>
 
 </xs:schema>
