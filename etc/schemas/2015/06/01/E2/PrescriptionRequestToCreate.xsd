@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="PrescriptionRequestToCreateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element which describes a prescriptionrequest to be created</documentation>
+			<documentation xml:lang="da-DK">Element der beskriver en receptanmodning til oprettelse</documentation>
+		</annotation>
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType" />
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescribingOrganisation" type="medicinecard20150601:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<choice minOccurs="0">
+				<element name="PackageRestriction" type="medicinecard20150601E2:PackageRestrictionType"/>
+				<element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
+			</choice>
+			<element name="Order" type="medicinecard20150601:CreateOrderType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

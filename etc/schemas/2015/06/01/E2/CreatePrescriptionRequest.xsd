@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<element name="CreatePrescriptionRequest" type="medicinecard20150601E2:CreatePrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for creating prescriptions from drug medications</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at oprette recepter fra lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePrescriptionRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Prescription" type="medicinecard20150601E2:CreatePrescriptionType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

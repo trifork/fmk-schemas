@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="ReplacePrescriptionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for replacing a Prescription with a new one</documentation>
+			<documentation xml:lang="da-DK">Element til at angive at en recept skal erstattes af en ny</documentation>
+		</annotation>
+		<sequence>
+			<element name="ReplacePrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AuthorisationDateTime" type="medicinecard20150601:AuthorisationDateTimeType"/>
+			<element name="SystemName" type="medicinecard20150601:SystemNameType"/>
+            <element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
+            <element name="ValidFromDate" type="medicinecard20150601:ValidFromDateType" minOccurs="0"/>
+            <element name="ValidToDate" type="medicinecard20150601:ValidToDateType"/>
+            <choice>
+                <element name="PackageRestriction" type="medicinecard20150601E2:PackageRestrictionType"/>
+                <element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
+			</choice>
+			<element name="Indication" type="medicinecard20150601:IndicationType" minOccurs="0"/>
+			<element name="DosageText" type="medicinecard20150601:DosageTextType" minOccurs="0"/>
+			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType"/>
+			<element name="SupplementaryInformation" type="medicinecard20150601:SupplementaryInformationType" minOccurs="0"/>
+            <element name="Order" type="medicinecard20150601:CreateOrderType" minOccurs="0"/>
+            <element name="ReasonText" type="medicinecard20150601:InvalidationReasonTextType"/>
+		</sequence>
+	</complexType>
+</schema>
