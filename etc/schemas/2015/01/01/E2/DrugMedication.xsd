@@ -6,11 +6,11 @@
 		elementFormDefault="qualified" 
 		attributeFormDefault="unqualified">
 	
+	
+	
 	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
 	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
 	<include schemaLocation="importsFrom20150101E2.xsd"/>
-	
-	
 	<complexType name="DrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">An overview of the drug medication (a medication on the medicine card)</documentation>
@@ -22,12 +22,12 @@
 			<element name="PreviousVersion" type="medicinecard20150101:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="NextVersion" type="medicinecard20150101:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="ParentIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType" minOccurs="0"/>
-			<element name="Created" type="medicinecard20150101:CreatedType"/>
-			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
-			<element name="Modified" type="medicinecard20150101:ModifiedType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20150101E2:CreatedType"/>
+			<element name="ReportedBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20150101E2:ModifiedType" minOccurs="0"/>
             <element name="FollowUpDates" type="medicinecard20150101:FollowUpDatesType" minOccurs="0"/>
-			<element name="Paused" type="medicinecard20150101:PausedType" minOccurs="0"/>
-			<element name="Withdrawn" type="medicinecard20150101:WithdrawnType" minOccurs="0"/>
+			<element name="Paused" type="medicinecard20150101E2:PausedType" minOccurs="0"/>
+			<element name="Withdrawn" type="medicinecard20150101E2:WithdrawnType" minOccurs="0"/>
 			<element name="HasNegativeConsent" type="medicinecard20150101:HasNegativeConsentType" minOccurs="0"/>
 			<element name="BeginEndDate" type="medicinecard20150101:DrugMedicationBeginEndDateType"/>
 			<element name="Indication" type="medicinecard20150101:IndicationType"/>

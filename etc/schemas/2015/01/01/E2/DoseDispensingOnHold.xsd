@@ -6,18 +6,18 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+
+    <import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
 	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
 	<include schemaLocation="importsFrom20150101E2.xsd"/>
-
-    <complexType name="DoseDispensingOnHoldType">
+	<complexType name="DoseDispensingOnHoldType">
         <annotation>
             <documentation xml:lang="en-GB">On hold period for dose dispensing</documentation>
             <documentation xml:lang="da-DK">Sat i bero periode for dosisdispenseringskort</documentation>
         </annotation>
         <sequence>
-			<element name="Created" type="medicinecard20150101:CreatedType" />
-			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20150101E2:CreatedType" />
+			<element name="ReportedBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
 		</sequence>
     </complexType>
 </schema>

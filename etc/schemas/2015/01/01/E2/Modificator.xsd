@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<complexType name="ModificatorType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a person or organisation who modified data</documentation>
+			<documentation xml:lang="da-DK">Indeholder information omkring en person eller organisation der ændrede data</documentation>
+		</annotation>
+
+		<sequence>
+			<choice>
+				<sequence>
+					<element name="AuthorisedHealthcareProfessional" type="medicinecard20150101:AuthorisedHealthcareProfessionalType"/>
+					<element name="Organisation" type="medicinecard20150101:OrganisationType"/>
+					<element name="AuthorisedBy" type="medicinecard20150101E2:AuthorisedModificatorType" minOccurs="0"/>
+				</sequence>
+				<element name="Patient" type="medicinecard20150101:PatientFlagType"/>
+				<sequence>
+					<element name="Other" type="medicinecard20150101E2:ModificatorPersonType"/>
+					<element name="Role" type="medicinecard20150101:RequestedRoleType"/>
+					<element name="Organisation" type="medicinecard20150101:OrganisationType" minOccurs="0"/>
+					<element name="AuthorisedBy" type="medicinecard20150101E2:AuthorisedModificatorType" minOccurs="0"/>
+				</sequence>
+			</choice>
+		</sequence>
+	</complexType>
+	
+	<complexType name="AuthorisedModificatorType">
+		<sequence>
+			<choice>
+				<sequence>
+					<element name="AuthorisedHealthcareProfessional" type="medicinecard20150101:AuthorisedHealthcareProfessionalType"/>
+					<element name="Organisation" type="medicinecard20150101:OrganisationType"/>
+				</sequence>
+				<sequence>
+					<element name="Other" type="medicinecard20150101E2:ModificatorPersonType"/>
+					<element name="Role" type="medicinecard20150101:RequestedRoleType"/>
+					<element name="Organisation" type="medicinecard20150101:OrganisationType" minOccurs="0"/>
+				</sequence>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

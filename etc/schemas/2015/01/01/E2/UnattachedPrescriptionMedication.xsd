@@ -6,11 +6,11 @@
 		elementFormDefault="qualified" 
 		attributeFormDefault="unqualified">
 		
+	
+	
 	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
 	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
 	<include schemaLocation="importsFrom20150101E2.xsd"/>
-	
-	
 	<element name="UnattachedPrescriptionMedication" type="medicinecard20150101E2:UnattachedPrescriptionMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request document for creating a PrescriptionMedication from a DrugMedication. When used in the service call where the drug medication is created the DrugMedicationIdentifer may be omitted, otherwise it is needed.</documentation>
@@ -20,7 +20,7 @@
 	
 	<complexType name="UnattachedPrescriptionMedicationType">
 		<sequence>
-			<element name="CreatedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="CreatedBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="medicinecard20150101:ModificationMetadataType" minOccurs="0"/>			
 			<element name="AuthorisationDateTime" type="medicinecard20150101:AuthorisationDateTimeType"/>
 			<element name="ReceiverOrganisation" type="medicinecard20150101:OrganisationType" minOccurs="0"/>
