@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<element name="GetPrescriptionRequestsRequest" type="medicinecard20150101E2:GetPrescriptionRequestsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for one or more prescriptionrequests for a personidentifier</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter en eller flere receptanmodninger til et CPR nummer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPrescriptionRequestsRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101:PersonIdentifierType"/>
+			<element name="FromDateTime" type="medicinecard20150101E2:GetPrescriptionRequestsFromDateTimeType" minOccurs="0"/>
+			<element name="ToDateTime" type="medicinecard20150101E2:GetPrescriptionRequestsToDateTimeType" minOccurs="0"/>
+			<element name="PageNumber" type="medicinecard20150101E2:PageNumberType" minOccurs="0" />
+		</sequence>
+	</complexType>
+</schema>

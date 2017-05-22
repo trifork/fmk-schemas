@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+    <include schemaLocation="importsFrom20150101E2.xsd"/>
+    <complexType name="PrescriptionRequestToCancelType">
+        <annotation>
+            <documentation xml:lang="en-GB">References to prescription requests to be cancelled</documentation>
+            <documentation xml:lang="da-DK">Referencer til receptanmodninger der skal annulleres</documentation>
+        </annotation>
+        <sequence>
+            <element name="Identifier" type="medicinecard20150101E2:PrescriptionRequestIdentifierType"/>
+            <element name="ModificationMetadata" type="medicinecard20150101:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="CancellationReason" type="medicinecard20150101E2:PrescriptionRequestCancellationReasonType"/>
+        </sequence>
+    </complexType>
+</schema>

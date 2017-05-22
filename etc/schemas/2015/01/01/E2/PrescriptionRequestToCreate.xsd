@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<element name="PrescriptionRequestToCreate" type="medicinecard20150101E2:PrescriptionRequestToCreateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element which describes a prescriptionrequest to be created</documentation>
+			<documentation xml:lang="da-DK">Element der beskriver en receptanmodning til oprettelse</documentation>
+		</annotation>
+	</element>
+	<complexType name="PrescriptionRequestToCreateType">
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType" />
+			<element name="ModificationMetadata" type="medicinecard20150101:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescribingOrganisation" type="medicinecard20150101:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<choice>
+				<element name="SinglePrescriptionDispensing" type="medicinecard20150101E2:CreateSinglePrescriptionDispensingType"/>
+				<element name="ReiteratedPrescriptionDispensing" type="medicinecard20150101E2:CreateReiteratedPrescriptionDispensingType"/>
+				<element name="DoseDispensedDispensing" type="medicinecard20150101:CreateDoseDispensedPrescriptionDispensingType"/>
+			</choice>
+			<element name="Order" type="medicinecard20150101E2:CreateOrderType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
