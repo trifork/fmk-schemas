@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+		xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+
+	<element name="SearchPrescriptionRequestsRequest" type="medicinecard20150101E2:SearchPrescriptionRequestsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">An element for requesting prescription requests given an organisation which is either an ordering or a prescribing organisation</documentation>
+			<documentation xml:lang="da-DK">Et element til forespørgsel efter receptanmodninger givet en anmodende eller anmodede organisation</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="SearchPrescriptionRequestsRequestType">
+		<sequence>
+			<choice>
+				<element name="PrescribingOrganisation" type="medicinecard20150101E2:SearchPrescriptionRequestsOrganisationType"/>
+				<element name="OrderingOrganisation" type="medicinecard20150101E2:SearchPrescriptionRequestsOrganisationType"/>
+			</choice>
+			<element name="FromDateTime" type="medicinecard20150101:CreatedDateTimeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
