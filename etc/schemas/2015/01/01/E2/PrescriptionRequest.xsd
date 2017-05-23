@@ -13,17 +13,17 @@
 			<element name="Identifier" type="medicinecard20150101E2:PrescriptionRequestIdentifierType" />
 			<element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType" />
 			<element name="Created" type="medicinecard20150101:CreatedType" />
-			<element name="ReportedBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
 			<element name="PrescribingOrganisation" type="medicinecard20150101:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 			<choice>
-				<element name="SinglePrescriptionDispensing" type="medicinecard20150101E2:CreateSinglePrescriptionDispensingType"/>
-				<element name="ReiteratedPrescriptionDispensing" type="medicinecard20150101E2:CreateReiteratedPrescriptionDispensingType"/>
-				<element name="DoseDispensedDispensing" type="medicinecard20150101:CreateDoseDispensedPrescriptionDispensingType"/>
+				<element name="SinglePrescriptionDispensing" type="medicinecard20150101E2:SinglePrescriptionDispensingForPrescriptionRequestType"/>
+				<element name="ReiteratedPrescriptionDispensing" type="medicinecard20150101E2:ReiteratedPrescriptionDispensingForPrescriptionRequestType"/>
+				<element name="DoseDispensedDispensing" type="medicinecard20150101E2:DoseDispensedPrescriptionDispensingForPrescriptionRequestType"/>
 			</choice>
 			<element name="Order" type="medicinecard20150101E2:CreateOrderType" minOccurs="0"/>
 			<element name="Status" type="medicinecard20150101E2:PrescriptionRequestStatusType" />
-			<element name="PrescriptionIdentifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType" minOccurs="0"/>
-			<element name="CancelledBy" type="medicinecard20150101:ModificatorType" minOccurs="0"/>
+			<element name="PrescriptionMedicationIdentifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType" minOccurs="0"/>
+			<element name="CancelledBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
 			<element name="CancellationReason" type="medicinecard20150101E2:PrescriptionRequestCancellationReasonType" minOccurs="0"/>
 		</sequence>
 	</complexType>

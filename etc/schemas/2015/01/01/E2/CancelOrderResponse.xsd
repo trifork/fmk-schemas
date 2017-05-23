@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+
+	<element name="CancelOrderResponse" type="medicinecard20150101E2:CancelOrderResponseType"/>
+
+	<complexType name="CancelOrderResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response for cancelling orders on prescriptions</documentation>
+			<documentation xml:lang="da-DK">Svar på annulering af bestillinger på recepter</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150101:OrganisationIdentifierType"/>
+			</choice>
+			<element name="Order" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="PrescriptionMedicationIdentifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType"/>
+						<element name="OrderIdentifier" type="medicinecard20150101E2:OrderIdentifierType"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

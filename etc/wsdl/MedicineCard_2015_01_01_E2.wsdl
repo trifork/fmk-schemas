@@ -247,6 +247,13 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/WithdrawDrugMedicationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreateOrderRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreateOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderResponse.xsd"/>
 
         </xs:schema>
 
@@ -835,8 +842,32 @@
         <wsdl:part name="CancelPrescriptionRequestResponse" element="medicinecard20150101E2:CancelPrescriptionRequestResponse"/>
     </wsdl:message>
 
-    
-        
+
+
+    <wsdl:message name="CreateOrderRequest_2015_01_01_E2">
+        <wsdl:part name="CreateOrderRequest" element="medicinecard20150101E2:CreateOrderRequest"/>
+    </wsdl:message>
+
+
+
+    <wsdl:message name="CreateOrderResponse_2015_01_01_E2">
+        <wsdl:part name="CreateOrderResponse" element="medicinecard20150101E2:CreateOrderResponse"/>
+    </wsdl:message>
+
+
+
+    <wsdl:message name="CancelOrderRequest_2015_01_01_E2">
+        <wsdl:part name="CancelOrderRequest" element="medicinecard20150101E2:CancelOrderRequest"/>
+    </wsdl:message>
+
+
+
+    <wsdl:message name="CancelOrderResponse_2015_01_01_E2">
+        <wsdl:part name="CancelOrderResponse" element="medicinecard20150101E2:CancelOrderResponse"/>
+    </wsdl:message>
+
+
+
     <wsdl:message name="DGWSFault">
         <wsdl:part name="fault" element="medcom:FaultCode"/>
     </wsdl:message>
@@ -1118,7 +1149,19 @@
             <wsdl:output name="CancelPrescriptionRequestResponse_2015_01_01_E2" message="tns:CancelPrescriptionRequestResponse_2015_01_01_E2"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-        
+
+        <wsdl:operation name="CreateOrder_2015_01_01_E2">
+            <wsdl:input name="CreateOrderRequest_2015_01_01_E2" message="tns:CreateOrderRequest_2015_01_01_E2"/>
+            <wsdl:output name="CreateOrderResponse_2015_01_01_E2" message="tns:CreateOrderResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrder_2015_01_01_E2">
+            <wsdl:input name="CancelOrderRequest_2015_01_01_E2" message="tns:CancelOrderRequest_2015_01_01_E2"/>
+            <wsdl:output name="CancelOrderResponse_2015_01_01_E2" message="tns:CancelOrderResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
     </wsdl:portType>
 
 
@@ -1902,6 +1945,37 @@
             </wsdl:fault>
         </wsdl:operation>
 
+        <wsdl:operation name="CreateOrder_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreateOrder"
+                            style="document"/>
+            <wsdl:input name="CreateOrderRequest_2015_01_01_E2">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateOrderResponse_2015_01_01_E2">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrder_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CancelOrder"
+                            style="document"/>
+            <wsdl:input name="CancelOrderRequest_2015_01_01_E2">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelOrderResponse_2015_01_01_E2">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
 
     </wsdl:binding>
 
