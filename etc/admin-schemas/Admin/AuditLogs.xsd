@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:admin20161101="http://www.dkma.dk/medicinecard/xml.schema/2016/11/01"
-            targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2016/11/01"
+            xmlns:auditlogs="http://www.dkma.dk/medicinecard/xml.schema/Admin/AuditLogs"
+            targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/Admin/AuditLogs"
             elementFormDefault="qualified"
             attributeFormDefault="unqualified">
 
-    <xsd:element name="GetMethodsResponse" type="admin20161101:GetMethodsResponse"/>
+    <xsd:element name="GetMethodsResponse" type="auditlogs:GetMethodsResponse"/>
 
     <xsd:complexType name="GetMethodsResponse">
         <xsd:sequence>
@@ -14,7 +14,7 @@
     </xsd:complexType>
 
 
-    <xsd:element name="SearchRequest" type="admin20161101:SearchRequest"/>
+    <xsd:element name="SearchRequest" type="auditlogs:SearchRequest"/>
 
     <xsd:complexType name="SearchRequest">
         <xsd:sequence>
@@ -24,7 +24,7 @@
                 <xsd:element name="Doctor" type="xsd:string"/>
             </xsd:choice>
             <xsd:element name="Method" type="xsd:string" minOccurs="0"/>
-            <xsd:element name="Interval" type="admin20161101:IntervalType" minOccurs="0"/>
+            <xsd:element name="Interval" type="auditlogs:IntervalType" minOccurs="0"/>
             <xsd:element name="IncludeFailedCalls" type="xsd:boolean"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -36,11 +36,11 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:element name="SearchResponse" type="admin20161101:SearchResponse"/>
+    <xsd:element name="SearchResponse" type="auditlogs:SearchResponse"/>
 
     <xsd:complexType name="SearchResponse">
         <xsd:sequence>
-            <xsd:element name="AuditLog" type="admin20161101:AuditLogType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="AuditLog" type="auditlogs:AuditLogType" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
@@ -69,7 +69,7 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:element name="SearchCountResponse" type="admin20161101:SearchCountResponse"/>
+    <xsd:element name="SearchCountResponse" type="auditlogs:SearchCountResponse"/>
 
     <xsd:complexType name="SearchCountResponse">
         <xsd:sequence>
@@ -77,7 +77,7 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:element name="GetPersonResponse" type="admin20161101:GetPersonResponse"/>
+    <xsd:element name="GetPersonResponse" type="auditlogs:GetPersonResponse"/>
 
     <xsd:complexType name="GetPersonResponse">
         <xsd:sequence>
@@ -85,7 +85,7 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:element name="GetMaxDateIntervalResponse" type="admin20161101:GetMaxDateIntervalResponse"/>
+    <xsd:element name="GetMaxDateIntervalResponse" type="auditlogs:GetMaxDateIntervalResponse"/>
 
     <xsd:complexType name="GetMaxDateIntervalResponse">
         <xsd:sequence>
