@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/Admin/Roles"
+            xmlns:roles="http://www.dkma.dk/medicinecard/xml.schema/Admin/Roles"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+
+    <xsd:element name="Roles" type="roles:RolesType"/>
+    <xsd:complexType name="RolesType">
+        <xsd:sequence>
+            <xsd:element name="Roles" type="roles:RoleType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="RoleType">
+        <xsd:sequence>
+            <xsd:element name="ID" type="xsd:long"/>
+            <xsd:element name="Name" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

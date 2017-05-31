@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/Admin/AdminUsers"
+            xmlns:adminusers="http://www.dkma.dk/medicinecard/xml.schema/Admin/AdminUsers"
+            xmlns:roles="http://www.dkma.dk/medicinecard/xml.schema/Admin/Roles"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import schemaLocation="Roles.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/Admin/Roles"/>
+
+    <xsd:element name="UpdateAdminUser" type="adminusers:UpdateAdminUserType"/>
+
+    <xsd:complexType name="UpdateAdminUserType">
+        <xsd:sequence>
+            <xsd:element name="OldUser" type="adminusers:AdminUserType"/>
+            <xsd:element name="NewUser" type="adminusers:AdminUserType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="AdminUsers" type="adminusers:AdminUsersType"/>
+    <xsd:complexType name="AdminUsersType">
+        <xsd:sequence>
+            <xsd:element name="Users" type="adminusers:AdminUserType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="FindUserResult" type="adminusers:FindUserResultType"/>
+    <xsd:complexType name="FindUserResultType">
+        <xsd:sequence>
+            <xsd:element name="User" type="adminusers:AdminUserType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="AdminUserType">
+        <xsd:sequence>
+            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="CPR" type="xsd:string"/>
+            <xsd:element name="CVR" type="xsd:string"/>
+            <xsd:element name="OrganisationName" type="xsd:string"/>
+            <xsd:element name="SystemName" type="xsd:string"/>
+            <xsd:element name="Role" type="roles:RoleType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
