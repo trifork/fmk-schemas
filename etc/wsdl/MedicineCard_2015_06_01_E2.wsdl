@@ -94,7 +94,6 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedRequest.xsd"/>
@@ -168,7 +167,7 @@
             <xs:include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionResponse.xsd"/>
             
-            <xs:include schemaLocation="../schemas/2015/06/01/ReopenPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/ReoƒƒpenPrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/ReopenPrescriptionResponse.xsd"/>
             
             <xs:include schemaLocation="../schemas/2015/06/01/ReplacePrescriptionResponse.xsd"/>
@@ -193,7 +192,8 @@
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" elementFormDefault="qualified">
-
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/CancelPrescriptionRequestRequest.xsd"/>
+            
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/CreateAndEffectuatePrescriptionRequest.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CreatePrescriptionForUseInPracticeRequest.xsd"/>
@@ -417,9 +417,9 @@
                    element="medicinecard20150601:CreatePrescriptionRequestResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CancelPrescriptionRequestRequest_2015_06_01">
+    <wsdl:message name="CancelPrescriptionRequestRequest_2015_06_01_E2">
         <wsdl:part name="CancelPrescriptionRequestRequest"
-                   element="medicinecard20150601:CancelPrescriptionRequestRequest"/>
+                   element="medicinecard20150601E2:CancelPrescriptionRequestRequest"/>
     </wsdl:message>
     <wsdl:message name="CancelPrescriptionRequestResponse_2015_06_01">
         <wsdl:part name="CancelPrescriptionRequestResponse"
@@ -822,9 +822,9 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
-            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01"
-                        message="tns:CancelPrescriptionRequestRequest_2015_06_01"/>
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01_E2">
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01_E2"
+                        message="tns:CancelPrescriptionRequestRequest_2015_06_01_E2"/>
             <wsdl:output name="CancelPrescriptionRequestResponse_2015_06_01"
                          message="tns:CancelPrescriptionRequestResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
@@ -1359,10 +1359,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelPrescriptionRequest"
+        <wsdl:operation name="CancelPrescriptionRequest_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#CancelPrescriptionRequest"
                             style="document"/>
-            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01">
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_06_01_E2">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
