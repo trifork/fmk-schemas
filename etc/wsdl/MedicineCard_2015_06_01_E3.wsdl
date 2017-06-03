@@ -196,9 +196,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/UpdateOrderRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/UpdateOrderResponse.xsd"/>
-            
             <xs:include schemaLocation="../schemas/2015/06/01/GetNewOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetNewOrdersResponse.xsd"/>
             
@@ -612,13 +609,6 @@
         <wsdl:part name="CancelOrderResponse" element="medicinecard20150601:CancelOrderResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UpdateOrderRequest_2015_06_01">
-        <wsdl:part name="UpdateOrderRequest" element="medicinecard20150601:UpdateOrderRequest"/>
-    </wsdl:message>
-    <wsdl:message name="UpdateOrderResponse_2015_06_01">
-        <wsdl:part name="UpdateOrderResponse" element="medicinecard20150601:UpdateOrderResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="GetNewOrdersRequest_2015_06_01">
         <wsdl:part name="GetNewOrdersRequest" element="medicinecard20150601:GetNewOrdersRequest"/>
     </wsdl:message>
@@ -1027,12 +1017,6 @@
         <wsdl:operation name="CancelOrder_2015_06_01">
             <wsdl:input name="CancelOrderRequest_2015_06_01" message="tns:CancelOrderRequest_2015_06_01"/>
             <wsdl:output name="CancelOrderResponse_2015_06_01" message="tns:CancelOrderResponse_2015_06_01"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="UpdateOrder_2015_06_01">
-            <wsdl:input name="UpdateOrderRequest_2015_06_01" message="tns:UpdateOrderRequest_2015_06_01"/>
-            <wsdl:output name="UpdateOrderResponse_2015_06_01" message="tns:UpdateOrderResponse_2015_06_01"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -1849,23 +1833,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CancelOrderResponse_2015_06_01">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
-        </wsdl:operation>
-
-
-        <wsdl:operation name="UpdateOrder_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateOrder"
-                            style="document"/>
-            <wsdl:input name="UpdateOrderRequest_2015_06_01">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UpdateOrderResponse_2015_06_01">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
