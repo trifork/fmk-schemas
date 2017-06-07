@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+                  xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                  xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
+                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01">
+
+    <wsdl:types>
+
+        <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+            <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
+            <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01">
+            <xs:include schemaLocation="../schemas/2012/06/01/TimingList.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                   elementFormDefault="qualified">
+
+            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+            
+            <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
+                       schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
+            
+            <xs:include schemaLocation="../schemas/2015/01/01/TimingList.xsd"/>
+
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+                   elementFormDefault="qualified">
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/OnBehalfOf.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelPrescriptionRequestRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelPrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreateOrderRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreateOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionRequestRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionRequestsRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionRequestsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/SearchPrescriptionRequestsRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/SearchPrescriptionRequestsResponse.xsd"/>
+
+        </xs:schema>
+
+
+    </wsdl:types>
+
+    <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
+
+    <wsdl:message name="WhitelistingHeader">
+        <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="TimingHeader">
+        <wsdl:part name="TimingHeader" element="medicinecard20150101:TimingList"/>
+    </wsdl:message>
+    
+    <wsdl:message name="OnBehalfOfHeader">
+        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20150101:OnBehalfOf"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelOrderRequest_2015_01_01_E2">
+        <wsdl:part name="CancelOrderRequest" element="medicinecard20150101E2:CancelOrderRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelOrderResponse_2015_01_01_E2">
+        <wsdl:part name="CancelOrderResponse" element="medicinecard20150101E2:CancelOrderResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="CancelPrescriptionRequestRequest_2015_01_01_E2">
+        <wsdl:part name="CancelPrescriptionRequestRequest" element="medicinecard20150101E2:CancelPrescriptionRequestRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="CancelPrescriptionRequestResponse_2015_01_01_E2">
+        <wsdl:part name="CancelPrescriptionRequestResponse" element="medicinecard20150101E2:CancelPrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateOrderRequest_2015_01_01_E2">
+        <wsdl:part name="CreateOrderRequest" element="medicinecard20150101E2:CreateOrderRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="CreateOrderResponse_2015_01_01_E2">
+        <wsdl:part name="CreateOrderResponse" element="medicinecard20150101E2:CreateOrderResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionRequestRequest_2015_01_01_E2">
+        <wsdl:part name="CreatePrescriptionRequestRequest" element="medicinecard20150101E2:CreatePrescriptionRequestRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionRequestResponse_2015_01_01_E2">
+        <wsdl:part name="CreatePrescriptionRequestResponse" element="medicinecard20150101E2:CreatePrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestsRequest_2015_01_01_E2">
+        <wsdl:part name="GetPrescriptionRequestsRequest" element="medicinecard20150101E2:GetPrescriptionRequestsRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="GetPrescriptionRequestsResponse_2015_01_01_E2">
+        <wsdl:part name="GetPrescriptionRequestsResponse" element="medicinecard20150101E2:GetPrescriptionRequestsResponse"/>
+    </wsdl:message>
+   
+    <wsdl:message name="SearchPrescriptionRequestsResponse_2015_01_01_E2">
+        <wsdl:part name="SearchPrescriptionRequestsResponse" element="medicinecard20150101E2:SearchPrescriptionRequestsResponse"/>
+    </wsdl:message>
+    
+    <wsdl:message name="SearchPrescriptionRequestsRequest_2015_01_01_E2">
+        <wsdl:part name="SearchPrescriptionRequestsRequest" element="medicinecard20150101E2:SearchPrescriptionRequestsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DGWSFault">
+        <wsdl:part name="fault" element="medcom:FaultCode"/>
+    </wsdl:message>
+
+
+    <wsdl:portType name="EffectuationOrderingPortType">
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_01_01_E2">
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_01_01_E2" message="tns:CancelPrescriptionRequestRequest_2015_01_01_E2"/>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_01_01_E2" message="tns:CancelPrescriptionRequestResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrder_2015_01_01_E2">
+            <wsdl:input name="CancelOrderRequest_2015_01_01_E2" message="tns:CancelOrderRequest_2015_01_01_E2"/>
+            <wsdl:output name="CancelOrderResponse_2015_01_01_E2" message="tns:CancelOrderResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateOrder_2015_01_01_E2">
+            <wsdl:input name="CreateOrderRequest_2015_01_01_E2" message="tns:CreateOrderRequest_2015_01_01_E2"/>
+            <wsdl:output name="CreateOrderResponse_2015_01_01_E2" message="tns:CreateOrderResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionRequest_2015_01_01_E2">
+            <wsdl:input name="CreatePrescriptionRequestRequest_2015_01_01_E2" message="tns:CreatePrescriptionRequestRequest_2015_01_01_E2"/>
+            <wsdl:output name="CreatePrescriptionRequestResponse_2015_01_01_E2" message="tns:CreatePrescriptionRequestResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequests_2015_01_01_E2">
+            <wsdl:input name="GetPrescriptionRequestsRequest_2015_01_01_E2" message="tns:GetPrescriptionRequestsRequest_2015_01_01_E2"/>
+            <wsdl:output name="GetPrescriptionRequestsResponse_2015_01_01_E2" message="tns:GetPrescriptionRequestsResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E2">
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E2" message="tns:SearchPrescriptionRequestsRequest_2015_01_01_E2"/>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E2" message="tns:SearchPrescriptionRequestsResponse_2015_01_01_E2"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+
+    <wsdl:binding name="EffectuationOrderingBinding" type="tns:EffectuationOrderingPortType">
+
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="CancelOrder_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CancelOrder"
+                            style="document"/>
+            <wsdl:input name="CancelOrderRequest_2015_01_01_E2">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelOrderResponse_2015_01_01_E2">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CancelPrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="CancelPrescriptionRequestRequest_2015_01_01_E2">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelPrescriptionRequestResponse_2015_01_01_E2">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateOrder_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreateOrder"
+                            style="document"/>
+            <wsdl:input name="CreateOrderRequest_2015_01_01_E2">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateOrderResponse_2015_01_01_E2">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionRequest_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreatePrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="CreatePrescriptionRequestRequest_2015_01_01_E2">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionRequestResponse_2015_01_01_E2">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequests_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetPrescriptionRequests"
+                            style="document"/>
+            <wsdl:input name="GetPrescriptionRequestsRequest_2015_01_01_E2">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionRequestsResponse_2015_01_01_E2">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SearchPrescriptionRequests"
+                            style="document"/>
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E2">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E2">
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+    </wsdl:binding>
+
+    <wsdl:service name="EffectuationOrdering">
+        <wsdl:port name="EffectuationOrderingPort" binding="tns:EffectuationOrderingBinding">
+            <soap:address location="http://trifork.lms.trifork.com/fmk12/ws/EffectuationOrdering"/>
+        </wsdl:port>
+
+    </wsdl:service>
+
+</wsdl:definitions>
