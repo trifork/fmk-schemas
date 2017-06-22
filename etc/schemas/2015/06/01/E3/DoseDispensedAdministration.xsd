@@ -11,18 +11,13 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="UpdateDoseDispensingCardRequest" type="medicinecard20150601E3:UpdateDoseDispensingCardRequestType">
+	<complexType name="DoseDispensedAdministrationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request which updates a new dose dispensing card</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der opdaterer et dosisdispenseringskort</documentation>
+			<documentation xml:lang="en-GB">Dose dispensed administration of a planned administration</documentation>
+			<documentation xml:lang="da-DK">Dosisdispenseret administration af en planlagt administration</documentation>
 		</annotation>
-	</element>
-	<complexType name="UpdateDoseDispensingCardRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
-			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="DoseDispensingCard" type="medicinecard20150601E3:UpdateDoseDispensingCardType"/>
+			<element name="DoseDispensingCardIdentifier" type="medicinecard20150601E2:DoseDispensingCardIdentifierType"/>
 		</sequence>
 	</complexType>
 </schema>

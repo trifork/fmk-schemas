@@ -11,18 +11,21 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="UpdateDoseDispensingCardRequest" type="medicinecard20150601E3:UpdateDoseDispensingCardRequestType">
+	<complexType name="GenericPlannedAdministrationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request which updates a new dose dispensing card</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der opdaterer et dosisdispenseringskort</documentation>
+			<documentation xml:lang="en-GB">Element for a planned administration including a specified method of administration</documentation>
+			<documentation xml:lang="da-DK">Planlagt administration inklusiv angivelse af administrations metoden</documentation>
 		</annotation>
-	</element>
-	<complexType name="UpdateDoseDispensingCardRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
-			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="DoseDispensingCard" type="medicinecard20150601E3:UpdateDoseDispensingCardType"/>
+			<element name="AdministrationMethod" type="medicinecard20150601E3:AdministrationMethodType"/>
+			<choice>
+				<element name="UnitText" type="medicinecard20150601:DosageQuantityUnitTextType" minOccurs="0" maxOccurs="1"/>
+				<element name="UnitTexts" type="medicinecard20150601:DosageQuantityUnitTextsType" minOccurs="0" maxOccurs="1"/>
+			</choice>
+			<choice maxOccurs="unbounded">
+				<element name="EmptyStructure" type="medicinecard20150601:EmptyDosageStructureType"/>
+				<element name="AdministrationStructure" type="medicinecard20150601E2:PlannedAdministrationStructureType"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>

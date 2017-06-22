@@ -11,16 +11,16 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="CloseDoseDispensingCardResponse" type="medicinecard20150601E3:CloseDoseDispensingCardResponseType">
+	<element name="UpdatePlannedDispensingResponse" type="medicinecard20150601E3:UpdatePlannedDispensingResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response from a for a request which closes a dose dispensing card</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel der lukker et dosisdispenseringskort</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response from updating a planned dispensing</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på opdatering af en planlagt dispensering</documentation>
 		</annotation>
 	</element>
-	<complexType name="CloseDoseDispensingCardResponseType">
+	<complexType name="UpdatePlannedDispensingResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="DoseDispensingCard" type="medicinecard20150601E3:DoseDispensingCardIdentifierAndVersionType"/>
+			<element name="PlannedDispensing" type="medicinecard20150601E3:PlannedDispensingIdentifierAndVersionType"/>
 		</sequence>
 	</complexType>
 </schema>

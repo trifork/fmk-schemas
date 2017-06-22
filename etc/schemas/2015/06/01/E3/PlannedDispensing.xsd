@@ -11,17 +11,17 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-    <complexType name="CreateDoseDispensingCardType">
+    <complexType name="PlannedDispensingType">
         <annotation>
-            <documentation xml:lang="en-GB">Element for creating a Dose dispensing card for a specific person</documentation>
-            <documentation xml:lang="da-DK">Oprettelse af et Dosisdispenseringskort for en given person</documentation>
+            <documentation xml:lang="en-GB">Details for a planned dispensing for a drugmedication</documentation>
+            <documentation xml:lang="da-DK">Detaljer vedrørende en planlagt dispensering for en given lægemiddelordination</documentation>
         </annotation>
         <sequence>
-        	<element name="Description" type="medicinecard20150601E2:DoseDispensingCardDescriptionType"/>
-            <element name="Delivery" type="medicinecard20150601:DeliveryType" minOccurs="0"/>
-            <element name="PackingGroupName" type="medicinecard20150601:PackingGroupType" minOccurs="0"/>
-            <element name="OrderedAtPharmacy" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
-            <element name="PackedAtOrganisation" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
+        	<element name="Identifier" type="medicinecard20150601E3:PlannedDispensingIdentifierType"/>
+        	<element name="Version" type="medicinecard20150601E3:PlannedDispensingVersionType"/>
+        	<element name="DrugMedication" type="medicinecard20150601:DrugMedicationIdentifierAndVersionType"/>
+            <element name="Substitution" type="medicinecard20150601E3:DrugSubstitutionType" minOccurs="0"/>
+            <element name="PlannedAdministration" type="medicinecard20150601E3:GenericPlannedAdministrationType" minOccurs="1" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

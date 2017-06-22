@@ -215,6 +215,18 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupResponse.xsd" />
 			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePlannedDispensingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePlannedDispensingResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePlannedDispensingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePlannedDispensingResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DeletePlannedDispensingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DeletePlannedDispensingResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPlannedDispensingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPlannedDispensingResponse.xsd" />
+			
         </xs:schema>
 
     </wsdl:types>
@@ -652,6 +664,34 @@
         <wsdl:part name="GetPackingGroupResponse" element="medicinecard20150601E3:GetPackingGroupResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="CreatePlannedDispensingRequest_2015_06_01_E3">
+        <wsdl:part name="CreatePlannedDispensingRequest" element="medicinecard20150601E3:CreatePlannedDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePlannedDispensingResponse_2015_06_01_E3">
+        <wsdl:part name="CreatePlannedDispensingResponse" element="medicinecard20150601E3:CreatePlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePlannedDispensingRequest_2015_06_01_E3">
+        <wsdl:part name="UpdatePlannedDispensingRequest" element="medicinecard20150601E3:UpdatePlannedDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdatePlannedDispensingResponse_2015_06_01_E3">
+        <wsdl:part name="UpdatePlannedDispensingResponse" element="medicinecard20150601E3:UpdatePlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeletePlannedDispensingRequest_2015_06_01_E3">
+        <wsdl:part name="DeletePlannedDispensingRequest" element="medicinecard20150601E3:DeletePlannedDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DeletePlannedDispensingResponse_2015_06_01_E3">
+        <wsdl:part name="DeletePlannedDispensingResponse" element="medicinecard20150601E3:DeletePlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPlannedDispensingRequest_2015_06_01_E3">
+        <wsdl:part name="GetPlannedDispensingRequest" element="medicinecard20150601E3:GetPlannedDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPlannedDispensingResponse_2015_06_01_E3">
+        <wsdl:part name="GetPlannedDispensingResponse" element="medicinecard20150601E3:GetPlannedDispensingResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="IDWSFault">
         <wsdl:part name="fault" element="sbf:IDWSFault" />
     </wsdl:message>
@@ -1029,6 +1069,30 @@
         <wsdl:operation name="GetPackingGroup_2015_06_01_E3">
             <wsdl:input name="GetPackingGroupRequest_2015_06_01_E3" message="tns:GetPackingGroupRequest_2015_06_01_E3"/>
             <wsdl:output name="GetPackingGroupResponse_2015_06_01_E3" message="tns:GetPackingGroupResponse_2015_06_01_E3"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePlannedDispensing_2015_06_01_E3">
+            <wsdl:input name="CreatePlannedDispensingRequest_2015_06_01_E3" message="tns:CreatePlannedDispensingRequest_2015_06_01_E3"/>
+            <wsdl:output name="CreatePlannedDispensingResponse_2015_06_01_E3" message="tns:CreatePlannedDispensingResponse_2015_06_01_E3"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePlannedDispensing_2015_06_01_E3">
+            <wsdl:input name="UpdatePlannedDispensingRequest_2015_06_01_E3" message="tns:UpdatePlannedDispensingRequest_2015_06_01_E3"/>
+            <wsdl:output name="UpdatePlannedDispensingResponse_2015_06_01_E3" message="tns:UpdatePlannedDispensingResponse_2015_06_01_E3"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePlannedDispensing_2015_06_01_E3">
+            <wsdl:input name="DeletePlannedDispensingRequest_2015_06_01_E3" message="tns:DeletePlannedDispensingRequest_2015_06_01_E3"/>
+            <wsdl:output name="DeletePlannedDispensingResponse_2015_06_01_E3" message="tns:DeletePlannedDispensingResponse_2015_06_01_E3"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPlannedDispensing_2015_06_01_E3">
+            <wsdl:input name="GetPlannedDispensingRequest_2015_06_01_E3" message="tns:GetPlannedDispensingRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E3" message="tns:GetPlannedDispensingResponse_2015_06_01_E3"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -2529,6 +2593,114 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPackingGroupResponse_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePlannedDispensing_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CreatePlannedDispensing"
+                            style="document"/>
+            <wsdl:input name="CreatePlannedDispensingRequest_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePlannedDispensingResponse_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePlannedDispensing_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UpdatePlannedDispensing"
+                            style="document"/>
+            <wsdl:input name="UpdatePlannedDispensingRequest_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdatePlannedDispensingResponse_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePlannedDispensing_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#DeletePlannedDispensing"
+                            style="document"/>
+            <wsdl:input name="DeletePlannedDispensingRequest_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeletePlannedDispensingResponse_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPlannedDispensing_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetPlannedDispensing"
+                            style="document"/>
+            <wsdl:input name="GetPlannedDispensingRequest_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E3">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
