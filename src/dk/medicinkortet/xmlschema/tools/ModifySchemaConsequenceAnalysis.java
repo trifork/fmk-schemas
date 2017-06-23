@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,8 +31,10 @@ public class ModifySchemaConsequenceAnalysis {
 	};
 	
 	// Where are the schemafiles located (that we want to analyse).
-	private static final File SCHEMADIRECTORY = new File("etc/schemas/2015/01/01/");
-	private static final File EXTENSIONDIRECTORY = new File("etc/schemas/2015/01/01/E2");
+	private static final File SCHEMADIRECTORY = new File("etc/schemas/2015/06/01/");
+	private static final File EXTENSIONDIRECTORY = new File("etc/schemas/2015/06/01/E2");
+	
+	private Map<String, Set<String>> matchRefs = new HashMap<>();
 	
 	public static void main(String[] args) throws Exception {
 		// System.out.println("There is currently no direct way to run this (no ant task or otherwise). Suggest you run this interactively in your IDE.");
@@ -48,9 +52,14 @@ public class ModifySchemaConsequenceAnalysis {
 		}
 	
 		matches.stream().sorted().distinct().forEach(file -> {
-			System.out.print(file);
 			if (!new File(EXTENSIONDIRECTORY, file).exists()) {
-				System.out.print(" [NEW]");
+				System.out.print("[NEW] ");
+			} else {
+				System.out.print("      ");
+			}
+			System.out.print(file);
+			if (matchRefs.get(file) != null) {
+				System.out.print(" - references: " + matchRefs.get(file).stream().collect(Collectors.joining(", ")));	
 			}
 			System.out.println();
 		});
@@ -65,6 +74,7 @@ public class ModifySchemaConsequenceAnalysis {
 			} if (f.getName().endsWith(".xsd")) {
 				String content = new String(Files.readAllBytes(Paths.get(f.toURI())));
 				if (!matches.contains(f.getName()) && matches.stream().filter(fileName -> content.contains(whatToScanFor(fileName))).findAny().isPresent()) {
+					matchRefs.put(f.getName(), matches.stream().filter(fileName -> content.contains(whatToScanFor(fileName))).collect(Collectors.toSet()));
 					System.err.println(f + " references the following:\n\t\t" + matches.stream().filter(fileName -> content.contains(whatToScanFor(fileName))).collect(Collectors.joining("\n\t\t")));
 					matches.add(f.getName());
 					return true;

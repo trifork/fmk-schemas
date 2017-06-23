@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+    <element name="DoseDispensed" type="medicinecard20150601E2:DoseDispensedType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dose dispensed effectuation details</documentation>
+            <documentation xml:lang="da-DK">Detaljer for dosisdispenseret effektuering</documentation>
+        </annotation>
+    </element>
+    <complexType name="DoseDispensedType">
+        <sequence>
+            <element name="DoseQuantity" type="medicinecard20150601:DoseQuantityType"/>
+            <element name="DosageQuantityUnitText" type="medicinecard20150601E2:DosageQuantityUnitTextType"/>
+            <element name="SubstitutedDrug" type="medicinecard20150601:DrugType" minOccurs="0"/>
+            <element name="DoseDispensing" type="medicinecard20150601:DoseDispensingType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>
