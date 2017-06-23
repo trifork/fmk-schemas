@@ -24,14 +24,13 @@ public class ModifySchemaConsequenceAnalysis {
 
 	// Which schemafiles are we looking for references to
 	private static final String[] SCHEMAFILES_TO_MODIFY = new String[] {
-			"CreateReiteratedPrescriptionDispensing.xsd",
-			"ReiteratedPrescriptionDispensing.xsd",
-			"SinglePrescriptionDispensing.xsd",
-			"CreateSinglePrescriptionDispensing.xsd"
+			"DosageQuantityUnitTexts.xsd",
+			"DosageQuantityUnitText.xsd",
 	};
 	
 	// Where are the schemafiles located (that we want to analyse).
 	private static final File SCHEMADIRECTORY = new File("etc/schemas/2015/01/01/");
+	private static final File EXTENSIONDIRECTORY = new File("etc/schemas/2015/01/01/E2");
 	
 	public static void main(String[] args) throws Exception {
 		// System.out.println("There is currently no direct way to run this (no ant task or otherwise). Suggest you run this interactively in your IDE.");
@@ -49,7 +48,11 @@ public class ModifySchemaConsequenceAnalysis {
 		}
 	
 		matches.stream().sorted().distinct().forEach(file -> {
-			System.out.println(file);
+			System.out.print(file);
+			if (!new File(EXTENSIONDIRECTORY, file).exists()) {
+				System.out.print(" [NEW]");
+			}
+			System.out.println();
 		});
 	}
 
@@ -62,7 +65,7 @@ public class ModifySchemaConsequenceAnalysis {
 			} if (f.getName().endsWith(".xsd")) {
 				String content = new String(Files.readAllBytes(Paths.get(f.toURI())));
 				if (!matches.contains(f.getName()) && matches.stream().filter(fileName -> content.contains(whatToScanFor(fileName))).findAny().isPresent()) {
-					System.err.println(f + " references one or more of:\n\t\t" + matches.stream().collect(Collectors.joining("\n\t\t")));
+					System.err.println(f + " references the following:\n\t\t" + matches.stream().filter(fileName -> content.contains(whatToScanFor(fileName))).collect(Collectors.joining("\n\t\t")));
 					matches.add(f.getName());
 					return true;
 				}
