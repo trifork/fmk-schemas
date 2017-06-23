@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+	<element name="DosageTimes" type="medicinecard20150101E2:DosageTimesType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageTimesType">
+		<sequence>
+			<choice>
+				<element name="IterationInterval" type="medicinecard20150101:DosageTimesIterationIntervalType"/>
+				<element name="NotIterated" type="medicinecard20150101:DosageIsNotIteratedType"/>
+			</choice>
+			<choice>
+				<element name="StartDate" type="medicinecard20150101:DosageTimesStartDateType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="medicinecard20150101:DosageTimesEndDateType"/>
+				<element name="DosageEndingUndetermined" type="medicinecard20150101:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+			<element name="UnitText" type="medicinecard20150101E2:DosageQuantityUnitTextType"/>
+			<element name="SupplementaryText" type="medicinecard20150101:DosageSupplementaryTextType" minOccurs="0"/>
+			<element name="Day" type="medicinecard20150101:DosageDayType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

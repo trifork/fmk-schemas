@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+    <element name="DrugMedicationHistory" type="medicinecard20150101E2:DrugMedicationHistoryType">
+        <annotation>
+            <documentation xml:lang="en-GB">The history of a drugmedication</documentation>
+            <documentation xml:lang="da-DK">Historikken for en lægemiddelordination</documentation>
+        </annotation>
+    </element>
+    <complexType name="DrugMedicationHistoryType">
+        <sequence>
+                <element name="Period" type="medicinecard20150101E2:DrugMedicationHistoryPeriodType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>
