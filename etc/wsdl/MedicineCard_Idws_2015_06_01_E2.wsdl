@@ -67,7 +67,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationVersionsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationHistoryRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/GetDrugMedicationHistoryResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardAsPDFRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardAsPDFResponse.xsd"/>
@@ -123,7 +122,6 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/UpdateMedicineCardResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/UpdateDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/UpdateDrugMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/WithdrawDrugMedicationRequest.xsd"/>
@@ -198,6 +196,8 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/GetDrugMedicationHistoryResponse.xsd"/>
+            
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDrugMedicationResponse.xsd" />
 
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetMedicineCardResponse.xsd" />
@@ -214,6 +214,8 @@
 		
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/StartEffectuationResponse.xsd" />
 		
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/UpdateDrugMedicationRequest.xsd"/>
+            
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/UpdateMedicineCardRequest.xsd" />
 
         </xs:schema>
@@ -320,8 +322,8 @@
     <wsdl:message name="GetDrugMedicationHistoryRequest_2015_06_01">
         <wsdl:part name="GetDrugMedicationHistoryRequest" element="medicinecard20150601:GetDrugMedicationHistoryRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetDrugMedicationHistoryResponse_2015_06_01">
-        <wsdl:part name="GetDrugMedicationHistoryResponse" element="medicinecard20150601:GetDrugMedicationHistoryResponse"/>
+    <wsdl:message name="GetDrugMedicationHistoryResponse_2015_06_01_E2">
+        <wsdl:part name="GetDrugMedicationHistoryResponse" element="medicinecard20150601E2:GetDrugMedicationHistoryResponse"/>
     </wsdl:message>
 
     <wsdl:message name="PauseDrugMedicationRequest_2015_06_01">
@@ -424,8 +426,8 @@
         <wsdl:part name="UnpauseDrugMedicationResponse" element="medicinecard20150601:UnpauseDrugMedicationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UpdateDrugMedicationRequest_2015_06_01">
-        <wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20150601:UpdateDrugMedicationRequest"/>
+    <wsdl:message name="UpdateDrugMedicationRequest_2015_06_01_E2">
+        <wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20150601E2:UpdateDrugMedicationRequest"/>
     </wsdl:message>
     <wsdl:message name="UpdateDrugMedicationResponse_2015_06_01">
         <wsdl:part name="UpdateDrugMedicationResponse" element="medicinecard20150601:UpdateDrugMedicationResponse"/>
@@ -698,10 +700,10 @@
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedicationHistory_2015_06_01">
+        <wsdl:operation name="GetDrugMedicationHistory_2015_06_01_E2">
             <wsdl:input name="GetDrugMedicationHistoryRequest_2015_06_01" message="tns:GetDrugMedicationHistoryRequest_2015_06_01"/>
-            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_06_01"
-                         message="tns:GetDrugMedicationHistoryResponse_2015_06_01"/>
+            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_06_01_E2"
+                         message="tns:GetDrugMedicationHistoryResponse_2015_06_01_E2"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -800,9 +802,9 @@
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="UpdateDrugMedication_2015_06_01">
-            <wsdl:input name="UpdateDrugMedicationRequest_2015_06_01"
-                        message="tns:UpdateDrugMedicationRequest_2015_06_01"/>
+        <wsdl:operation name="UpdateDrugMedication_2015_06_01_E2">
+            <wsdl:input name="UpdateDrugMedicationRequest_2015_06_01_E2"
+                        message="tns:UpdateDrugMedicationRequest_2015_06_01_E2"/>
             <wsdl:output name="UpdateDrugMedicationResponse_2015_06_01"
                          message="tns:UpdateDrugMedicationResponse_2015_06_01"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
@@ -1241,7 +1243,7 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedicationHistory_2015_06_01">
+        <wsdl:operation name="GetDrugMedicationHistory_2015_06_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetDrugMedicationHistory"
                             style="document"/>
             <wsdl:input name="GetDrugMedicationHistoryRequest_2015_06_01">
@@ -1254,7 +1256,7 @@
                 <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_06_01">
+            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_06_01_E2">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
@@ -1605,10 +1607,10 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="UpdateDrugMedication_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UpdateDrugMedication"
+        <wsdl:operation name="UpdateDrugMedication_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#UpdateDrugMedication"
                             style="document"/>
-             <wsdl:input name="UpdateDrugMedicationRequest_2015_06_01">
+             <wsdl:input name="UpdateDrugMedicationRequest_2015_06_01_E2">
                  <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
                  <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
                  <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
