@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+	<element name="ModifiedNonclinical" type="medicinecard20150601E2:ModifiedNonclinicalType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element containing information about which organisation and possibly doctor who last modified the document this element is in (e.g. medicine card, drug prescription) as well as the date it ocurred.</documentation>
+			<documentation xml:lang="da-DK">Element der indeholder information omkring hvilken organisation og muligvis læge som sidst har ændret dokumentet elementet befinder sig i (f.eks. medicnkort, lægemiddelordination), desuden datoen dette er sket.</documentation>
+		</annotation>
+	</element>
+	<complexType name="ModifiedNonclinicalType">
+		<sequence>
+			<element name="By" type="medicinecard20150601:ModificatorType"/>
+			<element name="DateTime" type="medicinecard20150601E2:ModifiedNonclinicalDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>
