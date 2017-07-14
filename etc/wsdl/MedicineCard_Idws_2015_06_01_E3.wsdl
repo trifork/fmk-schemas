@@ -216,6 +216,9 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupResponse.xsd" />
 			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsResponse.xsd" />
+			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePlannedDispensingRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePlannedDispensingResponse.xsd" />
 			
@@ -665,6 +668,13 @@
         <wsdl:part name="GetPackingGroupResponse" element="medicinecard20150601E3:GetPackingGroupResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="ListPackingGroupsRequest_2015_06_01_E3">
+        <wsdl:part name="ListPackingGroupsRequest" element="medicinecard20150601E3:ListPackingGroupsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ListPackingGroupsResponse_2015_06_01_E3">
+        <wsdl:part name="ListPackingGroupsResponse" element="medicinecard20150601E3:ListPackingGroupsResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="CreatePlannedDispensingRequest_2015_06_01_E3">
         <wsdl:part name="CreatePlannedDispensingRequest" element="medicinecard20150601E3:CreatePlannedDispensingRequest"/>
     </wsdl:message>
@@ -1070,6 +1080,12 @@
         <wsdl:operation name="GetPackingGroup_2015_06_01_E3">
             <wsdl:input name="GetPackingGroupRequest_2015_06_01_E3" message="tns:GetPackingGroupRequest_2015_06_01_E3"/>
             <wsdl:output name="GetPackingGroupResponse_2015_06_01_E3" message="tns:GetPackingGroupResponse_2015_06_01_E3"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="ListPackingGroups_2015_06_01_E3">
+            <wsdl:input name="ListPackingGroupsRequest_2015_06_01_E3" message="tns:ListPackingGroupsRequest_2015_06_01_E3"/>
+            <wsdl:output name="ListPackingGroupsResponse_2015_06_01_E3" message="tns:ListPackingGroupsResponse_2015_06_01_E3"/>
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
@@ -2594,6 +2610,33 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPackingGroupResponse_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="ListPackingGroups_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#ListPackingGroups"
+                            style="document"/>
+            <wsdl:input name="ListPackingGroupsRequest_2015_06_01_E3">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ListPackingGroupsResponse_2015_06_01_E3">
                 <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
                 <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
                 <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
