@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="DrugMedicationType" type="medicinecard20150601E2:DrugMedicationTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Is this drug medication created on the basis of a doctors decision</documentation>
+			<documentation xml:lang="da-DK">Er denne ordination lægeordineret eller ej</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DrugMedicationTypeType">
+		<union memberTypes="medicinecard20150601E2:PredefinedDrugMedicationTypeType medicinecard20150601E2:UndefinedDrugMedicationTypeType"/>
+	</simpleType>
+	<simpleType name="PredefinedDrugMedicationTypeType">
+		<restriction base="medicinecard20150601E2:UndefinedDrugMedicationTypeType">
+			<enumeration value="Lægeordineret"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedDrugMedicationTypeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>
