@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -34,12 +35,13 @@ public class ModifySchemaConsequenceAnalysis {
 
 	// Which schemafiles are we looking for references to
 	private static final String[] SCHEMAFILES_TO_MODIFY = new String[] {
-			"OrganisationIdentifier.xsd",
+			"ActiveSubstanceCode.xsd",
+			"ActiveSubstanceFreeText.xsd",
 	};
 	
 	// Where are the schemafiles located (that we want to analyse).
-	private static final File SCHEMADIRECTORY = new File("etc/schemas/2015/06/01/");
-	private static final File EXTENSIONDIRECTORY = new File("etc/schemas/2015/06/01/E2");
+	private static final File SCHEMADIRECTORY = new File("etc/schemas/2015/01/01/");
+	private static final File EXTENSIONDIRECTORY = new File("etc/schemas/2015/01/01/E2");
 	
 	private Map<String, Set<String>> matchRefs = new HashMap<>();
 	
@@ -67,6 +69,8 @@ public class ModifySchemaConsequenceAnalysis {
 	}
 	
 	public void findSchemaFiles() throws Exception {
+		
+		matchRefs = Arrays.stream(SCHEMAFILES_TO_MODIFY).collect(Collectors.toMap(k -> k, v -> Collections.emptySet()));
 		
 		Set<String> matches = Arrays.asList(SCHEMAFILES_TO_MODIFY).stream().collect(Collectors.toSet());
 
