@@ -236,8 +236,6 @@
         <organize-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E2"/>
         <organize-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E3"/>
 
-        <organize-schemas-macro wsdlname="VersionService" versiondate="2014_08_01"/>
-
 		<copy todir="${standard.target.dir}">
 			<fileset dir="${standard.target.dir}/gensrc/META-INF" includes="schemas/**"/>
 		</copy>
@@ -435,7 +433,6 @@
     	<codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
     	<codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01_E2.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/DumpRestore-inline_2013_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
-        <codegen wsdlfilename="${standard.target.dir}/wsdl/VersionService-inline_2014_08_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <!-- IMPORTANT: whenever a new <codegen> element regarding a new wsdl-file is added to this section, remember to add an <exec>-element validating the wsdl in the "validate-wsdl" target below -->
 
         <copy todir="${standard.target.dir}/gentestsrc" encoding="${codegen-encoding}" outputencoding="UTF-8">
@@ -598,6 +595,5 @@
 		<validateidwswsdl-macro wsdlfilename="EffectuationOrdering-inline_Idws_2015_01_01_E2"/>
 
 		<validatewsdl-macro wsdlfilename="DumpRestore-inline_2013_01_01"/>
-		<validatewsdl-macro wsdlfilename="VersionService-inline_2014_08_01"/>
 	</target>
 </project>
