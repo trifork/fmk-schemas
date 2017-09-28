@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<simpleType name="DoseDispensingStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">The status of a dosedispensing period</documentation>
+			<documentation xml:lang="da-DK">Status for en dosisdispenseringsperiode</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20150601E2:PredefinedDoseDispensingStatusType medicinecard20150601E2:UndefinedDoseDispensingStatusType"/>
+	</simpleType>
+	<simpleType name="PredefinedDoseDispensingStatusType">
+		<restriction base="medicinecard20150601E2:UndefinedDoseDispensingStatusType">
+			<enumeration value="Implicit"/>
+			<enumeration value="Planlagt"/>
+			<enumeration value="Ekspedition påbegyndt"/>
+			<enumeration value="Ekspederet"/>
+			<enumeration value="Pakning påbegyndt"/>
+			<enumeration value="Pakning afsluttet"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedDoseDispensingStatusType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>
