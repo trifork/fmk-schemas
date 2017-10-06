@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+    <complexType name="PrescriptionErrorType">
+        <annotation>
+            <documentation xml:lang="en-GB">Error object that refer to a specific error type and description on a given prescription, and possible also with reference to a specific order and effectuation.</documentation>
+            <documentation xml:lang="da-DK">Fejl-struktur som refererer til en specifik fejltype og beskrivelse på en given recept, og muligvis også med reference til en specifik bestilling og effektuering.</documentation>
+        </annotation>
+        <sequence>
+            <element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+            <element name="ReasonCode" type="medicinecard20150601:ReasonCodeType"/>
+            <element name="ReasonText" type="medicinecard20150601:ReasonTextType"/>
+            <element name="PrescriptionStatus" type="medicinecard20150601:PrescriptionStatusType" minOccurs="0"/>
+            <element name="OrderIdentifier" type="medicinecard20150601:OrderIdentifierType" minOccurs="0"/>
+            <element name="OrderStatus" type="medicinecard20150601:OrderStatusType" minOccurs="0"/>
+            <element name="InProgressAtPharmacy" type="medicinecard20150601:OrganisationType" minOccurs="0"/>
+            <element name="EffectuationIdentifier" type="medicinecard20150601:EffectuationIdentifierType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="ReasonCodeType">
+        <restriction base="long"/>
+    </simpleType>
+
+    <simpleType name="ReasonTextType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="300"/>
+        </restriction>
+    </simpleType>
+
+</schema>

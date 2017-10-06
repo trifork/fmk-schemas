@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<element name="CancelPrescriptionResponse" type="medicinecard20150601E2:CancelPrescriptionResponseType"/>
+	<complexType name="CancelPrescriptionResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response for invalidating one or more prescriptions</documentation>
+			<documentation xml:lang="da-DK">Svar på annullering af en eller flere recepter</documentation>
+		</annotation>
+		<sequence>
+			<sequence>
+				<choice>
+					<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+					<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+				</choice>
+				<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+				<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+				<element name="PrescriptionIdentifier" type="medicinecard20150601:PrescriptionIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="CancelPrescriptionFailed" type="medicinecard20150601E2:PrescriptionErrorType" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

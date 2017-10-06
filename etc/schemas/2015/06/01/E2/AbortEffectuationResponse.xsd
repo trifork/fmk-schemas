@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<element name="AbortEffectuationResponse" type="medicinecard20150601E2:AbortEffectuationResponseType"/>
+
+	<complexType name="AbortEffectuationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">A response to the 'abort effectuation' request, which includes identifier for the prescriptions where the abort succeeded, and an error structure for those where the abort operation failed.</documentation>
+			<documentation xml:lang="da-DK">Et svar på requestst 'afbryd ekspedition', som inkluderer identifiers for de recepter hvor ekspedition blev afbrudt med succes, og en fejl-struktur for dem hvor afbryd operationen fejlede.</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="Prescription" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+						<element name="Order">
+							<complexType>
+								<sequence>
+									<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="AbortEffectuationFailed" type="medicinecard20150601E2:PrescriptionErrorType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

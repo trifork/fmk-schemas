@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<element name="UpdateMedicineCardResponse" type="medicinecard20150601E2:UpdateMedicineCardResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en batchforespørgsel for at opdatere et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="UpdateMedicineCardResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="medicinecard20150601:MedicineCardVersionType"/>
+			<element name="VersionMismatchWarning" type="medicinecard20150601:VersionMismatchWarningType" minOccurs="0"/>
+			<sequence maxOccurs="unbounded">
+				<element name="CreatedDrugMedication" type="medicinecard20150601:CreatedDrugMedicationType" minOccurs="0"/>
+				<element name="UpdatedDrugMedication" type="medicinecard20150601:UpdatedDrugMedicationType" minOccurs="0"/>
+				<element name="WithdrawnDrugMedication" type="medicinecard20150601:WithdrawnDrugMedicationType" minOccurs="0"/>
+				<element name="UnwithdrawnDrugMedication" type="medicinecard20150601:UnwithdrawnDrugMedicationType" minOccurs="0"/>
+				<element name="PausedDrugMedication" type="medicinecard20150601:PausedDrugMedicationType" minOccurs="0"/>
+				<element name="UnpausedDrugMedication" type="medicinecard20150601:UnpausedDrugMedicationType" minOccurs="0"/>
+				<element name="CreatedPrescription" type="medicinecard20150601:CreatedPrescriptionType" minOccurs="0"/>
+				<element name="CreatedEffectuationOnDrugMedication" type="medicinecard20150601:CreatedEffectuationOnDrugMedicationType" minOccurs="0"/>
+				<element name="CancelledPrescription" type="medicinecard20150601E2:CancelledPrescriptionType" minOccurs="0"/>
+				<element name="ConsentGiven" type="medicinecard20150601:ConsentWasGivenType" minOccurs="0"/>
+				<element name="ConsentRemoved" type="medicinecard20150601:ConsentWasRemovedType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

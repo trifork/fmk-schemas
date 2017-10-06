@@ -35,13 +35,12 @@ public class ModifySchemaConsequenceAnalysis {
 
 	// Which schemafiles are we looking for references to
 	private static final String[] SCHEMAFILES_TO_MODIFY = new String[] {
-			"ActiveSubstanceCode.xsd",
-			"ActiveSubstanceFreeText.xsd",
+			"PrescriptionError.xsd",
 	};
 	
 	// Where are the schemafiles located (that we want to analyse).
-	private static final File SCHEMADIRECTORY = new File("etc/schemas/2015/01/01/");
-	private static final File EXTENSIONDIRECTORY = new File("etc/schemas/2015/01/01/E2");
+	private static final File SCHEMADIRECTORY = new File("etc/schemas/2015/06/01/");
+	private static final File EXTENSIONDIRECTORY = new File("etc/schemas/2015/06/01/E2");
 	
 	private Map<String, Set<String>> matchRefs = new HashMap<>();
 	
