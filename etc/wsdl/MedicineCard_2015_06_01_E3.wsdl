@@ -247,6 +247,27 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CloseDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CloseDoseDispensingCardResponse.xsd" />
 			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingPeriodResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdateDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdateDoseDispensingPeriodResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DeleteDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DeleteDoseDispensingPeriodResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetDoseDispensingPeriodsRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetDoseDispensingPeriodsResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePackingGroupRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePackingGroupResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePackingGroupRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePackingGroupResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DeletePackingGroupRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DeletePackingGroupResponse.xsd" />
+			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupResponse.xsd" />
 			
@@ -712,6 +733,55 @@
         <wsdl:part name="CloseDoseDispensingCardResponse" element="medicinecard20150601E3:CloseDoseDispensingCardResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="CreateDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="CreateDoseDispensingPeriodRequest" element="medicinecard20150601E3:CreateDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="CreateDoseDispensingPeriodResponse" element="medicinecard20150601E3:CreateDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="UpdateDoseDispensingPeriodRequest" element="medicinecard20150601E3:UpdateDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="UpdateDoseDispensingPeriodResponse" element="medicinecard20150601E3:UpdateDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="DeleteDoseDispensingPeriodRequest" element="medicinecard20150601E3:DeleteDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DeleteDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="DeleteDoseDispensingPeriodResponse" element="medicinecard20150601E3:DeleteDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingPeriodsRequest_2015_06_01_E3">
+        <wsdl:part name="GetDoseDispensingPeriodsRequest" element="medicinecard20150601E3:GetDoseDispensingPeriodsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDoseDispensingPeriodsResponse_2015_06_01_E3">
+        <wsdl:part name="GetDoseDispensingPeriodsResponse" element="medicinecard20150601E3:GetDoseDispensingPeriodsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePackingGroupRequest_2015_06_01_E3">
+        <wsdl:part name="CreatePackingGroupRequest" element="medicinecard20150601E3:CreatePackingGroupRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePackingGroupResponse_2015_06_01_E3">
+        <wsdl:part name="CreatePackingGroupResponse" element="medicinecard20150601E3:CreatePackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePackingGroupRequest_2015_06_01_E3">
+        <wsdl:part name="UpdatePackingGroupRequest" element="medicinecard20150601E3:UpdatePackingGroupRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdatePackingGroupResponse_2015_06_01_E3">
+        <wsdl:part name="UpdatePackingGroupResponse" element="medicinecard20150601E3:UpdatePackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeletePackingGroupRequest_2015_06_01_E3">
+        <wsdl:part name="DeletePackingGroupRequest" element="medicinecard20150601E3:DeletePackingGroupRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DeletePackingGroupResponse_2015_06_01_E3">
+        <wsdl:part name="DeletePackingGroupResponse" element="medicinecard20150601E3:DeletePackingGroupResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="GetPackingGroupRequest_2015_06_01_E3">
         <wsdl:part name="GetPackingGroupRequest" element="medicinecard20150601E3:GetPackingGroupRequest"/>
     </wsdl:message>
@@ -1146,6 +1216,48 @@
         <wsdl:operation name="CloseDoseDispensingCard_2015_06_01_E3">
             <wsdl:input name="CloseDoseDispensingCardRequest_2015_06_01_E3" message="tns:CloseDoseDispensingCardRequest_2015_06_01_E3"/>
             <wsdl:output name="CloseDoseDispensingCardResponse_2015_06_01_E3" message="tns:CloseDoseDispensingCardResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="CreateDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:CreateDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="CreateDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:CreateDoseDispensingPeriodResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="UpdateDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:UpdateDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="UpdateDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:UpdateDoseDispensingPeriodResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="DeleteDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:DeleteDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="DeleteDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:DeleteDoseDispensingPeriodResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingPeriods_2015_06_01_E3">
+            <wsdl:input name="GetDoseDispensingPeriodsRequest_2015_06_01_E3" message="tns:GetDoseDispensingPeriodsRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetDoseDispensingPeriodsResponse_2015_06_01_E3" message="tns:GetDoseDispensingPeriodsResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePackingGroup_2015_06_01_E3">
+            <wsdl:input name="CreatePackingGroupRequest_2015_06_01_E3" message="tns:CreatePackingGroupRequest_2015_06_01_E3"/>
+            <wsdl:output name="CreatePackingGroupResponse_2015_06_01_E3" message="tns:CreatePackingGroupResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePackingGroup_2015_06_01_E3">
+            <wsdl:input name="UpdatePackingGroupRequest_2015_06_01_E3" message="tns:UpdatePackingGroupRequest_2015_06_01_E3"/>
+            <wsdl:output name="UpdatePackingGroupResponse_2015_06_01_E3" message="tns:UpdatePackingGroupResponse_2015_06_01_E3"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePackingGroup_2015_06_01_E3">
+            <wsdl:input name="DeletePackingGroupRequest_2015_06_01_E3" message="tns:DeletePackingGroupRequest_2015_06_01_E3"/>
+            <wsdl:output name="DeletePackingGroupResponse_2015_06_01_E3" message="tns:DeletePackingGroupResponse_2015_06_01_E3"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -2082,6 +2194,118 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CloseDoseDispensingCardResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CreateDoseDispensingPeriod"
+                            style="document"/>
+            <wsdl:input name="CreateDoseDispensingPeriodRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateDoseDispensingPeriodResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UpdateDoseDispensingPeriod"
+                            style="document"/>
+            <wsdl:input name="UpdateDoseDispensingPeriodRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateDoseDispensingPeriodResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#DeleteDoseDispensingPeriod"
+                            style="document"/>
+            <wsdl:input name="DeleteDoseDispensingPeriodRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteDoseDispensingPeriodResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingPeriods_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetDoseDispensingPeriods"
+                            style="document"/>
+            <wsdl:input name="GetDoseDispensingPeriodsRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingPeriodsResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePackingGroup_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CreatePackingGroup"
+                            style="document"/>
+            <wsdl:input name="CreatePackingGroupRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePackingGroupResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePackingGroup_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UpdatePackingGroup"
+                            style="document"/>
+            <wsdl:input name="UpdatePackingGroupRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdatePackingGroupResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePackingGroup_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#DeletePackingGroup"
+                            style="document"/>
+            <wsdl:input name="DeletePackingGroupRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeletePackingGroupResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

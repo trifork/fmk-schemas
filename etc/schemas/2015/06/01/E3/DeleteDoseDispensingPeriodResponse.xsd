@@ -11,15 +11,16 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="ListPackingGroupsResponse" type="medicinecard20150601E3:ListPackingGroupsResponseType">
+	<element name="DeleteDoseDispensingPeriodResponse" type="medicinecard20150601E3:DeleteDoseDispensingPeriodResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response with a list of  packing groups</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for et svar med en liste af pakkegrupper</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a for a request which deleted a new dose dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel der sletter en dosisdispenseringsperiode</documentation>
 		</annotation>
 	</element>
-	<complexType name="ListPackingGroupsResponseType">
+	<complexType name="DeleteDoseDispensingPeriodResponseType">
 		<sequence>
-            <element name="PackingGroup" type="medicinecard20150601E3:PackingGroupElementType" maxOccurs="unbounded"/>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
 		</sequence>
 	</complexType>
 </schema>
