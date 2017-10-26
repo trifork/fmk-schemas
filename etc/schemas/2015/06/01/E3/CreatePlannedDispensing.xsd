@@ -19,7 +19,10 @@
         <sequence>
         	<element name="DrugMedication" type="medicinecard20150601:DrugMedicationIdentifierAndVersionType"/>
             <element name="Substitution" type="medicinecard20150601E3:DrugSubstitutionType" minOccurs="0"/>
-            <element name="PlannedAdministration" type="medicinecard20150601E3:GenericPlannedAdministrationType" minOccurs="1" maxOccurs="unbounded"/>
+			<choice>
+				<element name="AdministrationAccordingToDrugMedication" type="medicinecard20150601E3:AdministrationAccordingToDrugMedicationType" minOccurs="1" maxOccurs="1"/>
+                <element name="PlannedAdministration" type="medicinecard20150601E3:GenericPlannedAdministrationType" minOccurs="1" maxOccurs="unbounded"/>
+			</choice>
         </sequence>
     </complexType>
 </schema>
