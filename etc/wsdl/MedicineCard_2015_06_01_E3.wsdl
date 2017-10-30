@@ -296,6 +296,9 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPlannedDispensingRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPlannedDispensingResponse.xsd" />
 			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SearchPlannedDispensingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SearchPlannedDispensingResponse.xsd" />
+			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetDoseDispensingStatusRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetDoseDispensingStatusResponse.xsd" />
 			
@@ -847,6 +850,13 @@
         <wsdl:part name="GetPlannedDispensingResponse" element="medicinecard20150601E3:GetPlannedDispensingResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="SearchPlannedDispensingRequest_2015_06_01_E3">
+        <wsdl:part name="SearchPlannedDispensingRequest" element="medicinecard20150601E3:SearchPlannedDispensingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SearchPlannedDispensingResponse_2015_06_01_E3">
+        <wsdl:part name="SearchPlannedDispensingResponse" element="medicinecard20150601E3:SearchPlannedDispensingResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="SetDoseDispensingStatusRequest_2015_06_01_E3">
         <wsdl:part name="SetDoseDispensingStatusRequest" element="medicinecard20150601E3:SetDoseDispensingStatusRequest"/>
     </wsdl:message>
@@ -1335,6 +1345,12 @@
         <wsdl:operation name="GetPlannedDispensing_2015_06_01_E3">
             <wsdl:input name="GetPlannedDispensingRequest_2015_06_01_E3" message="tns:GetPlannedDispensingRequest_2015_06_01_E3"/>
             <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E3" message="tns:GetPlannedDispensingResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPlannedDispensing_2015_06_01_E3">
+            <wsdl:input name="SearchPlannedDispensingRequest_2015_06_01_E3" message="tns:SearchPlannedDispensingRequest_2015_06_01_E3"/>
+            <wsdl:output name="SearchPlannedDispensingResponse_2015_06_01_E3" message="tns:SearchPlannedDispensingResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2325,6 +2341,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPlannedDispensing_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#SearchPlannedDispensing"
+                            style="document"/>
+            <wsdl:input name="SearchPlannedDispensingRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchPlannedDispensingResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
