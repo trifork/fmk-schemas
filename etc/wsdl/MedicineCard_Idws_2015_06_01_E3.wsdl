@@ -322,11 +322,11 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetDoseDispensingStatusRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetDoseDispensingStatusResponse.xsd" />
 			
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/StartDDEffectuationRequest.xsd" />
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/StartDDEffectuationResponse.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/StartEffectuationOfDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/StartEffectuationOfDoseDispensingPeriodResponse.xsd" />
 			
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDDEffectuationRequest.xsd" />
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDDEffectuationResponse.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/EffectuateDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/EffectuateDoseDispensingPeriodResponse.xsd" />
 			
         </xs:schema>
 
@@ -890,18 +890,18 @@
         <wsdl:part name="SetDoseDispensingStatusResponse" element="medicinecard20150601E3:SetDoseDispensingStatusResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="StartDDEffectuationRequest_2015_06_01_E3">
-        <wsdl:part name="StartDDEffectuationRequest" element="medicinecard20150601E3:StartDDEffectuationRequest"/>
+    <wsdl:message name="StartEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="StartEffectuationOfDoseDispensingPeriodRequest" element="medicinecard20150601E3:StartEffectuationOfDoseDispensingPeriodRequest"/>
     </wsdl:message>
-    <wsdl:message name="StartDDEffectuationResponse_2015_06_01_E3">
-        <wsdl:part name="StartDDEffectuationResponse" element="medicinecard20150601E3:StartDDEffectuationResponse"/>
+    <wsdl:message name="StartEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="StartEffectuationOfDoseDispensingPeriodResponse" element="medicinecard20150601E3:StartEffectuationOfDoseDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreateDDEffectuationRequest_2015_06_01_E3">
-        <wsdl:part name="CreateDDEffectuationRequest" element="medicinecard20150601E3:CreateDDEffectuationRequest"/>
+    <wsdl:message name="EffectuateDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="EffectuateDoseDispensingPeriodRequest" element="medicinecard20150601E3:EffectuateDoseDispensingPeriodRequest"/>
     </wsdl:message>
-    <wsdl:message name="CreateDDEffectuationResponse_2015_06_01_E3">
-        <wsdl:part name="CreateDDEffectuationResponse" element="medicinecard20150601E3:CreateDDEffectuationResponse"/>
+    <wsdl:message name="EffectuateDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="EffectuateDoseDispensingPeriodResponse" element="medicinecard20150601E3:EffectuateDoseDispensingPeriodResponse"/>
     </wsdl:message>
 
     <wsdl:portType name="MedicineCardPortType">
@@ -1386,15 +1386,15 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="StartDDEffectuation_2015_06_01_E3">
-            <wsdl:input name="StartDDEffectuationRequest_2015_06_01_E3" message="tns:StartDDEffectuationRequest_2015_06_01_E3"/>
-            <wsdl:output name="StartDDEffectuationResponse_2015_06_01_E3" message="tns:StartDDEffectuationResponse_2015_06_01_E3"/>
+        <wsdl:operation name="StartEffectuationOfDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="StartEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:StartEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="StartEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:StartEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateDDEffectuation_2015_06_01_E3">
-            <wsdl:input name="CreateDDEffectuationRequest_2015_06_01_E3" message="tns:CreateDDEffectuationRequest_2015_06_01_E3"/>
-            <wsdl:output name="CreateDDEffectuationResponse_2015_06_01_E3" message="tns:CreateDDEffectuationResponse_2015_06_01_E3"/>
+        <wsdl:operation name="EffectuateDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="EffectuateDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:EffectuateDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="EffectuateDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:EffectuateDoseDispensingPeriodResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2401,28 +2401,28 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="StartDDEffectuation_2015_06_01_E3">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#StartDDEffectuation"
+        <wsdl:operation name="StartEffectuationOfDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#StartEffectuationOfDoseDispensingPeriod"
                             style="document"/>
-            <wsdl:input name="StartDDEffectuationRequest_2015_06_01_E3">
+            <wsdl:input name="StartEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="StartDDEffectuationResponse_2015_06_01_E3">
+            <wsdl:output name="StartEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateDDEffectuation_2015_06_01_E3">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CreateDDEffectuation"
+        <wsdl:operation name="EffectuateDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#EffectuateDoseDispensingPeriod"
                             style="document"/>
-            <wsdl:input name="CreateDDEffectuationRequest_2015_06_01_E3">
+            <wsdl:input name="EffectuateDoseDispensingPeriodRequest_2015_06_01_E3">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreateDDEffectuationResponse_2015_06_01_E3">
+            <wsdl:output name="EffectuateDoseDispensingPeriodResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
