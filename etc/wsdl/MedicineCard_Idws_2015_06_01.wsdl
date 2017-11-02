@@ -143,6 +143,8 @@
             <xs:include schemaLocation="../schemas/2015/06/01/StartEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/StartEffectuationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/AutomatedStartEffectuationResponse.xsd"/>
+            
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePharmacyEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePharmacyEffectuationResponse.xsd"/>
 
@@ -486,6 +488,13 @@
     </wsdl:message>
     <wsdl:message name="StartEffectuationResponse_2015_06_01">
         <wsdl:part name="StartEffectuationResponse" element="medicinecard20150601:StartEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AutomatedStartEffectuationRequest_2015_06_01">
+        <wsdl:part name="AutomatedStartEffectuationRequest" element="medicinecard20150601:StartEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AutomatedStartEffectuationResponse_2015_06_01">
+        <wsdl:part name="AutomatedStartEffectuationResponse" element="medicinecard20150601:AutomatedStartEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePharmacyEffectuationRequest_2015_06_01">
@@ -853,6 +862,12 @@
             <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
         </wsdl:operation>
 
+        <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01" message="tns:AutomatedStartEffectuationRequest_2015_06_01"/>
+            <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01" message="tns:AutomatedStartEffectuationResponse_2015_06_01"/>
+            <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        </wsdl:operation>
+        
         <wsdl:operation name="CreatePharmacyEffectuation_2015_06_01">
             <wsdl:input name="CreatePharmacyEffectuationRequest_2015_06_01" message="tns:CreatePharmacyEffectuationRequest_2015_06_01"/>
             <wsdl:output name="CreatePharmacyEffectuationResponse_2015_06_01" message="tns:CreatePharmacyEffectuationResponse_2015_06_01"/>
@@ -1901,6 +1916,34 @@
             </wsdl:fault>
         </wsdl:operation>
 
+       <wsdl:operation name="AutomatedStartEffectuation_2015_06_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#AutomatedStartEffectuation"
+                            style="document"/>
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
+                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
+                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
+                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01">
+                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
+                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
+                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
+                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <!--<soap:header use="literal" part="ReplicationStatusHeader" message="tns:ReplicationStatusHeader"/>-->
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="IDWSFault">
+                <soap:fault name="IDWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
         <wsdl:operation name="CreatePharmacyEffectuation_2015_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreatePharmacyEffectuation"
                             style="document"/>
