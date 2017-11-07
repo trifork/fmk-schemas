@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<element name="GetPrescriptionRequestVersionsResponse" type="medicinecard20150601E2:GetPrescriptionRequestVersionsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with the versions of a prescriptionrequest</documentation>
+			<documentation xml:lang="da-DK">Svar med versioner af en receptanmodning</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPrescriptionRequestVersionsResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType" />
+			<element name="PrescriptionRequest" type="medicinecard20150601E2:PrescriptionRequestType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

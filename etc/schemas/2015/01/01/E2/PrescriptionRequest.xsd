@@ -11,9 +11,11 @@
 	<complexType name="PrescriptionRequestType">
 		<sequence>
 			<element name="Identifier" type="medicinecard20150101E2:PrescriptionRequestIdentifierType" />
+			<element name="Version" type="medicinecard20150101E2:PrescriptionRequestVersionType" minOccurs="0"/>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType" />
 			<element name="Created" type="medicinecard20150101E2:CreatedType" />
 			<element name="ReportedBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20150101E2:ModifiedType" minOccurs="0"/>
 			<element name="PrescribingOrganisation" type="medicinecard20150101:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 			<choice minOccurs="0">
 				<element name="SinglePrescriptionDispensing" type="medicinecard20150101E2:SinglePrescriptionDispensingForPrescriptionRequestType"/>

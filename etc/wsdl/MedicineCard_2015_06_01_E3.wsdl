@@ -99,8 +99,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/SearchPrescriptionRequestsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/SearchPrescriptionRequestsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/CreatePrescriptionRequestResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/06/01/CancelPrescriptionRequestResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/MarkPrescriptionDeprecatedRequest.xsd"/>
@@ -211,10 +209,14 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CreatePrescriptionForUseInPracticeRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CreatePrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/CreatePrescriptionRequestResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CreatePrescriptionRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CreatePrescriptionWithoutCPRRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/ForwardPrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/ForwardPrescriptionRequestResponse.xsd"/>
 
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
 
@@ -231,6 +233,9 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/GetPrescriptionRequestsResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/GetPrescriptionRequestVersionsRequest.xsd" />
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/GetPrescriptionRequestVersionsResponse.xsd" />
+            
             <xs:include schemaLocation="../schemas/2015/06/01/E2/GetPrescriptionResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/ReplacePrescriptionRequest.xsd"/>
@@ -479,6 +484,16 @@
                    element="medicinecard20150601E2:GetPrescriptionRequestsResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetPrescriptionRequestVersionsRequest_2015_06_01_E2">
+        <wsdl:part name="GetPrescriptionRequestVersionsRequest"
+                   element="medicinecard20150601E2:GetPrescriptionRequestVersionsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestVersionsResponse_2015_06_01_E2">
+        <wsdl:part name="GetPrescriptionRequestVersionsResponse"
+                   element="medicinecard20150601E2:GetPrescriptionRequestVersionsResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="SearchPrescriptionRequestsRequest_2015_06_01">
         <wsdl:part name="SearchPrescriptionRequestsRequest"
                    element="medicinecard20150601:SearchPrescriptionRequestsRequest"/>
@@ -493,9 +508,18 @@
         <wsdl:part name="CreatePrescriptionRequestRequest"
                    element="medicinecard20150601E2:CreatePrescriptionRequestRequest"/>
     </wsdl:message>
-    <wsdl:message name="CreatePrescriptionRequestResponse_2015_06_01">
+    <wsdl:message name="CreatePrescriptionRequestResponse_2015_06_01_E2">
         <wsdl:part name="CreatePrescriptionRequestResponse"
-                   element="medicinecard20150601:CreatePrescriptionRequestResponse"/>
+                   element="medicinecard20150601E2:CreatePrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ForwardPrescriptionRequestRequest_2015_06_01_E2">
+        <wsdl:part name="ForwardPrescriptionRequestRequest"
+                   element="medicinecard20150601E2:ForwardPrescriptionRequestRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ForwardPrescriptionRequestResponse_2015_06_01_E2">
+        <wsdl:part name="ForwardPrescriptionRequestResponse"
+                   element="medicinecard20150601E2:ForwardPrescriptionRequestResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CancelPrescriptionRequestRequest_2015_06_01_E2">
@@ -1017,6 +1041,14 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetPrescriptionRequestVersions_2015_06_01_E2">
+            <wsdl:input name="GetPrescriptionRequestVersionsRequest_2015_06_01_E2"
+                        message="tns:GetPrescriptionRequestVersionsRequest_2015_06_01_E2"/>
+            <wsdl:output name="GetPrescriptionRequestVersionsResponse_2015_06_01_E2"
+                         message="tns:GetPrescriptionRequestVersionsResponse_2015_06_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="SearchPrescriptionRequests_2015_06_01">
             <wsdl:input name="SearchPrescriptionRequestsRequest_2015_06_01"
                         message="tns:SearchPrescriptionRequestsRequest_2015_06_01"/>
@@ -1028,8 +1060,16 @@
         <wsdl:operation name="CreatePrescriptionRequest_2015_06_01_E2">
             <wsdl:input name="CreatePrescriptionRequestRequest_2015_06_01_E2"
                         message="tns:CreatePrescriptionRequestRequest_2015_06_01_E2"/>
-            <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01"
-                         message="tns:CreatePrescriptionRequestResponse_2015_06_01"/>
+            <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01_E2"
+                         message="tns:CreatePrescriptionRequestResponse_2015_06_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ForwardPrescriptionRequest_2015_06_01_E2">
+            <wsdl:input name="ForwardPrescriptionRequestRequest_2015_06_01_E2"
+                        message="tns:ForwardPrescriptionRequestRequest_2015_06_01_E2"/>
+            <wsdl:output name="ForwardPrescriptionRequestResponse_2015_06_01_E2"
+                         message="tns:ForwardPrescriptionRequestResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1632,6 +1672,20 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetPrescriptionRequestVersions_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetPrescriptionRequestVersions"
+                            style="document"/>
+            <wsdl:input name="GetPrescriptionRequestVersionsRequest_2015_06_01_E2">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionRequestVersionsResponse_2015_06_01_E2">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="CreatePrescriptionRequest_2015_06_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#CreatePrescriptionRequest"
                             style="document"/>
@@ -1639,7 +1693,21 @@
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01">
+            <wsdl:output name="CreatePrescriptionRequestResponse_2015_06_01_E2">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ForwardPrescriptionRequest_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#ForwardPrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="ForwardPrescriptionRequestRequest_2015_06_01_E2">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ForwardPrescriptionRequestResponse_2015_06_01_E2">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

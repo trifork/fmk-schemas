@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+<!ENTITY fmkStandardSOAPRequestHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ToHeader' message='tns:ToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' wsdl:required='true' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
+                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader'/>
+                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true'/>
+">
+<!ENTITY fmkStandardSOAPResponseHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' />
+                <soap:header use='literal' part='RelatesToHeader' message='tns:RelatesToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' />
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader' />
+">
+<!ENTITY operationFaultDeclaration "
+            <wsdl:fault name='IDWSFault' message='tns:IDWSFault'/>
+">
+<!ENTITY bindingFaultDeclaration "
+            <wsdl:fault name='IDWSFault'>
+                <soap:fault name='IDWSFault' use='literal'/>
+            </wsdl:fault>
+">
+]>
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -43,8 +70,6 @@
             <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                        schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
             
-			<xs:include schemaLocation="../schemas/2015/01/01/OnBehalfOf.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/TimingList.xsd"/>
 
         </xs:schema>
@@ -56,11 +81,11 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelPrescriptionRequestRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelPrescriptionRequestResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/CancelOrderResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/CreateOrderRequest.xsd"/>
 
@@ -69,6 +94,14 @@
             <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionRequestRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/CreatePrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/ForwardPrescriptionRequestRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/ForwardPrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionRequestVersionsRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionRequestVersionsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionRequestsRequest.xsd"/>
 
@@ -111,6 +144,10 @@
         <wsdl:part name="TimingHeader" element="medicinecard20150101:TimingList"/>
     </wsdl:message>
 
+    <wsdl:message name="IDWSFault">
+        <wsdl:part name="fault" element="sbf:IDWSFault" />
+    </wsdl:message>
+
     <wsdl:message name="CancelOrderRequest_2015_01_01_E2">
         <wsdl:part name="CancelOrderRequest" element="medicinecard20150101E2:CancelOrderRequest"/>
     </wsdl:message>
@@ -118,11 +155,11 @@
     <wsdl:message name="CancelOrderResponse_2015_01_01_E2">
         <wsdl:part name="CancelOrderResponse" element="medicinecard20150101E2:CancelOrderResponse"/>
     </wsdl:message>
-
+    
     <wsdl:message name="CancelPrescriptionRequestRequest_2015_01_01_E2">
         <wsdl:part name="CancelPrescriptionRequestRequest" element="medicinecard20150101E2:CancelPrescriptionRequestRequest"/>
     </wsdl:message>
-
+    
     <wsdl:message name="CancelPrescriptionRequestResponse_2015_01_01_E2">
         <wsdl:part name="CancelPrescriptionRequestResponse" element="medicinecard20150101E2:CancelPrescriptionRequestResponse"/>
     </wsdl:message>
@@ -130,7 +167,7 @@
     <wsdl:message name="CreateOrderRequest_2015_01_01_E2">
         <wsdl:part name="CreateOrderRequest" element="medicinecard20150101E2:CreateOrderRequest"/>
     </wsdl:message>
-
+    
     <wsdl:message name="CreateOrderResponse_2015_01_01_E2">
         <wsdl:part name="CreateOrderResponse" element="medicinecard20150101E2:CreateOrderResponse"/>
     </wsdl:message>
@@ -143,15 +180,30 @@
         <wsdl:part name="CreatePrescriptionRequestResponse" element="medicinecard20150101E2:CreatePrescriptionRequestResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="ForwardPrescriptionRequestRequest_2015_01_01_E2">
+        <wsdl:part name="ForwardPrescriptionRequestRequest" element="medicinecard20150101E2:ForwardPrescriptionRequestRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ForwardPrescriptionRequestResponse_2015_01_01_E2">
+        <wsdl:part name="ForwardPrescriptionRequestResponse" element="medicinecard20150101E2:ForwardPrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestVersionsRequest_2015_01_01_E2">
+        <wsdl:part name="GetPrescriptionRequestVersionsRequest" element="medicinecard20150101E2:GetPrescriptionRequestVersionsRequest"/>
+    </wsdl:message>
+    
+    <wsdl:message name="GetPrescriptionRequestVersionsResponse_2015_01_01_E2">
+        <wsdl:part name="GetPrescriptionRequestVersionsResponse" element="medicinecard20150101E2:GetPrescriptionRequestVersionsResponse"/>
+    </wsdl:message>
+   
     <wsdl:message name="GetPrescriptionRequestsRequest_2015_01_01_E2">
         <wsdl:part name="GetPrescriptionRequestsRequest" element="medicinecard20150101E2:GetPrescriptionRequestsRequest"/>
     </wsdl:message>
-
-
+    
     <wsdl:message name="GetPrescriptionRequestsResponse_2015_01_01_E2">
         <wsdl:part name="GetPrescriptionRequestsResponse" element="medicinecard20150101E2:GetPrescriptionRequestsResponse"/>
     </wsdl:message>
-
+   
     <wsdl:message name="SearchPrescriptionRequestsRequest_2015_01_01_E2">
         <wsdl:part name="SearchPrescriptionRequestsRequest" element="medicinecard20150101E2:SearchPrescriptionRequestsRequest"/>
     </wsdl:message>
@@ -159,48 +211,55 @@
     <wsdl:message name="SearchPrescriptionRequestsResponse_2015_01_01_E2">
         <wsdl:part name="SearchPrescriptionRequestsResponse" element="medicinecard20150101E2:SearchPrescriptionRequestsResponse"/>
     </wsdl:message>
-
-    <wsdl:message name="IDWSFault">
-        <wsdl:part name="fault" element="sbf:IDWSFault" />
-    </wsdl:message>
-
-
+    
     <wsdl:portType name="EffectuationOrderingPortType">
 
         <wsdl:operation name="CancelOrder_2015_01_01_E2">
             <wsdl:input name="CancelOrderRequest_2015_01_01_E2" message="tns:CancelOrderRequest_2015_01_01_E2"/>
             <wsdl:output name="CancelOrderResponse_2015_01_01_E2" message="tns:CancelOrderResponse_2015_01_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="CancelPrescriptionRequest_2015_01_01_E2">
             <wsdl:input name="CancelPrescriptionRequestRequest_2015_01_01_E2" message="tns:CancelPrescriptionRequestRequest_2015_01_01_E2"/>
             <wsdl:output name="CancelPrescriptionRequestResponse_2015_01_01_E2" message="tns:CancelPrescriptionRequestResponse_2015_01_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="CreateOrder_2015_01_01_E2">
             <wsdl:input name="CreateOrderRequest_2015_01_01_E2" message="tns:CreateOrderRequest_2015_01_01_E2"/>
             <wsdl:output name="CreateOrderResponse_2015_01_01_E2" message="tns:CreateOrderResponse_2015_01_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="CreatePrescriptionRequest_2015_01_01_E2">
             <wsdl:input name="CreatePrescriptionRequestRequest_2015_01_01_E2" message="tns:CreatePrescriptionRequestRequest_2015_01_01_E2"/>
             <wsdl:output name="CreatePrescriptionRequestResponse_2015_01_01_E2" message="tns:CreatePrescriptionRequestResponse_2015_01_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ForwardPrescriptionRequest_2015_01_01_E2">
+            <wsdl:input name="ForwardPrescriptionRequestRequest_2015_01_01_E2" message="tns:ForwardPrescriptionRequestRequest_2015_01_01_E2"/>
+            <wsdl:output name="ForwardPrescriptionRequestResponse_2015_01_01_E2" message="tns:ForwardPrescriptionRequestResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequestVersions_2015_01_01_E2">
+            <wsdl:input name="GetPrescriptionRequestVersionsRequest_2015_01_01_E2" message="tns:GetPrescriptionRequestVersionsRequest_2015_01_01_E2"/>
+            <wsdl:output name="GetPrescriptionRequestVersionsResponse_2015_01_01_E2" message="tns:GetPrescriptionRequestVersionsResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="GetPrescriptionRequests_2015_01_01_E2">
             <wsdl:input name="GetPrescriptionRequestsRequest_2015_01_01_E2" message="tns:GetPrescriptionRequestsRequest_2015_01_01_E2"/>
             <wsdl:output name="GetPrescriptionRequestsResponse_2015_01_01_E2" message="tns:GetPrescriptionRequestsResponse_2015_01_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E2">
             <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E2" message="tns:SearchPrescriptionRequestsRequest_2015_01_01_E2"/>
             <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E2" message="tns:SearchPrescriptionRequestsResponse_2015_01_01_E2"/>
-            <wsdl:fault name="DGWSFault" message="tns:IDWSFault"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
     </wsdl:portType>
@@ -214,170 +273,114 @@
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CancelOrder"
                             style="document"/>
             <wsdl:input name="CancelOrderRequest_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
-                             wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CancelOrderResponse_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader"/>
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader"/>
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="CancelPrescriptionRequest_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CancelPrescriptionRequest"
                             style="document"/>
             <wsdl:input name="CancelPrescriptionRequestRequest_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
-                             wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CancelPrescriptionRequestResponse_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader"/>
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader"/>
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="CreateOrder_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreateOrder"
                             style="document"/>
             <wsdl:input name="CreateOrderRequest_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
-                             wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreateOrderResponse_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader"/>
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader"/>
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="CreatePrescriptionRequest_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreatePrescriptionRequest"
                             style="document"/>
             <wsdl:input name="CreatePrescriptionRequestRequest_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
-                             wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePrescriptionRequestResponse_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader"/>
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader"/>
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ForwardPrescriptionRequest_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#ForwardPrescriptionRequest"
+                            style="document"/>
+            <wsdl:input name="ForwardPrescriptionRequestRequest_2015_01_01_E2">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ForwardPrescriptionRequestResponse_2015_01_01_E2">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequestVersions_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetPrescriptionRequestVersions"
+                            style="document"/>
+            <wsdl:input name="GetPrescriptionRequestVersionsRequest_2015_01_01_E2">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionRequestVersionsResponse_2015_01_01_E2">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="GetPrescriptionRequests_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetPrescriptionRequests"
                             style="document"/>
             <wsdl:input name="GetPrescriptionRequestsRequest_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
-                             wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescriptionRequestsResponse_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader"/>
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader"/>
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SearchPrescriptionRequests"
                             style="document"/>
             <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true"/>
-                <soap:header use="literal" part="OnBehalfOfHeader" message="tns:OnBehalfOfHeader"/>
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader"
-                             wsdl:required="true"/>
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader"/>
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader"/>
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader"/>
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader"/>
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
-
+        
     </wsdl:binding>
 
     <wsdl:service name="EffectuationOrdering">
