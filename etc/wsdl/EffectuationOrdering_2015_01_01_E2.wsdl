@@ -5,6 +5,7 @@
                 <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader'/>
                 <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader'/>
                 <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
 ">
 <!ENTITY fmkStandardSOAPResponseHeaders "
                 <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
@@ -22,6 +23,7 @@
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
                   xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
                   xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
                   xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
@@ -56,6 +58,11 @@
 
         </xs:schema>
 
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
+			<!-- The ConsentHeader element was introduced in FMK 1.4.6 schema and is reused down through the older FMK interfaces -->
+            <xs:include schemaLocation="../schemas/2015/06/01/ConsentHeader.xsd"/>
+        </xs:schema>
+        
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
                    elementFormDefault="qualified">
                    
@@ -107,6 +114,10 @@
 
     <wsdl:message name="WhitelistingHeader">
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="ConsentHeader">
+        <wsdl:part name="ConsentHeader" element="medicinecard20150601:ConsentHeader"/>
     </wsdl:message>
 
     <wsdl:message name="TimingHeader">

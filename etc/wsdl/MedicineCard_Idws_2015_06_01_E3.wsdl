@@ -8,6 +8,7 @@
                 <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
                 <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader'/>
                 <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true'/>
+                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
 ">
 <!ENTITY fmkStandardSOAPResponseHeaders "
                 <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
@@ -361,6 +362,10 @@
 
     <wsdl:message name="IDWSFault">
         <wsdl:part name="fault" element="sbf:IDWSFault" />
+    </wsdl:message>
+
+    <wsdl:message name="ConsentHeader">
+        <wsdl:part name="ConsentHeader" element="medicinecard20150601:ConsentHeader"/>
     </wsdl:message>
 
     <wsdl:message name="TimingHeader">

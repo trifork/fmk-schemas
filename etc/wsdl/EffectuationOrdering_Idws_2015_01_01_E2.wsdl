@@ -8,6 +8,7 @@
                 <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
                 <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader'/>
                 <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true'/>
+                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
 ">
 <!ENTITY fmkStandardSOAPResponseHeaders "
                 <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
@@ -30,6 +31,7 @@
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
                   xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
                   xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
                   xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
@@ -64,6 +66,11 @@
             <xs:include schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd/oasis-200401_orig-wss-wssecurity-utility-1.0.xsd" />
         </xs:schema>
 
+        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01">
+			<!-- The ConsentHeader element was introduced in FMK 1.4.6 schema and is reused down through the older FMK interfaces -->
+            <xs:include schemaLocation="../schemas/2015/06/01/ConsentHeader.xsd"/>
+        </xs:schema>
+        
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
                    elementFormDefault="qualified">
 
@@ -135,6 +142,9 @@
     </wsdl:message>
     <wsdl:message name="OnBehalfOfHeader">
        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20150101E2:OnBehalfOf"/>
+    </wsdl:message>
+    <wsdl:message name="ConsentHeader">
+        <wsdl:part name="ConsentHeader" element="medicinecard20150601:ConsentHeader"/>
     </wsdl:message>
     <wsdl:message name="WhitelistingHeader">
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>

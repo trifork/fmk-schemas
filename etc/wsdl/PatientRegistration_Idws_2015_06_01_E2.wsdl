@@ -1,3 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+<!ENTITY fmkStandardSOAPRequestHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ToHeader' message='tns:ToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' wsdl:required='true' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
+                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader'/>
+                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true'/>
+                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+">
+<!ENTITY fmkStandardSOAPResponseHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' />
+                <soap:header use='literal' part='RelatesToHeader' message='tns:RelatesToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' />
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader' />
+">
+<!ENTITY operationFaultDeclaration "
+            <wsdl:fault name='IDWSFault' message='tns:IDWSFault'/>
+">
+<!ENTITY bindingFaultDeclaration "
+            <wsdl:fault name='IDWSFault'>
+                <soap:fault name='IDWSFault' use='literal'/>
+            </wsdl:fault>
+">
+]>
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -39,6 +68,7 @@
 	        <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion" schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/OnBehalfOf.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/TimingList.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/ConsentHeader.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/RegisterPatientOrganisationRelationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/RegisterPatientOrganisationRelationResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/RemovePatientOrganisationRelationRequest.xsd"/>
@@ -75,118 +105,127 @@
     <wsdl:message name="SecurityHeader">
         <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
     </wsdl:message>
+    <wsdl:message name="IDWSFault">
+        <wsdl:part name="fault" element="sbf:IDWSFault" />
+    </wsdl:message>
+
     <wsdl:message name="WhitelistingHeader">
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="ConsentHeader">
+        <wsdl:part name="ConsentHeader" element="medicinecard20150601:ConsentHeader"/>
     </wsdl:message>
 
     <wsdl:message name="TimingHeader">
         <wsdl:part name="TimingHeader" element="medicinecard20150601:TimingList"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientOrganisationRelationIdwsRequest_2015_06_01">
+    <wsdl:message name="OnBehalfOfHeader">
+        <wsdl:part name="OnBehalfOfHeader" element="medicinecard20150601:OnBehalfOf"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPatientOrganisationRelationRequest_2015_06_01">
         <wsdl:part name="GetPatientOrganisationRelationRequest"
                    element="medicinecard20150601:GetPatientOrganisationRelationRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetPatientOrganisationRelationIdwsResponse_2015_06_01">
+    <wsdl:message name="GetPatientOrganisationRelationResponse_2015_06_01">
         <wsdl:part name="GetPatientOrganisationRelationResponse"
                    element="medicinecard20150601:GetPatientOrganisationRelationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RegisterPatientOrganisationRelationIdwsRequest_2015_06_01">
+    <wsdl:message name="RegisterPatientOrganisationRelationRequest_2015_06_01">
         <wsdl:part name="RegisterPatientOrganisationRelationRequest"
                    element="medicinecard20150601:RegisterPatientOrganisationRelationRequest"/>
     </wsdl:message>
-    <wsdl:message name="RegisterPatientOrganisationRelationIdwsResponse_2015_06_01">
+    <wsdl:message name="RegisterPatientOrganisationRelationResponse_2015_06_01">
         <wsdl:part name="RegisterPatientOrganisationRelationResponse"
                    element="medicinecard20150601:RegisterPatientOrganisationRelationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RemovePatientOrganisationRelationIdwsRequest_2015_06_01">
+    <wsdl:message name="RemovePatientOrganisationRelationRequest_2015_06_01">
         <wsdl:part name="RemovePatientOrganisationRelationRequest"
                    element="medicinecard20150601:RemovePatientOrganisationRelationRequest"/>
     </wsdl:message>
-    <wsdl:message name="RemovePatientOrganisationRelationIdwsResponse_2015_06_01">
+    <wsdl:message name="RemovePatientOrganisationRelationResponse_2015_06_01">
         <wsdl:part name="RemovePatientOrganisationRelationResponse"
                    element="medicinecard20150601:RemovePatientOrganisationRelationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientRegistrationIdwsRequest_2015_06_01_E2">
+    <wsdl:message name="GetPatientRegistrationRequest_2015_06_01_E2">
         <wsdl:part name="GetPatientRegistrationRequest" element="medicinecard20150601E2:GetPatientRegistrationRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetPatientRegistrationIdwsResponse_2015_06_01_E2">
+    <wsdl:message name="GetPatientRegistrationResponse_2015_06_01_E2">
         <wsdl:part name="GetPatientRegistrationResponse" element="medicinecard20150601E2:GetPatientRegistrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePatientRegistrationIdwsRequest_2015_06_01_E2">
+    <wsdl:message name="CreatePatientRegistrationRequest_2015_06_01_E2">
         <wsdl:part name="CreatePatientRegistrationRequest"
                    element="medicinecard20150601E2:CreatePatientRegistrationRequest"/>
     </wsdl:message>
-    <wsdl:message name="CreatePatientRegistrationIdwsResponse_2015_06_01">
+    <wsdl:message name="CreatePatientRegistrationResponse_2015_06_01">
         <wsdl:part name="CreatePatientRegistrationResponse"
                    element="medicinecard20150601:CreatePatientRegistrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RemovePatientRegistrationIdwsRequest_2015_06_01">
+    <wsdl:message name="RemovePatientRegistrationRequest_2015_06_01">
         <wsdl:part name="RemovePatientRegistrationRequest"
                    element="medicinecard20150601:RemovePatientRegistrationRequest"/>
     </wsdl:message>
-    <wsdl:message name="RemovePatientRegistrationIdwsResponse_2015_06_01">
+    <wsdl:message name="RemovePatientRegistrationResponse_2015_06_01">
         <wsdl:part name="RemovePatientRegistrationResponse"
                    element="medicinecard20150601:RemovePatientRegistrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="IDWSFault">
-        <wsdl:part name="fault" element="sbf:IDWSFault" />
-    </wsdl:message>
 
     <wsdl:portType name="PatientRelationPortType">
 
-        <wsdl:operation name="GetPatientOrganisationRelationIdws_2015_06_01">
-            <wsdl:input name="GetPatientOrganisationRelationIdwsRequest_2015_06_01"
-                        message="tns:GetPatientOrganisationRelationIdwsRequest_2015_06_01"/>
-            <wsdl:output name="GetPatientOrganisationRelationIdwsResponse_2015_06_01"
-                         message="tns:GetPatientOrganisationRelationIdwsResponse_2015_06_01"/>
-          <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        <wsdl:operation name="GetPatientOrganisationRelation_2015_06_01">
+            <wsdl:input name="GetPatientOrganisationRelationRequest_2015_06_01"
+                        message="tns:GetPatientOrganisationRelationRequest_2015_06_01"/>
+            <wsdl:output name="GetPatientOrganisationRelationResponse_2015_06_01"
+                         message="tns:GetPatientOrganisationRelationResponse_2015_06_01"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterPatientOrganisationRelationIdws_2015_06_01">
-            <wsdl:input name="RegisterPatientOrganisationRelationIdwsRequest_2015_06_01"
-                        message="tns:RegisterPatientOrganisationRelationIdwsRequest_2015_06_01"/>
-            <wsdl:output name="RegisterPatientOrganisationRelationIdwsResponse_2015_06_01"
-                         message="tns:RegisterPatientOrganisationRelationIdwsResponse_2015_06_01"/>
-          <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        <wsdl:operation name="RegisterPatientOrganisationRelation_2015_06_01">
+            <wsdl:input name="RegisterPatientOrganisationRelationRequest_2015_06_01"
+                        message="tns:RegisterPatientOrganisationRelationRequest_2015_06_01"/>
+            <wsdl:output name="RegisterPatientOrganisationRelationResponse_2015_06_01"
+                         message="tns:RegisterPatientOrganisationRelationResponse_2015_06_01"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientOrganisationRelationIdws_2015_06_01">
-            <wsdl:input name="RemovePatientOrganisationRelationIdwsRequest_2015_06_01"
-                        message="tns:RemovePatientOrganisationRelationIdwsRequest_2015_06_01"/>
-            <wsdl:output name="RemovePatientOrganisationRelationIdwsResponse_2015_06_01"
-                         message="tns:RemovePatientOrganisationRelationIdwsResponse_2015_06_01"/>
-          <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        <wsdl:operation name="RemovePatientOrganisationRelation_2015_06_01">
+            <wsdl:input name="RemovePatientOrganisationRelationRequest_2015_06_01"
+                        message="tns:RemovePatientOrganisationRelationRequest_2015_06_01"/>
+            <wsdl:output name="RemovePatientOrganisationRelationResponse_2015_06_01"
+                         message="tns:RemovePatientOrganisationRelationResponse_2015_06_01"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientRegistrationIdws_2015_06_01_E2">
-            <wsdl:input name="GetPatientRegistrationIdwsRequest_2015_06_01_E2"
-                        message="tns:GetPatientRegistrationIdwsRequest_2015_06_01_E2"/>
-            <wsdl:output name="GetPatientRegistrationIdwsResponse_2015_06_01_E2"
-                         message="tns:GetPatientRegistrationIdwsResponse_2015_06_01_E2"/>
-          <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        <wsdl:operation name="GetPatientRegistration_2015_06_01_E2">
+            <wsdl:input name="GetPatientRegistrationRequest_2015_06_01_E2"
+                        message="tns:GetPatientRegistrationRequest_2015_06_01_E2"/>
+            <wsdl:output name="GetPatientRegistrationResponse_2015_06_01_E2"
+                         message="tns:GetPatientRegistrationResponse_2015_06_01_E2"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePatientRegistrationIdws_2015_06_01_E2">
-            <wsdl:input name="CreatePatientRegistrationIdwsRequest_2015_06_01_E2"
-                        message="tns:CreatePatientRegistrationIdwsRequest_2015_06_01_E2"/>
-            <wsdl:output name="CreatePatientRegistrationIdwsResponse_2015_06_01"
-                         message="tns:CreatePatientRegistrationIdwsResponse_2015_06_01"/>
-          <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        <wsdl:operation name="CreatePatientRegistration_2015_06_01_E2">
+            <wsdl:input name="CreatePatientRegistrationRequest_2015_06_01_E2"
+                        message="tns:CreatePatientRegistrationRequest_2015_06_01_E2"/>
+            <wsdl:output name="CreatePatientRegistrationResponse_2015_06_01"
+                         message="tns:CreatePatientRegistrationResponse_2015_06_01"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientRegistrationIdws_2015_06_01">
-            <wsdl:input name="RemovePatientRegistrationIdwsRequest_2015_06_01"
-                        message="tns:RemovePatientRegistrationIdwsRequest_2015_06_01"/>
-            <wsdl:output name="RemovePatientRegistrationIdwsResponse_2015_06_01"
-                         message="tns:RemovePatientRegistrationIdwsResponse_2015_06_01"/>
-          <wsdl:fault name="IDWSFault" message="tns:IDWSFault"/>
+        <wsdl:operation name="RemovePatientRegistration_2015_06_01">
+            <wsdl:input name="RemovePatientRegistrationRequest_2015_06_01"
+                        message="tns:RemovePatientRegistrationRequest_2015_06_01"/>
+            <wsdl:output name="RemovePatientRegistrationResponse_2015_06_01"
+                         message="tns:RemovePatientRegistrationResponse_2015_06_01"/>
+&operationFaultDeclaration;
         </wsdl:operation>
 
     </wsdl:portType>
@@ -195,164 +234,92 @@
     <wsdl:binding name="PatientRelationBinding" type="tns:PatientRelationPortType">
 
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-        <wsdl:operation name="GetPatientOrganisationRelationIdws_2015_06_01">
+        
+        <wsdl:operation name="GetPatientOrganisationRelation_2015_06_01">
             <soap:operation
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#GetPatientOrganisationRelation"
                     style="document"/>
-            <wsdl:input name="GetPatientOrganisationRelationIdwsRequest_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+            <wsdl:input name="GetPatientOrganisationRelationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPatientOrganisationRelationIdwsResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+            <wsdl:output name="GetPatientOrganisationRelationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterPatientOrganisationRelationIdws_2015_06_01">
+        <wsdl:operation name="RegisterPatientOrganisationRelation_2015_06_01">
             <soap:operation
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#RegisterPatientOrganisationRelation"
                     style="document"/>
-            <wsdl:input name="RegisterPatientOrganisationRelationIdwsRequest_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+            <wsdl:input name="RegisterPatientOrganisationRelationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RegisterPatientOrganisationRelationIdwsResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+            <wsdl:output name="RegisterPatientOrganisationRelationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientOrganisationRelationIdws_2015_06_01">
+        <wsdl:operation name="RemovePatientOrganisationRelation_2015_06_01">
             <soap:operation
                     soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#RemovePatientOrganisationRelation"
                     style="document"/>
-            <wsdl:input name="RemovePatientOrganisationRelationIdwsRequest_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+            <wsdl:input name="RemovePatientOrganisationRelationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RemovePatientOrganisationRelationIdwsResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+            <wsdl:output name="RemovePatientOrganisationRelationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientRegistrationIdws_2015_06_01_E2">
+        <wsdl:operation name="GetPatientRegistration_2015_06_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetPatientRegistration"
                             style="document"/>
-            <wsdl:input name="GetPatientRegistrationIdwsRequest_2015_06_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+            <wsdl:input name="GetPatientRegistrationRequest_2015_06_01_E2">
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPatientRegistrationIdwsResponse_2015_06_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+            <wsdl:output name="GetPatientRegistrationResponse_2015_06_01_E2">
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePatientRegistrationIdws_2015_06_01_E2">
+        <wsdl:operation name="CreatePatientRegistration_2015_06_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#CreatePatientRegistration"
                             style="document"/>
-            <wsdl:input name="CreatePatientRegistrationIdwsRequest_2015_06_01_E2">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+            <wsdl:input name="CreatePatientRegistrationRequest_2015_06_01_E2">
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePatientRegistrationIdwsResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+            <wsdl:output name="CreatePatientRegistrationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientRegistrationIdws_2015_06_01">
+        <wsdl:operation name="RemovePatientRegistration_2015_06_01">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#RemovePatientRegistration"
                             style="document"/>
-            <wsdl:input name="RemovePatientRegistrationIdwsRequest_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" wsdl:required="true" />
-                <soap:header use="literal" part="ToHeader" message="tns:ToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" wsdl:required="true" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" wsdl:required="true" />
-                <soap:header use="literal" part="WhitelistingHeader" message="tns:WhitelistingHeader" wsdl:required="true"/>
+            <wsdl:input name="RemovePatientRegistrationRequest_2015_06_01">
+&fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RemovePatientRegistrationIdwsResponse_2015_06_01">
-                <soap:header use="literal" part="MessageIDHeader" message="tns:MessageIDHeader" />
-                <soap:header use="literal" part="ActionHeader" message="tns:ActionHeader" />
-                <soap:header use="literal" part="RelatesToHeader" message="tns:RelatesToHeader" />
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader" />
-                <soap:header use="literal" part="FrameworkHeader" message="tns:FrameworkHeader" />
-                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+            <wsdl:output name="RemovePatientRegistrationResponse_2015_06_01">
+&fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="IDWSFault">
-                <soap:fault name="IDWSFault" use="literal"/>
-            </wsdl:fault>
+&bindingFaultDeclaration;
         </wsdl:operation>
     </wsdl:binding>
 
