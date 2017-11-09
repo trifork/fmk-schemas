@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
-	<include schemaLocation="CreateDoseDispensedPrescriptionDispensing.xsd"/>
+	<include schemaLocation="CreateDoseDispensedPrescriptionDispensingWithDates.xsd"/>
 	<include schemaLocation="CreateSinglePrescriptionDispensing.xsd"/>
 	<include schemaLocation="CreateReiteratedPrescriptionDispensing.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
@@ -37,7 +37,7 @@
 			<choice>
 				<element name="SinglePrescriptionDispensing" type="medicinecard20150101:CreateSinglePrescriptionDispensingType"/>
 				<element name="ReiteratedPrescriptionDispensing" type="medicinecard20150101:CreateReiteratedPrescriptionDispensingType"/>
-				<element name="DoseDispensedDispensing" type="medicinecard20150101:CreateDoseDispensedPrescriptionDispensingType"/>
+				<element name="DoseDispensedDispensing" type="medicinecard20150101:CreateDoseDispensedPrescriptionDispensingWithDatesType"/>
 			</choice>
 			<element name="Indication" type="medicinecard20150101:IndicationType" minOccurs="0"/>
 			<element name="SubstitutionAllowed" type="medicinecard20150101:SubstitutionAllowedType"/>
