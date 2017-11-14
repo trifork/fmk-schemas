@@ -76,8 +76,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardAsPDFRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardAsPDFResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionResponse.xsd"/>
 
@@ -219,6 +217,7 @@
             
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDrugMedicationResponse.xsd" />
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E2/GetMedicineCardRequest.xsd"/>
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetMedicineCardResponse.xsd" />
 
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetNewOrdersResponse.xsd" />
@@ -273,8 +272,8 @@
         <wsdl:part name="fault" element="medcom:FaultCode"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardRequest_2015_06_01">
-        <wsdl:part name="GetMedicineCardRequest" element="medicinecard20150601:GetMedicineCardRequest"/>
+    <wsdl:message name="GetMedicineCardRequest_2015_06_01_E2">
+        <wsdl:part name="GetMedicineCardRequest" element="medicinecard20150601E2:GetMedicineCardRequest"/>
     </wsdl:message>
     <wsdl:message name="GetMedicineCardResponse_2015_06_01_E2">
         <wsdl:part name="GetMedicineCardResponse" element="medicinecard20150601E2:GetMedicineCardResponse"/>
@@ -689,7 +688,7 @@
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
-            <wsdl:input name="GetMedicineCardRequest_2015_06_01" message="tns:GetMedicineCardRequest_2015_06_01"/>
+            <wsdl:input name="GetMedicineCardRequest_2015_06_01_E2" message="tns:GetMedicineCardRequest_2015_06_01_E2"/>
             <wsdl:output name="GetMedicineCardResponse_2015_06_01_E2" message="tns:GetMedicineCardResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -1085,7 +1084,7 @@
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetMedicineCard"
                             style="document"/>
-            <wsdl:input name="GetMedicineCardRequest_2015_06_01">
+            <wsdl:input name="GetMedicineCardRequest_2015_06_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>

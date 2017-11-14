@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+	<element name="GetMedicineCardRequest" type="medicinecard20150601E2:GetMedicineCardRequestType">
+	</element>
+	<complexType name="GetMedicineCardRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a medicinecard</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter et medicinkort</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="Version" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DateTime" type="medicinecard20150601:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IncludePrescriptions" type="medicinecard20150601:IncludePrescriptionsType"/>
+			<element name="IncludeEffectuations" type="medicinecard20150601:IncludeEffectuationsType"/>
+			<element name="IncludeNonRelevantPrescriptions" type="medicinecard20150601:IncludeNonRelevantPrescriptionsType"/>
+			<element name="IncludeWithdrawnDrugMedications" type="medicinecard20150601:IncludeWithdrawnDrugMedicationsType" minOccurs="0"/>
+			<element name="IncludeDrugMedicationTypes" type="medicinecard20150601E2:DrugMedicationTypeType" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+</schema>
