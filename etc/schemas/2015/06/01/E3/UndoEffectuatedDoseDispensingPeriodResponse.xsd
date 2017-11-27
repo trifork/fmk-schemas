@@ -11,20 +11,16 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="EffectuateDoseDispensingPeriodRequest" type="medicinecard20150601E3:EffectuateDoseDispensingPeriodRequestType"/>
+	<element name="UndoEffectuatedDoseDispensingPeriodResponse" type="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodResponseType"/>
 
-	<complexType name="EffectuateDoseDispensingPeriodRequestType">
+	<complexType name="UndoEffectuatedDoseDispensingPeriodResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request for creating pharmacy effectuations for an entire DD period</documentation>
-			<documentation xml:lang="da-DK">Request til at oprette effektueringer for alt i en dosisdispenseringsperiode </documentation>
+			<documentation xml:lang="en-GB">Response for undoing effectuations for a dosedispensingperiod</documentation>
+			<documentation xml:lang="da-DK">Svar på tilbageførsel af udleveringer for en dosisdispenseringsperiode </documentation>
 		</annotation>
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-     		<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
-			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="ExpectedDelivery" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0" />
+			<element name="EffectuationIdentifier" type="medicinecard20150601:EffectuationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

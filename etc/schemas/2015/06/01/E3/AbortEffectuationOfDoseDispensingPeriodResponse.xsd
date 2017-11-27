@@ -11,20 +11,16 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="EffectuateDoseDispensingPeriodRequest" type="medicinecard20150601E3:EffectuateDoseDispensingPeriodRequestType"/>
-
-	<complexType name="EffectuateDoseDispensingPeriodRequestType">
+	<element name="AbortEffectuationOfDoseDispensingPeriodResponse" type="medicinecard20150601E3:AbortEffectuationOfDoseDispensingPeriodResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request for creating pharmacy effectuations for an entire DD period</documentation>
-			<documentation xml:lang="da-DK">Request til at oprette effektueringer for alt i en dosisdispenseringsperiode </documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a for a request to abort effectuation for an entire DD period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en request som afbryder ekspeditionen af alt i en DD periode</documentation>
 		</annotation>
+	</element>
+	<complexType name="AbortEffectuationOfDoseDispensingPeriodResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="CreatedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-     		<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
-			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="ExpectedDelivery" type="medicinecard20150601:ExpectedDeliveryDateTimeType" minOccurs="0" />
+			<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
 		</sequence>
 	</complexType>
 </schema>

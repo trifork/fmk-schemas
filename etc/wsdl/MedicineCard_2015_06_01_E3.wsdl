@@ -312,6 +312,12 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/EffectuateDoseDispensingPeriodRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/EffectuateDoseDispensingPeriodResponse.xsd" />
 			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortEffectuationOfDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortEffectuationOfDoseDispensingPeriodResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodResponse.xsd" />
+			
         </xs:schema>
 
     </wsdl:types>
@@ -901,6 +907,20 @@
         <wsdl:part name="EffectuateDoseDispensingPeriodResponse" element="medicinecard20150601E3:EffectuateDoseDispensingPeriodResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="AbortEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="AbortEffectuationOfDoseDispensingPeriodRequest" element="medicinecard20150601E3:AbortEffectuationOfDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AbortEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="AbortEffectuationOfDoseDispensingPeriodResponse" element="medicinecard20150601E3:AbortEffectuationOfDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoEffectuatedDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="UndoEffectuatedDoseDispensingPeriodRequest" element="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UndoEffectuatedDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="UndoEffectuatedDoseDispensingPeriodResponse" element="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
@@ -1408,6 +1428,18 @@
         <wsdl:operation name="EffectuateDoseDispensingPeriod_2015_06_01_E3">
             <wsdl:input name="EffectuateDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:EffectuateDoseDispensingPeriodRequest_2015_06_01_E3"/>
             <wsdl:output name="EffectuateDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:EffectuateDoseDispensingPeriodResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortEffectuationOfDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="AbortEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:AbortEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="AbortEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:AbortEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoEffectuatedDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="UndoEffectuatedDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:UndoEffectuatedDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="UndoEffectuatedDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:UndoEffectuatedDoseDispensingPeriodResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2464,6 +2496,34 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="EffectuateDoseDispensingPeriodResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortEffectuationOfDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#AbortEffectuationOfDoseDispensingPeriod"
+                            style="document"/>
+            <wsdl:input name="AbortEffectuationOfDoseDispensingPeriodRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AbortEffectuationOfDoseDispensingPeriodResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoEffectuatedDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UndoEffectuatedDoseDispensingPeriod"
+                            style="document"/>
+            <wsdl:input name="UndoEffectuatedDoseDispensingPeriodRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoEffectuatedDoseDispensingPeriodResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

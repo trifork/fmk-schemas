@@ -11,12 +11,12 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="StartEffectuationOfDoseDispensingPeriodRequest" type="medicinecard20150601E3:StartEffectuationOfDoseDispensingPeriodRequestType"/>
+	<element name="AbortEffectuationOfDoseDispensingPeriodRequest" type="medicinecard20150601E3:AbortEffectuationOfDoseDispensingPeriodRequestType"/>
 
-	<complexType name="StartEffectuationOfDoseDispensingPeriodRequestType">
+	<complexType name="AbortEffectuationOfDoseDispensingPeriodRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">A request to start effectuation for an entire DD period</documentation>
-			<documentation xml:lang="da-DK">Et request som påbegynder udlevering for alt i en DD periode</documentation>
+			<documentation xml:lang="en-GB">A request to abort effectuation for an entire DD period</documentation>
+			<documentation xml:lang="da-DK">Et request som afbryder ekspedition af alt i en DD periode</documentation>
 		</annotation>
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
@@ -24,7 +24,7 @@
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
      		<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
 			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
-     		<element name="RequestedStatus" type="medicinecard20150601E2:DoseDispensingStatusType" />
+     		<element name="RequestedStatus" type="medicinecard20150601E2:DoseDispensingStatusType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
