@@ -11,18 +11,15 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="DeletePlannedDispensingRequest" type="medicinecard20150601E3:DeletePlannedDispensingRequestType">
+	<complexType name="CreatePackingGroupType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request to delete a planned dispensing</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der sletter en planlagt dispensering</documentation>
+			<documentation xml:lang="en-GB">Element for creating a DD packing group</documentation>
+			<documentation xml:lang="da-DK">Element der opretter en DD pakkegruppe</documentation>
 		</annotation>
-	</element>
-	<complexType name="DeletePlannedDispensingRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
-			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="PlannedDispensing" type="medicinecard20150601E3:DeletePlannedDispensingType" maxOccurs="unbounded"/>
+    		<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PackingGroupName" type="medicinecard20150601:PackingGroupType"/>
+			<element name="PackedAtOrganisation" type="medicinecard20150601:OrganisationType"/>
 		</sequence>
 	</complexType>
 </schema>
