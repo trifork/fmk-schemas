@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
         xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
         targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
     <complexType name="PlannedDispensingIdentifierAndVersionType">
@@ -13,7 +15,7 @@
             <documentation xml:lang="da-DK">Resultat af opdatering af en planlagt dispensering</documentation>
         </annotation>
         <sequence>
-        	<element name="Identifier" type="medicinecard20150601E3:PlannedDispensingIdentifierType"/>
+        	<element name="Identifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType"/>
         	<element name="Version" type="medicinecard20150601E3:PlannedDispensingVersionType"/> 
         </sequence>
     </complexType>

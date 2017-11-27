@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E2.xsd"/>
+
+	<complexType name="DrugSubstitutionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Specification of pharmacy substitution</documentation>
+			<documentation xml:lang="da-DK">Detaljer vedrørende apotekets substitution</documentation>
+		</annotation>
+		<sequence>
+			<element name="SubstitutionChosenByPatient" type="medicinecard20150601E2:SubstitutionChosenByPatientType" minOccurs="0"/>
+			<element name="Drug" type="medicinecard20150601:DrugType"/>
+		</sequence>
+	</complexType>
+</schema>

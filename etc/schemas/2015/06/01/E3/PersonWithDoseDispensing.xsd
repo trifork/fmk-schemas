@@ -11,16 +11,14 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="GetPackingGroupRequest" type="medicinecard20150601E3:GetPackingGroupRequestType">
+	<complexType name="PersonWithDoseDispensingType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request to get the contents of a packing group</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel på indholdet af en pakkegruppe</documentation>
+			<documentation xml:lang="en-GB">Overview of dosedispensingperiods for a person</documentation>
+			<documentation xml:lang="da-DK">Overblik over en persons dosisdispenseringsperioder</documentation>
 		</annotation>
-	</element>
-	<complexType name="GetPackingGroupRequestType">
 		<sequence>
-            <element name="PackingGroupIdentifier" type="medicinecard20150601E2:PackingGroupIdentifierType"/>
-            <element name="ProductionDateTime" type="medicinecard20150601E3:ProductionDateTimeType" minOccurs="0" />
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="DoseDispensingCard" type="medicinecard20150601E3:DoseDispensingCardSummaryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

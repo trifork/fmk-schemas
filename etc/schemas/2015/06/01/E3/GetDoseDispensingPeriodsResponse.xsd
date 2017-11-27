@@ -13,14 +13,13 @@
 
 	<element name="GetDoseDispensingPeriodsResponse" type="medicinecard20150601E3:GetDoseDispensingPeriodsResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request for a request which updates a dose dispensing period</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der opdaterer en dosisdispenseringsperiode</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response with an overview of dosedispensingperiods for a person</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar med overblik over en persons dosisdispenseringsperioder</documentation>
 		</annotation>
 	</element>
 	<complexType name="GetDoseDispensingPeriodsResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="DoseDispensingPeriod" type="medicinecard20150601E3:DoseDispensingPeriodSummaryType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PersonWithDoseDispensing" type="medicinecard20150601E3:PersonWithDoseDispensingType" />
 		</sequence>
 	</complexType>
 </schema>

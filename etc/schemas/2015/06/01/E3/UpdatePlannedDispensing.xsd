@@ -17,10 +17,13 @@
             <documentation xml:lang="da-DK">Opdatering af en planlagt dispensering for en given lægemiddelordination</documentation>
         </annotation>
         <sequence>
-        	<element name="Identifier" type="medicinecard20150601E3:PlannedDispensingIdentifierType"/>
+        	<element name="Identifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType"/>
         	<element name="Version" type="medicinecard20150601E3:PlannedDispensingVersionType"/>
-            <element name="Substitution" type="medicinecard20150601E3:DrugSubstitutionType" minOccurs="0"/>
-            <element name="PlannedAdministration" type="medicinecard20150601E3:GenericPlannedAdministrationType" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="Substitution" type="medicinecard20150601E2:DrugSubstitutionType" minOccurs="0"/>
+			<choice>
+				<element name="AdministrationAccordingToDrugMedication" type="medicinecard20150601E3:AdministrationAccordingToDrugMedicationType"/>
+                <element name="PlannedAdministration" type="medicinecard20150601E3:GenericPlannedAdministrationType"/>
+			</choice>
         </sequence>
     </complexType>
 </schema>
