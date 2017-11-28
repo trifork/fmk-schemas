@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+
+	<simpleType name="AdministrationInstructionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Instruction for a dose dispensable unit (bag)</documentation>
+			<documentation xml:lang="da-DK">Instruktion vedrørende en dosis dispenserbar enhed (pose)</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20150101E2:PredefinedAdministrationInstructionType medicinecard20150101E2:UndefinedAdministrationInstructionType"/>
+	</simpleType>
+	<simpleType name="PredefinedAdministrationInstructionType">
+		<restriction base="medicinecard20150101E2:UndefinedAdministrationInstructionType">
+			<enumeration value="Synkes hele"/>
+			<enumeration value="Tygges"/>
+			<enumeration value="Knuses"/>
+			<enumeration value="Opløses i vand"/>
+			<enumeration value="Med måltid"/>
+			<enumeration value="Før måltid"/>
+			<enumeration value="Efter måltid"/>
+			<enumeration value="Ikke ifm måltid"/>
+			<enumeration value="Før sengetid"/>
+			<enumeration value="Ved behov"/>
+			<enumeration value="Ved smerter"/>
+			<enumeration value="Ved anfald"/>
+			<enumeration value="Før anstrengelse"/>
+			<enumeration value="Før virkning ønskes"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedAdministrationInstructionType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="22"/>
+		</restriction>
+	</simpleType>
+</schema>
