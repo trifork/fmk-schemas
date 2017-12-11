@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+		
+    <simpleType name="DoseDispensingProductionIdentifierType">
+        <annotation>
+            <documentation xml:lang="en-GB">Identifier assigned to the physical package for a dose dispensing period. Typically also used as barcode</documentation>
+            <documentation xml:lang="da-DK">Identifier for den fysiske rulle for en dosisdispenseringsperiode. Anvendes eksempelvis som stregkode på rullen.</documentation>
+        </annotation>
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="200"/>
+        </restriction>
+    </simpleType>
+</schema>
