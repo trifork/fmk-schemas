@@ -282,6 +282,9 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CloseDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CloseDoseDispensingCardResponse.xsd" />
 			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetDoseDispensingCardHistoryRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetDoseDispensingCardHistoryResponse.xsd" />
+			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingPeriodRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingPeriodResponse.xsd" />
 			
@@ -817,6 +820,13 @@
     </wsdl:message>
     <wsdl:message name="CloseDoseDispensingCardResponse_2015_06_01_E3">
         <wsdl:part name="CloseDoseDispensingCardResponse" element="medicinecard20150601E3:CloseDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingCardHistoryRequest_2015_06_01_E3">
+        <wsdl:part name="GetDoseDispensingCardHistoryRequest" element="medicinecard20150601E3:GetDoseDispensingCardHistoryRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetDoseDispensingCardHistoryResponse_2015_06_01_E3">
+        <wsdl:part name="GetDoseDispensingCardHistoryResponse" element="medicinecard20150601E3:GetDoseDispensingCardHistoryResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreateDoseDispensingPeriodRequest_2015_06_01_E3">
@@ -1357,6 +1367,12 @@
         <wsdl:operation name="CloseDoseDispensingCard_2015_06_01_E3">
             <wsdl:input name="CloseDoseDispensingCardRequest_2015_06_01_E3" message="tns:CloseDoseDispensingCardRequest_2015_06_01_E3"/>
             <wsdl:output name="CloseDoseDispensingCardResponse_2015_06_01_E3" message="tns:CloseDoseDispensingCardResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCardHistory_2015_06_01_E3">
+            <wsdl:input name="GetDoseDispensingCardHistoryRequest_2015_06_01_E3" message="tns:GetDoseDispensingCardHistoryRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetDoseDispensingCardHistoryResponse_2015_06_01_E3" message="tns:GetDoseDispensingCardHistoryResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2289,6 +2305,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CloseDoseDispensingCardResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCardHistory_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetDoseDispensingCardHistory"
+                            style="document"/>
+            <wsdl:input name="GetDoseDispensingCardHistoryRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingCardHistoryResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
