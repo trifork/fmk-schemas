@@ -4,6 +4,7 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="ReviewedDateTime.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
 	<element name="SetMedicineCardNotReviewedRequest" type="medicinecard20150601:SetMedicineCardNotReviewedRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request to set a date and time for marking the medicine card not reviewed</documentation>
@@ -17,6 +18,7 @@
 			<element name="NotReviewedBy" type="medicinecard20150601:ModificatorType"/>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="NotReviewedDateTime" type="medicinecard20150601:ReviewedDateTimeType"/>
+			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

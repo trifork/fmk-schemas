@@ -4,6 +4,7 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="ReviewedDateTime.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
 	<element name="SetMedicineCardReviewedRequest" type="medicinecard20120601:SetMedicineCardReviewedRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request to set a date and time for a review of the medicine card</documentation>
@@ -17,6 +18,7 @@
 			<element name="ModifiedBy" type="medicinecard20120601:ModificatorType"/>
 			<element name="ReportedBy" type="medicinecard20120601:ModificatorType" minOccurs="0"/>
 			<element name="ReviewedDateTime" type="medicinecard20120601:ReviewedDateTimeType"/>
+			<element name="ModificationMetadata" type="medicinecard20120601:ModificationMetadataType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
