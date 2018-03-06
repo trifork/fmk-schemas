@@ -216,6 +216,7 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E2/ForwardPrescriptionRequestRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E2/ForwardPrescriptionRequestResponse.xsd"/>
 
+			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/GetDrugMedicationHistoryResponse.xsd"/>
@@ -250,7 +251,6 @@
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3" elementFormDefault="qualified">
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetDoseDispensingCardRequest.xsd" />
 
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingCardRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/CreateDoseDispensingCardResponse.xsd" />
@@ -763,8 +763,8 @@
         <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionResponse" element="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01_E3">
-        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601E3:GetDoseDispensingCardRequest"/>
+    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01_E2">
+        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601E2:GetDoseDispensingCardRequest"/>
     </wsdl:message>
     <wsdl:message name="GetDoseDispensingCardResponse_2015_06_01_E2">
         <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
@@ -1315,8 +1315,8 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E3">
-            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E3" message="tns:GetDoseDispensingCardRequest_2015_06_01_E3"/>
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
             <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -2224,10 +2224,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E3">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetDoseDispensingCard"
+        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetDoseDispensingCard"
                             style="document"/>
-            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E3">
+            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
