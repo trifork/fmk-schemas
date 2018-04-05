@@ -11,19 +11,18 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="UndoEffectuatedDoseDispensingPeriodRequest" type="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodRequestType"/>
-
-	<complexType name="UndoEffectuatedDoseDispensingPeriodRequestType">
+	<element name="UndoEffectuatedDoseDispensingPeriodRequest" type="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request for undoing pharmacy effectuations for an entire DD period</documentation>
 			<documentation xml:lang="da-DK">Request til at tilbageføre effektueringer for alt i en dosisdispenseringsperiode </documentation>
 		</annotation>
+	</element>
+	<complexType name="UndoEffectuatedDoseDispensingPeriodRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
 			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-     		<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType" maxOccurs="unbounded"/>
-			<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+     		<element name="DoseDispensingPeriod" type="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
