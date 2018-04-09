@@ -11,16 +11,16 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="UndoEffectuatedDoseDispensingPeriodResponse" type="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodResponseType"/>
-
-	<complexType name="UndoEffectuatedDoseDispensingPeriodResponseType">
+	<element name="UndoEffectuatedDoseDispensingPeriodResponse" type="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response for undoing effectuations for a dosedispensingperiod</documentation>
 			<documentation xml:lang="da-DK">Svar på tilbageførsel af udleveringer for en dosisdispenseringsperiode </documentation>
 		</annotation>
+	</element>
+	<complexType name="UndoEffectuatedDoseDispensingPeriodResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="EffectuationIdentifier" type="medicinecard20150601:EffectuationIdentifierType" maxOccurs="unbounded"/>
+			<element name="EffectuationIdentifier" type="medicinecard20150601E3:UndoneEffectuatedDoseDispensingPeriodType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
