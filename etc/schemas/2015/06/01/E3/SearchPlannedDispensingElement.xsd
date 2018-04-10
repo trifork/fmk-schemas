@@ -20,7 +20,11 @@
 	<complexType name="SearchPlannedDispensingElementType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-        	<element name="PlannedDispensingIdentifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType" maxOccurs="unbounded"/>
+			<sequence maxOccurs="unbounded">
+	        	<element name="PlannedDispensingIdentifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType" />
+				<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType" minOccurs="0"/>
+				<element name="SubstitutionChosenByPatient" type="medicinecard20150601E2:SubstitutionChosenByPatientType" minOccurs="0"/>
+			</sequence>
 		</sequence>
 	</complexType>
 </schema>
