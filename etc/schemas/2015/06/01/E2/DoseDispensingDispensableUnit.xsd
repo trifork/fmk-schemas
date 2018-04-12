@@ -4,6 +4,7 @@
 		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
 		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
+		
 	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 	<include schemaLocation="importsFrom20150601E2.xsd"/>
 
@@ -19,6 +20,8 @@
             <element name="Index" type="medicinecard20150601E2:DispensableUnitIndexType" minOccurs="0" />
 
             <element name="AdministrationInstruction" type="medicinecard20150601E2:AdministrationInstructionType" minOccurs="0" maxOccurs="unbounded"/>
+ 
+			<element name="IsAccordingToNeed" type = "medicinecard20150601E2:IsAccordingToNeedType" minOccurs="0" />
 
             <element name="MedicationRef" type="medicinecard20150601E2:DoseDispensedMedicationRefType" maxOccurs="unbounded"/>
         </sequence>
