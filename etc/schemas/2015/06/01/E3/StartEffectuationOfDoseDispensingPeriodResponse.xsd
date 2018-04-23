@@ -20,17 +20,7 @@
 	<complexType name="StartEffectuationOfDoseDispensingPeriodResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
-     		<element name="DoseDispensingPeriodStatus" type="medicinecard20150601E2:DoseDispensingStatusType" />
-     		<element name="PlannedDispensing" minOccurs="0" maxOccurs="unbounded">
-     			<complexType>
-	     			<sequence>
-			        	<element name="Identifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType"/>
-			            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
-	     			</sequence>
-     			</complexType>
-     		</element>
-            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="StartedEffectuationOfDoseDispensingPeriod" type="medicinecard20150601E3:StartedEffectuationOfDoseDispensingPeriodType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

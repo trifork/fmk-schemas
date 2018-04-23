@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E3.xsd"/>
+
+	<complexType name="StartedEffectuationOfDoseDispensingPeriodType">
+		<annotation>
+			<documentation xml:lang="en-GB">Result of starting effectuation for an entire DD period</documentation>
+			<documentation xml:lang="da-DK">Resultat af påbegynd ekspedition af dd periode</documentation>
+		</annotation>
+		<sequence>
+			<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
+     		<element name="DoseDispensingPeriodStatus" type="medicinecard20150601E2:DoseDispensingStatusType" />
+     		<element name="PlannedDispensing" minOccurs="0" maxOccurs="unbounded">
+     			<complexType>
+	     			<sequence>
+			        	<element name="Identifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType"/>
+			        	<!-- Warnings that relate to individual prescriptions for one planned dispensing -->
+			            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+	     			</sequence>
+     			</complexType>
+     		</element>
+     		<!-- Warnings that relate to the period as a whole -->
+            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
