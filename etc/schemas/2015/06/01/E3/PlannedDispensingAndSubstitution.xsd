@@ -11,15 +11,17 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-	<element name="SearchPlannedDispensingResponse" type="medicinecard20150601E3:SearchPlannedDispensingResponseType">
+	<element name="PlannedDispensingAndSubstitution" type="medicinecard20150601E3:PlannedDispensingAndSubstitutionType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response with a list of Planned dispensing</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for et svar med en liste af planlagte dispenseringer</documentation>
+			<documentation xml:lang="en-GB">Planned dispensing identifier with information on substitution</documentation>
+			<documentation xml:lang="da-DK">Planlagt dispensering med information om substitution</documentation>
 		</annotation>
 	</element>
-	<complexType name="SearchPlannedDispensingResponseType">
+	<complexType name="PlannedDispensingAndSubstitutionType">
 		<sequence>
-            <element name="PersonWithPlannedDispensing" type="medicinecard20150601E3:PersonWithPlannedDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+        	<element name="PlannedDispensingIdentifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType" />
+			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType" minOccurs="0"/>
+			<element name="SubstitutionChosenByPatient" type="medicinecard20150601E2:SubstitutionChosenByPatientType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
