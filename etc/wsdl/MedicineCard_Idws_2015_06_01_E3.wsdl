@@ -259,8 +259,6 @@
             
             <xs:include schemaLocation="../schemas/2015/06/01/E2/GetPrescriptionResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E2/ReplacePrescriptionRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/06/01/E2/SearchEffectuationsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/StartEffectuationResponse.xsd"/>
@@ -341,6 +339,8 @@
 			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodResponse.xsd" />
+			
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/ReplacePrescriptionRequest.xsd"/>
 			
         </xs:schema>
 
@@ -738,8 +738,8 @@
         <wsdl:part name="ReopenPrescriptionResponse" element="medicinecard20150601:ReopenPrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="ReplacePrescriptionRequest_2015_06_01_E2">
-        <wsdl:part name="ReplacePrescriptionRequest" element="medicinecard20150601E2:ReplacePrescriptionRequest"/>
+    <wsdl:message name="ReplacePrescriptionRequest_2015_06_01_E3">
+        <wsdl:part name="ReplacePrescriptionRequest" element="medicinecard20150601E3:ReplacePrescriptionRequest"/>
     </wsdl:message>
     <wsdl:message name="ReplacePrescriptionResponse_2015_06_01">
         <wsdl:part name="ReplacePrescriptionResponse" element="medicinecard20150601:ReplacePrescriptionResponse"/>
@@ -1298,8 +1298,8 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="ReplacePrescription_2015_06_01_E2">
-            <wsdl:input name="ReplacePrescriptionRequest_2015_06_01_E2" message="tns:ReplacePrescriptionRequest_2015_06_01_E2"/>
+        <wsdl:operation name="ReplacePrescription_2015_06_01_E3">
+            <wsdl:input name="ReplacePrescriptionRequest_2015_06_01_E3" message="tns:ReplacePrescriptionRequest_2015_06_01_E3"/>
             <wsdl:output name="ReplacePrescriptionResponse_2015_06_01" message="tns:ReplacePrescriptionResponse_2015_06_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -2143,10 +2143,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="ReplacePrescription_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#ReplacePrescription"
+       <wsdl:operation name="ReplacePrescription_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#ReplacePrescription"
                             style="document"/>
-            <wsdl:input name="ReplacePrescriptionRequest_2015_06_01_E2">
+            <wsdl:input name="ReplacePrescriptionRequest_2015_06_01_E3">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>

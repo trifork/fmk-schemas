@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E3.xsd"/>
+
+	<element name="ReplacePrescriptionRequest" type="medicinecard20150601E3:ReplacePrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing one or more elements for replacing prescriptions</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere elementer til at erstatte recepter</documentation>
+		</annotation>
+	</element>
+	<complexType name="ReplacePrescriptionRequestType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType"/>
+			<element name="Prescription" type="medicinecard20150601E3:ReplacePrescriptionType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
