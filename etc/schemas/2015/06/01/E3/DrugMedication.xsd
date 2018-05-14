@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E3.xsd"/>
+
+	<complexType name="DrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">An overview of the drug medication (a medication on the medicine card)</documentation>
+			<documentation xml:lang="da-DK">En oversigt over lægemiddelordination (en ordination på medicinkortet)</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
+			<element name="Version" type="medicinecard20150601:DrugMedicationVersionType"/>
+			<element name="PreviousVersion" type="medicinecard20150601:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NextVersion" type="medicinecard20150601:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ParentIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType" minOccurs="0"/>
+			<element name="Created" type="medicinecard20150601:CreatedType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
+			<element name="ModifiedNonclinical" type="medicinecard20150601E2:ModifiedNonclinicalType" minOccurs="0"/>
+			<element name="Type" type="medicinecard20150601E2:DrugMedicationTypeType" />
+            <element name="FollowUpDates" type="medicinecard20150601:FollowUpDatesType" minOccurs="0"/>
+			<element name="Paused" type="medicinecard20150601:PausedType" minOccurs="0"/>
+			<element name="Withdrawn" type="medicinecard20150601:WithdrawnType" minOccurs="0"/>
+			<element name="IsPrivateDrugMedication" type="medicinecard20150601:IsPrivateDrugMedicationType" minOccurs="0"/>
+			<element name="BeginEndDate" type="medicinecard20150601:DrugMedicationBeginEndDateType"/>
+			<element name="Indication" type="medicinecard20150601:IndicationType"/>
+			<element name="RouteOfAdministration" type="medicinecard20150601:RouteOfAdministrationType"/>
+			<element name="Drug" type="medicinecard20150601:DrugType"/>
+			<element name="Dosage" type="medicinecard20150601E2:DosageForResponseType"/>
+			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType" minOccurs="0"/>
+			<element name="Effectuation" type="medicinecard20150601E2:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidEffectuation" type="medicinecard20150601:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Prescription" type="medicinecard20150601E2:PrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidPrescription" type="medicinecard20150601:InvalidPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
+			<element name="IsDoseDispensed" type="medicinecard20150601E3:IsDoseDispensedType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
