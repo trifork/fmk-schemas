@@ -592,4 +592,17 @@
 
 		<validatewsdl-macro wsdlfilename="DumpRestore-inline_2013_01_01"/>
 	</target>
+	
+	<target name="generate-nsf-wsdl" depends="generate">
+		<xslt in="${standard.target.dir}/wsdl/MedicineCard-inline_2015_06_01.wsdl" out="${target.dir}/NSFSubset-MedicineCard-inline_2015_06_01.wsdl" style="src/dk/medicinkortet/xmlschema/nsf_extracttypes.xsl"></xslt>	
+	</target>
+	
+	<target name="remove-duplicates-in-nsf-wsdl" depends="generate-nsf-wsdl">
+		<xslt in="${target.dir}/NSFSubset-MedicineCard-inline_2015_06_01.wsdl" out="${target.dir}/NSFSubset-UniqueTypes-MedicineCard-inline_2015_06_01.wsdl" style="src/dk/medicinkortet/xmlschema/nsf_uniquetypes.xsl"></xslt>	
+	</target>
+
+	<target name="generate-nsf-html" depends="remove-duplicates-in-nsf-wsdl">
+		<xslt in="${target.dir}/NSFSubset-UniqueTypes-MedicineCard-inline_2015_06_01.wsdl" out="${target.dir}/NSF-MedicineCard_2015_06_01.html" style="src/dk/medicinkortet/xmlschema/nsfdoc.xsl"></xslt>	
+	</target>
+
 </project>

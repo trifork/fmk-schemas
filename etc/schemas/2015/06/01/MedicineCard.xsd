@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
@@ -15,28 +16,72 @@
 	<include schemaLocation="LatestDosageDispensingEffectuation.xsd"/>
 	<include schemaLocation="HasOpenDosageDispensingPrescriptions.xsd"/>
 	<include schemaLocation="OrderedPrescriptionsExist.xsd"/>
+	
 	<element name="MedicineCard" type="medicinecard20150601:MedicineCardType">
 		<annotation>
 			<documentation xml:lang="en-GB">Virtual card where a patient's medications are documented, except effectuations</documentation>
 			<documentation xml:lang="da-DK">Virtuelt kort hvori en patients medicineringer dokumenteres, undtaget effektueringer</documentation>
 		</annotation>
 	</element>
-	<complexType name="MedicineCardType">
+	<complexType name="MedicineCardType"  >
 		<sequence>
 			<element name="Patient" type="medicinecard20150601:PatientType"/>
-			<element name="Version" type="medicinecard20150601:MedicineCardVersionType"/>
-			<element name="PreviousVersion" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="NextVersion" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+
+			<element name="Version" type="medicinecard20150601:MedicineCardVersionType">
+				<annotation>
+					<documentation xml:lang="en-GB">Current version number of a medicine card</documentation>
+					<documentation xml:lang="da-DK">Aktuelt versionsnummer for medicinkort</documentation>
+				</annotation>
+			</element>
+			
+			<element name="PreviousVersion" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation xml:lang="en-GB">Previous, historical version(s) of medicine card</documentation>
+					<documentation xml:lang="da-DK">Versionsnummer for evt. tidligere, historisk udgave af medicinkort</documentation>
+				</annotation>
+			</element>
+			
+			<element name="NextVersion" type="medicinecard20150601:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded">
+			<annotation>
+					<documentation xml:lang="en-GB">Future version number(s) of medicine card</documentation>
+					<documentation xml:lang="da-DK">Evt. efterfølgende versionsnummer for medicinkort</documentation>
+				</annotation>
+			</element>
+			
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="en-GB">Information about a person who reported the creation/modification of data</documentation>
+					<documentation xml:lang="da-DK">Indeholder information omkring den person der indrapporterede oprettelsen/ændringen af data</documentation>
+				</annotation>
+			</element>
+			
 			<element name="Modified" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
 			<element name="Reviewed" type="medicinecard20150601:ReviewedType" minOccurs="0" />
 			<element name="NotReviewed" type="medicinecard20150601:NotReviewedType" minOccurs="0"/>
 			<element name="IsInvalid" type="medicinecard20150601:MedicineCardIsInvalidType" minOccurs="0"/>
 			<element name="PatientOrganisationRelation" type="medicinecard20150601:PatientOrganisationRelationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrivateDrugMedication" type="medicinecard20150601:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="DrugMedication" type="medicinecard20150601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidDrugMedication" type="medicinecard20150601:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="Prescription" type="medicinecard20150601:PrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedication" type="medicinecard20150601:DrugMedicationType" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation xml:lang="en-GB">Drug medications for this patient (medications on the medicine card)</documentation>
+					<documentation xml:lang="da-DK">Lægemiddelordinationer (ordinationer på medicinkortet) for patienten</documentation>
+				</annotation>
+			</element>
+			
+			<element name="InvalidDrugMedication" type="medicinecard20150601:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation xml:lang="en-GB">Drug medications marked invalid for this patient</documentation>
+					<documentation xml:lang="da-DK">Ugyldigmarkerede lægemiddelordinationer for patienten</documentation>
+				</annotation>
+			</element>
+			
+			<element name="Prescription" type="medicinecard20150601:PrescriptionType" minOccurs="0" maxOccurs="unbounded">
+				<annotation>
+					<documentation xml:lang="en-GB">Prescriptions not attached to any drugmedications</documentation>
+					<documentation xml:lang="da-DK">Recepter der ikke er tilknyttet en lægemiddelordination (løse recepter)</documentation>
+				</annotation>
+			</element>
+			
 			<element name="InvalidPrescription" type="medicinecard20150601:InvalidPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="LatestDosageDispensingEffectuation" type="medicinecard20150601:LatestDosageDispensingEffectuationType" minOccurs="0"/>
 			<element name="HasOpenDosageDispensingPrescriptions" type="medicinecard20150601:HasOpenDosageDispensingPrescriptionsType"/>
