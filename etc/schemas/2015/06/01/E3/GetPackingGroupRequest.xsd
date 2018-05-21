@@ -20,7 +20,10 @@
 	<complexType name="GetPackingGroupRequestType">
 		<sequence>
             <element name="PackingGroupIdentifier" type="medicinecard20150601E2:PackingGroupIdentifierType"/>
-			<element name="IncludeStatus" type="medicinecard20150601E3:IncludeStatusType" minOccurs="0"/>
+            <choice minOccurs="0">
+                <element name="IncludeContents" type="medicinecard20150601E3:IncludeContentsType"/>
+                <element name="IncludeStatus" type="medicinecard20150601E3:IncludeStatusType"/>
+            </choice>
 		</sequence>
 	</complexType>
 </schema>
