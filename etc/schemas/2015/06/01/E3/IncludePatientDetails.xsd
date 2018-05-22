@@ -10,14 +10,10 @@
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
     <include schemaLocation="importsFrom20150601E3.xsd"/>
 
-    <complexType name="IncludeContentsType">
+    <complexType name="IncludePatientDetailsType">
         <annotation>
-            <documentation xml:lang="en-GB">Indication that an overview of dose dispensing cards in a packing group should be included</documentation>
-            <documentation xml:lang="da-DK">Markering for at overblik over pakkegruppens dosisdispensingskort ønskes returneret</documentation>
+            <documentation xml:lang="en-GB">Indication that patient details for dose dispensing cards in a packing group should be included</documentation>
+            <documentation xml:lang="da-DK">Markering for at patientoplysninger for dosisdispensingskort i en pakkegruppe ønskes returneret</documentation>
         </annotation>
-        <sequence>
-             <element name="IncludePatientDetails" type="medicinecard20150601E3:IncludePatientDetailsType" minOccurs="0"/>
-             <element name="IncludeStatus" type="medicinecard20150601E3:IncludeStatusType" minOccurs="0"/>
-        </sequence>
     </complexType>
 </schema>

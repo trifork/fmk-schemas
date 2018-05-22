@@ -13,11 +13,14 @@
 
 	<complexType name="PersonWithDoseDispensingType">
 		<annotation>
-			<documentation xml:lang="en-GB">Overview of dosedispensingperiods for a person</documentation>
-			<documentation xml:lang="da-DK">Overblik over en persons dosisdispenseringsperioder</documentation>
+			<documentation xml:lang="en-GB">Overview of dosedispensingcards and dosedispensingperiods for a person</documentation>
+			<documentation xml:lang="da-DK">Overblik over en persons dosisdispenseringskort og perioder</documentation>
 		</annotation>
 		<sequence>
-			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="Patient" type="medicinecard20150601:PatientType"/>
+			</choice>
 			<element name="DoseDispensingCard" type="medicinecard20150601E3:DoseDispensingCardSummaryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
