@@ -7,6 +7,7 @@
     <property name="targetversion" value="1.8"/>
 
     <property file="build.properties"/>
+	<property file="build.jenkins.properties"/>
     <property name="trifork-common" value="${basedir}/../trifork-common"/>
 	<import file="${trifork-common}/etc/build-common.xml"/>
 
@@ -605,4 +606,32 @@
 		<xslt in="${target.dir}/NSFSubset-UniqueTypes-MedicineCard-inline_2015_06_01.wsdl" out="${target.dir}/NSF-MedicineCard_2015_06_01.html" style="src/dk/medicinkortet/xmlschema/nsfdoc.xsl"></xslt>	
 	</target>
 
+	<target name="generate-fmk-html">
+		<xslt in="${inlinefilename}" out="${inlinefilename}.html" style="src/dk/medicinkortet/xmlschema/fmkdoc.xsl"></xslt>	
+	</target>
+	
+	 <taskdef name="http" classname="org.missinglink.ant.task.http.HttpClientTask">
+	    <classpath location="./ant-http-1.1.4.jar"/>
+	  </taskdef>
+	
+	<target name="post-to-dokuwiki">
+		<loadfile property="html" srcFile="${infolder}/${infile}"/>
+		<script language="javascript">
+					var substring = project.getProperty("infile").substring(0, project.getProperty("infile").length() - 10);
+					project.setProperty("dokuwikiid", substring);
+				</script>
+		<loadfile property="xmlrpc" srcFile="src/dk/medicinkortet/xmlschema/dokuwikitemplate.xml">
+			<filterchain>
+		        <expandproperties/>
+		    </filterchain>
+		</loadfile>
+		<echo message="Posting to fmk:${dokuwikiid}:feltbeskrivelser"/>
+		<http url="http://wiki.fmk.netic.dk/lib/exe/xmlrpc.php" method="POST" printResponse="true" printResponseHeaders="true" printRequest="false" printRequestHeaders="true" setContentLengthHeader="true">
+			<entity value="${xmlrpc}" binary="false"/>
+			<credentials username="${dokuwiki.username}" password="${dokuwiki.password}"/>
+			<headers>
+			    <header name="Content-Type" value="text/xml"/>
+			</headers>
+		</http>
+	</target>
 </project>
