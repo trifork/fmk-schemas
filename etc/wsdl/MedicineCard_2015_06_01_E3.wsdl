@@ -192,6 +192,7 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E2/AutomatedStartEffectuationResponse.xsd"/>
         
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CancelPrescriptionRequestRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CancelPrescriptionResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/CreateAndEffectuatePrescriptionRequest.xsd"/>
@@ -641,8 +642,8 @@
     <wsdl:message name="CancelPrescriptionRequest_2015_06_01">
         <wsdl:part name="CancelPrescriptionRequest" element="medicinecard20150601:CancelPrescriptionRequest"/>
     </wsdl:message>
-    <wsdl:message name="CancelPrescriptionResponse_2015_06_01">
-        <wsdl:part name="CancelPrescriptionResponse" element="medicinecard20150601:CancelPrescriptionResponse"/>
+    <wsdl:message name="CancelPrescriptionResponse_2015_06_01_E2">
+        <wsdl:part name="CancelPrescriptionResponse" element="medicinecard20150601E2:CancelPrescriptionResponse"/>
     </wsdl:message>
 
     <wsdl:message name="StartEffectuationRequest_2015_06_01">
@@ -1208,9 +1209,9 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CancelPrescription_2015_06_01">
+        <wsdl:operation name="CancelPrescription_2015_06_01_E2">
             <wsdl:input name="CancelPrescriptionRequest_2015_06_01" message="tns:CancelPrescriptionRequest_2015_06_01"/>
-            <wsdl:output name="CancelPrescriptionResponse_2015_06_01" message="tns:CancelPrescriptionResponse_2015_06_01"/>
+            <wsdl:output name="CancelPrescriptionResponse_2015_06_01_E2" message="tns:CancelPrescriptionResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1973,14 +1974,14 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="CancelPrescription_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelPrescription"
+       <wsdl:operation name="CancelPrescription_2015_06_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#CancelPrescription"
                             style="document"/>
             <wsdl:input name="CancelPrescriptionRequest_2015_06_01">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CancelPrescriptionResponse_2015_06_01">
+            <wsdl:output name="CancelPrescriptionResponse_2015_06_01_E2">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
