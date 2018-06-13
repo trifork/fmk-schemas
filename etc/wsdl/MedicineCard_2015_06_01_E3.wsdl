@@ -321,7 +321,10 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodResponse.xsd" />
 			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/ReplacePrescriptionRequest.xsd"/>
-			
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogResponse.xsd" />
+
         </xs:schema>
 
     </wsdl:types>
@@ -832,6 +835,13 @@
     </wsdl:message>
     <wsdl:message name="CreatePackingGroupResponse_2015_06_01_E3">
         <wsdl:part name="CreatePackingGroupResponse" element="medicinecard20150601E3:CreatePackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UploadDrugCatalogRequest_2015_06_01_E3">
+        <wsdl:part name="UploadDrugCatalogRequest" element="medicinecard20150601E3:UploadDrugCatalogRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UploadDrugCatalogResponse_2015_06_01_E3">
+        <wsdl:part name="UploadDrugCatalogResponse" element="medicinecard20150601E3:UploadDrugCatalogResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdatePackingGroupRequest_2015_06_01_E3">
@@ -1373,6 +1383,12 @@
         <wsdl:operation name="CreatePackingGroup_2015_06_01_E3">
             <wsdl:input name="CreatePackingGroupRequest_2015_06_01_E3" message="tns:CreatePackingGroupRequest_2015_06_01_E3"/>
             <wsdl:output name="CreatePackingGroupResponse_2015_06_01_E3" message="tns:CreatePackingGroupResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UploadDrugCatalog_2015_06_01_E3">
+            <wsdl:input name="UploadDrugCatalogRequest_2015_06_01_E3" message="tns:UploadDrugCatalogRequest_2015_06_01_E3"/>
+            <wsdl:output name="UploadDrugCatalogResponse_2015_06_01_E3" message="tns:UploadDrugCatalogResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2359,6 +2375,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CreatePackingGroupResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UploadDrugCatalog_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UploadDrugCatalog"
+                            style="document"/>
+            <wsdl:input name="UploadDrugCatalogRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UploadDrugCatalogResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

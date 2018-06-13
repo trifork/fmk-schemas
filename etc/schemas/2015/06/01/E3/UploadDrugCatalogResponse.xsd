@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E3.xsd"/>
+
+	<simpleType name="DrugCatalogSizeType">
+		<restriction base="integer">
+			<minInclusive value="0"/>
+			<maxInclusive value="10000"/>     
+		</restriction>
+	</simpleType>
+	
+	<element name="UploadDrugCatalogResponse" type="medicinecard20150601E3:UploadDrugCatalogResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains the response from UploadDrugCatalog, which consists only of the current size of the drug catalog</documentation>
+			<documentation xml:lang="da-DK">Rummer svaret fra et kald til UploadDrugCatalog som alene består af størrelsen af det aktuelle sortiment</documentation>
+		</annotation>
+	</element>
+	
+	<complexType name="UploadDrugCatalogResponseType">
+		<sequence>
+            <element name="DrugCatalogSize" type="medicinecard20150601E3:DrugCatalogSizeType" />
+		</sequence>
+	</complexType>
+</schema>
