@@ -20,6 +20,8 @@
 	
 	<complexType name="UploadDrugCatalogRequestType">
 		<sequence>
+			<element name="CreatedBy" type="medicinecard20150601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
 			<element name="PackedAtOrganisation" type="medicinecard20150601:OrganisationType" />
 			<element name="DrugCatalogEntry" type="medicinecard20150601E3:DrugCatalogEntryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
