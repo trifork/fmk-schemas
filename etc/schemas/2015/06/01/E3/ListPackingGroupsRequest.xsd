@@ -19,7 +19,13 @@
 	</element>
 	<complexType name="ListPackingGroupsRequestType">
 		<sequence>
-			<element name="OrderedAtPharmacyIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			<choice>
+				<sequence>
+					<element name="OrderedAtPharmacyIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+					<element name="PackedAtOrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType" minOccurs="0"/>
+				</sequence>
+				<element name="PackedAtOrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>
