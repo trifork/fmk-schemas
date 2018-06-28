@@ -270,7 +270,7 @@
 		<xsl:call-template name="SchemaTemplate">
 			<xsl:with-param name="component" select="current()"/>
       	</xsl:call-template>
-      	
+      	 
       	<xsl:if test="isNSF">
 			<xsl:apply-templates select="xs:sequence" mode="nsf"/>
 		</xsl:if>
@@ -278,8 +278,30 @@
 			<xsl:apply-templates select="xs:sequence" mode="all"/>
 		</xsl:if>
 		
+		
+      	<xsl:if test="isNSF">
+			<xsl:apply-templates select="xs:choice" mode="nsf"/>
+		</xsl:if>
+		<xsl:if test="not(isNSF)">
+			<xsl:apply-templates select="xs:choice" mode="all"/>
+		</xsl:if>
+		
+		
 		<xsl:apply-templates select="xs:simpleContent"/>
 	 </xsl:if>
+</xsl:template>
+
+<xsl:template match="xs:attribute">
+	<li>
+		<dl>
+			<dt>Tilføjet attributnavn:</dt>
+			<dd><xsl:value-of select="@name"/></dd>
+			<dt>Tilføjet attributtype:</dt>
+			<dd><a href="#{substring-after(@type, ':')}"><xsl:value-of select="substring-after(@type, ':')"/></a></dd>
+			<dt>Tilføjet attribut, anvendelse: </dt>
+			<dd><xsl:value-of select="@use"/></dd>
+		</dl>
+	</li>
 </xsl:template>
 
 
@@ -291,15 +313,10 @@
 	<dl>
 		<dt>Basistype:</dt>
 		<dd><a href="#{substring-after(xs:extension/@base, ':')}"><xsl:value-of select="substring-after(xs:extension/@base, ':')"/></a></dd>
-		<xsl:if test="xs:extension/xs:attribute">
-			<dt>Tilføjet attributnavn:</dt>
-			<dd><xsl:value-of select="xs:extension/xs:attribute/@name"/></dd>
-			<dt>Tilføjet attributtype:</dt>
-			<dd><a href="#{substring-after(xs:extension/xs:attribute/@type, ':')}"><xsl:value-of select="substring-after(xs:extension/xs:attribute/@type, ':')"/></a></dd>
-			<dt>Tilføjet attribut, anvendelse: </dt>
-			<dd><xsl:value-of select="xs:extension/xs:attribute/@use"/></dd>
-		</xsl:if>
 	</dl>
+	<ul>
+		<xsl:apply-templates select="xs:extension/xs:attribute"/>
+	</ul>
 	</li>
 	</ul>
 </xsl:template>
