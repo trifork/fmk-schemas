@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- the project element's name attribute will be used in the name of the module's jar file -->
-<project name="medicinkortet-schema" default="all" basedir="." xmlns:ivy="antlib:fr.jayasoft.ivy.ant" >
+<project name="medicinkortet-schema" default="all" basedir=".">
 
 	<property name="ivy.checksums" value=""/>
     <property name="sourceversion" value="1.8"/>
@@ -8,6 +8,8 @@
 
     <property file="build.properties"/>
 	<property file="build.jenkins.properties"/>
+    <property name="medicinkortet-schemas" value="${basedir}" />
+    <property name="ivy.settings.file" value="${basedir}/etc/ivy/fmk-ivyconf.xml" /> <!-- override ivy settings before importing trifork-common -->
     <property name="trifork-common" value="${basedir}/../trifork-common"/>
 	<import file="${trifork-common}/etc/build-common.xml"/>
 

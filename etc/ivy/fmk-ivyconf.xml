@@ -1,0 +1,43 @@
+<ivysettings>
+    <property name="trifork-common" override="false" value="${ivy.settings.dir}" />
+    <property name="ivy.default.conf.dir" value="${trifork-common}/etc/ivy" />
+
+
+	
+    <include file="${medicinkortet-schemas}/etc/ivy/ivy-nspop-ivyconf.xml"/>
+    <include file="${trifork-common}/ivyconf.xml" />
+	<include file="${medicinkortet-schemas}/etc/ivy/ivy-fmknetic-ivyconf.xml"/>
+		
+	<resolvers>
+		<chain name="fmknetic" dual="true" returnFirst="true">
+		    <!--cache name="cache"/-->
+ 		    <resolver ref="shared"/>
+
+ 		    <!-- nexus.trifork.com -->
+ 		    <resolver ref="trifork-public-central" />
+ 		    <resolver ref="trifork-public-snapshots"/>
+ 		    <resolver ref="trifork-public-releases"/>
+ 		    <resolver ref="trifork-public-thirdparty"/>
+ 		    
+ 		    <!-- ci.fmk.netic.dk -->
+ 		    <resolver ref="intranet-internal"/>
+ 		    <resolver ref="intranet-public"/>
+ 		    <resolver ref="releases" />
+ 		    <resolver ref="intranet-public-snapshot" />
+ 		    
+ 		    
+		</chain>
+	</resolvers>
+
+	
+    <resolvers>
+        <chain name="default-with-nspop-and-fmknetic" returnFirst="true">
+            <resolver ref="fmknetic"/>
+            <resolver ref="nspop"/>
+			<resolver ref="default"/>
+        </chain>
+    </resolvers>
+	
+	
+	<settings defaultResolver="default-with-nspop-and-fmknetic" />
+</ivysettings>

@@ -1,0 +1,25 @@
+<ivysettings>
+
+	<property name="ibiblio-maven2-pattern" value="[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]" override="false" />
+
+	<resolvers>
+        <!-- nspop -->
+		<ibiblio name="nspop-releases"
+				 root="https://nexus.nspop.dk/nexus/content/repositories/releases/"
+				 pattern="/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"
+				 m2compatible="true"
+				 checkmodified="false" />
+		<ibiblio name="nspop-snapshots"
+				 root="https://nexus.nspop.dk/nexus/content/repositories/snapshots/"
+				 pattern="/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"
+				 m2compatible="true"
+				 checkmodified="false" />
+
+        <chain name="nspop" dual="true" returnFirst="true">
+            <!-- nspop -->
+            <resolver ref="nspop-releases"/>
+            <resolver ref="nspop-snapshots"/>
+        </chain>
+
+    </resolvers>
+</ivysettings>
