@@ -2,17 +2,21 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
     <include schemaLocation="PackageNumber.xsd"/>
     <include schemaLocation="CopyRequired.xsd"/>
+    <include schemaLocation="DoseDispensingStartDate.xsd"/>
+    <include schemaLocation="DoseDispensingEndDate.xsd"/>
 
 	<element name="DoseDispensedRestriction" type="medicinecard20150601:DoseDispensedRestrictionType"/>
 
 	<complexType name="DoseDispensedRestrictionType">
 		<annotation>
-			<documentation xml:lang="en-GB">Indication by the doctor that a prescription, should be effectuated dosedispensed. PackageNumber should only be supplied, if it is outside Medicinpriser.</documentation>
-			<documentation xml:lang="da-DK">Indikation fra lægen om at recepten, skal udleveres dosisdispenseret. Pakkenummeret skal kun angives hvis det ikke er et takstlægemiddel.</documentation>
+			<documentation xml:lang="en-GB">Responsestructure with indication by the doctor that a prescription, should be effectuated dosedispensed.</documentation>
+			<documentation xml:lang="da-DK">Responsestruktur, der indikerer at lægen ønsker at recepten, skal udleveres dosisdispenseret.</documentation>
 		</annotation>
         <sequence>
             <element name="PackageNumber" type="medicinecard20150601:PackageNumberType" minOccurs="0"/>
             <element name="CopyRequired" type="medicinecard20150601:CopyRequiredType" minOccurs="0"/>
+			<element name="StartDate" type="medicinecard20150601:DoseDispensingStartDateType" minOccurs="0"/>
+			<element name="EndDate" type="medicinecard20150601:DoseDispensingEndDateType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>
