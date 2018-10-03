@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101E4="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	
+	<include schemaLocation="importsFrom20150101E4.xsd"/>
+	<element name="GetMedicineCardResponse" type="medicinecard20150101E4:GetMedicineCardResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with a medicinecard</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en et svar med et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetMedicineCardResponseType">
+		<sequence>
+			<element name="MedicineCard" type="medicinecard20150101E4:MedicineCardType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
