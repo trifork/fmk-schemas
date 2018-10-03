@@ -16,6 +16,7 @@ public class FmkNamespaces {
 		namespaces.addNamespace("medicinecard20150101", "http://www.dkma.dk/medicinecard/xml.schema/2015/01/01");
 		namespaces.addNamespace("medicinecard20150101E1", "http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1");
 		namespaces.addNamespace("medicinecard20150101E2", "http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2");
+		namespaces.addNamespace("medicinecard20150101E4", "http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4");
         namespaces.addNamespace("medicinecard20150601", "http://www.dkma.dk/medicinecard/xml.schema/2015/06/01");
         namespaces.addNamespace("medicinecard20150601E2", "http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2");
         namespaces.addNamespace("medicinecard20150601E3", "http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3");
