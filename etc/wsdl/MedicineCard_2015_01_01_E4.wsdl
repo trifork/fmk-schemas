@@ -208,8 +208,15 @@
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DosageForRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DosageStructureForRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DosageStructuresForRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensedMedication.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensingCard.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensingPeriod.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensingSummary.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DrugMedication.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/EffectuationsOnDrugMedication.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDoseDispensingCardResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationEffectuationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationEffectuationsResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetMedicineCardResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/IsDoseDispensed.xsd"/>
@@ -218,6 +225,7 @@
             <xs:include schemaLocation="../schemas/2015/01/01/E4/MoreEffectuationsAvailable.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/PauseDrugMedication.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/PauseDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/SearchEffectuationsResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/TotalNb.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/UpdateDrugMedication.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/UpdateDrugMedicationRequest.xsd"/>
@@ -522,6 +530,11 @@
     </wsdl:message>
 
 
+    <wsdl:message name="GetDrugMedicationEffectuationsRequest_2015_01_01_E4">
+        <wsdl:part name="GetDrugMedicationEffectuationsRequest" element="medicinecard20150101E4:GetDrugMedicationEffectuationsRequest"/>
+    </wsdl:message>
+
+
 
     <wsdl:message name="RemoveConsentRequest_2015_01_01_E2">
         <wsdl:part name="RemoveConsentRequest" element="medicinecard20150101E2:RemoveConsentRequest"/>
@@ -529,8 +542,8 @@
 
 
 
-    <wsdl:message name="GetDoseDispensingCardResponse_2015_01_01_E2">
-        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150101E2:GetDoseDispensingCardResponse"/>
+    <wsdl:message name="GetDoseDispensingCardResponse_2015_01_01_E4">
+        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150101E4:GetDoseDispensingCardResponse"/>
     </wsdl:message>
 
 
@@ -577,8 +590,13 @@
 
 
 
-    <wsdl:message name="SearchEffectuationsResponse_2015_01_01_E2">
-        <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20150101E2:SearchEffectuationsResponse"/>
+    <wsdl:message name="SearchEffectuationsResponse_2015_01_01_E4">
+        <wsdl:part name="SearchEffectuationsResponse" element="medicinecard20150101E4:SearchEffectuationsResponse"/>
+    </wsdl:message>
+
+
+    <wsdl:message name="GetDrugMedicationEffectuationsResponse_2015_01_01_E4">
+        <wsdl:part name="GetDrugMedicationEffectuationsResponse" element="medicinecard20150101E4:GetDrugMedicationEffectuationsResponse"/>
     </wsdl:message>
 
 
@@ -658,75 +676,15 @@
 
 
     <wsdl:portType name="MedicineCardPortType">
-        <wsdl:operation name="GetPermissions_2015_01_01">
-            <wsdl:input name="GetPermissionsRequest_2015_01_01" message="tns:GetPermissionsRequest_2015_01_01"/>
-            <wsdl:output name="GetPermissionsResponse_2015_01_01" message="tns:GetPermissionsResponse_2015_01_01"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedicationHistory_2015_01_01_E2">
-            <wsdl:input name="GetDrugMedicationHistoryRequest_2015_01_01_E2" message="tns:GetDrugMedicationHistoryRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_01_01_E2" message="tns:GetDrugMedicationHistoryResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="PauseDrugMedication_2015_01_01_E4">
             <wsdl:input name="PauseDrugMedicationRequest_2015_01_01_E4" message="tns:PauseDrugMedicationRequest_2015_01_01_E4"/>
             <wsdl:output name="PauseDrugMedicationResponse_2015_01_01_E2" message="tns:PauseDrugMedicationResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersions_2015_01_01_E2">
-            <wsdl:input name="GetMedicineCardVersionsRequest_2015_01_01_E2" message="tns:GetMedicineCardVersionsRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardVersionsResponse_2015_01_01_E2" message="tns:GetMedicineCardVersionsResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDoseDispensingCard_2015_01_01_E2">
+        <wsdl:operation name="GetDoseDispensingCard_2015_01_01_E4">
             <wsdl:input name="GetDoseDispensingCardRequest_2015_01_01_E2" message="tns:GetDoseDispensingCardRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_01_01_E2" message="tns:GetDoseDispensingCardResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="UnmarkPrescriptionMedicationDeprecated_2015_01_01_E2">
-            <wsdl:input name="UnmarkPrescriptionMedicationDeprecatedRequest_2015_01_01_E2" message="tns:UnmarkPrescriptionMedicationDeprecatedRequest_2015_01_01_E2"/>
-            <wsdl:output name="UnmarkPrescriptionMedicationDeprecatedResponse_2015_01_01_E2" message="tns:UnmarkPrescriptionMedicationDeprecatedResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetMedicineCardAsPDF_2015_01_01_E2">
-            <wsdl:input name="GetMedicineCardAsPDFRequest_2015_01_01_E2" message="tns:GetMedicineCardAsPDFRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardAsPDFResponse_2015_01_01" message="tns:GetMedicineCardAsPDFResponse_2015_01_01"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SetMedicineCardNotReviewed_2015_01_01_E2">
-            <wsdl:input name="SetMedicineCardNotReviewedRequest_2015_01_01_E2" message="tns:SetMedicineCardNotReviewedRequest_2015_01_01_E2"/>
-            <wsdl:output name="SetMedicineCardNotReviewedResponse_2015_01_01_E2" message="tns:SetMedicineCardNotReviewedResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="UnwithdrawDrugMedication_2015_01_01_E2">
-            <wsdl:input name="UnwithdrawDrugMedicationRequest_2015_01_01_E2" message="tns:UnwithdrawDrugMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="UnwithdrawDrugMedicationResponse_2015_01_01_E2" message="tns:UnwithdrawDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="RemoveConsent_2015_01_01_E2">
-            <wsdl:input name="RemoveConsentRequest_2015_01_01_E2" message="tns:RemoveConsentRequest_2015_01_01_E2"/>
-            <wsdl:output name="RemoveConsentResponse_2015_01_01_E2" message="tns:RemoveConsentResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="MarkPrescriptionMedicationDeprecated_2015_01_01_E2">
-            <wsdl:input name="MarkPrescriptionMedicationDeprecatedRequest_2015_01_01_E2" message="tns:MarkPrescriptionMedicationDeprecatedRequest_2015_01_01_E2"/>
-            <wsdl:output name="MarkPrescriptionMedicationDeprecatedResponse_2015_01_01_E2" message="tns:MarkPrescriptionMedicationDeprecatedResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetMedicineCardVersion_2015_01_01_E2">
-            <wsdl:input name="GetMedicineCardVersionRequest_2015_01_01_E2" message="tns:GetMedicineCardVersionRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardVersionResponse_2015_01_01_E2" message="tns:GetMedicineCardVersionResponse_2015_01_01_E2"/>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_01_01_E4" message="tns:GetDoseDispensingCardResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -736,27 +694,9 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CancelPrescriptionMedication_2015_01_01_E2">
-            <wsdl:input name="CancelPrescriptionMedicationRequest_2015_01_01_E2" message="tns:CancelPrescriptionMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="CancelPrescriptionMedicationResponse_2015_01_01_E2" message="tns:CancelPrescriptionMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="AttachOrDetachPrescriptionMedication_2015_01_01_E2">
-            <wsdl:input name="AttachOrDetachPrescriptionMedicationRequest_2015_01_01_E2" message="tns:AttachOrDetachPrescriptionMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="AttachOrDetachPrescriptionMedicationResponse_2015_01_01_E2" message="tns:AttachOrDetachPrescriptionMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="UpdateDrugMedication_2015_01_01_E4">
             <wsdl:input name="UpdateDrugMedicationRequest_2015_01_01_E4" message="tns:UpdateDrugMedicationRequest_2015_01_01_E4"/>
             <wsdl:output name="UpdateDrugMedicationResponse_2015_01_01_E2" message="tns:UpdateDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="CreatePrescriptionMedicationForUseInPractice_2015_01_01_E2">
-            <wsdl:input name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E2" message="tns:CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E2"/>
-            <wsdl:output name="CreatePrescriptionMedicationForUseInPracticeResponse_2015_01_01" message="tns:CreatePrescriptionMedicationForUseInPracticeResponse_2015_01_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -766,39 +706,9 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchEffectuations_2015_01_01_E2">
+        <wsdl:operation name="SearchEffectuations_2015_01_01_E4">
             <wsdl:input name="SearchEffectuationsRequest_2015_01_01_E2" message="tns:SearchEffectuationsRequest_2015_01_01_E2"/>
-            <wsdl:output name="SearchEffectuationsResponse_2015_01_01_E2" message="tns:SearchEffectuationsResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="CreateEffectuation_2015_01_01_E2">
-            <wsdl:input name="CreateEffectuationRequest_2015_01_01_E2" message="tns:CreateEffectuationRequest_2015_01_01_E2"/>
-            <wsdl:output name="CreateEffectuationResponse_2015_01_01_E2" message="tns:CreateEffectuationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="UnpauseDrugMedication_2015_01_01_E2">
-            <wsdl:input name="UnpauseDrugMedicationRequest_2015_01_01_E2" message="tns:UnpauseDrugMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="UnpauseDrugMedicationResponse_2015_01_01_E2" message="tns:UnpauseDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="CreatePrescriptionMedication_2015_01_01_E2">
-            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01_E2" message="tns:CreatePrescriptionMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="CreatePrescriptionMedicationResponse_2015_01_01_E2" message="tns:CreatePrescriptionMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SetMedicineCardReviewed_2015_01_01_E2">
-            <wsdl:input name="SetMedicineCardReviewedRequest_2015_01_01_E2" message="tns:SetMedicineCardReviewedRequest_2015_01_01_E2"/>
-            <wsdl:output name="SetMedicineCardReviewedResponse_2015_01_01_E2" message="tns:SetMedicineCardReviewedResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GiveConsent_2015_01_01_E2">
-            <wsdl:input name="GiveConsentRequest_2015_01_01_E2" message="tns:GiveConsentRequest_2015_01_01_E2"/>
-            <wsdl:output name="GiveConsentResponse_2015_01_01_E2" message="tns:GiveConsentResponse_2015_01_01_E2"/>
+            <wsdl:output name="SearchEffectuationsResponse_2015_01_01_E4" message="tns:SearchEffectuationsResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -808,90 +718,17 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E2">
-            <wsdl:input name="GetMedicineCardVersionListRequest_2015_01_01_E2" message="tns:GetMedicineCardVersionListRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E1" message="tns:GetMedicineCardVersionListResponse_2015_01_01_E1"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E2">
-            <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01_E2" message="tns:GetPrescriptionMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetPrescriptionMedicationResponse_2015_01_01_E2" message="tns:GetPrescriptionMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SearchWithdrawnDrugMedications_2015_01_01_E2">
-            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_2015_01_01_E2" message="tns:SearchWithdrawnDrugMedicationsRequest_2015_01_01_E2"/>
-            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_2015_01_01_E2" message="tns:SearchWithdrawnDrugMedicationsResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="GetMedicineCard_2015_01_01_E4">
             <wsdl:input name="GetMedicineCardRequest_2015_01_01_E2" message="tns:GetMedicineCardRequest_2015_01_01_E2"/>
             <wsdl:output name="GetMedicineCardResponse_2015_01_01_E4" message="tns:GetMedicineCardResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="WithdrawDrugMedication_2015_01_01_E2">
-            <wsdl:input name="WithdrawDrugMedicationRequest_2015_01_01_E2" message="tns:WithdrawDrugMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="WithdrawDrugMedicationResponse_2015_01_01_E2" message="tns:WithdrawDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="CreatePrescriptionMedicationWithoutCPR_2015_01_01_E2">
-            <wsdl:input name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01_E2" message="tns:CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01_E2"/>
-            <wsdl:output name="CreatePrescriptionMedicationWithoutCPRResponse_2015_01_01" message="tns:CreatePrescriptionMedicationWithoutCPRResponse_2015_01_01"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="DeleteEffectuation_2015_01_01_E2">
-            <wsdl:input name="DeleteEffectuationRequest_2015_01_01_E2" message="tns:DeleteEffectuationRequest_2015_01_01_E2"/>
-            <wsdl:output name="DeleteEffectuationResponse_2015_01_01_E2" message="tns:DeleteEffectuationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedicationVersions_2015_01_01_E2">
-            <wsdl:input name="GetDrugMedicationVersionsRequest_2015_01_01_E2" message="tns:GetDrugMedicationVersionsRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetDrugMedicationVersionsResponse_2015_01_01_E2" message="tns:GetDrugMedicationVersionsResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-
     </wsdl:portType>
 
 
     <wsdl:binding name="MedicineCardBinding" type="tns:MedicineCardPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-       <wsdl:operation name="GetPermissions_2015_01_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetPermissions"
-                            style="document"/>
-            <wsdl:input name="GetPermissionsRequest_2015_01_01">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetPermissionsResponse_2015_01_01">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="GetDrugMedicationHistory_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetDrugMedicationHistory"
-                            style="document"/>
-            <wsdl:input name="GetDrugMedicationHistoryRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDrugMedicationHistoryResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
        <wsdl:operation name="PauseDrugMedication_2015_01_01_E4">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#PauseDrugMedication"
                             style="document"/>
@@ -907,134 +744,14 @@
         </wsdl:operation>
 
 
-       <wsdl:operation name="GetMedicineCardVersions_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetMedicineCardVersions"
-                            style="document"/>
-            <wsdl:input name="GetMedicineCardVersionsRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionsResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="GetDoseDispensingCard_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetDoseDispensingCard"
+       <wsdl:operation name="GetDoseDispensingCard_2015_01_01_E4">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#GetDoseDispensingCard"
                             style="document"/>
             <wsdl:input name="GetDoseDispensingCardRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="UnmarkPrescriptionMedicationDeprecated_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#UnmarkPrescriptionMedicationDeprecated"
-                            style="document"/>
-            <wsdl:input name="UnmarkPrescriptionMedicationDeprecatedRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UnmarkPrescriptionMedicationDeprecatedResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="GetMedicineCardAsPDF_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetMedicineCardAsPDF"
-                            style="document"/>
-            <wsdl:input name="GetMedicineCardAsPDFRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetMedicineCardAsPDFResponse_2015_01_01">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="SetMedicineCardNotReviewed_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SetMedicineCardNotReviewed"
-                            style="document"/>
-            <wsdl:input name="SetMedicineCardNotReviewedRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SetMedicineCardNotReviewedResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="UnwithdrawDrugMedication_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#UnwithdrawDrugMedication"
-                            style="document"/>
-            <wsdl:input name="UnwithdrawDrugMedicationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UnwithdrawDrugMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="RemoveConsent_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#RemoveConsent"
-                            style="document"/>
-            <wsdl:input name="RemoveConsentRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="RemoveConsentResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="MarkPrescriptionMedicationDeprecated_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#MarkPrescriptionMedicationDeprecated"
-                            style="document"/>
-            <wsdl:input name="MarkPrescriptionMedicationDeprecatedRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="MarkPrescriptionMedicationDeprecatedResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="GetMedicineCardVersion_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetMedicineCardVersion"
-                            style="document"/>
-            <wsdl:input name="GetMedicineCardVersionRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionResponse_2015_01_01_E2">
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_01_01_E4">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -1057,36 +774,6 @@
         </wsdl:operation>
 
 
-       <wsdl:operation name="CancelPrescriptionMedication_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CancelPrescriptionMedication"
-                            style="document"/>
-            <wsdl:input name="CancelPrescriptionMedicationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="CancelPrescriptionMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="AttachOrDetachPrescriptionMedication_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#AttachOrDetachPrescriptionMedication"
-                            style="document"/>
-            <wsdl:input name="AttachOrDetachPrescriptionMedicationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="AttachOrDetachPrescriptionMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
        <wsdl:operation name="UpdateDrugMedication_2015_01_01_E4">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#UpdateDrugMedication"
                             style="document"/>
@@ -1095,21 +782,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UpdateDrugMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="CreatePrescriptionMedicationForUseInPractice_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreatePrescriptionMedicationForUseInPractice"
-                            style="document"/>
-            <wsdl:input name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="CreatePrescriptionMedicationForUseInPracticeResponse_2015_01_01">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -1132,89 +804,14 @@
         </wsdl:operation>
 
 
-       <wsdl:operation name="SearchEffectuations_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SearchEffectuations"
+       <wsdl:operation name="SearchEffectuations_2015_01_01_E4">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#SearchEffectuations"
                             style="document"/>
             <wsdl:input name="SearchEffectuationsRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="SearchEffectuationsResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="CreateEffectuation_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreateEffectuation"
-                            style="document"/>
-            <wsdl:input name="CreateEffectuationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="CreateEffectuationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="UnpauseDrugMedication_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#UnpauseDrugMedication"
-                            style="document"/>
-            <wsdl:input name="UnpauseDrugMedicationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UnpauseDrugMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="CreatePrescriptionMedication_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreatePrescriptionMedication"
-                            style="document"/>
-            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="CreatePrescriptionMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="SetMedicineCardReviewed_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SetMedicineCardReviewed"
-                            style="document"/>
-            <wsdl:input name="SetMedicineCardReviewedRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SetMedicineCardReviewedResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="GiveConsent_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GiveConsent"
-                            style="document"/>
-            <wsdl:input name="GiveConsentRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GiveConsentResponse_2015_01_01_E2">
+            <wsdl:output name="SearchEffectuationsResponse_2015_01_01_E4">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -1237,51 +834,6 @@
         </wsdl:operation>
 
 
-       <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetMedicineCardVersionList"
-                            style="document"/>
-            <wsdl:input name="GetMedicineCardVersionListRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E1">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="GetPrescriptionMedication_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetPrescriptionMedication"
-                            style="document"/>
-            <wsdl:input name="GetPrescriptionMedicationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetPrescriptionMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="SearchWithdrawnDrugMedications_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SearchWithdrawnDrugMedications"
-                            style="document"/>
-            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
        <wsdl:operation name="GetMedicineCard_2015_01_01_E4">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#GetMedicineCard"
                             style="document"/>
@@ -1295,68 +847,6 @@
             </wsdl:output>
 &bindingFaultDeclaration;
         </wsdl:operation>
-
-
-       <wsdl:operation name="WithdrawDrugMedication_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#WithdrawDrugMedication"
-                            style="document"/>
-            <wsdl:input name="WithdrawDrugMedicationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="WithdrawDrugMedicationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="CreatePrescriptionMedicationWithoutCPR_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#CreatePrescriptionMedicationWithoutCPR"
-                            style="document"/>
-            <wsdl:input name="CreatePrescriptionMedicationWithoutCPRRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="CreatePrescriptionMedicationWithoutCPRResponse_2015_01_01">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="DeleteEffectuation_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#DeleteEffectuation"
-                            style="document"/>
-            <wsdl:input name="DeleteEffectuationRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="DeleteEffectuationResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
-       <wsdl:operation name="GetDrugMedicationVersions_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetDrugMedicationVersions"
-                            style="document"/>
-            <wsdl:input name="GetDrugMedicationVersionsRequest_2015_01_01_E2">
-&fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDrugMedicationVersionsResponse_2015_01_01_E2">
-&fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-&bindingFaultDeclaration;
-        </wsdl:operation>
-
-
 
 
     </wsdl:binding>
