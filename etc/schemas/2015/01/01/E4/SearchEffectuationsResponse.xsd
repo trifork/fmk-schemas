@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4" xmlns:medicinecard20150101E4="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<import schemaLocation="importsFrom20150101E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"/>
+	<include schemaLocation="importsFrom20150101E4.xsd"/>
+	<element name="SearchEffectuationsResponse" type="medicinecard20150101E4:SearchEffectuationsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response containing effectuations</documentation>
+			<documentation xml:lang="da-DK">Svar indeholdende effektueringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchEffectuationsResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType" />
+			<element name="DrugMedicationWithNegativeConsent" type="medicinecard20150101:DrugMedicationWithNegativeConsentType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedication" type="medicinecard20150101E4:EffectuationsOnDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="medicinecard20150101E2:EffectuationsOnPrescriptionMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreAvailable" type="medicinecard20150101:MoreAvailableType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
