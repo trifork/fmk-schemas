@@ -540,9 +540,9 @@ dl {
 	<xsl:template name="js">
 		<xsl:for-each select="/wsdl:definitions/wsdl:types/xs:schema/xs:complexType | /wsdl:definitions/wsdl:types/xs:schema/xs:simpleType">
 			<xsl:variable name="typename" select="@name"/>
-		
+
 			usages["<xsl:value-of select="@name"/>"] = [
-				<xsl:for-each select="//xs:element[contains(@type, concat(':',$typename))] | //xs:union[contains(@memberTypes, concat(':',$typename))]">
+				<xsl:for-each select="//xs:element[concat(':',$typename) = substring(@type, string-length(@type) - string-length($typename))] | //xs:union[concat(':',$typename) = substring(@memberTypes, string-length(@memberTypes) - string-length($typename))]"> 
 					<xsl:if test="ancestor::xs:complexType">
 						"<xsl:value-of select="ancestor::xs:complexType[1]/@name"/>",
 					</xsl:if>
