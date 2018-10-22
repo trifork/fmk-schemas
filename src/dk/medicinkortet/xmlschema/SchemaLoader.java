@@ -95,7 +95,7 @@ public class SchemaLoader {
             schemaFile.hasBeenCopied = true;
 
             if (schemaFile.location != null) {
-                String destPath = schemaFile.location.substring(schemaFile.location.indexOf("/schemas/") + 9);
+                String destPath = schemaFile.location.substring(schemaFile.location.indexOf(File.separatorChar + "schemas" + File.separatorChar) + 9);
                 File destFile = new File(outputDir, destPath);
                 File destDir = destFile.getParentFile();
                 destDir.mkdirs();
