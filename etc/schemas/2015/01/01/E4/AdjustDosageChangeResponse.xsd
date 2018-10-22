@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101E4="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+	<include schemaLocation="importsFrom20150101E4.xsd"/>
+	<element name="AdjustDosageChangeResponse" type="medicinecard20150101E4:AdjustDosageChangeResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with adjusted dosage dates for upcomming change</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar med justerede doseringsdatoer for kommende opdatering</documentation>
+		</annotation>
+	</element>
+	<complexType name="AdjustDosageChangeResponseType">
+		<sequence>
+			<element name="DosageStructures" type="medicinecard20150101E4:DosageStructuresForRequestType"/>
+		</sequence>
+	</complexType>
+</schema>
