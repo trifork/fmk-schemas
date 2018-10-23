@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="FaultDetails.xsd"/>
+
+	<element name="FMKDetail">
+		<complexType>
+			<sequence>
+				<element name="FaultCode" type="string" />
+				<element name="FaultText" type="string" />
+				<element name="FaultDetails" type="medicinecard20150101:FaultDetailsType" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>

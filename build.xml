@@ -22,7 +22,10 @@
     <property name="idws.work.dir" value="${target.dir}/idws/workdir" />
     <property name="idws.schemas" value="schemas-idws" />
 
-    <property name="standard.target.dir" value="${target.dir}/standard/target" />
+    <property name="idws-xua.target.dir" value="${target.dir}/idwsxua/target" />
+    <property name="idws-xua.work.dir" value="${target.dir}/idwsxua/workdir" />
+
+    	<property name="standard.target.dir" value="${target.dir}/standard/target" />
     <property name="standard.work.dir" value="${target.dir}/standard/workdir" />
 
     <path id="classpath">
@@ -46,9 +49,10 @@
 
 	<target name="publish" depends="clean, all, publish-from-jenkins"/>
 
-	<target name="all" depends="clean, all-idws, all-standard, build-admin-jar, build-testtool-jar,  medicinecard_dist_zips"/>
+	<target name="all" depends="clean, all-idws, all-idws-xua, all-standard, build-admin-jar, build-testtool-jar,  medicinecard_dist_zips"/>
 	<target name="all-standard" depends="resolve-build, organize-schemas, generate, generate-namespace-oracle"/>
-	<target name="all-idws" depends="resolve-build, organize-schemas_idws"/>
+    <target name="all-idws" depends="resolve-build, organize-schemas_idws"/>
+    <target name="all-idws-xua" depends="resolve-build, organize-schemas_idws-xua"/>
 
     <target name="generate-namespace-oracle" depends="compile">
         <java classpathref="classpath" failonerror="true"
@@ -123,63 +127,132 @@
         </copy>
     </target>
 
-	<target name="organize-schemas_idws" depends="compile, filter-specialized-xsds" >
-		<mkdir dir="${idws.work.dir}"  />
-		<mkdir dir="${idws.target.dir}/wsdl"  />
+    <target name="filter-xsds-for-idws-xua">
+        <copy todir="${idws-xua.work.dir}/etc" flatten="false" description="Adding non-specialized schemas to ${idws-xua.work.dir}/etc/schemas">
+            <fileset refid="schemas_excluding_specialized_schemas"/>
+        </copy>
+    </target>
+	
+	<target name="organize-schemas_idws-xua" depends="compile, filter-xsds-for-idws-xua" >
+        <mkdir dir="${idws-xua.work.dir}"  />
+        <mkdir dir="${idws-xua.target.dir}/wsdl"  />
 
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2012_06_01"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2013_06_01"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E1"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E2"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E4"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E2"/>
-        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E3"/>
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2012_06_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2013_06_01"-->
+        <organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01"/>
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E1"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E2"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E4"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E2"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E3"-->
 
-        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2012_06_01"/>
-        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2013_06_01"/>
-        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01"/>
-        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01_E2"/>
+        <!--organize-idws-xua-schemas-macro wsdlname="EffectuationOrdering" versiondate="2012_06_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="EffectuationOrdering" versiondate="2013_06_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01_E2"-->
 
-        <organize-idws-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2012_06_01"/>
-        <organize-idws-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2013_06_01"/>
-        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01"/>
-        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01_E1"/>
-        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01_E2"/>
-        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_06_01"/>
-        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_06_01_E2"/>
+        <!--organize-idws-xua-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2012_06_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2013_06_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01_E1"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01_E2"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="PatientRegistration" versiondate="2015_06_01"-->
+        <!--organize-idws-xua-schemas-macro wsdlname="PatientRegistration" versiondate="2015_06_01_E2"-->
 
-        <copy todir="${idws.target.dir}">
-            <fileset dir="${idws.target.dir}/gensrc/META-INF" includes="schemas/**"/>
-            <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
+        <copy todir="${idws-xua.target.dir}">
+            <fileset dir="${idws-xua.target.dir}/gensrc/META-INF" includes="schemas/**"/>
+            <fileset dir="${idws-xua.work.dir}/etc" includes="schemas/**/*.dtd"/>
         </copy>
 
-        <zip destfile="${target.dir}/fmk-schema-idws.zip"
-             basedir="${idws.target.dir}"
+        <zip destfile="${target.dir}/fmk-schema-idws-xua.zip"
+             basedir="${idws-xua.target.dir}"
              includes="schemas/**, wsdl/**" />
     </target>
 
-    <macrodef name="organize-idws-schemas-macro">
+    <macrodef name="organize-idws-xua-schemas-macro">
         <attribute name="versiondate"/>
         <attribute name="wsdlname"/>
 
         <sequential>
-            <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${idws.work.dir}">
+            <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${idws-xua.work.dir}">
                 <classpath>
                     <path location="${build.dir}"/>
                     <fileset dir="lib/build" excludes="*gwt*"/>
                 </classpath>
-                <sysproperty key="target.dir" value="${idws.target.dir}" />
-                <sysproperty key="VersionDate" value="Idws_@{versiondate}"/>
+                <sysproperty key="target.dir" value="${idws-xua.target.dir}" />
+                <sysproperty key="VersionDate" value="Idws_Xua_@{versiondate}"/>
                 <sysproperty key="WsdlName" value="@{wsdlname}"/>
             </java>
-            <copy todir="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}">
-                <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
+            <copy todir="${idws-xua.target.dir}/wsdl/@{wsdlname}_Idws_Xua_@{versiondate}">
+                <fileset dir="${idws-xua.work.dir}/etc" includes="schemas/**/*.dtd"/>
             </copy>
-            <zip destfile="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}-collection.zip" basedir="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}"/>
+            <!-- Move wsdl one level down so that it's includes will work -->
+        	<echo message="Moving ${idws-xua.target.dir}/wsdl/@{wsdlname}_Idws_Xua_@{versiondate}/@{wsdlname}_Idws_Xua_@{versiondate}.wsdl -> ${idws-xua.target.dir}/wsdl/@{wsdlname}_Idws_Xua_@{versiondate}/wsdl"/> 
+            <move verbose="true" todir="${idws-xua.target.dir}/wsdl/@{wsdlname}_Idws_Xua_@{versiondate}/wsdl">
+                <fileset file="${idws-xua.target.dir}/wsdl/@{wsdlname}_Idws_Xua_@{versiondate}/@{wsdlname}_Idws_Xua_@{versiondate}.wsdl"/>
+            </move>
+            <zip destfile="${idws-xua.target.dir}/wsdl/@{wsdlname}_Idws_Xua_@{versiondate}-collection.zip" basedir="${idws-xua.target.dir}/wsdl/@{wsdlname}_Idws_Xua_@{versiondate}"/>
         </sequential>
     </macrodef>
+
+	   <target name="organize-schemas_idws" depends="compile, filter-specialized-xsds" >
+	        <mkdir dir="${idws.work.dir}"  />
+	        <mkdir dir="${idws.target.dir}/wsdl"  />
+
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2012_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2013_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E1"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E2"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E4"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E2"/>
+	        <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E3"/>
+
+	        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2012_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2013_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01"/>
+	        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01_E2"/>
+
+	        <organize-idws-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2012_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="PatientOrganisationRelation" versiondate="2013_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01"/>
+	        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01_E1"/>
+	        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_01_01_E2"/>
+	        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_06_01"/>
+	        <organize-idws-schemas-macro wsdlname="PatientRegistration" versiondate="2015_06_01_E2"/>
+
+	        <copy todir="${idws.target.dir}">
+	            <fileset dir="${idws.target.dir}/gensrc/META-INF" includes="schemas/**"/>
+	            <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
+	        </copy>
+
+	        <zip destfile="${target.dir}/fmk-schema-idws.zip"
+	             basedir="${idws.target.dir}"
+	             includes="schemas/**, wsdl/**" />
+	    </target>
+
+	    <macrodef name="organize-idws-schemas-macro">
+	        <attribute name="versiondate"/>
+	        <attribute name="wsdlname"/>
+
+	        <sequential>
+	            <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${idws.work.dir}">
+	                <classpath>
+	                    <path location="${build.dir}"/>
+	                    <fileset dir="lib/build" excludes="*gwt*"/>
+	                </classpath>
+	                <sysproperty key="target.dir" value="${idws.target.dir}" />
+	                <sysproperty key="VersionDate" value="Idws_@{versiondate}"/>
+	                <sysproperty key="WsdlName" value="@{wsdlname}"/>
+	            </java>
+	            <copy todir="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}">
+	                <fileset dir="${idws.work.dir}/etc" includes="schemas/**/*.dtd"/>
+	            </copy>
+	            <zip destfile="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}-collection.zip" basedir="${idws.target.dir}/wsdl/@{wsdlname}_Idws_@{versiondate}"/>
+	        </sequential>
+	    </macrodef>
 
     <macrodef name="organize-schemas-macro">
         <attribute name="versiondate"/>
