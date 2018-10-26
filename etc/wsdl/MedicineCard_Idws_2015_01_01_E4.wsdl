@@ -260,8 +260,6 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationEffectuationsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetMedicineCardResponse.xsd"/>
@@ -574,8 +572,8 @@
 
 
 
-    <wsdl:message name="GetDrugMedicationRequest_2015_01_01_E4">
-        <wsdl:part name="GetDrugMedicationRequest" element="medicinecard20150101E4:GetDrugMedicationRequest"/>
+    <wsdl:message name="GetDrugMedicationRequest_2015_01_01_E2">
+        <wsdl:part name="GetDrugMedicationRequest" element="medicinecard20150101E2:GetDrugMedicationRequest"/>
     </wsdl:message>
 
 
@@ -777,7 +775,7 @@
         </wsdl:operation>
 
         <wsdl:operation name="GetDrugMedication_2015_01_01_E4">
-            <wsdl:input name="GetDrugMedicationRequest_2015_01_01_E4" message="tns:GetDrugMedicationRequest_2015_01_01_E4"/>
+            <wsdl:input name="GetDrugMedicationRequest_2015_01_01_E2" message="tns:GetDrugMedicationRequest_2015_01_01_E2"/>
             <wsdl:output name="GetDrugMedicationResponse_2015_01_01_E4" message="tns:GetDrugMedicationResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -870,7 +868,7 @@
        <wsdl:operation name="GetDrugMedication_2015_01_01_E4">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#GetDrugMedication"
                             style="document"/>
-            <wsdl:input name="GetDrugMedicationRequest_2015_01_01_E4">
+            <wsdl:input name="GetDrugMedicationRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
