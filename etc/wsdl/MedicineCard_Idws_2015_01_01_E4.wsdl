@@ -751,18 +751,11 @@
 
 
 
-
-
-
-
-
-
-
-
     <wsdl:portType name="MedicineCardPortType">
-        <wsdl:operation name="GetPermissions_2015_01_01">
-            <wsdl:input name="GetPermissionsRequest_2015_01_01" message="tns:GetPermissionsRequest_2015_01_01"/>
-            <wsdl:output name="GetPermissionsResponse_2015_01_01" message="tns:GetPermissionsResponse_2015_01_01"/>
+
+        <wsdl:operation name="AdjustDosageChange_2015_01_01_E4">
+            <wsdl:input name="AdjustDosageChangeRequest_2015_01_01_E4" message="tns:AdjustDosageChangeRequest_2015_01_01_E4"/>
+            <wsdl:output name="AdjustDosageChangeResponse_2015_01_01_E4" message="tns:AdjustDosageChangeResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -778,9 +771,21 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="CreateDrugMedication_2015_01_01_E4">
+            <wsdl:input name="CreateDrugMedicationRequest_2015_01_01_E4" message="tns:CreateDrugMedicationRequest_2015_01_01_E4"/>
+            <wsdl:output name="CreateDrugMedicationResponse_2015_01_01_E2" message="tns:CreateDrugMedicationResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="CreateEffectuation_2015_01_01_E2">
             <wsdl:input name="CreateEffectuationRequest_2015_01_01_E2" message="tns:CreateEffectuationRequest_2015_01_01_E2"/>
             <wsdl:output name="CreateEffectuationResponse_2015_01_01_E2" message="tns:CreateEffectuationResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionMedication_2015_01_01_E2">
+            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01_E2" message="tns:CreatePrescriptionMedicationRequest_2015_01_01_E2"/>
+            <wsdl:output name="CreatePrescriptionMedicationResponse_2015_01_01_E2" message="tns:CreatePrescriptionMedicationResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -796,9 +801,21 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDoseDispensingCard_2015_01_01_E2">
+        <wsdl:operation name="GetDoseDispensingCard_2015_01_01_E4">
             <wsdl:input name="GetDoseDispensingCardRequest_2015_01_01_E2" message="tns:GetDoseDispensingCardRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_01_01_E2" message="tns:GetDoseDispensingCardResponse_2015_01_01_E2"/>
+            <wsdl:output name="GetDoseDispensingCardResponse_2015_01_01_E4" message="tns:GetDoseDispensingCardResponse_2015_01_01_E4"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedication_2015_01_01_E4">
+            <wsdl:input name="GetDrugMedicationRequest_2015_01_01_E2" message="tns:GetDrugMedicationRequest_2015_01_01_E2"/>
+            <wsdl:output name="GetDrugMedicationResponse_2015_01_01_E4" message="tns:GetDrugMedicationResponse_2015_01_01_E4"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationEffectuations_2015_01_01_E4">
+            <wsdl:input name="GetDrugMedicationEffectuationsRequest_2015_01_01_E4" message="tns:GetDrugMedicationEffectuationsRequest_2015_01_01_E4"/>
+            <wsdl:output name="GetDrugMedicationEffectuationsResponse_2015_01_01_E4" message="tns:GetDrugMedicationEffectuationsResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -808,15 +825,15 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedication_2015_01_01_E2">
-            <wsdl:input name="GetDrugMedicationRequest_2015_01_01_E2" message="tns:GetDrugMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetDrugMedicationResponse_2015_01_01_E2" message="tns:GetDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="GetDrugMedicationVersions_2015_01_01_E2">
             <wsdl:input name="GetDrugMedicationVersionsRequest_2015_01_01_E2" message="tns:GetDrugMedicationVersionsRequest_2015_01_01_E2"/>
             <wsdl:output name="GetDrugMedicationVersionsResponse_2015_01_01_E2" message="tns:GetDrugMedicationVersionsResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCard_2015_01_01_E4">
+            <wsdl:input name="GetMedicineCardRequest_2015_01_01_E2" message="tns:GetMedicineCardRequest_2015_01_01_E2"/>
+            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E4" message="tns:GetMedicineCardResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -826,9 +843,9 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCard_2015_01_01_E2">
-            <wsdl:input name="GetMedicineCardRequest_2015_01_01_E2" message="tns:GetMedicineCardRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E2" message="tns:GetMedicineCardResponse_2015_01_01_E2"/>
+        <wsdl:operation name="GetMedicineCardVersion_2015_01_01_E2">
+            <wsdl:input name="GetMedicineCardVersionRequest_2015_01_01_E2" message="tns:GetMedicineCardVersionRequest_2015_01_01_E2"/>
+            <wsdl:output name="GetMedicineCardVersionResponse_2015_01_01_E2" message="tns:GetMedicineCardVersionResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -838,15 +855,15 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersion_2015_01_01_E2">
-            <wsdl:input name="GetMedicineCardVersionRequest_2015_01_01_E2" message="tns:GetMedicineCardVersionRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardVersionResponse_2015_01_01_E2" message="tns:GetMedicineCardVersionResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="GetMedicineCardVersions_2015_01_01_E2">
             <wsdl:input name="GetMedicineCardVersionsRequest_2015_01_01_E2" message="tns:GetMedicineCardVersionsRequest_2015_01_01_E2"/>
             <wsdl:output name="GetMedicineCardVersionsResponse_2015_01_01_E2" message="tns:GetMedicineCardVersionsResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPermissions_2015_01_01">
+            <wsdl:input name="GetPermissionsRequest_2015_01_01" message="tns:GetPermissionsRequest_2015_01_01"/>
+            <wsdl:output name="GetPermissionsResponse_2015_01_01" message="tns:GetPermissionsResponse_2015_01_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -868,9 +885,21 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="PauseDrugMedication_2015_01_01_E4">
+            <wsdl:input name="PauseDrugMedicationRequest_2015_01_01_E4" message="tns:PauseDrugMedicationRequest_2015_01_01_E4"/>
+            <wsdl:output name="PauseDrugMedicationResponse_2015_01_01_E2" message="tns:PauseDrugMedicationResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="RemoveConsent_2015_01_01_E2">
             <wsdl:input name="RemoveConsentRequest_2015_01_01_E2" message="tns:RemoveConsentRequest_2015_01_01_E2"/>
             <wsdl:output name="RemoveConsentResponse_2015_01_01_E2" message="tns:RemoveConsentResponse_2015_01_01_E2"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchEffectuations_2015_01_01_E4">
+            <wsdl:input name="SearchEffectuationsRequest_2015_01_01_E2" message="tns:SearchEffectuationsRequest_2015_01_01_E2"/>
+            <wsdl:output name="SearchEffectuationsResponse_2015_01_01_E4" message="tns:SearchEffectuationsResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -904,63 +933,9 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionMedication_2015_01_01_E2">
-            <wsdl:input name="CreatePrescriptionMedicationRequest_2015_01_01_E2" message="tns:CreatePrescriptionMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="CreatePrescriptionMedicationResponse_2015_01_01_E2" message="tns:CreatePrescriptionMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="UnwithdrawDrugMedication_2015_01_01_E2">
             <wsdl:input name="UnwithdrawDrugMedicationRequest_2015_01_01_E2" message="tns:UnwithdrawDrugMedicationRequest_2015_01_01_E2"/>
             <wsdl:output name="UnwithdrawDrugMedicationResponse_2015_01_01_E2" message="tns:UnwithdrawDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="UpdateMedicineCard_2015_01_01_E2">
-            <wsdl:input name="UpdateMedicineCardRequest_2015_01_01_E2" message="tns:UpdateMedicineCardRequest_2015_01_01_E2"/>
-            <wsdl:output name="UpdateMedicineCardResponse_2015_01_01_E2" message="tns:UpdateMedicineCardResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="WithdrawDrugMedication_2015_01_01_E2">
-            <wsdl:input name="WithdrawDrugMedicationRequest_2015_01_01_E2" message="tns:WithdrawDrugMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="WithdrawDrugMedicationResponse_2015_01_01_E2" message="tns:WithdrawDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="WithdrawDrugMedication_2015_01_01_E2">
-            <wsdl:input name="WithdrawDrugMedicationRequest_2015_01_01_E2" message="tns:WithdrawDrugMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="WithdrawDrugMedicationResponse_2015_01_01_E2" message="tns:WithdrawDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="PauseDrugMedication_2015_01_01_E4">
-            <wsdl:input name="PauseDrugMedicationRequest_2015_01_01_E4" message="tns:PauseDrugMedicationRequest_2015_01_01_E4"/>
-            <wsdl:output name="PauseDrugMedicationResponse_2015_01_01_E2" message="tns:PauseDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDoseDispensingCard_2015_01_01_E4">
-            <wsdl:input name="GetDoseDispensingCardRequest_2015_01_01_E2" message="tns:GetDoseDispensingCardRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_01_01_E4" message="tns:GetDoseDispensingCardResponse_2015_01_01_E4"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="AdjustDosageChange_2015_01_01_E4">
-            <wsdl:input name="AdjustDosageChangeRequest_2015_01_01_E4" message="tns:AdjustDosageChangeRequest_2015_01_01_E4"/>
-            <wsdl:output name="AdjustDosageChangeResponse_2015_01_01_E4" message="tns:AdjustDosageChangeResponse_2015_01_01_E4"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedication_2015_01_01_E4">
-            <wsdl:input name="GetDrugMedicationRequest_2015_01_01_E2" message="tns:GetDrugMedicationRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetDrugMedicationResponse_2015_01_01_E4" message="tns:GetDrugMedicationResponse_2015_01_01_E4"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedicationEffectuations_2015_01_01_E4">
-            <wsdl:input name="GetDrugMedicationEffectuationsRequest_2015_01_01_E4" message="tns:GetDrugMedicationEffectuationsRequest_2015_01_01_E4"/>
-            <wsdl:output name="GetDrugMedicationEffectuationsResponse_2015_01_01_E4" message="tns:GetDrugMedicationEffectuationsResponse_2015_01_01_E4"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -970,27 +945,15 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateDrugMedication_2015_01_01_E4">
-            <wsdl:input name="CreateDrugMedicationRequest_2015_01_01_E4" message="tns:CreateDrugMedicationRequest_2015_01_01_E4"/>
-            <wsdl:output name="CreateDrugMedicationResponse_2015_01_01_E2" message="tns:CreateDrugMedicationResponse_2015_01_01_E2"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SearchEffectuations_2015_01_01_E4">
-            <wsdl:input name="SearchEffectuationsRequest_2015_01_01_E2" message="tns:SearchEffectuationsRequest_2015_01_01_E2"/>
-            <wsdl:output name="SearchEffectuationsResponse_2015_01_01_E4" message="tns:SearchEffectuationsResponse_2015_01_01_E4"/>
-&operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="UpdateMedicineCard_2015_01_01_E4">
             <wsdl:input name="UpdateMedicineCardRequest_2015_01_01_E4" message="tns:UpdateMedicineCardRequest_2015_01_01_E4"/>
             <wsdl:output name="UpdateMedicineCardResponse_2015_01_01_E2" message="tns:UpdateMedicineCardResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCard_2015_01_01_E4">
-            <wsdl:input name="GetMedicineCardRequest_2015_01_01_E2" message="tns:GetMedicineCardRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardResponse_2015_01_01_E4" message="tns:GetMedicineCardResponse_2015_01_01_E4"/>
+        <wsdl:operation name="WithdrawDrugMedication_2015_01_01_E2">
+            <wsdl:input name="WithdrawDrugMedicationRequest_2015_01_01_E2" message="tns:WithdrawDrugMedicationRequest_2015_01_01_E2"/>
+            <wsdl:output name="WithdrawDrugMedicationResponse_2015_01_01_E2" message="tns:WithdrawDrugMedicationResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
     </wsdl:portType>
