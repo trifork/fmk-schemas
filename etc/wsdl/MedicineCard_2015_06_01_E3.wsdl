@@ -287,6 +287,14 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupResponse.xsd" />
 			
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/EffectuatedAmount.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPrescriptionResidualAmountRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPrescriptionResidualAmountResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/ResidualAmount.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/ResidualPrescriptionMedication.xsd"/>
+			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsResponse.xsd" />
 			
@@ -828,6 +836,13 @@
     </wsdl:message>
     <wsdl:message name="GetDoseDispensingPeriodsResponse_2015_06_01_E3">
         <wsdl:part name="GetDoseDispensingPeriodsResponse" element="medicinecard20150601E3:GetDoseDispensingPeriodsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionResidualAmountRequest_2015_06_01_E3">
+        <wsdl:part name="GetPrescriptionResidualAmountRequest" element="medicinecard20150601E3:GetPrescriptionResidualAmountRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPrescriptionResidualAmountResponse_2015_06_01_E3">
+        <wsdl:part name="GetPrescriptionResidualAmountResponse" element="medicinecard20150601E3:GetPrescriptionResidualAmountResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePackingGroupRequest_2015_06_01_E3">
@@ -1475,6 +1490,13 @@
             <wsdl:output name="UndoEffectuatedDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:UndoEffectuatedDoseDispensingPeriodResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionResidualAmount_2015_06_01_E3">
+            <wsdl:input name="GetPrescriptionResidualAmountRequest_2015_06_01_E3" message="tns:GetPrescriptionResidualAmountRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetPrescriptionResidualAmountResponse_2015_06_01_E3" message="tns:GetPrescriptionResidualAmountResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
 
     </wsdl:portType>
 
@@ -2585,6 +2607,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UndoEffectuatedDoseDispensingPeriodResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+       <wsdl:operation name="GetPrescriptionResidualAmount_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetPrescriptionResidualAmount"
+                            style="document"/>
+            <wsdl:input name="GetPrescriptionResidualAmountRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionResidualAmountResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
