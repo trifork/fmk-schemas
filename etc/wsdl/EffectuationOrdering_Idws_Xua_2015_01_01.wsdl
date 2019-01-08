@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EffectuationOrdering"
+                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:wsp="http://www.w3.org/ns/ws-policy"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:wsap="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+                  xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+    <wsdl:types>
+
+        <xsd:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                    elementFormDefault="qualified">
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationsRequest.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationsResponse.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/OrderEffectuationRequest.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/OrderEffectuationResponse.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationSummaryRequest.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/GetOrderedEffectuationSummaryResponse.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/CancelOrderedEffectuationRequest.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/CancelOrderedEffectuationResponse.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/OnBehalfOf.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/TimingList.xsd"/>
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/FMKDetail.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="FMKDetail">
+        <wsdl:part name="fault" element="tns:FMKDetail"/>
+    </wsdl:message>
+
+    <wsdl:message name="TimingHeader">
+        <wsdl:part name="TimingHeader" element="medicinecard20150101:TimingList"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetOrderedEffectuationsIdwsRequest_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationsRequest" element="medicinecard20150101:GetOrderedEffectuationsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrderedEffectuationsIdwsResponse_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationsResponse" element="medicinecard20150101:GetOrderedEffectuationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetOrderedEffectuationSummaryIdwsRequest_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationSummaryRequest" element="medicinecard20150101:GetOrderedEffectuationSummaryRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetOrderedEffectuationSummaryIdwsResponse_2015_01_01">
+        <wsdl:part name="GetOrderedEffectuationSummaryResponse" element="medicinecard20150101:GetOrderedEffectuationSummaryResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="OrderEffectuationIdwsRequest_2015_01_01">
+        <wsdl:part name="OrderEffectuationRequest" element="medicinecard20150101:OrderEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="OrderEffectuationIdwsResponse_2015_01_01">
+        <wsdl:part name="OrderEffectuationResponse" element="medicinecard20150101:OrderEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelOrderedEffectuationIdwsRequest_2015_01_01">
+        <wsdl:part name="CancelOrderedEffectuationRequest" element="medicinecard20150101:CancelOrderedEffectuationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelOrderedEffectuationIdwsResponse_2015_01_01">
+        <wsdl:part name="CancelOrderedEffectuationResponse" element="medicinecard20150101:CancelOrderedEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="EffectuationOrderingPortType">
+
+        <wsdl:operation name="GetOrderedEffectuationsIdws_2015_01_01">
+            <wsdl:input name="GetOrderedEffectuationsIdwsRequest_2015_01_01"
+                        message="tns:GetOrderedEffectuationsIdwsRequest_2015_01_01"/>
+
+            <wsdl:output name="GetOrderedEffectuationsIdwsResponse_2015_01_01"
+                         message="tns:GetOrderedEffectuationsIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrderedEffectuationSummaryIdws_2015_01_01">
+            <wsdl:input name="GetOrderedEffectuationSummaryIdwsRequest_2015_01_01"
+                        message="tns:GetOrderedEffectuationSummaryIdwsRequest_2015_01_01"/>
+
+            <wsdl:output name="GetOrderedEffectuationSummaryIdwsResponse_2015_01_01"
+                         message="tns:GetOrderedEffectuationSummaryIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="OrderEffectuationIdws_2015_01_01">
+            <wsdl:input name="OrderEffectuationIdwsRequest_2015_01_01"
+                        message="tns:OrderEffectuationIdwsRequest_2015_01_01"/>
+
+            <wsdl:output name="OrderEffectuationIdwsResponse_2015_01_01"
+                         message="tns:OrderEffectuationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrderedEffectuationIdws_2015_01_01">
+            <wsdl:input name="CancelOrderedEffectuationIdwsRequest_2015_01_01"
+                        message="tns:CancelOrderedEffectuationIdwsRequest_2015_01_01"/>
+
+            <wsdl:output name="CancelOrderedEffectuationIdwsResponse_2015_01_01"
+                         message="tns:CancelOrderedEffectuationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+
+    <wsdl:binding name="EffectuationOrderingBinding" type="tns:EffectuationOrderingPortType">
+
+        <wsp:PolicyReference URI="#IDWS_XUA_Binding_Policy"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="GetOrderedEffectuationsIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetOrderedEffectuations"
+                            style="document"/>
+            <wsdl:input
+                    name="GetOrderedEffectuationsIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrderedEffectuationsIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrderedEffectuationSummaryIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetOrderedEffectuationSummary"
+                            style="document"/>
+            <wsdl:input
+                    name="GetOrderedEffectuationSummaryIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrderedEffectuationSummaryIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="OrderEffectuationIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#OrderEffectuation"
+                            style="document"/>
+            <wsdl:input
+                    name="OrderEffectuationIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="OrderEffectuationIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrderedEffectuationIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CancelOrderedEffectuation"
+                            style="document"/>
+            <wsdl:input
+                    name="CancelOrderedEffectuationIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelOrderedEffectuationIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="EffectuationOrderingService">
+        <wsdl:port name="EffectuationOrderingPort" binding="tns:EffectuationOrderingBinding">
+            <soap:address location="https://test1.fmk.netic.dk/fmk12/idwsxua/EffectuationOrdering"/>
+        </wsdl:port>
+    </wsdl:service>
+
+
+    <wsp:Policy wsu:Id="IDWS_XUA_Binding_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsam:Addressing wsp:Optional="false">
+                    <wsp:Policy/>
+                </wsam:Addressing>
+
+                <sp:AsymmetricBinding>
+                    <wsp:Policy>
+                        <sp:InitiatorToken>
+                            <wsp:Policy>
+                                <sp:IssuedToken
+                                        sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Never">
+                                    <sp:RequestSecurityTokenTemplate>
+                                        <wsap:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/PublicKey</wsap:KeyType>
+                                        <wsap:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wsap:TokenType>
+                                    </sp:RequestSecurityTokenTemplate>
+                                    <wsp:Policy/>
+                                </sp:IssuedToken>
+                            </wsp:Policy>
+                        </sp:InitiatorToken>
+
+                        <sp:RecipientToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToInitiator">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:RecipientToken>
+
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256Sha256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+
+                        <sp:ProtectTokens/>
+                        <sp:IncludeTimestamp/>
+                        <sp:OnlySignEntireHeadersAndBody/>
+                    </wsp:Policy>
+                </sp:AsymmetricBinding>
+
+                <sp:SignedSupportingTokens xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:IssuedToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <sp:RequestSecurityTokenTemplate>
+                                <wsap:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/PublicKey</wsap:KeyType>
+                                <wsap:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wsap:TokenType>
+                            </sp:RequestSecurityTokenTemplate>
+                            <wsp:Policy/>
+                        </sp:IssuedToken>
+                    </wsp:Policy>
+                </sp:SignedSupportingTokens>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <wsp:Policy wsu:Id="IDWS_XUA_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <wsp:Policy wsu:Id="IDWS_XUA_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+</wsdl:definitions>

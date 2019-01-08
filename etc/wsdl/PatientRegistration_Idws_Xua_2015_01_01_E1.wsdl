@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PatientRegistration"
+                  targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:tns="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+                  xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                  xmlns:medicinecard20150101E1="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+                  xmlns:wsp="http://www.w3.org/ns/ws-policy"
+                  xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+                  xmlns:wsap="http://docs.oasis-open.org/ws-sx/ws-trust/200512"
+                  xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+
+    <wsdl:types>
+
+        <xsd:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+                    elementFormDefault="qualified">
+
+            <xsd:include schemaLocation="../schemas/2015/01/01/OnBehalfOf.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/TimingList.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/RegisterPatientOrganisationRelationRequest.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/RegisterPatientOrganisationRelationResponse.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationRequest.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/RemovePatientOrganisationRelationResponse.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/GetPatientRegistrationRequest.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/GetPatientRegistrationResponse.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/CreatePatientRegistrationRequest.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/CreatePatientRegistrationResponse.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/RemovePatientRegistrationRequest.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/RemovePatientRegistrationResponse.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/FMKDetail.xsd"/>
+        </xsd:schema>
+        <xsd:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"
+                    elementFormDefault="qualified">
+            <xsd:include schemaLocation="../schemas/2015/01/01/E1/GetPatientOrganisationRelationRequest.xsd"/>
+            <xsd:include schemaLocation="../schemas/2015/01/01/E1/GetPatientOrganisationRelationResponse.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="FMKDetail">
+        <wsdl:part name="fault" element="medicinecard20150101:FMKDetail"/>
+    </wsdl:message>
+
+    <wsdl:message name="TimingHeader">
+        <wsdl:part name="TimingHeader" element="medicinecard20150101:TimingList"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPatientOrganisationRelationIdwsRequest_2015_01_01_E1">
+        <wsdl:part name="GetPatientOrganisationRelationRequest"
+                   element="medicinecard20150101E1:GetPatientOrganisationRelationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPatientOrganisationRelationIdwsResponse_2015_01_01_E1">
+        <wsdl:part name="GetPatientOrganisationRelationResponse"
+                   element="medicinecard20150101E1:GetPatientOrganisationRelationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RegisterPatientOrganisationRelationIdwsRequest_2015_01_01">
+        <wsdl:part name="RegisterPatientOrganisationRelationRequest"
+                   element="medicinecard20150101:RegisterPatientOrganisationRelationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RegisterPatientOrganisationRelationIdwsResponse_2015_01_01">
+        <wsdl:part name="RegisterPatientOrganisationRelationResponse"
+                   element="medicinecard20150101:RegisterPatientOrganisationRelationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RemovePatientOrganisationRelationIdwsRequest_2015_01_01">
+        <wsdl:part name="RemovePatientOrganisationRelationRequest"
+                   element="medicinecard20150101:RemovePatientOrganisationRelationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RemovePatientOrganisationRelationIdwsResponse_2015_01_01">
+        <wsdl:part name="RemovePatientOrganisationRelationResponse"
+                   element="medicinecard20150101:RemovePatientOrganisationRelationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPatientRegistrationIdwsRequest_2015_01_01">
+        <wsdl:part name="GetPatientRegistrationRequest" element="medicinecard20150101:GetPatientRegistrationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPatientRegistrationIdwsResponse_2015_01_01">
+        <wsdl:part name="GetPatientRegistrationResponse" element="medicinecard20150101:GetPatientRegistrationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePatientRegistrationIdwsRequest_2015_01_01">
+        <wsdl:part name="CreatePatientRegistrationRequest"
+                   element="medicinecard20150101:CreatePatientRegistrationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePatientRegistrationIdwsResponse_2015_01_01">
+        <wsdl:part name="CreatePatientRegistrationResponse"
+                   element="medicinecard20150101:CreatePatientRegistrationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RemovePatientRegistrationIdwsRequest_2015_01_01">
+        <wsdl:part name="RemovePatientRegistrationRequest"
+                   element="medicinecard20150101:RemovePatientRegistrationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RemovePatientRegistrationIdwsResponse_2015_01_01">
+        <wsdl:part name="RemovePatientRegistrationResponse"
+                   element="medicinecard20150101:RemovePatientRegistrationResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="PatientRelationPortType">
+
+        <wsdl:operation name="GetPatientOrganisationRelationIdws_2015_01_01_E1">
+            <wsdl:input name="GetPatientOrganisationRelationIdwsRequest_2015_01_01_E1"
+                        message="tns:GetPatientOrganisationRelationIdwsRequest_2015_01_01_E1"/>
+            <wsdl:output name="GetPatientOrganisationRelationIdwsResponse_2015_01_01_E1"
+                         message="tns:GetPatientOrganisationRelationIdwsResponse_2015_01_01_E1"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPatientOrganisationRelationIdws_2015_01_01">
+            <wsdl:input name="RegisterPatientOrganisationRelationIdwsRequest_2015_01_01"
+                        message="tns:RegisterPatientOrganisationRelationIdwsRequest_2015_01_01"/>
+            <wsdl:output name="RegisterPatientOrganisationRelationIdwsResponse_2015_01_01"
+                         message="tns:RegisterPatientOrganisationRelationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="RemovePatientOrganisationRelationIdws_2015_01_01">
+            <wsdl:input name="RemovePatientOrganisationRelationIdwsRequest_2015_01_01"
+                        message="tns:RemovePatientOrganisationRelationIdwsRequest_2015_01_01"/>
+            <wsdl:output name="RemovePatientOrganisationRelationIdwsResponse_2015_01_01"
+                         message="tns:RemovePatientOrganisationRelationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPatientRegistrationIdws_2015_01_01">
+            <wsdl:input name="GetPatientRegistrationIdwsRequest_2015_01_01"
+                        message="tns:GetPatientRegistrationIdwsRequest_2015_01_01"/>
+            <wsdl:output name="GetPatientRegistrationIdwsResponse_2015_01_01"
+                         message="tns:GetPatientRegistrationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePatientRegistrationIdws_2015_01_01">
+            <wsdl:input name="CreatePatientRegistrationIdwsRequest_2015_01_01"
+                        message="tns:CreatePatientRegistrationIdwsRequest_2015_01_01"/>
+            <wsdl:output name="CreatePatientRegistrationIdwsResponse_2015_01_01"
+                         message="tns:CreatePatientRegistrationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="RemovePatientRegistrationIdws_2015_01_01">
+            <wsdl:input name="RemovePatientRegistrationIdwsRequest_2015_01_01"
+                        message="tns:RemovePatientRegistrationIdwsRequest_2015_01_01"/>
+            <wsdl:output name="RemovePatientRegistrationIdwsResponse_2015_01_01"
+                         message="tns:RemovePatientRegistrationIdwsResponse_2015_01_01"/>
+            <wsdl:fault name="FMKDetail" message="tns:FMKDetail"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+
+    <wsdl:binding name="PatientRelationBinding" type="tns:PatientRelationPortType">
+
+        <wsp:PolicyReference URI="#IDWS_XUA_Binding_Policy"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="GetPatientOrganisationRelationIdws_2015_01_01_E1">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1#GetPatientOrganisationRelation"
+                    style="document"/>
+            <wsdl:input name="GetPatientOrganisationRelationIdwsRequest_2015_01_01_E1">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPatientOrganisationRelationIdwsResponse_2015_01_01_E1">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPatientOrganisationRelationIdws_2015_01_01">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#RegisterPatientOrganisationRelation"
+                    style="document"/>
+            <wsdl:input name="RegisterPatientOrganisationRelationIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterPatientOrganisationRelationIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="RemovePatientOrganisationRelationIdws_2015_01_01">
+            <soap:operation
+                    soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#RemovePatientOrganisationRelation"
+                    style="document"/>
+            <wsdl:input name="RemovePatientOrganisationRelationIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RemovePatientOrganisationRelationIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPatientRegistrationIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#GetPatientRegistration"
+                            style="document"/>
+            <wsdl:input name="GetPatientRegistrationIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPatientRegistrationIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePatientRegistrationIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#CreatePatientRegistration"
+                            style="document"/>
+            <wsdl:input name="CreatePatientRegistrationIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePatientRegistrationIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="RemovePatientRegistrationIdws_2015_01_01">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01#RemovePatientRegistration"
+                            style="document"/>
+            <wsdl:input name="RemovePatientRegistrationIdwsRequest_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Input_Policy"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RemovePatientRegistrationIdwsResponse_2015_01_01">
+                <wsp:PolicyReference URI="#IDWS_XUA_Output_Policy"/>
+                <soap:header use="literal" part="TimingHeader" message="tns:TimingHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FMKDetail">
+                <soap:fault name="FMKDetail" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="PatientRelation">
+        <wsdl:port name="PatientRelationPort" binding="tns:PatientRelationBinding">
+            <soap:address location="https://test1.fmk.netic.dk/fmk12/ws/PatientOrganisationRelation"/>
+        </wsdl:port>
+    </wsdl:service>
+
+
+    <wsdl:service name="PatientRelationService">
+        <wsdl:port name="PatientRelationPort" binding="tns:PatientRelationBinding">
+            <soap:address location="https://test1.fmk.netic.dk/fmk12/idwsxua/PatientOrganisationRelation"/>
+        </wsdl:port>
+    </wsdl:service>
+
+    <wsp:Policy wsu:Id="IDWS_XUA_Binding_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsam:Addressing wsp:Optional="false">
+                    <wsp:Policy/>
+                </wsam:Addressing>
+
+                <sp:AsymmetricBinding>
+                    <wsp:Policy>
+                        <sp:InitiatorToken>
+                            <wsp:Policy>
+                                <sp:IssuedToken
+                                        sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Never">
+                                    <sp:RequestSecurityTokenTemplate>
+                                        <wsap:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/PublicKey</wsap:KeyType>
+                                        <wsap:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wsap:TokenType>
+                                    </sp:RequestSecurityTokenTemplate>
+                                    <wsp:Policy/>
+                                </sp:IssuedToken>
+                            </wsp:Policy>
+                        </sp:InitiatorToken>
+
+                        <sp:RecipientToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToInitiator">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:RecipientToken>
+
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic256Sha256/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+
+                        <sp:ProtectTokens/>
+                        <sp:IncludeTimestamp/>
+                        <sp:OnlySignEntireHeadersAndBody/>
+                    </wsp:Policy>
+                </sp:AsymmetricBinding>
+
+                <sp:SignedSupportingTokens xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:IssuedToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <sp:RequestSecurityTokenTemplate>
+                                <wsap:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/PublicKey</wsap:KeyType>
+                                <wsap:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</wsap:TokenType>
+                            </sp:RequestSecurityTokenTemplate>
+                            <wsp:Policy/>
+                        </sp:IssuedToken>
+                    </wsp:Policy>
+                </sp:SignedSupportingTokens>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <wsp:Policy wsu:Id="IDWS_XUA_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <wsp:Policy wsu:Id="IDWS_XUA_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:SignedParts>
+                    <sp:Body/>
+                    <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing"/>
+                    <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing"/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+</wsdl:definitions>
