@@ -215,77 +215,38 @@
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4" elementFormDefault="qualified">
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/AdjustDosageChangeRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/AdjustDosageChangeResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/AsSoonAsPossible.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/CreateDrugMedication.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/CreateDrugMedicationRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/CreateNewDrugMedication.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DosageForRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2015/01/01/E4/DosageStructureForRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DosageStructuresForRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensedMedication.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensingCard.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensingPeriod.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DoseDispensingSummary.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/DrugMedication.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/EffectuatedAmount.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/EffectuationsOnDrugMedication.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDoseDispensingCardResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationEffectuationsRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationEffectuationsResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetMedicineCardResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetPrescriptionResidualAmountRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetPrescriptionResidualAmountResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/IsDoseDispensed.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/IsDoseDispensingOnHold.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/MedicineCard.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/MoreEffectuationsAvailable.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2015/01/01/E4/PauseDrugMedication.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2015/01/01/E4/PauseDrugMedicationRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/ResidualAmount.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/ResidualPrescriptionMedication.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/SearchEffectuationsResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/TotalNumber.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/UpdateDrugMedication.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/UpdateDrugMedicationRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E4/UpdateMedicineCardRequest.xsd"/>
 
         </xs:schema>
@@ -629,8 +590,8 @@
 
 
 
-    <wsdl:message name="PauseDrugMedicationRequest_2015_01_01_E4">
-        <wsdl:part name="PauseDrugMedicationRequest" element="medicinecard20150101E4:PauseDrugMedicationRequest"/>
+    <wsdl:message name="PauseDrugMedicationRequest_2015_01_01_E2">
+        <wsdl:part name="PauseDrugMedicationRequest" element="medicinecard20150101E2:PauseDrugMedicationRequest"/>
     </wsdl:message>
 
 
@@ -919,8 +880,8 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="PauseDrugMedication_2015_01_01_E4">
-            <wsdl:input name="PauseDrugMedicationRequest_2015_01_01_E4" message="tns:PauseDrugMedicationRequest_2015_01_01_E4"/>
+        <wsdl:operation name="PauseDrugMedication_2015_01_01_E2">
+            <wsdl:input name="PauseDrugMedicationRequest_2015_01_01_E2" message="tns:PauseDrugMedicationRequest_2015_01_01_E2"/>
             <wsdl:output name="PauseDrugMedicationResponse_2015_01_01_E2" message="tns:PauseDrugMedicationResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -995,8 +956,6 @@
 
     <wsdl:binding name="MedicineCardBinding" type="tns:MedicineCardPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-
        <wsdl:operation name="AdjustDosageChange_2015_01_01_E4">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#AdjustDosageChange"
                             style="document"/>
@@ -1357,10 +1316,10 @@
         </wsdl:operation>
 
 
-       <wsdl:operation name="PauseDrugMedication_2015_01_01_E4">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#PauseDrugMedication"
+       <wsdl:operation name="PauseDrugMedication_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#PauseDrugMedication"
                             style="document"/>
-            <wsdl:input name="PauseDrugMedicationRequest_2015_01_01_E4">
+            <wsdl:input name="PauseDrugMedicationRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1546,6 +1505,3 @@
     </wsdl:service>
 
 </wsdl:definitions>
-
-
-
