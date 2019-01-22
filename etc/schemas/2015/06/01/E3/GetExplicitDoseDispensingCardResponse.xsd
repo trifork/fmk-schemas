@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E3.xsd"/>
+
+    <element name="GetExplicitDoseDispensingCardResponse" type="medicinecard20150601E3:GetExplicitDoseDispensingCardResponseType"/>
+
+    <complexType name="GetExplicitDoseDispensingCardResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Response type with one or more explicit dose dispensing cards for a specific person</documentation>
+            <documentation xml:lang="da-DK">Type for et svar med en eller flere eksplisitte dosisdispenseringskort for en given person</documentation>
+        </annotation>
+        <sequence>
+            <element name="Patient" type="medicinecard20150601:PatientType"/>
+            <element name="RequestDateTime" type="medicinecard20150601E2:RequestDateTimeType"/>
+            <element name="DoseDispensingOnHold" type="medicinecard20150601E2:DoseDispensingOnHoldType" minOccurs="0"/>
+            <element name="DoseDispensingCard" type="medicinecard20150601E3:ExplicitDoseDispensingCardType" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>
