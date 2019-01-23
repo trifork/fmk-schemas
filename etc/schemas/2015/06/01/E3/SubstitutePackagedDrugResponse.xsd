@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E3.xsd"/>
+
+	<element name="SubstitutePackedDrugResponse" type="medicinecard20150601E3:SubstitutePackedDrugResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response from selecting packaged drugs for a dose dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på valg af lægemidler der skal pakkes i en given DD periode</documentation>
+		</annotation>
+	</element>
+	<complexType name="SubstitutePackedDrugResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="PeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
+        	<element name="PlannedDispensingIdentifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

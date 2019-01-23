@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+	<simpleType name="PackagedDateTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Packed date time for a dose dispensing period</documentation>
+			<documentation xml:lang="da-DK">Pakketidspunkt for en dosisdispenseringsperiode</documentation>
+		</annotation>
+		<restriction base="dateTime">
+			<minInclusive value="2000-01-01T00:00:00Z"/>
+		</restriction>
+	</simpleType>
+</schema>
