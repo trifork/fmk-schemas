@@ -351,6 +351,12 @@
 			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodResponse.xsd" />
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetExplicitDoseDispensingCardRequest.xsd" />
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetExplicitDoseDispensingCardResponse.xsd" />
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/SubstitutePackagedDrugRequest.xsd" />
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/SubstitutePackagedDrugResponse.xsd" />
 			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/ReplacePrescriptionRequest.xsd"/>
 			
@@ -988,6 +994,20 @@
         <wsdl:part name="UndoEffectuatedDoseDispensingPeriodResponse" element="medicinecard20150601E3:UndoEffectuatedDoseDispensingPeriodResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetExplicitDoseDispensingCardRequest_2015_06_01_E3">
+        <wsdl:part name="GetExplicitDoseDispensingCardRequest" element="medicinecard20150601E3:GetExplicitDoseDispensingCardRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetExplicitDoseDispensingCardResponse_2015_06_01_E3">
+        <wsdl:part name="GetExplicitDoseDispensingCardResponse" element="medicinecard20150601E3:GetExplicitDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SubstitutePackagedDrugRequest_2015_06_01_E3">
+        <wsdl:part name="SubstitutePackagedDrugRequest" element="medicinecard20150601E3:SubstitutePackagedDrugRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SubstitutePackagedDrugResponse_2015_06_01_E3">
+        <wsdl:part name="SubstitutePackagedDrugResponse" element="medicinecard20150601E3:SubstitutePackagedDrugResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
@@ -1528,6 +1548,17 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetExplicitDoseDispensingCard_2015_06_01_E3">
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_06_01_E3" message="tns:GetExplicitDoseDispensingCardRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E3" message="tns:GetExplicitDoseDispensingCardResponse_2015_06_01_E3"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SubstitutePackagedDrug_2015_06_01_E3">
+            <wsdl:input name="SubstitutePackagedDrugRequest_2015_06_01_E3" message="tns:SubstitutePackagedDrugRequest_2015_06_01_E3"/>
+            <wsdl:output name="SubstitutePackagedDrugResponse_2015_06_01_E3" message="tns:SubstitutePackagedDrugResponse_2015_06_01_E3"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
 
     </wsdl:portType>
 
@@ -2656,6 +2687,34 @@
                 <soap:body use="literal"/>
             </wsdl:output>
 &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SubstitutePackagedDrug_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#SubstitutePackagedDrug"
+                            style="document"/>
+            <wsdl:input name="SubstitutePackagedDrugRequest_2015_06_01_E3">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SubstitutePackagedDrugResponse_2015_06_01_E3">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetExplicitDoseDispensingCard_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetExplicitDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_06_01_E3">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E3">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
         </wsdl:operation>
 
 
