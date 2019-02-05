@@ -339,6 +339,21 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogResponse.xsd" />
 
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPacking.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinished.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStarted.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedResponse.xsd" />
+
         </xs:schema>
 
     </wsdl:types>
@@ -863,6 +878,27 @@
     </wsdl:message>
     <wsdl:message name="UploadDrugCatalogResponse_2015_06_01_E3">
         <wsdl:part name="UploadDrugCatalogResponse" element="medicinecard20150601E3:UploadDrugCatalogResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortPackingRequest_2015_06_01_E3">
+        <wsdl:part name="AbortPackingRequest" element="medicinecard20150601E3:AbortPackingRequest"/>
+    </wsdl:message>
+    <wsdl:message name="AbortPackingResponse_2015_06_01_E3">
+        <wsdl:part name="AbortPackingResponse" element="medicinecard20150601E3:AbortPackingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetPackingFinishedRequest_2015_06_01_E3">
+        <wsdl:part name="SetPackingFinishedRequest" element="medicinecard20150601E3:SetPackingFinishedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SetPackingFinishedResponse_2015_06_01_E3">
+        <wsdl:part name="SetPackingFinishedResponse" element="medicinecard20150601E3:SetPackingFinishedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetPackingStartedRequest_2015_06_01_E3">
+        <wsdl:part name="SetPackingStartedRequest" element="medicinecard20150601E3:SetPackingStartedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SetPackingStartedResponse_2015_06_01_E3">
+        <wsdl:part name="SetPackingStartedResponse" element="medicinecard20150601E3:SetPackingStartedResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdatePackingGroupRequest_2015_06_01_E3">
@@ -1424,6 +1460,24 @@
         <wsdl:operation name="UploadDrugCatalog_2015_06_01_E3">
             <wsdl:input name="UploadDrugCatalogRequest_2015_06_01_E3" message="tns:UploadDrugCatalogRequest_2015_06_01_E3"/>
             <wsdl:output name="UploadDrugCatalogResponse_2015_06_01_E3" message="tns:UploadDrugCatalogResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortPacking_2015_06_01_E3">
+            <wsdl:input name="AbortPackingRequest_2015_06_01_E3" message="tns:AbortPackingRequest_2015_06_01_E3"/>
+            <wsdl:output name="AbortPackingResponse_2015_06_01_E3" message="tns:AbortPackingResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingFinished_2015_06_01_E3">
+            <wsdl:input name="SetPackingFinishedRequest_2015_06_01_E3" message="tns:SetPackingFinishedRequest_2015_06_01_E3"/>
+            <wsdl:output name="SetPackingFinishedResponse_2015_06_01_E3" message="tns:SetPackingFinishedResponse_2015_06_01_E3"/>
+&operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingStarted_2015_06_01_E3">
+            <wsdl:input name="SetPackingStartedRequest_2015_06_01_E3" message="tns:SetPackingStartedRequest_2015_06_01_E3"/>
+            <wsdl:output name="SetPackingStartedResponse_2015_06_01_E3" message="tns:SetPackingStartedResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2442,6 +2496,48 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UploadDrugCatalogResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortPacking_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#AbortPacking"
+                            style="document"/>
+            <wsdl:input name="AbortPackingRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AbortPackingResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingFinished_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#SetPackingFinished"
+                            style="document"/>
+            <wsdl:input name="SetPackingFinishedRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetPackingFinishedResponse_2015_06_01_E3">
+&fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+&bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingStarted_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#SetPackingStarted"
+                            style="document"/>
+            <wsdl:input name="SetPackingStartedRequest_2015_06_01_E3">
+&fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetPackingStartedResponse_2015_06_01_E3">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
