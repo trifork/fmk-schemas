@@ -121,7 +121,7 @@ public class GenerateXsdFromExample {
 			while ((line = r.readLine()) != null) {
 				if (line.contains("schemaLocation")) {
 					String name = line.substring(0, line.lastIndexOf("."));
-					name = name.substring(Math.max(name.lastIndexOf("/") + 1, name.lastIndexOf("\"")));
+					name = name.substring(Math.max(name.lastIndexOf("/") + 1, name.lastIndexOf("\"") + 1));
 					if (!imports.containsKey(name)) {
 						imports.put(name, namespace);
 					}
