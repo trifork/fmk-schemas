@@ -13,15 +13,15 @@
 
 	<element name="DiscardDoseDispensingPeriodResponse" type="medicinecard20150601E3:DiscardDoseDispensingPeriodResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB"> </documentation>
-			<documentation xml:lang="da-DK"> </documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a request which marks a dose dispensing period as discarded</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel som markere en dosisdispenserings periode som kasseret</documentation>
 		</annotation>
 	</element>
 
 	<complexType name="DiscardDoseDispensingPeriodResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
-			<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
+			<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"  maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
