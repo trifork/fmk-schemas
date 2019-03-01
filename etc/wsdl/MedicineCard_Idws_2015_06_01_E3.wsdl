@@ -379,7 +379,10 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E3/SubstitutePackagedDrugResponse.xsd" />
 			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/ReplacePrescriptionRequest.xsd"/>
-			
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingOverviewRequest.xsd" />
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingOverviewResponse.xsd" />
+
         </xs:schema>
 
     </wsdl:types>
@@ -1056,6 +1059,13 @@
         <wsdl:part name="SubstitutePackagedDrugResponse" element="medicinecard20150601E3:SubstitutePackagedDrugResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetPackingOverviewRequest_2015_06_01_E3">
+        <wsdl:part name="GetPackingOverviewRequest" element="medicinecard20150601E3:GetPackingOverviewRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPackingOverviewResponse_2015_06_01_E3">
+        <wsdl:part name="SGetPackingOverviewResponse" element="medicinecard20150601E3:GetPackingOverviewResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
@@ -1628,6 +1638,12 @@
 
         <wsdl:operation name="SubstitutePackagedDrug_2015_06_01_E3">
             <wsdl:input name="SubstitutePackagedDrugRequest_2015_06_01_E3" message="tns:SubstitutePackagedDrugRequest_2015_06_01_E3"/>
+            <wsdl:output name="SubstitutePackagedDrugResponse_2015_06_01_E3" message="tns:SubstitutePackagedDrugResponse_2015_06_01_E3"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingOverview_2015_06_01_E3">
+            <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3" message="tns:GetPackingOverviewRequest_2015_06_01_E3"/>
             <wsdl:output name="SubstitutePackagedDrugResponse_2015_06_01_E3" message="tns:SubstitutePackagedDrugResponse_2015_06_01_E3"/>
             &operationFaultDeclaration;
         </wsdl:operation>
@@ -2839,6 +2855,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E3">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingOverview_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetPackingOverview"
+                            style="document"/>
+            <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E3">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
