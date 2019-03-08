@@ -302,23 +302,15 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogResponse.xsd" />
 
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPacking.xsd" />
-			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingResponse.xsd" />
-			
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinished.xsd" />
 			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedResponse.xsd" />
 			
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStarted.xsd" />
-			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedResponse.xsd" />
-			
-			<xs:include schemaLocation="../schemas/2015/06/01/E3/DiscardDoseDispensingPeriod.xsd" />
-			
+
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/DiscardDoseDispensingPeriodRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/DiscardDoseDispensingPeriodResponse.xsd" />
 			
@@ -331,14 +323,9 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingGroupResponse.xsd" />
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/EffectuatedAmount.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPrescriptionResidualAmountRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPrescriptionResidualAmountResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/ResidualAmount.xsd"/>
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/ResidualPrescriptionMedication.xsd"/>
-			
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsResponse.xsd" />
 			
@@ -382,6 +369,9 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingOverviewRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingOverviewResponse.xsd" />
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/UndoDiscardDoseDispensingPeriodRequest.xsd" />
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/UndoDiscardDoseDispensingPeriodResponse.xsd" />
 
         </xs:schema>
 
@@ -945,6 +935,13 @@
     </wsdl:message>
     <wsdl:message name="DiscardDoseDispensingPeriodResponse_2015_06_01_E3">
         <wsdl:part name="DiscardDoseDispensingPeriodResponse" element="medicinecard20150601E3:DiscardDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoDiscardDoseDispensingPeriodRequest_2015_06_01_E3">
+        <wsdl:part name="UndoDiscardDoseDispensingPeriodRequest" element="medicinecard20150601E3:UndoDiscardDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3">
+        <wsdl:part name="UndoDiscardDoseDispensingPeriodResponse" element="medicinecard20150601E3:UndoDiscardDoseDispensingPeriodResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdatePackingGroupRequest_2015_06_01_E3">
@@ -1538,6 +1535,12 @@
             <wsdl:input name="DiscardDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:DiscardDoseDispensingPeriodRequest_2015_06_01_E3"/>
             <wsdl:output name="DiscardDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:DiscardDoseDispensingPeriodResponse_2015_06_01_E3"/>
 &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoDiscardDoseDispensingPeriod_2015_06_01_E3">
+            <wsdl:input name="UndoDiscardDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:UndoDiscardDoseDispensingPeriodRequest_2015_06_01_E3"/>
+            <wsdl:output name="UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3"/>
+            &operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="UpdatePackingGroup_2015_06_01_E3">
@@ -2621,6 +2624,20 @@
                 <soap:body use="literal"/>
             </wsdl:output>
 &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoDiscardDoseDispensingPeriod_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UndoDiscardDoseDispensingPeriod"
+                            style="document"/>
+            <wsdl:input name="UndoDiscardDoseDispensingPeriodRequest_2015_06_01_E3">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="UpdatePackingGroup_2015_06_01_E3">
