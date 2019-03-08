@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="UndefinedModificationAction.xsd"/>
+	<simpleType name="DoseDispensingCardModificationActionType">
+		<annotation>
+			<documentation xml:lang="en-GB">The type of modification of a patient-registration</documentation>
+			<documentation xml:lang="da-DK">Typen af en ændring af patient data</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20150601E3:PredefinedDoseDispensingCardModificationActionType medicinecard20150601E3:UndefinedModificationActionType"/>
+	</simpleType>
+	<simpleType name="PredefinedDoseDispensingCardModificationActionType">
+		<restriction base="medicinecard20150601E3:UndefinedModificationActionType">
+			<enumeration value="PeriodFinishedPacking"/>
+		</restriction>
+	</simpleType>
+</schema>
