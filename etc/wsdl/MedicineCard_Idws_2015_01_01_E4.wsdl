@@ -216,6 +216,8 @@
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationEffectuationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationEffectuationsResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/GetExplicitDoseDispensingCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E4/GetExplicitDoseDispensingCardResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetMedicineCardResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetPrescriptionResidualAmountRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E4/GetPrescriptionResidualAmountResponse.xsd"/>
@@ -440,6 +442,18 @@
 
     <wsdl:message name="GetDrugMedicationVersionsResponse_2015_01_01_E2">
         <wsdl:part name="GetDrugMedicationVersionsResponse" element="medicinecard20150101E2:GetDrugMedicationVersionsResponse"/>
+    </wsdl:message>
+
+
+
+    <wsdl:message name="GetExplicitDoseDispensingCardRequest_2015_01_01_E4">
+        <wsdl:part name="GetExplicitDoseDispensingCardRequest" element="medicinecard20150101E4:GetExplicitDoseDispensingCardRequest"/>
+    </wsdl:message>
+
+
+
+    <wsdl:message name="GetExplicitDoseDispensingCardResponse_2015_01_01_E4">
+        <wsdl:part name="GetExplicitDoseDispensingCardResponse" element="medicinecard20150101E4:GetExplicitDoseDispensingCardResponse"/>
     </wsdl:message>
 
 
@@ -794,6 +808,12 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetExplicitDoseDispensingCard_2015_01_01_E4">
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_01_01_E4" message="tns:GetExplicitDoseDispensingCardRequest_2015_01_01_E4"/>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_01_01_E4" message="tns:GetExplicitDoseDispensingCardResponse_2015_01_01_E4"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="GetMedicineCard_2015_01_01_E4">
             <wsdl:input name="GetMedicineCardRequest_2015_01_01_E2" message="tns:GetMedicineCardRequest_2015_01_01_E2"/>
             <wsdl:output name="GetMedicineCardResponse_2015_01_01_E4" message="tns:GetMedicineCardResponse_2015_01_01_E4"/>
@@ -1139,6 +1159,19 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetExplicitDoseDispensingCard_2015_01_01_E4">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#GetExplicitDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_01_01_E4">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_01_01_E4">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
 
        <wsdl:operation name="GetMedicineCard_2015_01_01_E4">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#GetMedicineCard"

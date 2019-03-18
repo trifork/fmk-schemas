@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+        xmlns:medicinecard20150101E4="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150101E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"/>
+    <include schemaLocation="importsFrom20150101E4.xsd"/>
+
+    <complexType name="ExplicitDoseDispensingPeriodType">
+        <annotation>
+            <documentation xml:lang="en-GB">Explicit Dose dispensing period</documentation>
+            <documentation xml:lang="da-DK">Explicit Dosisdispenseringsperiode</documentation>
+        </annotation>
+        <sequence>
+        	<element name="Identifier" type="medicinecard20150101E2:DoseDispensingPeriodIdentifierType"/>
+        	<element name="Status" type="medicinecard20150101E2:DoseDispensingStatusType"/>
+            <element name="StartDate" type="medicinecard20150101E2:DoseDispensingPeriodStartDateType"/>
+            <element name="EndDate" type="medicinecard20150101E2:DoseDispensingPeriodEndDateType"/>
+            <element name="Deadline" type="medicinecard20150101E2:DoseDispensingDeadlineType"/>
+            <element name="PackagedDateTime" type="medicinecard20150101E4:PackagedDateTimeType" minOccurs="0" />
+            <element name="EffectuationDate" type="medicinecard20150101E2:DoseDispensedEffectuationDateType" minOccurs="0"/>
+            <element name="ExpectedDelivery" type="medicinecard20150101E2:ExpectedDeliveryDateTimeType" minOccurs="0" />
+        	<element name="ProductionIdentifier" type="medicinecard20150101E2:DoseDispensingProductionIdentifierType" minOccurs="0"/>
+            <element name="PrivatePlannedDispensing" type="medicinecard20150101E2:PrivateDoseDispensedMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="PlannedDispensing" type="medicinecard20150101E4:ExplicitPlannedDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="DetailedSpecification" type="medicinecard20150101E2:DoseDispensingDetailedSpecificationType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>
