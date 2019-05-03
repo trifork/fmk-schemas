@@ -231,7 +231,27 @@
 						</dd>
 						<dt>Type:</dt>
 						<dd>
-							<xsl:value-of select="/wsdl:definitions/wsdl:types/xs:schema/xs:simpleType[@name=concat(current()/@name, 'Type')]/xs:restriction/@base"/>
+							<a href="#{substring-after(@type, ':')}">
+							<xsl:value-of select="substring-after(@type, ':')"/>
+							</a>
+						</dd>
+					</xsl:when>
+
+					<!-- Variant#2 Hvis det er en simpleType med en annotation på, da anvendes denne annotation -->
+					<xsl:when test="/wsdl:definitions/wsdl:types/xs:schema/xs:simpleType[@name=substring-after(current()/@type, ':')]/xs:annotation/xs:documentation[@xml:lang='da-DK'] != ''">
+						<dt>Navn:</dt>
+						<dd>
+							<xsl:value-of select="@name"/>
+						</dd>
+						<dt>Beskrivelse:</dt>
+						<dd>
+							<xsl:value-of select="/wsdl:definitions/wsdl:types/xs:schema/xs:simpleType[@name=substring-after(current()/@type, ':')]/xs:annotation/xs:documentation[@xml:lang='da-DK']"/>
+						</dd>
+						<dt>Type:</dt>
+						<dd>
+							<a href="#{substring-after(@type, ':')}">
+								<xsl:value-of select="substring-after(@type, ':')"/>
+							</a>
 						</dd>
 					</xsl:when>
 
