@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<include schemaLocation="importsFrom20150601E5.xsd"/>
+
+	<element name="PatientRegistration" type="medicinecard20150601E5:PatientRegistrationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Patient registration</documentation>
+			<documentation xml:lang="da-DK">Patient registrering</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientRegistrationType">
+		<sequence>
+			<element name="Identifier" type="medicinecard20150601:PatientRegistrationIdentifierType"/>
+			<element name="Created" type="medicinecard20150601:ModificatorType"/>
+			<element name="Removed" type="medicinecard20150601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Type" type="medicinecard20150601E2:PatientRegistrationTypeType"/>
+            <choice>
+                <element name="INR" type="medicinecard20150601:INRType"/>
+                <element name="SetDoseDispensingOnHold" type="medicinecard20150601E2:SetDoseDispensingOnHoldType"/>
+            </choice>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" 
+		xmlns:medicinecard20150101E5="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5" 
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"/>
+	<include schemaLocation="importsFrom20150101E5.xsd"/>
+	<element name="GetPatientRegistrationResponse" type="medicinecard20150101E5:GetPatientRegistrationResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Registrations for the patient</documentation>
+            <documentation xml:lang="da-DK">Patient-registreringer</documentation>
+        </annotation>
+    </element>
+    <complexType name="GetPatientRegistrationResponseType">
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType" />
+            <element name="Registration" type="medicinecard20150101E5:PatientRegistrationType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>
