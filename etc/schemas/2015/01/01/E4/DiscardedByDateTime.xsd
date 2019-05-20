@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" 
+		xmlns:medicinecard20150101E4="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+
+	<simpleType name="DiscardedByDateTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Date time when a packed dose dispensing period should be discarded (be replaced by an emergency packing)</documentation>
+			<documentation xml:lang="da-DK">Tidspunkt hvor rullen for en dosisdispenseringsperiode skal kasseres (erstattes af en nødrulle)</documentation>
+		</annotation>
+		<restriction base="dateTime">
+			<minInclusive value="2000-01-01T00:00:00Z"/>
+		</restriction>
+	</simpleType>
+</schema>
