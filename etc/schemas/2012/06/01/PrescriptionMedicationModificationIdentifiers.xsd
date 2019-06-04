@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PrescriptionMedicationIdentifier.xsd"/>
+	<include schemaLocation="EffectuationModificationIdentifiers.xsd"/>
+	<complexType name="PrescriptionMedicationModificationIdentifiersType">
+		<annotation>
+			<documentation xml:lang="en-GB">The identifier of a modified prescription medication in the modification of a medicine card</documentation>
+			<documentation xml:lang="da-DK">Identifikation af en modificeret receptordination i forbindelse med en modifikation af et medicinkort</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="medicinecard20120601:PrescriptionMedicationIdentifierType"/>
+			<element name="Effectuation" type="medicinecard20120601:EffectuationModificationIdentifiersType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
