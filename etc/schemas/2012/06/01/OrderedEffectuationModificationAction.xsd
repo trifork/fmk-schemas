@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="UndefinedModificationAction.xsd"/>
+	<simpleType name="OrderedEffectuationModificationActionType">
+		<annotation>
+			<documentation xml:lang="en-GB">The type of a modification of an order for an effectuation</documentation>
+			<documentation xml:lang="da-DK">Typen af ændring vedrørende en bestilling af en effektuering</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20120601:PredefinedOrderedEffectuationModificationActionType medicinecard20120601:UndefinedModificationActionType"/>
+	</simpleType>
+	<simpleType name="PredefinedOrderedEffectuationModificationActionType">
+		<restriction base="medicinecard20120601:UndefinedModificationActionType">
+			<enumeration value="OrderedEffectuationCreated"/>
+			<enumeration value="OrderedEffectuationCancelled"/>
+			<enumeration value="OrderedEffectuationFulfilled"/>
+			<enumeration value="OrderedEffectuationDeleted"/>
+		</restriction>
+	</simpleType>
+</schema>

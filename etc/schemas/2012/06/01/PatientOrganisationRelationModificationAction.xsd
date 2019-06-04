@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="UndefinedModificationAction.xsd"/>
+	<simpleType name="PatientOrganisationRelationModificationActionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Type of modification of a patient-organisation-relation</documentation>
+			<documentation xml:lang="da-DK">Typen af modifikation af en patient-organisation-relation</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20120601:PredefinedPatientOrganisationRelationModificationActionType medicinecard20120601:UndefinedModificationActionType"/>
+	</simpleType>
+	<simpleType name="PredefinedPatientOrganisationRelationModificationActionType">
+		<restriction base="medicinecard20120601:UndefinedModificationActionType">
+			<enumeration value="PatientOrganisationRelationRegistered"/>
+			<enumeration value="PatientOrganisationRelationRemoved"/>
+		</restriction>
+	</simpleType>
+</schema>
