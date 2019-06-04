@@ -6,8 +6,6 @@ public class FmkNamespaces {
 
 	public static Namespaces getNamespaces() {
 		Namespaces namespaces = Namespaces.getOIONamespaces();
-		namespaces.addNamespace("medicinecard20120601", "http://www.dkma.dk/medicinecard/xml.schema/2012/06/01");
-		namespaces.addNamespace("medicinecard20130601", "http://www.dkma.dk/medicinecard/xml.schema/2013/06/01");
 		namespaces.addNamespace("medicinecard20131101", "http://www.dkma.dk/medicinecard/xml.schema/2013/11/01");
 		namespaces.addNamespace("medicinecard2013pem", "http://www.dkma.dk/medicinecard/xml.schema/2013/pem");
 		namespaces.addNamespace("medicinecard20140501", "http://www.dkma.dk/medicinecard/xml.schema/2014/05/01");
