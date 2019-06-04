@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:medicinecard20120601="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2012/06/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="ModificationDetails.xsd"/>
+	<include schemaLocation="OrderedEffectuationModificationAction.xsd"/>
+	<include schemaLocation="OrderedEffectuationIdentifiers.xsd"/>
+	<element name="OrderedEffectuationModification" type="medicinecard20120601:OrderedEffectuationModificationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a modification of an order for an effectuation</documentation>
+			<documentation xml:lang="da-DK">Information omkring en bestilling af en effektuering</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrderedEffectuationModificationType">
+		<sequence>
+			<element name="Action" type="medicinecard20120601:OrderedEffectuationModificationActionType"/>
+			<element name="Details" type="medicinecard20120601:ModificationDetailsType" minOccurs="0"/>
+			<element name="OrderedEffectuation" type="medicinecard20120601:OrderEffectuationIdentifiersType"/>
+			<any minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
