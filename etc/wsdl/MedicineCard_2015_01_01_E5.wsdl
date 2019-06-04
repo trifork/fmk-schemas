@@ -772,6 +772,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetExplicitDoseDispensingCard_2015_01_01_E5">
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_01_01_E4" message="tns:GetExplicitDoseDispensingCardRequest_2015_01_01_E4"/>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_01_01_E4" message="tns:GetExplicitDoseDispensingCardResponse_2015_01_01_E4"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="GetMedicineCard_2015_01_01_E4">
             <wsdl:input name="GetMedicineCardRequest_2015_01_01_E2" message="tns:GetMedicineCardRequest_2015_01_01_E2"/>
             <wsdl:output name="GetMedicineCardResponse_2015_01_01_E4" message="tns:GetMedicineCardResponse_2015_01_01_E4"/>
@@ -1119,6 +1125,20 @@
 
         <wsdl:operation name="GetExplicitDoseDispensingCard_2015_01_01_E4">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4#GetExplicitDoseDispensingCard"
+                            style="document"/>
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_01_01_E4">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_01_01_E4">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetExplicitDoseDispensingCard_2015_01_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5#GetExplicitDoseDispensingCard"
                             style="document"/>
             <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_01_01_E4">
                 &fmkStandardSOAPRequestHeaders;
