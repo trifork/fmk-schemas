@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20190601="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PrescriptionIdentifier" type="medicinecard20190601:PrescriptionIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Unique identification of a prescription</documentation>
+			<documentation xml:lang="da-DK">Unik identifikation af en recept</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PrescriptionIdentifierType">
+		<restriction base="long">
+			<minInclusive value="1"/>
+		</restriction>
+	</simpleType>
+</schema>

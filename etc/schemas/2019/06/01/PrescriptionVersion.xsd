@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20190601="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="PrescriptionVersion" type="medicinecard20190601:PrescriptionVersionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Version number of a prescription medication</documentation>
+			<documentation xml:lang="da-DK">Versionsnummer for receptordination</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PrescriptionVersionType">
+		<restriction base="long">
+			<minInclusive value="0"/>
+		</restriction>
+	</simpleType>
+</schema>

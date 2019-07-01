@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20190601="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="UndefinedModificationAction.xsd"/>
+	<simpleType name="PrescriptionModificationActionType">
+		<union memberTypes="medicinecard20190601:PredefinedPrescriptionModificationActionType medicinecard20190601:UndefinedModificationActionType"/>
+	</simpleType>
+	<simpleType name="PredefinedPrescriptionModificationActionType">
+		<restriction base="medicinecard20190601:UndefinedModificationActionType">
+			<enumeration value="PrescriptionCreated"/>
+			<enumeration value="PrescriptionTerminated"/>
+			<enumeration value="PrescriptionDeleted"/>
+			<enumeration value="PrescriptionInvalidated"/>
+			<enumeration value="PrescriptionEffectuated"/>
+			<enumeration value="PrescriptionEffectuationWithdrawn"/>
+		</restriction>
+	</simpleType>
+</schema>
