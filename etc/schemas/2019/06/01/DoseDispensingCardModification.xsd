@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
-		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+		xmlns:medicinecard20190601="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
-
 	<include schemaLocation="DoseDispensingCardModificationAction.xsd"/>
 	<include schemaLocation="ModificationDetails.xsd"/>
 	<include schemaLocation="DoseDispensingIdentifiers.xsd"/>
 
-	<element name="DoseDispensingCardModification" type="medicinecard20150601E3:DoseDispensingModificationType">
+	<element name="DoseDispensingCardModification" type="medicinecard20190601:DoseDispensingModificationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Information about a modification of a patients dose dispensing card</documentation>
 			<documentation xml:lang="da-DK">Information omkring en oprettelse/redigering af en patients dosisdispenseringskort</documentation>
@@ -17,9 +16,9 @@
 	</element>
 	<complexType name="DoseDispensingModificationType">
 		<sequence>
-			<element name="Action" type="medicinecard20150601E3:DoseDispensingCardModificationActionType"/>
-			<element name="Details" type="medicinecard20150601E3:ModificationDetailsType" minOccurs="0"/>
-			<element name="DoseDispensing" type="medicinecard20150601E3:DoseDispensingIdentifiersType"/>
+			<element name="Action" type="medicinecard20190601:DoseDispensingCardModificationActionType"/>
+			<element name="Details" type="medicinecard20190601:ModificationDetailsType" minOccurs="0"/>
+			<element name="DoseDispensing" type="medicinecard20190601:DoseDispensingIdentifiersType"/>
 			<any minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

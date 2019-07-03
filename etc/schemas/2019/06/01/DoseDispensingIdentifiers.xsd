@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20190601="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DoseDispensingCardIdentifier.xsd"/>
+	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+
+	<complexType name="DoseDispensingIdentifiersType">
+		<annotation>
+			<documentation xml:lang="en-GB">Collection of identifier related to a modification of a patients dose dispensing card</documentation>
+			<documentation xml:lang="da-DK">Relevante ID'er i forbindelse med en oprettelse/redigering af patients dosisdispenserings kort</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20190601:PersonIdentifierType"/>
+			<element name="DoseDispensingCard" type="medicinecard20190601:DoseDispensingCardIdentifierType"/>
+			<element name="DoseDispensingPeriod" type="medicinecard20190601:DoseDispensingPeriodIdentifierType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
