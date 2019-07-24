@@ -14,10 +14,15 @@
             <documentation xml:lang="da-DK">Bestilling af en udlevering på en recept</documentation>
         </annotation>
 		<sequence>
-			<element name="Identifier" type="medicinecard20150101:OrderedEffectuationIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType"/>
+			<element name="PrescriptionIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType"/>
+			<element name="OrderIdentifier" type="medicinecard20150101:OrderedEffectuationIdentifierType"/>
 			<element name="EffectuatingOrganisation" type="medicinecard20150101:OrganisationType"/>
 			<element name="Status" type="medicinecard20150101E5:OrderStatusType"/>
-			<element name="DeliveryInformation" type="medicinecard20150101:DeliveryInformationType" minOccurs="0" maxOccurs="3"/>
+			<choice minOccurs="0" maxOccurs="3">
+				<element name="DeliveryInformation" type="medicinecard20150101:DeliveryInformationType"/>
+				<element name="OrderInstruction" type="medicinecard20150101:OrderInstructionType"/>
+			</choice>
 			<element name="Delivery" type="medicinecard20150101:DeliveryType" minOccurs="0"/>
 			<element name="Effectuation" type="medicinecard20150101:EffectuationIdentifierType" minOccurs="0"/>
 		</sequence>

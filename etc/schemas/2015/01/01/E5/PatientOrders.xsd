@@ -11,14 +11,14 @@
 
 	<element name="PatientOrders" type="medicinecard20150101E5:PatientOrdersType">
 		<annotation>
-			<documentation xml:lang="en-GB">Patient registration</documentation>
-			<documentation xml:lang="da-DK">Patient registrering</documentation>
+			<documentation xml:lang="en-GB">Patient orders</documentation>
+			<documentation xml:lang="da-DK">Patient bestillinger</documentation>
 		</annotation>
 	</element>
 	<complexType name="PatientOrdersType">
 		<sequence>
 			<element name="OldestCreatedDateTime" type="medicinecard20150101:OrderedDateTimeType"/>
-			<element name="Identifier" type="medicinecard20150101:OrderedEffectuationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Identifier" type="medicinecard20150101:OrderedEffectuationIdentifierType" minOccurs="1" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
