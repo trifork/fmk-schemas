@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+		xmlns:medicinecard20150101E5="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101E1.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1"/>
+	<import schemaLocation="importsFrom20150101E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"/>
+	<include schemaLocation="importsFrom20150101E5.xsd"/>
+	<element name="RemovePatientOrganisationRelationRequest" type="medicinecard20150101E5:RemovePatientOrganisationRelationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Remove document to remove at relation between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Remove-dokument for at ophæve en relation mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="RemovePatientOrganisationRelationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType" minOccurs="0"/>
+			<element name="ModifiedBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="medicinecard20150101E2:ModificatorType" minOccurs="0"/>
+			<element name="Relation" type="medicinecard20150101E2:RemovePatientOrganisationRelationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
