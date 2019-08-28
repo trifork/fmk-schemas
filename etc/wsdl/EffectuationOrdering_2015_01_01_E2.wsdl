@@ -96,6 +96,14 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/SearchPrescriptionRequestsResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetOrdersRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetOrdersResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/SearchOrdersRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E2/SearchOrdersResponse.xsd"/>
+
         </xs:schema>
 
     </wsdl:types>
@@ -191,6 +199,22 @@
     <wsdl:message name="SearchPrescriptionRequestsResponse_2015_01_01_E2">
         <wsdl:part name="SearchPrescriptionRequestsResponse" element="medicinecard20150101E2:SearchPrescriptionRequestsResponse"/>
     </wsdl:message>
+
+    <wsdl:message name="GetOrdersRequest_2015_01_01_E2">
+        <wsdl:part name="GetOrdersRequest" element="medicinecard20150101E2:GetOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetOrdersResponse_2015_01_01_E2">
+        <wsdl:part name="GetOrdersResponse" element="medicinecard20150101E2:GetOrdersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchOrdersRequest_2015_01_01_E2">
+        <wsdl:part name="SearchOrdersRequest" element="medicinecard20150101E2:SearchOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchOrdersResponse_2015_01_01_E2">
+        <wsdl:part name="SearchOrdersResponse" element="medicinecard20150101E2:SearchOrdersResponse"/>
+    </wsdl:message>
     
     <wsdl:portType name="EffectuationOrderingPortType">
 
@@ -240,6 +264,18 @@
             <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E2" message="tns:SearchPrescriptionRequestsRequest_2015_01_01_E2"/>
             <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E2" message="tns:SearchPrescriptionRequestsResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrders_2015_01_01_E2">
+            <wsdl:input name="GetOrdersRequest_2015_01_01_E2" message="tns:GetOrdersRequest_2015_01_01_E2"/>
+            <wsdl:output name="GetOrdersResponse_2015_01_01_E2" message="tns:GetOrdersResponse_2015_01_01_E2"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchOrders_2015_01_01_E2">
+            <wsdl:input name="SearchOrdersRequest_2015_01_01_E2" message="tns:SearchOrdersRequest_2015_01_01_E2"/>
+            <wsdl:output name="SearchOrdersResponse_2015_01_01_E2" message="tns:SearchOrdersResponse_2015_01_01_E2"/>
+            &operationFaultDeclaration;
         </wsdl:operation>
 
     </wsdl:portType>
@@ -359,6 +395,34 @@
                 <soap:body use="literal"/>
             </wsdl:output>
 &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrders_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetOrders"
+                            style="document"/>
+            <wsdl:input name="GetOrdersRequest_2015_01_01_E2">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrdersResponse_2015_01_01_E2">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchOrders_2015_01_01_E2">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SearchOrders"
+                            style="document"/>
+            <wsdl:input name="SearchOrdersRequest_2015_01_01_E2">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchOrdersResponse_2015_01_01_E2">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
         </wsdl:operation>
         
     </wsdl:binding>

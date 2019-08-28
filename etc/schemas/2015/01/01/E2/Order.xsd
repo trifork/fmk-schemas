@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E2.xsd"/>
+
+	<complexType name="OrderType">
+        <annotation>
+            <documentation xml:lang="en-GB">Order of an effectuation on a prescription</documentation>
+            <documentation xml:lang="da-DK">Bestilling af en udlevering på en recept</documentation>
+        </annotation>
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType"/>
+			<element name="PrescriptionMedicationIdentifier" type="medicinecard20150101:PrescriptionMedicationIdentifierType"/>
+			<element name="OrderIdentifier" type="medicinecard20150101:OrderedEffectuationIdentifierType"/>
+			<element name="OrderedBy" type="medicinecard20150101E2:CreatedType"/>
+			<element name="EffectuatingOrganisation" type="medicinecard20150101:OrganisationType"/>
+			<element name="Status" type="medicinecard20150101E2:OrderStatusType"/>
+			<choice minOccurs="0" maxOccurs="3">
+				<element name="DeliveryInformation" type="medicinecard20150101:DeliveryInformationType"/>
+				<element name="OrderInstruction" type="medicinecard20150101:OrderInstructionType"/>
+			</choice>
+			<element name="Delivery" type="medicinecard20150101:DeliveryType" minOccurs="0"/>
+			<element name="Effectuation" type="medicinecard20150101:EffectuationIdentifierType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
