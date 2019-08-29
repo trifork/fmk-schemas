@@ -296,6 +296,7 @@
         <organize-schemas-macro wsdlname="PatientRegistration" versiondate="2015_06_01_E5"/>
 
         <organize-schemas-macro wsdlname="DumpRestore" versiondate="2013_01_01"/>
+        <organize-schemas-macro wsdlname="DumpRestore" versiondate="2019_09_01"/>
 
         <organize-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01"/>
         <organize-schemas-macro wsdlname="MedicineCard" versiondate="2015_01_01_E1"/>
@@ -505,6 +506,7 @@
     	<codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01_E2.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01_E5.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/DumpRestore-inline_2013_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
+        <codegen wsdlfilename="${standard.target.dir}/wsdl/DumpRestore-inline_2019_09_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <!-- IMPORTANT: whenever a new <codegen> element regarding a new wsdl-file is added to this section, remember to add an <exec>-element validating the wsdl in the "validate-wsdl" target below -->
 
         <copy todir="${standard.target.dir}/gentestsrc" encoding="${codegen-encoding}" outputencoding="UTF-8">
@@ -665,6 +667,7 @@
         <validateidwswsdl-macro wsdlfilename="EffectuationOrdering-inline_Idws_2015_01_01_E5"/>
 
 		<validatewsdl-macro wsdlfilename="DumpRestore-inline_2013_01_01"/>
+        <validatewsdl-macro wsdlfilename="DumpRestore-inline_2019_08_01"/>
 	</target>
 	
 	<target name="generate-nsf-wsdl" depends="generate">

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+	xmlns:tns="http://www.ssi.dk/nsi/xml.schema/2019/09/01"
+	targetNamespace="http://www.ssi.dk/nsi/xml.schema/2019/09/01">
+	
+		
+	<wsdl:types>
+		<xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+            <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd"/>
+		</xs:schema>
+		
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ssi.dk/nsi/xml.schema/2019/09/01" elementFormDefault="qualified">
+			<include schemaLocation="../schemas/2019/09/01/DumpRestore.xsd"/>
+		
+            <import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                    schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+		</schema>
+	</wsdl:types>
+	
+   <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
+
+    <wsdl:message name="DumpPatientsRequest">
+        <wsdl:part name="DumpPatientsRequest" element="tns:DumpPatientsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="DumpPatientsResponse">
+        <wsdl:part name="DumpPatientsResponse" element="tns:DumpPatientsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RestorePatientsRequest">
+        <wsdl:part name="RestorePatientsRequest" element="tns:RestorePatientsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="RestorePatientsResponse">
+        <wsdl:part name="RestorePatientsResponse" element="tns:RestorePatientsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ResetPatientsRequest">
+        <wsdl:part name="ResetPatientsRequest" element="tns:ResetPatientsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ResetPatientsResponse">
+        <wsdl:part name="ResetPatientsResponse" element="tns:ResetPatientsResponse"/>
+    </wsdl:message>
+	
+	<wsdl:message name="DGWSFault">
+		<wsdl:part name="fault" element="medcom:FaultCode" />
+	</wsdl:message>
+	
+	<wsdl:portType name="DumpRestorePortType">
+        <wsdl:operation name="DumpPatients">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2019/09/01#DumpPatients" style="document"/>
+            <wsdl:input name="DumpPatientsRequest" message="tns:DumpPatientsRequest"/>
+            <wsdl:output name="DumpPatientsResponse" message="tns:DumpPatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+        
+        <wsdl:operation name="RestorePatients">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2019/09/01#RestorePatients" style="document"/>
+            <wsdl:input name="RestorePatientsRequest" message="tns:RestorePatientsRequest"/>
+            <wsdl:output name="RestorePatientsResponse" message="tns:RestorePatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="ResetPatients">
+            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2019/09/01#ResetPatients" style="document"/>
+            <wsdl:input name="ResetPatientsRequest" message="tns:ResetPatientsRequest"/>
+            <wsdl:output name="ResetPatientsResponse" message="tns:ResetPatientsResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="DumpRestoreBinding" type="tns:DumpRestorePortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<wsdl:operation name="DumpPatients">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2019/09/01#DumpPatients" style="document"/>
+            <wsdl:input name="DumpPatientsRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+            	<soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DumpPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+		<wsdl:operation name="RestorePatients">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2019/09/01#RestorePatients" style="document"/>
+            <wsdl:input name="RestorePatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="RestorePatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+		<wsdl:operation name="ResetPatients">
+        	<soap:operation soapAction="http://www.ssi.dk/nsi/xml.schema/2019/09/01#ResetPatients" style="document"/>
+            <wsdl:input name="ResetPatientsRequest"><soap:body use="literal"/></wsdl:input>
+            <wsdl:output name="ResetPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+	<wsdl:service name="DumpRestore">
+		<wsdl:port name="DumpRestorePort" binding="tns:DumpRestoreBinding">
+			<soap:address location="http://nsi.dk/ws/DumpRestore"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
