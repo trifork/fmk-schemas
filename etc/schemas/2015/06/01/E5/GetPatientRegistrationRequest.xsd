@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E5="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<include schemaLocation="importsFrom20150601E5.xsd"/>
+	<element name="GetPatientRegistrationRequest" type="medicinecard20150601E5:GetPatientRegistrationRequestType">
+        <annotation>
+            <documentation xml:lang="en-GB">Request document to get registrations for a patient</documentation>
+            <documentation xml:lang="da-DK">Request-dokument til at hente patient-registreringer</documentation>
+        </annotation>
+    </element>
+    <complexType name="GetPatientRegistrationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType" />
+			<element name="IncludeRemovedRegistrations" type="medicinecard20150601E5:IncludeRemovedRegistrationsType" />
+            <element name="Identification" type="medicinecard20150601E2:PatientRegistrationIdentificationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
