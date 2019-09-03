@@ -102,8 +102,6 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientOrganisationRelationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPatientRegistrationRequest.xsd"/>
-
             <xs:include schemaLocation="../schemas/2015/01/01/E2/RegisterPatientOrganisationRelationRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/RemovePatientRegistrationRequest.xsd"/>
@@ -118,6 +116,8 @@
             <xs:include schemaLocation="../schemas/2015/01/01/E5/GetPatientOrganisationRelationsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E5/GetPatientRegistrationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/GetPatientRegistrationRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E5/RemovePatientOrganisationRelationRequest.xsd"/>
             
@@ -193,8 +193,8 @@
         <wsdl:part name="GetPatientOrganisationRelationRequest" element="medicinecard20150101E2:GetPatientOrganisationRelationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientRegistrationRequest_2015_01_01_E2">
-        <wsdl:part name="GetPatientRegistrationRequest" element="medicinecard20150101E2:GetPatientRegistrationRequest"/>
+    <wsdl:message name="GetPatientRegistrationRequest_2015_01_01_E5">
+        <wsdl:part name="GetPatientRegistrationRequest" element="medicinecard20150101E5:GetPatientRegistrationRequest"/>
     </wsdl:message>
 
     <wsdl:message name="RegisterPatientOrganisationRelationRequest_2015_01_01_E2">
@@ -264,7 +264,7 @@
         </wsdl:operation>
 
         <wsdl:operation name="GetPatientRegistration_2015_01_01_E5">
-            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01_E2" message="tns:GetPatientRegistrationRequest_2015_01_01_E2"/>
+            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01_E5" message="tns:GetPatientRegistrationRequest_2015_01_01_E5"/>
             <wsdl:output name="GetPatientRegistrationResponse_2015_01_01_E5" message="tns:GetPatientRegistrationResponse_2015_01_01_E5"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -368,7 +368,7 @@
          <wsdl:operation name="GetPatientRegistration_2015_01_01_E5">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5#GetPatientRegistration"
                     style="document"/>
-            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01_E2">
+            <wsdl:input name="GetPatientRegistrationRequest_2015_01_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
