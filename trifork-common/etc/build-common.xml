@@ -1,0 +1,518 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="common" xmlns:ivy="antlib:fr.jayasoft.ivy.ant" basedir="..">
+    <property file="project.properties"/>
+	<property file="build.properties" />
+	<dirname property="trifork-common-etc" file="${ant.file}" />
+	<dirname property="trifork-common" file="${trifork-common-etc}" />
+	<property name="encoding" value="UTF-8"/>
+	
+	<import file="remote.xml"/>
+
+	<property name="testMaxMemory" value="512m"/>
+	<property name="artifactsDir" value="target"/>
+	<property name="junitHtmlReportDir" value="target"/>
+
+	<property name="test.dir" value="test"/>
+	<property name="build.dir" value="target/classes"/>
+	<property name="resources.dir" value="target/resources"/>
+	<property name="externalresources.dir" value="target/externalresources"/>
+	<property name="testresources.dir" value="target/testresources"/>
+	
+	<property name="ivy.organisation" value="trifork"/>
+	<property name="ivy.module" value="${ant.project.name}"/>
+	<property name="ivy.default.conf.dir" value="${trifork-common}/etc/ivy"/>
+	<property name="ivy.settings.file" value="${trifork-common}/ivyconf.xml"/>
+	<property name="ivy.resolver.default.check.modified" value="false"/>
+	<property name="sourceversion" value="1.5"/>
+	<property name="targetversion" value="1.5"/>
+	<property name="ivy.shared.default.root" value="${trifork-common}/lib/shared-lib"/>
+	<property name="unittest.timeout.millis" value="1800000"/>
+
+    <property name="test.includePattern" value="**/*Test.java"/>
+	
+	<path id="classpath">
+        <fileset dir="lib/build">
+            <include name="**/*.jar"/>
+        </fileset>
+		<pathelement location="${build.dir}"/>
+		<pathelement location="${resources.dir}"/>
+		<pathelement location="${externalresources.dir}"/>
+    </path>
+    
+    <path id="ivyclasspath">
+		<fileset dir="${trifork-common}/lib/ivy">
+		    <include name="*.jar"/>
+		</fileset>
+    </path>
+	
+	<path id="testclasspath">
+        <fileset dir="lib/test">
+            <include name="**/*.jar"/>
+        </fileset>
+		<pathelement location="${build.dir}"/>
+		<pathelement location="target/test" />
+		<pathelement location="${resources.dir}"/>
+        <pathelement location="${externalresources.dir}"/>
+	</path>
+	
+	<path id="compile-test-classpath">
+        <fileset dir="lib/test">
+            <include name="**/*.jar"/>
+        </fileset>
+		<pathelement location="${build.dir}"/>
+		<pathelement location="target/test" />
+		<pathelement location="${resources.dir}"/>
+        <pathelement location="${externalresources.dir}"/>
+	</path>
+	
+    <path id="sourcepath">
+        <pathelement location="src"/>
+    	<pathelement location="target/gensrc"/>
+    </path>
+    
+	<taskdef resource="fr/jayasoft/ivy/ant/antlib.xml" uri="antlib:fr.jayasoft.ivy.ant" classpathref="ivyclasspath"/>
+    
+    <target name="init" depends="init-internal,init-build-properties"/>
+    
+	<target name="init-internal">
+		<tstamp/>
+        <mkdir dir="${build.dir}"/>
+		<mkdir dir="${resources.dir}"/>
+		<mkdir dir="${externalresources.dir}"/>
+		<mkdir dir="${testresources.dir}"/>
+		<mkdir dir="target/gensrc"/>
+		<mkdir dir="target/doc"/>
+	    <mkdir dir="lib/build"/>
+		<mkdir dir="lib/test"/>
+	    <available file="build.properties" property="build.properties.exists"/>
+	    <available file="src/${ant.project.name}.hibernate.properties" property="hibernate.properties.exists"/>
+
+		<echoproperties destfile="target/build.properties" />
+		<filterset id="filter">
+			<filtersfile file="build.properties"/>
+			<filtersfile file="target/build.properties" />
+		</filterset>
+	</target>
+	
+	<target name="init-build-properties" unless="build.properties.exists">
+	    <echo message="" file="build.properties"/>
+	</target>
+	
+	<target name="init-test">
+		<tstamp />
+		<mkdir dir="target/test"/>
+		<mkdir dir="${artifactsDir}"/>
+		<mkdir dir="${artifactsDir}/test"/>
+		<touch file="build.properties"/>
+	</target>
+	
+    <target name="test" depends="init-test,compile-test">
+    	<antcall target="test-do"/>
+    </target>
+	
+	<target name="test-do">
+		<condition property="cond.jmx.port" value="${jmx.port}" else="8005">
+			<isset property="jmx.port"/>
+		</condition>
+		
+		<condition property="cond.jmx.remote" value="true" else="false">
+			<isset property="jmx.port"/>	
+		</condition>
+
+		<condition property="cond.jmx.auth" value="${jmx.auth}" else="false">
+			<isset property="jmx.auth"/>	
+		</condition>
+        <junit forkmode="once" fork="true" failureproperty="test.failed" maxmemory="${testMaxMemory}" timeout="${unittest.timeout.millis}"
+               showoutput="true">
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="target/cobertura.ser" />
+            <sysproperty key="test.with.memorydb" value="true" />
+			<classpath refid="testclasspath" />
+			<jvmarg value="-Duser.timezone=Europe/Copenhagen"/>
+			<jvmarg value="-Dcom.sun.management.jmxremote=${cond.jmx.remote}"/>
+			<jvmarg value="-Dcom.sun.management.jmxremote.port=${cond.jmx.port}"/>
+			<jvmarg value="-Dcom.sun.management.jmxremote.ssl=false"/>
+			<jvmarg value="-Dcom.sun.management.jmxremote.authenticate=${cond.jmx.auth}"/>
+      		<jvmarg value="-Djava.awt.headless=true"/>
+			
+			<formatter type="plain"/>
+			<formatter type="xml"/>
+			<batchtest fork="yes" todir="${artifactsDir}/test">
+				<fileset dir="${test.dir}">
+					<include name="${test.includePattern}"/>
+				</fileset>
+			</batchtest>
+		</junit>
+		<mkdir dir="${junitHtmlReportDir}"/>
+			<junitreport todir="${junitHtmlReportDir}">
+			<fileset dir="${artifactsDir}/test">
+				<include name="**/TEST-*.xml"/>
+			</fileset>
+			<report format="frames" todir="${junitHtmlReportDir}" />
+		</junitreport>
+		<fail if="test.failed" message="There were test failures" />
+		<antcall target="coverage-report" />
+	</target>
+	
+	<target name="compile" depends="resolve-build-maybe,compile-do" />
+	
+	<target name="compile-do" depends="init">
+        <javac 
+            classpathref="classpath"
+            destdir="${build.dir}" 
+            optimize="${optimize}"
+            encoding="${encoding}"
+	    source="${sourceversion}"
+	    target="${targetversion}"
+        	debug="true"
+        	deprecation="true"
+        >            
+            <src refid="sourcepath"/>
+        </javac>
+
+        <copy todir="${build.dir}" encoding="${encoding}" failonerror="false">
+        	<filterset refid="filter"/>
+            <fileset dir="src">
+            	<exclude name="**/*.java"/>
+            	<exclude name="**/*.properties"/>
+                <exclude name="**/*.keystore"/>
+                <exclude name="**/*.png"/>
+                <exclude name="**/*.gif"/>
+            </fileset>
+        	<fileset dir="target/gensrc">
+				<exclude name="**/*.java" />
+				<exclude name="**/*.properties" />
+			</fileset>
+        </copy>
+
+        <!-- Java property files (resource bundles) are iso-latin-1 by definition -->
+        <copy todir="${build.dir}" encoding="ISO-8859-1" failonerror="false">
+        	<filterset refid="filter"/>
+            <fileset dir="src">
+            	<include name="**/*.properties"/>
+            </fileset>
+        	<fileset dir="target/gensrc">
+            	<include name="**/*.properties"/>
+			</fileset>
+        </copy>
+		<copy todir="${build.dir}" failonerror="false">
+			<fileset dir="src">
+			  	<include name="**/*.keystore"/>
+                <include name="**/*.png"/>
+                <include name="**/*.gif"/>
+            </fileset>
+		</copy>		
+	</target>
+	
+	<target name="compile-test" depends="compile,init-test, resolve-test">
+		<javac classpathref="compile-test-classpath" destdir="target/test" debug="true" encoding="${encoding}">
+			<src path="${test.dir}" />
+		</javac>
+        <copy todir="target/test" encoding="${encoding}">
+            <fileset dir="${test.dir}">
+            	<exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+	</target>
+	
+    <target name="jar" 
+     description="Create jar file for this module"
+     depends="compile" 
+    >
+        <jar destfile="target/${ant.project.name}.jar">
+    		<fileset dir="src">
+ 	      		<include name="**/*.java"/>
+    		</fileset>
+        	<fileset dir="target/gensrc"/>
+    		<fileset dir="${build.dir}"/>
+            <manifest>                                                                                                                                        
+                <attribute name="Built-By" value="${DSTAMP} ${TSTAMP}"/>                                                                                  
+                <attribute name="Implementation-Vendor" value="Trifork"/>                                                                     
+                <attribute name="Implementation-Title" value="${ant.project.name}"/>                                                             
+            </manifest>                                                                                                                                      												
+		</jar>
+    </target>
+    
+    <target name="release" depends="jar">
+	<fail unless="version" message="version must be defined in build.properties or project.properties"/>
+	<copy file="target/${ant.project.name}.jar" tofile="target/${ant.project.name}-${version}.jar"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="build"/>
+    	<delete dir="target"/>
+        <delete dir="gensrc"/>
+		<delete dir="lib/build"/>
+		<delete dir="lib/deploy"/>
+    	<delete dir="lib/test"/>
+    	<delete dir="lib/functest"/>
+    </target>
+	
+	<target name="javadoc">
+		<mkdir dir="target/doc"/>
+		<javadoc sourcepath="src" 
+				destdir="target/doc" 
+				doctitle="${project.fullname} API" 
+				windowtitle="${project.fullname} API" 
+				author="true" 
+				packagenames="*" 
+				bottom="Copyright &amp;copy; Trifork" 
+				version="true" 
+				use="true"
+			>
+			<classpath refid="classpath"/>
+		</javadoc>
+	</target>
+	
+	<target name="war" depends="war-internal"/>
+	
+	<target name="project-properties">
+	    <available file="src/project.properties" property="project.properties.exists"/>
+	</target>
+	
+	<target name="create-project-properties" unless="project.properties.exists">
+	    <echo message="applicationName=${ant.project.name}" file="src/project.properties"/>
+	</target>
+	
+	<target name="war-internal" depends="prepare-war-internal,build.war-do" />
+
+	<target name="prepare-war-internal" depends="resolve-deploy,compile,project-properties,create-project-properties,prepare.war-do" />
+	
+	<target name="build.war-do" depends="prepare.war-do">
+		<property environment="env"/>
+		<jar basedir="${build.war.dir}" destfile="target/${ant.project.name}.war">
+		    <manifest>                                                                                                                                        
+		        <attribute name="Built-Date" value="${DSTAMP} ${TSTAMP}"/>
+		    	<attribute name="Source-Version" value="${env.GIT_COMMIT}"/>
+		    	<attribute name="Source-Branch" value="${env.GIT_BRANCH}"/>
+		    	<attribute name="Jenkins-Build" value="${env.JOB_NAME} ${env.BUILD_NUMBER}"/>
+		        <attribute name="Built-Version" value="${version}"/>                                                                                  
+		        <attribute name="Implementation-Vendor" value="Trifork"/>                                                                     
+		        <attribute name="Implementation-Title" value="${ant.project.name}"/>                                                             
+		        <attribute name="Implementation-Version" value="${revision}"/>
+		    </manifest>
+		</jar>
+	</target>
+		
+	<target name="prepare.war-do" depends="compile-do">
+		<property name="build.war.dir" value="target/war"/>
+		
+		<mkdir dir="${build.war.dir}"/>
+		<copy todir="${build.war.dir}" encoding="${encoding}" failonerror="false">
+			<filterset refid="filter"/>
+			<fileset dir="web" includes="**/*.xml,**/*.html,**/*.json"/>
+			<fileset dir="target/web">
+				<include name="**/*.xml"/>
+				<include name="**/*.html"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.war.dir}" failonerror="false">
+			<fileset dir="web" excludes="**/*.xml"/>
+			<fileset dir="target/web">
+				<exclude name="**/*.xml"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${build.war.dir}/WEB-INF/lib" flatten="true" failonerror="false">
+			<fileset dir="lib/deploy" >
+                <include name="**/*.jar"/>
+				<exclude name="**/*-javadoc.jar"/>
+				<exclude name="**/*-sources.jar"/>
+		    </fileset>
+		    <fileset dir="lib">
+			   <include name="*.jar"/>
+		    </fileset>
+		</copy>
+		
+		<copy todir="${build.war.dir}/WEB-INF/classes">
+			<fileset dir="${build.dir}" />
+		</copy>
+		
+	</target>
+
+    <target name="resolve-build-maybe">
+        <uptodate property="resolve-build.skip" srcfile="ivy.xml" targetfile="${basedir}/lib/build/resolve.build.stamp"/>
+    	<antcall target="resolve-build"/>
+    </target>
+	
+    <target name="resolve-build" unless="resolve-build.skip">
+		<ivy:resolve conf="build"/>
+		<ivy:retrieve pattern="${basedir}/lib/build/[organisation]-[artifact](-[classifier]).[ext]" conf="build"/>
+    	<mkdir dir="${basedir}/lib/build"/>
+    	<touch file="${basedir}/lib/build/resolve.build.stamp"/>
+    </target>
+    
+    <target name="resolve-deploy">
+        <uptodate property="resolve-deploy.skip" srcfile="ivy.xml" targetfile="${basedir}/lib/deploy/resolve.deploy.stamp"/>
+        <antcall target="resolve-deploy-do"/>
+    </target>
+    <target name="resolve-deploy-do" unless="resolve-deploy.skip">
+        <ivy:resolve conf="deploy" />
+        <ivy:retrieve pattern="${basedir}/lib/deploy/[organisation]-[artifact](-[classifier]).[ext]" conf="deploy"/>
+    	<mkdir dir="${basedir}/lib/deploy"/>
+        <touch file="${basedir}/lib/deploy/resolve.deploy.stamp"/>
+    </target>
+    
+    <target name="resolve-test">
+        <uptodate property="resolve-test.skip" srcfile="ivy.xml" targetfile="${basedir}/lib/test/resolve.test.stamp"/>
+        <antcall target="resolve-test-do"/>
+    </target>
+	
+    <target name="resolve-test-do" unless="resolve-test.skip">
+        <ivy:resolve conf="test" />
+        <ivy:retrieve pattern="${basedir}/lib/test/[organisation]-[artifact](-[classifier]).[ext]" conf="test"/>
+        <touch file="${basedir}/lib/test/resolve.test.stamp"/>
+    </target>
+
+    <target name="resolve-functest">
+        <uptodate property="resolve-functest.skip" srcfile="ivy.xml" targetfile="${basedir}/lib/functest/resolve.test.stamp"/>
+        <antcall target="resolve-functest-do"/>
+    </target>
+
+    <target name="resolve-functest-do" unless="resolve-functest.skip">
+        <ivy:resolve conf="functest" />
+        <ivy:retrieve pattern="${basedir}/lib/functest/[organisation]-[artifact](-[classifier]).[ext]" conf="functest"/>
+        <touch file="${basedir}/lib/functest/resolve.functest.stamp"/>
+    </target>
+
+    <target name="local-revision">
+	<tstamp>
+	    <format property="now" pattern="yyyyMMddHHmmss"/>
+	</tstamp>
+	<property name="revision" value="local-${now}"/>
+    <property name="ivy.revision" value="local-${now}"/>
+	
+       <!-- used only to create a local version and put the corresponding file in the jar so that it will be displayed by the module -->                                        
+           <mkdir dir="${build.dir}"/>                                                                                                                                            
+           <echo message="version=${revision}" file="${build.dir}/${ant.project.name}.properties" append="false" />                                                       
+           <property file="${build.dir}/${ant.project.name}.properties" />                                                                                                        
+					       
+    </target>
+
+	<target name="svn-revision">
+		
+		<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="classpath" />
+		
+		<svn svnkit="true">
+			<info verbose="true" target="."/>
+		</svn>
+		<property name="ivy.revision" value="${svn.info.lastRev}"/>
+		<property name="revision" value="${svn.info.lastRev}"/>
+		<tstamp>
+		    <format property="now" pattern="yyyyMMddHHmmss"/>
+		</tstamp>
+	</target>
+	
+	<target name="publish-from-jenkins" depends="resolve-build, source-rev" >
+	  <delete file="target/ivy.xml"/>
+      <ivy:publish artifactspattern="target/[artifact].[ext]" resolver="intranet-internal" pubrevision="${sourcerev}" pubdate="${now}" status="integration" overwrite="false" />
+  </target>
+	
+  <target name="source-rev">
+  	<echo message="This target must be run from jenkins"/>
+  	<tstamp>
+	  <format property="now" pattern="yyyyMMddHHmmss"/>
+	</tstamp>
+	<property environment="env"/>
+    <condition property="sourcerevision" value="${env.GIT_COMMIT}">
+    	<isset property="env.GIT_COMMIT"/>
+	</condition>
+  	<substring text="${sourcerevision}" start="0" end="4" property="srev" />
+  	<condition property="sourcerev" value="${now}-${srev}">
+  	   	<isset property="env.GIT_COMMIT"/>
+  	</condition>
+  	<condition property="sourcerev" value="${env.SVN_REVISION}-${now}">
+  	  	   	<isset property="env.SVN_REVISION"/>
+  	  	</condition>
+  	<echo message="source revision: ${sourcerev}"/>
+  </target>
+	
+	<scriptdef name="substring" language="javascript">
+	     <attribute name="text" />
+	     <attribute name="start" />
+	     <attribute name="end" />
+	     <attribute name="property" />
+	     <![CDATA[
+	       var text = attributes.get("text");
+	       var start = attributes.get("start");
+	       var end = attributes.get("end") || text.length();
+	       project.setProperty(attributes.get("property"), text.substring(start, end));
+	     ]]>
+	  </scriptdef>
+			
+	
+    <target name="publish-local" depends="resolve-build,local-revision,jar, publish-local-do"/>
+    
+
+    <target name="publish-local-do" depends="">
+	    <delete file="target/ivy.xml"/>	
+	    <ivy:publish artifactspattern="target/[artifact].[ext]" resolver="local" pubrevision="${revision}" pubdate="${now}" status="integration"/>
+    </target>
+	
+
+	<target name="publish-internal" depends="resolve-build,local-revision,jar, publish-internal-do"/>
+	
+	<target name="publish-internal-do" depends="">
+		<delete file="target/ivy.xml"/>	
+		<ivy:publish artifactspattern="target/[artifact].[ext]" resolver="intranet-internal" pubrevision="${revision}" pubdate="${now}" status="integration" overwrite="true"/>		
+	</target>
+    
+    <target name="ivyreport" depends="init, resolve-build-maybe, resolve-deploy, resolve-test">
+	<ivy:report conf="build,deploy,test" todir="target/ivy"/>
+    </target>
+
+    <target name="ivy-report" depends="ivyreport" />
+
+	<!-- Configuration target.
+	
+	  This target will make a copy of the current project, copy files from etc/configurations/cfg to the
+	  copied project and run ant there. 
+	  The files in etc/configurations will always overwrite the original files.
+	  
+	  Call the target with -Dconfig=someconfig -Dtargets="init war"
+	  
+	-->
+	<target name="config" depends="clean,init">
+		<fail message="Set config and targets using -Dconfig=cfg -Dtargets='t1 t2 t3'">
+			<condition>
+				<not>
+					<and>
+						<isset property="config"/>
+						<isset property="targets"/>
+					</and>
+				</not>
+			</condition>
+		</fail>
+		<fail message="Config ${config} does not exist in etc/configurations">
+			<condition>
+				<not>
+					<available file="etc/configurations/${config}" type="dir"/>
+				</not>
+			</condition>
+		</fail>
+		
+		<copy todir="target/config">
+			<fileset dir="." defaultexcludes="false"/>
+		</copy>
+		
+		<!-- copy default values -->
+		<copy todir="target/config" overwrite="true">
+			<fileset dir="etc/configurations/default"/>
+		</copy>
+
+		<!-- copy specific values -->
+		<copy todir="target/config" overwrite="true">
+			<fileset dir="etc/configurations/${config}"/>
+		</copy>
+		
+		<exec executable="ant" dir="target/config">
+			<arg line="${targets}"/>
+		</exec>
+		
+	</target>
+
+	<target name="zip-oiosaml">
+		<zip destfile="target/oiosaml.zip" basedir="etc/localhost-saml-config"/>
+	</target>
+	
+</project>

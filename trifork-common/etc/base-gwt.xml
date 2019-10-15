@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="common-gwt" basedir="..">
+
+	<!-- debug values for gwt.compiler.style: "PRETTY" or "DETAILED" -->
+	<property name="gwt.compiler.style" value="OBF" />
+	<property name="gwt.compiler.options" value="" />
+	<property name="gwt.localWorkers" value="2" />
+	
+	<property name="gwt.extras.dir" value="target/gwt-extras" />
+
+	<import file="build-common.xml" />
+
+	<fileset id="gwt-depends-on" dir="${basedir}">
+		<include name="src/**/*.java" />
+		<include name="src/**/*.gwt.xml" />
+		<include name="lib/**/*.jar" />
+	</fileset>
+
+	<path id="classpath-gwt">
+		<pathelement location="src" />
+		<pathelement location="target/gensrc" />
+		<pathelement location="target/classes" />
+		<fileset dir="lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="gwttestclasspath">
+		<fileset dir="${gwt.home}" includes="*.jar" />
+		<pathelement location="src" />
+		<pathelement location="emul-src" />
+		<pathelement location="test" />
+		<pathelement location="target/gensrc" />
+		<pathelement location="target/classes" />
+		<pathelement location="target/test" />
+		<fileset dir="lib/test">
+			<include name="**/*.jar" />
+			<exclude name="**/*gwt*.jar" />
+		</fileset>
+	</path>
+
+
+	<path id="sourcepath-gwt">
+		<pathelement location="src" />
+		<pathelement location="target/gensrc" />
+	</path>
+
+	<target name="init-gwt">
+		<tstamp />
+		<mkdir dir="target" />
+		<mkdir dir="target/classes" />
+		<mkdir dir="target/web" />
+		<mkdir dir="target/gensrc" />
+	</target>
+
+	<target name="compile-gwt" depends="resolve-build-maybe,init-gwt,generate,javac-gwt,compile-gwt-do" />
+	<target name="compile-gwt-1.5" depends="resolve-build-maybe,init-gwt,javac-gwt,compile-gwt-1.5-do" />
+	<target name="compile-gwt-1.6" depends="resolve-build-maybe,init-gwt,javac-gwt,compile-gwt-1.6-do" />
+	<target name="gwt-compile-report" depends="resolve-build-maybe,init-gwt,javac-gwt,gwt-compile-report-do" />
+
+	<target name="javac-gwt" depends="resolve-build-maybe">
+		<javac encoding="${encoding}" classpathref="classpath-gwt" destdir="target/classes" debug="true" source="${sourceversion}" target="${targetversion}">
+			<src refid="sourcepath-gwt" />
+		</javac>
+		<uptodate property="gwt.uptodate" targetfile="${basedir}/target/.gwt.compiled">
+			<srcfiles refid="gwt-depends-on" />
+		</uptodate>
+	</target>
+
+	<target name="compile-gwt-1.5-do" depends="init-gwt,javac-gwt">
+		<java fork="true" maxmemory="1024m" classpathref="classpath-gwt" failonerror="true" 
+			classname="com.google.gwt.dev.GWTCompiler">
+			<sysproperty key="java.awt.headless" value="true" />
+			<arg line="-out ${basedir}/target/web" />
+			<arg line="%@" />
+			<arg line="${gwt.app.name}" />
+		</java>
+		<touch file="${basedir}/target/.gwt.compiled" />
+	</target>
+
+	<target name="compile-gwt-1.6-do" depends="init-gwt,javac-gwt" unless="gwt.uptodate">
+		<java fork="true" maxmemory="1024m" classpathref="classpath-gwt" failonerror="true"
+			classname="com.google.gwt.dev.Compiler">
+			<jvmarg value="-Xss32m" />
+			<jvmarg value="-Xmx512m" />
+			<sysproperty key="java.awt.headless" value="true" />
+			<arg line="-style ${gwt.compiler.style} ${gwt.compiler.options}" />
+			<arg line="-war ${basedir}/target/web" />
+			<arg line="-localWorkers ${gwt.localWorkers}" />
+
+			<arg line="${gwt.app.name}" />
+		</java>
+		<touch file="${basedir}/target/.gwt.compiled" />
+	</target>
+
+	<target name="gwt-compile-report-do" depends="init-gwt,javac-gwt">
+		<java fork="true" maxmemory="1024m" classpathref="classpath-gwt" failonerror="true"
+			classname="com.google.gwt.dev.Compiler">
+			<jvmarg value="-Xss32m" />
+			<jvmarg value="-Xmx512m" />
+			<sysproperty key="java.awt.headless" value="true" />
+			<arg line="-style ${gwt.compiler.style}" />
+			<arg line="-war ${basedir}/target/web" />
+			<arg line="-localWorkers ${gwt.localWorkers}" />
+			<arg line="-XsoycDetailed" />
+			<arg line="-extra ${gwt.extras.dir}"/>
+
+			<arg line="${gwt.app.name}" />
+		</java>
+		<touch file="${basedir}/target/.gwt.compiled" />
+	</target>
+
+	<target name="compile-gwt-do" depends="init-gwt,generate,javac-gwt" unless="gwt.uptodate">
+		<taskdef resource="dk/contix/ant/gwt/ant-gwt.xml" classpathref="classpath-gwt" />
+		<gwtcompile destdir="${basedir}/target/web" optimize="true">
+			<fileset dir="src">
+				<include name="**/*.gwt.xml" />
+			</fileset>
+			<fileset dir="target/gensrc">
+				<include name="**/*.gwt.xml" />
+			</fileset>
+		</gwtcompile>
+		<copy todir="target/classes">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<touch file="${basedir}/target/.gwt.compiled" />
+	</target>
+
+	<target name="generate">
+		<copy todir="target/xdoclettmp">
+			<fileset dir="src">
+				<patternset refid="xdoclet.pattern" />
+			</fileset>
+		</copy>
+		<uptodate property="skip.generate" targetfile="target/.generated">
+			<srcfiles dir="target/xdoclettmp" />
+		</uptodate>
+		<antcall target="-generate" />
+	</target>
+
+	<target name="-generate" unless="skip.generate">
+		<mkdir dir="target/gensrc" />
+		<taskdef resource="xdoclet/modules/gwt/doclet.xml" classpathref="classpath-gwt" />
+		<gwtdoclet destdir="target/gensrc">
+			<fileset dir="target/xdoclettmp" />
+			<interface />
+			<async />
+			<module />
+			<servicefactory class="${serviceFactory}" />
+			<webxml output="../web.xml" />
+		</gwtdoclet>
+		<touch file="target/.generated" />
+	</target>
+
+	<target name="test-gwt" depends="compile-test">
+		<antcall target="test-do">
+			<reference refid="gwttestclasspath" torefid="testclasspath" />
+		</antcall>
+	</target>
+
+</project>

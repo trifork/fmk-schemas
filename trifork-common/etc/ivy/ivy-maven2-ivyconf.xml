@@ -1,0 +1,63 @@
+<ivysettings>
+
+	<property name="ibiblio-maven2-pattern" value="[organisation]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]" override="false" />
+	<credentials host="ci.fmk.netic.dk"
+                      realm="Nexus Repository Manager"
+                      username="fmk" passwd="fmk123"/>
+
+	<resolvers>
+		<ibiblio name="trifork-public-central"
+	                 m2compatible="true"
+	                 usepoms="true"
+	                 useMavenMetadata="true"
+	                 pattern="/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" root="https://nexus.trifork.com/content/repositories/central/"/>
+
+		<ibiblio name="trifork-public-releases"
+	                 m2compatible="true"
+	                 usepoms="true"
+	                 useMavenMetadata="true"
+	                 pattern="/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"
+	                 root="https://nexus.trifork.com/content/repositories/releases"/>
+
+		<ibiblio name="trifork-public-thirdparty"
+	                 m2compatible="true"
+	                 usepoms="true"
+	                 useMavenMetadata="true"
+	                 pattern="/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"
+	                 root="https://nexus.trifork.com/content/repositories/thirdparty"/>
+
+		<ibiblio name="intranet-public"
+				 root="https://ci.fmk.netic.dk/nexus/content/groups/public/"
+				 pattern="${ibiblio-maven2-pattern}"
+				 m2compatible="true"
+				 checkmodified="false" />
+
+		<ibiblio name="intranet-public-snapshot"
+				 root="https://ci.fmk.netic.dk/nexus/content/groups/public-snapshots/"
+				 pattern="/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"
+				 m2compatible="true"
+				 checkmodified="false" />
+
+		<url name="intranet-internal" m2compatible="true">
+  			<ivy pattern="https://ci.fmk.netic.dk/nexus/content/repositories/trifork-internal/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).xml" />
+  			<artifact pattern="https://ci.fmk.netic.dk/nexus/content/repositories/trifork-internal/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+		</url>
+
+        <url name="releases"
+             m2compatible="true">
+             <ivy pattern="https://ci.fmk.netic.dk/nexus/content/repositories/releases/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).xml" />
+            <artifact pattern="https://ci.fmk.netic.dk/nexus/content/repositories/releases/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
+        </url>
+
+		<chain name="trifork-public-chain" changingPattern=".*SNAPSHOT" checkmodified="true">
+
+	        <ibiblio name="trifork-public-snapshots"
+	                 m2compatible="true"
+	                 usepoms="true"
+	                 useMavenMetadata="true"
+	                 pattern="/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"
+	                 root="https://nexus.trifork.com/content/repositories/snapshots"/>
+    	</chain>
+
+	</resolvers>
+</ivysettings>
