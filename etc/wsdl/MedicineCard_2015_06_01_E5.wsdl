@@ -169,8 +169,7 @@
             <xs:include schemaLocation="../schemas/2015/06/01/ReopenPrescriptionResponse.xsd"/>
             
             <xs:include schemaLocation="../schemas/2015/06/01/ReplacePrescriptionResponse.xsd"/>
-            
-            <xs:include schemaLocation="../schemas/2015/06/01/CreateOrderRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/CreateOrderResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderRequest.xsd"/>
@@ -358,7 +357,9 @@
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5" elementFormDefault="qualified">
-        
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/CreateOrderRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/E5/GetPatientRegistrationResponse.xsd"/>
 
         </xs:schema>
@@ -754,8 +755,8 @@
         <wsdl:part name="ReplacePrescriptionResponse" element="medicinecard20150601:ReplacePrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreateOrderRequest_2015_06_01">
-        <wsdl:part name="CreateOrderRequest" element="medicinecard20150601:CreateOrderRequest"/>
+    <wsdl:message name="CreateOrderRequest_2015_06_01_E5">
+        <wsdl:part name="CreateOrderRequest" element="medicinecard20150601E5:CreateOrderRequest"/>
     </wsdl:message>
     <wsdl:message name="CreateOrderResponse_2015_06_01">
         <wsdl:part name="CreateOrderResponse" element="medicinecard20150601:CreateOrderResponse"/>
@@ -1383,8 +1384,8 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateOrder_2015_06_01">
-            <wsdl:input name="CreateOrderRequest_2015_06_01" message="tns:CreateOrderRequest_2015_06_01"/>
+        <wsdl:operation name="CreateOrder_2015_06_01_E5">
+            <wsdl:input name="CreateOrderRequest_2015_06_01_E5" message="tns:CreateOrderRequest_2015_06_01_E5"/>
             <wsdl:output name="CreateOrderResponse_2015_06_01" message="tns:CreateOrderResponse_2015_06_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -2296,10 +2297,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="CreateOrder_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CreateOrder"
+       <wsdl:operation name="CreateOrder_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#CreateOrder"
                             style="document"/>
-            <wsdl:input name="CreateOrderRequest_2015_06_01">
+            <wsdl:input name="CreateOrderRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
