@@ -147,32 +147,23 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/WithdrawDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/WithdrawDrugMedicationResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2015/06/01/StartEffectuationRequest.xsd"/>
             
             <xs:include schemaLocation="../schemas/2015/06/01/CreatePharmacyEffectuationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/AbortEffectuationRequest.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2015/06/01/UndoEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/UndoEffectuationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/CreateAndEffectuatePrescriptionResponse.xsd"/>
-            
-            <xs:include schemaLocation="../schemas/2015/06/01/TerminatePrescriptionRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/TerminatePrescriptionResponse.xsd"/>
-            
-            <xs:include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionResponse.xsd"/>
-            
-            <xs:include schemaLocation="../schemas/2015/06/01/ReopenPrescriptionRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/ReopenPrescriptionResponse.xsd"/>
             
             <xs:include schemaLocation="../schemas/2015/06/01/ReplacePrescriptionResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/CreateOrderResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/CancelOrderResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/GetNewOrdersRequest.xsd"/>
@@ -358,10 +349,23 @@
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5" elementFormDefault="qualified">
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/AbortEffectuationRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/CancelOrderRequest.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/E5/CreateOrderRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E5/GetPatientRegistrationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/InvalidatePrescriptionRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/ReopenPrescriptionRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/StartEffectuationRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/TerminatePrescriptionRequest.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/UndoEffectuationRequest.xsd"/>
         </xs:schema>
 
     </wsdl:types>
@@ -685,15 +689,15 @@
         <wsdl:part name="CancelPrescriptionResponse" element="medicinecard20150601E2:CancelPrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="StartEffectuationRequest_2015_06_01">
-        <wsdl:part name="StartEffectuationRequest" element="medicinecard20150601:StartEffectuationRequest"/>
+    <wsdl:message name="StartEffectuationRequest_2015_06_01_E5">
+        <wsdl:part name="StartEffectuationRequest" element="medicinecard20150601E5:StartEffectuationRequest"/>
     </wsdl:message>
     <wsdl:message name="StartEffectuationResponse_2015_06_01_E2">
         <wsdl:part name="StartEffectuationResponse" element="medicinecard20150601E2:StartEffectuationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="AutomatedStartEffectuationRequest_2015_06_01">
-        <wsdl:part name="AutomatedStartEffectuationRequest" element="medicinecard20150601:StartEffectuationRequest"/>
+    <wsdl:message name="AutomatedStartEffectuationRequest_2015_06_01_E5">
+        <wsdl:part name="AutomatedStartEffectuationRequest" element="medicinecard20150601E5:StartEffectuationRequest"/>
     </wsdl:message>
     <wsdl:message name="AutomatedStartEffectuationResponse_2015_06_01_E2">
         <wsdl:part name="AutomatedStartEffectuationResponse" element="medicinecard20150601E2:AutomatedStartEffectuationResponse"/>
@@ -706,15 +710,15 @@
         <wsdl:part name="CreatePharmacyEffectuationResponse" element="medicinecard20150601:CreatePharmacyEffectuationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="AbortEffectuationRequest_2015_06_01">
-        <wsdl:part name="AbortEffectuationRequest" element="medicinecard20150601:AbortEffectuationRequest"/>
+    <wsdl:message name="AbortEffectuationRequest_2015_06_01_E5">
+        <wsdl:part name="AbortEffectuationRequest" element="medicinecard20150601E5:AbortEffectuationRequest"/>
     </wsdl:message>
     <wsdl:message name="AbortEffectuationResponse_2015_06_01_E2">
         <wsdl:part name="AbortEffectuationResponse" element="medicinecard20150601E2:AbortEffectuationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UndoEffectuationRequest_2015_06_01">
-        <wsdl:part name="UndoEffectuationRequest" element="medicinecard20150601:UndoEffectuationRequest"/>
+    <wsdl:message name="UndoEffectuationRequest_2015_06_01_E5">
+        <wsdl:part name="UndoEffectuationRequest" element="medicinecard20150601E5:UndoEffectuationRequest"/>
     </wsdl:message>
     <wsdl:message name="UndoEffectuationResponse_2015_06_01">
         <wsdl:part name="UndoEffectuationResponse" element="medicinecard20150601:UndoEffectuationResponse"/>
@@ -727,22 +731,22 @@
         <wsdl:part name="CreateAndEffectuatePrescriptionResponse" element="medicinecard20150601:CreateAndEffectuatePrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="TerminatePrescriptionRequest_2015_06_01">
-        <wsdl:part name="TerminatePrescriptionRequest" element="medicinecard20150601:TerminatePrescriptionRequest"/>
+    <wsdl:message name="TerminatePrescriptionRequest_2015_06_01_E5">
+        <wsdl:part name="TerminatePrescriptionRequest" element="medicinecard20150601E5:TerminatePrescriptionRequest"/>
     </wsdl:message>
     <wsdl:message name="TerminatePrescriptionResponse_2015_06_01">
         <wsdl:part name="TerminatePrescriptionResponse" element="medicinecard20150601:TerminatePrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="InvalidatePrescriptionRequest_2015_06_01">
-        <wsdl:part name="InvalidatePrescriptionRequest" element="medicinecard20150601:InvalidatePrescriptionRequest"/>
+    <wsdl:message name="InvalidatePrescriptionRequest_2015_06_01_E5">
+        <wsdl:part name="InvalidatePrescriptionRequest" element="medicinecard20150601E5:InvalidatePrescriptionRequest"/>
     </wsdl:message>
     <wsdl:message name="InvalidatePrescriptionResponse_2015_06_01">
         <wsdl:part name="InvalidatePrescriptionResponse" element="medicinecard20150601:InvalidatePrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="ReopenPrescriptionRequest_2015_06_01">
-        <wsdl:part name="ReopenPrescriptionRequest" element="medicinecard20150601:ReopenPrescriptionRequest"/>
+    <wsdl:message name="ReopenPrescriptionRequest_2015_06_01_E5">
+        <wsdl:part name="ReopenPrescriptionRequest" element="medicinecard20150601E5:ReopenPrescriptionRequest"/>
     </wsdl:message>
     <wsdl:message name="ReopenPrescriptionResponse_2015_06_01">
         <wsdl:part name="ReopenPrescriptionResponse" element="medicinecard20150601:ReopenPrescriptionResponse"/>
@@ -762,8 +766,8 @@
         <wsdl:part name="CreateOrderResponse" element="medicinecard20150601:CreateOrderResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CancelOrderRequest_2015_06_01">
-        <wsdl:part name="CancelOrderRequest" element="medicinecard20150601:CancelOrderRequest"/>
+    <wsdl:message name="CancelOrderRequest_2015_06_01_E5">
+        <wsdl:part name="CancelOrderRequest" element="medicinecard20150601E5:CancelOrderRequest"/>
     </wsdl:message>
     <wsdl:message name="CancelOrderResponse_2015_06_01">
         <wsdl:part name="CancelOrderResponse" element="medicinecard20150601:CancelOrderResponse"/>
@@ -1324,14 +1328,14 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="StartEffectuation_2015_06_01_E2">
-            <wsdl:input name="StartEffectuationRequest_2015_06_01" message="tns:StartEffectuationRequest_2015_06_01"/>
+        <wsdl:operation name="StartEffectuation_2015_06_01_E5">
+            <wsdl:input name="StartEffectuationRequest_2015_06_01_E5" message="tns:StartEffectuationRequest_2015_06_01_E5"/>
             <wsdl:output name="StartEffectuationResponse_2015_06_01_E2" message="tns:StartEffectuationResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="AutomatedStartEffectuation_2015_06_01_E2">
-            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01" message="tns:AutomatedStartEffectuationRequest_2015_06_01"/>
+        <wsdl:operation name="AutomatedStartEffectuation_2015_06_01_E5">
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01_E5" message="tns:AutomatedStartEffectuationRequest_2015_06_01_E5"/>
             <wsdl:output name="AutomatedStartEffectuationResponse_2015_06_01_E2" message="tns:AutomatedStartEffectuationResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -1342,14 +1346,14 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="AbortEffectuation_2015_06_01_E2">
-            <wsdl:input name="AbortEffectuationRequest_2015_06_01" message="tns:AbortEffectuationRequest_2015_06_01"/>
+        <wsdl:operation name="AbortEffectuation_2015_06_01_E5">
+            <wsdl:input name="AbortEffectuationRequest_2015_06_01_E5" message="tns:AbortEffectuationRequest_2015_06_01_E5"/>
             <wsdl:output name="AbortEffectuationResponse_2015_06_01_E2" message="tns:AbortEffectuationResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UndoEffectuation_2015_06_01">
-            <wsdl:input name="UndoEffectuationRequest_2015_06_01" message="tns:UndoEffectuationRequest_2015_06_01"/>
+        <wsdl:operation name="UndoEffectuation_2015_06_01_E5">
+            <wsdl:input name="UndoEffectuationRequest_2015_06_01_E5" message="tns:UndoEffectuationRequest_2015_06_01_E5"/>
             <wsdl:output name="UndoEffectuationResponse_2015_06_01" message="tns:UndoEffectuationResponse_2015_06_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -1360,20 +1364,20 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="TerminatePrescription_2015_06_01">
-            <wsdl:input name="TerminatePrescriptionRequest_2015_06_01" message="tns:TerminatePrescriptionRequest_2015_06_01"/>
+        <wsdl:operation name="TerminatePrescription_2015_06_01_E5">
+            <wsdl:input name="TerminatePrescriptionRequest_2015_06_01_E5" message="tns:TerminatePrescriptionRequest_2015_06_01_E5"/>
             <wsdl:output name="TerminatePrescriptionResponse_2015_06_01" message="tns:TerminatePrescriptionResponse_2015_06_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="InvalidatePrescription_2015_06_01">
-            <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01" message="tns:InvalidatePrescriptionRequest_2015_06_01"/>
+        <wsdl:operation name="InvalidatePrescription_2015_06_01_E5">
+            <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01_E5" message="tns:InvalidatePrescriptionRequest_2015_06_01_E5"/>
             <wsdl:output name="InvalidatePrescriptionResponse_2015_06_01" message="tns:InvalidatePrescriptionResponse_2015_06_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="ReopenPrescription_2015_06_01">
-            <wsdl:input name="ReopenPrescriptionRequest_2015_06_01" message="tns:ReopenPrescriptionRequest_2015_06_01"/>
+        <wsdl:operation name="ReopenPrescription_2015_06_01_E5">
+            <wsdl:input name="ReopenPrescriptionRequest_2015_06_01_E5" message="tns:ReopenPrescriptionRequest_2015_06_01_E5"/>
             <wsdl:output name="ReopenPrescriptionResponse_2015_06_01" message="tns:ReopenPrescriptionResponse_2015_06_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -1390,8 +1394,8 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CancelOrder_2015_06_01">
-            <wsdl:input name="CancelOrderRequest_2015_06_01" message="tns:CancelOrderRequest_2015_06_01"/>
+        <wsdl:operation name="CancelOrder_2015_06_01_E5">
+            <wsdl:input name="CancelOrderRequest_2015_06_01_E5" message="tns:CancelOrderRequest_2015_06_01_E5"/>
             <wsdl:output name="CancelOrderResponse_2015_06_01" message="tns:CancelOrderResponse_2015_06_01"/>
 &operationFaultDeclaration;
         </wsdl:operation>
@@ -2157,10 +2161,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="StartEffectuation_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#StartEffectuation"
+       <wsdl:operation name="StartEffectuation_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#StartEffectuation"
                             style="document"/>
-            <wsdl:input name="StartEffectuationRequest_2015_06_01">
+            <wsdl:input name="StartEffectuationRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2171,10 +2175,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="AutomatedStartEffectuation_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#AutomatedStartEffectuation"
+       <wsdl:operation name="AutomatedStartEffectuation_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#AutomatedStartEffectuation"
                             style="document"/>
-            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01">
+            <wsdl:input name="AutomatedStartEffectuationRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2199,10 +2203,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="AbortEffectuation_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#AbortEffectuation"
+       <wsdl:operation name="AbortEffectuation_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#AbortEffectuation"
                             style="document"/>
-            <wsdl:input name="AbortEffectuationRequest_2015_06_01">
+            <wsdl:input name="AbortEffectuationRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2213,10 +2217,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="UndoEffectuation_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#UndoEffectuation"
+       <wsdl:operation name="UndoEffectuation_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#UndoEffectuation"
                             style="document"/>
-            <wsdl:input name="UndoEffectuationRequest_2015_06_01">
+            <wsdl:input name="UndoEffectuationRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2241,10 +2245,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="TerminatePrescription_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#TerminatePrescription"
+       <wsdl:operation name="TerminatePrescription_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#TerminatePrescription"
                             style="document"/>
-            <wsdl:input name="TerminatePrescriptionRequest_2015_06_01">
+            <wsdl:input name="TerminatePrescriptionRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2255,10 +2259,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="InvalidatePrescription_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#InvalidatePrescription"
+       <wsdl:operation name="InvalidatePrescription_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#InvalidatePrescription"
                             style="document"/>
-            <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01">
+            <wsdl:input name="InvalidatePrescriptionRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2269,10 +2273,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="ReopenPrescription_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#ReopenPrescription"
+       <wsdl:operation name="ReopenPrescription_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#ReopenPrescription"
                             style="document"/>
-            <wsdl:input name="ReopenPrescriptionRequest_2015_06_01">
+            <wsdl:input name="ReopenPrescriptionRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2311,10 +2315,10 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CancelOrder_2015_06_01">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01#CancelOrder"
+        <wsdl:operation name="CancelOrder_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#CancelOrder"
                             style="document"/>
-            <wsdl:input name="CancelOrderRequest_2015_06_01">
+            <wsdl:input name="CancelOrderRequest_2015_06_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>

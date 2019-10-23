@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		xmlns:medicinecard20150601E5="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<include schemaLocation="importsFrom20150601E5.xsd"/>
+
+	<element name="AbortEffectuationRequest" type="medicinecard20150601E5:AbortEffectuationRequestType"/>
+
+	<complexType name="AbortEffectuationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request to abort an ongoing effectuation at a pharmacy. Status will change from 'ekspedition påbegyndt' to 'bestilt'.</documentation>
+			<documentation xml:lang="da-DK">Et request som afbryder en igangværende udlevering på et apotek. Status ændres fra 'ekspedition påbegyndt' til 'bestilt'.</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="ModifiedBy" type="medicinecard20150601:ModificatorType"/>
+			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
+			<element name="Prescription" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Identifier" type="medicinecard20150601:PrescriptionIdentifierType"/>
+						<element name="Order">
+							<complexType>
+								<sequence>
+									<element name="Identifier" type="medicinecard20150601:OrderIdentifierType"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>
