@@ -502,13 +502,6 @@
         <wsdl:part name="GetPrescriptionResponse" element="medicinecard20150601E2:GetPrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDoseDispensedPrescriptionRequest_2015_06_01">
-        <wsdl:part name="GetDoseDispensedPrescriptionRequest" element="medicinecard20150601:GetPrescriptionRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDoseDispensedPrescriptionResponse_2015_06_01_E2">
-        <wsdl:part name="GetDoseDispensedPrescriptionResponse" element="medicinecard20150601E2:GetPrescriptionResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="GetPrescriptionRequestsRequest_2015_06_01">
         <wsdl:part name="GetPrescriptionRequestsRequest" element="medicinecard20150601:GetPrescriptionRequestsRequest"/>
     </wsdl:message>
@@ -1139,14 +1132,6 @@
             <wsdl:output name="GetPrescriptionResponse_2015_06_01_E2"
                          message="tns:GetPrescriptionResponse_2015_06_01_E2"/>
 &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDoseDispensedPrescription_2015_06_01_E3">
-            <wsdl:input name="GetDoseDispensedPrescriptionRequest_2015_06_01"
-                        message="tns:GetDoseDispensedPrescriptionRequest_2015_06_01"/>
-            <wsdl:output name="GetDoseDispensedPrescriptionResponse_2015_06_01_E2"
-                         message="tns:GetDoseDispensedPrescriptionResponse_2015_06_01_E2"/>
-            &operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="GetPrescriptionRequests_2015_06_01_E2">
@@ -1850,20 +1835,6 @@
                 <soap:body use="literal"/>
             </wsdl:output>
 &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDoseDispensedPrescription_2015_06_01_E3">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetDoseDispensedPrescription"
-                            style="document"/>
-            <wsdl:input name="GetDoseDispensedPrescriptionRequest_2015_06_01">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDoseDispensedPrescriptionResponse_2015_06_01_E2">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="GetPrescriptionRequests_2015_06_01_E2">
