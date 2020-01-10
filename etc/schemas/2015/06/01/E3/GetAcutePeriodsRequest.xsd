@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E3.xsd"/>
+
+	<element name="GetAcutePeriodsRequest" type="medicinecard20150601E3:GetAcutePeriodsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to get acute dosedispensingperiods</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel på hent akutte dosisdispenseringsperioder</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetAcutePeriodsRequestType">
+		<sequence>
+			<choice>
+				<sequence>
+					<element name="OrderedAtPharmacyIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+					<element name="PackedAtOrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType" minOccurs="0"/>
+				</sequence>
+				<element name="PackedAtOrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+			</choice>
+			<element name="ProductionDateTime" type="medicinecard20150601E3:ProductionDateTimeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

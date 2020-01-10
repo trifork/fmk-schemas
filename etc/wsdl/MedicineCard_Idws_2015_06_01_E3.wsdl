@@ -368,6 +368,9 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E3/UndoDiscardDoseDispensingPeriodRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/UndoDiscardDoseDispensingPeriodResponse.xsd" />
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetAcutePeriodsRequest.xsd" />
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetAcutePeriodsResponse.xsd" />
+
         </xs:schema>
 
     </wsdl:types>
@@ -913,6 +916,13 @@
     </wsdl:message>
     <wsdl:message name="UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3">
         <wsdl:part name="UndoDiscardDoseDispensingPeriodResponse" element="medicinecard20150601E3:UndoDiscardDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetAcutePeriodsRequest_2015_06_01_E3">
+        <wsdl:part name="GetAcutePeriodsRequest" element="medicinecard20150601E3:GetAcutePeriodsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAcutePeriodsResponse_2015_06_01_E3">
+        <wsdl:part name="GetAcutePeriodsResponse" element="medicinecard20150601E3:GetAcutePeriodsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPackingOverviewRequest_2015_06_01_E3">
@@ -1511,6 +1521,12 @@
         <wsdl:operation name="UndoDiscardDoseDispensingPeriod_2015_06_01_E3">
             <wsdl:input name="UndoDiscardDoseDispensingPeriodRequest_2015_06_01_E3" message="tns:UndoDiscardDoseDispensingPeriodRequest_2015_06_01_E3"/>
             <wsdl:output name="UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3" message="tns:UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAcutePeriods_2015_06_01_E3">
+            <wsdl:input name="GetAcutePeriodsRequest_2015_06_01_E3" message="tns:GetAcutePeriodsRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetAcutePeriodsResponse_2015_06_01_E3" message="tns:GetAcutePeriodsResponse_2015_06_01_E3"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2605,6 +2621,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UndoDiscardDoseDispensingPeriodResponse_2015_06_01_E3">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAcutePeriods_2015_06_01_E3">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetAcutePeriods"
+                            style="document"/>
+            <wsdl:input name="GetAcutePeriodsRequest_2015_06_01_E3">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAcutePeriodsResponse_2015_06_01_E3">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
