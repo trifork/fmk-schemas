@@ -283,6 +283,17 @@
         <zip destfile="${standard.target.dir}/wsdl/Advis-collection.zip"
              basedir="${standard.target.dir}/wsdl/Advis"/>
 
+        <java classname="dk.medicinkortet.xmlschema.SchemaLoader" fork="true" failonerror="true" jvmargs="-Xmx1024m" dir="${standard.work.dir}">
+            <classpath>
+                <path location="${build.dir}"/>
+                <fileset dir="lib/build" excludes="*gwt*"/>
+            </classpath>
+            <sysproperty key="target.dir" value="${standard.target.dir}"/>
+            <sysproperty key="WsdlName" value="ECPR2Advis"/>
+        </java>
+        <zip destfile="${standard.target.dir}/wsdl/ECPR2Advis-collection.zip"
+             basedir="${standard.target.dir}/wsdl/ECPR2Advis"/>
+
         <organize-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01"/>
         <organize-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01_E2"/>
         <organize-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01_E5"/>
@@ -357,6 +368,13 @@
                  description="Dist collection for Advis"
                  update="false"
                  basedir="${standard.target.dir}/wsdl" includes="Advis*-collection.zip"/>
+
+        <!-- Dist collection for eCPR2-Advis -->
+        <property name="ecpr2_advis_dist_file" value="${target.dir}/wsdl/eCPR2-Advis-collection-dist.zip"/>
+           <zip destfile="${ecpr2_advis_dist_file}"
+                 description="Dist collection for Advis for eCPR2"
+                 update="false"
+                 basedir="${standard.target.dir}/wsdl" includes="ECPR2Advis*-collection.zip"/>
 
         <dist_zips-macro version-yymmdd="2013_06_01" version="1.4.2"/>
         <dist_zips-macro version-yymmdd="2015_01_01" version="1.4.4"/>
