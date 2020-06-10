@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:sds20200101="http://sundhedsdatastyrelsen.dk/eCPR/2020/01/01"
+		targetNamespace="http://sundhedsdatastyrelsen.dk/eCPR/2020/01/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="PersonIdentifierModificationAction.xsd"/>
+	<element name="PersonIdentifierModification" type="sds20200101:PersonIdentifierModificationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a modification of a medicine card</documentation>
+			<documentation xml:lang="da-DK">Information omkring en modifikation af et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="PersonIdentifierModificationType">
+		<sequence>
+			<element name="Action" type="sds20200101:PersonIdentifierModificationActionType"/>
+		</sequence>
+	</complexType>
+</schema>
