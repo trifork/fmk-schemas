@@ -86,9 +86,7 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/GetPrescriptionRequestsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/SearchPrescriptionRequestsRequest.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/01/01/E2/SearchPrescriptionRequestsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E2/GetOrdersRequest.xsd"/>
 
@@ -108,6 +106,9 @@
 
             <xs:include schemaLocation="../schemas/2015/01/01/E5/CreateOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E5/CreateOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/SearchPrescriptionRequestsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/SearchPrescriptionRequestsResponse.xsd"/>
         </xs:schema>
 
     </wsdl:types>
@@ -188,12 +189,12 @@
         <wsdl:part name="GetPrescriptionRequestsResponse" element="medicinecard20150101E2:GetPrescriptionRequestsResponse"/>
     </wsdl:message>
    
-    <wsdl:message name="SearchPrescriptionRequestsRequest_2015_01_01_E2">
-        <wsdl:part name="SearchPrescriptionRequestsRequest" element="medicinecard20150101E2:SearchPrescriptionRequestsRequest"/>
+    <wsdl:message name="SearchPrescriptionRequestsRequest_2015_01_01_E5">
+        <wsdl:part name="SearchPrescriptionRequestsRequest" element="medicinecard20150101E5:SearchPrescriptionRequestsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchPrescriptionRequestsResponse_2015_01_01_E2">
-        <wsdl:part name="SearchPrescriptionRequestsResponse" element="medicinecard20150101E2:SearchPrescriptionRequestsResponse"/>
+    <wsdl:message name="SearchPrescriptionRequestsResponse_2015_01_01_E5">
+        <wsdl:part name="SearchPrescriptionRequestsResponse" element="medicinecard20150101E5:SearchPrescriptionRequestsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CancelOrderRequest_2015_01_01_E5">
@@ -258,9 +259,9 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E2">
-            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E2" message="tns:SearchPrescriptionRequestsRequest_2015_01_01_E2"/>
-            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E2" message="tns:SearchPrescriptionRequestsResponse_2015_01_01_E2"/>
+        <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E5">
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E5" message="tns:SearchPrescriptionRequestsRequest_2015_01_01_E5"/>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E5" message="tns:SearchPrescriptionRequestsResponse_2015_01_01_E5"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -373,14 +374,14 @@
 &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#SearchPrescriptionRequests"
+        <wsdl:operation name="SearchPrescriptionRequests_2015_01_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5#SearchPrescriptionRequests"
                             style="document"/>
-            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E2">
+            <wsdl:input name="SearchPrescriptionRequestsRequest_2015_01_01_E5">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E2">
+            <wsdl:output name="SearchPrescriptionRequestsResponse_2015_01_01_E5">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
