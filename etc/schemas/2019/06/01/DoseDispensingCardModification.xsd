@@ -6,7 +6,7 @@
 		attributeFormDefault="unqualified">
 	<include schemaLocation="DoseDispensingCardModificationAction.xsd"/>
 	<include schemaLocation="ModificationDetails.xsd"/>
-	<include schemaLocation="DoseDispensingIdentifiers.xsd"/>
+	<include schemaLocation="DoseDispensingInformation.xsd"/>
 
 	<element name="DoseDispensingCardModification" type="medicinecard20190601:DoseDispensingModificationType">
 		<annotation>
@@ -18,7 +18,7 @@
 		<sequence>
 			<element name="Action" type="medicinecard20190601:DoseDispensingCardModificationActionType"/>
 			<element name="Details" type="medicinecard20190601:ModificationDetailsType" minOccurs="0"/>
-			<element name="DoseDispensing" type="medicinecard20190601:DoseDispensingIdentifiersType"/>
+			<element name="DoseDispensing" type="medicinecard20190601:DoseDispensingInformationType"/>
 			<any minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

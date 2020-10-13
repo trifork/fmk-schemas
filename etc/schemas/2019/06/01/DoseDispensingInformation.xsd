@@ -8,8 +8,9 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DoseDispensingCardIdentifier.xsd"/>
 	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DoseDispensingStatus.xsd"/>
 
-	<complexType name="DoseDispensingIdentifiersType">
+	<complexType name="DoseDispensingInformationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Collection of identifier related to a modification of a patients dose dispensing card</documentation>
 			<documentation xml:lang="da-DK">Relevante ID'er i forbindelse med en oprettelse/redigering af patients dosisdispenserings kort</documentation>
@@ -18,6 +19,8 @@
 			<element name="PersonIdentifier" type="medicinecard20190601:PersonIdentifierType"/>
 			<element name="DoseDispensingCard" type="medicinecard20190601:DoseDispensingCardIdentifierType"/>
 			<element name="DoseDispensingPeriod" type="medicinecard20190601:DoseDispensingPeriodIdentifierType" minOccurs="0"/>
+			<element name="OldPeriodStatus" type="medicinecard20190601:DoseDispensingStatusType" minOccurs="0"/>
+			<element name="NewPeriodStatus" type="medicinecard20190601:DoseDispensingStatusType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

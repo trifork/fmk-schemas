@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20190601="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2019/06/01"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<simpleType name="DoseDispensingStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">The status of a dosedispensing period</documentation>
+			<documentation xml:lang="da-DK">Status for en dosisdispenseringsperiode</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20190601:PredefinedDoseDispensingStatusType medicinecard20190601:UndefinedDoseDispensingStatusType"/>
+	</simpleType>
+	<simpleType name="PredefinedDoseDispensingStatusType">
+		<restriction base="medicinecard20190601:UndefinedDoseDispensingStatusType">
+			<enumeration value="Planlagt"/>
+			<enumeration value="Apoteksbehandling påbegyndt"/>
+			<enumeration value="Klar til pakning"/>
+			<enumeration value="Pakning påbegyndt"/>
+			<enumeration value="Pakning afsluttet"/>
+			<enumeration value="Ekspederet"/>
+			<enumeration value="Kasseres"/>
+			<enumeration value="Ekspederes ikke"/>
+			<enumeration value="Ikke udleveret af apoteket"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedDoseDispensingStatusType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>
