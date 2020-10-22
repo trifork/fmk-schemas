@@ -10,21 +10,18 @@
 	<import schemaLocation="importsFrom20150101E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"/>
 	<include schemaLocation="importsFrom20150101E5.xsd"/>
 
-	<element name="SearchPrescriptionRequestsRequest" type="medicinecard20150101E5:SearchPrescriptionRequestsRequestType">
+	<element name="GetOrganisationPrescriptionRequestsResponse" type="medicinecard20150101E5:GetOrganisationPrescriptionRequestsResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">An element for requesting prescription requests given an organisation which is either an ordering or a prescribing organisation</documentation>
-			<documentation xml:lang="da-DK">Et element til forespørgsel efter receptanmodninger givet en anmodende eller anmodede organisation</documentation>
+			<documentation xml:lang="en-GB">Response to prescription requests request</documentation>
+			<documentation xml:lang="da-DK">Svar på forespørgsel efter receptbestillinger</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="SearchPrescriptionRequestsRequestType">
+	<complexType name="GetOrganisationPrescriptionRequestsResponseType">
 		<sequence>
-			<choice>
-				<element name="PrescribingOrganisation" type="medicinecard20150101E2:SearchPrescriptionRequestsOrganisationType"/>
-				<element name="OrderingOrganisation" type="medicinecard20150101E2:SearchPrescriptionRequestsOrganisationType"/>
-			</choice>
-			<element name="FromDateTime" type="medicinecard20150101:CreatedDateTimeType" minOccurs="0"/>
+			<element name="Patient" type="medicinecard20150101E2:SearchPrescriptionRequestsPatientType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PageNumber" type="medicinecard20150101E2:PageNumberType" minOccurs="0"/>
+			<element name="MoreAvailable" type="medicinecard20150101:MoreAvailableType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
