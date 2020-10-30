@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- the project element's name attribute will be used in the name of the module's jar file -->
-<project name="medicinkortet-schema" default="all" basedir=".">
+<project name="medicinkortet-schema" xmlns:ivy="antlib:fr.jayasoft.ivy.ant" default="all" basedir=".">
 
 	<property name="ivy.checksums" value=""/>
     <property name="sourceversion" value="1.8"/>
@@ -495,6 +495,10 @@
                 <include name="**/*.class"/>
             </fileset>
         </jar>
+    </target>
+
+     <target name="dependencytree">
+        <ivy:dependencytree />
     </target>
 
     <target name="generate" depends="set-codegen-encoding-property, check-generate, axis-init, resolve-build" unless="generated_files_present">
