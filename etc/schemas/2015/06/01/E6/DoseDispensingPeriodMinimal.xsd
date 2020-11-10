@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+        xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+
+    <element name="DoseDispensingPeriodMinimal" type="medicinecard20150601E6:DoseDispensingPeriodMinimalType"/>
+        <annotation>
+            <documentation xml:lang="en-GB">Summary of a patients dose dispensing period</documentation>
+            <documentation xml:lang="da-DK">Oversigt over en patients dosisdispenseringsperiode</documentation>
+        </annotation>
+        <complexType name="DoseDispensingPeriodMinimalType">
+            <sequence>
+                <element name="Identifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
+                <element name="StartDate" type="medicinecard20150601:DoseDispensingPeriodStartDateType"/>
+                <element name="EndDate" type="medicinecard20150601:DoseDispensingPeriodEndDateType"/>
+                <element name="Deadline" type="medicinecard20150601:DoseDispensingDeadlineType"/>
+                <element name="Status" type="medicinecard20150601E2:DoseDispensingStatusType"/>
+            </sequence>
+        </complexType>
+</schema>

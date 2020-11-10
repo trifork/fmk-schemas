@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E3.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"/>
+    <include schemaLocation="importsFrom20150601E6.xsd"/>
+
+
+    <element name="GetDoseDispensingPeriodHistoryResponse" type="medicinecard20150601E6:GetDoseDispensingPeriodHistoryResponseType"/>
+
+    <complexType name="GetDoseDispensingPeriodHistoryResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Response type with one or more dose dispensing period versions</documentation>
+            <documentation xml:lang="da-DK">Type for et svar med en eller flere historiske dosisdispenseringsperiode versioner</documentation>
+        </annotation>
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+            <element name="DoseDispensingPeriod" type="medicinecard20150601E3:DoseDispensingPeriodSummaryType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

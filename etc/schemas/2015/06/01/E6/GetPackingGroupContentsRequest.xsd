@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<element name="GetPackingGroupContentsRequest" type="medicinecard20150601E6:GetPackingGroupContentsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to get the contents of a packing group</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel på indholdet af en pakkegruppe</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPackingGroupContentsRequestType">
+		<sequence>
+            <element name="PackingGroupIdentifier" type="medicinecard20150601E2:PackingGroupIdentifierType"/>
+			<element name="PeriodDateTime" type="medicinecard20150601E6:PeriodDateTimeType" minOccurs="0"/>
+            <element name="IncludeCardsWithoutPeriod" type="medicinecard20150601E6:IncludeCardsWithoutPeriodType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

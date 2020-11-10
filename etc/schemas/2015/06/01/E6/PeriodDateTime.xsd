@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+    <simpleType name="PeriodDateTimeType">
+        <annotation>
+            <documentation xml:lang="en-GB">Date in which a period is active</documentation>
+            <documentation xml:lang="da-DK">Dato hvor perioden skal være aktiv</documentation>
+        </annotation>
+        <restriction base="date">
+            <minInclusive value="2000-01-01Z"/>
+        </restriction>
+    </simpleType>
+</schema>

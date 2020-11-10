@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+
+	<element name="GetDoseDispensingPeriodHistoryRequest" type="medicinecard20150601E6:GetDoseDispensingPeriodHistoryRequestType"/>
+
+	<complexType name="GetDoseDispensingPeriodHistoryRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a requesting history information for dose dispensing period</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter historik for dosisdispenseringsperioder</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="DoseDispensingPeriodIdentifier" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>

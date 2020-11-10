@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <include schemaLocation="importsFrom20150601E6.xsd"/>
+
+    <element name="DoseDispensingSummary" type="medicinecard20150601E6:DoseDispensingSummaryType"/>
+        <annotation>
+            <documentation xml:lang="en-GB">Summary of a patients dose dispensing</documentation>
+            <documentation xml:lang="da-DK">Oversigt over en patients dosisdispensering</documentation>
+        </annotation>
+        <complexType name="DoseDispensingSummaryType">
+            <sequence>
+                <element name="DoseDispensingCard" type="medicinecard20150601E6:DoseDispensingCardSummaryType" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="LatestDosageDispensingEffectuation" type="medicinecard20150601:LatestDosageDispensingEffectuationType" minOccurs="0"/>
+                <element name="HasOpenDosageDispensingPrescriptions" type="medicinecard20150601:HasOpenDosageDispensingPrescriptionsType"/>
+                <element name="DoseDispensingOnHold" type="medicinecard20150601E6:IsDoseDispensingOnHoldType" minOccurs="0"/>
+            </sequence>
+        </complexType>
+</schema>

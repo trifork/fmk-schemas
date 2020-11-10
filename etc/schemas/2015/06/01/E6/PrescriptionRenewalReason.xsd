@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<simpleType name="PrescriptionRenewalReasonType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicated a reason a doctor was picked for prescription renewal</documentation>
+			<documentation xml:lang="da-DK">Indikere en grund til hvorfor en læge var valgt til receptudstedelse</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20150601E6:PredefinedPrescriptionRenewalReasonType medicinecard20150601E6:UndefinedPrescriptionRenewalReasonType"/>
+	</simpleType>
+	<simpleType name="PredefinedPrescriptionRenewalReasonType">
+		<restriction base="medicinecard20150601E6:UndefinedPrescriptionRenewalReasonType">
+			<enumeration value="Seneste receptudsteder"/>
+			<enumeration value="Patientens egen læge"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedPrescriptionRenewalReasonType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>

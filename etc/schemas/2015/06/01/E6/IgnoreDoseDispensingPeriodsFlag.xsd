@@ -1,0 +1,17 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<complexType name="IgnoreDoseDispensingPeriodsFlagType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request to return dosedispensingcards without specific dose dispensing periods</documentation>
+			<documentation xml:lang="da-DK">Anmodning om at hente dosisdispenseringskortet på tværs af dosisdispenserings-perioder</documentation>
+		</annotation>
+		<sequence>
+			<element name="DosageFilterDateTime" type="medicinecard20150601E6:DosageFilterDateTime" minOccurs="0"/>
+		</sequence>
+	</complexType>	
+</schema>

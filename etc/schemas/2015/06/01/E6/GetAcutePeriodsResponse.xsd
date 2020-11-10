@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<element name="GetAcutePeriodsResponse" type="medicinecard20150601E6:GetAcutePeriodsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with acute dosedispensingperiods</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en svar med akutte dosisdispenseringsperioder</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetAcutePeriodsResponseType">
+		<sequence>
+			<element name="PersonWithDoseDispensing" type="medicinecard20150601E6:PersonWithDoseDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<import schemaLocation="importsFrom20150601E3.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"/>
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<element name="GetExplicitDoseDispensingCardRequest" type="medicinecard20150601E6:GetExplicitDoseDispensingCardRequestType"/>
+
+	<complexType name="GetExplicitDoseDispensingCardRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a requesting explicit dose dispensing card(s) for a patient</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter eksplisitte dosisdispenseringskort for en patient</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="RequestedPeriod">
+				<complexType>
+					<choice>
+						<element name="CurrentPeriod" type="medicinecard20150601E2:CurrentDoseDispensingPeriodFlagType"/>
+						<element name="CurrentAndPendingPeriods" type="medicinecard20150601E2:CurrentAndPendingDoseDispensingPeriodsFlagType"/>
+						<element name="PendingPeriods" type="medicinecard20150601E2:PendingDoseDispensingPeriodsFlagType"/>
+						<element name="IgnorePeriods" type="medicinecard20150601E6:IgnoreDoseDispensingPeriodsFlagType"/>
+						<element name="PeriodById" type="medicinecard20150601E2:DoseDispensingPeriodIdentifierType"/>
+						<element name="RequestedDate" type="medicinecard20150601E2:DoseDispensingRequestedDateType"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="IncludeDetailedSpecification" type="medicinecard20150601E2:IncludeDetailedSpecificationFlagType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
