@@ -308,8 +308,6 @@
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodRequest.xsd" />
 			<xs:include schemaLocation="../schemas/2015/06/01/E3/UndoEffectuatedDoseDispensingPeriodResponse.xsd" />
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetExplicitDoseDispensingCardResponse.xsd" />
-
             <xs:include schemaLocation="../schemas/2015/06/01/E3/SubstitutePackagedDrugRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/SubstitutePackagedDrugResponse.xsd" />
 
@@ -367,6 +365,7 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetDoseDispensingSummaryResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetExplicitDoseDispensingCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E6/GetExplicitDoseDispensingCardResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetNewOrdersResponse.xsd"/>
 
@@ -1054,8 +1053,8 @@
     <wsdl:message name="GetExplicitDoseDispensingCardRequest_2015_06_01_E6">
         <wsdl:part name="GetExplicitDoseDispensingCardRequest" element="medicinecard20150601E6:GetExplicitDoseDispensingCardRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetExplicitDoseDispensingCardResponse_2015_06_01_E3">
-        <wsdl:part name="GetExplicitDoseDispensingCardResponse" element="medicinecard20150601E3:GetExplicitDoseDispensingCardResponse"/>
+    <wsdl:message name="GetExplicitDoseDispensingCardResponse_2015_06_01_E6">
+        <wsdl:part name="GetExplicitDoseDispensingCardResponse" element="medicinecard20150601E6:GetExplicitDoseDispensingCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SubstitutePackagedDrugRequest_2015_06_01_E3">
@@ -1675,7 +1674,7 @@
 
         <wsdl:operation name="GetExplicitDoseDispensingCard_2015_06_01_E6">
             <wsdl:input name="GetExplicitDoseDispensingCardRequest_2015_06_01_E6" message="tns:GetExplicitDoseDispensingCardRequest_2015_06_01_E6"/>
-            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E3" message="tns:GetExplicitDoseDispensingCardResponse_2015_06_01_E3"/>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E6" message="tns:GetExplicitDoseDispensingCardResponse_2015_06_01_E6"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2943,7 +2942,7 @@
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E3">
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E6">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
