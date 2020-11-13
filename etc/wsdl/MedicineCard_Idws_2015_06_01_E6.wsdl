@@ -351,6 +351,8 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E3/UndoDiscardDoseDispensingPeriodRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/UndoDiscardDoseDispensingPeriodResponse.xsd" />
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetAcutePeriodsRequest.xsd" />
+
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5" elementFormDefault="qualified">
@@ -373,6 +375,8 @@
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6" elementFormDefault="qualified">
+
+            <xs:include schemaLocation="../schemas/2015/06/01/E6/GetAcutePeriodsResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetDoseDispensingPeriodHistoryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetDoseDispensingPeriodHistoryResponse.xsd"/>
@@ -1124,6 +1128,13 @@
         <wsdl:part name="GetPlannedDispensingHistoryResponse" element="medicinecard20150601E6:GetPlannedDispensingHistoryResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetAcutePeriodsRequest_2015_06_01_E3">
+        <wsdl:part name="GetAcutePeriodsRequest" element="medicinecard20150601E3:GetAcutePeriodsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAcutePeriodsResponse_2015_06_01_E6">
+        <wsdl:part name="GetAcutePeriodsResponse" element="medicinecard20150601E6:GetAcutePeriodsResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
@@ -1733,6 +1744,12 @@
         <wsdl:operation name="GetDoseDispensingSummary_2015_06_01_E6">
             <wsdl:input name="GetDoseDispensingSummaryRequest_2015_06_01_E6" message="tns:GetDoseDispensingSummaryRequest_2015_06_01_E6"/>
             <wsdl:output name="GetDoseDispensingSummaryResponse_2015_06_01_E6" message="tns:GetDoseDispensingSummaryResponse_2015_06_01_E6"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAcutePeriods_2015_06_01_E6">
+            <wsdl:input name="GetAcutePeriodsRequest_2015_06_01_E3" message="tns:GetAcutePeriodsRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetAcutePeriodsResponse_2015_06_01_E6" message="tns:GetAcutePeriodsResponse_2015_06_01_E6"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3027,6 +3044,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDoseDispensingSummaryResponse_2015_06_01_E6">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAcutePeriods_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#GetAcutePeriods"
+                            style="document"/>
+            <wsdl:input name="GetAcutePeriodsRequest_2015_06_01_E3">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAcutePeriodsResponse_2015_06_01_E6">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
