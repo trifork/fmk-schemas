@@ -11,6 +11,7 @@
     <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
 	<import schemaLocation="importsFrom20150601E3.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"/>
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
 
 	<complexType name="PersonWithDoseDispensingType">
 		<annotation>
@@ -22,7 +23,7 @@
 				<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
 				<element name="Patient" type="medicinecard20150601:PatientType"/>
 			</choice>
-			<element name="DoseDispensingOnHold" type="medicinecard20150601E2:DoseDispensingOnHoldType" minOccurs="0"/>
+			<element name="DoseDispensingOnHold" type="medicinecard20150601E6:IsDoseDispensingOnHoldType" minOccurs="0"/>
 			<element name="DoseDispensingCard" type="medicinecard20150601E3:DoseDispensingCardSummaryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
