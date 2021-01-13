@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E3="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"
+        xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E3.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"/>
+    <include schemaLocation="importsFrom20150601E6.xsd"/>
+
+
+    <element name="GetDetailedPlannedDispensingResponse" type="medicinecard20150601E6:GetDetailedPlannedDispensingResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Outer container element for a response with a planned dispensing history</documentation>
+            <documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel efter planlagt dispenserings historik</documentation>
+        </annotation>
+    </element>
+    <complexType name="GetDetailedPlannedDispensingResponseType">
+        <sequence>
+            <element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+            <element name="PlannedDispensing" type="medicinecard20150601E6:DetailedPlannedDispensingType"/>
+        </sequence>
+    </complexType>
+</schema>
