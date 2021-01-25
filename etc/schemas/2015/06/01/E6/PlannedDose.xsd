@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<complexType name="PlannedDoseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of a planned dose element, when and how much</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en planlagt dosis på et givet stidspunkt, hvornår og hvor meget</documentation>
+		</annotation>
+		<sequence>
+			<element name="Time" type="medicinecard20150601E6:PlannedDoseTimeType" minOccurs="0"/>
+            <element name="SequenceNumber" type="medicinecard20150601E2:DispensableUnitSequenceNumberType" minOccurs="0" />
+			<element name="Quantity" type="medicinecard20150601:DoseQuantityType"/>
+		</sequence>
+	</complexType>
+</schema>

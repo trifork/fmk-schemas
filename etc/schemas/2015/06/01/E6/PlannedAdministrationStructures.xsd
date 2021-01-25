@@ -1,0 +1,24 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<complexType name="PlannedAdministrationStructuresType">
+		<annotation>
+			<documentation xml:lang="en-GB">Structure for a number of period in the planned Administration</documentation>
+			<documentation xml:lang="da-DK">Et antal perioder i den planlagte administration</documentation>
+		</annotation>
+		<sequence>
+			<choice maxOccurs="unbounded">
+				<element name="EmptyStructure" type="medicinecard20150601:EmptyDosageStructureType"/>
+				<element name="PlannedAdministrationStructure" type="medicinecard20150601E6:PlannedAdministrationStructureType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

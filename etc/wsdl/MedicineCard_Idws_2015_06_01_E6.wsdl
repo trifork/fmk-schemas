@@ -230,9 +230,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E2/ForwardPrescriptionRequestRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E2/ForwardPrescriptionRequestResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardRequest.xsd" />
-            <xs:include schemaLocation="../schemas/2015/06/01/E2/GetDoseDispensingCardResponse.xsd" />
-
             <xs:include schemaLocation="../schemas/2015/06/01/E2/GetDrugMedicationHistoryResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E2/GetDrugMedicationResponse.xsd"/>
@@ -283,21 +280,6 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePackingGroupRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePackingGroupResponse.xsd" />
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogRequest.xsd" />
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogResponse.xsd" />
-
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingRequest.xsd" />
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingResponse.xsd" />
-
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedRequest.xsd" />
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedResponse.xsd" />
-
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedRequest.xsd" />
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedResponse.xsd" />
-
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/DiscardDoseDispensingPeriodRequest.xsd" />
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/DiscardDoseDispensingPeriodResponse.xsd" />
-
             <xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePackingGroupRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePackingGroupResponse.xsd" />
 
@@ -309,20 +291,20 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPrescriptionResidualAmountRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPrescriptionResidualAmountResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/ResidualAmount.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E3/ResidualPrescriptionMedication.xsd"/>
+			
             <xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/ListPackingGroupsResponse.xsd" />
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePlannedDispensingRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/CreatePlannedDispensingResponse.xsd" />
 
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePlannedDispensingRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/UpdatePlannedDispensingResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E3/DeletePlannedDispensingRequest.xsd" />
             <xs:include schemaLocation="../schemas/2015/06/01/E3/DeletePlannedDispensingResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPlannedDispensingRequest.xsd" />
-            <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPlannedDispensingResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E3/SearchPlannedDispensingResponse.xsd" />
 
@@ -345,6 +327,21 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E3/SubstitutePackagedDrugResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E3/ReplacePrescriptionRequest.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/UploadDrugCatalogResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/AbortPackingResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingFinishedResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/SetPackingStartedResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DiscardDoseDispensingPeriodRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E3/DiscardDoseDispensingPeriodResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E3/GetPackingOverviewRequest.xsd" />
 
@@ -376,6 +373,8 @@
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6" elementFormDefault="qualified">
 
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/CreatePlannedDispensingRequest.xsd" />
+            
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetAcutePeriodsResponse.xsd" />
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetDetailedPlannedDispensingRequest.xsd"/>
@@ -404,11 +403,15 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPlannedDispensingHistoryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPlannedDispensingHistoryResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPlannedDispensingResponse.xsd" />
+
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPrescriptionResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/SearchPlannedDispensingRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/StartEffectuationResponse.xsd"/>
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/UpdatePlannedDispensingRequest.xsd" />
 
         </xs:schema>
 
@@ -861,13 +864,6 @@
         <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionResponse" element="medicinecard20150601:GetAuthorisationDateForNewestOpenPrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDoseDispensingCardRequest_2015_06_01_E2">
-        <wsdl:part name="GetDoseDispensingCardRequest" element="medicinecard20150601E2:GetDoseDispensingCardRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDoseDispensingCardResponse_2015_06_01_E2">
-        <wsdl:part name="GetDoseDispensingCardResponse" element="medicinecard20150601E2:GetDoseDispensingCardResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="CreateDoseDispensingCardRequest_2015_06_01_E3">
         <wsdl:part name="CreateDoseDispensingCardRequest" element="medicinecard20150601E3:CreateDoseDispensingCardRequest"/>
     </wsdl:message>
@@ -980,6 +976,13 @@
         <wsdl:part name="UndoDiscardDoseDispensingPeriodResponse" element="medicinecard20150601E3:UndoDiscardDoseDispensingPeriodResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetPackingOverviewRequest_2015_06_01_E3">
+        <wsdl:part name="GetPackingOverviewRequest" element="medicinecard20150601E3:GetPackingOverviewRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPackingOverviewResponse_2015_06_01_E6">
+        <wsdl:part name="GetPackingOverviewResponse" element="medicinecard20150601E6:GetPackingOverviewResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="UpdatePackingGroupRequest_2015_06_01_E3">
         <wsdl:part name="UpdatePackingGroupRequest" element="medicinecard20150601E3:UpdatePackingGroupRequest"/>
     </wsdl:message>
@@ -1008,15 +1011,15 @@
         <wsdl:part name="ListPackingGroupsResponse" element="medicinecard20150601E3:ListPackingGroupsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePlannedDispensingRequest_2015_06_01_E3">
-        <wsdl:part name="CreatePlannedDispensingRequest" element="medicinecard20150601E3:CreatePlannedDispensingRequest"/>
+    <wsdl:message name="CreatePlannedDispensingRequest_2015_06_01_E6">
+        <wsdl:part name="CreatePlannedDispensingRequest" element="medicinecard20150601E6:CreatePlannedDispensingRequest"/>
     </wsdl:message>
     <wsdl:message name="CreatePlannedDispensingResponse_2015_06_01_E3">
         <wsdl:part name="CreatePlannedDispensingResponse" element="medicinecard20150601E3:CreatePlannedDispensingResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UpdatePlannedDispensingRequest_2015_06_01_E3">
-        <wsdl:part name="UpdatePlannedDispensingRequest" element="medicinecard20150601E3:UpdatePlannedDispensingRequest"/>
+    <wsdl:message name="UpdatePlannedDispensingRequest_2015_06_01_E6">
+        <wsdl:part name="UpdatePlannedDispensingRequest" element="medicinecard20150601E6:UpdatePlannedDispensingRequest"/>
     </wsdl:message>
     <wsdl:message name="UpdatePlannedDispensingResponse_2015_06_01_E3">
         <wsdl:part name="UpdatePlannedDispensingResponse" element="medicinecard20150601E3:UpdatePlannedDispensingResponse"/>
@@ -1032,8 +1035,8 @@
     <wsdl:message name="GetPlannedDispensingRequest_2015_06_01_E3">
         <wsdl:part name="GetPlannedDispensingRequest" element="medicinecard20150601E3:GetPlannedDispensingRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetPlannedDispensingResponse_2015_06_01_E3">
-        <wsdl:part name="GetPlannedDispensingResponse" element="medicinecard20150601E3:GetPlannedDispensingResponse"/>
+    <wsdl:message name="GetPlannedDispensingResponse_2015_06_01_E6">
+        <wsdl:part name="GetPlannedDispensingResponse" element="medicinecard20150601E6:GetPlannedDispensingResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchPlannedDispensingRequest_2015_06_01_E6">
@@ -1090,13 +1093,6 @@
     </wsdl:message>
     <wsdl:message name="SubstitutePackagedDrugResponse_2015_06_01_E3">
         <wsdl:part name="SubstitutePackagedDrugResponse" element="medicinecard20150601E3:SubstitutePackagedDrugResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetPackingOverviewRequest_2015_06_01_E3">
-        <wsdl:part name="GetPackingOverviewRequest" element="medicinecard20150601E3:GetPackingOverviewRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetPackingOverviewResponse_2015_06_01_E6">
-        <wsdl:part name="GetPackingOverviewResponse" element="medicinecard20150601E6:GetPackingOverviewResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDoseDispensingPeriodHistoryRequest_2015_06_01_E6">
@@ -1531,12 +1527,6 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
-            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2" message="tns:GetDoseDispensingCardRequest_2015_06_01_E2"/>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2" message="tns:GetDoseDispensingCardResponse_2015_06_01_E2"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="CreateDoseDispensingCard_2015_06_01_E3">
             <wsdl:input name="CreateDoseDispensingCardRequest_2015_06_01_E3" message="tns:CreateDoseDispensingCardRequest_2015_06_01_E3"/>
             <wsdl:output name="CreateDoseDispensingCardResponse_2015_06_01_E3" message="tns:CreateDoseDispensingCardResponse_2015_06_01_E3"/>
@@ -1627,6 +1617,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetPackingOverview_2015_06_01_E6">
+            <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3" message="tns:GetPackingOverviewRequest_2015_06_01_E3"/>
+            <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E6" message="tns:GetPackingOverviewResponse_2015_06_01_E6"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="UpdatePackingGroup_2015_06_01_E3">
             <wsdl:input name="UpdatePackingGroupRequest_2015_06_01_E3" message="tns:UpdatePackingGroupRequest_2015_06_01_E3"/>
             <wsdl:output name="UpdatePackingGroupResponse_2015_06_01_E3" message="tns:UpdatePackingGroupResponse_2015_06_01_E3"/>
@@ -1651,14 +1647,14 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePlannedDispensing_2015_06_01_E3">
-            <wsdl:input name="CreatePlannedDispensingRequest_2015_06_01_E3" message="tns:CreatePlannedDispensingRequest_2015_06_01_E3"/>
+        <wsdl:operation name="CreatePlannedDispensing_2015_06_01_E6">
+            <wsdl:input name="CreatePlannedDispensingRequest_2015_06_01_E6" message="tns:CreatePlannedDispensingRequest_2015_06_01_E6"/>
             <wsdl:output name="CreatePlannedDispensingResponse_2015_06_01_E3" message="tns:CreatePlannedDispensingResponse_2015_06_01_E3"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UpdatePlannedDispensing_2015_06_01_E3">
-            <wsdl:input name="UpdatePlannedDispensingRequest_2015_06_01_E3" message="tns:UpdatePlannedDispensingRequest_2015_06_01_E3"/>
+        <wsdl:operation name="UpdatePlannedDispensing_2015_06_01_E6">
+            <wsdl:input name="UpdatePlannedDispensingRequest_2015_06_01_E6" message="tns:UpdatePlannedDispensingRequest_2015_06_01_E6"/>
             <wsdl:output name="UpdatePlannedDispensingResponse_2015_06_01_E3" message="tns:UpdatePlannedDispensingResponse_2015_06_01_E3"/>
             &operationFaultDeclaration;
         </wsdl:operation>
@@ -1669,9 +1665,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPlannedDispensing_2015_06_01_E3">
+        <wsdl:operation name="GetPlannedDispensing_2015_06_01_E6">
             <wsdl:input name="GetPlannedDispensingRequest_2015_06_01_E3" message="tns:GetPlannedDispensingRequest_2015_06_01_E3"/>
-            <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E3" message="tns:GetPlannedDispensingResponse_2015_06_01_E3"/>
+            <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E6" message="tns:GetPlannedDispensingResponse_2015_06_01_E6"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1726,12 +1722,6 @@
         <wsdl:operation name="SubstitutePackagedDrug_2015_06_01_E3">
             <wsdl:input name="SubstitutePackagedDrugRequest_2015_06_01_E3" message="tns:SubstitutePackagedDrugRequest_2015_06_01_E3"/>
             <wsdl:output name="SubstitutePackagedDrugResponse_2015_06_01_E3" message="tns:SubstitutePackagedDrugResponse_2015_06_01_E3"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetPackingOverview_2015_06_01_E6">
-            <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3" message="tns:GetPackingOverviewRequest_2015_06_01_E3"/>
-            <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E6" message="tns:GetPackingOverviewResponse_2015_06_01_E6"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2536,20 +2526,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDoseDispensingCard_2015_06_01_E2">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2#GetDoseDispensingCard"
-                            style="document"/>
-            <wsdl:input name="GetDoseDispensingCardRequest_2015_06_01_E2">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDoseDispensingCardResponse_2015_06_01_E2">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="CreateDoseDispensingCard_2015_06_01_E3">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CreateDoseDispensingCard"
                             style="document"/>
@@ -2760,6 +2736,20 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetPackingOverview_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#GetPackingOverview"
+                            style="document"/>
+            <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E6">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="UpdatePackingGroup_2015_06_01_E3">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UpdatePackingGroup"
                             style="document"/>
@@ -2816,10 +2806,10 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePlannedDispensing_2015_06_01_E3">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#CreatePlannedDispensing"
+        <wsdl:operation name="CreatePlannedDispensing_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#CreatePlannedDispensing"
                             style="document"/>
-            <wsdl:input name="CreatePlannedDispensingRequest_2015_06_01_E3">
+            <wsdl:input name="CreatePlannedDispensingRequest_2015_06_01_E6">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2830,10 +2820,10 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UpdatePlannedDispensing_2015_06_01_E3">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#UpdatePlannedDispensing"
+        <wsdl:operation name="UpdatePlannedDispensing_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#UpdatePlannedDispensing"
                             style="document"/>
-            <wsdl:input name="UpdatePlannedDispensingRequest_2015_06_01_E3">
+            <wsdl:input name="UpdatePlannedDispensingRequest_2015_06_01_E6">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2858,14 +2848,14 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPlannedDispensing_2015_06_01_E3">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3#GetPlannedDispensing"
+        <wsdl:operation name="GetPlannedDispensing_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#GetPlannedDispensing"
                             style="document"/>
             <wsdl:input name="GetPlannedDispensingRequest_2015_06_01_E3">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E3">
+            <wsdl:output name="GetPlannedDispensingResponse_2015_06_01_E6">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2992,20 +2982,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetExplicitDoseDispensingCardResponse_2015_06_01_E6">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetPackingOverview_2015_06_01_E6">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#GetPackingOverview"
-                            style="document"/>
-            <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E6">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

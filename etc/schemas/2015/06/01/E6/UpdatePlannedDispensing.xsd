@@ -13,28 +13,23 @@
     <import schemaLocation="importsFrom20150601E3.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"/>
     <include schemaLocation="importsFrom20150601E6.xsd"/>
 
-    <complexType name="DetailedPlannedDispensingType">
+    <complexType name="UpdatePlannedDispensingType">
         <annotation>
-            <documentation xml:lang="en-GB">Details for a planned dispensing for a drugmedication</documentation>
-            <documentation xml:lang="da-DK">Detaljer vedrørende en planlagt dispensering for en given lægemiddelordination</documentation>
+            <documentation xml:lang="en-GB">Element for updating a planned dispensing for a drugmedication</documentation>
+            <documentation xml:lang="da-DK">Opdatering af en planlagt dispensering for en given lægemiddelordination</documentation>
         </annotation>
         <sequence>
         	<element name="Identifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType"/>
         	<element name="Version" type="medicinecard20150601E3:PlannedDispensingVersionType"/>
-			<element name="Created" type="medicinecard20150601:CreatedType"/>
-			<element name="ReportedBy" type="medicinecard20150601:ModificatorType" minOccurs="0"/>
-			<element name="Modified" type="medicinecard20150601:ModifiedType" minOccurs="0"/>
+        	<element name="ModificationMetadata" type="medicinecard20150601:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DoseDispensingCardIdentifier" type="medicinecard20150601E2:DoseDispensingCardIdentifierType" minOccurs="0"/>
-          	<element name="DrugMedication" type="medicinecard20150601E2:DrugMedicationType"/>
-          	<element name="ValidPrescription" type="medicinecard20150601E3:ValidPrescriptionType" minOccurs="0"/>
-          	<element name="PrescribingDoctor" type="medicinecard20150601E6:PrescribingDoctorType" minOccurs="0"/>
-            <element name="ShortName" type="medicinecard20150601E2:DrugShortNameType" minOccurs="0"/>
-            <element name="Description" type="medicinecard20150601E2:DrugDescriptionTextType" minOccurs="0"/>
-            <element name="Warning" type="medicinecard20150601E2:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+        	<element name="DrugMedication" type="medicinecard20150601:DrugMedicationIdentifierAndVersionType"/>
             <element name="Substitution" type="medicinecard20150601E2:DrugSubstitutionType" minOccurs="0"/>
             <element name="AdministrationInstruction" type="medicinecard20150601E2:AdministrationInstructionType" minOccurs="0" />
-            <element name="PlannedAdministration" type="medicinecard20150601E6:PlannedAdministrationType" minOccurs="0"/>
-            <element name="DoseDispensingEndDate" type="medicinecard20150601:DoseDispensingEndDateType" minOccurs="0"/>     
+			<choice minOccurs="0">
+				<element name="PlannedAdministrationAccordingToDrugMedication" type="medicinecard20150601E3:PlannedAdministrationAccordingToDrugMedicationType"/>
+                <element name="PlannedAdministration" type="medicinecard20150601E6:PlannedAdministrationType"/>
+			</choice>
         </sequence>
     </complexType>
 </schema>

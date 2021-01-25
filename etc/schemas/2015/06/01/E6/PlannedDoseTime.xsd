@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" 
+		xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<simpleType name="PlannedDoseTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">The actual time of a planned dosage time</documentation>
+			<documentation xml:lang="da-DK">Tidspunkt for en planlagt dosering</documentation>
+		</annotation>
+		<union memberTypes="medicinecard20150601E6:MorningNoonEveningNightDoseTimeType medicinecard20150601E6:TimeDoseTimeType medicinecard20150601E6:UndefinedPlannedDoseTimeType">
+		</union>
+	</simpleType>
+	<simpleType name="MorningNoonEveningNightDoseTimeType">
+		<restriction base="string">
+			<enumeration value="morning"/>
+			<enumeration value="noon"/>
+			<enumeration value="evening"/>
+			<enumeration value="night"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TimeDoseTimeType">
+		<restriction base="time"/>
+	</simpleType>
+	<simpleType name="UndefinedPlannedDoseTimeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="20"/>
+		</restriction>
+	</simpleType>
+	
+</schema>
