@@ -11,6 +11,7 @@
     <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
     <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
 	<import schemaLocation="importsFrom20150601E3.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E3"/>
+	<include schemaLocation="importsFrom20150601E6.xsd"/>
 
 	<complexType name="PackagedPeriodOverviewType">
 		<annotation>
@@ -25,7 +26,7 @@
 			<element name="EndDate" type="medicinecard20150601:DoseDispensingPeriodEndDateType"/>
 			<element name="PackagedDateTime" type="medicinecard20150601E3:PackagedDateTimeType"/>
 			<element name="ProductionIdentifier" type="medicinecard20150601E2:DoseDispensingProductionIdentifierType" minOccurs="0"/>
-			<element name="PlannedDispensingOverview" type="medicinecard20150601E3:PlannedDispensingOverviewType" maxOccurs="unbounded"/>
+			<element name="PlannedDispensingOverview" type="medicinecard20150601E6:PlannedDispensingOverviewType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

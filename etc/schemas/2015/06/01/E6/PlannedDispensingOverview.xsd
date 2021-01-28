@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E2="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"
+		xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+    <include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<complexType name="PlannedDispensingOverviewType">
+		<annotation>
+			<documentation xml:lang="en-GB">Overview of a packaged dose dispensing periods planned dispensings</documentation>
+			<documentation xml:lang="da-DK">Overblik over en pakket dosisdispenserings periode's planlagte dispenseringer</documentation>
+		</annotation>
+		<sequence>
+			<element name="PlannedDispensingIdentifier" type="medicinecard20150601E2:PlannedDispensingIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
+			<element name="PrescribedDrugIdentifier" type="medicinecard20150601:DrugIdentifierType"/>
+			<element name="PlannedDrugIdentifier" type="medicinecard20150601:DrugIdentifierType" minOccurs="0"/>
+			<element name="ActualDrug" type="medicinecard20150601:DrugType"/>
+			<element name="PackageNumber" type="medicinecard20150601:PackageNumberType" minOccurs="0"/>
+			<element name="LastPeriodDrugIdentifier" type="medicinecard20150601:DrugIdentifierType" minOccurs="0"/>
+			<element name="Amount" type="medicinecard20150601:DoseQuantityType" minOccurs="0"/>
+			<element name="PrescribedBy" type="medicinecard20150601:ModificatorType"/>
+			<element name="Type" type="medicinecard20150601E2:DrugMedicationTypeType"/>
+			<element name="SubstitutionAllowed" type="medicinecard20150601:SubstitutionAllowedType" minOccurs="0"/>
+			<element name="ReimbursementClause" type="medicinecard20150601:ReimbursementClauseType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

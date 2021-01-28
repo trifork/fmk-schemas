@@ -377,6 +377,9 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPackingGroupResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPackingOverviewDetailsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPackingOverviewDetailsResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPackingOverviewResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E6/GetPlannedDispensingHistoryRequest.xsd"/>
@@ -950,6 +953,15 @@
     </wsdl:message>
     <wsdl:message name="GetPackingOverviewResponse_2015_06_01_E6">
         <wsdl:part name="GetPackingOverviewResponse" element="medicinecard20150601E6:GetPackingOverviewResponse"/>
+    </wsdl:message>
+
+
+    <wsdl:message name="GetPackingOverviewDetailsRequest_2015_06_01_E6">
+        <wsdl:part name="GetPackingOverviewDetailsRequest" element="medicinecard20150601E6:GetPackingOverviewDetailsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingOverviewDetailsResponse_2015_06_01_E6">
+        <wsdl:part name="GetPackingOverviewDetailsResponse" element="medicinecard20150601E6:GetPackingOverviewDetailsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UpdatePackingGroupRequest_2015_06_01_E3">
@@ -1590,6 +1602,13 @@
         <wsdl:operation name="GetPackingOverview_2015_06_01_E6">
             <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3" message="tns:GetPackingOverviewRequest_2015_06_01_E3"/>
             <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E6" message="tns:GetPackingOverviewResponse_2015_06_01_E6"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+
+        <wsdl:operation name="GetPackingOverviewDetails_2015_06_01_E6">
+            <wsdl:input name="GetPackingOverviewDetailsRequest_2015_06_01_E6" message="tns:GetPackingOverviewDetailsRequest_2015_06_01_E6"/>
+            <wsdl:output name="GetPackingOverviewDetailsResponse_2015_06_01_E6" message="tns:GetPackingOverviewDetailsResponse_2015_06_01_E6"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2714,6 +2733,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E6">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingOverviewDetails_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#GetPackingOverviewDetails"
+                            style="document"/>
+            <wsdl:input name="GetPackingOverviewDetailsRequest_2015_06_01_E6">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingOverviewDetailsResponse_2015_06_01_E6">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
