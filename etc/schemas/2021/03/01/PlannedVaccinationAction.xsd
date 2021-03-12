@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:ddv20210301="http://vaccinationsregister.dk/schemas/2021/03/01"
+        targetNamespace="http://vaccinationsregister.dk/schemas/2021/03/01"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vaccinationsregister.dk/schemas/2021/03/01">
+	<include schemaLocation="UndefinedModificationAction.xsd"/>
+
+     <simpleType name="PlannedVaccinationActionType">
+        <annotation>
+            <documentation xml:lang="en-GB">The type of modification of a planned vaccination</documentation>
+            <documentation xml:lang="da-DK">Typen af modifikation af en planlagt vaccination</documentation>
+        </annotation>
+        <union memberTypes="ddv20210301:PredefinedPlannedVaccinationModificationActionType ddv20210301:UndefinedModificationActionType"/>
+    </simpleType>
+    <simpleType name="PredefinedPlannedVaccinationModificationActionType">
+        <restriction base="ddv20210301:UndefinedModificationActionType">
+            <enumeration value="SubscribeAndCreatePlannedVaccination"/>
+            <enumeration value="DeleteSubscription"/>
+            <enumeration value="CreateUnsubscription"/>
+            <enumeration value="CreateSinglePlannedVaccination"/>
+            <enumeration value="EffectuatePlannedVaccination"/>
+            <enumeration value="UpdatePlannedVaccination"/>
+            <enumeration value="DeletePlannedVaccination"/>
+        </restriction>
+    </simpleType>
+</schema>

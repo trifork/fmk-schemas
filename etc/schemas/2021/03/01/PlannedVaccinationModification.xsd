@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:ddv20210301="http://vaccinationsregister.dk/schemas/2021/03/01"
+        targetNamespace="http://vaccinationsregister.dk/schemas/2021/03/01"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vaccinationsregister.dk/schemas/2021/03/01">
+	<include schemaLocation="PlannedVaccinationAction.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PlannedVaccinationIdentifier.xsd"/>
+	<include schemaLocation="PlannedVaccinationVersionIdentifier.xsd"/>
+
+   <element name="PlannedVaccinationModification" type="ddv20210301:PlannedVaccinationModificationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Information about a modification of a planned vaccination</documentation>
+            <documentation xml:lang="da-DK">Information omkring en modifikation af en planlagt vaccination</documentation>
+        </annotation>
+    </element>
+    <complexType name="PlannedVaccinationModificationType">
+        <sequence>
+            <element name="Action" type="ddv20210301:PlannedVaccinationActionType"/>
+            <element name="PersonIdentifier" type="ddv20210301:PersonIdentifierType"/>
+            <element name="PlannedVaccinationIdentifier" type="ddv20210301:PlannedVaccinationIdentifierType"/>
+            <element name="PlannedVaccinationVersionIdentifier" type="ddv20210301:PlannedVaccinationVersionIdentifierType"/>
+            <any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+        </sequence>
+    </complexType>
+</schema>

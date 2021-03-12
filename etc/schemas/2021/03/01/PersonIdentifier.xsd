@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:ddv20210301="http://vaccinationsregister.dk/schemas/2021/03/01"
+        targetNamespace="http://vaccinationsregister.dk/schemas/2021/03/01"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vaccinationsregister.dk/schemas/2021/03/01">
+
+    <element name="PersonIdentifier" type="ddv20210301:PersonIdentifierType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element for a person identifier, according to the Danish CPR format.</documentation>
+            <documentation xml:lang="da-DK">Element for et CPR-nummer</documentation>
+        </annotation>
+    </element>
+    <complexType name="PersonIdentifierType">
+        <simpleContent>
+            <extension base="ddv20210301:PersonIdentifierValueType">
+            </extension>
+        </simpleContent>
+    </complexType>
+
+    <simpleType name="PersonIdentifierValueType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="50"/>
+        </restriction>
+    </simpleType>
+</schema>
