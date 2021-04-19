@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5"
+		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		xmlns:medicinecard20150601E5="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+	<import schemaLocation="importsFrom20150601E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E2"/>
+	<include schemaLocation="importsFrom20150601E5.xsd"/>
+
+	<element name="GetPrescribingOrganisationResponse" type="medicinecard20150601E5:GetPrescribingOrganisationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">An element containing the information for sending prescription renewals to a specific organisation</documentation>
+			<documentation xml:lang="da-DK">Et element indeholdende informationer omkring receptfornyende organisation</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="GetPrescribingOrganisationResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
+			<element name="PrescribingOrganisationEntry" type="medicinecard20150601E5:PrescribingOrganisationEntryType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

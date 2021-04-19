@@ -378,6 +378,9 @@
 
             <xs:include schemaLocation="../schemas/2015/06/01/E5/InvalidatePrescriptionRequest.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/GetPrescribingOrganisationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E5/GetPrescribingOrganisationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/06/01/E5/ReopenPrescriptionRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/06/01/E5/StartEffectuationRequest.xsd"/>
@@ -1082,6 +1085,13 @@
         <wsdl:part name="GetPackingOverviewResponse" element="medicinecard20150601E3:GetPackingOverviewResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetPrescribingOrganisationRequest_2015_06_01_E5">
+        <wsdl:part name="GetPrescribingOrganisationRequest" element="medicinecard20150601E5:GetPrescribingOrganisationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPrescribingOrganisationResponse_2015_06_01">
+        <wsdl:part name="GetPrescribingOrganisationResponse" element="medicinecard20150601E5:GetPrescribingOrganisationResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
@@ -1673,6 +1683,12 @@
         <wsdl:operation name="GetPackingOverview_2015_06_01_E3">
             <wsdl:input name="GetPackingOverviewRequest_2015_06_01_E3" message="tns:GetPackingOverviewRequest_2015_06_01_E3"/>
             <wsdl:output name="GetPackingOverviewResponse_2015_06_01_E3" message="tns:GetPackingOverviewResponse_2015_06_01_E3"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescribingOrganisation_2015_06_01_E5">
+            <wsdl:input name="GetPrescribingOrganisationRequest_2015_06_01_E5" message="tns:GetPrescribingOrganisationRequest_2015_06_01_E5"/>
+            <wsdl:output name="GetPrescribingOrganisationResponse_2015_06_01_E5" message="tns:GetPrescribingOrganisationResponse_2015_06_01_E5"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2931,7 +2947,19 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-
+        <wsdl:operation name="GetPrescribingOrganisation_2015_06_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5#GetPrescribingOrganisation"
+                            style="document"/>
+            <wsdl:input name="GetPrescribingOrganisationRequest_2015_06_01_E5">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescribingOrganisationResponse_2015_06_01_E5">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
 
     </wsdl:binding>
 
