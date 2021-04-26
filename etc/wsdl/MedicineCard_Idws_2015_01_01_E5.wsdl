@@ -93,12 +93,6 @@
 
         </xs:schema>
 
-        <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E1" elementFormDefault="qualified">
-
-            <xs:include schemaLocation="../schemas/2015/01/01/E1/GetMedicineCardVersionListResponse.xsd"/>
-
-        </xs:schema>
-
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified">
             <xs:include schemaLocation="../schemas/2015/01/01/E2/OnBehalfOf.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E2/AttachOrDetachPrescriptionMedicationRequest.xsd"/>
@@ -230,6 +224,7 @@
             <xs:include schemaLocation="../schemas/2015/01/01/E5/GetExplicitDoseDispensingCardResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E5/GetMedicineCardVersionResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/GetMedicineCardVersionListResponse.xsd"/>
 
         </xs:schema>
 
@@ -506,8 +501,8 @@
 
 
 
-    <wsdl:message name="GetMedicineCardVersionListResponse_2015_01_01_E1">
-        <wsdl:part name="GetMedicineCardVersionListResponse" element="medicinecard20150101E1:GetMedicineCardVersionListResponse"/>
+    <wsdl:message name="GetMedicineCardVersionListResponse_2015_01_01_E5">
+        <wsdl:part name="GetMedicineCardVersionListResponse" element="medicinecard20150101E5:GetMedicineCardVersionListResponse"/>
     </wsdl:message>
 
 
@@ -838,9 +833,9 @@
 &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E2">
+        <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E5">
             <wsdl:input name="GetMedicineCardVersionListRequest_2015_01_01_E2" message="tns:GetMedicineCardVersionListRequest_2015_01_01_E2"/>
-            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E1" message="tns:GetMedicineCardVersionListResponse_2015_01_01_E1"/>
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E5" message="tns:GetMedicineCardVersionListResponse_2015_01_01_E5"/>
 &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1224,14 +1219,14 @@
         </wsdl:operation>
 
 
-       <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E2">
+       <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E5">
             <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetMedicineCardVersionList"
                             style="document"/>
             <wsdl:input name="GetMedicineCardVersionListRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E1">
+            <wsdl:output name="GetMedicineCardVersionListResponse_2015_01_01_E5">
 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
