@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		xmlns:medicinecard20150101E5="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E5.xsd"/>
+	<element name="GetExpandedPatientOrganisationRelationsResponse" type="medicinecard20150101E5:GetExpandedPatientOrganisationRelationsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document containing the result for searching for patient organisation relations</documentation>
+			<documentation xml:lang="da-DK">Response-dokument der indeholder resultatet af en søgning efter patient organisations relationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetExpandedPatientOrganisationRelationsResponseType">
+		<sequence>
+			<element name="SubOrganisationsIncluded" type="medicinecard20150101E5:SubOrganisationsIncludedType"/>
+			<element name="RelationEntry" type="medicinecard20150101E5:RelationEntryType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreAvailable" type="medicinecard20150101:MoreAvailableType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

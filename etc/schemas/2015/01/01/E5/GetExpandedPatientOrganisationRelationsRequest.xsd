@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		xmlns:medicinecard20150101E5="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E5.xsd"/>
+	<element name="GetExpandedPatientOrganisationRelationsRequest" type="medicinecard20150101E5:GetExpandedPatientOrganisationRelationsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing information to be used for searching for patient organisation relations</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder information til brug i søgning efter patient organisations relationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetExpandedPatientOrganisationRelationsRequestType">
+		<sequence>
+			<element name="OrganisationIdentifier" type="medicinecard20150101:OrganisationIdentifierType"/>
+			<element name="Type" type="medicinecard20150101:PatientOrganisationRelationTypeType"/>
+			<element name="SubOrganisationsIncluded" type="medicinecard20150101E5:SubOrganisationsIncludedType"/>
+			<element name="LastIdentifier" type="medicinecard20150101:PatientOrganisationRelationIdentifierType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
