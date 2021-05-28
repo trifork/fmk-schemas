@@ -401,6 +401,15 @@
             <xs:include schemaLocation="../schemas/2015/06/01/E6/UndoReplacePrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2015/06/01/E6/UndoReplacePrescriptionResponse.xsd"/>
 
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/CreateFocesWhitelistingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/CreateFocesWhitelistingResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/DeleteFocesWhitelistingRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/DeleteFocesWhitelistingResponse.xsd" />
+
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/GetFocesWhitelistingsRequest.xsd" />
+			<xs:include schemaLocation="../schemas/2015/06/01/E6/GetFocesWhitelistingsResponse.xsd" />
+
         </xs:schema>
 
     </wsdl:types>
@@ -1137,6 +1146,30 @@
         <wsdl:part name="GetPrescribingOrganisationResponse" element="medicinecard20150601E5:GetPrescribingOrganisationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="CreateFocesWhitelistingRequest_2015_06_01_E6">
+        <wsdl:part name="CreateFocesWhitelistingRequest" element="medicinecard20150601E6:CreateFocesWhitelistingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateFocesWhitelistingResponse_2015_06_01_E6">
+        <wsdl:part name="CreateFocesWhitelistingResponse" element="medicinecard20150601E6:CreateFocesWhitelistingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteFocesWhitelistingRequest_2015_06_01_E6">
+        <wsdl:part name="DeleteFocesWhitelistingRequest" element="medicinecard20150601E6:DeleteFocesWhitelistingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteFocesWhitelistingResponse_2015_06_01_E6">
+        <wsdl:part name="DeleteFocesWhitelistingResponse" element="medicinecard20150601E6:DeleteFocesWhitelistingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetFocesWhitelistingsRequest_2015_06_01_E6">
+        <wsdl:part name="GetFocesWhitelistingsRequest" element="medicinecard20150601E6:GetFocesWhitelistingsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetFocesWhitelistingsResponse_2015_06_01_E6">
+        <wsdl:part name="GetFocesWhitelistingsResponse" element="medicinecard20150601E6:GetFocesWhitelistingsResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="UndoReplacePrescriptionRequest_2015_06_01_E6">
         <wsdl:part name="UndoReplacePrescriptionRequest" element="medicinecard20150601E6:UndoReplacePrescriptionRequest"/>
     </wsdl:message>
@@ -1774,6 +1807,24 @@
         <wsdl:operation name="GetPrescribingOrganisation_2015_06_01_E5">
             <wsdl:input name="GetPrescribingOrganisationRequest_2015_06_01_E5" message="tns:GetPrescribingOrganisationRequest_2015_06_01_E5"/>
             <wsdl:output name="GetPrescribingOrganisationResponse_2015_06_01_E5" message="tns:GetPrescribingOrganisationResponse_2015_06_01_E5"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateFocesWhitelisting_2015_06_01_E6">
+            <wsdl:input name="CreateFocesWhitelistingRequest_2015_06_01_E6" message="tns:CreateFocesWhitelistingRequest_2015_06_01_E6"/>
+            <wsdl:output name="CreateFocesWhitelistingResponse_2015_06_01_E6" message="tns:CreateFocesWhitelistingResponse_2015_06_01_E6"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteFocesWhitelisting_2015_06_01_E6">
+            <wsdl:input name="DeleteFocesWhitelistingRequest_2015_06_01_E6" message="tns:DeleteFocesWhitelistingRequest_2015_06_01_E6"/>
+            <wsdl:output name="DeleteFocesWhitelistingResponse_2015_06_01_E6" message="tns:DeleteFocesWhitelistingResponse_2015_06_01_E6"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetFocesWhitelistings_2015_06_01_E6">
+            <wsdl:input name="GetFocesWhitelistingsRequest_2015_06_01_E6" message="tns:GetFocesWhitelistingsRequest_2015_06_01_E6"/>
+            <wsdl:output name="GetFocesWhitelistingsResponse_2015_06_01_E6" message="tns:GetFocesWhitelistingsResponse_2015_06_01_E6"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3116,6 +3167,46 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescribingOrganisationResponse_2015_06_01_E5">
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateFocesWhitelisting_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#CreateFocesWhitelisting"
+                            style="document"/>
+            <wsdl:input name="CreateFocesWhitelistingRequest_2015_06_01_E6">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateFocesWhitelistingResponse_2015_06_01_E6">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteFocesWhitelisting_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#DeleteFocesWhitelisting"
+                            style="document"/>
+            <wsdl:input name="DeleteFocesWhitelistingRequest_2015_06_01_E6">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteFocesWhitelistingResponse_2015_06_01_E6">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetFocesWhitelistings_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#GetFocesWhitelistings"
+                            style="document"/>
+            <wsdl:input name="GetFocesWhitelistingsRequest_2015_06_01_E6">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetFocesWhitelistingsResponse_2015_06_01_E6">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

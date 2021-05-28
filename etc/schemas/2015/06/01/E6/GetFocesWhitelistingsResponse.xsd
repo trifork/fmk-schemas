@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+    <include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<element name="GetFocesWhitelistingsResponse" type="medicinecard20150601E6:GetFocesWhitelistingsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for the response fetching foces whitelistings</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for svaret ved hentning af foces whitelistings</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetFocesWhitelistingsResponseType">
+		<sequence>
+			<element name="FocesWhitelisting" type="medicinecard20150601E6:FocesWhitelistingType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

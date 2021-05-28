@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+        xmlns:medicinecard20150601E6="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+    <import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
+    <include schemaLocation="importsFrom20150601E6.xsd"/>
+
+	<element name="GetFocesWhitelistingsRequest" type="medicinecard20150601E6:GetFocesWhitelistingsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to get the foces whitelistings for an organisation</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der henter foces whitelistings for en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetFocesWhitelistingsRequestType">
+		<sequence>
+			<element name="OrganisationIdentifier" type="medicinecard20150601:OrganisationIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>
