@@ -419,6 +419,9 @@
 
 			<xs:include schemaLocation="../schemas/2015/06/01/E6/UpdatePlannedDispensingRequest.xsd" />
 
+            <xs:include schemaLocation="../schemas/2015/06/01/E6/UndoReplacePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/06/01/E6/UndoReplacePrescriptionResponse.xsd"/>
+
         </xs:schema>
 
     </wsdl:types>
@@ -1163,6 +1166,14 @@
         <wsdl:part name="GetPrescribingOrganisationResponse" element="medicinecard20150601E5:GetPrescribingOrganisationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="UndoReplacePrescriptionRequest_2015_06_01_E6">
+        <wsdl:part name="UndoReplacePrescriptionRequest" element="medicinecard20150601E6:UndoReplacePrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoReplacePrescriptionResponse_2015_06_01_E6">
+        <wsdl:part name="UndoReplacePrescriptionResponse" element="medicinecard20150601E6:UndoReplacePrescriptionResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="GetMedicineCard_2015_06_01_E2">
@@ -1790,6 +1801,12 @@
         <wsdl:operation name="GetPrescribingOrganisation_2015_06_01_E5">
             <wsdl:input name="GetPrescribingOrganisationRequest_2015_06_01_E5" message="tns:GetPrescribingOrganisationRequest_2015_06_01_E5"/>
             <wsdl:output name="GetPrescribingOrganisationResponse_2015_06_01_E5" message="tns:GetPrescribingOrganisationResponse_2015_06_01_E5"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoReplacePrescription_2015_06_01_E6">
+            <wsdl:input name="UndoReplacePrescriptionRequest_2015_06_01_E6" message="tns:UndoReplacePrescriptionRequest_2015_06_01_E6"/>
+            <wsdl:output name="UndoReplacePrescriptionResponse_2015_06_01_E6" message="tns:UndoReplacePrescriptionResponse_2015_06_01_E6"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3126,6 +3143,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescribingOrganisationResponse_2015_06_01_E5">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoReplacePrescription_2015_06_01_E6">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E6#UndoReplacePrescription"
+                            style="document"/>
+            <wsdl:input name="UndoReplacePrescriptionRequest_2015_06_01_E6">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoReplacePrescriptionResponse_2015_06_01_E6">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
