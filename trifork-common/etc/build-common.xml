@@ -405,7 +405,7 @@
 	
 	<target name="publish-from-jenkins" depends="resolve-build, source-rev" >
 	  <delete file="target/ivy.xml"/>
-      <ivy:publish artifactspattern="target/[artifact].[ext]" resolver="intranet-internal" pubrevision="${sourcerev}" pubdate="${now}" status="integration" overwrite="false" />
+      <!--<ivy:publish artifactspattern="target/[artifact].[ext]" resolver="intranet-internal" pubrevision="${sourcerev}" pubdate="${now}" status="integration" overwrite="false" /> -->
   </target>
 	
   <target name="source-rev">
