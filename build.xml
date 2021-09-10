@@ -47,7 +47,8 @@
         <os family="unix"/>
 	</condition>
 
-	<target name="publish" depends="clean, all, publish-from-jenkins"/>
+	<!-- Using nexus uploader instead <target name="publish" depends="clean, all, publish-from-jenkins"/> -->
+	<target name="publish" depends="clean, all"/>
 
 	<target name="all" depends="clean, all-idws, all-idws-xua, all-standard, build-admin-jar, build-testtool-jar,  medicinecard_dist_zips"/>
 	<target name="all-standard" depends="resolve-build, organize-schemas, generate, generate-namespace-oracle"/>
