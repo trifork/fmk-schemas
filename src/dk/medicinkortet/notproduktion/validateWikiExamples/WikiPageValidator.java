@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  *
  * Call for with one or more DokuWiki Sitemap pages as argument, for example:
  *
- * java ValidatePagesFromSitemap http://wiki.fmk.netic.dk/doku.php?id=fmk:1.4.6:fmk_1.4.6_snitflade&do=index
+ * java ValidatePagesFromSitemap http://wiki.fmk-teknik.dk/doku.php?id=fmk:1.4.6:fmk_1.4.6_snitflade&do=index
  */
 public class WikiPageValidator {
 
@@ -72,8 +72,8 @@ public class WikiPageValidator {
         // Find page links, and validate each page
         Matcher m = linkPattern.matcher(sitemapHtml);
         while (m.find()) {
-            //http://wiki.fmk.netic.dk/doku.php?do=export_code&id=fmk:1.4.6:bestilling&codeblock=0
-            //http://wiki.fmk.netic.dk/doku.php?do=export_code&amp;id=fmk:1.4.6:bestilling&amp;codeblock=0
+            //http://wiki.fmk-teknik.dk/doku.php?do=export_code&id=fmk:1.4.6:bestilling&codeblock=0
+            //http://wiki.fmk-teknik.dk/doku.php?do=export_code&amp;id=fmk:1.4.6:bestilling&amp;codeblock=0
 
             String xmlRelativeUrl = m.group(1).replace("&amp;", "&");
             String filename = m.group(2);

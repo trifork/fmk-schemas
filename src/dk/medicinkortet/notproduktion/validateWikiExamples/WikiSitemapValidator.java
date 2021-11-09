@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  *   java ValidatePagesFromSitemap <sitemapURL> [<namespace>]
  *
  * Example:
- *   java ValidatePagesFromSitemap http://wiki.fmk.netic.dk/doku.php?id=fmk:1.4.6:fmk_1.4.6_snitflade&do=index http://www.dkma.dk/medicinecard/xml.schema/2015/06/01
+ *   java ValidatePagesFromSitemap http://wiki.fmk-teknik.dk/doku.php?id=fmk:1.4.6:fmk_1.4.6_snitflade&do=index http://www.dkma.dk/medicinecard/xml.schema/2015/06/01
  */
 public class WikiSitemapValidator {
 

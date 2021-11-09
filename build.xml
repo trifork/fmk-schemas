@@ -571,7 +571,7 @@
                 <path location="${standard.target.dir}/gensrc"/>
                 <fileset dir="lib/build" excludes="*gwt*"/>
             </classpath>
-            <arg value="http://wiki.fmk.netic.dk/doku.php?id=fmk:1.4.6:fmk_1.4.6_snitflade&amp;do=index"/> <!-- Sitemap with 1.4.6 context expanded -->
+            <arg value="http://wiki.fmk-teknik.dk/doku.php?id=fmk:1.4.6:fmk_1.4.6_snitflade&amp;do=index"/> <!-- Sitemap with 1.4.6 context expanded -->
             <arg value="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>                       <!-- Namespace for 1.4.6 which will be added to the XML snippets -->
         </java>
     </target>
@@ -585,7 +585,7 @@
                 <path location="${standard.target.dir}/gensrc"/>
                 <fileset dir="lib/build" excludes="*gwt*"/>
             </classpath>
-            <arg value="http://wiki.fmk.netic.dk/doku.php?id=fmk:1.4.4:fmk_1.4.4_snitflade&amp;do=index"/> <!-- Sitemap with 1.4.4 context expanded -->
+            <arg value="http://wiki.fmk-teknik.dk/doku.php?id=fmk:1.4.4:fmk_1.4.4_snitflade&amp;do=index"/> <!-- Sitemap with 1.4.4 context expanded -->
             <arg value="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>                       <!-- Namespace for 1.4.4 which will be added to the XML snippets -->
         </java>
     </target>
@@ -734,7 +734,7 @@
 		    </filterchain>
 		</loadfile>
 		<echo message="Posting to fmk:${dokuwikiid}:feltbeskrivelser"/>
-		<http url="https://wiki.fmk.netic.dk/lib/exe/xmlrpc.php" method="POST" printResponse="true" printResponseHeaders="true" printRequest="false" printRequestHeaders="true" setContentLengthHeader="true">
+		<http url="https://wiki.fmk-teknik.dk/lib/exe/xmlrpc.php" method="POST" printResponse="true" printResponseHeaders="true" printRequest="false" printRequestHeaders="true" setContentLengthHeader="true">
 			<entity value="${xmlrpc}" binary="false"/>
 			<credentials username="${dokuwiki.username}" password="${dokuwiki.password}"/>
 			<headers>
