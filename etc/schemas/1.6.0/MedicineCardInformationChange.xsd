@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="MedicineCardInformationChange" type="mc160:MedicineCardInformationChangeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Generic Version Information, indicating time of the last change of a certain information type</documentation>
+			<documentation xml:lang="da-DK">Versions information, som holder seneste ændings timestamp for en given type af information</documentation>
+		</annotation>
+	</element>
+	<complexType name="MedicineCardInformationChangeType">
+		<sequence>
+			<element name="InformationChangeType" type="mc160:InformationChangeTypeType"/>
+			<element name="ChangeDateTime" type="dateTime" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="InformationChangeTypeType">
+		<union memberTypes="mc160:PredefinedInformationChangeType mc160:UndefinedInformationChangeType"/>
+	</simpleType>
+
+	<simpleType name="UndefinedInformationChangeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PredefinedInformationChangeType">
+		<restriction base="mc160:UndefinedInformationChangeType">
+			<enumeration value="PrescriptionMedicationDateTime"/>
+			<enumeration value="EffectuationDateTime"/>
+			<enumeration value="PrescriptionAttachmentChange"/>
+			<enumeration value="HospitalizationStatusChange"/>
+			<enumeration value="HomeCareSubscriptionChange"/>
+			<enumeration value="DoseDispensingChange"/>
+			<enumeration value="PrescriptionMedicationCreationDateTime"/>
+			<enumeration value="PrescriptionMedicationOrderChangeDateTime"/>
+			<enumeration value="PatientRegistrationChange"/>
+		</restriction>
+	</simpleType>
+
+</schema>
+

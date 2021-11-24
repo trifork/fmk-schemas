@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="DrugMedicationVersion.xsd"/>
+    <include schemaLocation="DoseDispensingWarning.xsd"/>
+    
+    <element name="PrivateDoseDispensedMedication" type="mc160:PrivateDoseDispensedMedicationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dose dispensing medication which has been marked private.</documentation>
+            <documentation xml:lang="da-DK">Dosisdispenseret lægemiddel som er privatmarkeret.</documentation>
+        </annotation>
+    </element>
+    <complexType name="PrivateDoseDispensedMedicationType">
+        <sequence>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="Version" type="mc160:DrugMedicationVersionType" minOccurs="0"/>   <!-- Bør denne være obligatorisk ??? -->
+            <element name="Warning" type="mc160:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

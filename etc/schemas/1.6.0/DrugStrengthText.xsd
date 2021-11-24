@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+	
+	<element name="DrugStrengthText" type="mc160:DrugStrengthTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Drug strength, plain text from (LMS01 field 10), not free text</documentation>
+			<documentation xml:lang="da-DK">Lægemiddelstyrke, klar tekst fra (LMS01 felt 10), ikke fritekst</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugStrengthTextType">
+		<simpleContent>
+			<extension base="mc160:DrugStrengthTextValueType">
+				<attribute name="source" type="mc160:DrugStrengthTextSourceType" use="required"/>
+				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="DrugStrengthTextValueType">
+		<restriction base="string">
+			<maxLength value="20"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DrugStrengthTextSourceType">
+		<union memberTypes="mc160:DrugStrengthTextPredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="DrugStrengthTextPredefinedSourceType">
+		<restriction base="mc160:UndefinedSourceType">
+			<enumeration value="Medicinpriser"/>
+            <enumeration value="Stærke vitaminer m.v."/>
+            <enumeration value="Magistrel"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DosageAnyDay.xsd"/>
+	<include schemaLocation="DosageDay.xsd"/>
+	<include schemaLocation="DosageIsNotIterated.xsd"/>
+	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+	<include schemaLocation="DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DosageTimesIterationInterval.xsd"/>
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
+	<include schemaLocation="DosageSupplementaryText.xsd"/>
+	<include schemaLocation="DosageTranslation.xsd"/>
+	
+	<element name="DosageStructureForResponse" type="mc160:DosageStructureForResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageStructureForResponseType">
+		<sequence>
+			<choice>
+				<element name="IterationInterval" type="mc160:DosageTimesIterationIntervalType"/>
+				<element name="NotIterated" type="mc160:DosageIsNotIteratedType"/>
+			</choice>
+			<element name="StartDate" type="mc160:DosageTimesStartDateType"/>
+			<choice>
+				<element name="EndDate" type="mc160:DosageTimesEndDateType"/>
+				<element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+			<element name="SupplementaryText" type="mc160:DosageSupplementaryTextType" minOccurs="0"/>
+			<choice>
+				<!-- A convoluted construction for either AnyDay or one or more Day, or both, bot not neither -->
+				<sequence>
+					<element name="AnyDay" type="mc160:DosageAnyDayType"/>
+					<element name="Day" type="mc160:DosageDayType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<element name="Day" type="mc160:DosageDayType" maxOccurs="unbounded"/>
+			</choice>
+			<element name="DosageTranslation" type="mc160:DosageTranslationType"/>
+		</sequence>
+	</complexType>
+</schema>

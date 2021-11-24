@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="StartedEffectuationOfDoseDispensingPeriod.xsd"/>
+
+	<element name="StartEffectuationOfDoseDispensingPeriodResponse" type="mc160:StartEffectuationOfDoseDispensingPeriodResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a for a request to start effectuation for an entire DD period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en request som påbegynder udlevering for alt i en DD periode</documentation>
+		</annotation>
+	</element>
+	<complexType name="StartEffectuationOfDoseDispensingPeriodResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="StartedEffectuationOfDoseDispensingPeriod" type="mc160:StartedEffectuationOfDoseDispensingPeriodType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

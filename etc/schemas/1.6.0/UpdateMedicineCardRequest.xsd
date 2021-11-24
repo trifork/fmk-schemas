@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="SetMedicineCardReviewed.xsd"/>
+	<include schemaLocation="SetMedicineCardNotReviewed.xsd"/>
+	<include schemaLocation="CreateDrugMedication.xsd"/>
+	<include schemaLocation="UpdateDrugMedication.xsd"/>
+	<include schemaLocation="WithdrawDrugMedication.xsd"/>
+	<include schemaLocation="UnwithdrawDrugMedication.xsd"/>
+	<include schemaLocation="PauseDrugMedication.xsd"/>
+	<include schemaLocation="UnpauseDrugMedication.xsd"/>
+	<include schemaLocation="CreatePrescription.xsd"/>
+	<include schemaLocation="AttachPrescription.xsd"/>
+	<include schemaLocation="DetachPrescription.xsd"/>
+	<include schemaLocation="MarkPrescriptionDeprecated.xsd"/>
+	<include schemaLocation="UnmarkPrescriptionDeprecated.xsd"/>
+	<include schemaLocation="CancelPrescription.xsd"/>
+	<include schemaLocation="CreateEffectuationOnDrugMedication.xsd"/>
+	<include schemaLocation="DeleteEffectuation.xsd"/>
+
+	<element name="UpdateMedicineCardRequest" type="mc160:UpdateMedicineCardRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a batch request to update a medicine card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en batchforespørgsel for at opdatere et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="UpdateMedicineCardRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
+			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<sequence maxOccurs="unbounded">
+				<choice minOccurs="0">
+					<element name="SetMedicineCardReviewed" type="mc160:SetMedicineCardReviewedType"/>
+					<element name="SetMedicineCardNotReviewed" type="mc160:SetMedicineCardNotReviewedType"/>
+				</choice>
+				<element name="CreateDrugMedication" type="mc160:CreateDrugMedicationType" minOccurs="0"/>
+				<element name="UpdateDrugMedication" type="mc160:UpdateDrugMedicationType" minOccurs="0"/>
+				<element name="WithdrawDrugMedication" type="mc160:WithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="UnwithdrawDrugMedication" type="mc160:UnwithdrawDrugMedicationType" minOccurs="0"/>
+				<element name="PauseDrugMedication" type="mc160:PauseDrugMedicationType" minOccurs="0"/>
+				<element name="UnpauseDrugMedication" type="mc160:UnpauseDrugMedicationType" minOccurs="0"/>
+				<element name="CreatePrescriptionMedication" type="mc160:CreatePrescriptionType" minOccurs="0"/>
+				<element name="AttachPrescriptionMedication" type="mc160:AttachPrescriptionType" minOccurs="0"/>
+				<element name="DetachPrescriptionMedication" type="mc160:DetachPrescriptionType" minOccurs="0"/>
+				<element name="MarkPrescriptionMedicationDeprecated" type="mc160:MarkPrescriptionDeprecatedType" minOccurs="0"/>
+				<element name="UnmarkPrescriptionMedicationDeprecated" type="mc160:UnmarkPrescriptionDeprecatedType" minOccurs="0"/>
+				<element name="CancelPrescriptionMedication" type="mc160:CancelPrescriptionType" minOccurs="0"/>
+				<element name="CreateEffectuationOnDrugMedication" type="mc160:CreateEffectuationOnDrugMedicationType" minOccurs="0"/>
+				<element name="DeleteEffectuation" type="mc160:DeleteEffectuationType" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

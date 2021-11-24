@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DoseDispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DoseDispensingCardEntry.xsd"/>
+
+    <complexType name="DoseDispensingCardHistoryType">
+        <annotation>
+            <documentation xml:lang="en-GB">Outer container element for historical versions of a dose dispensing card</documentation>
+            <documentation xml:lang="da-DK">Ydre container-element for historiske versioner af et dosisdispenseringskort</documentation>
+        </annotation>
+        <sequence>
+            <element name="Identifier" type="mc160:DoseDispensingCardIdentifierType"/>
+            <element name="DoseDispensingCardEntry" type="mc160:DoseDispensingCardEntryType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

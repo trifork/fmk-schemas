@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="CurrentDoseDispensingPeriodFlag.xsd"/>
+	<include schemaLocation="CurrentAndPendingDoseDispensingPeriodsFlag.xsd"/>
+	<include schemaLocation="PendingDoseDispensingPeriodsFlag.xsd"/>
+	<include schemaLocation="IgnoreDoseDispensingPeriodsFlag.xsd"/>
+	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DoseDispensingRequestedDate.xsd"/>
+	<include schemaLocation="IncludeDetailedSpecificationFlag.xsd"/>
+
+	<element name="GetExplicitDoseDispensingCardRequest" type="mc160:GetExplicitDoseDispensingCardRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a requesting explicit dose dispensing card(s) for a patient</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter eksplisitte dosisdispenseringskort for en patient</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetExplicitDoseDispensingCardRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="RequestedPeriod">
+				<complexType>
+					<choice>
+						<element name="CurrentPeriod" type="mc160:CurrentDoseDispensingPeriodFlagType"/>
+						<element name="CurrentAndPendingPeriods" type="mc160:CurrentAndPendingDoseDispensingPeriodsFlagType"/>
+						<element name="PendingPeriods" type="mc160:PendingDoseDispensingPeriodsFlagType"/>
+						<element name="IgnorePeriods" type="mc160:IgnoreDoseDispensingPeriodsFlagType"/>
+						<element name="Identifier" type="mc160:DoseDispensingPeriodIdentifierType"/>
+						<element name="RequestedDate" type="mc160:DoseDispensingRequestedDateType"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="IncludeDetailedSpecification" type="mc160:IncludeDetailedSpecificationFlagType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

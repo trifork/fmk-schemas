@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="CreateNewDrugMedication.xsd"/>
+	<include schemaLocation="DosageStructuresForRequest.xsd"/>
+
+	<element name="AdjustDosageChangeRequest" type="mc160:AdjustDosageChangeRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request which adjusts the dosage dates for an upcoming update of a drug medication</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der justerer doseringsdatoerne for en kommende opdatering af en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="AdjustDosageChangeRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+				<element name="CreateNewDrugMedication" type="mc160:CreateNewDrugMedicationType"/>
+			</choice>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DosageStructures" type="mc160:DosageStructuresForRequestType"/>
+		</sequence>
+	</complexType>
+</schema>

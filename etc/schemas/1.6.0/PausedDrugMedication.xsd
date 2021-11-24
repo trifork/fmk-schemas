@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationVersion.xsd"/>
+	
+	<element name="PausedDrugMedication" type="mc160:PausedDrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element with IDs returned when a drug prescription has been paused using a batch request</documentation>
+			<documentation xml:lang="da-DK">Element med IDer returneret når en lægemiddelinformation er blevet pauseret via en batchforespørgsel</documentation>
+		</annotation>
+	</element>
+	<complexType name="PausedDrugMedicationType">
+		<sequence>
+			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="Version" type="mc160:DrugMedicationVersionType"/>
+		</sequence>
+	</complexType>
+</schema>

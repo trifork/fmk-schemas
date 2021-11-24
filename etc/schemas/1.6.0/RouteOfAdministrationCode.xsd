@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+	
+	<element name="RouteOfAdministrationCode" type="mc160:RouteOfAdministrationCodeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates the code of the formulations route of administration. Sourcec: "Taksten" LMS11 field 1</documentation>
+			<documentation xml:lang="da-DK">Angiver kode for medicinens administrationsvej. Kilde: Taksten, LMS11 felt 1</documentation>
+		</annotation>
+	</element>
+	<complexType name="RouteOfAdministrationCodeType">
+		<simpleContent>
+			<extension base="mc160:RouteOfAdministrationCodeValueType">
+				<attribute name="source" type="mc160:RouteOfAdministrationSourceType" use="required"/>
+				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="RouteOfAdministrationCodeValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="RouteOfAdministrationSourceType">
+		<union memberTypes="mc160:RouteOfAdministrationPredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="RouteOfAdministrationPredefinedSourceType">
+		<restriction base="mc160:UndefinedSourceType">
+			<enumeration value="Medicinpriser"/>
+			<enumeration value="Magistrel"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="Modified.xsd"/>
+	<include schemaLocation="Reviewed.xsd"/>
+	<include schemaLocation="NotReviewed.xsd"/>
+	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
+	<include schemaLocation="PatientOrganisationRelation.xsd"/>
+	<include schemaLocation="PrivateDrugMedication.xsd"/>
+	<include schemaLocation="DrugMedication.xsd"/>
+	<include schemaLocation="InvalidDrugMedication.xsd"/>
+	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="InvalidPrescription.xsd"/>
+	<include schemaLocation="OrderedPrescriptionsExist.xsd"/>
+	<include schemaLocation="DoseDispensingOverview.xsd"/>
+
+	<complexType name="MedicineCardType">
+		<annotation>
+			<documentation xml:lang="en-GB">Virtual card where a patient's medications are documented</documentation>
+			<documentation xml:lang="da-DK">Virtuelt kort hvori en patients medicineringer dokumenteres</documentation>
+		</annotation>
+		<sequence>
+			<element name="Patient" type="mc160:PatientType"/>
+			<element name="Version" type="mc160:MedicineCardVersionType"/>
+			<element name="PreviousVersion" type="mc160:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NextVersion" type="mc160:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
+			<element name="Reviewed" type="mc160:ReviewedType" minOccurs="0" />
+			<element name="NotReviewed" type="mc160:NotReviewedType" minOccurs="0"/>
+			<element name="IsInvalid" type="mc160:MedicineCardIsInvalidType" minOccurs="0"/>
+			<element name="PatientOrganisationRelation" type="mc160:PatientOrganisationRelationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedicationWithNegativeConsent" type="mc160:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedication" type="mc160:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidDrugMedication" type="mc160:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="mc160:PrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidPrescriptionMedication" type="mc160:InvalidPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="OrderedPrescriptionMedicationsExist" type="mc160:OrderedPrescriptionsExistType" minOccurs="0"/>
+			<element name="DoseDispensingSummary" type="mc160:DoseDispensingOverviewType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

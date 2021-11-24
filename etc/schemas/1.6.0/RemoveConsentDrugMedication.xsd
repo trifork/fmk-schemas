@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	
+	<element name="RemoveConsentDrugMedication" type="mc160:RemoveConsentDrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request to mark a drugmedication with negative consent</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel der markerer en lægemiddelordination som privatmarkeret</documentation>
+		</annotation>
+	</element>
+	<complexType name="RemoveConsentDrugMedicationType">
+		<sequence>
+			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

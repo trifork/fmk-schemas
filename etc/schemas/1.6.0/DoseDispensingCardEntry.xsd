@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="Created.xsd"/>
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="Modified.xsd"/>
+    <include schemaLocation="DoseDispensingCardDescription.xsd"/>
+    <include schemaLocation="Delivery.xsd"/>
+    <include schemaLocation="PackingGroupIdentifier.xsd"/>
+    <include schemaLocation="DoseDispensingPeriodDuration.xsd"/>
+    <include schemaLocation="DoseDispensableUnitLabel.xsd"/>
+
+    <complexType name="DoseDispensingCardEntryType">
+        <annotation>
+            <documentation xml:lang="en-GB">Details for a dose dispensing card</documentation>
+            <documentation xml:lang="da-DK">Detaljer for et dosisdispenseringskort</documentation>
+        </annotation>
+        <sequence>
+			<element name="Created" type="mc160:CreatedType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
+        	<element name="Description" type="mc160:DoseDispensingCardDescriptionType"/>
+            <element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
+            <element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType" minOccurs="0"/>
+            <element name="OrderedAtPharmacy" type="mc160:OrganisationType" />
+            <element name="PackedAtOrganisation" type="mc160:OrganisationType" />
+            <element name="NormalPeriodDuration" type="mc160:DoseDispensingPeriodDurationType" minOccurs="0"/>
+            <element name="DoseDispensableUnitLabel" type="mc160:DoseDispensableUnitLabelType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

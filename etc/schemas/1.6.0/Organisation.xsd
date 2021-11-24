@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="AddressLine.xsd"/>
+	<include schemaLocation="EmailAddress.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="OrganisationName.xsd"/>
+	<include schemaLocation="OrganisationType.xsd"/>
+	<include schemaLocation="TelephoneNumber.xsd"/>
+
+	<element name="Organisation" type="mc160:OrganisationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Describes an organisation.</documentation>
+			<documentation xml:lang="da-DK">Beskriver en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="OrganisationType">
+		<sequence>
+			<?filter nsf="ignore"?>
+			<element name="Name" type="mc160:OrganisationNameType"/>
+			<?filter nsf="ignore"?>
+			<element name="AddressLine" type="mc160:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<?filter nsf="ignore"?>
+			<element name="TelephoneNumber" type="mc160:TelephoneNumberType" minOccurs="0"/>
+			<?filter nsf="ignore"?>
+			<element name="EmailAddress" type="mc160:EmailAddressType" minOccurs="0"/>
+			<element name="Type" type="mc160:OrganisationTypeType"/>
+			<element name="Identifier" type="mc160:OrganisationIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="PlannedDoseTime.xsd"/>
+	<include schemaLocation="DispensableUnitSequenceNumber.xsd"/>
+	<include schemaLocation="DoseQuantity.xsd"/>
+
+	<complexType name="PlannedDoseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of a planned dose element, when and how much</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en planlagt dosis på et givet stidspunkt, hvornår og hvor meget</documentation>
+		</annotation>
+		<sequence>
+			<element name="Time" type="mc160:PlannedDoseTimeType" minOccurs="0"/>
+            <element name="SequenceNumber" type="mc160:DispensableUnitSequenceNumberType" minOccurs="0" />
+			<element name="Quantity" type="mc160:DoseQuantityType"/>
+		</sequence>
+	</complexType>
+</schema>

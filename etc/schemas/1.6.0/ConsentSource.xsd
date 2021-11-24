@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<attribute name="ConsentSource" type="mc160:ConsentSourceType">
+		<annotation>
+			<documentation xml:lang="en-GB">Specifies who provided the consent</documentation>
+			<documentation xml:lang="da-DK">Angiver hvem der har givet samtykket</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="ConsentSourceType">
+		<union memberTypes="mc160:PredefinedConsentSourceType mc160:UndefinedConsentSourceType"/>
+	</simpleType>
+	<simpleType name="PredefinedConsentSourceType">
+		<restriction base="mc160:UndefinedConsentSourceType">
+			<enumeration value="User"/>
+        </restriction>
+	</simpleType>
+	<simpleType name="UndefinedConsentSourceType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

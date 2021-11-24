@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifierAndVersion.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifierAndDateTime.xsd"/>
+	<include schemaLocation="IncludePrescriptions.xsd"/>
+	<include schemaLocation="IncludeEffectuations.xsd"/>
+
+	<element name="GetDrugMedicationRequest" type="mc160:GetDrugMedicationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a drug medication</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetDrugMedicationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<element name="Identifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IdentifierAndVersion" type="mc160:DrugMedicationIdentifierAndVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IdentifierAndDateTime" type="mc160:DrugMedicationIdentifierAndDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IncludePrescriptions" type="mc160:IncludePrescriptionsType"/>
+			<element name="IncludeEffectuations" type="mc160:IncludeEffectuationsType"/>			
+		</sequence>
+	</complexType>
+</schema>

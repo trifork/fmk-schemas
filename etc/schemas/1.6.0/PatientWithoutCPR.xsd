@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="SimplePersonWithoutCPR.xsd"/>
+	<include schemaLocation="Address.xsd"/>
+	
+	<element name="PatientWithoutCPR" type="mc160:PatientWithoutCPRType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a patient without known CPR</documentation>
+			<documentation xml:lang="da-DK">Patientoplysninger for en person uden kendt CPR</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientWithoutCPRType">
+		<sequence>
+			<element name="Person" type="mc160:SimplePersonWithoutCPRType"/>
+			<element name="Address" type="mc160:AddressType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

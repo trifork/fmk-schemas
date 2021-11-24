@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="FollowUpDates.xsd"/>
+	<include schemaLocation="Pause.xsd"/>
+	<include schemaLocation="DrugMedicationType.xsd"/>
+	<include schemaLocation="HasNegativeConsent.xsd"/>
+	<include schemaLocation="CreateOrUpdateDrugMedicationBeginEndDate.xsd"/>
+	<include schemaLocation="Indication.xsd"/>
+	<include schemaLocation="RouteOfAdministration.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="DosageForRequest.xsd"/>
+	<include schemaLocation="SubstitutionAllowed.xsd"/>
+	<include schemaLocation="CreateEffectuation.xsd"/>
+	<include schemaLocation="CreatePrescription.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="ReimbursementClause.xsd"/>
+
+	<complexType name="CreateDrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Instructions of which drug to use, how much to give (drug dosage), for how long (startdate and enddate), how to administrate it and motivation (indication)</documentation>
+			<documentation xml:lang="da-DK">Anvisning af hvilken medicin der skal anvendes (lægemiddel) hvor meget der skal gives (lægemiddeldosering), hvor længe (startdato og slutdato), hvordan den skal tilføres (administrationsvej) og hvorfor (indikation)</documentation>
+		</annotation>
+		<sequence>
+			<element name="ParentIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
+			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
+			<element name="Pause" type="mc160:PauseType" minOccurs="0"/>
+			<element name="Type" type="mc160:DrugMedicationTypeType" minOccurs="0"/>
+			<element name="HasNegativeConsent" type="mc160:HasNegativeConsentType" minOccurs="0"/>
+			<element name="BeginEndDate" type="mc160:CreateOrUpdateDrugMedicationBeginEndDateType"/>
+			<element name="Indication" type="mc160:IndicationType"/>
+			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
+			<element name="Drug" type="mc160:DrugType"/>
+			<element name="Dosage" type="mc160:DosageForRequestType"/>
+			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
+			<element name="Effectuation" type="mc160:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="CreatePrescription" type="mc160:CreatePrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AttachPrescription" type="mc160:PrescriptionIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="ReimbursementClause" type="mc160:ReimbursementClauseType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

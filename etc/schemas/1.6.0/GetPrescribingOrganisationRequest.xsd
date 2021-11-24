@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="PrescribingOrganisationRetrievalContext.xsd"/>
+
+	<element name="GetPrescribingOrganisationRequest" type="mc160:GetPrescribingOrganisationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">An element for requesting the organisation to target for renewals for a given prescription</documentation>
+			<documentation xml:lang="da-DK">Et element til forespørgsel efter en receptfornyende organisation for en given recept</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPrescribingOrganisationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
+				<element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType" maxOccurs="unbounded"/>
+			</choice>
+			<element name="Context" type="mc160:PrescribingOrganisationRetrievalContextType"/>
+		</sequence>
+	</complexType>
+</schema>

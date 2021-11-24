@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationCreatedDateTime.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentStartDate.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentStartedPreviously.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentEndDate.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentEndingUndetermined.xsd"/>
+
+	<element name="CreateOrUpdateDrugMedicationBeginEndDate" type="mc160:CreateOrUpdateDrugMedicationBeginEndDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates a periode where the drug medication is active</documentation>
+			<documentation xml:lang="da-DK">Angiver en periode hvor lægemiddelordinationen gælder</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateOrUpdateDrugMedicationBeginEndDateType">
+		<sequence>
+			<choice>
+				<element name="TreatmentStartDate" type="mc160:DrugMedicationTreatmentStartDateType"/>
+				<element name="TreatmentStartedPreviously" type="mc160:DrugMedicationTreatmentStartedPreviouslyType"/>
+			</choice>
+			<choice>
+				<element name="TreatmentEndDate" type="mc160:DrugMedicationTreatmentEndDateType"/>
+				<element name="TreatmentEndingUndetermined" type="mc160:DrugMedicationTreatmentEndingUndeterminedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

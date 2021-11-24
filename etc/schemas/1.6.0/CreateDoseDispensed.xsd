@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <include schemaLocation="DoseQuantity.xsd"/>
+    <include schemaLocation="DosageQuantityUnitText.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="DoseDispensing.xsd"/>
+    
+    <complexType name="CreateDoseDispensedType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dose dispensed effectuation details for creating pharmacy effectuations</documentation>
+            <documentation xml:lang="da-DK">Detaljer for oprettelse af dosisdispenseret apotekseffektuering</documentation>
+        </annotation>
+        <sequence>
+            <element name="DoseQuantity" type="mc160:DoseQuantityType"/>
+            <element name="DosageQuantityUnitText" type="mc160:DosageQuantityUnitTextType"/>
+            <element name="SubstitutedDrug" type="mc160:DrugType" minOccurs="0"/>
+            <element name="CurrentDoseDispensing" type="mc160:DoseDispensingType" minOccurs="0"/>
+            <element name="NextDoseDispensing" type="mc160:DoseDispensingType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

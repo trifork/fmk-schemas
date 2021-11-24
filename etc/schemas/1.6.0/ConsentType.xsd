@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<attribute name="ConsentType" type="mc160:ConsentTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Defines consent types</documentation>
+			<documentation xml:lang="da-DK">Definerer typer af samtykke</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="ConsentTypeType">
+		<union memberTypes="mc160:PredefinedConsentTypeType mc160:UndefinedConsentTypeType"/>
+	</simpleType>
+	<simpleType name="PredefinedConsentTypeType">
+		<restriction base="mc160:UndefinedConsentTypeType">
+			<enumeration value="PrivateDataConsentGiven"/>
+			<enumeration value="PrivateDataConsentOverridden"/>
+			<enumeration value="MedicineReviewConsent"/>
+        </restriction>
+	</simpleType>
+	<simpleType name="UndefinedConsentTypeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

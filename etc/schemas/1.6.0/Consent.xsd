@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="ConsentDate.xsd"/>
+	<include schemaLocation="ConsentType.xsd"/>
+	<include schemaLocation="ConsentSource.xsd"/>
+	<include schemaLocation="Content.xsd"/>
+	
+	<element name="Consent" type="mc160:ConsentType">
+		<annotation>
+			<documentation xml:lang="en-GB">Specifies consent to apply for this request</documentation>
+			<documentation xml:lang="da-DK">Angiver samtykke der knytter sig til denne forespørgsel</documentation>
+		</annotation>
+	</element>
+	
+	<complexType name="ConsentType">
+		<complexContent>
+			<extension base="mc160:ConsentValueType">
+				<attribute name="source" type="mc160:ConsentSourceType" use="required"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="ConsentValueType">
+		<sequence>
+			<element name="FromDate" type="mc160:ConsentDateType" minOccurs="0"/>
+			<element name="ToDate" type="mc160:ConsentDateType" minOccurs="0"/>
+			<element name="ConsentType" type="mc160:ConsentTypeType" />
+			<element name="Content" type="mc160:ContentType" />
+		</sequence>
+	</complexType>
+
+</schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="AuthorisationIdentifier.xsd"/>
+	<include schemaLocation="AuthorisedHealthcareProfessionalName.xsd"/>
+	<include schemaLocation="SpecialityCode.xsd"/>
+
+	<element name="AuthorisedHealthcareProfessional" type="mc160:AuthorisedHealthcareProfessionalType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains authorisation number and name of an authorised healthchare professional</documentation>
+			<documentation xml:lang="da-DK">Indeholder autorsationsnummer og navn på en autoriseret sundhedsperson</documentation>
+		</annotation>
+	</element>
+	<complexType name="AuthorisedHealthcareProfessionalType">
+		<sequence>
+			<element name="AuthorisationIdentifier" type="mc160:AuthorisationIdentifierType"/>
+			<?filter nsf="ignore"?>
+			<element name="Name" type="mc160:AuthorisedHealthcareProfessionalNameType"/>
+			<element name="SpecialityCode" type="mc160:SpecialityCodeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

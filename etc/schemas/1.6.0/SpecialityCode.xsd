@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+
+	<element name="SpecialityCode" type="mc160:SpecialityCodeType">
+		<annotation>
+			<documentation xml:lang="en-GB">The doctors speciality code according to the pricelist's table LMS19</documentation>
+			<documentation xml:lang="da-DK">Lægens specialekode ifølge takstens LMS19</documentation>
+		</annotation>
+	</element>
+	<complexType name="SpecialityCodeType">
+		<simpleContent>
+			<extension base="mc160:SpecialityCodeValueType">
+				<attribute name="source" type="mc160:SpecialityCodeSourceType" use="required"/>
+				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="SpecialityCodeValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="5"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SpecialityCodeSourceType">
+		<union memberTypes="mc160:SpecialityCodePredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="SpecialityCodePredefinedSourceType">
+		<restriction base="mc160:UndefinedSourceType">
+			<enumeration value="Medicinpriser"/>
+		</restriction>
+	</simpleType>
+</schema>

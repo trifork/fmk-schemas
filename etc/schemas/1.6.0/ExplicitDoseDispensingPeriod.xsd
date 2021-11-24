@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DoseDispensingStatus.xsd"/>
+    <include schemaLocation="DoseDispensingPeriodStartDate.xsd"/>
+    <include schemaLocation="DoseDispensingPeriodEndDate.xsd"/>
+    <include schemaLocation="DoseDispensingDeadline.xsd"/>
+    <include schemaLocation="PackagedDateTime.xsd"/>
+    <include schemaLocation="DoseDispensedEffectuationDate.xsd"/>
+    <include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
+    <include schemaLocation="DiscardedByDateTime.xsd"/>
+    <include schemaLocation="DoseDispensingProductionIdentifier.xsd"/>
+    <include schemaLocation="AcutePacking.xsd"/>
+    <include schemaLocation="PrivateDoseDispensedMedication.xsd"/>
+    <include schemaLocation="ExplicitPlannedDispensing.xsd"/>
+    <include schemaLocation="DoseDispensingDetailedSpecification.xsd"/>
+
+    <element name="ExplicitDoseDispensingPeriod" type="mc160:ExplicitDoseDispensingPeriodType">
+        <annotation>
+            <documentation xml:lang="en-GB">Explicit Dose dispensing period</documentation>
+            <documentation xml:lang="da-DK">Explicit Dosisdispenseringsperiode</documentation>
+        </annotation>
+    </element>
+    <complexType name="ExplicitDoseDispensingPeriodType">
+        <sequence>
+            <element name="Identifier" type="mc160:DoseDispensingPeriodIdentifierType"/>
+            <element name="Status" type="mc160:DoseDispensingStatusType"/>
+            <element name="StartDate" type="mc160:DoseDispensingPeriodStartDateType"/>
+            <element name="EndDate" type="mc160:DoseDispensingPeriodEndDateType"/>
+            <element name="Deadline" type="mc160:DoseDispensingDeadlineType"/>
+            <element name="PackagedDateTime" type="mc160:PackagedDateTimeType" minOccurs="0" />
+            <element name="EffectuationDate" type="mc160:DoseDispensedEffectuationDateType" minOccurs="0"/>
+            <element name="ExpectedDelivery" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0" />
+            <element name="DiscardedByDateTime" type="mc160:DiscardedByDateTimeType" minOccurs="0"/>
+            <element name="ProductionIdentifier" type="mc160:DoseDispensingProductionIdentifierType" minOccurs="0"/>
+            <element name="AcutePacking" type="mc160:AcutePackingType" minOccurs="0"/>
+            <element name="PrivatePlannedDispensing" type="mc160:PrivateDoseDispensedMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="PlannedDispensing" type="mc160:ExplicitPlannedDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="DetailedSpecification" type="mc160:DoseDispensingDetailedSpecificationType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

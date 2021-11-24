@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="DosageDayNumber" type="mc160:DosageDayNumberType">
+		<annotation>
+			<documentation xml:lang="en-GB">Day number in the iteration interval for the dosage time</documentation>
+			<documentation xml:lang="da-DK">Dag nummer i iterationsintervallet for doseringstidspunktet</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DosageDayNumberType">
+		<restriction base="int">
+			<minInclusive value="1"/>
+		</restriction>
+	</simpleType>
+</schema>

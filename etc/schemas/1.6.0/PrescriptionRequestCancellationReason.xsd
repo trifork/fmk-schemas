@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="PrescriptionRequestCancellationReasonType" type="mc160:PrescriptionRequestCancellationReasonType">
+		<annotation>
+			<documentation xml:lang="en-GB">Reason why prescription request was cancelled</documentation>
+			<documentation xml:lang="da-DK">Årsag til afvisning af receptanmodning (afvisningsårsag)</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PrescriptionRequestCancellationReasonType">
+		<union memberTypes="mc160:PredefinedPrescriptionRequestCancellationReasonType mc160:UndefinedPrescriptionRequestCancellationReasonType"/>
+	</simpleType>
+	<simpleType name="PredefinedPrescriptionRequestCancellationReasonType">
+		<restriction base="mc160:UndefinedPrescriptionRequestCancellationReasonType">
+			<enumeration value="Behandlingen er afsluttet"/>
+			<enumeration value="Receptfornyelsen kræver konsultation"/>
+            <enumeration value="Kontakt egen læge hvis recept ønskes"/>
+            <enumeration value="Recepten skal fornys der, hvor du går til kontrol"/>
+            <enumeration value="Recepten skal fornys af den læge, der sidst udskrev medicinen"/>
+            <enumeration value="Receptanmodning fortrudt"/>
+			<enumeration value="Fornyes ikke. Der findes allerede en gyldig recept"/>
+			<enumeration value="Det er for tidligt at få en ny recept"/>
+			<enumeration value="Medicinen udleveres fra hospital"/>
+			<enumeration value="Medicinen kan købes i håndkøb"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedPrescriptionRequestCancellationReasonType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

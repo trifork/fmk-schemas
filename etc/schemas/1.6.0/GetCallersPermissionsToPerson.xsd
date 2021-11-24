@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	
+	<element name="GetCallersPermissionsToPerson" type="mc160:GetCallersPermissionsToPersonType">
+		<annotation>
+			<documentation xml:lang="da-DK">Forespørgsel på rettigheder til person</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetCallersPermissionsToPersonType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>

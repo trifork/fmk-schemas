@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+
+	<element name="DrugIdentifier" type="mc160:DrugIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Unique drug identification. For definition in the DKMA price list LMS01 field 1. The format is TTTTNNNNNYY (T=type of drug, N=number, Y=year), e.g. 28101606385</documentation>
+			<documentation xml:lang="da-DK">Unik identifikation af lægemiddel. For lægemidler i LMS takst LMS01 felt 1. Formatet er TTTTNNNNNYY (T=type af lægemiddel, N=nummer, Y=år), f.eks. 28101606385</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugIdentifierType">
+		<simpleContent>
+			<extension base="mc160:DrugIdentifierValueType">
+				<attribute name="source" type="mc160:DrugIdentifierSourceType" use="required"/>
+				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="DrugIdentifierValueType">
+		<restriction base="long">
+			<minInclusive value="10000000000"/>
+			<maxExclusive value="99999999999"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="DrugIdentifierSourceType">
+		<union memberTypes="mc160:DrugIdentifierPredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="DrugIdentifierPredefinedSourceType">
+		<restriction base="mc160:UndefinedSourceType">
+			<enumeration value="Medicinpriser"/>
+			<enumeration value="Stærke vitaminer m.v."/>
+			<enumeration value="Tilknyttede behandlinger"/>
+			<enumeration value="Local"/>
+			<enumeration value="Magistrel"/>
+		</restriction>
+	</simpleType>
+</schema>

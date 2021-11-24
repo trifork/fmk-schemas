@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+
+
+	<simpleType name="AdministrationInstructionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Instruction for the medications in a dose dispensable unit (bag)</documentation>
+			<documentation xml:lang="da-DK">Indtagelsesvejledning vedrørende medicinen i en dosis dispenserbar enhed (pose)</documentation>
+		</annotation>
+		<union memberTypes="mc160:PredefinedAdministrationInstructionType mc160:UndefinedAdministrationInstructionType"/>
+	</simpleType>
+	<simpleType name="PredefinedAdministrationInstructionType">
+		<restriction base="mc160:UndefinedAdministrationInstructionType">
+			<enumeration value="Synkes hele"/>
+			<enumeration value="Tygges"/>
+			<enumeration value="Knuses"/>
+			<enumeration value="Opløses i vand"/>
+			<enumeration value="Med måltid"/>
+			<enumeration value="Før måltid"/>
+			<enumeration value="Efter måltid"/>
+			<enumeration value="Ikke ifm måltid"/>
+			<enumeration value="Før sengetid"/>
+			<enumeration value="Ved behov"/>
+			<enumeration value="Ved smerter"/>
+			<enumeration value="Ved anfald"/>
+			<enumeration value="Før anstrengelse"/>
+			<enumeration value="Før virkning ønskes"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedAdministrationInstructionType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="22"/>
+		</restriction>
+	</simpleType>
+</schema>

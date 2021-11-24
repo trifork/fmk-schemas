@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="DoseDispensingCardIdentifier.xsd"/>
+	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DoseDispensingPeriodStartDate.xsd"/>
+	<include schemaLocation="DoseDispensingPeriodEndDate.xsd"/>
+	<include schemaLocation="PackagedDateTime.xsd"/>
+	<include schemaLocation="DoseDispensingProductionIdentifier.xsd"/>
+	<include schemaLocation="PlannedDispensingOverview.xsd"/>
+
+	<complexType name="PackagedPeriodOverviewType">
+		<annotation>
+			<documentation xml:lang="en-GB">Overview of a packaged dose dispensing period</documentation>
+			<documentation xml:lang="da-DK">Overblik over en pakket dosisdispenserings periode</documentation>
+		</annotation>
+		<sequence>
+			<element name="Patient" type="mc160:PatientType" minOccurs="0"/>
+			<element name="DoseDispensingCardIdentifier" type="mc160:DoseDispensingCardIdentifierType"/>
+			<element name="DoseDispensingPeriodIdentifier" type="mc160:DoseDispensingPeriodIdentifierType"/>
+			<element name="StartDate" type="mc160:DoseDispensingPeriodStartDateType"/>
+			<element name="EndDate" type="mc160:DoseDispensingPeriodEndDateType"/>
+			<element name="PackagedDateTime" type="mc160:PackagedDateTimeType"/>
+			<element name="ProductionIdentifier" type="mc160:DoseDispensingProductionIdentifierType" minOccurs="0"/>
+			<element name="PlannedDispensingOverview" type="mc160:PlannedDispensingOverviewType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

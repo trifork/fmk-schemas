@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="IndicationText.xsd"/>
+	<include schemaLocation="IndicationFreeText.xsd"/>
+	<include schemaLocation="IndicationCode.xsd"/>
+	
+	<element name="Indication" type="mc160:IndicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Estimated state of health which is used as motivation for a drug prescription</documentation>
+			<documentation xml:lang="da-DK">Vurderet helbredstilstand der benyttes som begrundelse for en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="IndicationType">
+		<choice>
+			<sequence>
+				<element name="Code" type="mc160:IndicationCodeType"/>
+				<element name="Text" type="mc160:IndicationTextType" minOccurs="0"/>
+			</sequence>
+			<element name="FreeText" type="mc160:IndicationFreeTextType"/>
+		</choice>
+	</complexType>
+</schema>

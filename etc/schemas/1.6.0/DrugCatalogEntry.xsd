@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DrugIdentifier.xsd"/>
+    <include schemaLocation="DrugShortName.xsd"/>
+    <include schemaLocation="DrugDescriptionText.xsd"/>
+    <include schemaLocation="ATC.xsd"/>
+    <include schemaLocation="Partable.xsd"/>
+    <include schemaLocation="ReservedForNonSubstitutableDrugMedications.xsd"/>
+    <include schemaLocation="ValidFromDate.xsd"/>
+    <include schemaLocation="ValidToDate.xsd"/>
+	
+    <complexType name="DrugCatalogEntryType">
+        <annotation>
+            <documentation xml:lang="en-GB">A drug in a pharmacy drug product catalog</documentation>
+            <documentation xml:lang="da-DK">Et lægemiddel i et pakkeapoteks produktsortiment</documentation>
+        </annotation>
+        <sequence>
+			<element name="Identifier" type="mc160:DrugIdentifierType" />
+			<element name="ShortName" type="mc160:DrugShortNameType" />
+			<element name="Description" type="mc160:DrugDescriptionTextType" minOccurs="0" />
+			<element name="ATC" type="mc160:ATCType" minOccurs="0"/>
+			<element name="Partable" type="mc160:PartableType" minOccurs="0" />
+			<element name="ReservedForNonSubstitutableDrugMedications" type="mc160:ReservedForNonSubstitutableDrugMedicationsType" minOccurs="0" />
+			<element name="ValidFrom" type="mc160:ValidFromDateType" />
+            <element name="ValidTo" type="mc160:ValidToDateType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

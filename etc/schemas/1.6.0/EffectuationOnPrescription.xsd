@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="EffectuationDateTime.xsd"/>
+	<include schemaLocation="EffectuationMethod.xsd"/>
+	<include schemaLocation="CreatedWithoutPerson.xsd"/>
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
+	<include schemaLocation="PackageDispensed.xsd"/>
+	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
+	<include schemaLocation="PharmacyComment.xsd"/>
+	<include schemaLocation="LabelText.xsd"/>
+
+	<complexType name="EffectuationOnPrescriptionType">
+		<annotation>
+			<documentation xml:lang="en-GB">An effectuation on the prescription created by the pharamacy. There is either effectuated one or more packages or effectuated via Dose Dispensing.</documentation>
+			<documentation xml:lang="da-DK">En effektuering (udlevering) på recepten oprettet på apoteket. Der er enten effektueret en eller flere pakninger eller effektueret via Dosisdispensing.</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="mc160:EffectuationIdentifierType"/>
+			<element name="DateTime" type="mc160:EffectuationDateTimeType"/>
+			<element name="EffectuationMethod" type="mc160:EffectuationMethodType" minOccurs="0"/>
+            <choice>
+			    <element name="CreatedWithoutPerson" type="mc160:CreatedWithoutPersonType"/>
+                <element name="Created" type="mc160:CreatedType"/>
+            </choice>
+            <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+            <choice>
+                <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+                <element name="PackageDispensed" type="mc160:PackageDispensedType"/>
+            </choice>
+			<element name="ExpectedDeliveryDateTime" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+			<element name="PharmacyComment" type="mc160:PharmacyCommentType" minOccurs="0"/>
+			<element name="LabelText" type="mc160:LabelTextType" minOccurs="0"/>
+			<element name="DeliverySite" type="mc160:OrganisationType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

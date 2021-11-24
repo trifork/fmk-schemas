@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="ActiveSubstanceFreeText" type="mc160:ActiveSubstanceFreeTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains one active substance as free text</documentation>
+			<documentation xml:lang="da-DK">Indeholder en enkelt aktiv substans som fritekst</documentation>
+		</annotation>
+	</element>
+	<simpleType name="ActiveSubstanceFreeTextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="400"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="CreatePackingGroup.xsd"/>
+
+	<element name="CreatePackingGroupRequest" type="mc160:CreatePackingGroupRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to create a DD packing group</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der opretter en DD pakkegruppe</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePackingGroupRequestType">
+		<sequence>
+			<element name="CreatedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="PackingGroup" type="mc160:CreatePackingGroupType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

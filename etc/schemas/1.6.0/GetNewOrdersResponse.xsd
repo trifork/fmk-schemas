@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PrescriptionsForPersonOrOrganisation.xsd"/>
+	<include schemaLocation="MoreAvailable.xsd"/>
+
+	<element name="GetNewOrdersResponse" type="mc160:GetNewOrdersResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response element for a request to receive all new orders for a pharmacy</documentation>
+			<documentation xml:lang="da-DK">Svar på en forespørgsel efter nye bestillinger til et apotek</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetNewOrdersResponseType">
+		<sequence>
+			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			<element name="Prescriptions" type="mc160:PrescriptionsForPersonOrOrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreAvailable" type="mc160:MoreAvailableType"  minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

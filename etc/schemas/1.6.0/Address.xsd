@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="StreetName.xsd"/>
+	<include schemaLocation="StreetBuildingIdentifier.xsd"/>
+	<include schemaLocation="FloorIdentifier.xsd"/>
+	<include schemaLocation="SuiteIdentifier.xsd"/>
+	<include schemaLocation="MailDeliverySublocationIdentifier.xsd"/>
+	<include schemaLocation="DistrictSubdivisionIdentifier.xsd"/>
+	<include schemaLocation="PostOfficeBoxIdentifier.xsd"/>
+	<include schemaLocation="PostCodeIdentifier.xsd"/>
+	<include schemaLocation="DistrictName.xsd"/>
+	<include schemaLocation="CountryIdentificationCode.xsd"/>
+	<include schemaLocation="StreetNameForAddressing.xsd"/>
+	
+	<element name="Address" type="mc160:AddressType"/>
+	<?filter nsf="ignore"?>
+	<complexType name="AddressType">
+		<annotation>
+			<documentation xml:lang="en-GB">Postal address, for either an organisation or a person</documentation>
+			<documentation xml:lang="da-DK">Postadresse for en organisation eller person</documentation>
+		</annotation>
+		<sequence>
+			<element name="MailDeliverySublocationIdentifier" type="mc160:MailDeliverySublocationIdentifierType" minOccurs="0"/>
+			<element name="StreetName" type="mc160:StreetNameType"/>
+			<element name="StreetNameForAddressing" type="mc160:StreetNameForAddressingType" minOccurs="0"/>
+			<element name="StreetBuildingIdentifier" type="mc160:StreetBuildingIdentifierType"/>
+			<element name="FloorIdentifier" type="mc160:FloorIdentifierType" minOccurs="0"/>
+			<element name="SuiteIdentifier" type="mc160:SuiteIdentifierType" minOccurs="0"/>
+			<element name="DistrictSubdivisionIdentifier" type="mc160:DistrictSubdivisionIdentifierType" minOccurs="0"/>
+			<element name="PostOfficeBoxIdentifier" type="mc160:PostOfficeBoxIdentifierType" minOccurs="0"/>
+			<element name="PostCodeIdentifier" type="mc160:PostCodeIdentifierType"/>
+			<element name="DistrictName" type="mc160:DistrictNameType"/>
+			<element name="CountryIdentificationCode" type="mc160:CountryIdentificationCodeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

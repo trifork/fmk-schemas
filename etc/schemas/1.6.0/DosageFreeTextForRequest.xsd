@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DosageFreeTextText.xsd"/>
+	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+	<include schemaLocation="DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
+	
+	<element name="DosageFreeTextForRequest" type="mc160:DosageFreeTextForRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Free text for dosage</documentation>
+			<documentation xml:lang="da-DK">Fritekst for dosering</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageFreeTextForRequestType">
+		<sequence>
+			<choice>
+				<element name="StartDate" type="mc160:DosageTimesStartDateType"/>
+			</choice>
+			<choice>
+				<element name="EndDate" type="mc160:DosageTimesEndDateType"/>
+				<element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+			</choice>
+			<element name="Text" type="mc160:DosageFreeTextTextType"/>
+		</sequence>
+	</complexType>
+</schema>

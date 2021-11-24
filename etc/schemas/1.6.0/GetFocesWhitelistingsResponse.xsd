@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="FocesWhitelisting.xsd"/>
+
+	<element name="GetFocesWhitelistingsResponse" type="mc160:GetFocesWhitelistingsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for the response fetching foces whitelistings</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for svaret ved hentning af foces whitelistings</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetFocesWhitelistingsResponseType">
+		<sequence>
+			<element name="FocesWhitelisting" type="mc160:FocesWhitelistingType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

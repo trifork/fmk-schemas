@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="PackingGroupDetails.xsd"/>
+	<include schemaLocation="PersonWithDoseDispensing.xsd"/>
+
+	<element name="GetPackingGroupContentsResponse" type="mc160:GetPackingGroupContentsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with the contents of a packing group</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel på en pakkegruppes indhold</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPackingGroupContentsResponseType">
+		<sequence>
+			<element name="PackingGroup" type="mc160:PackingGroupDetailsType"/>
+			<element name="PersonWithDoseDispensing" type="mc160:PersonWithDoseDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

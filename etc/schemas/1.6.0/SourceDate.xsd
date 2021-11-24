@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<attribute name="SourceDate" type="mc160:SourceDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Date the source is defined for</documentation>
+			<documentation xml:lang="da-DK">Datoen kilden er defineret for</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="SourceDateType">
+		<restriction base="string">
+			<pattern value="[1-2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]"/>
+		</restriction>
+	</simpleType>
+</schema>

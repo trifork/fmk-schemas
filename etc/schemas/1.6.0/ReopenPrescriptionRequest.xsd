@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ReopenPrescription.xsd"/>
+
+	<element name="ReopenPrescriptionRequest" type="mc160:ReopenPrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Reopen one or more prescriptions that has been closed er invalidated</documentation>
+			<documentation xml:lang="da-DK">Genåbn en eller flere recepter der tidligere er blevet afsluttet eller ugyldiggjort</documentation>
+		</annotation>
+	</element>
+	<complexType name="ReopenPrescriptionRequestType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="ModifiedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="Prescription" type="mc160:ReopenPrescriptionType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

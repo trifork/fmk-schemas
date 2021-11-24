@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="SubstitutionChosenByPatient.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+
+	<complexType name="DrugSubstitutionType">
+		<sequence>
+			<element name="SubstitutionChosenByPatient" type="mc160:SubstitutionChosenByPatientType" minOccurs="0"/>
+			<element name="Drug" type="mc160:DrugType"/>
+		</sequence>
+	</complexType>
+</schema>

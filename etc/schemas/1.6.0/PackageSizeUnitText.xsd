@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="PackageSizeUnitText" type="mc160:PackageSizeUnitTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Unit for package size, full text (LMS15 field 4)</documentation>
+			<documentation xml:lang="da-DK">Enhed for pakningsstørrelse, lang tekst (LMS15 felt 4)</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PackageSizeUnitTextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="FocesWhitelisting.xsd"/>
+
+	<element name="CreateFocesWhitelistingRequest" type="mc160:CreateFocesWhitelistingRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to create a foces whitelisting</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der opretter en foces whitelisting</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateFocesWhitelistingRequestType">
+		<sequence>
+			<element name="CreatedBy" type="mc160:ModificatorType"/>
+			<element name="FocesWhitelisting" type="mc160:FocesWhitelistingType"/>
+		</sequence>
+	</complexType>
+</schema>
