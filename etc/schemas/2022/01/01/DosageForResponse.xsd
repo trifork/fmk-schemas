@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
+	<include schemaLocation="DosageStructuresForResponse.xsd"/>
+	<include schemaLocation="DosageFreeTextForResponse.xsd"/>
+	<include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForResponse.xsd"/>
+	<include schemaLocation="DosageType.xsd"/>
+
+	<element name="DosageForResponse" type="mc160:DosageForResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">How often and when the drug should be given</documentation>
+			<documentation xml:lang="da-DK">Angivelse af hvor ofte og hvornår et lægemiddel skal gives</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageForResponseType">
+		<sequence>
+			<choice>
+				<sequence>
+					<choice>
+						<element name="UnitText" type="mc160:DosageQuantityUnitTextType" minOccurs="0" maxOccurs="1"/>
+						<element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType" minOccurs="0" maxOccurs="1"/>
+					</choice>
+					<element name="StructuresFixed" type="mc160:DosageStructuresForResponseType" minOccurs="0" maxOccurs="1"/>
+					<element name="StructuresAccordingToNeed" type="mc160:DosageStructuresForResponseType" minOccurs="0" maxOccurs="1"/>
+				</sequence>
+				<element name="FreeText" type="mc160:DosageFreeTextForResponseType"/>
+				<element name="AdministrationAccordingToSchemaInLocalSystem" type="mc160:AdministrationAccordingToSchemaInLocalSystemForResponseType"/>
+			</choice>
+			<element name="Type" type="mc160:DosageTypeType"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="DoseTime.xsd"/>
 	<include schemaLocation="DoseQuantity.xsd"/>
 
-	<element name="DoseForAnyDay" type="medicinecard20150601:DoseForAnyDayType">
+	<element name="DoseForAnyDay" type="mc160:DoseForAnyDayType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of a dose element, when and how much</documentation>
 			<documentation xml:lang="da-DK">Beskrivelse af en dosis på et givet stidspunkt, hvornår og hvor meget</documentation>
@@ -15,12 +15,12 @@
 	</element>
 	<complexType name="DoseForAnyDayType">
 		<sequence>
-			<element name="Time" type="medicinecard20150601:DoseTimeType" minOccurs="0"/>
+			<element name="Time" type="mc160:DoseTimeType" minOccurs="0"/>
 			<choice>
-				<element name="Quantity" type="medicinecard20150601:DoseQuantityType"/>
+				<element name="Quantity" type="mc160:DoseQuantityType"/>
 				<sequence>
-					<element name="MinimalQuantity" type="medicinecard20150601:DoseQuantityType"/>
-					<element name="MaximalQuantity" type="medicinecard20150601:DoseQuantityType"/>
+					<element name="MinimalQuantity" type="mc160:DoseQuantityType"/>
+					<element name="MaximalQuantity" type="mc160:DoseQuantityType"/>
 				</sequence>
 			</choice>
 		</sequence>

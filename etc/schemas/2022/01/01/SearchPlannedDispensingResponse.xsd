@@ -4,9 +4,9 @@
 		targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PersonWithPl.xsd"/>
+	<include schemaLocation="PersonWithPlannedDispensing.xsd"/>
 
-	<element name="SearchPlannedDispensingResponse" type="medicinecard20150601E3:SearchPlannedDispensingResponseType">
+	<element name="SearchPlannedDispensingResponse" type="mc160:SearchPlannedDispensingResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a response with a list of Planned dispensing</documentation>
 			<documentation xml:lang="da-DK">Ydre container-element for et svar med en liste af planlagte dispenseringer</documentation>
@@ -14,7 +14,7 @@
 	</element>
 	<complexType name="SearchPlannedDispensingResponseType">
 		<sequence>
-            <element name="PersonWithPlannedDispensing" type="medicinecard20150601E3:PersonWithPlannedDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="PersonWithPlannedDispensing" type="mc160:PersonWithPlannedDispensingType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
