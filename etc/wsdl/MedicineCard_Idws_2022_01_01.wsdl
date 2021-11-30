@@ -1,0 +1,3080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+<!ENTITY fmkStandardSOAPRequestHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ToHeader' message='tns:ToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' wsdl:required='true' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
+                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader'/>
+                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true'/>
+                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+">
+<!ENTITY fmkStandardSOAPResponseHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' />
+                <soap:header use='literal' part='RelatesToHeader' message='tns:RelatesToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' />
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader' />
+">
+<!ENTITY operationFaultDeclaration "
+            <wsdl:fault name='IDWSFault' message='tns:IDWSFault'/>
+">
+<!ENTITY bindingFaultDeclaration "
+            <wsdl:fault name='IDWSFault'>
+                <soap:fault name='IDWSFault' use='literal'/>
+            </wsdl:fault>
+">
+]>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:mc160="http://fmk-teknik.dk/160"
+                  xmlns:tns="http://fmk-teknik.dk/160"
+                  xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
+                  xmlns:wsseorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                  xmlns:wsuorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                  xmlns:wsa="http://www.w3.org/2005/08/addressing"
+                  xmlns:sbf="urn:liberty:sb"
+                  targetNamespace="http://fmk-teknik.dk/160">
+
+    <wsdl:types>
+
+        <xs:schema targetNamespace="urn:liberty:sb">
+            <xs:include schemaLocation="../schemas/liberty/liberty-idwsf-soap-binding.xsd" />
+            <xs:include schemaLocation="../schemas/liberty/idws-fault.xsd" />
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.w3.org/2005/08/addressing">
+            <xs:include schemaLocation="../schemas/2005/08/addressing/ws-addr.xsd" />
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+            <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
+            <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+            <xs:include schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+        </xs:schema>
+        <xs:schema targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+            <xs:include schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd/oasis-200401_orig-wss-wssecurity-utility-1.0.xsd" />
+        </xs:schema>
+
+        <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
+                   schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
+        
+        <xs:schema targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified">
+
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortPackingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortPackingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/AcknowledgeOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AcknowledgeOrdersResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/AttachOrDetachPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AttachOrDetachPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelOrderRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CloseDoseDispensingCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CloseDoseDispensingCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/ConsentHeader.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateAndEffectuatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateAndEffectuatePrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateDoseDispensingCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateDoseDispensingCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateFocesWhitelistingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateFocesWhitelistingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateOrderRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateOrderResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePackingGroupRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePackingGroupResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePharmacyEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePharmacyEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePlannedDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePlannedDispensingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionForUseInPracticeRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionForUseInPracticeResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionWithoutCPRRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionWithoutCPRResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/DeleteDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/DeleteDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/DeleteEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/DeleteEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/DeleteFocesWhitelistingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/DeleteFocesWhitelistingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/DeletePackingGroupRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/DeletePackingGroupResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/DeletePlannedDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/DeletePlannedDispensingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/DiscardDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/DiscardDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/EffectuateDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/EffectuateDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/ForwardPrescriptionRequestRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ForwardPrescriptionRequestResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDetailedPlannedDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDetailedPlannedDispensingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingCardHistoryRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingCardHistoryResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingPeriodHistoryRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingPeriodHistoryResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingPeriodsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingPeriodsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingSummaryRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDoseDispensingSummaryResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationEffectuationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationEffectuationsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationVersionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationVersionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetExplicitDoseDispensingCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetExplicitDoseDispensingCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetFocesWhitelistingsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetFocesWhitelistingsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardAsPDFRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardAsPDFResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionListRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionListResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingOverviewDetailsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingOverviewDetailsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingOverviewRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPackingOverviewResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPermissionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPermissionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedDispensingHistoryRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedDispensingHistoryResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedDispensingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescribingOrganisationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescribingOrganisationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestVersionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestVersionsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionResidualAmountRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionResidualAmountResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GiveConsentRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GiveConsentResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/InvalidatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/InvalidatePrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/ListPackingGroupsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ListPackingGroupsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/MarkPrescriptionDeprecatedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/MarkPrescriptionDeprecatedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/OnBehalfOf.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/PauseDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/PauseDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/ReopenPrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ReopenPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/ReplacePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ReplacePrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchPlannedDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchPlannedDispensingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchPrescriptionRequestsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchPrescriptionRequestsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SetMedicineCardNotReviewedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SetMedicineCardNotReviewedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SetMedicineCardReviewedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SetMedicineCardReviewedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SetPackingFinishedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SetPackingFinishedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SetPackingStartedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SetPackingStartedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/StartEffectuationOfDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/StartEffectuationOfDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/StartEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/StartEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SubstitutePackagedDrugRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SubstitutePackagedDrugResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/TerminatePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/TerminatePrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/TimingList.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoDiscardDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoDiscardDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuatedDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuatedDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoReplacePrescriptionRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoReplacePrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UnmarkPrescriptionDeprecatedRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UnmarkPrescriptionDeprecatedResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UnpauseDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UnpauseDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UnwithdrawDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UnwithdrawDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateDoseDispensingCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateDoseDispensingCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateDoseDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateDoseDispensingPeriodResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateDrugMedicationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateMedicineCardRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdateMedicineCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdatePackingGroupRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdatePackingGroupResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdatePlannedDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UpdatePlannedDispensingResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UploadDrugCatalogRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UploadDrugCatalogResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/WithdrawDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/WithdrawDrugMedicationResponse.xsd"/>
+
+        </xs:schema>
+
+    </wsdl:types>
+
+    <wsdl:message name="MessageIDHeader">
+        <wsdl:part name="MessageIDHeader" element="wsa:MessageID" />
+    </wsdl:message>
+    <wsdl:message name="ActionHeader">
+        <wsdl:part name="ActionHeader" element="wsa:Action" />
+    </wsdl:message>
+    <wsdl:message name="ToHeader">
+        <wsdl:part name="ToHeader" element="wsa:To" />
+    </wsdl:message>
+    <wsdl:message name="RelatesToHeader">
+        <wsdl:part name="RelatesToHeader" element="wsa:RelatesTo" />
+    </wsdl:message>
+    <wsdl:message name="FrameworkHeader">
+        <wsdl:part name="FrameworkHeader" element="sbf:Framework"/>
+    </wsdl:message>
+    <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
+    </wsdl:message>
+    <wsdl:message name="WhitelistingHeader">
+        <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="IDWSFault">
+        <wsdl:part name="fault" element="sbf:IDWSFault" />
+    </wsdl:message>
+
+    <wsdl:message name="ConsentHeader">
+        <wsdl:part name="ConsentHeader" element="mc160:ConsentHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="TimingHeader">
+        <wsdl:part name="TimingHeader" element="mc160:TimingList"/>
+    </wsdl:message>
+
+    <wsdl:message name="OnBehalfOfHeader">
+        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOf"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortEffectuationOfDoseDispensingPeriodRequest_160">
+        <wsdl:part name="AbortEffectuationOfDoseDispensingPeriodRequest" element="mc160:AbortEffectuationOfDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortEffectuationOfDoseDispensingPeriodResponse_160">
+        <wsdl:part name="AbortEffectuationOfDoseDispensingPeriodResponse" element="mc160:AbortEffectuationOfDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortPackingRequest_160">
+        <wsdl:part name="AbortPackingRequest" element="mc160:AbortPackingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortPackingResponse_160">
+        <wsdl:part name="AbortPackingResponse" element="mc160:AbortPackingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AcknowledgeOrdersRequest_160">
+        <wsdl:part name="AcknowledgeOrdersRequest" element="mc160:AcknowledgeOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AcknowledgeOrdersResponse_160">
+        <wsdl:part name="AcknowledgeOrdersResponse" element="mc160:AcknowledgeOrdersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AdjustDosageChangeRequest_160">
+        <wsdl:part name="AdjustDosageChangeRequest" element="mc160:AdjustDosageChangeRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AdjustDosageChangeResponse_160">
+        <wsdl:part name="AdjustDosageChangeResponse" element="mc160:AdjustDosageChangeResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AttachOrDetachPrescriptionRequest_160">
+        <wsdl:part name="AttachOrDetachPrescriptionRequest" element="mc160:AttachOrDetachPrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AttachOrDetachPrescriptionResponse_160">
+        <wsdl:part name="AttachOrDetachPrescriptionResponse" element="mc160:AttachOrDetachPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelOrderRequest_160">
+        <wsdl:part name="CancelOrderRequest" element="mc160:CancelOrderRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelOrderResponse_160">
+        <wsdl:part name="CancelOrderResponse" element="mc160:CancelOrderResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionRequest_160">
+        <wsdl:part name="CancelPrescriptionRequest" element="mc160:CancelPrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionResponse_160">
+        <wsdl:part name="CancelPrescriptionResponse" element="mc160:CancelPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionRequestRequest_160">
+        <wsdl:part name="CancelPrescriptionRequestRequest" element="mc160:CancelPrescriptionRequestRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CancelPrescriptionRequestResponse_160">
+        <wsdl:part name="CancelPrescriptionRequestResponse" element="mc160:CancelPrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CloseDoseDispensingCardRequest_160">
+        <wsdl:part name="CloseDoseDispensingCardRequest" element="mc160:CloseDoseDispensingCardRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CloseDoseDispensingCardResponse_160">
+        <wsdl:part name="CloseDoseDispensingCardResponse" element="mc160:CloseDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateAndEffectuatePrescriptionRequest_160">
+        <wsdl:part name="CreateAndEffectuatePrescriptionRequest" element="mc160:CreateAndEffectuatePrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateAndEffectuatePrescriptionResponse_160">
+        <wsdl:part name="CreateAndEffectuatePrescriptionResponse" element="mc160:CreateAndEffectuatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDoseDispensingCardRequest_160">
+        <wsdl:part name="CreateDoseDispensingCardRequest" element="mc160:CreateDoseDispensingCardRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDoseDispensingCardResponse_160">
+        <wsdl:part name="CreateDoseDispensingCardResponse" element="mc160:CreateDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDoseDispensingPeriodRequest_160">
+        <wsdl:part name="CreateDoseDispensingPeriodRequest" element="mc160:CreateDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDoseDispensingPeriodResponse_160">
+        <wsdl:part name="CreateDoseDispensingPeriodResponse" element="mc160:CreateDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDrugMedicationRequest_160">
+        <wsdl:part name="CreateDrugMedicationRequest" element="mc160:CreateDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDrugMedicationResponse_160">
+        <wsdl:part name="CreateDrugMedicationResponse" element="mc160:CreateDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateEffectuationRequest_160">
+        <wsdl:part name="CreateEffectuationRequest" element="mc160:CreateEffectuationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateEffectuationResponse_160">
+        <wsdl:part name="CreateEffectuationResponse" element="mc160:CreateEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateFocesWhitelistingRequest_160">
+        <wsdl:part name="CreateFocesWhitelistingRequest" element="mc160:CreateFocesWhitelistingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateFocesWhitelistingResponse_160">
+        <wsdl:part name="CreateFocesWhitelistingResponse" element="mc160:CreateFocesWhitelistingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateOrderRequest_160">
+        <wsdl:part name="CreateOrderRequest" element="mc160:CreateOrderRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateOrderResponse_160">
+        <wsdl:part name="CreateOrderResponse" element="mc160:CreateOrderResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePackingGroupRequest_160">
+        <wsdl:part name="CreatePackingGroupRequest" element="mc160:CreatePackingGroupRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePackingGroupResponse_160">
+        <wsdl:part name="CreatePackingGroupResponse" element="mc160:CreatePackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePharmacyEffectuationRequest_160">
+        <wsdl:part name="CreatePharmacyEffectuationRequest" element="mc160:CreatePharmacyEffectuationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePharmacyEffectuationResponse_160">
+        <wsdl:part name="CreatePharmacyEffectuationResponse" element="mc160:CreatePharmacyEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePlannedDispensingRequest_160">
+        <wsdl:part name="CreatePlannedDispensingRequest" element="mc160:CreatePlannedDispensingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePlannedDispensingResponse_160">
+        <wsdl:part name="CreatePlannedDispensingResponse" element="mc160:CreatePlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionForUseInPracticeRequest_160">
+        <wsdl:part name="CreatePrescriptionForUseInPracticeRequest" element="mc160:CreatePrescriptionForUseInPracticeRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionForUseInPracticeResponse_160">
+        <wsdl:part name="CreatePrescriptionForUseInPracticeResponse" element="mc160:CreatePrescriptionForUseInPracticeResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionRequest_160">
+        <wsdl:part name="CreatePrescriptionRequest" element="mc160:CreatePrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionResponse_160">
+        <wsdl:part name="CreatePrescriptionResponse" element="mc160:CreatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionRequestRequest_160">
+        <wsdl:part name="CreatePrescriptionRequestRequest" element="mc160:CreatePrescriptionRequestRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionRequestResponse_160">
+        <wsdl:part name="CreatePrescriptionRequestResponse" element="mc160:CreatePrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionWithoutCPRRequest_160">
+        <wsdl:part name="CreatePrescriptionWithoutCPRRequest" element="mc160:CreatePrescriptionWithoutCPRRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreatePrescriptionWithoutCPRResponse_160">
+        <wsdl:part name="CreatePrescriptionWithoutCPRResponse" element="mc160:CreatePrescriptionWithoutCPRResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteDoseDispensingPeriodRequest_160">
+        <wsdl:part name="DeleteDoseDispensingPeriodRequest" element="mc160:DeleteDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteDoseDispensingPeriodResponse_160">
+        <wsdl:part name="DeleteDoseDispensingPeriodResponse" element="mc160:DeleteDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteEffectuationRequest_160">
+        <wsdl:part name="DeleteEffectuationRequest" element="mc160:DeleteEffectuationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteEffectuationResponse_160">
+        <wsdl:part name="DeleteEffectuationResponse" element="mc160:DeleteEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteFocesWhitelistingRequest_160">
+        <wsdl:part name="DeleteFocesWhitelistingRequest" element="mc160:DeleteFocesWhitelistingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeleteFocesWhitelistingResponse_160">
+        <wsdl:part name="DeleteFocesWhitelistingResponse" element="mc160:DeleteFocesWhitelistingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeletePackingGroupRequest_160">
+        <wsdl:part name="DeletePackingGroupRequest" element="mc160:DeletePackingGroupRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeletePackingGroupResponse_160">
+        <wsdl:part name="DeletePackingGroupResponse" element="mc160:DeletePackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeletePlannedDispensingRequest_160">
+        <wsdl:part name="DeletePlannedDispensingRequest" element="mc160:DeletePlannedDispensingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DeletePlannedDispensingResponse_160">
+        <wsdl:part name="DeletePlannedDispensingResponse" element="mc160:DeletePlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DiscardDoseDispensingPeriodRequest_160">
+        <wsdl:part name="DiscardDoseDispensingPeriodRequest" element="mc160:DiscardDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DiscardDoseDispensingPeriodResponse_160">
+        <wsdl:part name="DiscardDoseDispensingPeriodResponse" element="mc160:DiscardDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="EffectuateDoseDispensingPeriodRequest_160">
+        <wsdl:part name="EffectuateDoseDispensingPeriodRequest" element="mc160:EffectuateDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="EffectuateDoseDispensingPeriodResponse_160">
+        <wsdl:part name="EffectuateDoseDispensingPeriodResponse" element="mc160:EffectuateDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ForwardPrescriptionRequestRequest_160">
+        <wsdl:part name="ForwardPrescriptionRequestRequest" element="mc160:ForwardPrescriptionRequestRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ForwardPrescriptionRequestResponse_160">
+        <wsdl:part name="ForwardPrescriptionRequestResponse" element="mc160:ForwardPrescriptionRequestResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetAcutePeriodsRequest_160">
+        <wsdl:part name="GetAcutePeriodsRequest" element="mc160:GetAcutePeriodsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetAcutePeriodsResponse_160">
+        <wsdl:part name="GetAcutePeriodsResponse" element="mc160:GetAcutePeriodsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetAuthorisationDateForNewestOpenPrescriptionRequest_160">
+        <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionRequest" element="mc160:GetAuthorisationDateForNewestOpenPrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetAuthorisationDateForNewestOpenPrescriptionResponse_160">
+        <wsdl:part name="GetAuthorisationDateForNewestOpenPrescriptionResponse" element="mc160:GetAuthorisationDateForNewestOpenPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDetailedPlannedDispensingRequest_160">
+        <wsdl:part name="GetDetailedPlannedDispensingRequest" element="mc160:GetDetailedPlannedDispensingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDetailedPlannedDispensingResponse_160">
+        <wsdl:part name="GetDetailedPlannedDispensingResponse" element="mc160:GetDetailedPlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingCardHistoryRequest_160">
+        <wsdl:part name="GetDoseDispensingCardHistoryRequest" element="mc160:GetDoseDispensingCardHistoryRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingCardHistoryResponse_160">
+        <wsdl:part name="GetDoseDispensingCardHistoryResponse" element="mc160:GetDoseDispensingCardHistoryResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingPeriodHistoryRequest_160">
+        <wsdl:part name="GetDoseDispensingPeriodHistoryRequest" element="mc160:GetDoseDispensingPeriodHistoryRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingPeriodHistoryResponse_160">
+        <wsdl:part name="GetDoseDispensingPeriodHistoryResponse" element="mc160:GetDoseDispensingPeriodHistoryResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingPeriodsRequest_160">
+        <wsdl:part name="GetDoseDispensingPeriodsRequest" element="mc160:GetDoseDispensingPeriodsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingPeriodsResponse_160">
+        <wsdl:part name="GetDoseDispensingPeriodsResponse" element="mc160:GetDoseDispensingPeriodsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingSummaryRequest_160">
+        <wsdl:part name="GetDoseDispensingSummaryRequest" element="mc160:GetDoseDispensingSummaryRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDoseDispensingSummaryResponse_160">
+        <wsdl:part name="GetDoseDispensingSummaryResponse" element="mc160:GetDoseDispensingSummaryResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationEffectuationsRequest_160">
+        <wsdl:part name="GetDrugMedicationEffectuationsRequest" element="mc160:GetDrugMedicationEffectuationsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationEffectuationsResponse_160">
+        <wsdl:part name="GetDrugMedicationEffectuationsResponse" element="mc160:GetDrugMedicationEffectuationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationHistoryRequest_160">
+        <wsdl:part name="GetDrugMedicationHistoryRequest" element="mc160:GetDrugMedicationHistoryRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationHistoryResponse_160">
+        <wsdl:part name="GetDrugMedicationHistoryResponse" element="mc160:GetDrugMedicationHistoryResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationRequest_160">
+        <wsdl:part name="GetDrugMedicationRequest" element="mc160:GetDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationResponse_160">
+        <wsdl:part name="GetDrugMedicationResponse" element="mc160:GetDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationVersionsRequest_160">
+        <wsdl:part name="GetDrugMedicationVersionsRequest" element="mc160:GetDrugMedicationVersionsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDrugMedicationVersionsResponse_160">
+        <wsdl:part name="GetDrugMedicationVersionsResponse" element="mc160:GetDrugMedicationVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetExplicitDoseDispensingCardRequest_160">
+        <wsdl:part name="GetExplicitDoseDispensingCardRequest" element="mc160:GetExplicitDoseDispensingCardRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetExplicitDoseDispensingCardResponse_160">
+        <wsdl:part name="GetExplicitDoseDispensingCardResponse" element="mc160:GetExplicitDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetFocesWhitelistingsRequest_160">
+        <wsdl:part name="GetFocesWhitelistingsRequest" element="mc160:GetFocesWhitelistingsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetFocesWhitelistingsResponse_160">
+        <wsdl:part name="GetFocesWhitelistingsResponse" element="mc160:GetFocesWhitelistingsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardAsPDFRequest_160">
+        <wsdl:part name="GetMedicineCardAsPDFRequest" element="mc160:GetMedicineCardAsPDFRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardAsPDFResponse_160">
+        <wsdl:part name="GetMedicineCardAsPDFResponse" element="mc160:GetMedicineCardAsPDFResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardRequest_160">
+        <wsdl:part name="GetMedicineCardRequest" element="mc160:GetMedicineCardRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardResponse_160">
+        <wsdl:part name="GetMedicineCardResponse" element="mc160:GetMedicineCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionListRequest_160">
+        <wsdl:part name="GetMedicineCardVersionListRequest" element="mc160:GetMedicineCardVersionListRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionListResponse_160">
+        <wsdl:part name="GetMedicineCardVersionListResponse" element="mc160:GetMedicineCardVersionListResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionRequest_160">
+        <wsdl:part name="GetMedicineCardVersionRequest" element="mc160:GetMedicineCardVersionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionResponse_160">
+        <wsdl:part name="GetMedicineCardVersionResponse" element="mc160:GetMedicineCardVersionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionsRequest_160">
+        <wsdl:part name="GetMedicineCardVersionsRequest" element="mc160:GetMedicineCardVersionsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionsResponse_160">
+        <wsdl:part name="GetMedicineCardVersionsResponse" element="mc160:GetMedicineCardVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetNewOrdersRequest_160">
+        <wsdl:part name="GetNewOrdersRequest" element="mc160:GetNewOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetNewOrdersResponse_160">
+        <wsdl:part name="GetNewOrdersResponse" element="mc160:GetNewOrdersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingGroupContentsRequest_160">
+        <wsdl:part name="GetPackingGroupContentsRequest" element="mc160:GetPackingGroupContentsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingGroupContentsResponse_160">
+        <wsdl:part name="GetPackingGroupContentsResponse" element="mc160:GetPackingGroupContentsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingGroupRequest_160">
+        <wsdl:part name="GetPackingGroupRequest" element="mc160:GetPackingGroupRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingGroupResponse_160">
+        <wsdl:part name="GetPackingGroupResponse" element="mc160:GetPackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingOverviewDetailsRequest_160">
+        <wsdl:part name="GetPackingOverviewDetailsRequest" element="mc160:GetPackingOverviewDetailsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingOverviewDetailsResponse_160">
+        <wsdl:part name="GetPackingOverviewDetailsResponse" element="mc160:GetPackingOverviewDetailsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingOverviewRequest_160">
+        <wsdl:part name="GetPackingOverviewRequest" element="mc160:GetPackingOverviewRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPackingOverviewResponse_160">
+        <wsdl:part name="GetPackingOverviewResponse" element="mc160:GetPackingOverviewResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPermissionsRequest_160">
+        <wsdl:part name="GetPermissionsRequest" element="mc160:GetPermissionsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPermissionsResponse_160">
+        <wsdl:part name="GetPermissionsResponse" element="mc160:GetPermissionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPlannedDispensingHistoryRequest_160">
+        <wsdl:part name="GetPlannedDispensingHistoryRequest" element="mc160:GetPlannedDispensingHistoryRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPlannedDispensingHistoryResponse_160">
+        <wsdl:part name="GetPlannedDispensingHistoryResponse" element="mc160:GetPlannedDispensingHistoryResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPlannedDispensingRequest_160">
+        <wsdl:part name="GetPlannedDispensingRequest" element="mc160:GetPlannedDispensingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPlannedDispensingResponse_160">
+        <wsdl:part name="GetPlannedDispensingResponse" element="mc160:GetPlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescribingOrganisationRequest_160">
+        <wsdl:part name="GetPrescribingOrganisationRequest" element="mc160:GetPrescribingOrganisationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescribingOrganisationResponse_160">
+        <wsdl:part name="GetPrescribingOrganisationResponse" element="mc160:GetPrescribingOrganisationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequest_160">
+        <wsdl:part name="GetPrescriptionRequest" element="mc160:GetPrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionResponse_160">
+        <wsdl:part name="GetPrescriptionResponse" element="mc160:GetPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestsRequest_160">
+        <wsdl:part name="GetPrescriptionRequestsRequest" element="mc160:GetPrescriptionRequestsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestsResponse_160">
+        <wsdl:part name="GetPrescriptionRequestsResponse" element="mc160:GetPrescriptionRequestsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestVersionsRequest_160">
+        <wsdl:part name="GetPrescriptionRequestVersionsRequest" element="mc160:GetPrescriptionRequestVersionsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestVersionsResponse_160">
+        <wsdl:part name="GetPrescriptionRequestVersionsResponse" element="mc160:GetPrescriptionRequestVersionsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionResidualAmountRequest_160">
+        <wsdl:part name="GetPrescriptionResidualAmountRequest" element="mc160:GetPrescriptionResidualAmountRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionResidualAmountResponse_160">
+        <wsdl:part name="GetPrescriptionResidualAmountResponse" element="mc160:GetPrescriptionResidualAmountResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GiveConsentRequest_160">
+        <wsdl:part name="GiveConsentRequest" element="mc160:GiveConsentRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GiveConsentResponse_160">
+        <wsdl:part name="GiveConsentResponse" element="mc160:GiveConsentResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="InvalidatePrescriptionRequest_160">
+        <wsdl:part name="InvalidatePrescriptionRequest" element="mc160:InvalidatePrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="InvalidatePrescriptionResponse_160">
+        <wsdl:part name="InvalidatePrescriptionResponse" element="mc160:InvalidatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ListPackingGroupsRequest_160">
+        <wsdl:part name="ListPackingGroupsRequest" element="mc160:ListPackingGroupsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ListPackingGroupsResponse_160">
+        <wsdl:part name="ListPackingGroupsResponse" element="mc160:ListPackingGroupsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="MarkPrescriptionDeprecatedRequest_160">
+        <wsdl:part name="MarkPrescriptionDeprecatedRequest" element="mc160:MarkPrescriptionDeprecatedRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="MarkPrescriptionDeprecatedResponse_160">
+        <wsdl:part name="MarkPrescriptionDeprecatedResponse" element="mc160:MarkPrescriptionDeprecatedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="PauseDrugMedicationRequest_160">
+        <wsdl:part name="PauseDrugMedicationRequest" element="mc160:PauseDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="PauseDrugMedicationResponse_160">
+        <wsdl:part name="PauseDrugMedicationResponse" element="mc160:PauseDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="RemoveConsentRequest_160">
+        <wsdl:part name="RemoveConsentRequest" element="mc160:RemoveConsentRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="RemoveConsentResponse_160">
+        <wsdl:part name="RemoveConsentResponse" element="mc160:RemoveConsentResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ReopenPrescriptionRequest_160">
+        <wsdl:part name="ReopenPrescriptionRequest" element="mc160:ReopenPrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ReopenPrescriptionResponse_160">
+        <wsdl:part name="ReopenPrescriptionResponse" element="mc160:ReopenPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ReplacePrescriptionRequest_160">
+        <wsdl:part name="ReplacePrescriptionRequest" element="mc160:ReplacePrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ReplacePrescriptionResponse_160">
+        <wsdl:part name="ReplacePrescriptionResponse" element="mc160:ReplacePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchEffectuationsRequest_160">
+        <wsdl:part name="SearchEffectuationsRequest" element="mc160:SearchEffectuationsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchEffectuationsResponse_160">
+        <wsdl:part name="SearchEffectuationsResponse" element="mc160:SearchEffectuationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchMedicineCardRequest_160">
+        <wsdl:part name="SearchMedicineCardRequest" element="mc160:SearchMedicineCardRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchMedicineCardResponse_160">
+        <wsdl:part name="SearchMedicineCardResponse" element="mc160:SearchMedicineCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchPlannedDispensingRequest_160">
+        <wsdl:part name="SearchPlannedDispensingRequest" element="mc160:SearchPlannedDispensingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchPlannedDispensingResponse_160">
+        <wsdl:part name="SearchPlannedDispensingResponse" element="mc160:SearchPlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchPrescriptionRequestsRequest_160">
+        <wsdl:part name="SearchPrescriptionRequestsRequest" element="mc160:SearchPrescriptionRequestsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchPrescriptionRequestsResponse_160">
+        <wsdl:part name="SearchPrescriptionRequestsResponse" element="mc160:SearchPrescriptionRequestsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
+        <wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="mc160:SearchWithdrawnDrugMedicationsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_160">
+        <wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="mc160:SearchWithdrawnDrugMedicationsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetMedicineCardNotReviewedRequest_160">
+        <wsdl:part name="SetMedicineCardNotReviewedRequest" element="mc160:SetMedicineCardNotReviewedRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetMedicineCardNotReviewedResponse_160">
+        <wsdl:part name="SetMedicineCardNotReviewedResponse" element="mc160:SetMedicineCardNotReviewedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetMedicineCardReviewedRequest_160">
+        <wsdl:part name="SetMedicineCardReviewedRequest" element="mc160:SetMedicineCardReviewedRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetMedicineCardReviewedResponse_160">
+        <wsdl:part name="SetMedicineCardReviewedResponse" element="mc160:SetMedicineCardReviewedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetPackingFinishedRequest_160">
+        <wsdl:part name="SetPackingFinishedRequest" element="mc160:SetPackingFinishedRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetPackingFinishedResponse_160">
+        <wsdl:part name="SetPackingFinishedResponse" element="mc160:SetPackingFinishedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetPackingStartedRequest_160">
+        <wsdl:part name="SetPackingStartedRequest" element="mc160:SetPackingStartedRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SetPackingStartedResponse_160">
+        <wsdl:part name="SetPackingStartedResponse" element="mc160:SetPackingStartedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="StartEffectuationOfDoseDispensingPeriodRequest_160">
+        <wsdl:part name="StartEffectuationOfDoseDispensingPeriodRequest" element="mc160:StartEffectuationOfDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="StartEffectuationOfDoseDispensingPeriodResponse_160">
+        <wsdl:part name="StartEffectuationOfDoseDispensingPeriodResponse" element="mc160:StartEffectuationOfDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="StartEffectuationRequest_160">
+        <wsdl:part name="StartEffectuationRequest" element="mc160:StartEffectuationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="StartEffectuationResponse_160">
+        <wsdl:part name="StartEffectuationResponse" element="mc160:StartEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SubstitutePackagedDrugRequest_160">
+        <wsdl:part name="SubstitutePackagedDrugRequest" element="mc160:SubstitutePackagedDrugRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SubstitutePackagedDrugResponse_160">
+        <wsdl:part name="SubstitutePackagedDrugResponse" element="mc160:SubstitutePackagedDrugResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="TerminatePrescriptionRequest_160">
+        <wsdl:part name="TerminatePrescriptionRequest" element="mc160:TerminatePrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="TerminatePrescriptionResponse_160">
+        <wsdl:part name="TerminatePrescriptionResponse" element="mc160:TerminatePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoDiscardDoseDispensingPeriodRequest_160">
+        <wsdl:part name="UndoDiscardDoseDispensingPeriodRequest" element="mc160:UndoDiscardDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoDiscardDoseDispensingPeriodResponse_160">
+        <wsdl:part name="UndoDiscardDoseDispensingPeriodResponse" element="mc160:UndoDiscardDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoEffectuatedDoseDispensingPeriodRequest_160">
+        <wsdl:part name="UndoEffectuatedDoseDispensingPeriodRequest" element="mc160:UndoEffectuatedDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoEffectuatedDoseDispensingPeriodResponse_160">
+        <wsdl:part name="UndoEffectuatedDoseDispensingPeriodResponse" element="mc160:UndoEffectuatedDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoEffectuationRequest_160">
+        <wsdl:part name="UndoEffectuationRequest" element="mc160:UndoEffectuationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoEffectuationResponse_160">
+        <wsdl:part name="UndoEffectuationResponse" element="mc160:UndoEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoReplacePrescriptionRequest_160">
+        <wsdl:part name="UndoReplacePrescriptionRequest" element="mc160:UndoReplacePrescriptionRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoReplacePrescriptionResponse_160">
+        <wsdl:part name="UndoReplacePrescriptionResponse" element="mc160:UndoReplacePrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnmarkPrescriptionDeprecatedRequest_160">
+        <wsdl:part name="UnmarkPrescriptionDeprecatedRequest" element="mc160:UnmarkPrescriptionDeprecatedRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnmarkPrescriptionDeprecatedResponse_160">
+        <wsdl:part name="UnmarkPrescriptionDeprecatedResponse" element="mc160:UnmarkPrescriptionDeprecatedResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnpauseDrugMedicationRequest_160">
+        <wsdl:part name="UnpauseDrugMedicationRequest" element="mc160:UnpauseDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnpauseDrugMedicationResponse_160">
+        <wsdl:part name="UnpauseDrugMedicationResponse" element="mc160:UnpauseDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnwithdrawDrugMedicationRequest_160">
+        <wsdl:part name="UnwithdrawDrugMedicationRequest" element="mc160:UnwithdrawDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UnwithdrawDrugMedicationResponse_160">
+        <wsdl:part name="UnwithdrawDrugMedicationResponse" element="mc160:UnwithdrawDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDoseDispensingCardRequest_160">
+        <wsdl:part name="UpdateDoseDispensingCardRequest" element="mc160:UpdateDoseDispensingCardRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDoseDispensingCardResponse_160">
+        <wsdl:part name="UpdateDoseDispensingCardResponse" element="mc160:UpdateDoseDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDoseDispensingPeriodRequest_160">
+        <wsdl:part name="UpdateDoseDispensingPeriodRequest" element="mc160:UpdateDoseDispensingPeriodRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDoseDispensingPeriodResponse_160">
+        <wsdl:part name="UpdateDoseDispensingPeriodResponse" element="mc160:UpdateDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDrugMedicationRequest_160">
+        <wsdl:part name="UpdateDrugMedicationRequest" element="mc160:UpdateDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateDrugMedicationResponse_160">
+        <wsdl:part name="UpdateDrugMedicationResponse" element="mc160:UpdateDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateMedicineCardRequest_160">
+        <wsdl:part name="UpdateMedicineCardRequest" element="mc160:UpdateMedicineCardRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateMedicineCardResponse_160">
+        <wsdl:part name="UpdateMedicineCardResponse" element="mc160:UpdateMedicineCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePackingGroupRequest_160">
+        <wsdl:part name="UpdatePackingGroupRequest" element="mc160:UpdatePackingGroupRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePackingGroupResponse_160">
+        <wsdl:part name="UpdatePackingGroupResponse" element="mc160:UpdatePackingGroupResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePlannedDispensingRequest_160">
+        <wsdl:part name="UpdatePlannedDispensingRequest" element="mc160:UpdatePlannedDispensingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePlannedDispensingResponse_160">
+        <wsdl:part name="UpdatePlannedDispensingResponse" element="mc160:UpdatePlannedDispensingResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UploadDrugCatalogRequest_160">
+        <wsdl:part name="UploadDrugCatalogRequest" element="mc160:UploadDrugCatalogRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UploadDrugCatalogResponse_160">
+        <wsdl:part name="UploadDrugCatalogResponse" element="mc160:UploadDrugCatalogResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="WithdrawDrugMedicationRequest_160">
+        <wsdl:part name="WithdrawDrugMedicationRequest" element="mc160:WithdrawDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="WithdrawDrugMedicationResponse_160">
+        <wsdl:part name="WithdrawDrugMedicationResponse" element="mc160:WithdrawDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="MedicineCardPortType">
+
+        <wsdl:operation name="AbortEffectuationOfDoseDispensingPeriod_160">
+            <wsdl:input name="AbortEffectuationOfDoseDispensingPeriodRequest_160" message="tns:AbortEffectuationOfDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="AbortEffectuationOfDoseDispensingPeriodResponse_160" message="tns:AbortEffectuationOfDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortPacking_160">
+            <wsdl:input name="AbortPackingRequest_160" message="tns:AbortPackingRequest_160"/>
+            <wsdl:output name="AbortPackingResponse_160" message="tns:AbortPackingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AcknowledgeOrders_160">
+            <wsdl:input name="AcknowledgeOrdersRequest_160" message="tns:AcknowledgeOrdersRequest_160"/>
+            <wsdl:output name="AcknowledgeOrdersResponse_160" message="tns:AcknowledgeOrdersResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AdjustDosageChange_160">
+            <wsdl:input name="AdjustDosageChangeRequest_160" message="tns:AdjustDosageChangeRequest_160"/>
+            <wsdl:output name="AdjustDosageChangeResponse_160" message="tns:AdjustDosageChangeResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AttachOrDetachPrescription_160">
+            <wsdl:input name="AttachOrDetachPrescriptionRequest_160" message="tns:AttachOrDetachPrescriptionRequest_160"/>
+            <wsdl:output name="AttachOrDetachPrescriptionResponse_160" message="tns:AttachOrDetachPrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrder_160">
+            <wsdl:input name="CancelOrderRequest_160" message="tns:CancelOrderRequest_160"/>
+            <wsdl:output name="CancelOrderResponse_160" message="tns:CancelOrderResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescription_160">
+            <wsdl:input name="CancelPrescriptionRequest_160" message="tns:CancelPrescriptionRequest_160"/>
+            <wsdl:output name="CancelPrescriptionResponse_160" message="tns:CancelPrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_160">
+            <wsdl:input name="CancelPrescriptionRequestRequest_160" message="tns:CancelPrescriptionRequestRequest_160"/>
+            <wsdl:output name="CancelPrescriptionRequestResponse_160" message="tns:CancelPrescriptionRequestResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CloseDoseDispensingCard_160">
+            <wsdl:input name="CloseDoseDispensingCardRequest_160" message="tns:CloseDoseDispensingCardRequest_160"/>
+            <wsdl:output name="CloseDoseDispensingCardResponse_160" message="tns:CloseDoseDispensingCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateAndEffectuatePrescription_160">
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_160" message="tns:CreateAndEffectuatePrescriptionRequest_160"/>
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_160" message="tns:CreateAndEffectuatePrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingCard_160">
+            <wsdl:input name="CreateDoseDispensingCardRequest_160" message="tns:CreateDoseDispensingCardRequest_160"/>
+            <wsdl:output name="CreateDoseDispensingCardResponse_160" message="tns:CreateDoseDispensingCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingPeriod_160">
+            <wsdl:input name="CreateDoseDispensingPeriodRequest_160" message="tns:CreateDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="CreateDoseDispensingPeriodResponse_160" message="tns:CreateDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDrugMedication_160">
+            <wsdl:input name="CreateDrugMedicationRequest_160" message="tns:CreateDrugMedicationRequest_160"/>
+            <wsdl:output name="CreateDrugMedicationResponse_160" message="tns:CreateDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateEffectuation_160">
+            <wsdl:input name="CreateEffectuationRequest_160" message="tns:CreateEffectuationRequest_160"/>
+            <wsdl:output name="CreateEffectuationResponse_160" message="tns:CreateEffectuationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateFocesWhitelisting_160">
+            <wsdl:input name="CreateFocesWhitelistingRequest_160" message="tns:CreateFocesWhitelistingRequest_160"/>
+            <wsdl:output name="CreateFocesWhitelistingResponse_160" message="tns:CreateFocesWhitelistingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateOrder_160">
+            <wsdl:input name="CreateOrderRequest_160" message="tns:CreateOrderRequest_160"/>
+            <wsdl:output name="CreateOrderResponse_160" message="tns:CreateOrderResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePackingGroup_160">
+            <wsdl:input name="CreatePackingGroupRequest_160" message="tns:CreatePackingGroupRequest_160"/>
+            <wsdl:output name="CreatePackingGroupResponse_160" message="tns:CreatePackingGroupResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePharmacyEffectuation_160">
+            <wsdl:input name="CreatePharmacyEffectuationRequest_160" message="tns:CreatePharmacyEffectuationRequest_160"/>
+            <wsdl:output name="CreatePharmacyEffectuationResponse_160" message="tns:CreatePharmacyEffectuationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePlannedDispensing_160">
+            <wsdl:input name="CreatePlannedDispensingRequest_160" message="tns:CreatePlannedDispensingRequest_160"/>
+            <wsdl:output name="CreatePlannedDispensingResponse_160" message="tns:CreatePlannedDispensingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionForUseInPractice_160">
+            <wsdl:input name="CreatePrescriptionForUseInPracticeRequest_160" message="tns:CreatePrescriptionForUseInPracticeRequest_160"/>
+            <wsdl:output name="CreatePrescriptionForUseInPracticeResponse_160" message="tns:CreatePrescriptionForUseInPracticeResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescription_160">
+            <wsdl:input name="CreatePrescriptionRequest_160" message="tns:CreatePrescriptionRequest_160"/>
+            <wsdl:output name="CreatePrescriptionResponse_160" message="tns:CreatePrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionRequest_160">
+            <wsdl:input name="CreatePrescriptionRequestRequest_160" message="tns:CreatePrescriptionRequestRequest_160"/>
+            <wsdl:output name="CreatePrescriptionRequestResponse_160" message="tns:CreatePrescriptionRequestResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionWithoutCPR_160">
+            <wsdl:input name="CreatePrescriptionWithoutCPRRequest_160" message="tns:CreatePrescriptionWithoutCPRRequest_160"/>
+            <wsdl:output name="CreatePrescriptionWithoutCPRResponse_160" message="tns:CreatePrescriptionWithoutCPRResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteDoseDispensingPeriod_160">
+            <wsdl:input name="DeleteDoseDispensingPeriodRequest_160" message="tns:DeleteDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="DeleteDoseDispensingPeriodResponse_160" message="tns:DeleteDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteEffectuation_160">
+            <wsdl:input name="DeleteEffectuationRequest_160" message="tns:DeleteEffectuationRequest_160"/>
+            <wsdl:output name="DeleteEffectuationResponse_160" message="tns:DeleteEffectuationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteFocesWhitelisting_160">
+            <wsdl:input name="DeleteFocesWhitelistingRequest_160" message="tns:DeleteFocesWhitelistingRequest_160"/>
+            <wsdl:output name="DeleteFocesWhitelistingResponse_160" message="tns:DeleteFocesWhitelistingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePackingGroup_160">
+            <wsdl:input name="DeletePackingGroupRequest_160" message="tns:DeletePackingGroupRequest_160"/>
+            <wsdl:output name="DeletePackingGroupResponse_160" message="tns:DeletePackingGroupResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePlannedDispensing_160">
+            <wsdl:input name="DeletePlannedDispensingRequest_160" message="tns:DeletePlannedDispensingRequest_160"/>
+            <wsdl:output name="DeletePlannedDispensingResponse_160" message="tns:DeletePlannedDispensingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DiscardDoseDispensingPeriod_160">
+            <wsdl:input name="DiscardDoseDispensingPeriodRequest_160" message="tns:DiscardDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="DiscardDoseDispensingPeriodResponse_160" message="tns:DiscardDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="EffectuateDoseDispensingPeriod_160">
+            <wsdl:input name="EffectuateDoseDispensingPeriodRequest_160" message="tns:EffectuateDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="EffectuateDoseDispensingPeriodResponse_160" message="tns:EffectuateDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ForwardPrescriptionRequest_160">
+            <wsdl:input name="ForwardPrescriptionRequestRequest_160" message="tns:ForwardPrescriptionRequestRequest_160"/>
+            <wsdl:output name="ForwardPrescriptionRequestResponse_160" message="tns:ForwardPrescriptionRequestResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAcutePeriods_160">
+            <wsdl:input name="GetAcutePeriodsRequest_160" message="tns:GetAcutePeriodsRequest_160"/>
+            <wsdl:output name="GetAcutePeriodsResponse_160" message="tns:GetAcutePeriodsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAuthorisationDateForNewestOpenPrescription_160">
+            <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_160" message="tns:GetAuthorisationDateForNewestOpenPrescriptionRequest_160"/>
+            <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_160" message="tns:GetAuthorisationDateForNewestOpenPrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDetailedPlannedDispensing_160">
+            <wsdl:input name="GetDetailedPlannedDispensingRequest_160" message="tns:GetDetailedPlannedDispensingRequest_160"/>
+            <wsdl:output name="GetDetailedPlannedDispensingResponse_160" message="tns:GetDetailedPlannedDispensingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCardHistory_160">
+            <wsdl:input name="GetDoseDispensingCardHistoryRequest_160" message="tns:GetDoseDispensingCardHistoryRequest_160"/>
+            <wsdl:output name="GetDoseDispensingCardHistoryResponse_160" message="tns:GetDoseDispensingCardHistoryResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingPeriodHistory_160">
+            <wsdl:input name="GetDoseDispensingPeriodHistoryRequest_160" message="tns:GetDoseDispensingPeriodHistoryRequest_160"/>
+            <wsdl:output name="GetDoseDispensingPeriodHistoryResponse_160" message="tns:GetDoseDispensingPeriodHistoryResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingPeriods_160">
+            <wsdl:input name="GetDoseDispensingPeriodsRequest_160" message="tns:GetDoseDispensingPeriodsRequest_160"/>
+            <wsdl:output name="GetDoseDispensingPeriodsResponse_160" message="tns:GetDoseDispensingPeriodsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingSummary_160">
+            <wsdl:input name="GetDoseDispensingSummaryRequest_160" message="tns:GetDoseDispensingSummaryRequest_160"/>
+            <wsdl:output name="GetDoseDispensingSummaryResponse_160" message="tns:GetDoseDispensingSummaryResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationEffectuations_160">
+            <wsdl:input name="GetDrugMedicationEffectuationsRequest_160" message="tns:GetDrugMedicationEffectuationsRequest_160"/>
+            <wsdl:output name="GetDrugMedicationEffectuationsResponse_160" message="tns:GetDrugMedicationEffectuationsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationHistory_160">
+            <wsdl:input name="GetDrugMedicationHistoryRequest_160" message="tns:GetDrugMedicationHistoryRequest_160"/>
+            <wsdl:output name="GetDrugMedicationHistoryResponse_160" message="tns:GetDrugMedicationHistoryResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedication_160">
+            <wsdl:input name="GetDrugMedicationRequest_160" message="tns:GetDrugMedicationRequest_160"/>
+            <wsdl:output name="GetDrugMedicationResponse_160" message="tns:GetDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationVersions_160">
+            <wsdl:input name="GetDrugMedicationVersionsRequest_160" message="tns:GetDrugMedicationVersionsRequest_160"/>
+            <wsdl:output name="GetDrugMedicationVersionsResponse_160" message="tns:GetDrugMedicationVersionsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetExplicitDoseDispensingCard_160">
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_160" message="tns:GetExplicitDoseDispensingCardRequest_160"/>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_160" message="tns:GetExplicitDoseDispensingCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetFocesWhitelistings_160">
+            <wsdl:input name="GetFocesWhitelistingsRequest_160" message="tns:GetFocesWhitelistingsRequest_160"/>
+            <wsdl:output name="GetFocesWhitelistingsResponse_160" message="tns:GetFocesWhitelistingsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardAsPDF_160">
+            <wsdl:input name="GetMedicineCardAsPDFRequest_160" message="tns:GetMedicineCardAsPDFRequest_160"/>
+            <wsdl:output name="GetMedicineCardAsPDFResponse_160" message="tns:GetMedicineCardAsPDFResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCard_160">
+            <wsdl:input name="GetMedicineCardRequest_160" message="tns:GetMedicineCardRequest_160"/>
+            <wsdl:output name="GetMedicineCardResponse_160" message="tns:GetMedicineCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_160">
+            <wsdl:input name="GetMedicineCardVersionListRequest_160" message="tns:GetMedicineCardVersionListRequest_160"/>
+            <wsdl:output name="GetMedicineCardVersionListResponse_160" message="tns:GetMedicineCardVersionListResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersion_160">
+            <wsdl:input name="GetMedicineCardVersionRequest_160" message="tns:GetMedicineCardVersionRequest_160"/>
+            <wsdl:output name="GetMedicineCardVersionResponse_160" message="tns:GetMedicineCardVersionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersions_160">
+            <wsdl:input name="GetMedicineCardVersionsRequest_160" message="tns:GetMedicineCardVersionsRequest_160"/>
+            <wsdl:output name="GetMedicineCardVersionsResponse_160" message="tns:GetMedicineCardVersionsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetNewOrders_160">
+            <wsdl:input name="GetNewOrdersRequest_160" message="tns:GetNewOrdersRequest_160"/>
+            <wsdl:output name="GetNewOrdersResponse_160" message="tns:GetNewOrdersResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingGroupContents_160">
+            <wsdl:input name="GetPackingGroupContentsRequest_160" message="tns:GetPackingGroupContentsRequest_160"/>
+            <wsdl:output name="GetPackingGroupContentsResponse_160" message="tns:GetPackingGroupContentsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingGroup_160">
+            <wsdl:input name="GetPackingGroupRequest_160" message="tns:GetPackingGroupRequest_160"/>
+            <wsdl:output name="GetPackingGroupResponse_160" message="tns:GetPackingGroupResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingOverviewDetails_160">
+            <wsdl:input name="GetPackingOverviewDetailsRequest_160" message="tns:GetPackingOverviewDetailsRequest_160"/>
+            <wsdl:output name="GetPackingOverviewDetailsResponse_160" message="tns:GetPackingOverviewDetailsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingOverview_160">
+            <wsdl:input name="GetPackingOverviewRequest_160" message="tns:GetPackingOverviewRequest_160"/>
+            <wsdl:output name="GetPackingOverviewResponse_160" message="tns:GetPackingOverviewResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPermissions_160">
+            <wsdl:input name="GetPermissionsRequest_160" message="tns:GetPermissionsRequest_160"/>
+            <wsdl:output name="GetPermissionsResponse_160" message="tns:GetPermissionsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPlannedDispensingHistory_160">
+            <wsdl:input name="GetPlannedDispensingHistoryRequest_160" message="tns:GetPlannedDispensingHistoryRequest_160"/>
+            <wsdl:output name="GetPlannedDispensingHistoryResponse_160" message="tns:GetPlannedDispensingHistoryResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPlannedDispensing_160">
+            <wsdl:input name="GetPlannedDispensingRequest_160" message="tns:GetPlannedDispensingRequest_160"/>
+            <wsdl:output name="GetPlannedDispensingResponse_160" message="tns:GetPlannedDispensingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescribingOrganisation_160">
+            <wsdl:input name="GetPrescribingOrganisationRequest_160" message="tns:GetPrescribingOrganisationRequest_160"/>
+            <wsdl:output name="GetPrescribingOrganisationResponse_160" message="tns:GetPrescribingOrganisationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescription_160">
+            <wsdl:input name="GetPrescriptionRequest_160" message="tns:GetPrescriptionRequest_160"/>
+            <wsdl:output name="GetPrescriptionResponse_160" message="tns:GetPrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequests_160">
+            <wsdl:input name="GetPrescriptionRequestsRequest_160" message="tns:GetPrescriptionRequestsRequest_160"/>
+            <wsdl:output name="GetPrescriptionRequestsResponse_160" message="tns:GetPrescriptionRequestsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequestVersions_160">
+            <wsdl:input name="GetPrescriptionRequestVersionsRequest_160" message="tns:GetPrescriptionRequestVersionsRequest_160"/>
+            <wsdl:output name="GetPrescriptionRequestVersionsResponse_160" message="tns:GetPrescriptionRequestVersionsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionResidualAmount_160">
+            <wsdl:input name="GetPrescriptionResidualAmountRequest_160" message="tns:GetPrescriptionResidualAmountRequest_160"/>
+            <wsdl:output name="GetPrescriptionResidualAmountResponse_160" message="tns:GetPrescriptionResidualAmountResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GiveConsent_160">
+            <wsdl:input name="GiveConsentRequest_160" message="tns:GiveConsentRequest_160"/>
+            <wsdl:output name="GiveConsentResponse_160" message="tns:GiveConsentResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="InvalidatePrescription_160">
+            <wsdl:input name="InvalidatePrescriptionRequest_160" message="tns:InvalidatePrescriptionRequest_160"/>
+            <wsdl:output name="InvalidatePrescriptionResponse_160" message="tns:InvalidatePrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ListPackingGroups_160">
+            <wsdl:input name="ListPackingGroupsRequest_160" message="tns:ListPackingGroupsRequest_160"/>
+            <wsdl:output name="ListPackingGroupsResponse_160" message="tns:ListPackingGroupsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="MarkPrescriptionDeprecated_160">
+            <wsdl:input name="MarkPrescriptionDeprecatedRequest_160" message="tns:MarkPrescriptionDeprecatedRequest_160"/>
+            <wsdl:output name="MarkPrescriptionDeprecatedResponse_160" message="tns:MarkPrescriptionDeprecatedResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="PauseDrugMedication_160">
+            <wsdl:input name="PauseDrugMedicationRequest_160" message="tns:PauseDrugMedicationRequest_160"/>
+            <wsdl:output name="PauseDrugMedicationResponse_160" message="tns:PauseDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RemoveConsent_160">
+            <wsdl:input name="RemoveConsentRequest_160" message="tns:RemoveConsentRequest_160"/>
+            <wsdl:output name="RemoveConsentResponse_160" message="tns:RemoveConsentResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ReopenPrescription_160">
+            <wsdl:input name="ReopenPrescriptionRequest_160" message="tns:ReopenPrescriptionRequest_160"/>
+            <wsdl:output name="ReopenPrescriptionResponse_160" message="tns:ReopenPrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ReplacePrescription_160">
+            <wsdl:input name="ReplacePrescriptionRequest_160" message="tns:ReplacePrescriptionRequest_160"/>
+            <wsdl:output name="ReplacePrescriptionResponse_160" message="tns:ReplacePrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchEffectuations_160">
+            <wsdl:input name="SearchEffectuationsRequest_160" message="tns:SearchEffectuationsRequest_160"/>
+            <wsdl:output name="SearchEffectuationsResponse_160" message="tns:SearchEffectuationsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchMedicineCard_160">
+            <wsdl:input name="SearchMedicineCardRequest_160" message="tns:SearchMedicineCardRequest_160"/>
+            <wsdl:output name="SearchMedicineCardResponse_160" message="tns:SearchMedicineCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPlannedDispensing_160">
+            <wsdl:input name="SearchPlannedDispensingRequest_160" message="tns:SearchPlannedDispensingRequest_160"/>
+            <wsdl:output name="SearchPlannedDispensingResponse_160" message="tns:SearchPlannedDispensingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPrescriptionRequests_160">
+            <wsdl:input name="SearchPrescriptionRequestsRequest_160" message="tns:SearchPrescriptionRequestsRequest_160"/>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_160" message="tns:SearchPrescriptionRequestsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchWithdrawnDrugMedications_160">
+            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_160" message="tns:SearchWithdrawnDrugMedicationsRequest_160"/>
+            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_160" message="tns:SearchWithdrawnDrugMedicationsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardNotReviewed_160">
+            <wsdl:input name="SetMedicineCardNotReviewedRequest_160" message="tns:SetMedicineCardNotReviewedRequest_160"/>
+            <wsdl:output name="SetMedicineCardNotReviewedResponse_160" message="tns:SetMedicineCardNotReviewedResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardReviewed_160">
+            <wsdl:input name="SetMedicineCardReviewedRequest_160" message="tns:SetMedicineCardReviewedRequest_160"/>
+            <wsdl:output name="SetMedicineCardReviewedResponse_160" message="tns:SetMedicineCardReviewedResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingFinished_160">
+            <wsdl:input name="SetPackingFinishedRequest_160" message="tns:SetPackingFinishedRequest_160"/>
+            <wsdl:output name="SetPackingFinishedResponse_160" message="tns:SetPackingFinishedResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingStarted_160">
+            <wsdl:input name="SetPackingStartedRequest_160" message="tns:SetPackingStartedRequest_160"/>
+            <wsdl:output name="SetPackingStartedResponse_160" message="tns:SetPackingStartedResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="StartEffectuationOfDoseDispensingPeriod_160">
+            <wsdl:input name="StartEffectuationOfDoseDispensingPeriodRequest_160" message="tns:StartEffectuationOfDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="StartEffectuationOfDoseDispensingPeriodResponse_160" message="tns:StartEffectuationOfDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="StartEffectuation_160">
+            <wsdl:input name="StartEffectuationRequest_160" message="tns:StartEffectuationRequest_160"/>
+            <wsdl:output name="StartEffectuationResponse_160" message="tns:StartEffectuationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SubstitutePackagedDrug_160">
+            <wsdl:input name="SubstitutePackagedDrugRequest_160" message="tns:SubstitutePackagedDrugRequest_160"/>
+            <wsdl:output name="SubstitutePackagedDrugResponse_160" message="tns:SubstitutePackagedDrugResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="TerminatePrescription_160">
+            <wsdl:input name="TerminatePrescriptionRequest_160" message="tns:TerminatePrescriptionRequest_160"/>
+            <wsdl:output name="TerminatePrescriptionResponse_160" message="tns:TerminatePrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoDiscardDoseDispensingPeriod_160">
+            <wsdl:input name="UndoDiscardDoseDispensingPeriodRequest_160" message="tns:UndoDiscardDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="UndoDiscardDoseDispensingPeriodResponse_160" message="tns:UndoDiscardDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoEffectuatedDoseDispensingPeriod_160">
+            <wsdl:input name="UndoEffectuatedDoseDispensingPeriodRequest_160" message="tns:UndoEffectuatedDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="UndoEffectuatedDoseDispensingPeriodResponse_160" message="tns:UndoEffectuatedDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoEffectuation_160">
+            <wsdl:input name="UndoEffectuationRequest_160" message="tns:UndoEffectuationRequest_160"/>
+            <wsdl:output name="UndoEffectuationResponse_160" message="tns:UndoEffectuationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoReplacePrescription_160">
+            <wsdl:input name="UndoReplacePrescriptionRequest_160" message="tns:UndoReplacePrescriptionRequest_160"/>
+            <wsdl:output name="UndoReplacePrescriptionResponse_160" message="tns:UndoReplacePrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UnmarkPrescriptionDeprecated_160">
+            <wsdl:input name="UnmarkPrescriptionDeprecatedRequest_160" message="tns:UnmarkPrescriptionDeprecatedRequest_160"/>
+            <wsdl:output name="UnmarkPrescriptionDeprecatedResponse_160" message="tns:UnmarkPrescriptionDeprecatedResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UnpauseDrugMedication_160">
+            <wsdl:input name="UnpauseDrugMedicationRequest_160" message="tns:UnpauseDrugMedicationRequest_160"/>
+            <wsdl:output name="UnpauseDrugMedicationResponse_160" message="tns:UnpauseDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UnwithdrawDrugMedication_160">
+            <wsdl:input name="UnwithdrawDrugMedicationRequest_160" message="tns:UnwithdrawDrugMedicationRequest_160"/>
+            <wsdl:output name="UnwithdrawDrugMedicationResponse_160" message="tns:UnwithdrawDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingCard_160">
+            <wsdl:input name="UpdateDoseDispensingCardRequest_160" message="tns:UpdateDoseDispensingCardRequest_160"/>
+            <wsdl:output name="UpdateDoseDispensingCardResponse_160" message="tns:UpdateDoseDispensingCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingPeriod_160">
+            <wsdl:input name="UpdateDoseDispensingPeriodRequest_160" message="tns:UpdateDoseDispensingPeriodRequest_160"/>
+            <wsdl:output name="UpdateDoseDispensingPeriodResponse_160" message="tns:UpdateDoseDispensingPeriodResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDrugMedication_160">
+            <wsdl:input name="UpdateDrugMedicationRequest_160" message="tns:UpdateDrugMedicationRequest_160"/>
+            <wsdl:output name="UpdateDrugMedicationResponse_160" message="tns:UpdateDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateMedicineCard_160">
+            <wsdl:input name="UpdateMedicineCardRequest_160" message="tns:UpdateMedicineCardRequest_160"/>
+            <wsdl:output name="UpdateMedicineCardResponse_160" message="tns:UpdateMedicineCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePackingGroup_160">
+            <wsdl:input name="UpdatePackingGroupRequest_160" message="tns:UpdatePackingGroupRequest_160"/>
+            <wsdl:output name="UpdatePackingGroupResponse_160" message="tns:UpdatePackingGroupResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePlannedDispensing_160">
+            <wsdl:input name="UpdatePlannedDispensingRequest_160" message="tns:UpdatePlannedDispensingRequest_160"/>
+            <wsdl:output name="UpdatePlannedDispensingResponse_160" message="tns:UpdatePlannedDispensingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UploadDrugCatalog_160">
+            <wsdl:input name="UploadDrugCatalogRequest_160" message="tns:UploadDrugCatalogRequest_160"/>
+            <wsdl:output name="UploadDrugCatalogResponse_160" message="tns:UploadDrugCatalogResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="WithdrawDrugMedication_160">
+            <wsdl:input name="WithdrawDrugMedicationRequest_160" message="tns:WithdrawDrugMedicationRequest_160"/>
+            <wsdl:output name="WithdrawDrugMedicationResponse_160" message="tns:WithdrawDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+
+    </wsdl:portType>
+
+    <wsdl:binding name="MedicineCardBinding" type="tns:MedicineCardPortType">
+
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="AbortEffectuationOfDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AbortEffectuationOfDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="AbortEffectuationOfDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AbortEffectuationOfDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortPacking_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AbortPacking" style="document"/>
+            <wsdl:input name="AbortPackingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AbortPackingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AcknowledgeOrders_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AcknowledgeOrders" style="document"/>
+            <wsdl:input name="AcknowledgeOrdersRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AcknowledgeOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AdjustDosageChange_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AdjustDosageChange" style="document"/>
+            <wsdl:input name="AdjustDosageChangeRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AdjustDosageChangeResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AttachOrDetachPrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AttachOrDetachPrescription" style="document"/>
+            <wsdl:input name="AttachOrDetachPrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AttachOrDetachPrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelOrder_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CancelOrder" style="document"/>
+            <wsdl:input name="CancelOrderRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelOrderResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CancelPrescription" style="document"/>
+            <wsdl:input name="CancelPrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelPrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CancelPrescriptionRequest_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CancelPrescriptionRequest" style="document"/>
+            <wsdl:input name="CancelPrescriptionRequestRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CancelPrescriptionRequestResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CloseDoseDispensingCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CloseDoseDispensingCard" style="document"/>
+            <wsdl:input name="CloseDoseDispensingCardRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CloseDoseDispensingCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateAndEffectuatePrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateAndEffectuatePrescription" style="document"/>
+            <wsdl:input name="CreateAndEffectuatePrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateAndEffectuatePrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateDoseDispensingCard" style="document"/>
+            <wsdl:input name="CreateDoseDispensingCardRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateDoseDispensingCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="CreateDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDrugMedication_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateDrugMedication" style="document"/>
+            <wsdl:input name="CreateDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateEffectuation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateEffectuation" style="document"/>
+            <wsdl:input name="CreateEffectuationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateEffectuationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateFocesWhitelisting_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateFocesWhitelisting" style="document"/>
+            <wsdl:input name="CreateFocesWhitelistingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateFocesWhitelistingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateOrder_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateOrder" style="document"/>
+            <wsdl:input name="CreateOrderRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateOrderResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePackingGroup_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePackingGroup" style="document"/>
+            <wsdl:input name="CreatePackingGroupRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePackingGroupResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePharmacyEffectuation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePharmacyEffectuation" style="document"/>
+            <wsdl:input name="CreatePharmacyEffectuationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePharmacyEffectuationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePlannedDispensing_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePlannedDispensing" style="document"/>
+            <wsdl:input name="CreatePlannedDispensingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePlannedDispensingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionForUseInPractice_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescriptionForUseInPractice" style="document"/>
+            <wsdl:input name="CreatePrescriptionForUseInPracticeRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionForUseInPracticeResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescription" style="document"/>
+            <wsdl:input name="CreatePrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionRequest_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescriptionRequest" style="document"/>
+            <wsdl:input name="CreatePrescriptionRequestRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionRequestResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreatePrescriptionWithoutCPR_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescriptionWithoutCPR" style="document"/>
+            <wsdl:input name="CreatePrescriptionWithoutCPRRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreatePrescriptionWithoutCPRResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#DeleteDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="DeleteDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteEffectuation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#DeleteEffectuation" style="document"/>
+            <wsdl:input name="DeleteEffectuationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteEffectuationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeleteFocesWhitelisting_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#DeleteFocesWhitelisting" style="document"/>
+            <wsdl:input name="DeleteFocesWhitelistingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeleteFocesWhitelistingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePackingGroup_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#DeletePackingGroup" style="document"/>
+            <wsdl:input name="DeletePackingGroupRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeletePackingGroupResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DeletePlannedDispensing_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#DeletePlannedDispensing" style="document"/>
+            <wsdl:input name="DeletePlannedDispensingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DeletePlannedDispensingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="DiscardDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#DiscardDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="DiscardDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="DiscardDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="EffectuateDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#EffectuateDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="EffectuateDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="EffectuateDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ForwardPrescriptionRequest_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ForwardPrescriptionRequest" style="document"/>
+            <wsdl:input name="ForwardPrescriptionRequestRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ForwardPrescriptionRequestResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAcutePeriods_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetAcutePeriods" style="document"/>
+            <wsdl:input name="GetAcutePeriodsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAcutePeriodsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetAuthorisationDateForNewestOpenPrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetAuthorisationDateForNewestOpenPrescription" style="document"/>
+            <wsdl:input name="GetAuthorisationDateForNewestOpenPrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetAuthorisationDateForNewestOpenPrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDetailedPlannedDispensing_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDetailedPlannedDispensing" style="document"/>
+            <wsdl:input name="GetDetailedPlannedDispensingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDetailedPlannedDispensingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingCardHistory_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDoseDispensingCardHistory" style="document"/>
+            <wsdl:input name="GetDoseDispensingCardHistoryRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingCardHistoryResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingPeriodHistory_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDoseDispensingPeriodHistory" style="document"/>
+            <wsdl:input name="GetDoseDispensingPeriodHistoryRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingPeriodHistoryResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingPeriods_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDoseDispensingPeriods" style="document"/>
+            <wsdl:input name="GetDoseDispensingPeriodsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingPeriodsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDoseDispensingSummary_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDoseDispensingSummary" style="document"/>
+            <wsdl:input name="GetDoseDispensingSummaryRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDoseDispensingSummaryResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationEffectuations_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedicationEffectuations" style="document"/>
+            <wsdl:input name="GetDrugMedicationEffectuationsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationEffectuationsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationHistory_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedicationHistory" style="document"/>
+            <wsdl:input name="GetDrugMedicationHistoryRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationHistoryResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedication_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedication" style="document"/>
+            <wsdl:input name="GetDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDrugMedicationVersions_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedicationVersions" style="document"/>
+            <wsdl:input name="GetDrugMedicationVersionsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDrugMedicationVersionsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetExplicitDoseDispensingCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetExplicitDoseDispensingCard" style="document"/>
+            <wsdl:input name="GetExplicitDoseDispensingCardRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetExplicitDoseDispensingCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetFocesWhitelistings_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetFocesWhitelistings" style="document"/>
+            <wsdl:input name="GetFocesWhitelistingsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetFocesWhitelistingsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardAsPDF_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardAsPDF" style="document"/>
+            <wsdl:input name="GetMedicineCardAsPDFRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardAsPDFResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCard" style="document"/>
+            <wsdl:input name="GetMedicineCardRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersionList_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersionList" style="document"/>
+            <wsdl:input name="GetMedicineCardVersionListRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionListResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersion_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersion" style="document"/>
+            <wsdl:input name="GetMedicineCardVersionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersions_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersions" style="document"/>
+            <wsdl:input name="GetMedicineCardVersionsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetNewOrders_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetNewOrders" style="document"/>
+            <wsdl:input name="GetNewOrdersRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetNewOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingGroupContents_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPackingGroupContents" style="document"/>
+            <wsdl:input name="GetPackingGroupContentsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingGroupContentsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingGroup_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPackingGroup" style="document"/>
+            <wsdl:input name="GetPackingGroupRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingGroupResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingOverviewDetails_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPackingOverviewDetails" style="document"/>
+            <wsdl:input name="GetPackingOverviewDetailsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingOverviewDetailsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPackingOverview_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPackingOverview" style="document"/>
+            <wsdl:input name="GetPackingOverviewRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPackingOverviewResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPermissions_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPermissions" style="document"/>
+            <wsdl:input name="GetPermissionsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPermissionsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPlannedDispensingHistory_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPlannedDispensingHistory" style="document"/>
+            <wsdl:input name="GetPlannedDispensingHistoryRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPlannedDispensingHistoryResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPlannedDispensing_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPlannedDispensing" style="document"/>
+            <wsdl:input name="GetPlannedDispensingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPlannedDispensingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescribingOrganisation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescribingOrganisation" style="document"/>
+            <wsdl:input name="GetPrescribingOrganisationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescribingOrganisationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescription" style="document"/>
+            <wsdl:input name="GetPrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequests_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescriptionRequests" style="document"/>
+            <wsdl:input name="GetPrescriptionRequestsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionRequestsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequestVersions_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescriptionRequestVersions" style="document"/>
+            <wsdl:input name="GetPrescriptionRequestVersionsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionRequestVersionsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionResidualAmount_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescriptionResidualAmount" style="document"/>
+            <wsdl:input name="GetPrescriptionResidualAmountRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionResidualAmountResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GiveConsent_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GiveConsent" style="document"/>
+            <wsdl:input name="GiveConsentRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GiveConsentResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="InvalidatePrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#InvalidatePrescription" style="document"/>
+            <wsdl:input name="InvalidatePrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="InvalidatePrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ListPackingGroups_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ListPackingGroups" style="document"/>
+            <wsdl:input name="ListPackingGroupsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ListPackingGroupsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="MarkPrescriptionDeprecated_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#MarkPrescriptionDeprecated" style="document"/>
+            <wsdl:input name="MarkPrescriptionDeprecatedRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="MarkPrescriptionDeprecatedResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="PauseDrugMedication_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#PauseDrugMedication" style="document"/>
+            <wsdl:input name="PauseDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="PauseDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RemoveConsent_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RemoveConsent" style="document"/>
+            <wsdl:input name="RemoveConsentRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RemoveConsentResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ReopenPrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ReopenPrescription" style="document"/>
+            <wsdl:input name="ReopenPrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReopenPrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ReplacePrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ReplacePrescription" style="document"/>
+            <wsdl:input name="ReplacePrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ReplacePrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchEffectuations_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchEffectuations" style="document"/>
+            <wsdl:input name="SearchEffectuationsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchEffectuationsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchMedicineCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchMedicineCard" style="document"/>
+            <wsdl:input name="SearchMedicineCardRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchMedicineCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPlannedDispensing_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchPlannedDispensing" style="document"/>
+            <wsdl:input name="SearchPlannedDispensingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchPlannedDispensingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchPrescriptionRequests_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchPrescriptionRequests" style="document"/>
+            <wsdl:input name="SearchPrescriptionRequestsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchPrescriptionRequestsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchWithdrawnDrugMedications_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchWithdrawnDrugMedications" style="document"/>
+            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardNotReviewed_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SetMedicineCardNotReviewed" style="document"/>
+            <wsdl:input name="SetMedicineCardNotReviewedRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetMedicineCardNotReviewedResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardReviewed_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SetMedicineCardReviewed" style="document"/>
+            <wsdl:input name="SetMedicineCardReviewedRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetMedicineCardReviewedResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingFinished_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SetPackingFinished" style="document"/>
+            <wsdl:input name="SetPackingFinishedRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetPackingFinishedResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SetPackingStarted_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SetPackingStarted" style="document"/>
+            <wsdl:input name="SetPackingStartedRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetPackingStartedResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="StartEffectuationOfDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#StartEffectuationOfDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="StartEffectuationOfDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="StartEffectuationOfDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="StartEffectuation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#StartEffectuation" style="document"/>
+            <wsdl:input name="StartEffectuationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="StartEffectuationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SubstitutePackagedDrug_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SubstitutePackagedDrug" style="document"/>
+            <wsdl:input name="SubstitutePackagedDrugRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SubstitutePackagedDrugResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="TerminatePrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#TerminatePrescription" style="document"/>
+            <wsdl:input name="TerminatePrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="TerminatePrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoDiscardDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoDiscardDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="UndoDiscardDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoDiscardDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoEffectuatedDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoEffectuatedDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="UndoEffectuatedDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoEffectuatedDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoEffectuation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoEffectuation" style="document"/>
+            <wsdl:input name="UndoEffectuationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoEffectuationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoReplacePrescription_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoReplacePrescription" style="document"/>
+            <wsdl:input name="UndoReplacePrescriptionRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoReplacePrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UnmarkPrescriptionDeprecated_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UnmarkPrescriptionDeprecated" style="document"/>
+            <wsdl:input name="UnmarkPrescriptionDeprecatedRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnmarkPrescriptionDeprecatedResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UnpauseDrugMedication_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UnpauseDrugMedication" style="document"/>
+            <wsdl:input name="UnpauseDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnpauseDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UnwithdrawDrugMedication_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UnwithdrawDrugMedication" style="document"/>
+            <wsdl:input name="UnwithdrawDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UnwithdrawDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UpdateDoseDispensingCard" style="document"/>
+            <wsdl:input name="UpdateDoseDispensingCardRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateDoseDispensingCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDoseDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UpdateDoseDispensingPeriod" style="document"/>
+            <wsdl:input name="UpdateDoseDispensingPeriodRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateDrugMedication_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UpdateDrugMedication" style="document"/>
+            <wsdl:input name="UpdateDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateMedicineCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UpdateMedicineCard" style="document"/>
+            <wsdl:input name="UpdateMedicineCardRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdateMedicineCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePackingGroup_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UpdatePackingGroup" style="document"/>
+            <wsdl:input name="UpdatePackingGroupRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdatePackingGroupResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdatePlannedDispensing_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UpdatePlannedDispensing" style="document"/>
+            <wsdl:input name="UpdatePlannedDispensingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UpdatePlannedDispensingResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UploadDrugCatalog_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UploadDrugCatalog" style="document"/>
+            <wsdl:input name="UploadDrugCatalogRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UploadDrugCatalogResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="WithdrawDrugMedication_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#WithdrawDrugMedication" style="document"/>
+            <wsdl:input name="WithdrawDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="WithdrawDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="MedicineCard">
+        <wsdl:port name="MedicineCardPort" binding="tns:MedicineCardBinding">
+            <soap:address location="https://test1.fmk.netic.dk/fmk12/ws/MedicineCard"/>
+        </wsdl:port>
+
+    </wsdl:service>
+
+</wsdl:definitions>
