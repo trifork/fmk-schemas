@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Source.xsd"/>
+
+	<element name="PersonIdentifier" type="mc160:PersonIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a person identifier, according to the Danish CPR format.</documentation>
+			<documentation xml:lang="da-DK">Element for er CPR-nummer</documentation>
+		</annotation>
+	</element>
+	<complexType name="PersonIdentifierType">
+		<simpleContent>
+			<extension base="mc160:PersonIdentifierValueType">
+				<attribute name="source" type="mc160:PersonIdentifierSourceType" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="PersonIdentifierValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierSourceType">
+		<union memberTypes="mc160:PersonIdentifierPredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierPredefinedSourceType">
+		<restriction base="mc160:UndefinedSourceType">
+			<enumeration value="CPR"/>
+			<enumeration value="X-eCPR"/>
+			<enumeration value="SORPERSON"/>
+			<enumeration value="MedicineCardKey"/>
+		</restriction>
+	</simpleType>
+</schema>

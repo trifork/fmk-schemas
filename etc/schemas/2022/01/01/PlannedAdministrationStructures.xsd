@@ -1,0 +1,21 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="EmptyDosageStructure.xsd"/>
+	<include schemaLocation="PlannedAdministrationStructure.xsd"/>
+
+	<complexType name="PlannedAdministrationStructuresType">
+		<annotation>
+			<documentation xml:lang="en-GB">Structure for a number of period in the planned Administration</documentation>
+			<documentation xml:lang="da-DK">Et antal perioder i den planlagte administration</documentation>
+		</annotation>
+		<sequence>
+			<choice maxOccurs="unbounded">
+				<element name="EmptyStructure" type="mc160:EmptyDosageStructureType"/>
+				<element name="PlannedAdministrationStructure" type="mc160:PlannedAdministrationStructureType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<attribute name="PrescriptionRequestStatus" type="mc160:PrescriptionRequestStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">The status of a prescriptionrequest</documentation>
+			<documentation xml:lang="da-DK">Receptensanmodningens status</documentation>
+		</annotation>
+	</attribute>
+	<simpleType name="PrescriptionRequestStatusType">
+		<union memberTypes="mc160:PredefinedPrescriptionRequestStatusType mc160:UndefinedPrescriptionRequestStatusType"/>
+	</simpleType>
+	<simpleType name="PredefinedPrescriptionRequestStatusType">
+		<restriction base="mc160:UndefinedPrescriptionRequestStatusType">
+			<enumeration value="unhandled"/>
+			<enumeration value="prescribed"/>
+			<enumeration value="cancelled"/>
+        </restriction>
+	</simpleType>
+	<simpleType name="UndefinedPrescriptionRequestStatusType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

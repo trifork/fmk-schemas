@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+    <include schemaLocation="PrescriptionIdentifier.xsd"/>
+    <include schemaLocation="OrderIdentifier.xsd"/>
+
+    <element name="AcknowledgeOrdersRequest" type="mc160:AcknowledgeOrdersRequestType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element for a request to acknowledge that new orders have been received by a pharmacy</documentation>
+            <documentation xml:lang="da-DK">Element for en kvittering for at nye bestillinger er blevet modtaget af et apotek</documentation>
+        </annotation>
+    </element>
+    <complexType name="AcknowledgeOrdersRequestType">
+        <sequence>
+            <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+            <element name="Order" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType"/>
+                        <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+</schema>

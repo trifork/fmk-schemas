@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="DrugCatalogVersion.xsd"/>
+	<include schemaLocation="DrugCatalogEntry.xsd"/>
+
+	<element name="UploadDrugCatalogRequest" type="mc160:UploadDrugCatalogRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to upload a product catalog from a packing organisation to a ordered-at pharmacy</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel på at uploade sortiment fra et pakkeapotek til et udleveringsapotek</documentation>
+		</annotation>
+	</element>
+	
+	<complexType name="UploadDrugCatalogRequestType">
+		<sequence>
+			<element name="CreatedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="DrugCatalogVersion" type="mc160:DrugCatalogVersionType" />
+			<element name="PackedAtOrganisation" type="mc160:OrganisationType" />
+			<element name="DrugCatalogEntry" type="mc160:DrugCatalogEntryType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

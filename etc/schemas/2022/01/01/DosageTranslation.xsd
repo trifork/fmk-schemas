@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DosageTranslationLongText.xsd"/>
+	<include schemaLocation="DosageTranslationShortText.xsd"/>
+	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	
+	<element name="DosageTranslation" type="mc160:DosageTranslationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Dosage structure translated to text plus a calulated average daily dosage</documentation>
+			<documentation xml:lang="da-DK">Dosisstrukturen oversat til tekst samt beregnet gennemsnitlig daglig dosis</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageTranslationType">
+		<sequence>
+			<element name="ShortText" type="mc160:DosageTranslationShortTextType" minOccurs="0"/>
+			<element name="LongText" type="mc160:DosageTranslationLongTextType"/>
+			<sequence minOccurs="0">
+				<choice>
+					<element name="AverageDailyDosage" type="mc160:DoseQuantityType"/>
+					<sequence>
+						<element name="MinimalAverageDailyDosage" type="mc160:DoseQuantityType"/>
+						<element name="MaximalAverageDailyDosage" type="mc160:DoseQuantityType"/>
+					</sequence>
+				</choice>
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

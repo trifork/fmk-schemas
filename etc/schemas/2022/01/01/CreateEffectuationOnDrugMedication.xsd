@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="CreateEffectuation.xsd"/>
+
+	<complexType name="CreateEffectuationOnDrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Elemenet for adding an effecutation on a drug prescription</documentation>
+			<documentation xml:lang="da-DK">Element for en tilføjelse af en effektuering på en lægemiddelordination</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="Effectuation" type="mc160:CreateEffectuationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

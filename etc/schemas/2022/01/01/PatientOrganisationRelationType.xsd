@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="PatientOrganisationRelationType" type="mc160:PatientOrganisationRelationTypeType">
+		<annotation>
+			<documentation xml:lang="da-DK">Typen af relation mellem patient og organisation</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PatientOrganisationRelationTypeType">
+		<union memberTypes="mc160:PredefinedPatientOrganisationRelationTypeType mc160:UndefinedPatientOrganisationRelationTypeType"/>
+	</simpleType>
+	<simpleType name="PredefinedPatientOrganisationRelationTypeType">
+		<restriction base="string">
+			<enumeration value="Visiteret til medicinadministration"/>
+			<enumeration value="Indlagt"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedPatientOrganisationRelationTypeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="PrivateDoseDispensedMedication.xsd"/>
+    <include schemaLocation="ExplicitPlannedDispensing.xsd"/>
+
+    <element name="AnyDoseDispensingPeriod" type="mc160:AnyDoseDispensingPeriodType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dose dispensing card contents disregarding periods</documentation>
+            <documentation xml:lang="da-DK">Dosisdispenserings kort indhold på tværs af perioder</documentation>
+        </annotation>
+    </element>
+    <complexType name="AnyDoseDispensingPeriodType">
+        <sequence>
+            <element name="PrivatePlannedDispensing" type="mc160:PrivateDoseDispensedMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="PlannedDispensing" type="mc160:ExplicitPlannedDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

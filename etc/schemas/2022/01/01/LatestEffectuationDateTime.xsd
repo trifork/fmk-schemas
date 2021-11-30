@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="LatestEffectuationDateTime" type="mc160:LatestEffectuationDateTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">The last time the prescription was effectuated</documentation>
+			<documentation xml:lang="da-DK">Det seneste tidspunkt der er foretaget en udlevering på recepten</documentation>
+		</annotation>
+	</element>
+	<simpleType name="LatestEffectuationDateTimeType">
+		<restriction base="dateTime">
+			<minInclusive value="2000-01-01T00:00:00Z"/>
+		</restriction>
+	</simpleType>
+</schema>

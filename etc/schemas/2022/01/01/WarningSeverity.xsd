@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<simpleType name="WarningSeverityType">
+		<annotation>
+			<documentation xml:lang="en-GB">The severity level of a warning</documentation>
+			<documentation xml:lang="da-DK">Indikation af hvor alvolig en advarsel er</documentation>
+		</annotation>
+		<union memberTypes="mc160:PredefinedWarningSeverityType mc160:UndefinedWarningSeverityType"/>
+	</simpleType>
+	<simpleType name="PredefinedWarningSeverityType">
+		<restriction base="mc160:UndefinedWarningSeverityType">
+			<enumeration value="high"/>
+			<enumeration value="medium"/>
+			<enumeration value="low"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedWarningSeverityType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
+		</restriction>
+	</simpleType>
+</schema>

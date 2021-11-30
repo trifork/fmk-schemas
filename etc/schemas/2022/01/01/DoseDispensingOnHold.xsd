@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+
+	<element name="DoseDispensingOnHold" type="mc160:DoseDispensingOnHoldType">
+		<annotation>
+			<documentation xml:lang="en-GB">On hold period for dose dispensing</documentation>
+			<documentation xml:lang="da-DK">Sat i bero periode for dosisdispenseringskort</documentation>
+		</annotation>
+	</element>
+	<complexType name="DoseDispensingOnHoldType">
+        <sequence>
+			<element name="Created" type="mc160:CreatedType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+		</sequence>
+    </complexType>
+</schema>

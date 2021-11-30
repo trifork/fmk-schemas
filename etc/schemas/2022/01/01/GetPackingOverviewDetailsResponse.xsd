@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="PackagedPeriodOverview.xsd"/>
+
+	<element name="GetPackingOverviewDetailsResponse" type="mc160:GetPackingOverviewDetailsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response to a request for a overview of packaged dose dispensing periods with patient details</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en søgning efter et overblik over pakkede dosisdispenserings perioder med patient detaljer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPackingOverviewDetailsResponseType">
+		<sequence>
+				<element name="PackagedPeriodOverview" type="mc160:PackagedPeriodOverviewType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

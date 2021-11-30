@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationVersion.xsd"/>
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="Modified.xsd"/>
+	<include schemaLocation="ModifiedNonclinical.xsd"/>
+	<include schemaLocation="DrugMedicationType.xsd"/>
+	<include schemaLocation="FollowUpDates.xsd"/>
+	<include schemaLocation="Paused.xsd"/>
+	<include schemaLocation="Withdrawn.xsd"/>
+	<include schemaLocation="HasNegativeConsent.xsd"/>
+	<include schemaLocation="DrugMedicationBeginEndDate.xsd"/>
+	<include schemaLocation="Indication.xsd"/>
+	<include schemaLocation="RouteOfAdministration.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="DosageForResponse.xsd"/>
+	<include schemaLocation="SubstitutionAllowed.xsd"/>
+	<include schemaLocation="Effectuation.xsd"/>
+	<include schemaLocation="InvalidEffectuation.xsd"/>
+	<include schemaLocation="MoreEffectuationsAvailable.xsd"/>
+	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="InvalidPrescription.xsd"/>
+	<include schemaLocation="IsDoseDispensed.xsd"/>
+
+	<complexType name="DrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">An overview of the drug medication (a medication on the medicine card)</documentation>
+			<documentation xml:lang="da-DK">En oversigt over lægemiddelordination (en ordination på medicinkortet)</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="Version" type="mc160:DrugMedicationVersionType"/>
+			<element name="PreviousVersion" type="mc160:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="NextVersion" type="mc160:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ParentIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
+			<element name="Created" type="mc160:CreatedType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
+			<element name="ModifiedNonclinical" type="mc160:ModifiedNonclinicalType" minOccurs="0"/>
+			<element name="Type" type="mc160:DrugMedicationTypeType" />
+            <element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
+			<element name="Paused" type="mc160:PausedType" minOccurs="0"/>
+			<element name="Withdrawn" type="mc160:WithdrawnType" minOccurs="0"/>
+			<element name="HasNegativeConsent" type="mc160:HasNegativeConsentType" minOccurs="0"/>
+			<element name="BeginEndDate" type="mc160:DrugMedicationBeginEndDateType"/>
+			<element name="Indication" type="mc160:IndicationType"/>
+			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
+			<element name="Drug" type="mc160:DrugType"/>
+			<element name="Dosage" type="mc160:DosageForResponseType"/>
+			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
+			<element name="Effectuation" type="mc160:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreEffectuationsAvailable" type="mc160:MoreEffectuationsAvailableType" minOccurs="0"/>
+			<element name="Prescription" type="mc160:PrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidPrescription" type="mc160:InvalidPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ReimbursementClause" type="mc160:ReimbursementClauseType" minOccurs="0"/>
+			<element name="IsDoseDispensed" type="mc160:IsDoseDispensedType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

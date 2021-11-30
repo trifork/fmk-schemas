@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="DosageTranslationShortText" type="mc160:DosageTranslationShortTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">A short text representation of the dosage structure, e.g. "2 stk 3 gange daglig"</documentation>
+			<documentation xml:lang="da-DK">En kort teksrepræsentation af doseringsstrukturen, f.eks. "2 stk 3 gange daglig"</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DosageTranslationShortTextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+</schema>

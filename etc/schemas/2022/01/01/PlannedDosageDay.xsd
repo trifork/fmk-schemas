@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DosageDayNumber.xsd"/>
+	<include schemaLocation="PlannedDose.xsd"/>
+
+	<complexType name="PlannedDosageDayType">
+		<annotation>
+			<documentation xml:lang="en-GB">Group of planned dosage times for the same day</documentation>
+			<documentation xml:lang="da-DK">Gruppering af planlagte doseringstidspunkter på samme dag</documentation>
+		</annotation>
+		<sequence>
+			<element name="Number" type="mc160:DosageDayNumberType"/>
+			<element name="Dose" type="mc160:PlannedDoseType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

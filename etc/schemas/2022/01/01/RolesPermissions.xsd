@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Permission.xsd"/>
+	<include schemaLocation="RequestedRole.xsd"/>
+	<element name="RolesPermissions" type="mc160:RolesPermissionsType">
+		<annotation>
+			<documentation xml:lang="en-GB">Permissions for a role</documentation>
+			<documentation xml:lang="da-DK">En rolles rettigheder</documentation>
+		</annotation>
+	</element>
+	<complexType name="RolesPermissionsType">
+		<sequence>
+			<element name="RequestedRole" type="mc160:RequestedRoleType"/>
+			<element name="Permission" type="mc160:PermissionType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

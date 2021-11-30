@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
+
+	<element name="CreatePharmacyEffectuationResponse" type="mc160:CreatePharmacyEffectuationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response for creating one or more effectuations on prescripionmedications</documentation>
+			<documentation xml:lang="da-DK">Svar på oprettelse af en eller flere uudleveringer på recepter </documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePharmacyEffectuationResponseType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="Effectuation" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType"/>
+						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+						<element name="EffectuationIdentifier" type="mc160:EffectuationIdentifierType"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+</schema>

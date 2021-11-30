@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+    <include schemaLocation="ModificationMetadata.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="PackageNumber.xsd"/>
+
+    <complexType name="PackagedDrugType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element for substituting the drug for a planned dispensing</documentation>
+            <documentation xml:lang="da-DK">Opdatering af det substituerede lægemiddel for en  planlagt dispensering</documentation>
+        </annotation>
+        <sequence>
+        	<element name="PlannedDispensingIdentifier" type="mc160:PlannedDispensingIdentifierType"/>
+        	<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Drug" type="mc160:DrugType"/>
+            <element name="PackageNumber" type="mc160:PackageNumberType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

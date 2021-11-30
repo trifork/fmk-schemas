@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <include schemaLocation="DrugMedicationHistoryPeriodStartDateTime.xsd"/>
+    <include schemaLocation="DrugMedicationHistoryPeriodEndDateTime.xsd"/>
+    <include schemaLocation="DrugMedicationVersion.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="DosageForResponse.xsd"/>
+    <include schemaLocation="DrugMedicationPaused.xsd"/>
+    <include schemaLocation="Hospitalized.xsd"/>
+    
+    <element name="DrugMedicationHistoryPeriod" type="mc160:DrugMedicationHistoryPeriodType">
+        <annotation>
+            <documentation xml:lang="en-GB">A specific period in the history of a drugmedication</documentation>
+            <documentation xml:lang="da-DK">En specifik periode i historikken for en lægemiddelordination</documentation>
+        </annotation>
+    </element>
+    <complexType name="DrugMedicationHistoryPeriodType">
+        <sequence>
+            <element name="PeriodStartDateTime" type="mc160:DrugMedicationHistoryPeriodStartDateTimeType"/>
+            <element name="PeriodEndDateTime" type="mc160:DrugMedicationHistoryPeriodEndDateTimeType"/>
+            <element name="Version" type="mc160:DrugMedicationVersionType"/>
+            <element name="Drug" type="mc160:DrugType"/>
+            <element name="Dosage" type="mc160:DosageForResponseType"/>
+            <element name="Paused" type="mc160:DrugMedicationPausedType" minOccurs="0"/>
+            <element name="Hospitalized" type="mc160:HospitalizedType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

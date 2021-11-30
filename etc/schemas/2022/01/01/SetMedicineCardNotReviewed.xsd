@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ReviewedDateTime.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	
+	<element name="SetMedicineCardNotReviewed" type="mc160:SetMedicineCardNotReviewedType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request to set a date and time for marking the medicine card not reviewed</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel til at sætte dato og tid for markering af at manglende medicinkort-gennemgang</documentation>
+		</annotation>
+	</element>
+	<complexType name="SetMedicineCardNotReviewedType">
+		<sequence>
+			<element name="NotReviewedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="NotReviewedDateTime" type="mc160:ReviewedDateTimeType"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

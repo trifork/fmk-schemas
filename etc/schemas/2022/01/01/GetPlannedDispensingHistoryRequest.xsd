@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+	<include schemaLocation="VersionCreatedDateTime.xsd"/>
+
+	<element name="GetPlannedDispensingHistoryRequest" type="mc160:GetPlannedDispensingHistoryRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request element for planned dispensing history</documentation>
+			<documentation xml:lang="da-DK">Element til forespørgsel for historik på planlagt dispensering</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPlannedDispensingHistoryRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="PlannedDispensingIdentifier" type="mc160:PlannedDispensingIdentifierType"/>
+			<element name="HistorySince" type="mc160:VersionCreatedDateTimeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

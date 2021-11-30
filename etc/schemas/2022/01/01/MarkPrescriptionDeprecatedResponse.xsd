@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+
+	<element name="MarkPrescriptionDeprecatedResponse" type="mc160:MarkPrescriptionDeprecatedResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Mark the prescription as deprecated</documentation>
+			<documentation xml:lang="da-DK">Marker recepten som ikke aktuel</documentation>
+		</annotation>
+	</element>
+	<complexType name="MarkPrescriptionDeprecatedResponseType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
+			<element name="VersionMismatchWarning" type="mc160:VersionMismatchWarningType" minOccurs="0"/>
+			<element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="TotalNumber.xsd"/>
+	
+	<element name="MoreEffectuationsAvailable" type="mc160:MoreEffectuationsAvailableType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates that there are more effectuations available</documentation>
+			<documentation xml:lang="da-DK">Angiver at der er flere effektueringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="MoreEffectuationsAvailableType">
+		<sequence>
+			<element name="LastReceived" type="mc160:EffectuationIdentifierType"/>
+			<element name="TotalNumber" type="mc160:TotalNumberType"/>
+		</sequence>
+	</complexType>
+</schema>

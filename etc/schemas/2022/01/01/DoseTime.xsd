@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="DoseTime" type="mc160:DoseTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">The actual time of a dosage time</documentation>
+			<documentation xml:lang="da-DK">Klokkeslettet for et doseringstidspunkt</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DoseTimeType">
+		<union memberTypes="mc160:MorningNoonEveningNightDoseTimeType mc160:TimeDoseTimeType">
+		</union>
+	</simpleType>
+	<simpleType name="MorningNoonEveningNightDoseTimeType">
+		<restriction base="string">
+			<enumeration value="morning"/>
+			<enumeration value="noon"/>
+			<enumeration value="evening"/>
+			<enumeration value="night"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="TimeDoseTimeType">
+		<restriction base="time"/>
+	</simpleType>
+</schema>

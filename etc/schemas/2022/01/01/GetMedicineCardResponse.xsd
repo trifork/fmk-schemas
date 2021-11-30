@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="MedicineCard.xsd"/>
+
+	<element name="GetMedicineCardResponse" type="mc160:GetMedicineCardResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with a medicinecard</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en et svar med et medicinkort</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetMedicineCardResponseType">
+		<sequence>
+			<element name="MedicineCard" type="mc160:MedicineCardType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

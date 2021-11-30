@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="AuthorisationIdentifier" type="mc160:AuthorisationIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Læges autorisationsnummer</documentation>
+			<documentation xml:lang="da-DK">Authorisation identifier of a doctor</documentation>
+		</annotation>
+	</element>
+	<simpleType name="AuthorisationIdentifierType">
+		<restriction base="string">
+			<length value="5"/>
+			<pattern value="([0-9]|(B|C|D|F|G|H|J|K|L|M|N|P|Q|R|S|T|V|W|X|Y|Z)){5}"/>
+		</restriction>
+	</simpleType>
+</schema>

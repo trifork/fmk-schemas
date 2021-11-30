@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+
+	
+	<element name="UploadDrugCatalogResponse" type="mc160:UploadDrugCatalogResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains the response from UploadDrugCatalog, which consists only of the current size of the drug catalog</documentation>
+			<documentation xml:lang="da-DK">Rummer svaret fra et kald til UploadDrugCatalog som alene består af størrelsen af det aktuelle sortiment</documentation>
+		</annotation>
+	</element>
+	<complexType name="UploadDrugCatalogResponseType">
+		<sequence>
+            <element name="DrugCatalogSize" type="mc160:DrugCatalogSizeType" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="DrugCatalogSizeType">
+		<restriction base="integer">
+			<minInclusive value="0"/>
+			<maxInclusive value="10000"/>
+		</restriction>
+	</simpleType>
+</schema>

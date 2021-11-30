@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="AuthorisationIdentifier.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+
+	<element name="OnBehalfOf" type="mc160:OnBehalfOfType">
+		<annotation>
+			<documentation xml:lang="en-GB">Structure containing the autorisation id or CPR of the person that is responsible for the operation.</documentation>
+			<documentation xml:lang="da-DK">En structur der indeholder autorisationsid'et eller CPR på den person som er ansvarlig for handlingen.</documentation>
+		</annotation>
+	</element>
+	<complexType name="OnBehalfOfType">
+		<choice>
+			<element name="AuthorisationIdentifier" type="mc160:AuthorisationIdentifierType"/>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+		</choice>
+	</complexType>
+</schema>

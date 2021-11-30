@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="ActiveSubstanceCode.xsd"/>
+	<include schemaLocation="ActiveSubstanceTextWithoutSource.xsd"/>
+	<include schemaLocation="ActiveSubstanceText.xsd"/>
+	<include schemaLocation="ActiveSubstanceFreeText.xsd"/>
+	
+	<element name="ActiveSubstance" type="mc160:ActiveSubstanceType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains information for one active substance</documentation>
+			<documentation xml:lang="da-DK">Indeholder information omkring en aktiv substans</documentation>
+		</annotation>
+	</element>
+	<complexType name="ActiveSubstanceType">
+		<choice>
+			<sequence>
+				<element name="Code" type="mc160:ActiveSubstanceCodeType"/>
+				<element name="Text" type="mc160:ActiveSubstanceTextWithoutSourceType"/>
+			</sequence>
+			<element name="SubstanceText" type="mc160:ActiveSubstanceTextType"/>
+			<element name="FreeText" type="mc160:ActiveSubstanceFreeTextType"/>
+		</choice>
+	</complexType>
+</schema>

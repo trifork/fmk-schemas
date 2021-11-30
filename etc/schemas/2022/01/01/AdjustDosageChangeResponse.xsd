@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DosageStructuresForResponse.xsd"/>
+
+	<element name="AdjustDosageChangeResponse" type="mc160:AdjustDosageChangeResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with adjusted dosage dates for upcomming change</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar med justerede doseringsdatoer for kommende opdatering</documentation>
+		</annotation>
+	</element>
+	<complexType name="AdjustDosageChangeResponseType">
+		<sequence>
+			<element name="DosageStructures" type="mc160:DosageStructuresForResponseType"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="Effectuation.xsd"/>
+	<include schemaLocation="MoreEffectuationsAvailable.xsd"/>
+	<include schemaLocation="InvalidEffectuation.xsd"/>
+	<include schemaLocation="EffectuationsOnPrescription.xsd"/>
+	
+	<complexType name="EffectuationsOnDrugMedicationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Grouping effectuations on a drug medication</documentation>
+			<documentation xml:lang="da-DK">Grupperer effektueringer på en lægemiddelordination</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="Effectuation" type="mc160:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreEffectuationsAvailable" type="mc160:MoreEffectuationsAvailableType" minOccurs="0"/>
+			<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrescriptionMedication" type="mc160:EffectuationsOnPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

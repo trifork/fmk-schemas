@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="VersionMismatchWarning.xsd"/>
+
+	<element name="SetMedicineCardReviewedResponse" type="mc160:SetMedicineCardReviewedResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a response from a request to set a date and time for a review of the medicine card</documentation>
+			<documentation xml:lang="da-DK">Element for et svar fra en forespørgsel til at sætte dato og tid for en medicinkort-gennemgang</documentation>
+		</annotation>
+	</element>
+	<complexType name="SetMedicineCardReviewedResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
+			<element name="VersionMismatchWarning" type="mc160:VersionMismatchWarningType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

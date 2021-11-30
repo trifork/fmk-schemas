@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="StreetName" type="mc160:StreetNameType">
+		<annotation>
+			<documentation xml:lang="en-GB">Street name, must fit into the XML prescription</documentation>
+			<documentation xml:lang="da-DK">Gadenavn, skal kunne være i XML recepten</documentation>
+		</annotation>
+	</element>
+	<simpleType name="StreetNameType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="PackageSizeValue.xsd"/>
+	<include schemaLocation="PackageSizeUnitCode.xsd"/>
+	<include schemaLocation="PackageSizeUnitText.xsd"/>
+	<include schemaLocation="PackageSizeText.xsd"/>
+	
+	<complexType name="PackageSizeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Package size in strucured form</documentation>
+			<documentation xml:lang="da-DK">Pakningsstørrelse på struktureret form</documentation>
+		</annotation>
+		<sequence>
+			<element name="Value" type="mc160:PackageSizeValueType" minOccurs="0"/>
+			<element name="UnitCode" type="mc160:PackageSizeUnitCodeType" minOccurs="0"/>
+			<element name="UnitText" type="mc160:PackageSizeUnitTextType" minOccurs="0"/>
+			<element name="PackageSizeText" type="mc160:PackageSizeTextType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

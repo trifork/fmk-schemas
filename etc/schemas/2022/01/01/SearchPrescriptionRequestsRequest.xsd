@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="SearchPrescriptionRequestsOrganisation.xsd"/>
+	<include schemaLocation="CreatedDateTime.xsd"/>
+
+	<element name="SearchPrescriptionRequestsRequest" type="mc160:SearchPrescriptionRequestsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">An element for requesting prescription requests given an organisation which is either an ordering or a prescribing organisation</documentation>
+			<documentation xml:lang="da-DK">Et element til forespørgsel efter receptanmodninger givet en anmodende eller anmodede organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchPrescriptionRequestsRequestType">
+		<sequence>
+			<choice>
+				<element name="PrescribingOrganisation" type="mc160:SearchPrescriptionRequestsOrganisationType"/>
+				<element name="OrderingOrganisation" type="mc160:SearchPrescriptionRequestsOrganisationType"/>
+			</choice>
+			<element name="FromDateTime" type="mc160:CreatedDateTimeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

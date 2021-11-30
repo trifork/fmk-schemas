@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="CreatePrescription.xsd"/>
+
+	<element name="CreatePrescriptionRequest" type="mc160:CreatePrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for creating prescriptions from drug medications</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at oprette recepter fra lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePrescriptionRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
+			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="Prescription" type="mc160:CreatePrescriptionType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

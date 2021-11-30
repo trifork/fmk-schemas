@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<simpleType name="ProductionDayType">
+		<union memberTypes="mc160:PredefinedProductionDayType mc160:UndefinedProductionDayType"/>
+	</simpleType>
+
+	<simpleType name="PredefinedProductionDayType">
+		<annotation>
+			<documentation xml:lang="en-GB">Identification by the packaging pharmacy of the production day, when this dose dispensing packaging is planned to be effectuated</documentation>
+			<documentation xml:lang="da-DK">Pakkeapotekets identifikation af den produktionsdag, som denne dosisdispenserede pakning er planlagt til</documentation>
+		</annotation>
+		<restriction base="mc160:UndefinedProductionDayType">
+			<enumeration value="Mandag ulige uger"/>
+			<enumeration value="Tirsdag ulige uger"/>
+			<enumeration value="Onsdag ulige uger"/>
+			<enumeration value="Torsdag ulige uger"/>
+			<enumeration value="Fredag ulige uger"/>
+			<enumeration value="Lørdag ulige uger"/>
+			<enumeration value="Søndag ulige uger"/>
+			<enumeration value="Mandag lige uger"/>
+			<enumeration value="Tirsdag lige uger"/>
+			<enumeration value="Onsdag lige uger"/>
+			<enumeration value="Torsdag lige uger"/>
+			<enumeration value="Fredag lige uger"/>
+			<enumeration value="Lørdag lige uger"/>
+			<enumeration value="Søndag lige uger"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedProductionDayType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
+		</restriction>
+	</simpleType>
+</schema>

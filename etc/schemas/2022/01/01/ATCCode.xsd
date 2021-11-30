@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+	
+	<element name="ATCCode" type="mc160:ATCCodeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Code of the drug ATC group (DMA01 field 15)</documentation>
+			<documentation xml:lang="da-DK">Kode for lægemidlets ATC-gruppe  (LMS01 felt 15)</documentation>
+		</annotation>
+	</element>
+	<complexType name="ATCCodeType">
+		<simpleContent>
+			<extension base="mc160:ATCCodeValueType">
+				<attribute name="source" type="mc160:ATCCodeSourceType" use="required"/>
+				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="ATCCodeValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="8"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="ATCCodeSourceType">
+		<union memberTypes="mc160:ATCCodePredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="ATCCodePredefinedSourceType">
+		<restriction base="mc160:UndefinedSourceType">
+			<enumeration value="Medicinpriser"/>
+			<enumeration value="Magistrel"/>
+		</restriction>
+	</simpleType>
+</schema>
