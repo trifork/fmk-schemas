@@ -74,6 +74,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDoseDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDoseDispensingPeriodResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/AbortPackingRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortPackingResponse.xsd"/>
 
@@ -419,6 +422,14 @@
 
     <wsdl:message name="AbortEffectuationOfDoseDispensingPeriodResponse_160">
         <wsdl:part name="AbortEffectuationOfDoseDispensingPeriodResponse" element="mc160:AbortEffectuationOfDoseDispensingPeriodResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortEffectuationRequest_160">
+        <wsdl:part name="AbortEffectuationRequest" element="mc160:AbortEffectuationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortEffectuationResponse_160">
+        <wsdl:part name="AbortEffectuationResponse" element="mc160:AbortEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="AbortPackingRequest_160">
@@ -1205,6 +1216,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="AbortEffectuation_160">
+            <wsdl:input name="AbortEffectuationRequest_160" message="tns:AbortEffectuationRequest_160"/>
+            <wsdl:output name="AbortEffectuationResponse_160" message="tns:AbortEffectuationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="AbortPacking_160">
             <wsdl:input name="AbortPackingRequest_160" message="tns:AbortPackingRequest_160"/>
             <wsdl:output name="AbortPackingResponse_160" message="tns:AbortPackingResponse_160"/>
@@ -1801,6 +1818,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AbortEffectuationOfDoseDispensingPeriodResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortEffectuation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AbortEffectuation" style="document"/>
+            <wsdl:input name="AbortEffectuationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AbortEffectuationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
