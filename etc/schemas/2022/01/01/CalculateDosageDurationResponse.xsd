@@ -9,17 +9,16 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DosageTimesEndDate.xsd"/>
 
-	<element name="CalculateDosageDurationResponse" type="mc160:CalculateDosageDurationResponse">
+	<element name="CalculateDosageDurationResponse" type="mc160:CalculateDosageDurationResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document containing information to be used for searching for patient organisation relations</documentation>
-			<documentation xml:lang="da-DK">Request-dokument der indeholder information til brug i søgning efter patient organisations relationer</documentation>
+			<documentation xml:lang="en-GB">Response document containing information about the last day a full dosage can be given</documentation>
+			<documentation xml:lang="da-DK">Response-dokument der indeholder information omkring den sidste dag en fuld dosering er mulig</documentation>
 		</annotation>
 	</element>
-	<complexType name="CalculateDosageDurationResponse">
+	<complexType name="CalculateDosageDurationResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
-
 			<element name="EndDate" type="mc160:DosageTimesEndDateType"/>
 		</sequence>
 	</complexType>

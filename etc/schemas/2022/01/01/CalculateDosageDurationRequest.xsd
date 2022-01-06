@@ -4,19 +4,18 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DosageTimesStartDate.xsd"/>
 	<include schemaLocation="DoseQuantity.xsd"/>
 
-	<element name="CalculateDosageDurationRequest" type="mc160:CalculateDosageDurationRequest">
+	<element name="CalculateDosageDurationRequest" type="mc160:CalculateDosageDurationRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document containing information to be used for searching for patient organisation relations</documentation>
-			<documentation xml:lang="da-DK">Request-dokument der indeholder information til brug i søgning efter patient organisations relationer</documentation>
+			<documentation xml:lang="en-GB">Request document containing information to be used for determining how many days an amount of dosage units can cover of the dosage</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder information til brug i beregningen af hvor mange dage et antal doseringsenheder kan dække af doseringen</documentation>
 		</annotation>
 	</element>
-	<complexType name="CalculateDosageDurationRequest">
+	<complexType name="CalculateDosageDurationRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>

@@ -10,13 +10,13 @@
 	<import schemaLocation="importsFrom20150601.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"/>
 	<include schemaLocation="importsFrom20150601E6.xsd"/>
 
-	<element name="CalculateRequiredDosageUnitsRequest" type="medicinecard20150601E6:CalculateRequiredDosageUnitsRequest">
+	<element name="CalculateRequiredDosageUnitsRequest" type="medicinecard20150601E6:CalculateRequiredDosageUnitsRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document containing information to be used for searching for patient organisation relations</documentation>
-			<documentation xml:lang="da-DK">Request-dokument der indeholder information til brug i søgning efter patient organisations relationer</documentation>
+			<documentation xml:lang="en-GB">Request document containing information to be used for calculating the required amount of dosage units to cover the dosage in a period</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder information til brug i beregningen af det behøvede antal doseringsenheder til at dække en periode af doseringen</documentation>
 		</annotation>
 	</element>
-	<complexType name="CalculateRequiredDosageUnitsRequest">
+	<complexType name="CalculateRequiredDosageUnitsRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150601:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150601:DrugMedicationIdentifierType"/>
