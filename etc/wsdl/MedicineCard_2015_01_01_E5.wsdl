@@ -196,6 +196,12 @@
 
         <xs:schema targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5" elementFormDefault="qualified">
 
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/CalculateDosageDurationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/CalculateDosageDurationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/CalculateRequiredDosageUnitsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/CalculateRequiredDosageUnitsResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2015/01/01/E5/CreatePrescriptionMedicationForUseInPracticeRequest.xsd"/>
 
             <xs:include schemaLocation="../schemas/2015/01/01/E5/CreatePrescriptionMedicationWithoutCPRRequest.xsd"/>
@@ -312,7 +318,21 @@
         <wsdl:part name="CreatePrescriptionMedicationResponse" element="medicinecard20150101E2:CreatePrescriptionMedicationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="CalculateDosageDurationRequest_2015_01_01_E5">
+        <wsdl:part name="CalculateDosageDurationRequest" element="medicinecard20150101E5:CalculateDosageDurationRequest"/>
+    </wsdl:message>
 
+    <wsdl:message name="CalculateDosageDurationResponse_2015_01_01_E5">
+        <wsdl:part name="CalculateDosageDurationResponse" element="medicinecard20150101E5:CalculateDosageDurationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CalculateRequiredDosageUnitsRequest_2015_01_01_E5">
+        <wsdl:part name="CalculateRequiredDosageUnitsRequest" element="medicinecard20150101E5:CalculateRequiredDosageUnitsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CalculateRequiredDosageUnitsResponse_2015_01_01_E5">
+        <wsdl:part name="CalculateRequiredDosageUnitsResponse" element="medicinecard20150101E5:CalculateRequiredDosageUnitsResponse"/>
+    </wsdl:message>
 
     <wsdl:message name="CreatePrescriptionMedicationForUseInPracticeRequest_2015_01_01_E5">
         <wsdl:part name="CreatePrescriptionMedicationForUseInPracticeRequest" element="medicinecard20150101E5:CreatePrescriptionMedicationForUseInPracticeRequest"/>
@@ -693,6 +713,19 @@
             <wsdl:output name="AttachOrDetachPrescriptionMedicationResponse_2015_01_01_E2" message="tns:AttachOrDetachPrescriptionMedicationResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
         </wsdl:operation>
+
+        <wsdl:operation name="CalculateDosageDuration_2015_01_01_E5">
+            <wsdl:input name="CalculateDosageDurationRequest_2015_01_01_E5" message="tns:CalculateDosageDurationRequest_2015_01_01_E5"/>
+            <wsdl:output name="CalculateDosageDurationResponse_2015_01_01_E5" message="tns:CalculateDosageDurationResponse_2015_01_01_E5"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+        
+        <wsdl:operation name="CalculateRequiredDosageUnits_2015_01_01_E5">
+            <wsdl:input name="CalculateRequiredDosageUnitsRequest_2015_01_01_E5" message="tns:CalculateRequiredDosageUnitsRequest_2015_01_01_E5"/>
+            <wsdl:output name="CalculateRequiredDosageUnitsResponse_2015_01_01_E5" message="tns:CalculateRequiredDosageUnitsResponse_2015_01_01_E5"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
 
         <wsdl:operation name="CancelPrescriptionMedication_2015_01_01_E2">
             <wsdl:input name="CancelPrescriptionMedicationRequest_2015_01_01_E2" message="tns:CancelPrescriptionMedicationRequest_2015_01_01_E2"/>
@@ -1458,6 +1491,34 @@
                 <soap:body use="literal"/>
             </wsdl:output>
 &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CalculateDosageDuration_2015_01_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5#CalculateDosageDuration"
+                            style="document"/>
+            <wsdl:input name="CalculateDosageDurationRequest_2015_01_01_E5">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CalculateDosageDurationResponse_2015_01_01_E5">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CalculateRequiredDosageUnits_2015_01_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5#CalculateRequiredDosageUnits"
+                            style="document"/>
+            <wsdl:input name="CalculateRequiredDosageUnitsRequest_2015_01_01_E5">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CalculateRequiredDosageUnitsResponse_2015_01_01_E5">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
         </wsdl:operation>
 
     </wsdl:binding>
