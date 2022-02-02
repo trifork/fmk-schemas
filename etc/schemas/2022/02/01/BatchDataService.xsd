@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ssi.dk/nsi/xml.schema/2022/02/01" xmlns:tns="http://www.ssi.dk/nsi/xml.schema/2022/02/01" elementFormDefault="qualified">
+
+	<complexType name="PersonIdentifierType">
+		<simpleContent>
+			<extension base="tns:PersonIdentifierValueType">
+				<attribute name="source" type="tns:PersonIdentifierSourceType" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="PersonIdentifierValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierSourceType">
+		<union memberTypes="tns:PersonIdentifierPredefinedSourceType tns:UndefinedSourceType"/>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierPredefinedSourceType">
+		<restriction base="tns:UndefinedSourceType">
+			<enumeration value="CPR"/>
+			<enumeration value="X-eCPR"/>
+			<enumeration value="SORPERSON"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedSourceType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+	 
+	<complexType name="GetMedicineCardDataForDeceasedPatientsRequestType">
+		<sequence>
+			<element name="DeceasedBefore" type="date"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+	
+	
+	<complexType name="MedicineCardDataForDeceasedPatients">
+		<sequence>
+			<element name="PersonIdentifier" type="tns:PersonIdentifierType"/>
+			<element name="DeceasedAt" type="date"/>
+			<element name="NoOfDrugMedicationsForPerson" type="int"/>
+		</sequence>
+	</complexType>
+	
+	
+	<complexType name="GetMedicineCardDataForDeceasedPatientsReponseType">
+		<sequence>
+			<element name="MedicineCardData" type="tns:MedicineCardDataForDeceasedPatients" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	
+		
+	
+	<element name="GetMedicineCardDataForDeceasedPatientsRequest" type="tns:GetMedicineCardDataForDeceasedPatientsRequestType" />
+	<element name="GetMedicineCardDataForDeceasedPatientsResponse" type="tns:GetMedicineCardDataForDeceasedPatientsReponseType" />
+
+</schema>
