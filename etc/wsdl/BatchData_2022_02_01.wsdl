@@ -29,11 +29,11 @@
         <wsdl:part name="MedcomHeader" element="medcom:Header"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardDataForDeceasedPatientsRequest">
-        <wsdl:part name="GetMedicineCardDataForDeceasedPatientsRequest" element="tns:GetMedicineCardDataForDeceasedPatientsRequest"/>
+    <wsdl:message name="GetMedicineCardDataForDeceasedPersonsRequest">
+        <wsdl:part name="GetMedicineCardDataForDeceasedPersonsRequest" element="tns:GetMedicineCardDataForDeceasedPersonsRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetMedicineCardDataForDeceasedPatientsResponse">
-        <wsdl:part name="GetMedicineCardDataForDeceasedPatientsResponse" element="tns:GetMedicineCardDataForDeceasedPatientsResponse"/>
+    <wsdl:message name="GetMedicineCardDataForDeceasedPersonsResponse">
+        <wsdl:part name="GetMedicineCardDataForDeceasedPersonsResponse" element="tns:GetMedicineCardDataForDeceasedPersonsResponse"/>
     </wsdl:message>
 	
 	<wsdl:message name="DGWSFault">
@@ -41,10 +41,10 @@
 	</wsdl:message>
 	
 	<wsdl:portType name="BatchDataPortType">
-        <wsdl:operation name="GetMedicineCardDataForDeceasedPatients">
-            <soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2022/02/01#GetMedicineCardDataForDeceasedPatients" style="document"/>
-            <wsdl:input name="GetMedicineCardDataForDeceasedPatientsRequest" message="tns:GetMedicineCardDataForDeceasedPatientsRequest"/>
-            <wsdl:output name="GetMedicineCardDataForDeceasedPatientsResponse" message="tns:GetMedicineCardDataForDeceasedPatientsResponse"/>
+        <wsdl:operation name="GetMedicineCardDataForDeceasedPersons">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardDataForDeceasedPersons" style="document"/>
+            <wsdl:input name="GetMedicineCardDataForDeceasedPersonsRequest" message="tns:GetMedicineCardDataForDeceasedPersonsRequest"/>
+            <wsdl:output name="GetMedicineCardDataForDeceasedPersonsResponse" message="tns:GetMedicineCardDataForDeceasedPersonsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
@@ -53,14 +53,14 @@
 
 	<wsdl:binding name="BatchDataBinding" type="tns:BatchDataPortType">
 		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-		<wsdl:operation name="GetMedicineCardDataForDeceasedPatients">
-        	<soap:operation soapAction="http://www.dkma.dk/nsi/xml.schema/2022/02/01#GetMedicineCardDataForDeceasedPatients" style="document"/>
-            <wsdl:input name="GetMedicineCardDataForDeceasedPatientsRequest">
+		<wsdl:operation name="GetMedicineCardDataForDeceasedPersons">
+        	<soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardDataForDeceasedPersons" style="document"/>
+            <wsdl:input name="GetMedicineCardDataForDeceasedPersonsRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
             	<soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardDataForDeceasedPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="GetMedicineCardDataForDeceasedPersonsResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
