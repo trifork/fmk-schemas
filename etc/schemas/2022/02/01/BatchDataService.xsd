@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ssi.dk/nsi/xml.schema/2022/02/01" xmlns:tns="http://www.ssi.dk/nsi/xml.schema/2022/02/01" elementFormDefault="qualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01" xmlns:tns="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01" elementFormDefault="qualified">
 
 	<complexType name="PersonIdentifierType">
 		<simpleContent>
@@ -35,7 +35,7 @@
 		</restriction>
 	</simpleType>
 	 
-	<complexType name="GetMedicineCardDataForDeceasedPatientsRequestType">
+	<complexType name="GetMedicineCardDataForDeceasedPersonsRequestType">
 		<sequence>
 			<element name="DeceasedBefore" type="dateTime"/>
 			<element name="MaxResults" type="integer"/>
@@ -43,7 +43,7 @@
 	</complexType>
 	
 	
-	<complexType name="MedicineCardDataForDeceasedPatients">
+	<complexType name="MedicineCardDataForDeceasedPersons">
 		<sequence>
 			<element name="PersonIdentifier" type="tns:PersonIdentifierType"/>
 			<element name="DeceasedAt" type="dateTime"/>
@@ -52,15 +52,15 @@
 	</complexType>
 	
 	
-	<complexType name="GetMedicineCardDataForDeceasedPatientsReponseType">
+	<complexType name="GetMedicineCardDataForDeceasedPersonsReponseType">
 		<sequence>
-			<element name="MedicineCardData" type="tns:MedicineCardDataForDeceasedPatients" maxOccurs="unbounded" />
+			<element name="MedicineCardData" type="tns:MedicineCardDataForDeceasedPersons" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
 	
 		
 	
-	<element name="GetMedicineCardDataForDeceasedPatientsRequest" type="tns:GetMedicineCardDataForDeceasedPatientsRequestType" />
-	<element name="GetMedicineCardDataForDeceasedPatientsResponse" type="tns:GetMedicineCardDataForDeceasedPatientsReponseType" />
+	<element name="GetMedicineCardDataForDeceasedPersonsRequest" type="tns:GetMedicineCardDataForDeceasedPersonsRequestType" />
+	<element name="GetMedicineCardDataForDeceasedPersonsResponse" type="tns:GetMedicineCardDataForDeceasedPersonsReponseType" />
 
 </schema>
