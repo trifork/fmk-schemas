@@ -35,6 +35,13 @@
     <wsdl:message name="GetMedicineCardDataForDeceasedPersonsResponse">
         <wsdl:part name="GetMedicineCardDataForDeceasedPersonsResponse" element="tns:GetMedicineCardDataForDeceasedPersonsResponse"/>
     </wsdl:message>
+
+    <wsdl:message name="GetCitizensForCitizenLetterRequest">
+        <wsdl:part name="GetCitizensForCitizenLetterRequest" element="tns:GetCitizensForCitizenLetterRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetCitizensForCitizenLetterResponse">
+        <wsdl:part name="GetCitizensForCitizenLetterResponse" element="tns:GetCitizensForCitizenLetterResponse"/>
+    </wsdl:message>
 	
 	<wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode" />
@@ -48,6 +55,12 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
+        <wsdl:operation name="GetCitizensForCitizenLetter">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetCitizensForCitizenLetter" style="document"/>
+            <wsdl:input name="GetCitizensForCitizenLetterRequest" message="tns:GetCitizensForCitizenLetterRequest"/>
+            <wsdl:output name="GetCitizensForCitizenLetterResponse" message="tns:GetCitizensForCitizenLetterResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
 
 	</wsdl:portType>
 
@@ -61,6 +74,16 @@
             	<soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetMedicineCardDataForDeceasedPersonsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="GetCitizensForCitizenLetter">
+        	<soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetCitizensForCitizenLetter" style="document"/>
+            <wsdl:input name="GetCitizensForCitizenLetterRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+            	<soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetCitizensForCitizenLetterResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 

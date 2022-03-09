@@ -42,7 +42,6 @@
 		</sequence>
 	</complexType>
 	
-	
 	<complexType name="MedicineCardDataForDeceasedPersons">
 		<sequence>
 			<element name="PersonIdentifier" type="tns:PersonIdentifierType"/>
@@ -51,16 +50,66 @@
 		</sequence>
 	</complexType>
 	
-	
 	<complexType name="GetMedicineCardDataForDeceasedPersonsReponseType">
 		<sequence>
 			<element name="MedicineCardData" type="tns:MedicineCardDataForDeceasedPersons" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
 	
-		
-	
 	<element name="GetMedicineCardDataForDeceasedPersonsRequest" type="tns:GetMedicineCardDataForDeceasedPersonsRequestType" />
 	<element name="GetMedicineCardDataForDeceasedPersonsResponse" type="tns:GetMedicineCardDataForDeceasedPersonsReponseType" />
+
+	 
+	<complexType name="GetCitizensForCitizenLetterRequestType">
+		<sequence>
+		</sequence>
+	</complexType>
+
+	<simpleType name="ChannelType">
+		<restriction base="string">
+			<enumeration value="EBOKS"/>
+			<enumeration value="STRAALFORS"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="Person">
+		<sequence>
+			<element name="PersonIdentifier" type="tns:PersonIdentifierValueType"/>
+			<element name="FirstName" type="string"/>
+			<element name="MiddleName" type="string"/>
+			<element name="LastName" type="string"/>
+			<element name="UnstructuredName" type="string"/>
+			<element name="StreetName" type="string"/>
+			<element name="StreetBuildingIdentifier" type="string"/>
+			<element name="Floor" type="string"/>
+			<element name="Side" type="string"/>
+			<element name="PostCodeIdentifier" type="string"/>
+			<element name="DistrictName" type="string"/>
+			<element name="NameProtectionStart" type="dateTime"/>
+			<element name="NameProtectionEnd" type="dateTime"/>
+			<element name="DateOfBirth" type="date"/>
+			<element name="Gender" type="string"/>
+			<element name="LastModified" type="dateTime"/>
+			<element name="Status" type="string"/>
+			<element name="UnstructuredAddressLines" type="string" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="Citizen">
+		<sequence>
+			<element name="PersonIdentifier" type="tns:PersonIdentifierType"/>
+			<element name="Channel" type="tns:ChannelType"/>
+			<element name="Person" type="tns:Person" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="GetCitizensForCitizenLetterResponseType">
+		<sequence>
+			<element name="Citizen" type="tns:Citizen" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<element name="GetCitizensForCitizenLetterRequest" type="tns:GetCitizensForCitizenLetterRequestType" />
+	<element name="GetCitizensForCitizenLetterResponse" type="tns:GetCitizensForCitizenLetterResponseType" />
 
 </schema>
