@@ -232,6 +232,11 @@
             <xs:include schemaLocation="../schemas/2015/01/01/E5/GetMedicineCardVersionResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2015/01/01/E5/GetMedicineCardVersionListResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/GetExplicitDoseDispensingCardResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/ListDoseDispensingPatientsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2015/01/01/E5/ListDoseDispensingPatientsResponse.xsd"/>
+
         </xs:schema>
 
     </wsdl:types>
@@ -586,6 +591,13 @@
     </wsdl:message>
 
 
+    <wsdl:message name="ListDoseDispensingPatientsRequest_2015_01_01_E5">
+        <wsdl:part name="ListDoseDispensingPatientsRequest" element="medicinecard20150101E5:ListDoseDispensingPatientsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ListDoseDispensingPatientsResponse_2015_01_01_E5">
+        <wsdl:part name="ListDoseDispensingPatientsResponse" element="medicinecard20150101E5:ListDoseDispensingPatientsResponse"/>
+    </wsdl:message>
 
     <wsdl:message name="MarkPrescriptionMedicationDeprecatedRequest_2015_01_01_E2">
         <wsdl:part name="MarkPrescriptionMedicationDeprecatedRequest" element="medicinecard20150101E2:MarkPrescriptionMedicationDeprecatedRequest"/>
@@ -887,6 +899,12 @@
             <wsdl:input name="GiveConsentRequest_2015_01_01_E2" message="tns:GiveConsentRequest_2015_01_01_E2"/>
             <wsdl:output name="GiveConsentResponse_2015_01_01_E2" message="tns:GiveConsentResponse_2015_01_01_E2"/>
 &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ListDoseDispensingPatients_2015_01_01_E5">
+            <wsdl:input name="ListDoseDispensingPatientsRequest_2015_01_01_E5" message="tns:ListDoseDispensingPatientsRequest_2015_01_01_E5"/>
+            <wsdl:output name="ListDoseDispensingPatientsResponse_2015_01_01_E5" message="tns:ListDoseDispensingPatientsResponse_2015_01_01_E5"/>
+            &operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="MarkPrescriptionMedicationDeprecated_2015_01_01_E2">
@@ -1253,7 +1271,7 @@
 
 
        <wsdl:operation name="GetMedicineCardVersionList_2015_01_01_E5">
-            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2#GetMedicineCardVersionList"
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5#GetMedicineCardVersionList"
                             style="document"/>
             <wsdl:input name="GetMedicineCardVersionListRequest_2015_01_01_E2">
 &fmkStandardSOAPRequestHeaders;
@@ -1558,6 +1576,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="CalculateRequiredDosageUnitsResponse_2015_01_01_E5">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ListDoseDispensingPatients_2015_01_01_E5">
+            <soap:operation soapAction="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5#ListDoseDispensingPatients"
+                            style="document"/>
+            <wsdl:input name="ListDoseDispensingPatientsRequest_2015_01_01_E5">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ListDoseDispensingPatientsResponse_2015_01_01_E5">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

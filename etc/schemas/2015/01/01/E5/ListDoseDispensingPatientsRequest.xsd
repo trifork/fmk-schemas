@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
+		xmlns:medicinecard20150101E5="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<include schemaLocation="importsFrom20150101E5.xsd"/>
+
+	<element name="ListDoseDispensingPatientsRequest" type="medicinecard20150101E5:ListDoseDispensingPatientsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document to list all DoseDispensing Patients associated with a doctor</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til listning af alle en læges dosisdispenserings patienter</documentation>
+		</annotation>
+	</element>
+	<complexType name="ListDoseDispensingPatientsRequestType">
+		<sequence>
+			<element name="IncludePatientDetails" type="medicinecard20150101E5:IncludePatientDetailsType"/>
+			<element name="OrganisationIdentifier" type="medicinecard20150101:OrganisationIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
