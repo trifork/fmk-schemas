@@ -41,13 +41,13 @@
     </wsdl:message>
     <wsdl:message name="GetCitizensForCitizenLetterResponse">
         <wsdl:part name="GetCitizensForCitizenLetterResponse" element="tns:GetCitizensForCitizenLetterResponse"/>
+    </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationToDeleteRequest">
         <wsdl:part name="GetDrugMedicationToDeleteRequest" element="tns:GetDrugMedicationToDeleteRequest"/>
     </wsdl:message>
     <wsdl:message name="GetDrugMedicationToDeleteResponse">
         <wsdl:part name="GetDrugMedicationToDeleteResponse" element="tns:GetDrugMedicationToDeleteResponse"/>
-
     </wsdl:message>
 	
 	<wsdl:message name="DGWSFault">
@@ -80,7 +80,7 @@
 
 	<wsdl:binding name="BatchDataBinding" type="tns:BatchDataPortType">
 		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-        
+
 		<wsdl:operation name="GetMedicineCardDataForDeceasedPersons">
         	<soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardDataForDeceasedPersons" style="document"/>
             <wsdl:input name="GetMedicineCardDataForDeceasedPersonsRequest">
