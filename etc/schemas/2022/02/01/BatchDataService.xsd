@@ -2,7 +2,6 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01" xmlns:tns="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01" elementFormDefault="qualified">
 
 	<!--Shared elements and types -->
-
 	<complexType name="PersonIdentifierType">
 		<simpleContent>
 			<extension base="tns:PersonIdentifierValueType">
@@ -36,6 +35,88 @@
 			<maxLength value="200"/>
 		</restriction>
 	</simpleType>
+
+	<simpleType name="TableNameType">
+		<restriction base="tns:UndefinedTableNameType">
+			<enumeration value="Dosages"/>
+			<enumeration value="DosageTimes"/>
+			<enumeration value="DoseDispensingCards"/>
+			<enumeration value="DoseDispensingPeriodEffectuations"/>
+			<enumeration value="DoseDispensingPeriods"/>
+			<enumeration value="DrugMedications"/>
+			<enumeration value="DrugMedicationsForDeletion"/>
+			<enumeration value="DrugMedPrescriptions"/>
+			<enumeration value="Drugs"/>
+			<enumeration value="Effectuations"/>
+			<enumeration value="FollowUp"/>
+			<enumeration value="OrderedEffectuationIdentifiers"/>
+			<enumeration value="Orders"/>
+			<enumeration value="PackagedDrugs"/>
+			<enumeration value="Packages"/>
+			<enumeration value="PatientRegistrations"/>
+			<enumeration value="PatientRelations"/>
+			<enumeration value="PausedPeriods"/>
+			<enumeration value="PrescribingOrganisations"/>
+			<enumeration value="PlannedAdministrationPeriods"/>
+			<enumeration value="PlannedAdministrationTimes"/>
+			<enumeration value="PlannedAdministrations"/>
+			<enumeration value="PlannedDispensings"/>
+			<enumeration value="Substances"/>
+			<enumeration value="StruturedDosages"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedTableNameType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TableKeyType">
+		<restriction base="tns:UndefinedTableKeyType">
+			<enumeration value="DosagePID"/>
+			<enumeration value="DoseDispensingCardIdentifier"/>
+			<enumeration value="DoseDispensingPeriodIdentifier"/>
+			<enumeration value="DrugMedicationIdentifier"/>
+			<enumeration value="DrugMedicationPID"/>
+			<enumeration value="DrugmedPrescriptionPID"/>
+			<enumeration value="DrugPID"/>
+			<enumeration value="EffectuationPID"/>
+			<enumeration value="Identifier"/>
+			<enumeration value="OrderPID"/>
+			<enumeration value="PackagedDrugPID"/>
+			<enumeration value="PackagePID"/>
+			<enumeration value="PlannedAdministrationPeriodPID"/>
+			<enumeration value="PlannedAdministrationPID"/>
+			<enumeration value="PlannedDispensingIdentifier"/>
+			<enumeration value="SubstancePID"/>
+			<enumeration value="StructuredDosagePID"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedTableKeyType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="DeletionEntry">
+		<sequence>
+			<element name="Identifier" type="int"/>
+			<element name="DeletionElements" type="tns:DataForDeletion" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="DataForDeletion">
+		<sequence>
+			<element name="Identifier" type="int" maxOccurs="unbounded"/>
+			<element name="TableName" type="string"/>
+			<element name="TableKey" type="string"/>
+			<element name="Priority" type="int"/>
+		</sequence>
+	</complexType>
 
 	<!--GetMedicineCardDataForDeceasedPersonsRequest -->
 
@@ -104,83 +185,6 @@
 
 	<!--GetDrugMedicationToDeleteRequest -->
 
-	<simpleType name="TableNameType">
-		<restriction base="tns:UndefinedTableNameType">
-			<enumeration value="Dosages"/>
-			<enumeration value="DosageTimes"/>
-			<enumeration value="DoseDispensingCards"/>
-			<enumeration value="DoseDispensingPeriodEffectuations"/>
-			<enumeration value="DoseDispensingPeriods"/>
-			<enumeration value="DrugMedications"/>
-			<enumeration value="DrugMedPrescriptions"/>
-			<enumeration value="Drugs"/>
-			<enumeration value="Effectuations"/>
-			<enumeration value="FollowUp"/>
-			<enumeration value="PackagedDrugs"/>
-			<enumeration value="Packages"/>
-			<enumeration value="PausedPeriods"/>
-			<enumeration value="PlannedAdministrationPeriods"/>
-			<enumeration value="PlannedAdministrationTimes"/>
-			<enumeration value="PlannedAdministrations"/>
-			<enumeration value="PlannedDispensings"/>
-			<enumeration value="Substances"/>
-			<enumeration value="StruturedDosages"/>
-		</restriction>
-	</simpleType>
-
-	<simpleType name="UndefinedTableNameType">
-		<restriction base="string">
-			<minLength value="1"/>
-			<maxLength value="200"/>
-		</restriction>
-	</simpleType>
-
-	<simpleType name="TableKeyType">
-		<restriction base="tns:UndefinedTableKeyType">
-			<enumeration value="DrugMedicationIdentifier"/>
-			<enumeration value="PlannedDispensingIdentifier"/>
-			<enumeration value="PlannedAdministrationPID"/>
-			<enumeration value="PlannedAdministrationPeriodPID"/>
-			<enumeration value="PackagedDrugPID"/>
-			<enumeration value="DrugPID"/>
-			<enumeration value="SubstancePID"/>
-			<enumeration value="PackagePID"/>
-			<enumeration value="DrugMedicationPID"/>
-			<enumeration value="EffectuationPID"/>
-			<enumeration value="DrugMedicationPID"/>
-			<enumeration value="StructuredDosagePID"/>
-			<enumeration value="DosagePID"/>
-			<enumeration value="DoseDispensingCardIdentifier"/>
-			<enumeration value="DoseDispensingPeriodIdentifier"/>
-			<enumeration value="PlannedDispensingIdentifier"/>
-			<enumeration value="PackagedDrugPID"/>
-			<enumeration value="DrugmedPrescriptionPID"/>
-		</restriction>
-	</simpleType>
-
-	<simpleType name="UndefinedTableKeyType">
-		<restriction base="string">
-			<minLength value="1"/>
-			<maxLength value="200"/>
-		</restriction>
-	</simpleType>
-
-	<complexType name="DeletionEntry">
-		<sequence>
-			<element name="Identifier" type="int"/>
-			<element name="DeletionElements" type="tns:DataForDeletion" maxOccurs="unbounded"/>
-		</sequence>
-	</complexType>
-
-	<complexType name="DataForDeletion">
-		<sequence>
-			<element name="Identifier" type="int" maxOccurs="unbounded"/>
-			<element name="TableName" type="string"/>
-			<element name="TableKey" type="string"/>
-			<element name="Priority" type="int"/>
-		</sequence>
-	</complexType>
-
 	<element name="GetDrugMedicationToDeleteRequest" type="tns:GetDrugMedicationToDeleteRequestType" />
 	<element name="GetDrugMedicationToDeleteResponse" type="tns:GetDrugMedicationToDeleteResponseType" />
 
@@ -192,6 +196,139 @@
 	</complexType>
 
 	<complexType name="GetDrugMedicationToDeleteResponseType">
+		<sequence>
+			<element name="ResultsSize" type="int"/>
+			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<!--GetDrugMedicationOnDeceasedRequest -->
+
+	<element name="GetDrugMedicationOnDeceasedRequest" type="tns:GetDrugMedicationOnDeceasedRequestType" />
+	<element name="GetDrugMedicationOnDeceasedResponse" type="tns:GetDrugMedicationOnDeceasedResponseType" />
+
+	<complexType name="GetDrugMedicationOnDeceasedRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetDrugMedicationOnDeceasedResponseType">
+		<sequence>
+			<element name="ResultsSize" type="int"/>
+			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<!--GetDrugMedPrescriptionsToDeleteRequest -->
+
+	<element name="GetDrugMedPrescriptionsToDeleteRequest" type="tns:GetDrugMedPrescriptionsToDeleteRequestType" />
+	<element name="GetDrugMedPrescriptionsToDeleteResponse" type="tns:GetDrugMedPrescriptionsToDeleteResponseType" />
+
+	<complexType name="GetDrugMedPrescriptionsToDeleteRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetDrugMedPrescriptionsToDeleteResponseType">
+		<sequence>
+			<element name="ResultsSize" type="int"/>
+			<element name="DeletionElements" type="tns:DataForDeletion" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<!--GetDrugMedicationsForDeletionRequest -->
+
+	<element name="GetDrugMedicationsForDeletionRequest" type="tns:GetDrugMedicationsForDeletionRequestType" />
+	<element name="GetDrugMedicationsForDeletionResponse" type="tns:GetDrugMedicationsForDeletionResponseType" />
+
+	<complexType name="GetDrugMedicationsForDeletionRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetDrugMedicationsForDeletionResponseType">
+		<sequence>
+			<element name="ResultsSize" type="int"/>
+			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<!--GetDoseDispensingCardsToDeleteRequest -->
+
+	<element name="GetDoseDispensingCardsToDeleteRequest" type="tns:GetDoseDispensingCardsToDeleteRequestType" />
+	<element name="GetDoseDispensingCardsToDeleteResponse" type="tns:GetDoseDispensingCardsToDeleteResponseType" />
+
+	<complexType name="GetDoseDispensingCardsToDeleteRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetDoseDispensingCardsToDeleteResponseType">
+		<sequence>
+			<element name="ResultsSize" type="int"/>
+			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<!--GetDoseDispensingPeriodsToDeleteRequest -->
+
+	<element name="GetDoseDispensingPeriodsToDeleteRequest" type="tns:GetDoseDispensingPeriodsToDeleteRequestType" />
+	<element name="GetDoseDispensingPeriodsToDeleteResponse" type="tns:GetDoseDispensingPeriodsToDeleteResponseType" />
+
+	<complexType name="GetDoseDispensingPeriodsToDeleteRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetDoseDispensingPeriodsToDeleteResponseType">
+		<sequence>
+			<element name="ResultsSize" type="int"/>
+			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<!--GetPatientRelationsAndRegistrationsToDeleteRequest -->
+
+	<element name="GetPatientRelationsAndRegistrationsToDeleteRequest" type="tns:GetPatientRelationsAndRegistrationsToDeleteRequestType" />
+	<element name="GetPatientRelationsAndRegistrationsToDeleteResponse" type="tns:GetPatientRelationsAndRegistrationsToDeleteResponseType" />
+
+	<complexType name="GetPatientRelationsAndRegistrationsToDeleteRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetPatientRelationsAndRegistrationsToDeleteResponseType">
+		<sequence>
+			<element name="ResultsSize" type="int"/>
+			<element name="DeletionElements" type="tns:DataForDeletion" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<!--GetEffectuationOrderingToDeleteRequest -->
+
+	<element name="GetEffectuationOrderingToDeleteRequest" type="tns:GetEffectuationOrderingToDeleteRequestType" />
+	<element name="GetEffectuationOrderingToDeleteResponse" type="tns:GetEffectuationOrderingToDeleteResponseType" />
+
+	<complexType name="GetEffectuationOrderingToDeleteRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="GetEffectuationOrderingToDeleteResponseType">
 		<sequence>
 			<element name="ResultsSize" type="int"/>
 			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
