@@ -144,9 +144,9 @@
 	<element name="GetMedicineCardDataForDeceasedPersonsRequest" type="tns:GetMedicineCardDataForDeceasedPersonsRequestType" />
 	<element name="GetMedicineCardDataForDeceasedPersonsResponse" type="tns:GetMedicineCardDataForDeceasedPersonsReponseType" />
 
-	<!-- GetCitizensForCitizenLetterRequest -->
+	<!-- GetDoctorsWithExpiringDDPatientsRequest -->
 	 
-	<complexType name="GetCitizensForCitizenLetterRequestType">
+	<complexType name="GetDoctorsWithExpiringDDPatientsRequestType">
 		<sequence>
 		</sequence>
 	</complexType>
@@ -158,30 +158,32 @@
 		</restriction>
 	</simpleType>
 
-	<complexType name="Person">
+	<complexType name="PatientType">
 		<sequence>
-			<element name="Name" type="string"/>
-			<element name="AddressLine1" type="string"/>
-			<element name="AddressLine2" type="string"/>
+			<element name="PersonIdentifier" type="tns:PersonIdentifierValueType"/>
+			<element name="DrugName" type="string" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 
-	<complexType name="Citizen">
+	<complexType name="DoctorType">
 		<sequence>
-			<element name="PersonIdentifier" type="tns:PersonIdentifierValueType"/>
+			<element name="Identifier" type="string"/>
+			<element name="OrganisationName" type="string"/>
+			<element name="AddressLine" type="string" maxOccurs="unbounded"/>
 			<element name="Channel" type="tns:ChannelType"/>
-			<element name="Person" type="tns:Person" minOccurs="0"/>
+			<element name="ExpiringDDPatient" type="tns:PatientType" maxOccurs="unbounded"/>
+			<element name="DDPatient" type="tns:PatientType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 	
-	<complexType name="GetCitizensForCitizenLetterResponseType">
+	<complexType name="GetDoctorsWithExpiringDDPatientsResponseType">
 		<sequence>
-			<element name="Citizen" type="tns:Citizen" minOccurs="0" maxOccurs="unbounded" />
+			<element name="Doctor" type="tns:DoctorType" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
 
-	<element name="GetCitizensForCitizenLetterRequest" type="tns:GetCitizensForCitizenLetterRequestType" />
-	<element name="GetCitizensForCitizenLetterResponse" type="tns:GetCitizensForCitizenLetterResponseType" />
+	<element name="GetDoctorsWithExpiringDDPatientsRequest" type="tns:GetDoctorsWithExpiringDDPatientsRequestType" />
+	<element name="GetDoctorsWithExpiringDDPatientsResponse" type="tns:GetDoctorsWithExpiringDDPatientsResponseType" />
 
 	<!--GetDrugMedicationToDeleteRequest -->
 
