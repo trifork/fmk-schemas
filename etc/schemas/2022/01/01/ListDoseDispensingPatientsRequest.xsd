@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+
+<include schemaLocation="IncludePatientDetails.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+
+	<element name="ListDoseDispensingPatientsRequest" type="mc160:ListDoseDispensingPatientsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document to list all DoseDispensing Patients associated with a doctor</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til listning af alle en læges dosisdispenserings patienter</documentation>
+		</annotation>
+	</element>
+	<complexType name="ListDoseDispensingPatientsRequestType">
+		<sequence>
+			<element name="IncludePatientDetails" type="mc160:IncludePatientDetailsType"/>
+			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
