@@ -118,6 +118,20 @@
 		</sequence>
 	</complexType>
 
+	<complexType name="AdvisEntry">
+		<sequence>
+			<element name="PersonIdentifier" type="tns:PersonIdentifierType"/>
+			<element name="AdvisDataList" type="tns:AdvisData" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="AdvisData">
+		<sequence>
+			<element name="Position" type="int"/>
+			<element name="Value" type="string"/>
+		</sequence>
+	</complexType>
+
 	<!--GetMedicineCardDataForDeceasedPersonsRequest -->
 
 	<complexType name="GetMedicineCardDataForDeceasedPersonsRequestType">
@@ -126,7 +140,7 @@
 			<element name="MaxResults" type="integer"/>
 		</sequence>
 	</complexType>
-	
+
 	<complexType name="MedicineCardDataForDeceasedPersons">
 		<sequence>
 			<element name="PersonIdentifier" type="tns:PersonIdentifierType"/>
@@ -134,13 +148,13 @@
 			<element name="NoOfDrugMedicationsForPerson" type="int"/>
 		</sequence>
 	</complexType>
-	
+
 	<complexType name="GetMedicineCardDataForDeceasedPersonsReponseType">
 		<sequence>
 			<element name="MedicineCardData" type="tns:MedicineCardDataForDeceasedPersons" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
-	
+
 	<element name="GetMedicineCardDataForDeceasedPersonsRequest" type="tns:GetMedicineCardDataForDeceasedPersonsRequestType" />
 	<element name="GetMedicineCardDataForDeceasedPersonsResponse" type="tns:GetMedicineCardDataForDeceasedPersonsReponseType" />
 
@@ -213,7 +227,7 @@
 
 	<complexType name="GetDrugMedicationOnDeceasedRequestType">
 		<sequence>
-			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="DeceasedAt" type="dateTime"/>
 			<element name="MaxResults" type="integer"/>
 		</sequence>
 	</complexType>
@@ -246,17 +260,16 @@
 
 	<!--GetDrugMedicationsForDeletionRequest -->
 
-	<element name="GetDrugMedicationsForDeletionRequest" type="tns:GetDrugMedicationsForDeletionRequestType" />
-	<element name="GetDrugMedicationsForDeletionResponse" type="tns:GetDrugMedicationsForDeletionResponseType" />
+	<element name="GetDrugMedicationsMarkedForDeletionRequest" type="tns:GetDrugMedicationsMarkedForDeletionRequestType" />
+	<element name="GetDrugMedicationsMarkedForDeletionResponse" type="tns:GetDrugMedicationsMarkedForDeletionResponseType" />
 
-	<complexType name="GetDrugMedicationsForDeletionRequestType">
+	<complexType name="GetDrugMedicationsMarkedForDeletionRequestType">
 		<sequence>
-			<element name="ExpiredBefore" type="dateTime"/>
 			<element name="MaxResults" type="integer"/>
 		</sequence>
 	</complexType>
 
-	<complexType name="GetDrugMedicationsForDeletionResponseType">
+	<complexType name="GetDrugMedicationsMarkedForDeletionResponseType">
 		<sequence>
 			<element name="ResultsSize" type="int"/>
 			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
@@ -270,7 +283,8 @@
 
 	<complexType name="GetDoseDispensingCardsToDeleteRequestType">
 		<sequence>
-			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="RemovedBefore" type="dateTime"/>
+			<element name="DeceasedAt" type="dateTime"/>
 			<element name="MaxResults" type="integer"/>
 		</sequence>
 	</complexType>
@@ -297,7 +311,7 @@
 	<complexType name="GetDoseDispensingPeriodsToDeleteResponseType">
 		<sequence>
 			<element name="ResultsSize" type="int"/>
-			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DeletionElements" type="tns:DataForDeletion" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 
@@ -308,7 +322,8 @@
 
 	<complexType name="GetPatientRelationsAndRegistrationsToDeleteRequestType">
 		<sequence>
-			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="DeceasedBefore" type="dateTime"/>
+			<element name="RemovedBefore" type="dateTime"/>
 			<element name="MaxResults" type="integer"/>
 		</sequence>
 	</complexType>
@@ -336,6 +351,7 @@
 		<sequence>
 			<element name="ResultsSize" type="int"/>
 			<element name="DeletionData" type="tns:DeletionEntry" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AdvisToSend" type="tns:AdvisEntry" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 

@@ -64,11 +64,11 @@
         <wsdl:part name="GetDrugMedPrescriptionsToDeleteResponse" element="tns:GetDrugMedPrescriptionsToDeleteResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDrugMedicationsForDeletionRequest">
-        <wsdl:part name="GetDrugMedicationsForDeletionRequest" element="tns:GetDrugMedicationsForDeletionRequest"/>
+    <wsdl:message name="GetDrugMedicationsMarkedForDeletionRequest">
+        <wsdl:part name="GetDrugMedicationsMarkedForDeletionRequest" element="tns:GetDrugMedicationsMarkedForDeletionRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetDrugMedicationsForDeletionResponse">
-        <wsdl:part name="GetDrugMedicationsForDeletionResponse" element="tns:GetDrugMedicationsForDeletionResponse"/>
+    <wsdl:message name="GetDrugMedicationsMarkedForDeletionResponse">
+        <wsdl:part name="GetDrugMedicationsMarkedForDeletionResponse" element="tns:GetDrugMedicationsMarkedForDeletionResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDoseDispensingCardsToDeleteRequest">
@@ -139,10 +139,10 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedicationsForDeletion">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationsForDeletion" style="document"/>
-            <wsdl:input name="GetDrugMedicationsForDeletionRequest" message="tns:GetDrugMedicationsForDeletionRequest"/>
-            <wsdl:output name="GetDrugMedicationsForDeletionResponse" message="tns:GetDrugMedicationsForDeletionResponse"/>
+        <wsdl:operation name="GetDrugMedicationsMarkedForDeletion">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationsMarkedForDeletion" style="document"/>
+            <wsdl:input name="GetDrugMedicationsMarkedForDeletionRequest" message="tns:GetDrugMedicationsMarkedForDeletionRequest"/>
+            <wsdl:output name="GetDrugMedicationsMarkedForDeletionResponse" message="tns:GetDrugMedicationsMarkedForDeletionResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -234,14 +234,14 @@
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedicationsForDeletion">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationsForDeletion" style="document"/>
-            <wsdl:input name="GetDrugMedicationsForDeletionRequest">
+        <wsdl:operation name="GetDrugMedicationsMarkedForDeletion">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationsMarkedForDeletion" style="document"/>
+            <wsdl:input name="GetDrugMedicationsMarkedForDeletionRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedicationsForDeletionResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="GetDrugMedicationsMarkedForDeletionResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
