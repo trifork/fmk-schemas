@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:dosageAI20220301="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01"
+		targetNamespace="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationText.xsd"/>
+	<element name="ParseDrugMedicationRequest" type="dosageAI20220301:ParseDrugMedicationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request for parsing a drug medication</documentation>
+			<documentation xml:lang="da-DK">En forespørgsel for at parse en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="ParseDrugMedicationRequestType">
+		<sequence>
+			<element name="DrugMedicationText" type="dosageAI20220301:DrugMedicationTextType"/>
+			<element name="MaxResult" type="int" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+<!ENTITY fmkStandardSOAPRequestHeaders "
+        <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+        <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
+        <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
+        <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
+        <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+">
+<!ENTITY fmkStandardSOAPResponseHeaders "
+        <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
+">
+<!ENTITY operationFaultDeclaration "
+        <wsdl:fault name='DGWSFault' message='tns:DGWSFault'/>
+">
+<!ENTITY bindingFaultDeclaration "
+        <wsdl:fault name='DGWSFault'>
+            <soap:fault name='DGWSFault' use='literal'/>
+        </wsdl:fault>
+">
+]>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:dosageAI20220301="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01"
+                  xmlns:tns="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01"
+                  targetNamespace="http://www.dkma.dk/dosageAI/xml.schema/2022-03-01">
+
+    <wsdl:types>
+
+        <xs:schema targetNamespace="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified">
+
+            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/03/01/SendDrugMedicationResultRequest.xsd"/>
+
+        </xs:schema>
+
+    </wsdl:types>
+
+    <wsdl:message name="ParseDrugMedicationRequest_2022_03_01">
+        <wsdl:part name="ParseDrugMedicationRequest" element="dosageAI20220301:ParseDrugMedicationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ParseDrugMedicationResponse_2022_03_01">
+        <wsdl:part name="ParseDrugMedicationResponse" element="dosageAI20220301:ParseDrugMedicationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SendDrugMedicationResultRequest_2022_03_01">
+        <wsdl:part name="SendDrugMedicationResultRequest" element="dosageAI20220301:SendDrugMedicationResultRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SendDrugMedicationResultResponse_2022_03_01">
+        <wsdl:part name="SendDrugMedicationResultResponse" element="dosageAI20220301:SendDrugMedicationResultResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="DosageAIPortType">
+
+        <wsdl:operation name="ParseDrugMedication_2022_03_01">
+            <wsdl:input name="ParseDrugMedicationRequest_2022_03_01" message="tns:ParseDrugMedicationRequest_2022_03_01"/>
+            <wsdl:output name="ParseDrugMedicationResponse_2022_03_01"
+                         message="tns:ParseDrugMedicationResponse_2022_03_01"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SendDrugMedicationResult_2022_03_01">
+            <wsdl:input name="SendDrugMedicationResultRequest_2022_03_01"
+                        message="tns:SendDrugMedicationResultRequest_2022_03_01"/>
+            <wsdl:output name="SendDrugMedicationResultResponse_2022_03_01"
+                         message="tns:SendDrugMedicationResultResponse_2022_03_01"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="DosageAIBinding" type="tns:DosageAIPortType">
+
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="ParseDrugMedication_2022_03_01">
+            <soap:operation soapAction="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedication"
+                            style="document"/>
+            <wsdl:input name="ParseDrugMedicationRequest_2022_03_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ParseDrugMedicationResponse_2022_03_01">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SendDrugMedicationResult_2022_03_01">
+            <soap:operation soapAction="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01#SendDrugMedicationResult"
+                            style="document"/>
+            <wsdl:input name="SendDrugMedicationResultRequest_2022_03_01">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SendDrugMedicationResultResponse_2022_03_01">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+</wsdl:definitions>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:dosageAI20220301="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01"
+		targetNamespace="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="ParseDrugMedication.xsd"/>
+	<include schemaLocation="DrugMedicationText.xsd"/>
+	<element name="SendDrugMedicationResultRequest" type="dosageAI20220301:SendDrugMedicationResultRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">For sending the result of the corrected drug medication</documentation>
+			<documentation xml:lang="da-DK">Til at sende resultatet tilbage omkring den korrigerede lægemiddelordination</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="SendDrugMedicationResultRequestType">
+		<sequence>
+			<element name="ParseDrugMedication" type="dosageAI20220301:ParseDrugMedicationType" maxOccurs="unbounded"/>
+			<element name="DrugMedicationText" type="dosageAI20220301:DrugMedicationTextType"/>
+		</sequence>
+	</complexType>
+</schema>
