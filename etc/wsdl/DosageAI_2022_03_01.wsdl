@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE definitions [
-<!ENTITY fmkStandardSOAPRequestHeaders "
-        <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
-        <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
-        <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
-        <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
-        <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
-">
-<!ENTITY fmkStandardSOAPResponseHeaders "
-        <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
-">
-<!ENTITY operationFaultDeclaration "
-        <wsdl:fault name='DGWSFault' message='tns:DGWSFault'/>
-">
-<!ENTITY bindingFaultDeclaration "
-        <wsdl:fault name='DGWSFault'>
-            <soap:fault name='DGWSFault' use='literal'/>
-        </wsdl:fault>
-">
 ]>
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
@@ -78,9 +60,6 @@
             <wsdl:output name="ParseDrugMedicationResponse_2022_03_01">
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
         </wsdl:operation>
 
         <wsdl:operation name="SendDrugMedicationResult_2022_03_01">
@@ -92,9 +71,6 @@
             <wsdl:output name="SendDrugMedicationResultResponse_2022_03_01">
                 <soap:body use="literal"/>
             </wsdl:output>
-            <wsdl:fault name="DGWSFault">
-                <soap:fault name="DGWSFault" use="literal"/>
-            </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
 
