@@ -3,6 +3,7 @@
 ]>
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:dosageAI20220301="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
                   xmlns:tns="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
@@ -31,12 +32,17 @@
         <wsdl:part name="SendDrugMedicationResultResponse" element="dosageAI20220301:SendDrugMedicationResultResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="DGWSFault">
+        <wsdl:part name="fault" element="medcom:FaultCode"/>
+    </wsdl:message>
+
     <wsdl:portType name="DosageAIPortType">
 
         <wsdl:operation name="ParseDrugMedication_2022_03_01">
             <wsdl:input name="ParseDrugMedicationRequest_2022_03_01" message="tns:ParseDrugMedicationRequest_2022_03_01"/>
             <wsdl:output name="ParseDrugMedicationResponse_2022_03_01"
                          message="tns:ParseDrugMedicationResponse_2022_03_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="SendDrugMedicationResult_2022_03_01">
@@ -44,6 +50,7 @@
                         message="tns:SendDrugMedicationResultRequest_2022_03_01"/>
             <wsdl:output name="SendDrugMedicationResultResponse_2022_03_01"
                          message="tns:SendDrugMedicationResultResponse_2022_03_01"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
     </wsdl:portType>
@@ -60,6 +67,9 @@
             <wsdl:output name="ParseDrugMedicationResponse_2022_03_01">
                 <soap:body use="literal"/>
             </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
         </wsdl:operation>
 
         <wsdl:operation name="SendDrugMedicationResult_2022_03_01">
@@ -71,6 +81,9 @@
             <wsdl:output name="SendDrugMedicationResultResponse_2022_03_01">
                 <soap:body use="literal"/>
             </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
         </wsdl:operation>
     </wsdl:binding>
 
