@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" 
 		attributeFormDefault="unqualified">
 
-	<include schemaLocation="ParseDrugMedication.xsd"/>
+	<include schemaLocation="ParseDrugMedicationTextResult.xsd"/>
 	<include schemaLocation="DrugMedicationText.xsd"/>
 	<element name="SendDrugMedicationResultRequest" type="dosageAI20220301:SendDrugMedicationResultRequestType">
 		<annotation>
@@ -16,7 +16,7 @@
 
 	<complexType name="SendDrugMedicationResultRequestType">
 		<sequence>
-			<element name="ParseDrugMedication" type="dosageAI20220301:ParseDrugMedicationType" maxOccurs="1"/>
+			<element name="ParseDrugMedicationTextResult" type="dosageAI20220301:ParseDrugMedicationTextResultType" maxOccurs="1"/>
 			<element name="DrugMedicationText" type="dosageAI20220301:DrugMedicationTextType"/>
 		</sequence>
 	</complexType>

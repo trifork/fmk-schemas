@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dosageAI20220301="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01"
 		targetNamespace="http://www.dkma.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<element name="DrugMedicationText" type="dosageAI20220301:DrugMedicationTextType">
+	<element name="Confidence" type="dosageAI20220301:ConfidenceType">
 		<annotation>
-			<documentation xml:lang="en-GB">Drug medication text</documentation>
-			<documentation xml:lang="da-DK">Lægemiddelordinationstekst</documentation>
+			<documentation xml:lang="en-GB">Drug medication confidence value.</documentation>
+			<documentation xml:lang="da-DK">Konfidens-værdi for en lægemiddelordination.</documentation>
 		</annotation>
 	</element>
-	<simpleType name="DrugMedicationTextType">
-		<restriction base="string">
-			<minLength value="1"/>
-			<maxLength value="1000"/>
+	<simpleType name="ConfidenceType">
+		<restriction base="integer">
+			<minInclusive value="0"/>
+			<maxInclusive value="100"/>
 		</restriction>
 	</simpleType>
 </schema>

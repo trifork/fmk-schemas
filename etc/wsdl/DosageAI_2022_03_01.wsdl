@@ -11,10 +11,14 @@
 
     <wsdl:types>
         <xs:schema targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified">
-            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationTextRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationTextResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2022/03/01/SendDrugMedicationResultRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/03/01/SendDrugMedicationResultResponse.xsd"/>
+        </xs:schema>
+
+        <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+            <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd" />
         </xs:schema>
     </wsdl:types>
 
@@ -33,7 +37,8 @@
     </wsdl:message>
 
     <wsdl:message name="DGWSFault">
-        <wsdl:part name="fault" element="medcom:FaultCode"/>
+        <wsdl:part name="faultCode" element="medcom:FaultCode"/>
+        <wsdl:part name="faultText" element="medcom:FaultText"/>
     </wsdl:message>
 
     <wsdl:portType name="DosageAIPortType">

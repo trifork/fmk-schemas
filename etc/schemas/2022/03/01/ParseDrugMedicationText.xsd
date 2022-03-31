@@ -9,17 +9,17 @@
 
 	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
 	<import schemaLocation="importsFrom20150101E4.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"/>
-
-	<complexType name="ParseDrugMedicationType">
+	<include schemaLocation="Confidence.xsd"/>
+	<complexType name="ParseDrugMedicationTextType">
 		<annotation>
-			<documentation xml:lang="en-GB">A single drug medication type containing drug, and optionally dosage and indication.</documentation>
-			<documentation xml:lang="da-DK">En lægemiddelordinationstype, der indeholder et lægemiddel, og en valgfri dosering samt indikation.</documentation>
+			<documentation xml:lang="en-GB">A single drug medication type containing drug, dosage and optionally an indication, as well as a confidence value defining the trust of the result, an integer between 0 and 100.</documentation>
+			<documentation xml:lang="da-DK">En lægemiddelordinationstype, der indeholder et lægemiddel, en dosering og en valgfri indikation, samt en konfidens-værdi af resultatet, et heltal imellem 0 og 100.</documentation>
 		</annotation>
 		<sequence>
 			<element name="Drug" type="medicinecard20150101:DrugType"/>
-			<element name="Dosage" type="medicinecard20150101E4:DosageForRequestType" minOccurs="0"/>
+			<element name="Dosage" type="medicinecard20150101E4:DosageForRequestType"/>
 			<element name="Indication" type="medicinecard20150101:IndicationType" minOccurs="0"/>
-			<element name="Confidence" type="int" minOccurs="0"/>
+			<element name="Confidence" type="dosageAI20220301:ConfidenceType" />
 		</sequence>
 	</complexType>
 </schema>

@@ -6,17 +6,17 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="DrugMedicationText.xsd"/>
-	<element name="ParseDrugMedicationRequest" type="dosageAI20220301:ParseDrugMedicationRequestType">
+	<element name="ParseDrugMedicationTextRequest" type="dosageAI20220301:ParseDrugMedicationTextRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">A request for parsing a drug medication</documentation>
 			<documentation xml:lang="da-DK">En forespørgsel for at parse en lægemiddelordination</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="ParseDrugMedicationRequestType">
+	<complexType name="ParseDrugMedicationTextRequestType">
 		<sequence>
 			<element name="DrugMedicationText" type="dosageAI20220301:DrugMedicationTextType"/>
-			<element name="MaxResult" type="int" minOccurs="0"/>
+			<element name="MaxResult" type="int" minOccurs="0" default="5" />
 		</sequence>
 	</complexType>
 </schema>
