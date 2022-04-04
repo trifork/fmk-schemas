@@ -34,17 +34,17 @@
         <wsdl:part name="MedcomHeader" element="medcom:Header"/>
     </wsdl:message>
 
-    <wsdl:message name="ParseDrugMedicationRequest_2022_03_01">
-        <wsdl:part name="ParseDrugMedicationRequest" element="dosageAI20220301:ParseDrugMedicationTextRequest"/>
+    <wsdl:message name="ParseDrugMedicationTextRequest">
+        <wsdl:part name="ParseDrugMedicationTextRequest" element="dosageAI20220301:ParseDrugMedicationTextRequest"/>
     </wsdl:message>
-    <wsdl:message name="ParseDrugMedicationResponse_2022_03_01">
-        <wsdl:part name="ParseDrugMedicationResponse" element="dosageAI20220301:ParseDrugMedicationTextResponse"/>
+    <wsdl:message name="ParseDrugMedicationTextResponse">
+        <wsdl:part name="ParseDrugMedicationTextResponse" element="dosageAI20220301:ParseDrugMedicationTextResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="SendDrugMedicationResultRequest_2022_03_01">
+    <wsdl:message name="SendDrugMedicationResultRequest">
         <wsdl:part name="SendDrugMedicationResultRequest" element="dosageAI20220301:SendDrugMedicationResultRequest"/>
     </wsdl:message>
-    <wsdl:message name="SendDrugMedicationResultResponse_2022_03_01">
+    <wsdl:message name="SendDrugMedicationResultResponse">
         <wsdl:part name="SendDrugMedicationResultResponse" element="dosageAI20220301:SendDrugMedicationResultResponse"/>
     </wsdl:message>
 
@@ -54,20 +54,20 @@
     </wsdl:message>
 
     <wsdl:portType name="DosageAIPortType">
-
-        <wsdl:operation name="ParseDrugMedication_2022_03_01">
-            <wsdl:input name="ParseDrugMedicationRequest_2022_03_01"
-                        message="tns:ParseDrugMedicationRequest_2022_03_01"/>
-            <wsdl:output name="ParseDrugMedicationResponse_2022_03_01"
-                         message="tns:ParseDrugMedicationResponse_2022_03_01"/>
+        <wsdl:operation name="ParseDrugMedicationText">
+            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedicationText" style="document"/>
+            <wsdl:input name="ParseDrugMedicationTextRequest"
+                        message="tns:ParseDrugMedicationTextRequest"/>
+            <wsdl:output name="ParseDrugMedicationTextResponse"
+                         message="tns:ParseDrugMedicationTextResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="SendDrugMedicationResult_2022_03_01">
-            <wsdl:input name="SendDrugMedicationResultRequest_2022_03_01"
-                        message="tns:SendDrugMedicationResultRequest_2022_03_01"/>
-            <wsdl:output name="SendDrugMedicationResultResponse_2022_03_01"
-                         message="tns:SendDrugMedicationResultResponse_2022_03_01"/>
+        <wsdl:operation name="SendDrugMedicationResult">
+            <wsdl:input name="SendDrugMedicationResultRequest"
+                        message="tns:SendDrugMedicationResultRequest"/>
+            <wsdl:output name="SendDrugMedicationResultResponse"
+                         message="tns:SendDrugMedicationResultResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -76,15 +76,15 @@
     <wsdl:binding name="DosageAIBinding" type="tns:DosageAIPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-        <wsdl:operation name="ParseDrugMedication_2022_03_01">
-            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedication"
+        <wsdl:operation name="ParseDrugMedicationText">
+            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedicationText"
                             style="document"/>
-            <wsdl:input name="ParseDrugMedicationRequest_2022_03_01">
+            <wsdl:input name="ParseDrugMedicationTextRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="ParseDrugMedicationResponse_2022_03_01">
+            <wsdl:output name="ParseDrugMedicationTextResponse">
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -92,15 +92,15 @@
             </wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="SendDrugMedicationResult_2022_03_01">
+        <wsdl:operation name="SendDrugMedicationResult">
             <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#SendDrugMedicationResult"
                             style="document"/>
-            <wsdl:input name="SendDrugMedicationResultRequest_2022_03_01">
+            <wsdl:input name="SendDrugMedicationResultRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="SendDrugMedicationResultResponse_2022_03_01">
+            <wsdl:output name="SendDrugMedicationResultResponse">
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
