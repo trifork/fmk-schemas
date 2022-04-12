@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		xmlns:dosageAI20220301="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
+		targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationText.xsd"/>
+	<element name="ParseDrugMedicationTextRequest" type="dosageAI20220301:ParseDrugMedicationTextRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request for parsing a drug medication</documentation>
+			<documentation xml:lang="da-DK">En forespørgsel for at parse en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="ParseDrugMedicationTextRequestType">
+		<sequence>
+			<element name="DrugMedicationText" type="dosageAI20220301:DrugMedicationTextType"/>
+			<element name="MaxResult" type="int" minOccurs="0" default="5" />
+		</sequence>
+	</complexType>
+</schema>

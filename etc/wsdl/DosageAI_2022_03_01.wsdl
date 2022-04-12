@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:dosageAI20220301="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
+                  xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
+                  xmlns:tns="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
+                  targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01">
+
+    <wsdl:types>
+        <xs:schema targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified">
+            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationTextRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationTextResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/03/01/SendDrugMedicationResultRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/03/01/SendDrugMedicationResultResponse.xsd"/>
+        </xs:schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified">
+            <import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                    schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+        </schema>
+        <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
+            <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd" />
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
+
+    <wsdl:message name="ParseDrugMedicationTextRequest">
+        <wsdl:part name="ParseDrugMedicationTextRequest" element="dosageAI20220301:ParseDrugMedicationTextRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ParseDrugMedicationTextResponse">
+        <wsdl:part name="ParseDrugMedicationTextResponse" element="dosageAI20220301:ParseDrugMedicationTextResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SendDrugMedicationResultRequest">
+        <wsdl:part name="SendDrugMedicationResultRequest" element="dosageAI20220301:SendDrugMedicationResultRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SendDrugMedicationResultResponse">
+        <wsdl:part name="SendDrugMedicationResultResponse" element="dosageAI20220301:SendDrugMedicationResultResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="DGWSFault">
+        <wsdl:part name="faultCode" element="medcom:FaultCode"/>
+        <wsdl:part name="faultText" element="medicinecard20150601:FaultText"/>
+    </wsdl:message>
+
+    <wsdl:portType name="DosageAIPortType">
+        <wsdl:operation name="ParseDrugMedicationText">
+            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedicationText" style="document"/>
+            <wsdl:input name="ParseDrugMedicationTextRequest"
+                        message="tns:ParseDrugMedicationTextRequest"/>
+            <wsdl:output name="ParseDrugMedicationTextResponse"
+                         message="tns:ParseDrugMedicationTextResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SendDrugMedicationResult">
+            <wsdl:input name="SendDrugMedicationResultRequest"
+                        message="tns:SendDrugMedicationResultRequest"/>
+            <wsdl:output name="SendDrugMedicationResultResponse"
+                         message="tns:SendDrugMedicationResultResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="DosageAIBinding" type="tns:DosageAIPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="ParseDrugMedicationText">
+            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedicationText"
+                            style="document"/>
+            <wsdl:input name="ParseDrugMedicationTextRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ParseDrugMedicationTextResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SendDrugMedicationResult">
+            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#SendDrugMedicationResult"
+                            style="document"/>
+            <wsdl:input name="SendDrugMedicationResultRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SendDrugMedicationResultResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DGWSFault">
+                <soap:fault name="DGWSFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="DosageAI">
+        <wsdl:port name="DosageAIPort" binding="tns:DosageAIBinding">
+            <soap:address location="https://test1.fmk.netic.dk/fmk12/ws/DosageAI"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

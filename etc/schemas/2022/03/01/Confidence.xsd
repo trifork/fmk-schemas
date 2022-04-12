@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dosageAI20220301="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
+		targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="Confidence" type="dosageAI20220301:ConfidenceType">
+		<annotation>
+			<documentation xml:lang="en-GB">Drug medication confidence value. An integer between 0 and 100.</documentation>
+			<documentation xml:lang="da-DK">Konfidens-værdi for en lægemiddelordination. Et heltal mellem 0 og 100.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="ConfidenceType">
+		<restriction base="integer">
+			<minInclusive value="0"/>
+			<maxInclusive value="100"/>
+		</restriction>
+	</simpleType>
+</schema>
