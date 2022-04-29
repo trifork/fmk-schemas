@@ -575,7 +575,7 @@
         <javac classpathref="classpath" debug="true" source="${sourceversion}" target="${targetversion}" destdir="${standard.target.dir}/genclasses" fork="true" includeantruntime="false" memorymaximumsize="1024m" encoding="UTF-8">
             <src path="${standard.target.dir}/gentestsrc/src"/>
         </javac>
-        <jar basedir="${standard.target.dir}/gentestsrc/resources" destfile="${fmk-classes.target.jar}">
+        <jar basedir="${standard.target.dir}/gentestsrc/resources" destfile="${fmk-classes.target.jar}" zip64Mode="always">
             <fileset dir="${standard.target.dir}/gentestsrc/resources">
                 <include name="**/*.class"/>
             </fileset>
