@@ -4,19 +4,19 @@
                   xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
                   xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                  xmlns:dosageAI20220301="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
+                  xmlns:ordinationsAI20220301="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01"
                   xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-                  xmlns:tns="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01"
-                  targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01">
+                  xmlns:tns="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01"
+                  targetNamespace="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01">
 
     <wsdl:types>
-        <xs:schema targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified">
+        <xs:schema targetNamespace="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01" elementFormDefault="qualified">
             <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationTextRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/03/01/ParseDrugMedicationTextResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2022/03/01/SendDrugMedicationResultRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/03/01/SendDrugMedicationResultResponse.xsd"/>
         </xs:schema>
-        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01" elementFormDefault="qualified">
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01" elementFormDefault="qualified">
             <import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                     schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
         </schema>
@@ -34,17 +34,17 @@
     </wsdl:message>
 
     <wsdl:message name="ParseDrugMedicationTextRequest">
-        <wsdl:part name="ParseDrugMedicationTextRequest" element="dosageAI20220301:ParseDrugMedicationTextRequest"/>
+        <wsdl:part name="ParseDrugMedicationTextRequest" element="ordinationsAI20220301:ParseDrugMedicationTextRequest"/>
     </wsdl:message>
     <wsdl:message name="ParseDrugMedicationTextResponse">
-        <wsdl:part name="ParseDrugMedicationTextResponse" element="dosageAI20220301:ParseDrugMedicationTextResponse"/>
+        <wsdl:part name="ParseDrugMedicationTextResponse" element="ordinationsAI20220301:ParseDrugMedicationTextResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SendDrugMedicationResultRequest">
-        <wsdl:part name="SendDrugMedicationResultRequest" element="dosageAI20220301:SendDrugMedicationResultRequest"/>
+        <wsdl:part name="SendDrugMedicationResultRequest" element="ordinationsAI20220301:SendDrugMedicationResultRequest"/>
     </wsdl:message>
     <wsdl:message name="SendDrugMedicationResultResponse">
-        <wsdl:part name="SendDrugMedicationResultResponse" element="dosageAI20220301:SendDrugMedicationResultResponse"/>
+        <wsdl:part name="SendDrugMedicationResultResponse" element="ordinationsAI20220301:SendDrugMedicationResultResponse"/>
     </wsdl:message>
 
     <wsdl:message name="DGWSFault">
@@ -52,9 +52,9 @@
         <wsdl:part name="faultText" element="medicinecard20150601:FaultText"/>
     </wsdl:message>
 
-    <wsdl:portType name="DosageAIPortType">
+    <wsdl:portType name="OrdinationsAIPortType">
         <wsdl:operation name="ParseDrugMedicationText">
-            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedicationText" style="document"/>
+            <soap:operation soapAction="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01#ParseDrugMedicationText" style="document"/>
             <wsdl:input name="ParseDrugMedicationTextRequest"
                         message="tns:ParseDrugMedicationTextRequest"/>
             <wsdl:output name="ParseDrugMedicationTextResponse"
@@ -72,11 +72,11 @@
 
     </wsdl:portType>
 
-    <wsdl:binding name="DosageAIBinding" type="tns:DosageAIPortType">
+    <wsdl:binding name="OrdinationsAIBinding" type="tns:OrdinationsAIPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
         <wsdl:operation name="ParseDrugMedicationText">
-            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#ParseDrugMedicationText"
+            <soap:operation soapAction="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01#ParseDrugMedicationText"
                             style="document"/>
             <wsdl:input name="ParseDrugMedicationTextRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
@@ -92,7 +92,7 @@
         </wsdl:operation>
 
         <wsdl:operation name="SendDrugMedicationResult">
-            <soap:operation soapAction="http://fmk-teknik.dk/dosageAI/xml.schema/2022/03/01#SendDrugMedicationResult"
+            <soap:operation soapAction="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01#SendDrugMedicationResult"
                             style="document"/>
             <wsdl:input name="SendDrugMedicationResultRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
@@ -108,9 +108,9 @@
         </wsdl:operation>
     </wsdl:binding>
 
-    <wsdl:service name="DosageAI">
-        <wsdl:port name="DosageAIPort" binding="tns:DosageAIBinding">
-            <soap:address location="https://test1.fmk.netic.dk/fmk12/ws/DosageAI"/>
+    <wsdl:service name="OrdinationsAI">
+        <wsdl:port name="OrdinationsAIPort" binding="tns:OrdinationsAIBinding">
+            <soap:address location="https://test1.fmk.netic.dk/ws/OrdinationsAI"/>
         </wsdl:port>
     </wsdl:service>
 
