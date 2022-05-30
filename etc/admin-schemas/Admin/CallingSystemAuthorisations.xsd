@@ -32,7 +32,13 @@
             <xsd:element name="ServicesAllowed" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="AllowedOrgUsingIdFormats" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
             <xsd:element name="SystemOverrideExtendedValidation" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
-            <xsd:element name="LastUsedDateTime" type="xsd:dateTime" minOccurs="0"/>
+            <xsd:element name="LastUsedDateTime" type="sysauth:LastUsedDateTime" minOccurs="0"/>
         </xsd:sequence>
     </xsd:complexType>
+
+    <xsd:simpleType name="LastUsedDateTime">
+        <xsd:restriction base="xsd:dateTime">
+            <xsd:minInclusive value="2000-01-01T00:00:00Z"/>
+        </xsd:restriction>
+    </xsd:simpleType>
 </xsd:schema>
