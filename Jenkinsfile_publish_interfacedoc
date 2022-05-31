@@ -1,0 +1,118 @@
+properties([
+    parameters([
+        choice(
+            name: 'snitflade',
+            choices: [
+                'Advis',
+                'M*2013_06_01',
+                'E*2013_06_01',
+                'P*2013_06_01',
+                '2013_01_01',
+                'M*2015_01_01',
+                'E*2015_01_01',
+                'P*2015_01_01',
+                'M*2015_01_01_E1',
+                'P*2015_01_01_E1',
+                'M*2015_01_01_E2',
+                'P*2015_01_01_E2',
+                'E*2015_01_01_E2',
+                'M*2015_01_01_E4',
+                'M*2015_01_01_E5',
+                'P*2015_01_01_E5',
+                'E*2015_01_01_E5',
+                'M*2015_06_01',
+                'P*2015_06_01',
+                'M*2015_06_01_E2',
+                'P*2015_06_01_E2',
+                'M*2015_06_01_E3',
+                'M*2015_06_01_E5',
+                'P*2015_06_01_E5',
+                'M*2015_06_01_E6'
+            ].join('\n')
+                ,
+            description: '''
+                Generer html-dokumentation for den valgte snitflade, og publicer den på dokuwiki<br/>
+                Advis -> Advis<br/>
+                1.4.2 -> 2013_06_01<br/>
+                dumpRestore -> 2013_01_01<br/>
+                1.4.4 -> 2015_01_01 (opdaterer også E1)<br/>
+                1.4.4_E1 -> 2015_01_01_E1<br/>
+                1.4.4_E2 -> 2015_01_01_E2<br/>
+                1.4.4_E4 -> 2015_01_01_E4<br/>
+                1.4.4_E5 -> 2015_01_01_E5<br/>
+                1.4.6 -> 2015_06_01<br/>
+                1.4.6_E1 -> 2015_06_01_E1<br/>
+                1.4.6_E2 -> 2015_06_01_E2<br/>
+                1.4.6_E3 -> 2015_06_01_E3<br/>
+                1.4.6_E5 -> 2015_06_01_E5<br/>
+                1.4.6_E6 -> 2015_06_01_E6<br/>
+                <br/>
+                Man releaser snitfladerne Medicinkortet, EffectuationOrdering og Patient(Organisation)Registration særskilt. 
+                Dette gøres ved at vælge mellem hhv M*<I>snitflade</I>, E*<I>snitflade</I>, P*<I>snitflade</I>
+                '''
+        )
+    ])
+])
+
+
+pipeline {
+    //agent any
+    agent {
+        node {
+            label ''
+            customWorkspace '/var/jenkins_home/jobs/FMK_schema/workspace'
+        }
+    }
+
+    stages {
+        stage('Copy Archive') {
+            steps {
+                script {
+                    snitflade = snitflade.trim()
+                    step ([$class: 'CopyArtifact',
+                        projectName: 'FMK_schema',
+                        filter: "**/standard/target/wsdl/*${snitflade}.wsdl,**/target/idws/target/wsdl/*${snitflade}.wsdl",
+                        target: 'tmp',
+                        flatten: true]);
+                }
+            }
+        }
+
+        stage('build') {
+            steps {
+                script {
+                    sh "echo ${snitflade} valgt"
+
+                    sh '''
+                        echo "dokuwiki.username=jenkins
+                        dokuwiki.password=papkasse1234" >> build.properties
+
+                        for f in tmp/*.wsdl
+                        do
+                            ant generate-fmk-html -Dinlinefilename=$f
+                            ant post-to-dokuwiki -Dinfolder=tmp -Dinfile=${f##*/}.html  
+                        done
+                        rm -r tmp
+                        '''
+                }
+            }
+        }
+    }
+     post {
+        failure {
+            emailext body: '$DEFAULT_CONTENT',
+                    recipientProviders: [culprits(), requestor()],
+                    subject: '$DEFAULT_SUBJECT'
+        }
+            unstable {
+                emailext body: '$DEFAULT_CONTENT',
+                        recipientProviders: [culprits(), requestor()],
+                        subject: '$DEFAULT_SUBJECT'
+        }
+            fixed {
+                emailext body: '$DEFAULT_CONTENT',
+                        recipientProviders: [culprits(), requestor()],
+                        subject: '$DEFAULT_SUBJECT'
+        }
+    }
+}
