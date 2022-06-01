@@ -12,12 +12,12 @@
 	<include schemaLocation="Confidence.xsd"/>
 	<complexType name="ParseDrugMedicationTextType">
 		<annotation>
-			<documentation xml:lang="en-GB">A single drug medication type containing drug, dosage and optionally an indication, as well as a confidence value defining the trust of the result, an integer between 0 and 100.</documentation>
-			<documentation xml:lang="da-DK">En lægemiddelordinationstype, der indeholder et lægemiddel, en dosering og en valgfri indikation, samt en konfidens-værdi af resultatet, et heltal imellem 0 og 100.</documentation>
+			<documentation xml:lang="en-GB">A single drug medication type containing drug, and optionally dosage and indication, as well as a confidence value defining the trust of the result, an integer between 0 and 100.</documentation>
+			<documentation xml:lang="da-DK">En lægemiddelordinationstype, der indeholder et lægemiddel, og eventuelt også en dosering og indikation, samt en konfidens-værdi af resultatet, et heltal imellem 0 og 100.</documentation>
 		</annotation>
 		<sequence>
 			<element name="Drug" type="medicinecard20150101:DrugType"/>
-			<element name="Dosage" type="medicinecard20150101E4:DosageForRequestType"/>
+			<element name="Dosage" type="medicinecard20150101E4:DosageForRequestType" minOccurs="0"/>
 			<element name="Indication" type="medicinecard20150101:IndicationType" minOccurs="0"/>
 			<element name="Confidence" type="ordinationsAI20220301:ConfidenceType" />
 		</sequence>
