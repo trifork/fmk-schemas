@@ -2,7 +2,6 @@
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
-                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:ordinationsAI20220301="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01"
                   xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
@@ -24,10 +23,6 @@
             <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd" />
         </xs:schema>
     </wsdl:types>
-
-    <wsdl:message name="SecurityHeader">
-        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
-    </wsdl:message>
 
     <wsdl:message name="MedComHeader">
         <wsdl:part name="MedcomHeader" element="medcom:Header"/>
@@ -79,7 +74,6 @@
             <soap:operation soapAction="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01#ParseDrugMedicationText"
                             style="document"/>
             <wsdl:input name="ParseDrugMedicationTextRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -95,7 +89,6 @@
             <soap:operation soapAction="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01#SendDrugMedicationResult"
                             style="document"/>
             <wsdl:input name="SendDrugMedicationResultRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
