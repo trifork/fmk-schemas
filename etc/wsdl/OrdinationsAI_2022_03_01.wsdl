@@ -4,7 +4,6 @@
                   xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:ordinationsAI20220301="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01"
-                  xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
                   xmlns:tns="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01"
                   targetNamespace="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01">
 
@@ -44,7 +43,6 @@
 
     <wsdl:message name="DGWSFault">
         <wsdl:part name="faultCode" element="medcom:FaultCode"/>
-        <wsdl:part name="faultText" element="medicinecard20150601:FaultText"/>
     </wsdl:message>
 
     <wsdl:portType name="OrdinationsAIPortType">
@@ -73,11 +71,11 @@
         <wsdl:operation name="ParseDrugMedicationText">
             <soap:operation soapAction="http://fmk-teknik.dk/ordinationsAI/xml.schema/2022/03/01#ParseDrugMedicationText"
                             style="document"/>
-            <wsdl:input name="ParseDrugMedicationTextRequest">
+            <wsdl:input>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="ParseDrugMedicationTextResponse">
+            <wsdl:output>
                 <soap:body use="literal"/>
             </wsdl:output>
             <wsdl:fault name="DGWSFault">
@@ -103,7 +101,7 @@
 
     <wsdl:service name="OrdinationsAI">
         <wsdl:port name="OrdinationsAIPort" binding="tns:OrdinationsAIBinding">
-            <soap:address location="https://test1.fmk.netic.dk/ws/OrdinationsAI"/>
+            <soap:address location="http://localhost:8124/ws/OrdinationsAI"/>
         </wsdl:port>
     </wsdl:service>
 
