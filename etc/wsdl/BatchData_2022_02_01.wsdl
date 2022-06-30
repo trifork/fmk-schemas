@@ -28,6 +28,8 @@
 		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified">
 			<include schemaLocation="../schemas/2015/01/01/E2/UpdateDrugMedicationResponse.xsd"/>
 			<include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationRequest.xsd"/>
+			<include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardReviewedRequest.xsd"/>
+			<include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardReviewedResponse.xsd"/>
 		</schema>
 
 		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4" elementFormDefault="qualified">
@@ -163,6 +165,13 @@
     <wsdl:message name="InvalidatePrescriptionResponse">
         <wsdl:part name="InvalidatePrescriptionResponse" element="medicinecard20150601:InvalidatePrescriptionResponse"/>
     </wsdl:message>
+
+    <wsdl:message name="SetMedicineCardReviewedRequest">
+        <wsdl:part name="SetMedicineCardReviewedRequest" element="medicinecard20150601E5:SetMedicineCardReviewedRequest"/>
+    </wsdl:message>
+    <wsdl:message name="SetMedicineCardReviewedResponse">
+        <wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20150601:SetMedicineCardReviewedResponse"/>
+    </wsdl:message>
 	
 	<wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode" />
@@ -271,6 +280,13 @@
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#InvalidatePrescription" style="document"/>
             <wsdl:input name="InvalidatePrescriptionRequest" message="tns:InvalidatePrescriptionRequest"/>
             <wsdl:output name="InvalidatePrescriptionResponse" message="tns:InvalidatePrescriptionResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardReviewed">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#SetMedicineCardReviewed" style="document"/>
+            <wsdl:input name="SetMedicineCardReviewedRequest" message="tns:SetMedicineCardReviewedRequest"/>
+            <wsdl:output name="SetMedicineCardReviewedResponse" message="tns:SetMedicineCardReviewedResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -441,6 +457,17 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="InvalidatePrescriptionResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetMedicineCardReviewed">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#SetMedicineCardReviewed" style="document"/>
+            <wsdl:input name="SetMedicineCardReviewedRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SetMedicineCardReviewedResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
