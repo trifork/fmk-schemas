@@ -39,6 +39,8 @@
 
 		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified">
 			<include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionResponse.xsd"/>
+			<include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionRequest.xsd"/>
+			<include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionResponse.xsd"/>
 		</schema>
 
 		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5" elementFormDefault="qualified">
@@ -172,6 +174,13 @@
     <wsdl:message name="SetMedicineCardReviewedResponse">
         <wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20150101E2:SetMedicineCardReviewedResponse"/>
     </wsdl:message>
+
+    <wsdl:message name="GetMedicineCardVersionRequest">
+        <wsdl:part name="GetMedicineCardVersionRequest" element="medicinecard20150601:GetMedicineCardVersionRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetMedicineCardVersionResponse">
+        <wsdl:part name="GetMedicineCardVersionResponse" element="medicinecard20150601:GetMedicineCardVersionResponse"/>
+    </wsdl:message>
 	
 	<wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode" />
@@ -287,6 +296,13 @@
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#SetMedicineCardReviewed" style="document"/>
             <wsdl:input name="SetMedicineCardReviewedRequest" message="tns:SetMedicineCardReviewedRequest"/>
             <wsdl:output name="SetMedicineCardReviewedResponse" message="tns:SetMedicineCardReviewedResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersion">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardVersion" style="document"/>
+            <wsdl:input name="GetMedicineCardVersionRequest" message="tns:GetMedicineCardVersionRequest"/>
+            <wsdl:output name="GetMedicineCardVersionResponse" message="tns:GetMedicineCardVersionResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -468,6 +484,17 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SetMedicineCardReviewedResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetMedicineCardVersion">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardVersion" style="document"/>
+            <wsdl:input name="GetMedicineCardVersionRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetMedicineCardVersionResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
