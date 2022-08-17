@@ -22,7 +22,15 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType"/>
-			<element name="DosageUnits" type="medicinecard20150101:DoseQuantityType"/>
+			<choice>
+				<element name="DosageUnits" type="medicinecard20150101:DoseQuantityType" minOccurs="0"/>
+				<sequence>
+					<element name="MinDosageUnits" type="medicinecard20150101:DoseQuantityType"/>
+					<element name="MaxDosageUnits" type="medicinecard20150101:DoseQuantityType"/>
+				</sequence>
+			</choice>
+			<element name="DosageUnitsWithPN" type="medicinecard20150101:DoseQuantityType" minOccurs="0"/>
+			<element name="DosageUnitsOnlyPN" type="medicinecard20150101:DoseQuantityType" minOccurs="0"/>
 			<element name="Information" type="medicinecard20150101E5:CalculationInformationType" maxOccurs="unbounded" minOccurs="0"/>
 		</sequence>
 	</complexType>

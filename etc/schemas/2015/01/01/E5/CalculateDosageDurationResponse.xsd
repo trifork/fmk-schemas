@@ -22,7 +22,15 @@
 		<sequence>
 			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="medicinecard20150101:DrugMedicationIdentifierType"/>
-			<element name="EndDate" type="medicinecard20150101:DosageTimesEndDateType"/>
+			<choice>
+				<element name="EndDate" type="medicinecard20150101:DosageTimesEndDateType" minOccurs="0"/>
+				<sequence>
+					<element name="MinEndDate" type="medicinecard20150101:DosageTimesEndDateType"/>
+					<element name="MaxEndDate" type="medicinecard20150101:DosageTimesEndDateType"/>
+				</sequence>
+			</choice>
+			<element name="EndDateWithPN" type="medicinecard20150101:DosageTimesEndDateType" minOccurs="0"/>
+			<element name="OnlyPN" type="medicinecard20150101:DosageTimesEndDateType" minOccurs="0"/>
 			<element name="Information" type="medicinecard20150101E5:CalculationInformationType" maxOccurs="unbounded" minOccurs="0"/>
 		</sequence>
 	</complexType>
