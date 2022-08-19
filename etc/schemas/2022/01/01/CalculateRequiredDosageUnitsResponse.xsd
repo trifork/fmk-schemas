@@ -20,7 +20,15 @@
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
-			<element name="DosageUnits" type="mc160:DoseQuantityType"/>
+			<choice>
+				<element name="DosageUnits" type="mc160:DoseQuantityType" minOccurs="0"/>
+				<sequence>
+					<element name="MinDosageUnits" type="mc160:DoseQuantityType"/>
+					<element name="MaxDosageUnits" type="mc160:DoseQuantityType"/>
+				</sequence>
+			</choice>
+			<element name="DosageUnitsWithPN" type="mc160:DoseQuantityType" minOccurs="0"/>
+			<element name="DosageUnitsOnlyPN" type="mc160:DoseQuantityType" minOccurs="0"/>
 			<element name="Information" type="mc160:CalculationInformationType" maxOccurs="unbounded" minOccurs="0"/>
 		</sequence>
 	</complexType>

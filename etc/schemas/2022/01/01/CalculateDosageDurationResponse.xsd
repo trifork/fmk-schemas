@@ -20,7 +20,15 @@
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
-			<element name="EndDate" type="mc160:DosageTimesEndDateType"/>
+			<choice>
+				<element name="EndDate" type="mc160:DosageTimesEndDateType" minOccurs="0"/>
+				<sequence>
+					<element name="MinEndDate" type="mc160:DosageTimesEndDateType"/>
+					<element name="MaxEndDate" type="mc160:DosageTimesEndDateType"/>
+				</sequence>
+			</choice>
+			<element name="EndDateWithPN" type="mc160:DosageTimesEndDateType" minOccurs="0"/>
+			<element name="OnlyPN" type="mc160:DosageTimesEndDateType" minOccurs="0"/>
 			<element name="Information" type="mc160:CalculationInformationType" maxOccurs="unbounded" minOccurs="0"/>
 		</sequence>
 	</complexType>
