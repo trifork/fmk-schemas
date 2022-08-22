@@ -4,11 +4,6 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 	xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
 	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-	xmlns:medicinecard20150101="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"
-	xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"
-	xmlns:medicinecard20150101E4="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4"
-	xmlns:medicinecard20150601="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01"
-	xmlns:medicinecard20150601E5="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5"
 	xmlns:tns="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01"
 	targetNamespace="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01">
 	
@@ -17,35 +12,6 @@
 		<xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
             <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd"/>
 		</xs:schema>
-
-		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01" elementFormDefault="qualified">
-			<include schemaLocation="../schemas/2015/01/01/WithdrawDrugMedicationRequest.xsd"/>
-			<include schemaLocation="../schemas/2015/01/01/WithdrawDrugMedicationResponse.xsd"/>
-			<include schemaLocation="../schemas/2015/01/01/UnwithdrawDrugMedicationRequest.xsd"/>
-			<include schemaLocation="../schemas/2015/01/01/UnwithdrawDrugMedicationResponse.xsd"/>
-		</schema>
-
-		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" elementFormDefault="qualified">
-			<include schemaLocation="../schemas/2015/01/01/E2/UpdateDrugMedicationResponse.xsd"/>
-			<include schemaLocation="../schemas/2015/01/01/E2/GetDrugMedicationRequest.xsd"/>
-			<include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardReviewedRequest.xsd"/>
-			<include schemaLocation="../schemas/2015/01/01/E2/SetMedicineCardReviewedResponse.xsd"/>
-		</schema>
-
-		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E4" elementFormDefault="qualified">
-			<include schemaLocation="../schemas/2015/01/01/E4/UpdateDrugMedicationRequest.xsd"/>
-			<include schemaLocation="../schemas/2015/01/01/E4/GetDrugMedicationResponse.xsd"/>
-		</schema>
-
-		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01" elementFormDefault="qualified">
-			<include schemaLocation="../schemas/2015/06/01/InvalidatePrescriptionResponse.xsd"/>
-			<include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionRequest.xsd"/>
-			<include schemaLocation="../schemas/2015/06/01/GetMedicineCardVersionResponse.xsd"/>
-		</schema>
-
-		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/06/01/E5" elementFormDefault="qualified">
-			<include schemaLocation="../schemas/2015/06/01/E5/InvalidatePrescriptionRequest.xsd"/>
-		</schema>
 		
 		<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01" elementFormDefault="qualified">
 			<include schemaLocation="../schemas/2022/02/01/BatchDataService.xsd"/>
@@ -132,55 +98,6 @@
     <wsdl:message name="GetEffectuationOrderingToDeleteResponse">
         <wsdl:part name="GetEffectuationOrderingToDeleteResponse" element="tns:GetEffectuationOrderingToDeleteResponse"/>
     </wsdl:message>
-
-    <wsdl:message name="UpdateDrugMedicationRequest">
-        <wsdl:part name="UpdateDrugMedicationRequest" element="medicinecard20150101E4:UpdateDrugMedicationRequest"/>
-    </wsdl:message>
-    <wsdl:message name="UpdateDrugMedicationResponse">
-        <wsdl:part name="UpdateDrugMedicationResponse" element="medicinecard20150101E2:UpdateDrugMedicationResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetDrugMedicationRequest">
-        <wsdl:part name="GetDrugMedicationRequest" element="medicinecard20150101E2:GetDrugMedicationRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDrugMedicationResponse">
-        <wsdl:part name="GetDrugMedicationResponse" element="medicinecard20150101E4:GetDrugMedicationResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="WithdrawDrugMedicationRequest">
-        <wsdl:part name="WithdrawDrugMedicationRequest" element="medicinecard20150101:WithdrawDrugMedicationRequest"/>
-    </wsdl:message>
-    <wsdl:message name="WithdrawDrugMedicationResponse">
-        <wsdl:part name="WithdrawDrugMedicationResponse" element="medicinecard20150101:WithdrawDrugMedicationResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="UnwithdrawDrugMedicationRequest">
-        <wsdl:part name="UnwithdrawDrugMedicationRequest" element="medicinecard20150101:UnwithdrawDrugMedicationRequest"/>
-    </wsdl:message>
-    <wsdl:message name="UnwithdrawDrugMedicationResponse">
-        <wsdl:part name="UnwithdrawDrugMedicationResponse" element="medicinecard20150101:UnwithdrawDrugMedicationResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="InvalidatePrescriptionRequest">
-        <wsdl:part name="InvalidatePrescriptionRequest" element="medicinecard20150601E5:InvalidatePrescriptionRequest"/>
-    </wsdl:message>
-    <wsdl:message name="InvalidatePrescriptionResponse">
-        <wsdl:part name="InvalidatePrescriptionResponse" element="medicinecard20150601:InvalidatePrescriptionResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="SetMedicineCardReviewedRequest">
-        <wsdl:part name="SetMedicineCardReviewedRequest" element="medicinecard20150101E2:SetMedicineCardReviewedRequest"/>
-    </wsdl:message>
-    <wsdl:message name="SetMedicineCardReviewedResponse">
-        <wsdl:part name="SetMedicineCardReviewedResponse" element="medicinecard20150101E2:SetMedicineCardReviewedResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetMedicineCardVersionRequest">
-        <wsdl:part name="GetMedicineCardVersionRequest" element="medicinecard20150601:GetMedicineCardVersionRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetMedicineCardVersionResponse">
-        <wsdl:part name="GetMedicineCardVersionResponse" element="medicinecard20150601:GetMedicineCardVersionResponse"/>
-    </wsdl:message>
 	
 	<wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode" />
@@ -254,55 +171,6 @@
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetEffectuationOrderingToDelete" style="document"/>
             <wsdl:input name="GetEffectuationOrderingToDeleteRequest" message="tns:GetEffectuationOrderingToDeleteRequest"/>
             <wsdl:output name="GetEffectuationOrderingToDeleteResponse" message="tns:GetEffectuationOrderingToDeleteResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="UpdateDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#UpdateDrugMedication" style="document"/>
-            <wsdl:input name="UpdateDrugMedicationRequest" message="tns:UpdateDrugMedicationRequest"/>
-            <wsdl:output name="UpdateDrugMedicationResponse" message="tns:UpdateDrugMedicationResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedication" style="document"/>
-            <wsdl:input name="GetDrugMedicationRequest" message="tns:GetDrugMedicationRequest"/>
-            <wsdl:output name="GetDrugMedicationResponse" message="tns:GetDrugMedicationResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="WithdrawDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#WithdrawDrugMedication" style="document"/>
-            <wsdl:input name="WithdrawDrugMedicationRequest" message="tns:WithdrawDrugMedicationRequest"/>
-            <wsdl:output name="WithdrawDrugMedicationResponse" message="tns:WithdrawDrugMedicationResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="UnwithdrawDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#UnwithdrawDrugMedication" style="document"/>
-            <wsdl:input name="UnwithdrawDrugMedicationRequest" message="tns:UnwithdrawDrugMedicationRequest"/>
-            <wsdl:output name="UnwithdrawDrugMedicationResponse" message="tns:UnwithdrawDrugMedicationResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="InvalidatePrescription">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#InvalidatePrescription" style="document"/>
-            <wsdl:input name="InvalidatePrescriptionRequest" message="tns:InvalidatePrescriptionRequest"/>
-            <wsdl:output name="InvalidatePrescriptionResponse" message="tns:InvalidatePrescriptionResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="SetMedicineCardReviewed">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#SetMedicineCardReviewed" style="document"/>
-            <wsdl:input name="SetMedicineCardReviewedRequest" message="tns:SetMedicineCardReviewedRequest"/>
-            <wsdl:output name="SetMedicineCardReviewedResponse" message="tns:SetMedicineCardReviewedResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetMedicineCardVersion">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardVersion" style="document"/>
-            <wsdl:input name="GetMedicineCardVersionRequest" message="tns:GetMedicineCardVersionRequest"/>
-            <wsdl:output name="GetMedicineCardVersionResponse" message="tns:GetMedicineCardVersionResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -418,83 +286,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetEffectuationOrderingToDeleteResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="UpdateDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#UpdateDrugMedication" style="document"/>
-            <wsdl:input name="UpdateDrugMedicationRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UpdateDrugMedicationResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedication" style="document"/>
-            <wsdl:input name="GetDrugMedicationRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDrugMedicationResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="WithdrawDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#WithdrawDrugMedication" style="document"/>
-            <wsdl:input name="WithdrawDrugMedicationRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="WithdrawDrugMedicationResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="UnwithdrawDrugMedication">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#UnwithdrawDrugMedication" style="document"/>
-            <wsdl:input name="UnwithdrawDrugMedicationRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UnwithdrawDrugMedicationResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="InvalidatePrescription">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#InvalidatePrescription" style="document"/>
-            <wsdl:input name="InvalidatePrescriptionRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="InvalidatePrescriptionResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="SetMedicineCardReviewed">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#SetMedicineCardReviewed" style="document"/>
-            <wsdl:input name="SetMedicineCardReviewedRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SetMedicineCardReviewedResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
-        <wsdl:operation name="GetMedicineCardVersion">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardVersion" style="document"/>
-            <wsdl:input name="GetMedicineCardVersionRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
