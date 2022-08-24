@@ -203,6 +203,24 @@
 	<element name="GetDoctorsWithExpiringDDPatientsRequest" type="tns:GetDoctorsWithExpiringDDPatientsRequestType" />
 	<element name="GetDoctorsWithExpiringDDPatientsResponse" type="tns:GetDoctorsWithExpiringDDPatientsResponseType" />
 
+
+	<complexType name="GetDoctorsWithMixedDailyDosagePatientsRequestType">
+		<sequence>
+			<element name="SearchDays" type="int"/>
+			<element name="Cvr" type="string" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="GetDoctorsWithMixedDailyDosagePatientsResponseType">
+		<sequence>
+			<element name="Doctor" type="tns:DoctorType" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<element name="GetDoctorsWithMixedDailyDosagePatientsRequest" type="tns:GetDoctorsWithMixedDailyDosagePatientsRequestType" />
+	<element name="GetDoctorsWithMixedDailyDosagePatientsResponse" type="tns:GetDoctorsWithMixedDailyDosagePatientsResponseType" />
+
+
 	<!--GetDrugMedicationToDeleteRequest -->
 
 	<element name="GetDrugMedicationToDeleteRequest" type="tns:GetDrugMedicationToDeleteRequestType" />
