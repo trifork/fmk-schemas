@@ -43,13 +43,6 @@
         <wsdl:part name="GetDoctorsWithExpiringDDPatientsResponse" element="tns:GetDoctorsWithExpiringDDPatientsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDoctorsWithMixedDailyDosagePatientsRequest">
-        <wsdl:part name="GetDoctorsWithMixedDailyDosagePatientsRequest" element="tns:GetDoctorsWithMixedDailyDosagePatientsRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDoctorsWithMixedDailyDosagePatientsResponse">
-        <wsdl:part name="GetDoctorsWithMixedDailyDosagePatientsResponse" element="tns:GetDoctorsWithMixedDailyDosagePatientsResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="GetDrugMedicationToDeleteRequest">
         <wsdl:part name="GetDrugMedicationToDeleteRequest" element="tns:GetDrugMedicationToDeleteRequest"/>
     </wsdl:message>
@@ -124,14 +117,6 @@
             <wsdl:output name="GetDoctorsWithExpiringDDPatientsResponse" message="tns:GetDoctorsWithExpiringDDPatientsResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-        
-        <wsdl:operation name="GetDoctorsWithMixedDailyDosagePatients">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoctorsWithMixedDailyDosagePatients" style="document"/>
-            <wsdl:input name="GetDoctorsWithMixedDailyDosagePatientsRequest" message="tns:GetDoctorsWithMixedDailyDosagePatientsRequest"/>
-            <wsdl:output name="GetDoctorsWithMixedDailyDosagePatientsResponse" message="tns:GetDoctorsWithMixedDailyDosagePatientsResponse"/>
-            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
-        </wsdl:operation>
-        
 
         <wsdl:operation name="GetDrugMedicationToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationToDelete" style="document"/>
@@ -215,18 +200,6 @@
             <wsdl:output name="GetDoctorsWithExpiringDDPatientsResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
-
-		<wsdl:operation name="GetDoctorsWithMixedDailyDosagePatients">
-        	<soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoctorsWithMixedDailyDosagePatients" style="document"/>
-            <wsdl:input name="GetDoctorsWithMixedDailyDosagePatientsRequest">
-                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
-                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
-            	<soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDoctorsWithMixedDailyDosagePatientsResponse"><soap:body use="literal"/></wsdl:output>
-            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
-        </wsdl:operation>
-
 
         <wsdl:operation name="GetDrugMedicationToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationToDelete" style="document"/>
