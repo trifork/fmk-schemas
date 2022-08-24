@@ -204,6 +204,19 @@
 	<element name="GetDoctorsWithExpiringDDPatientsResponse" type="tns:GetDoctorsWithExpiringDDPatientsResponseType" />
 
 
+	<complexType name="DoctorWithPatientsType">
+		<sequence>
+			<element name="Identifier" type="string"/>
+			<element name="Cvr" type="string"/>
+			<element name="OrganisationName" type="string"/>
+			<element name="AddressLine" type="string" maxOccurs="unbounded"/>
+			<element name="Channel" type="tns:ChannelType"/>
+			<element name="Patient" type="tns:PatientType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+
+
 	<complexType name="GetDoctorsWithMixedDailyDosagePatientsRequestType">
 		<sequence>
 			<element name="SearchDays" type="int"/>
@@ -213,7 +226,7 @@
 	
 	<complexType name="GetDoctorsWithMixedDailyDosagePatientsResponseType">
 		<sequence>
-			<element name="Doctor" type="tns:DoctorType" minOccurs="0" maxOccurs="unbounded" />
+			<element name="Doctor" type="tns:DoctorWithPatientsType" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
 
