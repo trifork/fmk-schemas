@@ -215,12 +215,18 @@
 		</sequence>
 	</complexType>
 
-
+	<complexType name="YderToCvrMappingType">
+		<sequence>
+			<element name="Yder" type="string"/>
+			<element name="Cvr" type="string"/>
+		</sequence>
+	</complexType>
 
 	<complexType name="GetDoctorsWithMixedDailyDosagePatientsRequestType">
 		<sequence>
 			<element name="SearchDays" type="int"/>
 			<element name="Cvr" type="string" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="YderToCvrMapping" type="tns:YderToCvrMappingType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 	
