@@ -29,81 +29,52 @@
         <wsdl:part name="MedcomHeader" element="medcom:Header"/>
     </wsdl:message>
 
+    <wsdl:message name="BatchDataServiceResponse">
+        <wsdl:part name="BatchDataServiceResponse" element="tns:BatchDataServiceResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="GetMedicineCardDataForDeceasedPersonsRequest">
         <wsdl:part name="GetMedicineCardDataForDeceasedPersonsRequest" element="tns:GetMedicineCardDataForDeceasedPersonsRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetMedicineCardDataForDeceasedPersonsResponse">
-        <wsdl:part name="GetMedicineCardDataForDeceasedPersonsResponse" element="tns:GetMedicineCardDataForDeceasedPersonsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDoctorsWithExpiringDDPatientsRequest">
         <wsdl:part name="GetDoctorsWithExpiringDDPatientsRequest" element="tns:GetDoctorsWithExpiringDDPatientsRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetDoctorsWithExpiringDDPatientsResponse">
-        <wsdl:part name="GetDoctorsWithExpiringDDPatientsResponse" element="tns:GetDoctorsWithExpiringDDPatientsResponse"/>
-    </wsdl:message>
 
     <wsdl:message name="GetDoctorsWithMixedDailyDosagePatientsRequest">
         <wsdl:part name="GetDoctorsWithMixedDailyDosagePatientsRequest" element="tns:GetDoctorsWithMixedDailyDosagePatientsRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDoctorsWithMixedDailyDosagePatientsResponse">
-        <wsdl:part name="GetDoctorsWithMixedDailyDosagePatientsResponse" element="tns:GetDoctorsWithMixedDailyDosagePatientsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationToDeleteRequest">
         <wsdl:part name="GetDrugMedicationToDeleteRequest" element="tns:GetDrugMedicationToDeleteRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetDrugMedicationToDeleteResponse">
-        <wsdl:part name="GetDrugMedicationToDeleteResponse" element="tns:GetDrugMedicationToDeleteResponse"/>
-    </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationOnDeceasedRequest">
         <wsdl:part name="GetDrugMedicationOnDeceasedRequest" element="tns:GetDrugMedicationOnDeceasedRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDrugMedicationOnDeceasedResponse">
-        <wsdl:part name="GetDrugMedicationOnDeceasedResponse" element="tns:GetDrugMedicationOnDeceasedResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedPrescriptionsToDeleteRequest">
         <wsdl:part name="GetDrugMedPrescriptionsToDeleteRequest" element="tns:GetDrugMedPrescriptionsToDeleteRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetDrugMedPrescriptionsToDeleteResponse">
-        <wsdl:part name="GetDrugMedPrescriptionsToDeleteResponse" element="tns:GetDrugMedPrescriptionsToDeleteResponse"/>
-    </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationsMarkedForDeletionRequest">
         <wsdl:part name="GetDrugMedicationsMarkedForDeletionRequest" element="tns:GetDrugMedicationsMarkedForDeletionRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDrugMedicationsMarkedForDeletionResponse">
-        <wsdl:part name="GetDrugMedicationsMarkedForDeletionResponse" element="tns:GetDrugMedicationsMarkedForDeletionResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDoseDispensingCardsToDeleteRequest">
         <wsdl:part name="GetDoseDispensingCardsToDeleteRequest" element="tns:GetDoseDispensingCardsToDeleteRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetDoseDispensingCardsToDeleteResponse">
-        <wsdl:part name="GetDoseDispensingCardsToDeleteResponse" element="tns:GetDoseDispensingCardsToDeleteResponse"/>
-    </wsdl:message>
 
     <wsdl:message name="GetDoseDispensingPeriodsToDeleteRequest">
         <wsdl:part name="GetDoseDispensingPeriodsToDeleteRequest" element="tns:GetDoseDispensingPeriodsToDeleteRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetDoseDispensingPeriodsToDeleteResponse">
-        <wsdl:part name="GetDoseDispensingPeriodsToDeleteResponse" element="tns:GetDoseDispensingPeriodsToDeleteResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPatientRelationsAndRegistrationsToDeleteRequest">
         <wsdl:part name="GetPatientRelationsAndRegistrationsToDeleteRequest" element="tns:GetPatientRelationsAndRegistrationsToDeleteRequest"/>
     </wsdl:message>
-    <wsdl:message name="GetPatientRelationsAndRegistrationsToDeleteResponse">
-        <wsdl:part name="GetPatientRelationsAndRegistrationsToDeleteResponse" element="tns:GetPatientRelationsAndRegistrationsToDeleteResponse"/>
-    </wsdl:message>
 
     <wsdl:message name="GetEffectuationOrderingToDeleteRequest">
         <wsdl:part name="GetEffectuationOrderingToDeleteRequest" element="tns:GetEffectuationOrderingToDeleteRequest"/>
-    </wsdl:message>
-    <wsdl:message name="GetEffectuationOrderingToDeleteResponse">
-        <wsdl:part name="GetEffectuationOrderingToDeleteResponse" element="tns:GetEffectuationOrderingToDeleteResponse"/>
     </wsdl:message>
 	
 	<wsdl:message name="DGWSFault">
@@ -114,21 +85,21 @@
         <wsdl:operation name="GetMedicineCardDataForDeceasedPersons">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardDataForDeceasedPersons" style="document"/>
             <wsdl:input name="GetMedicineCardDataForDeceasedPersonsRequest" message="tns:GetMedicineCardDataForDeceasedPersonsRequest"/>
-            <wsdl:output name="GetMedicineCardDataForDeceasedPersonsResponse" message="tns:GetMedicineCardDataForDeceasedPersonsResponse"/>
+			<wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
         <wsdl:operation name="GetDoctorsWithExpiringDDPatients">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoctorsWithExpiringDDPatients" style="document"/>
             <wsdl:input name="GetDoctorsWithExpiringDDPatientsRequest" message="tns:GetDoctorsWithExpiringDDPatientsRequest"/>
-            <wsdl:output name="GetDoctorsWithExpiringDDPatientsResponse" message="tns:GetDoctorsWithExpiringDDPatientsResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
         <wsdl:operation name="GetDoctorsWithMixedDailyDosagePatients">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoctorsWithMixedDailyDosagePatients" style="document"/>
             <wsdl:input name="GetDoctorsWithMixedDailyDosagePatientsRequest" message="tns:GetDoctorsWithMixedDailyDosagePatientsRequest"/>
-            <wsdl:output name="GetDoctorsWithMixedDailyDosagePatientsResponse" message="tns:GetDoctorsWithMixedDailyDosagePatientsResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
         
@@ -136,56 +107,56 @@
         <wsdl:operation name="GetDrugMedicationToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationToDelete" style="document"/>
             <wsdl:input name="GetDrugMedicationToDeleteRequest" message="tns:GetDrugMedicationToDeleteRequest"/>
-            <wsdl:output name="GetDrugMedicationToDeleteResponse" message="tns:GetDrugMedicationToDeleteResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetDrugMedicationOnDeceased">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationOnDeceased" style="document"/>
             <wsdl:input name="GetDrugMedicationOnDeceasedRequest" message="tns:GetDrugMedicationOnDeceasedRequest"/>
-            <wsdl:output name="GetDrugMedicationOnDeceasedResponse" message="tns:GetDrugMedicationOnDeceasedResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetDrugMedPrescriptionsToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedPrescriptionsToDelete" style="document"/>
             <wsdl:input name="GetDrugMedPrescriptionsToDeleteRequest" message="tns:GetDrugMedPrescriptionsToDeleteRequest"/>
-            <wsdl:output name="GetDrugMedPrescriptionsToDeleteResponse" message="tns:GetDrugMedPrescriptionsToDeleteResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetDrugMedicationsMarkedForDeletion">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationsMarkedForDeletion" style="document"/>
             <wsdl:input name="GetDrugMedicationsMarkedForDeletionRequest" message="tns:GetDrugMedicationsMarkedForDeletionRequest"/>
-            <wsdl:output name="GetDrugMedicationsMarkedForDeletionResponse" message="tns:GetDrugMedicationsMarkedForDeletionResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetDoseDispensingCardsToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoseDispensingCardsToDelete" style="document"/>
             <wsdl:input name="GetDoseDispensingCardsToDeleteRequest" message="tns:GetDoseDispensingCardsToDeleteRequest"/>
-            <wsdl:output name="GetDoseDispensingCardsToDeleteResponse" message="tns:GetDoseDispensingCardsToDeleteResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetDoseDispensingPeriodsToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoseDispensingPeriodsToDelete" style="document"/>
             <wsdl:input name="GetDoseDispensingPeriodsToDeleteRequest" message="tns:GetDoseDispensingPeriodsToDeleteRequest"/>
-            <wsdl:output name="GetDoseDispensingPeriodsToDeleteResponse" message="tns:GetDoseDispensingPeriodsToDeleteResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetPatientRelationsAndRegistrationsToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetPatientRelationsAndRegistrationsToDelete" style="document"/>
             <wsdl:input name="GetPatientRelationsAndRegistrationsToDeleteRequest" message="tns:GetPatientRelationsAndRegistrationsToDeleteRequest"/>
-            <wsdl:output name="GetPatientRelationsAndRegistrationsToDeleteResponse" message="tns:GetPatientRelationsAndRegistrationsToDeleteResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
         <wsdl:operation name="GetEffectuationOrderingToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetEffectuationOrderingToDelete" style="document"/>
             <wsdl:input name="GetEffectuationOrderingToDeleteRequest" message="tns:GetEffectuationOrderingToDeleteRequest"/>
-            <wsdl:output name="GetEffectuationOrderingToDeleteResponse" message="tns:GetEffectuationOrderingToDeleteResponse"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
@@ -201,7 +172,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
             	<soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardDataForDeceasedPersonsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -212,7 +183,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
             	<soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDoctorsWithExpiringDDPatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -223,7 +194,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
             	<soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDoctorsWithMixedDailyDosagePatientsResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -235,7 +206,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedicationToDeleteResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -246,7 +217,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedicationOnDeceasedResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -257,7 +228,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedPrescriptionsToDeleteResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -268,7 +239,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedicationsMarkedForDeletionResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -279,7 +250,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDoseDispensingCardsToDeleteResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -290,7 +261,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDoseDispensingPeriodsToDeleteResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -301,7 +272,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPatientRelationsAndRegistrationsToDeleteResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
@@ -312,7 +283,7 @@
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetEffectuationOrderingToDeleteResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
