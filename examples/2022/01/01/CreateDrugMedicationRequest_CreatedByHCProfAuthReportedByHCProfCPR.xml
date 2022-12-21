@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreateDrugMedicationRequest
+        xmlns="http://fmk-teknik.dk/160"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://fmk-teknik.dk/160 CreateDrugMedicationRequest.xsd">
+    >
+    <PersonIdentifier source="CPR">1111111118</PersonIdentifier>
+    <MedicineCardVersion>1341404071666006001</MedicineCardVersion>
+    <CreatedBy>
+        <HealthcareProfessional>
+            <Identifier source="Autorisation">12345</Identifier>
+            <Name>Karl Karlsen</Name>
+            <Information type="SpecialityCode">7170</Information>
+        </HealthcareProfessional>
+        <Role>Læge</Role>
+        <Organisation>
+            <Name>Psykiatrien, Region Nordjylland - afdeling Thy/Mors</Name>
+            <AddressLine>Niels Bohrs Vej 30</AddressLine>
+            <AddressLine>9220 Aalborg Øst</AddressLine>
+            <TelephoneNumber>00000000</TelephoneNumber>
+            <Type>Sygehus</Type>
+            <Identifier source="SKS">7690</Identifier>
+        </Organisation>
+    </CreatedBy>
+
+    <ReportedBy>
+        <HealthcareProfessional>
+            <Identifier source="CPR">1212641820</Identifier>
+            <Name>Ninna Nilsen</Name>
+        </HealthcareProfessional>
+        <Role>Apoteker</Role>
+        <Organisation>
+            <Name>Ørsted Apotek</Name>
+            <AddressLine>Rougsøvej 89</AddressLine>
+            <AddressLine>8950 Ørsted</AddressLine>
+            <TelephoneNumber>00000000</TelephoneNumber>
+            <Type>Apotek</Type>
+            <Identifier source="EAN-Lokationsnummer">5790000171033</Identifier>
+        </Organisation>
+    </ReportedBy>
+
+    <DrugMedication>
+        <FollowUpDates>
+            <Date>2022-05-15</Date>
+            <Date>2022-05-29</Date>
+            <Date>2022-06-12</Date>
+        </FollowUpDates>
+        <BeginEndDate>
+            <TreatmentStartDate>2022-05-01</TreatmentStartDate>
+            <TreatmentEndingUndetermined/>
+        </BeginEndDate>
+        <Indication>
+            <Code source="Medicinpriser" date="2014-05-01">42</Code>
+        </Indication>
+        <RouteOfAdministration>
+            <Code source="Medicinpriser" date="2014-05-01">OR</Code>
+        </RouteOfAdministration>
+        <Drug>
+            <Identifier source="Medicinpriser" date="2014-05-01">28101234521</Identifier>
+            <Name>Marevan</Name>
+        </Drug>
+        <Dosage>
+            <UnitTexts>
+                <Singular>tablet</Singular>
+                <Plural>tabletter</Plural>
+            </UnitTexts>
+            <StructuresFixed>
+                <Structure>
+                    <IterationInterval>2</IterationInterval>
+                    <StartDate>2014-05-01</StartDate>
+                    <DosageEndingUndetermined/>
+                    <Day>
+                        <Number>1</Number>
+                        <Dose>
+                            <Quantity>1</Quantity>
+                        </Dose>
+                    </Day>
+                    <Day>
+                        <Number>2</Number>
+                        <Dose>
+                            <Quantity>2</Quantity>
+                        </Dose>
+                    </Day>
+                </Structure>
+            </StructuresFixed>
+        </Dosage>
+        <SubstitutionAllowed>true</SubstitutionAllowed>
+    </DrugMedication>
+</CreateDrugMedicationRequest>
