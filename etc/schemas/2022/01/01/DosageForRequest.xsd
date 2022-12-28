@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="DosageStructuresForRequest.xsd"/>
+	<include schemaLocation="StructuredDosageForRequest.xsd"/>
 	<include schemaLocation="DosageFreeTextForRequest.xsd"/>
 	<include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForRequest.xsd"/>
 	<include schemaLocation="DosageType.xsd"/>
@@ -18,7 +18,7 @@
 	<complexType name="DosageForRequestType">
 		<sequence>
 			<choice>
-				<element name="Structures" type="mc160:DosageStructuresForRequestType"/>
+				<element name="StructuredDosage" type="mc160:StructuredDosageForRequestType"/>
 				<element name="FreeText" type="mc160:DosageFreeTextForRequestType"/>
 				<element name="AdministrationAccordingToSchemaInLocalSystem" type="mc160:AdministrationAccordingToSchemaInLocalSystemForRequestType"/>
 			</choice>
