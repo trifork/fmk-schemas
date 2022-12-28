@@ -3,19 +3,18 @@
 		xmlns:mc160="http://fmk-teknik.dk/160"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-
-	<include schemaLocation="DoseTime.xsd"/>
+	
 	<include schemaLocation="DoseQuantity.xsd"/>
-
-	<element name="DoseForAnyDay" type="mc160:DoseForAnyDayType">
+	
+	<element name="TimedDose" type="mc160:TimedDoseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Description of a dose element, when and how much</documentation>
-			<documentation xml:lang="da-DK">Beskrivelse af en dosis på et givet stidspunkt, hvornår og hvor meget</documentation>
+			<documentation xml:lang="en-GB">Description of a dose element, that must be applied at a specific time</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en dosis der skal anvendes på et givet tidspunkt</documentation>
 		</annotation>
 	</element>
-	<complexType name="DoseForAnyDayType">
+	<complexType name="TimedDoseType">
 		<sequence>
-			<element name="Time" type="mc160:DoseTimeType" minOccurs="0"/>
+			<element name="Time" type="mc160:TimeDoseTimeType"/>
 			<choice>
 				<element name="Quantity" type="mc160:DoseQuantityType"/>
 				<sequence>
@@ -25,4 +24,9 @@
 			</choice>
 		</sequence>
 	</complexType>
+	<simpleType name="TimeDoseTimeType">
+		<restriction base="string">
+			<pattern value="(([0-1][0-9])|(2[0-3])):[0-5][0-9]"/>
+		</restriction>
+	</simpleType>
 </schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Dose.xsd"/>
+	
+	<element name="DosageDayUnboundSchema" type="mc160:DosageDayUnboundSchemaType">
+		<annotation>
+			<documentation xml:lang="en-GB">Day with dosage that can be used an unlimited number of times during the day</documentation>
+			<documentation xml:lang="da-DK">Doseringsdag hvor doseringen kan tages et ubegrænset antal gange i løbet af dagen</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageDayUnboundSchemaType">
+		<sequence>
+			<element name="Dose"  type="mc160:DoseType"/>
+		</sequence>
+	</complexType>
+</schema>
