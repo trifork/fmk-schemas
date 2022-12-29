@@ -8,8 +8,8 @@
 	<include schemaLocation="EmptyDosageStructure.xsd"/>
 	<include schemaLocation="AsSoonAsPossible.xsd"/>
 	<include schemaLocation="Precondition.xsd"/>
-	<include schemaLocation="DosageQuantityUnitText.xsd"/>
-	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
+	<include schemaLocation="DosageUnit.xsd"/>
+	<include schemaLocation="DosageParameter.xsd"/>
 
 	<element name="StructuredDosageForRequest" type="mc160:StructuredDosageForRequestType">
 		<annotation>
@@ -20,16 +20,16 @@
 	<complexType name="StructuredDosageForRequestType">
 		<sequence>
 			<choice>
-				<element name="IsFixedDosage" type="mc160:IsFixedDosageFlagType"/>
-				<element name="IsAccordingToNeed" type="mc160:IsAccordingToNeedFlagType"/>
+				<element name="IsFixedDosage"/>
+				<element name="IsAccordingToNeed"/>
 			</choice>
-			<element name="IsSelfAdministration" type="mc160:IsSelfAdministrationFlagType" minOccurs="0"/>
+			<element name="IsSelfAdministration" minOccurs="0"/>
 			<element name="Precondition" type="mc160:PreconditionType"/>
 
-			<choice>
-				<element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>
-				<element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType"/>
-			</choice>
+			<element name="DosageUnit" type="mc160:DosageUnitType"/>
+			<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0"/>
+
+			<!-- TODO: Hvor placeres EmptyPeriod ?? -->
 
 			<choice minOccurs="1" maxOccurs="100">
 				<element name="DosagePeriod" type="mc160:DosagePeriodForRequestType"/>
@@ -38,7 +38,4 @@
 			<element name="AsSoonAsPossible" type="mc160:AsSoonAsPossibleType" minOccurs="0"/>	<!-- TODO: relevant? -->
 		</sequence>
 	</complexType>
-	<complexType name="IsFixedDosageFlagType"/>
-	<complexType name="IsAccordingToNeedFlagType"/>
-	<complexType name="IsSelfAdministrationFlagType"/>
 </schema>
