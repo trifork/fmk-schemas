@@ -29,12 +29,7 @@
 			<element name="DosageUnit" type="mc160:DosageUnitType"/>
 			<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0"/>
 
-			<!-- TODO: Hvor placeres EmptyPeriod ?? -->
-
-			<choice minOccurs="1" maxOccurs="100">
-				<element name="DosagePeriod" type="mc160:DosagePeriodForRequestType"/>
-				<element name="EmptyPeriod" type="mc160:EmptyDosageStructureType"/>
-			</choice>
+			<element name="DosagePeriod" type="mc160:DosagePeriodForRequestType" maxOccurs="100"/>
 			<element name="AsSoonAsPossible" type="mc160:AsSoonAsPossibleType" minOccurs="0"/>	<!-- TODO: relevant? -->
 		</sequence>
 	</complexType>
