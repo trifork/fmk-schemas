@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
 	<include schemaLocation="DoseQuantity.xsd"/>
-	
+
 	<element name="TimedDose" type="mc160:TimedDoseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of a dose element, that must be applied at a specific time</documentation>
@@ -14,7 +14,7 @@
 	</element>
 	<complexType name="TimedDoseType">
 		<sequence>
-			<element name="Time" type="mc160:TimeDoseTimeType"/>
+			<element name="Time" type="mc160:TimedDoseTimeType"/>
 			<choice>
 				<element name="Quantity" type="mc160:DoseQuantityType"/>
 				<sequence>
@@ -24,7 +24,7 @@
 			</choice>
 		</sequence>
 	</complexType>
-	<simpleType name="TimeDoseTimeType">
+	<simpleType name="TimedDoseTimeType">
 		<restriction base="string">
 			<pattern value="(([0-1][0-9])|(2[0-3])):[0-5][0-9]"/>
 		</restriction>
