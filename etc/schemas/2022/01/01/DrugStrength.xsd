@@ -4,10 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<include schemaLocation="DrugStrengthValue.xsd"/>
-	<include schemaLocation="DrugStrengthUnitText.xsd"/>
-	<include schemaLocation="DrugStrengthText.xsd"/>
-	<include schemaLocation="DrugStrengthUnitCode.xsd"/>
+	<include schemaLocation="SimpleDrugStrength.xsd"/>
 	
 	<element name="DrugStrength" type="mc160:DrugStrengthType">
 		<annotation>
@@ -16,16 +13,12 @@
 		</annotation>
 	</element>
 	<complexType name="DrugStrengthType">
-		<choice>
-			<sequence>
-				<element name="Value" type="mc160:DrugStrengthValueType"/>
-				<element name="UnitCode" type="mc160:DrugStrengthUnitCodeType"/>
-				<?filter nsf="ignore"?>
-				<element name="UnitText" type="mc160:DrugStrengthUnitTextType"/>
-				<element name="Text" type="mc160:DrugStrengthTextType" minOccurs="0"/>
-			</sequence>
+		<sequence>
+			<choice>
+				<element name="SimpleDrugStrength" type="mc160:SimpleDrugStrengthType"/>
+				<element name="FractionDrugStrength" type="mc160:FractionDrugStrengthType"/>
+			</choice>
 			<element name="Text" type="mc160:DrugStrengthTextType"/>
-		</choice>
-		<!-- A convoluted construction for either value+unit, text or both but not neither -->
+		</sequence>
 	</complexType>
 </schema>
