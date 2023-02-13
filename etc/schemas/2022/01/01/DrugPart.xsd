@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DrugIdentifier.xsd"/>
+	<include schemaLocation="DrugStrength.xsd"/>
+	<include schemaLocation="Substance.xsd"/>
+	<include schemaLocation="ATC.xsd"/>
+	<include schemaLocation="AdditionalDrugName.xsd"/>
+	<include schemaLocation="DrugForm.xsd"/>
+	<include schemaLocation="DrugName.xsd"/>
+	<include schemaLocation="DrugPartType.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="Substance.xsd"/>
+
+	<element name="DrugPartType" type="mc160:DrugPartType">
+		<annotation>
+			<documentation xml:lang="en-GB">Which parts a drug is composed by</documentation>
+			<documentation xml:lang="da-DK">Definition af de enkelte bestanddele som udgør et lægemiddel</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugPartType">
+		<sequence>
+			<element name="Type" type="mc160:DrugPartTypeType"/>
+			<choice>
+				<element name="Drug" type="mc160:DrugType"/>
+				<element name="Substance" type="mc160:SubstanceType"/>
+			</choice>
+			<choice>
+				<element name="Amount" type="mc160:AmountType"/>
+				<element name="Ratio" type="mc160:RatioType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>
