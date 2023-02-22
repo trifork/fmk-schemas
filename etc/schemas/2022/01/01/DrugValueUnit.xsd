@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DrugStrengthValue.xsd"/>
+	<include schemaLocation="DrugStrengthUnitText.xsd"/>
+	<include schemaLocation="DrugStrengthText.xsd"/>
+	<include schemaLocation="DrugStrengthUnitCode.xsd"/>
+	
+	<element name="DrugValueUnit" type="mc160:DrugValueUnitType">
+		<annotation>
+			<documentation xml:lang="en-GB">Basic unit for drug strength, code (LMS15 field 2)</documentation>
+			<documentation xml:lang="da-DK">Simpel ikke-sammensat enhed for lægemiddelstyrke, kode (LMS15 felt 2)</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugValueUnitType">
+		<sequence>
+			<element name="Value" type="mc160:DrugStrengthValueType" minOccurs="0"/>
+			<element name="UnitCode" type="mc160:DrugStrengthUnitCodeType" minOccurs="0"/>
+			<?filter nsf="ignore"?>
+			<element name="UnitText" type="mc160:DrugStrengthUnitTextType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

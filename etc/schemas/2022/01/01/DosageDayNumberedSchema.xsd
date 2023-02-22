@@ -6,6 +6,7 @@
 	
 	<include schemaLocation="Dose.xsd"/>
 	<include schemaLocation="DosageDayNumber.xsd"/>
+	<include schemaLocation="TimesPerDay.xsd"/>
 
 	<element name="DosageDayNumberedSchema" type="mc160:DosageDayNumberedSchemaType">
 		<annotation>
@@ -16,7 +17,8 @@
 	<complexType name="DosageDayNumberedSchemaType">
 		<sequence>
 			<element name="Index"  type="mc160:DosageDayNumberType" minOccurs="0" />
-			<element name="Dose"  type="mc160:DoseType" maxOccurs="100" />
+			<element name="TimesPerDay"  type="mc160:TimesPerDayType"/>
+			<element name="Dose"  type="mc160:DoseType"/>
 		</sequence>
 	</complexType>
 </schema>

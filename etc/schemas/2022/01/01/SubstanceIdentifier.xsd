@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+
+	<element name="SubstanceIdentifier" type="mc160:SubstanceIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Unique substance identification.</documentation>
+			<documentation xml:lang="da-DK">Unik identifikation af substans.</documentation>
+		</annotation>
+	</element>
+	<complexType name="SubstanceIdentifierType">
+		<simpleContent>
+			<extension base="mc160:SubstanceIdentifierValueType">
+				<attribute name="source" type="mc160:SubstanceIdentifierSourceType" use="required"/>
+				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
+				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="SubstanceIdentifierValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="20"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="SubstanceIdentifierSourceType">
+		<union memberTypes="mc160:SubstanceIdentifierPredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+	<simpleType name="SubstanceIdentifierPredefinedSourceType">
+		<restriction base="mc160:UndefinedSourceType">
+			<enumeration value="Medicinpriser"/>
+			<enumeration value="Stærke vitaminer m.v."/>
+			<enumeration value="ATC"/>
+			<enumeration value="CAS"/>
+			<enumeration value="Magistrel"/>
+			<enumeration value="E-nummer"/>
+		</restriction>
+	</simpleType>
+</schema>

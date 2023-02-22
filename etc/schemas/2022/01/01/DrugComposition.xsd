@@ -4,13 +4,6 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<include schemaLocation="DrugIdentifier.xsd"/>
-	<include schemaLocation="DrugStrength.xsd"/>
-	<include schemaLocation="Substance.xsd"/>
-	<include schemaLocation="ATC.xsd"/>
-	<include schemaLocation="AdditionalDrugName.xsd"/>
-	<include schemaLocation="DrugForm.xsd"/>
-	<include schemaLocation="DrugName.xsd"/>
 	<include schemaLocation="DrugPart.xsd"/>
 	
 	<element name="DrugComposition" type="mc160:DrugCompositionType">
@@ -22,13 +15,7 @@
 	<complexType name="DrugCompositionType">
 		<sequence>
 			<element name="IsComplete" type="boolean"/>
-			<element name="DrugPart" type="DrugPartType" maxOccurs="unbounded"/>
-			<element name="Name" type="mc160:DrugNameType"/>
-			<element name="AdditionalName" type="mc160:AdditionalDrugNameType" minOccurs="0" maxOccurs="20"/>
-			<element name="ATC" type="mc160:ATCType"/>
-			<element name="Form" type="mc160:DrugFormType" minOccurs="0"/>
-			<element name="Strength" type="mc160:DrugStrengthType" minOccurs="0"/>
-			<element name="Composition" type="mc160:DrugCompositionType" minOccurs="0"/>
+			<element name="Part" type="mc160:DrugPartType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
