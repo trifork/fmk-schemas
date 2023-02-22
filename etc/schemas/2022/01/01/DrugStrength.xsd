@@ -4,8 +4,11 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
+	<include schemaLocation="DrugStrengthValue.xsd"/>
 	<include schemaLocation="SimpleDrugStrength.xsd"/>
-	
+	<include schemaLocation="DrugStrengthUnitCode.xsd"/>
+	<include schemaLocation="DrugStrengthUnitText.xsd"/>
+
 	<element name="DrugStrength" type="mc160:DrugStrengthType">
 		<annotation>
 			<documentation xml:lang="en-GB">Unit for drug strength, code (LMS15 field 2)</documentation>
@@ -15,10 +18,18 @@
 	<complexType name="DrugStrengthType">
 		<sequence>
 			<choice>
-				<element name="SimpleDrugStrength" type="mc160:SimpleDrugStrengthType"/>
-				<element name="FractionDrugStrength" type="mc160:FractionDrugStrengthType"/>
+				<sequence>
+					<element name="Value" type="mc160:DrugStrengthValueType" minOccurs="0" maxOccurs="20"/>
+					<element name="UnitCode" type="mc160:DrugStrengthUnitCodeType" minOccurs="0"/>
+					<?filter nsf="ignore"?>
+					<element name="UnitText" type="mc160:DrugStrengthUnitTextType" minOccurs="0"/>
+				</sequence>
+				<sequence>
+					<element name="Counter" type="mc160:SimpleDrugStrengthType" maxOccurs="10"/>
+					<element name="Denominator" type="mc160:SimpleDrugStrengthType"/>
+				</sequence>
 			</choice>
-			<element name="Text" type="mc160:DrugStrengthTextType"/>
+			<element name="Text" type="mc160:DrugStrengthTextType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

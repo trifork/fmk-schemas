@@ -33,35 +33,51 @@
             <Code source="Medicinpriser" date="2014-05-01">OR</Code>
         </RouteOfAdministration>
         <Drug>
-            <Identifier source="Medicinpriser" date="2014-05-01">28101674394</Identifier>
+            <Identifier source="Medicinpriser" date="2014-05-01">28100636073</Identifier>
             <Name>Panodil</Name>
+            <ATC>
+                <Code source="Medicinpriser">N02BE01 </Code>
+                <Text>Paracetamol</Text>
+            </ATC>
+            <Form>
+                <Code source="Medicinpriser">TABFILM</Code>
+                <Text>Filmovertrukne tabletter</Text>
+            </Form>
+            <Strength>
+                <Value>250</Value>
+                <UnitCode source="Medicinpriser">50</UnitCode>
+                <UnitText>mg</UnitText>
+                <Text>250 mg</Text>
+            </Strength>
+            <Composition>
+                <IsComplete>false</IsComplete>
+                <Part>
+                    <Type>Aktiv</Type>
+                    <Substance>
+                        <Name>Paracetamol</Name>
+                    </Substance>
+                </Part>
+            </Composition>
         </Drug>
         <Dosage>
             <StructuredDosage>
-                <IsFixedDosage/>
+                <IsAccordingToNeedDosage/>
                 <Precondition>
-                    <StartDate>2022-12-22</StartDate>
+                    <StartDate>2021-01-05</StartDate>
                 </Precondition>
                 <DosageUnit>
                     <SingularDosageUnitText>tablet</SingularDosageUnitText>
                     <PluralDosageUnitText>tabletter</PluralDosageUnitText>
                 </DosageUnit>
                 <DosagePeriod>
-                    <PeriodLength>14</PeriodLength>
-                    <Restriction>
-                       <MinimumTimeBetweenDoses>
-                           <Time>4</Time>
-                           <TimeUnit>timer</TimeUnit>
-                       </MinimumTimeBetweenDoses>
-                    </Restriction>
-                    <RepeatedDailyNumberedSchema>   <!-- 4 tabletter 3 gange daglig i 14 dage, mindst 4 timer mellem hver dosis -->
+                    <PeriodLength>90</PeriodLength>
+                    <RepeatedDailyQuadSchema>
                         <Day>
-                            <TimesPerDay>3</TimesPerDay>
-                            <Dose>
-                                <Quantity>4</Quantity>
-                            </Dose>
+                            <EveningDose>
+                                <Quantity>2</Quantity>
+                            </EveningDose>
                         </Day>
-                    </RepeatedDailyNumberedSchema>
+                    </RepeatedDailyQuadSchema>
                 </DosagePeriod>
             </StructuredDosage>
         </Dosage>
