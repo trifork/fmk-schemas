@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mc160="http://fmk-teknik.dk/160" targetNamespace="http://fmk-teknik.dk/160"  elementFormDefault="qualified">
+	<include schemaLocation="NameFormat.xsd"/>
+ 	<element name="OrgUsingID" type="mc160:OrgUsingIDType">
+		<annotation>
+			<documentation xml:lang="da-DK">Det entydige id på den organisation, hvor brugeren aktuelt befinder sig når webservice kaldet udføres. Klassifikationen hvortil id’et hører er angivet i attributten NameFormat.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="OrgUsingIDStringType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+	<complexType name="OrgUsingIDType">
+		<simpleContent>
+			<extension base="mc160:OrgUsingIDStringType">
+				<attribute name="NameFormat" type="mc160:NameFormat" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>
