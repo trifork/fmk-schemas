@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
+	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="HiddenData.xsd"/>
+	<include schemaLocation="PagingResponse.xsd"/>
+	<include schemaLocation="FMKDetail.xsd"/>
+
+	<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderType">
+		<annotation>
+			<documentation xml:lang="en-GB">Generic response header to be used for common response values</documentation>
+			<documentation xml:lang="da-DK">Fælles response  header indeholdende fælles værdier  på tværs af svar</documentation>
+		</annotation>
+	</element>
+	<complexType name="FMKResponseHeaderType">
+		<sequence>
+			<element name="MedicinecardInvalid" type="mc160:MedicineCardIsInvalidType" minOccurs="0"/>
+			<element name="VersionMismatchWarning" type="mc160:VersionMismatchWarningType" minOccurs="0"/>
+			<element name="HiddenData" type="mc160:HiddenDataType" minOccurs="0"/>
+			<!-- TODO: bulk status ?? -->
+			<element name="Paging" type="mc160:PagingResponseType" minOccurs="0"/>
+			<element name="Warnings" type="mc160:FMKDetailType" minOccurs="0" maxOccurs="unbounded" />
+			<!-- TODO: FMKConfiguration -->
+
+		</sequence>
+	</complexType>
+
+	<annotation>
+		<documentation xml:lang="en-GB">Technical session id defined by the client system that  links more registrations belonging to the same session</documentation>
+		<documentation xml:lang="da-DK">Teknisk sessions id defineret af klient systemerne der derved kan koble flere kald hørende til den samme konsultation</documentation>
+	</annotation>
+	<simpleType name="MinLogSessionIdType">
+		<restriction base="string">
+			<maxLength value="40"/>
+		</restriction>
+	</simpleType>
+</schema>
