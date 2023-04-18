@@ -230,6 +230,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsAndDetailsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsAndDetailsResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsResponse.xsd"/>
 
@@ -864,6 +867,14 @@
 
     <wsdl:message name="GetPrescriptionResponse_160">
         <wsdl:part name="GetPrescriptionResponse" element="mc160:GetPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestsAndDetailsRequest_160">
+        <wsdl:part name="GetPrescriptionRequestsAndDetailsRequest" element="mc160:GetPrescriptionRequestsAndDetailsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionRequestsAndDetailsResponse_160">
+        <wsdl:part name="GetPrescriptionRequestsAndDetailsResponse" element="mc160:GetPrescriptionRequestsAndDetailsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPrescriptionRequestsRequest_160">
@@ -1545,6 +1556,12 @@
         <wsdl:operation name="GetPrescription_160">
             <wsdl:input name="GetPrescriptionRequest_160" message="tns:GetPrescriptionRequest_160"/>
             <wsdl:output name="GetPrescriptionResponse_160" message="tns:GetPrescriptionResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequestsAndDetails_160">
+            <wsdl:input name="GetPrescriptionRequestsAndDetailsRequest_160" message="tns:GetPrescriptionRequestsAndDetailsRequest_160"/>
+            <wsdl:output name="GetPrescriptionRequestsAndDetailsResponse_160" message="tns:GetPrescriptionRequestsAndDetailsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2569,6 +2586,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetPrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionRequestsAndDetails_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescriptionRequestsAndDetails" style="document"/>
+            <wsdl:input name="GetPrescriptionRequestsAndDetailsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetPrescriptionRequestsAndDetailsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:medicinecard20150101E2="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2" 
+		xmlns:medicinecard20150101E5="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5" 
+		targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E5" 
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+	<import schemaLocation="importsFrom20150101.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01"/>
+	<import schemaLocation="importsFrom20150101E2.xsd" namespace="http://www.dkma.dk/medicinecard/xml.schema/2015/01/01/E2"/>
+	<include schemaLocation="importsFrom20150101E5.xsd"/>
+	<element name="PersonWithPrescriptionRequest" type="medicinecard20150101E5:PersonWithPrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A patients person identifier, and a list of active prescription requests</documentation>
+			<documentation xml:lang="da-DK">En patients personlige identifikation, og en liste af aktive receptanmodninger</documentation>
+		</annotation>
+	</element>
+	<complexType name="PersonWithPrescriptionRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="medicinecard20150101E2:PersonIdentifierType"/>
+			<element name="PrescriptionRequest" type="medicinecard20150101E5:PrescriptionRequestWithOrganisationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
