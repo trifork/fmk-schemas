@@ -16,6 +16,7 @@
     <property name="target.dir" value="${basedir}/target" />
 
     <property name="fmk-classes.target.jar" value="${target.dir}/fmk-schema-classes.jar" />
+    <property name="fmkdeps-classes.target.jar" value="${target.dir}/fmk-schema-classes-deps.jar" />
     <property name="fmk-sources.target.zip" value="${target.dir}/fmk-schema-source.zip" />
 
     <property name="idws.target.dir" value="${target.dir}/idws/target" />
@@ -591,12 +592,29 @@
         <javac classpathref="classpath" debug="true" source="${sourceversion}" target="${targetversion}" destdir="${standard.target.dir}/genclasses" fork="true" includeantruntime="false" memorymaximumsize="1024m" encoding="UTF-8">
             <src path="${standard.target.dir}/gentestsrc/src"/>
         </javac>
-        <jar basedir="${standard.target.dir}/gentestsrc/resources" destfile="${fmk-classes.target.jar}" zip64Mode="as-needed">
+        <!-- dependencies only -->
+        <jar basedir="${standard.target.dir}/gentestsrc/resources" destfile="${fmkdeps-classes.target.jar}">
             <fileset dir="${standard.target.dir}/gentestsrc/resources">
                 <include name="**/*.class"/>
             </fileset>
-            <fileset dir="${standard.target.dir}/genclasses">
+            <fileset dir="${standard.target.dir}/genclasses/assertion">
                 <include name="**/*.class"/>
+            </fileset>
+            <fileset dir="${standard.target.dir}/genclasses/org">
+                <include name="**/*.class"/>
+            </fileset>
+            <fileset dir="${standard.target.dir}/genclasses/org">
+                <include name="**/*.class"/>
+            </fileset>
+        </jar>
+        <!-- schema related only -->
+        <jar basedir="${standard.target.dir}/gentestsrc/resources" destfile="${fmk-classes.target.jar}">
+            <fileset dir="${standard.target.dir}/gentestsrc/resources">
+                <include name="**/*.class"/>
+            </fileset>
+            <fileset dir="${standard.target.dir}/genclasses/dk/dkma">
+                <include name="**/*.class"/>
+                <exclude name="dk/dkma/**"/>
             </fileset>
         </jar>
     </target>
