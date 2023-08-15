@@ -597,14 +597,11 @@
             <fileset dir="${standard.target.dir}/gentestsrc/resources">
                 <include name="**/*.class"/>
             </fileset>
-            <fileset dir="${standard.target.dir}/genclasses/assertion">
-                <include name="**/*.class"/>
-            </fileset>
-            <fileset dir="${standard.target.dir}/genclasses/org">
-                <include name="**/*.class"/>
-            </fileset>
-            <fileset dir="${standard.target.dir}/genclasses/org">
-                <include name="**/*.class"/>
+            <fileset dir="${standard.target.dir}/genclasses">
+                <include name="assertion/**/*.class"/>
+                <include name="org/**/*.class"/>
+                <exclude name="dk/dkma/**"/>
+                <include name="dk/**/*.class"/>
             </fileset>
         </jar>
         <!-- schema related only -->
@@ -612,9 +609,8 @@
             <fileset dir="${standard.target.dir}/gentestsrc/resources">
                 <include name="**/*.class"/>
             </fileset>
-            <fileset dir="${standard.target.dir}/genclasses/dk/dkma">
-                <include name="**/*.class"/>
-                <exclude name="dk/dkma/**"/>
+            <fileset dir="${standard.target.dir}/genclasses/">
+                <include name="dk/dkma/**/*.class"/>
             </fileset>
         </jar>
     </target>
