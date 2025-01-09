@@ -81,8 +81,12 @@
         <wsdl:part name="GetEmptyMedicineCardsToDeleteRequest" element="tns:GetEmptyMedicineCardsToDeleteRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="PrescriptionRelationRestoreRequest">
-        <wsdl:part name="PrescriptionRelationRestoreRequest" element="tns:PrescriptionRelationRestoreRequest"/>
+    <wsdl:message name="GetPrescriptionsToDeleteRequest">
+        <wsdl:part name="GetPrescriptionsToDeleteRequest" element="tns:GetPrescriptionsToDeleteRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPrescriptionEffectuationsToDeleteRequest">
+        <wsdl:part name="GetPrescriptionEffectuationsToDeleteRequest" element="tns:GetPrescriptionEffectuationsToDeleteRequest"/>
     </wsdl:message>
 
 	<wsdl:message name="DGWSFault">
@@ -175,9 +179,16 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-        <wsdl:operation name="PrescriptionRelationRestore">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#PrescriptionRelationRestore" style="document"/>
-            <wsdl:input name="PrescriptionRelationRestoreRequest" message="tns:PrescriptionRelationRestoreRequest"/>
+        <wsdl:operation name="GetPrescriptionsToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetPrescriptionsToDelete" style="document"/>
+            <wsdl:input name="GetPrescriptionsToDeleteRequest" message="tns:GetPrescriptionsToDeleteRequest"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionEffectuationsToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetPrescriptionEffectuationsToDelete" style="document"/>
+            <wsdl:input name="GetPrescriptionEffectuationsToDeleteRequest" message="tns:GetPrescriptionEffectuationsToDeleteRequest"/>
             <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
@@ -320,9 +331,20 @@
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
-        <wsdl:operation name="PrescriptionRelationRestore">
-            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#PrescriptionRelationRestore" style="document"/>
-            <wsdl:input name="PrescriptionRelationRestoreRequest">
+        <wsdl:operation name="GetPrescriptionsToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetPrescriptionsToDelete" style="document"/>
+            <wsdl:input name="GetPrescriptionsToDeleteRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrescriptionEffectuationsToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetPrescriptionEffectuationsToDelete" style="document"/>
+            <wsdl:input name="GetPrescriptionEffectuationsToDeleteRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>

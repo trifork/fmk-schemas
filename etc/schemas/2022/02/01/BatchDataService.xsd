@@ -152,15 +152,26 @@
 		</sequence>
 	</complexType>
 
-	<!--PrescriptionRelationRestoreRequest -->
+	<!--GetPrescriptionsToDeleteRequest -->
 
-	<element name="PrescriptionRelationRestoreRequest" type="tns:PrescriptionRelationRestoreRequestType" />
+	<element name="GetPrescriptionsToDeleteRequest" type="tns:GetPrescriptionsToDeleteRequestType" />
 
-	<complexType name="PrescriptionRelationRestoreRequestType">
+	<complexType name="GetPrescriptionsToDeleteRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="string"/>
-			<element name="PersonIdentifierSource" type="string"/>
-			<element name="DrugMedPrescriptionPID" type="long" maxOccurs="unbounded"/>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="ActiveButExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<!--GetPrescriptionEffectuationsToDeleteRequest -->
+
+	<element name="GetPrescriptionEffectuationsToDeleteRequest" type="tns:GetPrescriptionEffectuationsToDeleteRequestType" />
+
+	<complexType name="GetPrescriptionEffectuationsToDeleteRequestType">
+		<sequence>
+			<element name="EffectuatedBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
 		</sequence>
 	</complexType>
 
