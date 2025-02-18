@@ -20,7 +20,7 @@ pipeline {
                         version= now.format("YYYYMMddHHmmss")+gitversion
                         sh "echo Building $version"
                         withCredentials([usernamePassword(credentialsId: 'ci_nexus', passwordVariable: 'NexusPass', usernameVariable: 'NexusUser')]) {
-                            sh 'cd fmk-schemas && ant -Drepo.user=$NexusUser -Drepo.pass=$NexusPass-v publish'
+                            sh 'cd fmk-schemas && ant -Drepo.user=$NexusUser -Drepo.pass=$NexusPass -v publish'
                         }
                         sh 'ch fmk-schemas && ant validate-all-wsdl'
 
