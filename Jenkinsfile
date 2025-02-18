@@ -22,7 +22,7 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'ci_nexus', passwordVariable: 'NexusPass', usernameVariable: 'NexusUser')]) {
                             sh 'cd fmk-schemas && ant -Drepo.user=$NexusUser -Drepo.pass=$NexusPass -v publish'
                         }
-                        sh 'ch fmk-schemas && ant validate-all-wsdl'
+                        sh 'cd fmk-schemas && ant validate-all-wsdl'
 
                         nexusArtifactUploader(
                                 nexusVersion: 'nexus3',
