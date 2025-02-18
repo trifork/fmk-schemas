@@ -16,7 +16,7 @@ pipeline {
                     String containerUserMapping = "-u $jenkinsUserId:$dockerGroupId "
                     docker.image("registry.fmk.netic.dk/fmk/fmkbuilder_schema:11").inside(containerUserMapping) {
                         now = new Date()
-                        gitversion = "-${env.GIT_COMMIT}".substring(0,4)
+                        gitversion = "-${env.GIT_COMMIT}".substring(0,5)
                         version= now.format("YYYYMMddHHmmss")+gitversion
                         sh "echo Building $version"
                         withCredentials([usernamePassword(credentialsId: 'ci_nexus', passwordVariable: 'NexusPass', usernameVariable: 'NexusUser')]) {
