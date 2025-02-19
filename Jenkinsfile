@@ -1,6 +1,9 @@
 
 pipeline {
-    agent any
+    //agent any
+    agent {
+        label 'local'
+    }
     stages {
         stage('Checkout') {
             steps {
