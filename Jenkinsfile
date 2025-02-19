@@ -17,7 +17,7 @@ pipeline {
                     String jenkinsUserId = sh(returnStdout: true, script: 'id -u jenkins').trim()
                     String dockerGroupId = sh(returnStdout: true, script: 'getent group docker | cut -d: -f3').trim()
                     String containerUserMapping = "-u $jenkinsUserId:$dockerGroupId "
-                    docker.image("registry.fmk.netic.dk/fmk/fmkbuilder_schema:11").inside(containerUserMapping + "--add-host ci.fmk.netic.dk:2a03:dc80:0:f12d::118") {
+                    docker.image("registry.fmk.netic.dk/fmk/fmkbuilder_schema:11").inside(containerUserMapping + "--add-host ci.fmk.netic.dk:2a03:dc80:0:f12d::118 -e _JAVA_OPTIONS='-Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Stack=true -Djava.net.preferIPv6Addresses=true'") {
                         now = new Date()
                         gitversion = "-${env.GIT_COMMIT}".substring(0,5)
                         version= now.format("YYYYMMddHHmmss")+gitversion
