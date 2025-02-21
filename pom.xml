@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dk.medicinkortet</groupId>
+    <artifactId>medicinkortet-schema</artifactId>
+    <version>1.0</version>
+
+    <name>schema</name>
+    <packaging>pom</packaging>
+    <modules>
+        <module>SchemaLoader</module>
+        <module>mc160_wsdl</module>
+        <module>mc160idws_wsdl</module>
+        <module>fmk-160-schema-classes</module>
+        <module>fmk-160-idws-schema-classes</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>11</maven.compiler.release>
+        <fmkschemaversion>1.0-SNAPSHOT</fmkschemaversion>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>trifork-internal</id>
+            <name>Trifork internal Nexus</name>
+            <url>https://ci.fmk.netic.dk/nexus/repository/trifork-internal/</url>
+        </repository>
+        <repository>
+            <id>trifork-public</id>
+            <name>Trifork public Nexus</name>
+            <url>https://ci.fmk.netic.dk/nexus/repository/public/</url>
+        </repository>
+        <repository>
+            <id>trifork.snapshots</id>
+            <name>Trifork internal snapshot Nexus</name>
+            <url>https://ci.fmk.netic.dk/nexus/repository/snapshots/</url>
+        </repository>
+        <repository>
+            <id>nsp</id>
+            <name>NSP</name>
+            <url>https://nexus.nspop.dk/nexus/repository/releases/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>trifork.snapshots</id>
+            <name>Trifork internal snapshot Nexus</name>
+            <url>https://ci.fmk.netic.dk/nexus/repository/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>trifork.internal</id>
+            <name>Trifork internal Nexus</name>
+            <url>https://ci.fmk.netic.dk/nexus/repository/trifork-internal/</url>
+        </repository>
+    </distributionManagement>
+
+</project>

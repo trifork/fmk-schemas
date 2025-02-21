@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreatePrescriptionRequestRequest
+        xmlns="http://fmk-teknik.dk/160"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://fmk-teknik.dk/160 CreatePrescriptionRequestRequest.xsd">
+    >
+    <PersonIdentifier source="CPR">1111111118</PersonIdentifier>
+    <MedicineCardVersion>1341404071666006001</MedicineCardVersion>
+    <OrderedBy>
+        <RoleSpecificName>
+            <NameLine>Indkøbskurv</NameLine>
+            <NameLine>Bostedet Mellemvang</NameLine>
+            <NameLine>Recept-bestilling</NameLine>
+        </RoleSpecificName>
+        <Role>System</Role>
+        <Organisation>
+            <Name>Mellemvang</Name>
+            <AddressLine>Sommervej 52</AddressLine>
+            <AddressLine>7840 Højselv</AddressLine>
+            <TelephoneNumber>00000000</TelephoneNumber>
+            <Type>Bosted</Type>
+            <Identifier source="SOR">308281020066042</Identifier>
+        </Organisation>
+    </OrderedBy>
+    <PrescriptionRequest>
+        <DrugMedicationIdentifier>133283023900110001</DrugMedicationIdentifier>
+        <PrescribingOrganisation>
+            <Name>Lægerne Vestergade</Name>
+            <Type>Yder</Type>
+            <Identifier source="Yder">061069</Identifier>
+        </PrescribingOrganisation>
+        <PrescribingOrganisation>
+            <Name>Hjerteklinikken</Name>
+            <Type>Sygehus</Type>
+            <Identifier source="SKS">7005055</Identifier>
+        </PrescribingOrganisation>
+        <PackageRestriction>
+            <PackageNumber source="Medicinpriser" date="2016-06-03">84194</PackageNumber>
+            <PackageQuantity>1</PackageQuantity>
+        </PackageRestriction>
+        <Order>
+            <OrderedAtPharmacy>
+                <Name>Skanderborg Apotek</Name>
+                <Type>Apotek</Type>
+                <Identifier source="EAN-Lokationsnummer">5790000170609</Identifier>
+            </OrderedAtPharmacy>
+            <DeliveryInstructionText>Sendes sammen med øvrige ordrer til plejehjemmet</DeliveryInstructionText>
+            <Delivery>
+                <Priority>send til anden adresse samme dag</Priority>
+                <StreetName>Søkildevej 2</StreetName>
+                <PostCode>8680</PostCode>
+                <ContactName>Hanne Hansen</ContactName>
+            </Delivery>
+        </Order>
+    </PrescriptionRequest>
+</CreatePrescriptionRequestRequest>

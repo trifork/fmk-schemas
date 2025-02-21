@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mc160="http://fmk-teknik.dk/160" targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="SystemType" type="mc160:SystemTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Declararation of the system type as part of the whitelisting on any call</documentation>
+			<documentation xml:lang="da-DK">Angivelse af system type som en del af whitelisting for alle kald</documentation>
+		</annotation>
+	</element>
+	<simpleType name="SystemTypeType">
+		<union memberTypes="mc160:PredefinedSystemTypes mc160:UndefinedSystemTypes"/>
+	</simpleType>
+	<simpleType name="PredefinedSystemTypes">
+		<restriction base="string">
+			<enumeration value="Elektronisk patientjournal"/>
+			<enumeration value="Elektronisk omsorgsjournal"/>
+			<enumeration value="Læge-praksissystem"/>
+			<enumeration value="Tandlægesystem"/>
+			<enumeration value="Apotekersystem"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedSystemTypes">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

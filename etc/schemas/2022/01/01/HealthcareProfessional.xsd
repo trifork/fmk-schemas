@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="HealthcareProfessionalIdentifier.xsd"/>
+    <include schemaLocation="HealthcareProfessionalInformation.xsd"/>
+    <include schemaLocation="HealthcareProfessionalName.xsd"/>
+    <include schemaLocation="SpecialityCode.xsd"/>
+
+    <element name="HealthcareProfessional" type="mc160:HealthcareProfessionalType">
+        <annotation>
+            <documentation xml:lang="en-GB">Contains name, identifier (auth.identifier/CPR) and extra information (ex
+                SpecialityCode) on healthcare professional (
+            </documentation>
+            <documentation xml:lang="da-DK">Indeholder navn, id (f.eks. autorisationsnummer, eller CPR for ikke aut.),
+                samt ekstra information (f.eks. uddannelseskode) for en sundhedsperson
+            </documentation>
+        </annotation>
+    </element>
+    <complexType name="HealthcareProfessionalType">
+        <sequence>
+            <element name="Identifier" type="mc160:HealthcareProfessionalIdentifierType"/>
+            <?filter nsf="ignore"?>
+            <element name="Name" type="mc160:HealthcareProfessionalNameType"/>
+            <element name="Information" type="mc160:HealthcareProfessionalInformationType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

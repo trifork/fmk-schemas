@@ -1,97 +1,47 @@
+def withDockerNetwork(Closure inner) {
+    def networkId = "empty"
+    try {
+        networkId = env.JOB_NAME + "_" + UUID.randomUUID().toString()
+        sh "echo ${networkId}"
+        sh "docker network create --ipv6 ${networkId}"
+        inner.call(networkId)
+    } finally {
+        sh "echo removing ${networkId}"
+        sh "docker network rm ${networkId}"
+    }
+}
 
 pipeline {
-    //agent any
-    agent {
-        label 'local'
-    }
+    agent any
+
     stages {
         stage('Checkout') {
             steps {
                 cleanWs()
-                checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'fmk-schemas']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/trifork/fmk-schemas.git',credentialsId: 'github-app-FMK']]])
+                //todo change to master once merged
+                checkout([$class: 'GitSCM', branches: [[name: "*/FMK1.6.0"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'fmk-schemas']], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:trifork/fmk-schemas.git']]])
             }
         }
+
         stage('build') {
             steps {
                 script {
                     String jenkinsUserId = sh(returnStdout: true, script: 'id -u jenkins').trim()
                     String dockerGroupId = sh(returnStdout: true, script: 'getent group docker | cut -d: -f3').trim()
                     String containerUserMapping = "-u $jenkinsUserId:$dockerGroupId "
-                    docker.image("registry.fmk.netic.dk/fmk/fmkbuilder_schema:11").inside(containerUserMapping + "--add-host ci.fmk.netic.dk:2a03:dc80:0:f12d::118 -e _JAVA_OPTIONS='-Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Stack=true -Djava.net.preferIPv6Addresses=true'") {
-                        now = new Date()
-                        gitversion = "-${env.GIT_COMMIT}".substring(0,5)
-                        version= now.format("YYYYMMddHHmmss")+gitversion
-                        sh "echo Building $version"
-                        withCredentials([usernamePassword(credentialsId: 'ci_nexus', passwordVariable: 'NexusPass', usernameVariable: 'NexusUser')]) {
-                            sh 'cd fmk-schemas && ant -Drepo.user=$NexusUser -Drepo.pass=$NexusPass -v publish'
-                        }
-                        sh 'cd fmk-schemas && ant validate-all-wsdl'
-                    }
-                    nexusArtifactUploader(
-                            nexusVersion: 'nexus3',
-                            protocol: 'https',
-                            nexusUrl: 'ci.fmk.netic.dk/nexus',
-                            groupId: 'com.trifork',
-                            version: "${version}",
-                            repository: 'trifork-internal',
-                            credentialsId: 'ci_nexus',
-                            artifacts: [
-                                    [artifactId: 'fmk-schema-admin-classes',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-admin-classes.jar',
-                                     type: 'jar'],
-                                    [artifactId: 'fmk-schema-admin',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-admin.zip',
-                                     type: 'zip'],
-                                    [artifactId: 'fmk-schema-classes',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-classes.jar',
-                                     type: 'jar'],
-                                    [artifactId: 'fmk-schema-dist',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-dist.zip',
-                                     type: 'zip'],
-                                    [artifactId: 'fmk-schema-idws-xua',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-idws-xua.zip',
-                                     type: 'zip'],
-                                    [artifactId: 'fmk-schema-idws',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-idws.zip',
-                                     type: 'zip'],
-                                    [artifactId: 'fmk-schema',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema.zip',
-                                     type: 'zip'],
-                                    [artifactId: 'fmk-schema-testtool-classes',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-testtool-classes.jar',
-                                     type: 'jar'],
-                                    [artifactId: 'fmk-schema-testtool',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-testtool.zip',
-                                     type: 'zip'],
-                                    [artifactId: 'fmk-schema-source.zip',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-source.zip',
-                                     type: 'zip'],
-                                    [artifactId: 'NamespaceOracle-generated.properties',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/NamespaceOracle-generated.properties',
-                                     type: 'properties'],
-                                    [artifactId: 'fmk-schema-classes-deps',
-                                     classifier: '',
-                                     file: 'fmk-schemas/target/fmk-schema-classes-deps.jar',
-                                     type: 'jar']
-                            ]
-                    )
-                    archiveArtifacts 'fmk-schemas/target/wsdl/*.zip, fmk-schemas/target/standard/target/wsdl/*.zip, fmk-schemas/target/idws/target/wsdl/*.zip, fmk-schemas/target/standard/target/wsdl/*.wsdl, fmk-schemas/target/idws/target/wsdl/*.wsdl'
 
+                    withDockerNetwork { n ->
+                        docker.image("registry.fmk.netic.dk/fmk/fmkbuilder:11").inside(containerUserMapping + "--add-host archive.ubuntu.com:2001:67c:1562::15 --add-host test1-ecpr2.fmk.netic.dk:2a03:dc80:0:f12d::170 --add-host f.aia.systemtest19.trust2408.com:2a03:dc80:0:f12d::120 --add-host nodejs.org:2400:cb00:2048:1::6814:172e --add-host registry.bower.io:2400:cb00:2048:1::6818:69ac --add-host registry.npmjs.org:2606:4700::6810:1923 --add-host f.aia.ica02.trust2408.com:2a03:dc80:0:f12d::120 --network ${n}  -e _JAVA_OPTIONS='-Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Stack=true -Djava.net.preferIPv6Addresses=true' -v $HOME/.m2:/home/jenkins/.m2") {
+                            configFileProvider([configFile(fileId: 'trifork-ci-fmk-settings', variable: 'MAVEN_SETTINGS')]) {
+                                sh "cd fmk-schemas && mvn -s $MAVEN_SETTINGS deploy"
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+
     post {
         failure {
             emailext body: '$DEFAULT_CONTENT',
@@ -110,6 +60,3 @@ pipeline {
         }
     }
 }
-
-
-

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
+
+	<element name="Precondition" type="mc160:PreconditionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Define a precondition that must be fulfilled, before the dosage can be considered active</documentation>
+			<documentation xml:lang="da-DK">Beskriver en betingelse der beskriver, hvornår doseringen kan anses som værende aktiv.</documentation>
+		</annotation>
+	</element>
+	<complexType name="PreconditionType">
+		<sequence>
+			<element name="StartDate" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
+			<element name="FreeText" type="mc160:PreconditionFreetextType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="PreconditionFreetextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+
+</schema>

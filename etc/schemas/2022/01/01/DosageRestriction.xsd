@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="TimeBetweenDoses.xsd"/>
+
+	<element name="DosageRestriction" type="mc160:DosageRestrictionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Restrictions on the use of drug (don't use more than max. daily dose per day, and/or use between Minimimum- and MaximumTimeBetweenDoses)</documentation>
+			<documentation xml:lang="da-DK">Begrænsninger på brugen af mængden af lægemidlet, fx max døgndosis og/eller min/max tid mellem doseringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageRestrictionType">
+		<sequence>
+			<element name="MaximumDailyDose" type="mc160:DoseQuantityType" minOccurs="0"/>
+			<element name="MinimumTimeBetweenDoses" type="mc160:TimeBetweenDosesType" minOccurs="0"/>
+			<element name="MaximumTimeBetweenDoses" type="mc160:TimeBetweenDosesType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+</schema>

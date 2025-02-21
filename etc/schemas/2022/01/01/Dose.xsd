@@ -4,18 +4,19 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<include schemaLocation="DoseTime.xsd"/>
 	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="Duration.xsd"/>
+	<include schemaLocation="InfusionRate.xsd"/>
 	
 	<element name="Dose" type="mc160:DoseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Description of a dose element, when and how much</documentation>
-			<documentation xml:lang="da-DK">Beskrivelse af en dosis på et givet stidspunkt, hvornår og hvor meget</documentation>
+			<documentation xml:lang="en-GB">Description of the amount of one single dose</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af mængden af den enkelte dosis</documentation>
 		</annotation>
 	</element>
 	<complexType name="DoseType">
+		<choice>
 		<sequence>
-			<element name="Time" type="mc160:DoseTimeType" minOccurs="0"/>
 			<choice>
 				<element name="Quantity" type="mc160:DoseQuantityType"/>
 				<sequence>
@@ -23,6 +24,20 @@
 					<element name="MaximalQuantity" type="mc160:DoseQuantityType"/>
 				</sequence>
 			</choice>
+			<choice>
+				<element name="Duration" type="mc160:DurationType"/>
+				<sequence>
+					<element name="MinimalDuration" type="mc160:DurationType" minOccurs="0"/>
+					<element name="MaximumDuration" type="mc160:DurationType" minOccurs="0"/>
+				</sequence>
+				<element name="InfusionRate" type="mc160:InfusionRateType"/>
+				<sequence>
+					<element name="MinimalInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+					<element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+				</sequence>
+			</choice>
 		</sequence>
+			<element name="AccordingToParameterSchema"/>
+		</choice>
 	</complexType>
 </schema>

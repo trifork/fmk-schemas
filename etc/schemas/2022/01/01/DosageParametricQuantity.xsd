@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="DoseQuantity.xsd"/>
+
+    <element name="DosageParametricQuantity" type="mc160:DosageParametricQuantityType">
+        <annotation>
+            <documentation xml:lang="en-GB">The collection of parameters used in a parameterized variable dosage
+            </documentation>
+            <documentation xml:lang="da-DK">Samling af parameterværdier der anvendes i en variabel dosering efter
+                skema
+            </documentation>
+        </annotation>
+    </element>
+    <complexType name="DosageParametricQuantityType">
+        <sequence>
+            <choice>
+                <sequence>
+                    <element name="MinValue" type="mc160:DoseQuantityType"/>
+                    <element name="MaxValue" type="mc160:DoseQuantityType" minOccurs="0"/>
+                </sequence>
+                <element name="Value" type="mc160:DoseQuantityType"/>
+                <element name="AssessedValue" type="mc160:AssessedValueType"/>
+            </choice>
+            <element name="Quantity" type="mc160:DoseQuantityType"/>
+        </sequence>
+    </complexType>
+    <simpleType name="AssessedValueType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="200"/>
+        </restriction>
+    </simpleType>
+</schema>

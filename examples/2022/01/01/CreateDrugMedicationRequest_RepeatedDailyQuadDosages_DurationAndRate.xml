@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreateDrugMedicationRequest
+        xmlns="http://fmk-teknik.dk/160"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://fmk-teknik.dk/160 CreateDrugMedicationRequest.xsd">
+    <PersonIdentifier source="CPR">1111111118</PersonIdentifier>
+    <MedicineCardVersion>1341404071666006001</MedicineCardVersion>
+    <CreatedBy>
+        <HealthcareProfessional>
+            <Identifier source="Autorisation">12345</Identifier>
+            <Name>Karl Karlsen</Name>
+            <Information type="SpecialityCode">7170</Information>
+        </HealthcareProfessional>
+        <Role>Læge</Role>
+        <Organisation>
+            <Name>Psykiatrien, Region Nordjylland - afdeling Thy/Mors</Name>
+            <AddressLine>Niels Bohrs Vej 30</AddressLine>
+            <AddressLine>9220 Aalborg Øst</AddressLine>
+            <TelephoneNumber>00000000</TelephoneNumber>
+            <Type>Sygehus</Type>
+            <Identifier source="SKS">7690</Identifier>
+        </Organisation>
+    </CreatedBy>
+    <DrugMedication>
+        <BeginEndDate>
+            <TreatmentStartDate>2022-12-27</TreatmentStartDate>
+            <TreatmentEndingUndetermined/>
+        </BeginEndDate>
+        <Indication>
+            <Code source="Medicinpriser" date="2014-05-01">42</Code>
+        </Indication>
+        <RouteOfAdministration>
+            <Code source="Medicinpriser" date="2014-05-01">OR</Code>
+        </RouteOfAdministration>
+        <Drug>
+            <Identifier source="Medicinpriser" date="2014-05-01">28101674394 </Identifier>
+            <Name>Panodil</Name>
+        </Drug>
+        <Dosage>
+            <StructuredDosage>
+                <IsFixedDosage/>
+                <Precondition>
+                    <StartDate>2022-12-22</StartDate>
+                </Precondition>
+                <DosageUnit>
+                    <SingularDosageUnitText>tablet</SingularDosageUnitText>
+                    <PluralDosageUnitText>tabletter</PluralDosageUnitText>
+                </DosageUnit>
+                <!-- 4 tabletter morgen, 2.5 tablet eftermiddag, gentages dagligt i 14 dage -->
+                <DosagePeriod>
+                    <RepeatedDailyQuadSchema>
+                        <Day>
+                            <MorningDose>
+                                <Quantity>25</Quantity>
+                                <Duration>00:15</Duration>
+                            </MorningDose>
+                            <NoonDose>
+                                <Quantity>30</Quantity>
+                                <MinimalDuration>00:10</MinimalDuration>
+                                <MaximumDuration>00:20</MaximumDuration>
+                            </NoonDose>
+                            <EveningDose>
+                                <MinimalQuantity>30</MinimalQuantity>
+                                <MaximalQuantity>40</MaximalQuantity>
+                                <InfusionRate>10.5</InfusionRate>
+                            </EveningDose>
+                            <NightDose>
+                                <Quantity>30</Quantity>
+                                <MinimalInfusionRate>10.5</MinimalInfusionRate>
+                                <MaximumInfusionRate>20.3</MaximumInfusionRate>
+                            </NightDose>
+                        </Day>
+                    </RepeatedDailyQuadSchema>
+                </DosagePeriod>
+            </StructuredDosage>
+        </Dosage>
+        <SubstitutionAllowed>true</SubstitutionAllowed>
+    </DrugMedication>
+</CreateDrugMedicationRequest>

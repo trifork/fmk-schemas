@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="FMKDetail.xsd"/>
+
+	<element name="PersonIdentifierList" type="mc160:PersonIdentifierStatusListType">
+		<annotation>
+			<documentation xml:lang="en-GB">List of alternative person identifiers for one specific patient</documentation>
+			<documentation xml:lang="da-DK">Liste af alternative person id'er for en specifik patient på tværs af svar</documentation>
+		</annotation>
+	</element>
+	<complexType name="PersonIdentifierStatusListType">
+		<sequence>
+			<element name="PersonIdentifierStatus" type="mc160:PersonIdentifierStatusType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

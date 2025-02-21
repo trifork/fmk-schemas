@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreateDrugMedicationRequest
+        xmlns="http://fmk-teknik.dk/160"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://fmk-teknik.dk/160 CreateDrugMedicationRequest.xsd">
+    <PersonIdentifier source="CPR">1111111118</PersonIdentifier>
+    <MedicineCardVersion>1341404071666006001</MedicineCardVersion>
+    <CreatedBy>
+        <HealthcareProfessional>
+            <Identifier source="Autorisation">12345</Identifier>
+            <Name>Karl Karlsen</Name>
+            <Information type="SpecialityCode">7170</Information>
+        </HealthcareProfessional>
+        <Role>Læge</Role>
+        <Organisation>
+            <Name>Psykiatrien, Region Nordjylland - afdeling Thy/Mors</Name>
+            <AddressLine>Niels Bohrs Vej 30</AddressLine>
+            <AddressLine>9220 Aalborg Øst</AddressLine>
+            <TelephoneNumber>00000000</TelephoneNumber>
+            <Type>Sygehus</Type>
+            <Identifier source="SKS">7690</Identifier>
+        </Organisation>
+    </CreatedBy>
+    <DrugMedication>
+        <BeginEndDate>
+            <TreatmentStartDate>2022-12-27</TreatmentStartDate>
+            <TreatmentEndingUndetermined/>
+        </BeginEndDate>
+        <Indication>
+            <Code source="Medicinpriser" date="2014-05-01">42</Code>
+        </Indication>
+        <RouteOfAdministration>
+            <Code source="Medicinpriser">IV</Code>
+            <Text>Intravenøs anvendelse</Text>
+        </RouteOfAdministration>
+        <Drug>
+            <Name>Benzylpenicillin</Name>
+            <ATC>
+                <Code source="Medicinpriser">J01CE01</Code>
+                <Text>Paracetamol</Text>
+            </ATC>
+            <Form>
+                <Code source="Medicinpriser">INFVSKO</Code>
+                <Text>infusionsvæske, opløsning</Text>
+            </Form>
+            <Strength>
+                <Counter>
+                    <Value>1.2</Value>
+                    <UnitCode source="Medicinpriser">G</UnitCode>
+                    <UnitText>g</UnitText>
+                </Counter>
+                <Denominator>
+                    <Value>110.0</Value>
+                    <UnitCode source="Medicinpriser">ML</UnitCode>
+                    <UnitText>ml</UnitText>
+                </Denominator>
+                <Text>1,2 g / 110 ml</Text>
+            </Strength>
+            <Composition>
+                <IsComplete>false</IsComplete>
+                <Part>
+                    <Type>Aktiv</Type>
+                    <Drug>
+                        <Identifier source="Medicinpriser">28103250701 </Identifier>
+                        <Name>Benzylpenicillin "Panpharma"</Name>
+                        <ATC>
+                            <Code source="Medicinpriser">J01CE01</Code>
+                            <Text>Benzylpenicillin</Text>
+                        </ATC>
+                        <Form>
+                            <Code source="Medicinpriser">INPULVO</Code>
+                            <Text>Pulver til injektions-/infusionsvæske, opløsning</Text>
+                        </Form>
+                        <Strength>
+                            <Value>1.2</Value>
+                            <UnitCode source="Medicinpriser">G</UnitCode>
+                            <UnitText>g</UnitText>
+                        </Strength>
+                        <Composition>
+                            <IsComplete>false</IsComplete>
+                            <Part>
+                                <Type>Aktiv</Type>
+                                <Substance>
+                                    <Name>Penicilliner</Name>
+                                </Substance>
+                            </Part>
+                        </Composition>
+                    </Drug>
+                </Part>
+                <Part>
+                    <Type>Solvens</Type>
+                    <Substance>
+                        <Name>Sterilt vand</Name>
+                    </Substance>
+                    <Amount>
+                        <Value>10.0</Value>
+                        <UnitCode source="Medicinpriser">ML</UnitCode>
+                        <UnitText>ml</UnitText>
+                    </Amount>
+                </Part>
+                <Part>
+                    <Type>Solvens</Type>
+                    <Drug>
+                        <Identifier source="Local">43215432121</Identifier>
+                        <Name>Natriumklorid isotonisk "SAD"</Name>
+                        <ATC>
+                            <Code source="Medicinpriser">V07AB</Code>
+                            <Text>Opløsnings-og fortyndingsmidler, incl. skyllevæsker</Text>
+                        </ATC>
+                        <Form>
+                            <Code source="Medicinpriser">INVSK</Code>
+                            <Text>injektions-/infusionsvæske</Text>
+                        </Form>
+                        <Strength>
+                            <Value>9.0</Value>
+                            <UnitCode source="Medicinpriser">MGM</UnitCode>
+                            <UnitText>mg/ml</UnitText>
+                        </Strength>
+                    </Drug>
+                    <Amount>
+                        <Value>100.0</Value>
+                        <UnitCode source="Medicinpriser">ML</UnitCode>
+                        <UnitText>ml</UnitText>
+                    </Amount>
+                </Part>
+            </Composition>
+        </Drug>
+        <Dosage>
+            <StructuredDosage>
+                <IsAccordingToNeedDosage/>
+                <Precondition>
+                    <StartDate>2021-01-05</StartDate>
+                </Precondition>
+                <DosageUnit>
+                    <SingularDosageUnitText>tablet</SingularDosageUnitText>
+                    <PluralDosageUnitText>tabletter</PluralDosageUnitText>
+                </DosageUnit>
+                <DosagePeriod>
+                    <PeriodLength>90</PeriodLength>
+                    <RepeatedDailyQuadSchema>
+                        <Day>
+                            <EveningDose>
+                                <Quantity>2</Quantity>
+                            </EveningDose>
+                        </Day>
+                    </RepeatedDailyQuadSchema>
+                </DosagePeriod>
+            </StructuredDosage>
+        </Dosage>
+        <SubstitutionAllowed>true</SubstitutionAllowed>
+    </DrugMedication>
+</CreateDrugMedicationRequest>

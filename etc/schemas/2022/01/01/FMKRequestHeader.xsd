@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="OnBehalfOf.xsd"/>
+	<include schemaLocation="ConsentHeader.xsd"/>
+	<include schemaLocation="WhitelistingHeader.xsd"/>
+	<include schemaLocation="PagingRequest.xsd"/>
+	
+	<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderType"> 
+		<annotation>
+			<documentation xml:lang="en-GB">Generic request header to be used for common request parameters</documentation>
+			<documentation xml:lang="da-DK">Fælles request header indeholdende fælles parametre på tværs af requests</documentation>
+		</annotation>
+	</element>
+	<complexType name="FMKRequestHeaderType">
+		<sequence>
+			<element name="OnBehalfOfHeader" type="mc160:OnBehalfOfType" minOccurs="0"/>
+			<element name="WhitelistingHeader" type="mc160:WhitelistingHeaderType" minOccurs="0"/>
+			<element name="ConsentHeader" type="mc160:ConsentHeaderType" minOccurs="0"/>
+			<element name="MinLogSessionId" type="mc160:MinLogSessionIdType" minOccurs="0"/>
+			<element name="PartOfBatchOperation" type="boolean" minOccurs="0"/>
+			<element name="Paging" type="mc160:PagingRequestType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<annotation>
+		<documentation xml:lang="en-GB">Technical session id defined by the client system that  links more registrations belonging to the same session</documentation>
+		<documentation xml:lang="da-DK">Teknisk sessions id defineret af klient systemerne der derved kan koble flere kald hørende til den samme konsultation</documentation>
+	</annotation>
+	<simpleType name="MinLogSessionIdType">
+		<restriction base="string">
+			<maxLength value="40"/>
+		</restriction>
+	</simpleType>
+</schema>
