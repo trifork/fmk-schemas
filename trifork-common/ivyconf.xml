@@ -1,0 +1,16 @@
+<ivysettings>
+	<property name="trifork-common" override="false" value="${ivy.settings.dir}" />
+	<property name="ivy.default.conf.dir" value="${trifork-common}/etc/ivy" />
+	
+	<!-- cacheDefaults resolutionDir="resolution" repositoryDir="repository" /> -->
+	<caches checkUpToDate="false">
+		<cache name="mycache" basedir="${ivy.default.ivy.user.dir}/cache" />
+	</caches>
+	
+	<include file="${ivy.default.conf.dir}/ivyconf-local.xml"/>
+	<include file="${ivy.default.conf.dir}/ivyconf-shared.xml"/>
+	<include file="${ivy.default.conf.dir}/ivy-maven2-ivyconf.xml"/>
+	<include file="${ivy.default.conf.dir}/ivyconf-main-chain.xml"/>
+	<include file="${ivy.default.conf.dir}/ivyconf-default-chain.xml"/>
+	<settings defaultResolver="default" />
+</ivysettings>

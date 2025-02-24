@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="common-performance" basedir="..">
+	<import file="build-common.xml"/>
+	
+	<property name="jmeter.outfile" value="target/test/jmeter.jtl"/>
+	<property name="jmeter.html" value="target/test/jmeter.html"/>
+	<property name="jmeter.build.dir" value="target/performance"/>
+	
+	<target name="init-performance" depends="init-test">
+		<taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" classpathref="testclasspath"/>
+		
+		<fail unless="jmeter.home" message="jmeter.home must be set in build.properties"/>
+		<mkdir dir="${jmeter.build.dir}"/>
+	</target>
+	
+	<target name="performancetest" depends="resolve-test, init-performance, compile-performance">
+		<jmeter jmeterhome="${jmeter.home}" resultlog="${jmeter.outfile}">
+			<property name="user.classpath" value="${basedir}/target/performance.jar" />
+			<property name="log_level.jmeter.protocol.java" value="debug"/>
+			<testplans dir="performance" includes="**/*.jmx"/>
+		</jmeter>
+		
+		<xslt in="${jmeter.outfile}" out="${jmeter.html}" style="${trifork-common}/etc/jmeter/jmeter-results-report.xsl" />
+	</target>
+	
+	<target name="compile-performance" depends="init-performance, resolve-build">
+        <javac 
+            classpathref="classpath"
+            destdir="${jmeter.build.dir}" 
+            optimize="${optimize}"
+            encoding="${encoding}"
+		    source="${sourceversion}"
+		    target="${targetversion}"
+        	debug="true"
+        	deprecation="true"
+        	srcdir="performance"
+        />            
+		<jar destfile="target/performance.jar">
+			<fileset dir="${jmeter.build.dir}" />
+			<fileset dir="${build.dir}" />
+		</jar>
+	</target>
+	
+	<target name="jmeter" depends="compile-performance">
+		<java jar="${jmeter.home}/bin/ApacheJMeter.jar" fork="true">
+			<arg value="-Jsearch_paths=${basedir}/target"/>
+		</java>
+	</target>
+
+</project>
