@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mc160="http://fmk-teknik.dk/160" targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="SystemType.xsd"/>
+    <include schemaLocation="SystemOwnerName.xsd" />
+    <include schemaLocation="SystemName.xsd" />
+    <include schemaLocation="SystemVersion.xsd" />
+    <include schemaLocation="OrgResponsibleName.xsd" />
+    <include schemaLocation="OrgUsingName.xsd" />
+    <include schemaLocation="OrgUsingID.xsd" />
+    <include schemaLocation="RequestedRole.xsd" />
+    <include schemaLocation="BorgerOpslag.xsd" />
+
+    <element name="WhitelistingHeader" type="mc160:WhitelistingHeaderType">
+        <annotation>
+            <documentation xml:lang="en-GB">Whitelisting header.</documentation>
+            <documentation xml:lang="da-DK">Whitelisting header.</documentation>
+        </annotation>
+    </element>
+    <complexType name="WhitelistingHeaderType">
+        <sequence>
+           <element name="SystemOwnerName" type="mc160:SystemOwnerNameType" minOccurs="1" maxOccurs="1" />
+           <element name="SystemName" type="mc160:SystemNameType" minOccurs="1" maxOccurs="1" />
+           <element name="SystemVersion" type="mc160:SystemVersionType" minOccurs="1" maxOccurs="1" />
+           <choice>
+		      <sequence>
+		         <element name="OrgResponsibleName" type="mc160:OrgResponsibleNameType" minOccurs="1" maxOccurs="1" />
+        		 <element name="OrgUsingName" type="mc160:OrgUsingNameType" minOccurs="1" maxOccurs="1" />
+	          	 <element name="OrgUsingID"  type="mc160:OrgUsingIDType" minOccurs="1" maxOccurs="1" />
+        	  </sequence>
+	          <element name="BorgerOpslag" type="mc160:BorgerOpslagType" minOccurs="1" maxOccurs="1" />
+           </choice>
+           <choice>
+	           <element name="RequestedRole" type="mc160:RequestedRoleType" minOccurs="1" maxOccurs="1" />
+	           <element name="SystemType" type="mc160:SystemTypeType" minOccurs="1" maxOccurs="1" />
+           </choice>
+        </sequence>
+    </complexType>
+</schema>
+
+

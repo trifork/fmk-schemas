@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DosageParametricQuantity.xsd"/>
+
+	<element name="DosageParameterSchema" type="mc160:DosageParameterSchemaType">
+		<annotation>
+			<documentation xml:lang="en-GB">The collection of parameters used in a parameterized variable dosage</documentation>
+			<documentation xml:lang="da-DK">Samling af parameterværdier der anvendes i en variabel dosering efter skema</documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageParameterSchemaType">
+		<sequence>
+			<element name="ParametricQuantity" type="mc160:DosageParametricQuantityType" maxOccurs="50"/>
+		</sequence>
+	</complexType>
+</schema>

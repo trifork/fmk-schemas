@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified">
+
+	<element name="HealthcareProfessionalIdentifier" type="mc160:HealthcareProfessionalIdentifierType">
+		<annotation>
+			<documentation xml:lang="en-GB">Sundhedsfagligs identifikation (autorisationsnummer for autorisrede personer, CPR osv. for øvrige</documentation>
+			<documentation xml:lang="da-DK">Identifier for healthcare professional (authorisatoin number for authorised professionals, CPR for non-auth.)</documentation>
+		</annotation>
+	</element>
+	<complexType name="HealthcareProfessionalIdentifierType">
+		<simpleContent>
+			<extension base="mc160:HealthcareProfessionalIdentifierValueType">
+				<attribute name="source" type="mc160:HealthcareProfessionalIdentifierSourceType" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="HealthcareProfessionalIdentifierValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="HealthcareProfessionalIdentifierSourceType">
+		<union memberTypes="mc160:PredefinedHealthcareProfIdSourceType mc160:UndefinedHealthcareProfIdSourceType"/>
+	</simpleType>
+	<simpleType name="PredefinedHealthcareProfIdSourceType">
+		<restriction base="string">
+			<enumeration value="Autorisation"/>
+			<enumeration value="CPR"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedHealthcareProfIdSourceType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+
+	<element name="PersonIdentifierStatus" type="mc160:PersonIdentifierStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">List of alternative person identifiers for one specific patient</documentation>
+			<documentation xml:lang="da-DK">Liste af alternative person id'er for en specifik patient på tværs af svar</documentation>
+		</annotation>
+	</element>
+	<complexType name="PersonIdentifierStatusType">
+		<sequence>
+			<element name="Name" type="string" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Identifier" type="mc160:PersonIdentifierType" />
+			<element name="Validity" type="mc160:PersonIdentifierValidity" />
+		</sequence>
+	</complexType>
+	<complexType name="PersonIdentifierValidity">
+		<sequence>
+			<element name="Status" type="mc160:PersonIdentifierValidityStatusType" />
+			<element name="StatusCode" type="mc160:StatusCodeType"/>
+			<element name="Since" type="date"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="StatusCodeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="2"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierValidityStatusType">
+		<union memberTypes="mc160:PersonIdentifierPredefinedSourceType mc160:UndefinedSourceType"/>
+	</simpleType>
+
+	<simpleType name="PersonIdentifierValidityPredefinedStatusType">
+		<restriction base="string">
+			<enumeration value="Active"/>
+			<enumeration value="Changed"/>
+			<enumeration value="Inactive"/>
+		</restriction>
+	</simpleType>
+</schema>

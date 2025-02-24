@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified">
+
+	<element name="HealthcareProfessionalInformation" type="mc160:HealthcareProfessionalInformationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Ekstra information vedrørende en sundhedsfaglig person eksempelvis uddannelseskode</documentation>
+			<documentation xml:lang="da-DK">Extra information regarding a healthcare professional (for example specialitycode)</documentation>
+		</annotation>
+	</element>
+	<complexType name="HealthcareProfessionalInformationType">
+		<simpleContent>
+			<extension base="mc160:HealthcareProfessionalInformationValueType">
+				<attribute name="type" type="mc160:HealthcareProfessionalInformationSourceType" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="HealthcareProfessionalInformationValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="HealthcareProfessionalInformationSourceType">
+		<union memberTypes="mc160:PredefinedHealthcareProfInfoSourceType mc160:UndefinedHealthcareProfInfoSourceType"/>
+	</simpleType>
+	<simpleType name="PredefinedHealthcareProfInfoSourceType">
+		<restriction base="string">
+			<enumeration value="SpecialityCode"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedHealthcareProfInfoSourceType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>

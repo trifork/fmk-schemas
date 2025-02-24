@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreateDrugMedicationRequest
+        xmlns="http://fmk-teknik.dk/160"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://fmk-teknik.dk/160 CreateDrugMedicationRequest.xsd">
+    <PersonIdentifier source="CPR">1111111118</PersonIdentifier>
+    <MedicineCardVersion>1341404071666006001</MedicineCardVersion>
+    <CreatedBy>
+        <HealthcareProfessional>
+            <Identifier source="Autorisation">12345</Identifier>
+            <Name>Karl Karlsen</Name>
+            <Information type="SpecialityCode">7170</Information>
+        </HealthcareProfessional>
+        <Role>Læge</Role>
+        <Organisation>
+            <Name>Psykiatrien, Region Nordjylland - afdeling Thy/Mors</Name>
+            <AddressLine>Niels Bohrs Vej 30</AddressLine>
+            <AddressLine>9220 Aalborg Øst</AddressLine>
+            <TelephoneNumber>00000000</TelephoneNumber>
+            <Type>Sygehus</Type>
+            <Identifier source="SKS">7690</Identifier>
+        </Organisation>
+    </CreatedBy>
+    <DrugMedication>
+        <BeginEndDate>
+            <TreatmentStartDate>2022-12-27</TreatmentStartDate>
+            <TreatmentEndingUndetermined/>
+        </BeginEndDate>
+        <Indication>
+            <Code source="Medicinpriser" date="2014-05-01">42</Code>
+        </Indication>
+        <RouteOfAdministration>
+            <Code source="Medicinpriser" date="2014-05-01">OR</Code>
+        </RouteOfAdministration>
+        <Drug>
+            <Identifier source="Magistrel">73019000360</Identifier>
+            <Name>Opium/kamfer</Name>
+            <AdditionalName>Opium/kamfer</AdditionalName>
+            <AdditionalName>Pectyl</AdditionalName>
+            <ATC>
+                <Code source="Magistrel">R05FA02</Code>
+                <Text>Opiumderivater og expectorantia</Text>
+            </ATC>
+            <Form>
+                <Code source="ORALVSK">TABFILM</Code>
+                <Text>Oral væske</Text>
+            </Form>
+            <Strength>
+                <Value>0.017</Value>
+                <Value>0.11</Value>
+                <UnitCode source="Magistrel">PC</UnitCode>
+                <UnitText>%</UnitText>
+                <Text>0,017% + 0,11%</Text>
+            </Strength>
+            <Composition>
+                <IsComplete>true</IsComplete>
+                <Part>
+                    <Type>Aktiv</Type>
+                    <Substance>
+                        <Identifier source="ATC">R05DA01</Identifier>
+                        <Name>Ethylmorfin</Name>
+                        <ATC>
+                            <Code source="Medicinpriser">R05DA01</Code>
+                            <Text>Ethylmorfin</Text>
+                        </ATC>
+                    </Substance>
+                    <Ratio>
+                        <Value>0.017</Value>
+                        <UnitCode source="Magistrel">PC</UnitCode>
+                        <UnitText>%</UnitText>
+                    </Ratio>
+                </Part>
+                <Part>
+                    <Type>Aktiv</Type>
+                    <Substance>
+                        <Identifier source="CAS">76-22-2</Identifier>
+                        <Name>Kamfer</Name>
+                    </Substance>
+                    <Ratio>
+                        <Value>0.11</Value>
+                        <UnitCode source="Magistrel">PC</UnitCode>
+                        <UnitText>%</UnitText>
+                    </Ratio>
+                </Part>
+                <Part>
+                    <Type>Konserveringsmiddel</Type>
+                    <Substance>
+                        <Identifier source="E-nummer">E 220</Identifier>
+                        <Name>Benzoesyre</Name>
+                    </Substance>
+                    <Ratio>
+                        <Value>0.17</Value>
+                        <UnitCode source="Magistrel">PC</UnitCode>
+                        <UnitText>%</UnitText>
+                    </Ratio>
+                </Part>
+                <Part>
+                    <Type>Øvrig</Type>
+                    <Substance>
+                        <Identifier source="CAS">1336-21-6</Identifier>
+                        <Name>Ammoniakvand</Name>
+                    </Substance>
+                    <Ratio>
+                        <Value>0.5</Value>
+                        <UnitCode source="Magistrel">PC</UnitCode>
+                        <UnitText>%</UnitText>
+                    </Ratio>
+                </Part>
+                <Part>
+                    <Type>Aroma- eller smagsstof</Type>
+                    <Substance>
+                        <Name>Lakridsekstrakt</Name>
+                    </Substance>
+                    <Ratio>
+                        <Value>5.0</Value>
+                        <UnitCode source="Magistrel">PC</UnitCode>
+                        <UnitText>%</UnitText>
+                    </Ratio>
+                </Part>
+            </Composition>
+        </Drug>
+        <Dosage>
+            <StructuredDosage>
+                <IsFixedDosage/>
+                <Precondition>
+                    <StartDate>2021-01-05</StartDate>
+                </Precondition>
+                <DosageUnit>
+                    <SingularDosageUnitText>ml</SingularDosageUnitText>
+                    <PluralDosageUnitText>ml</PluralDosageUnitText>
+                </DosageUnit>
+                <DosagePeriod>
+                    <RepeatedDailyQuadSchema>
+                        <Day>
+                            <EveningDose>
+                                <Quantity>5</Quantity>
+                            </EveningDose>
+                        </Day>
+                    </RepeatedDailyQuadSchema>
+                </DosagePeriod>
+            </StructuredDosage>
+        </Dosage>
+        <SubstitutionAllowed>true</SubstitutionAllowed>
+    </DrugMedication>
+</CreateDrugMedicationRequest>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="DosageInstruction" type="mc160:DosageInstructionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Free text describing how to use the drug (for example: use in the right eye)</documentation>
+			<documentation xml:lang="da-DK">Fritekstbeskrivelse af, hvordan lægemidlet skal anvendes (fx: i højre øje) </documentation>
+		</annotation>
+	</element>
+	<complexType name="DosageInstructionType">
+		<sequence>
+			<element name="FreeText" type="mc160:DosageInstructionFreetextType"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="DosageInstructionFreetextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>

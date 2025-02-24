@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mc160="http://www.dkma.dk/medicinecard/xml.schema/2022/01/01"
+	targetNamespace="http://www.dkma.dk/medicinecard/xml.schema/2022/01/01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <include schemaLocation="FaultDetails.xsd"/>
+
+	<element name="FMKDetail" type="mc160:FMKDetailType">
+		<annotation>
+			<documentation>
+				Details about an error/warning/soft validation
+			</documentation>
+		</annotation>
+	</element>
+	<complexType name="FMKDetailType">
+		<sequence>
+			<element name="FaultCode" type="string" />
+			<element name="FaultText" type="string" />
+			<element name="FaultDetails" type="mc160:FaultDetailsType" />
+		</sequence>
+	</complexType>
+</schema>

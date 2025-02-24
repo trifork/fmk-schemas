@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="DosageTimesIterationInterval.xsd"/>
+	<include schemaLocation="RepeatAfter.xsd"/>
 	<include schemaLocation="DosageIsNotIterated.xsd"/>
 	<include schemaLocation="DosageTimesStartDate.xsd"/>
 	<include schemaLocation="DosageTimesEndDate.xsd"/>
@@ -17,7 +17,7 @@
 		</annotation>
 		<sequence>
 			<choice>
-				<element name="IterationInterval" type="mc160:DosageTimesIterationIntervalType"/>
+				<element name="IterationInterval" type="mc160:RepeatAfterType"/>
 				<element name="NotIterated" type="mc160:DosageIsNotIteratedType"/>
 			</choice>
 			<element name="StartDate" type="mc160:DosageTimesStartDateType"/>

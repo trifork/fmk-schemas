@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<element name="PeriodOfTime" type="mc160:PeriodOfTimeType">
+		<annotation>
+			<documentation xml:lang="en-GB">Describes a period of time, including time unit </documentation>
+			<documentation xml:lang="da-DK">Definerer en periode i tid, inklusiv enhed (fx 10 Minutter)</documentation>
+		</annotation>
+	</element>
+	<complexType name="PeriodOfTimeType">
+		<sequence>
+			<element name="Time" type="mc160:PeriodTimeType"/>
+			<element name="TimeUnit" type="mc160:TimeUnitType"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="PeriodTimeType">
+		<restriction base="decimal">
+			<minInclusive value="0"/>
+			<maxInclusive value="999999999.999999999"/>
+			<fractionDigits value="9"/>
+			<totalDigits value="18"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TimeUnitType">
+		<union memberTypes="mc160:PredefinedTimeUnitType mc160:UndefinedTimeUnitType"/>
+	</simpleType>
+	<simpleType name="PredefinedTimeUnitType">
+		<restriction base="string">
+			<enumeration value="Minutter"/>
+			<enumeration value="Timer"/>
+			<enumeration value="Døgn"/>
+			<enumeration value="Uger"/>
+			<enumeration value="Måneder"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedTimeUnitType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>
