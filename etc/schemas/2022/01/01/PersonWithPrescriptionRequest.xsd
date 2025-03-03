@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PrescriptionRequestWithOrganisationDetails.xsd"/>
+	<element name="PersonWithPrescriptionRequest" type="mc160:PersonWithPrescriptionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A patients person identifier, and a list of active prescription requests</documentation>
+			<documentation xml:lang="da-DK">En patients personlige identifikation, og en liste af aktive receptanmodninger</documentation>
+		</annotation>
+	</element>
+	<complexType name="PersonWithPrescriptionRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="PrescriptionRequest" type="mc160:PrescriptionRequestWithOrganisationDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

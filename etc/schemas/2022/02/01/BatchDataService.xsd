@@ -141,6 +141,40 @@
 		</sequence>
 	</complexType>
 
+	<!--GetEmptyMedicineCardsToDeleteRequest -->
+
+	<element name="GetEmptyMedicineCardsToDeleteRequest" type="tns:GetEmptyMedicineCardsToDeleteRequestType" />
+
+	<complexType name="GetEmptyMedicineCardsToDeleteRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<!--GetPrescriptionsToDeleteRequest -->
+
+	<element name="GetPrescriptionsToDeleteRequest" type="tns:GetPrescriptionsToDeleteRequestType" />
+
+	<complexType name="GetPrescriptionsToDeleteRequestType">
+		<sequence>
+			<element name="ExpiredBefore" type="dateTime"/>
+			<element name="ActiveButExpiredBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
+	<!--GetPrescriptionEffectuationsToDeleteRequest -->
+
+	<element name="GetPrescriptionEffectuationsToDeleteRequest" type="tns:GetPrescriptionEffectuationsToDeleteRequestType" />
+
+	<complexType name="GetPrescriptionEffectuationsToDeleteRequestType">
+		<sequence>
+			<element name="EffectuatedBefore" type="dateTime"/>
+			<element name="MaxResults" type="integer"/>
+		</sequence>
+	</complexType>
+
 	<!--XXXXXXXXXXXX -->
 
 </schema>
