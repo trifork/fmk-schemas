@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="common-remote" xmlns:ivy="antlib:fr.jayasoft.ivy.ant" basedir="..">
+	<import file="build-common.xml"/>
+	
+	<target name="remote-sync" depends="resolve-build">
+		<fail unless="remote-host" message="remote-host must be set" />
+		<fail unless="remote-path" message="remote-path must be set" />
+		<fail unless="remote-user" message="remote-user must be set" />
+		<fail unless="remote-pass" message="remote-pass must be set" />
+		
+		<delete dir="target/svnexport"/>
+		<mkdir dir="target/svnexport"/>
+		<copy todir="target/svnexport/${ant.project.name}">
+			<fileset dir=".">
+				<exclude name="target" />
+				<exclude name="lib/build/**"/>
+				<exclude name="bin"/>
+				<exclude name="lib/test/**"/>
+				<exclude name="lib/deploy/**"/>
+			</fileset>
+		</copy>
+		<antcall target="remote-do"/>
+	</target>
+
+	<target name="remote-deploy" depends="war">
+		<fail unless="remote-host" message="remote-host must be set" />
+		<fail unless="remote-path" message="remote-path must be set" />
+		<fail unless="remote-user" message="remote-user must be set" />
+		<fail unless="remote-pass" message="remote-pass must be set" />
+		
+		<delete dir="target/svnexport"/>
+		<mkdir dir="target/svnexport"/>
+		<copy todir="target/svnexport/${ant.project.name}">
+			<fileset dir=".">
+				<include name="target/*.war" />
+				<include name="target/classes/**" />
+				<include name="${externalresources.dir}/**" />
+				<include name="src/**" />
+				<include name="etc/**" />
+				<include name="lib/build/**" />
+				<include name="*.xml" />
+				<include name="*.properties" />
+				<include name="subprojects/testdatatool/generateddata/pilottestdata/*" />
+			</fileset>
+		</copy>
+		<antcall target="remote-do"/>
+	</target>
+	
+	<target name="remote-do">
+		<echoproperties destfile="target/svnexport/${ant.project.name}/build.properties">
+			<propertyset>
+				<propertyref prefix="remote."/>
+				<mapper type="glob" from= "remote.*" to="*"/>
+			</propertyset>
+		</echoproperties>
+		
+		<exec executable="rsync" failonerror="true">
+			<arg value="-av" />
+			<arg value="--delete" />
+			<arg value="target/svnexport/${ant.project.name}"/>
+			<arg value="${remote-user}@${remote-host}:${remote-path}"/>
+			<env key="RSYNC_PASSWORD" value="${remote-pass}" />
+		</exec>
+		
+		<sshexec host="${remote-host}" username="${remote-user}" password="${remote-pass}" command="cd ${remote-path}/${ant.project.name} &amp;&amp; ant ${remote-target}" trust="true"/>
+	</target>
+
+</project>

@@ -3,7 +3,9 @@
 This project holds all xml schemas used in the FMK-backend, and can build wsdl's and publish them to internal nexus. 
 
 Please note:
-From FMK 1.6.0 it has been rewritten to use maven, whereas the older versions used ant. Only the 1.6.0 wsdl and zip-files can be built using this project. If you need to build 1.4.x version, you will have to switch to a branch where the ant-files for 1.4.x are still included.
+From FMK 1.6.0 it has been rewritten to use maven, whereas the older versions uses ant. 
+Use mvn to build 1.6.0 wsdl and zip-files.
+Use ant to build all 1.4.x wsdl and zip-files. See bottom of README.md for more information.
 
 ## Project structure
 The project is made up for several maven modules. They are executed in the following order:
@@ -35,3 +37,29 @@ mvn clean install
 mvn -f fmk-160-schema-classes deploy
 mvn -f fmk-160-idws-schema-classes deploy
 ```
+
+
+# Building 1.4.x wsdl and zip-files
+
+Build with [ant](https://ant.apache.org/bindownload.cgi).
+
+## Ant targets
+
+```
+all
+all-standard
+all-idws
+all-idws-xua
+publish
+```
+
+## Publish wsdl- and schema-files
+
+Temporary (?) solution, until jenkins job FMK_schema_upload is fixed:
+
+- Build https://ci.fmk.netic.dk/job/FMK_schema/
+- Open link to artefacts: https://ci.fmk.netic.dk/job/FMK_schema/lastSuccessfulBuild/artifact/
+- Navigate to target/wsdl
+- Download for example OrdinationsAI_2022_03_01-collection-dist.zip and OrdinationsAI-inline_2022_03_01.zip to local pc
+- Rename OrdinationsAI-inline_2022_03_01.zip to OrdinationsAI-inline_2022_03_01.wsdl.zip
+- Upload the two files to https://github.com/trifork/FMKResources/tree/master/wsdl
