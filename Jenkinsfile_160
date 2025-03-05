@@ -19,7 +19,7 @@ pipeline {
             steps {
                 cleanWs()
                 //todo change to master once merged
-                checkout([$class: 'GitSCM', branches: [[name: "*/FMK1.6.0"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'fmk-schemas']], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:trifork/fmk-schemas.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: "*/${env.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'fmk-schemas']], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:trifork/fmk-schemas.git']]])
             }
         }
 
