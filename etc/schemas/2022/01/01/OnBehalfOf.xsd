@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="AuthorisationIdentifier.xsd"/>
+	<include schemaLocation="HealthcareProfessionalIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 
 	<element name="OnBehalfOf" type="mc160:OnBehalfOfType">
@@ -15,7 +15,7 @@
 	</element>
 	<complexType name="OnBehalfOfType">
 		<choice>
-			<element name="AuthorisationIdentifier" type="mc160:AuthorisationIdentifierType"/>
+			<element name="AuthorisationIdentifier" type="mc160:HealthcareProfessionalIdentifierValueType"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 		</choice>
 	</complexType>

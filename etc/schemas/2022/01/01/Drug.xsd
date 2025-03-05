@@ -6,11 +6,12 @@
 	
 	<include schemaLocation="DrugIdentifier.xsd"/>
 	<include schemaLocation="DrugStrength.xsd"/>
-	<include schemaLocation="Substances.xsd"/>
 	<include schemaLocation="ATC.xsd"/>
-	<include schemaLocation="DetailedDrugText.xsd"/>
+	<include schemaLocation="AdditionalDrugName.xsd"/>
 	<include schemaLocation="DrugForm.xsd"/>
 	<include schemaLocation="DrugName.xsd"/>
+	<include schemaLocation="DrugComposition.xsd"/>
+	<include schemaLocation="DrugReference.xsd"/>
 	
 	<element name="Drug" type="mc160:DrugType">
 		<annotation>
@@ -20,18 +21,14 @@
 	</element>
 	<complexType name="DrugType">
 		<sequence>
-			<element name="ATC" type="mc160:ATCType" minOccurs="0"/>
-			<choice>
-				<sequence>
-					<element name="Identifier" type="mc160:DrugIdentifierType" minOccurs="0"/>
-					<?filter nsf="ignore"?>
-					<element name="Name" type="mc160:DrugNameType"/>
-				</sequence>
-				<element name="DetailedDrugText" type="mc160:DetailedDrugTextType"/>
-			</choice>
+			<element name="Identifier" type="mc160:DrugIdentifierType" minOccurs="0"/>
+			<element name="Name" type="mc160:DrugNameType"/>
+			<element name="AdditionalName" type="mc160:AdditionalDrugNameType" minOccurs="0" maxOccurs="20"/>
+			<element name="ATC" type="mc160:ATCType" minOccurs="0" maxOccurs="10"/>
 			<element name="Form" type="mc160:DrugFormType" minOccurs="0"/>
 			<element name="Strength" type="mc160:DrugStrengthType" minOccurs="0"/>
-			<element name="Substances" type="mc160:SubstancesType" minOccurs="0"/>
+			<element name="Composition" type="mc160:DrugCompositionType" minOccurs="0"/>
+			<element name="Reference" type="mc160:DrugReferenceType" minOccurs="0" maxOccurs="10"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+
+	<element name="PagingResponse" type="mc160:PagingResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Paging values for a response</documentation>
+			<documentation xml:lang="da-DK">Paginerings værdier for et response</documentation>
+		</annotation>
+	</element>
+	<complexType name="PagingResponseType">
+		<sequence>
+			<element name="Entity" type="mc160:EntityType"/>
+			<element name="PageSize" type="int"/>
+			<element name="TotalSize" type="int"/>
+			<element name="LastReceived" type="mc160:LastReceivedType"/>
+		</sequence>
+	</complexType>
+	<complexType name="EntityType">
+		<attribute name="type" type="mc160:PagingObjectType" use="required"/>
+		</complexType>
+
+		<simpleType name="PagingObjectType">
+			<union memberTypes="mc160:PagingObjectPredefinedType mc160:UndefinedPagingObjectType"/>
+		</simpleType>
+
+		<simpleType name="PagingObjectPredefinedType">
+			<restriction base="mc160:UndefinedPagingObjectType">
+				<enumeration value="Medicinecards"/>
+				<enumeration value="Drugmedications"/>
+				<enumeration value="Prescriptions"/>
+				<enumeration value="Effectuations"/>
+			</restriction>
+		</simpleType>
+		<simpleType name="UndefinedPagingObjectType">
+			<restriction base="string">
+				<minLength value="1"/>
+				<maxLength value="200"/>
+			</restriction>
+		</simpleType>
+		<complexType name="LastReceivedType">
+			<sequence>
+				<element name="Field" type="mc160:PagingFieldType"/>
+			</sequence>
+		</complexType>
+		<complexType name="PagingFieldType">
+			<simpleContent>
+				<extension base="long">
+					<attribute name="name" type="string" use="required"/>
+				</extension>
+			</simpleContent>
+		</complexType>
+</schema>
