@@ -110,17 +110,14 @@
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePlannedDispensingRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePlannedDispensingResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionForUseInPracticeRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionForUseInPracticeResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateOrderForUseInPracticeRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateOrderForUseInPracticeResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionRequestRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionRequestResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionWithoutCPRRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/CreatePrescriptionWithoutCPRResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateRequestForWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateRequestForWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/DeleteDoseDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/DeleteDoseDispensingPeriodResponse.xsd"/>
@@ -549,36 +546,28 @@
         <wsdl:part name="CreatePlannedDispensingResponse" element="mc160:CreatePlannedDispensingResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionForUseInPracticeRequest_160">
-        <wsdl:part name="CreatePrescriptionForUseInPracticeRequest" element="mc160:CreatePrescriptionForUseInPracticeRequest"/>
+    <wsdl:message name="CreateOrderForUseInPracticeRequest_160">
+        <wsdl:part name="CreateOrderForUseInPracticeRequest" element="mc160:CreateOrderForUseInPracticeRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionForUseInPracticeResponse_160">
-        <wsdl:part name="CreatePrescriptionForUseInPracticeResponse" element="mc160:CreatePrescriptionForUseInPracticeResponse"/>
+    <wsdl:message name="CreateOrderForUseInPracticeResponse_160">
+        <wsdl:part name="CreateOrderForUseInPracticeResponse" element="mc160:CreateOrderForUseInPracticeResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionRequest_160">
-        <wsdl:part name="CreatePrescriptionRequest" element="mc160:CreatePrescriptionRequest"/>
+    <wsdl:message name="CreateWarrantRequest_160">
+        <wsdl:part name="CreateWarrantRequest" element="mc160:CreateWarrantRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionResponse_160">
-        <wsdl:part name="CreatePrescriptionResponse" element="mc160:CreatePrescriptionResponse"/>
+    <wsdl:message name="CreateWarrantResponse_160">
+        <wsdl:part name="CreateWarrantResponse" element="mc160:CreateWarrantResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionRequestRequest_160">
-        <wsdl:part name="CreatePrescriptionRequestRequest" element="mc160:CreatePrescriptionRequestRequest"/>
+    <wsdl:message name="CreateRequestForWarrantRequest_160">
+        <wsdl:part name="CreateRequestForWarrantRequest" element="mc160:CreateRequestForWarrantRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePrescriptionRequestResponse_160">
-        <wsdl:part name="CreatePrescriptionRequestResponse" element="mc160:CreatePrescriptionRequestResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="CreatePrescriptionWithoutCPRRequest_160">
-        <wsdl:part name="CreatePrescriptionWithoutCPRRequest" element="mc160:CreatePrescriptionWithoutCPRRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="CreatePrescriptionWithoutCPRResponse_160">
-        <wsdl:part name="CreatePrescriptionWithoutCPRResponse" element="mc160:CreatePrescriptionWithoutCPRResponse"/>
+    <wsdl:message name="CreateRequestForWarrantResponse_160">
+        <wsdl:part name="CreateRequestForWarrantResponse" element="mc160:CreateRequestForWarrantResponse"/>
     </wsdl:message>
 
     <wsdl:message name="DeleteDoseDispensingPeriodRequest_160">
@@ -1319,27 +1308,21 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionForUseInPractice_160">
-            <wsdl:input name="CreatePrescriptionForUseInPracticeRequest_160" message="tns:CreatePrescriptionForUseInPracticeRequest_160"/>
-            <wsdl:output name="CreatePrescriptionForUseInPracticeResponse_160" message="tns:CreatePrescriptionForUseInPracticeResponse_160"/>
+        <wsdl:operation name="CreateOrderForUseInPractice_160">
+            <wsdl:input name="CreateOrderForUseInPracticeRequest_160" message="tns:CreateOrderForUseInPracticeRequest_160"/>
+            <wsdl:output name="CreateOrderForUseInPracticeResponse_160" message="tns:CreateOrderForUseInPracticeResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescription_160">
-            <wsdl:input name="CreatePrescriptionRequest_160" message="tns:CreatePrescriptionRequest_160"/>
-            <wsdl:output name="CreatePrescriptionResponse_160" message="tns:CreatePrescriptionResponse_160"/>
+        <wsdl:operation name="CreateWarrant_160">
+            <wsdl:input name="CreateWarrantRequest_160" message="tns:CreateWarrantRequest_160"/>
+            <wsdl:output name="CreateWarrantResponse_160" message="tns:CreateWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionRequest_160">
-            <wsdl:input name="CreatePrescriptionRequestRequest_160" message="tns:CreatePrescriptionRequestRequest_160"/>
-            <wsdl:output name="CreatePrescriptionRequestResponse_160" message="tns:CreatePrescriptionRequestResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="CreatePrescriptionWithoutCPR_160">
-            <wsdl:input name="CreatePrescriptionWithoutCPRRequest_160" message="tns:CreatePrescriptionWithoutCPRRequest_160"/>
-            <wsdl:output name="CreatePrescriptionWithoutCPRResponse_160" message="tns:CreatePrescriptionWithoutCPRResponse_160"/>
+        <wsdl:operation name="CreateRequestForWarrant_160">
+            <wsdl:input name="CreateRequestForWarrantRequest_160" message="tns:CreateRequestForWarrantRequest_160"/>
+            <wsdl:output name="CreateRequestForWarrantResponse_160" message="tns:CreateRequestForWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2072,52 +2055,39 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionForUseInPractice_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescriptionForUseInPractice" style="document"/>
-            <wsdl:input name="CreatePrescriptionForUseInPracticeRequest_160">
+        <wsdl:operation name="CreateOrderForUseInPractice_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateOrderForUseInPractice" style="document"/>
+            <wsdl:input name="CreateOrderForUseInPracticeRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePrescriptionForUseInPracticeResponse_160">
+            <wsdl:output name="CreateOrderForUseInPracticeResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescription_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescription" style="document"/>
-            <wsdl:input name="CreatePrescriptionRequest_160">
+        <wsdl:operation name="CreateWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateWarrant" style="document"/>
+            <wsdl:input name="CreateWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePrescriptionResponse_160">
+            <wsdl:output name="CreateWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePrescriptionRequest_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescriptionRequest" style="document"/>
-            <wsdl:input name="CreatePrescriptionRequestRequest_160">
+        <wsdl:operation name="CreateRequestForWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateRequestForWarrant" style="document"/>
+            <wsdl:input name="CreateRequestForWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePrescriptionRequestResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="CreatePrescriptionWithoutCPR_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePrescriptionWithoutCPR" style="document"/>
-            <wsdl:input name="CreatePrescriptionWithoutCPRRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="CreatePrescriptionWithoutCPRResponse_160">
+            <wsdl:output name="CreateRequestForWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
