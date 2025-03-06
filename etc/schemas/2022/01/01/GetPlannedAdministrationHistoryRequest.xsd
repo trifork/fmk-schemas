@@ -5,19 +5,19 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
 	<include schemaLocation="VersionCreatedDateTime.xsd"/>
 
-	<element name="GetPlannedDispensingHistoryRequest" type="mc160:GetPlannedDispensingHistoryRequestType">
+	<element name="GetPlannedAdministrationHistoryRequest" type="mc160:GetPlannedAdministrationHistoryRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request element for planned dispensing history</documentation>
-			<documentation xml:lang="da-DK">Element til forespørgsel for historik på planlagt dispensering</documentation>
+			<documentation xml:lang="en-GB">Request element for planned administration history</documentation>
+			<documentation xml:lang="da-DK">Element til forespørgsel for historik på planlagt administration</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetPlannedDispensingHistoryRequestType">
+	<complexType name="GetPlannedAdministrationHistoryRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="PlannedDispensingIdentifier" type="mc160:PlannedDispensingIdentifierType"/>
+			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
 			<element name="HistorySince" type="mc160:VersionCreatedDateTimeType" minOccurs="0"/>
 		</sequence>
 	</complexType>
