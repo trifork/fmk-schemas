@@ -5,18 +5,18 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="PersonIdentifier.xsd"/>
-    <include schemaLocation="DoseDispensingPeriodSummary.xsd"/>
+    <include schemaLocation="DispensingPeriodSummary.xsd"/>
 
-    <element name="GetDoseDispensingPeriodHistoryResponse" type="mc160:GetDoseDispensingPeriodHistoryResponseType">
+    <element name="GetDispensingPeriodHistoryResponse" type="mc160:GetDispensingPeriodHistoryResponseType">
         <annotation>
-            <documentation xml:lang="en-GB">Response type with one or more dose dispensing period versions</documentation>
-            <documentation xml:lang="da-DK">Type for et svar med en eller flere historiske dosisdispenseringsperiode versioner</documentation>
+            <documentation xml:lang="en-GB">Response type with one or more dispensing period versions</documentation>
+            <documentation xml:lang="da-DK">Type for et svar med en eller flere historiske dispenseringsperiode versioner</documentation>
         </annotation>
     </element>
-    <complexType name="GetDoseDispensingPeriodHistoryResponseType">
+    <complexType name="GetDispensingPeriodHistoryResponseType">
         <sequence>
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-            <element name="DoseDispensingPeriod" type="mc160:DoseDispensingPeriodSummaryType" maxOccurs="unbounded"/>
+            <element name="DispensingPeriod" type="mc160:DispensingPeriodSummaryType" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

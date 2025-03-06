@@ -5,18 +5,18 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="DoseDispensingCardHistory.xsd"/>
+	<include schemaLocation="DispensingCardHistory.xsd"/>
 
-	<element name="GetDoseDispensingCardHistoryResponse" type="mc160:GetDoseDispensingCardHistoryResponseType">
+	<element name="GetDispensingCardHistoryResponse" type="mc160:GetDispensingCardHistoryResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response with the history for a dose dispensing card</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for et svar med historik for et dosisdispenseringskort</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response with the history for a dispensing card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar med historik for et dispenseringskort</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetDoseDispensingCardHistoryResponseType">
+	<complexType name="GetDispensingCardHistoryResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="DoseDispensingCardHistory" type="mc160:DoseDispensingCardHistoryType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DispensingCardHistory" type="mc160:DispensingCardHistoryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

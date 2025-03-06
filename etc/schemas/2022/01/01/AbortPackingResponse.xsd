@@ -5,18 +5,18 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 
 	<element name="AbortPackingResponse" type="mc160:AbortPackingResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response from a request which aborts the packing of a dosedispensing period</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel som annullerer pakningen af en dosisdispenseret periode</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a request which aborts the packing of a dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel som annullerer pakningen af en dispenseret periode</documentation>
 		</annotation>
 	</element>
 	<complexType name="AbortPackingResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="DoseDispensingPeriodIdentifier" type="mc160:DoseDispensingPeriodIdentifierType" maxOccurs="unbounded"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

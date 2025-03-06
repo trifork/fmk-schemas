@@ -5,18 +5,18 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="PersonIdentifier.xsd"/>
-    <include schemaLocation="DoseDispensingSummary.xsd"/>
+    <include schemaLocation="DispensingSummary.xsd"/>
 
-    <element name="GetDoseDispensingSummaryResponse" type="mc160:GetDoseDispensingSummaryResponseType">
+    <element name="GetDispensingSummaryResponse" type="mc160:GetDispensingSummaryResponseType">
         <annotation>
-            <documentation xml:lang="en-GB">Response type with one or more summaries of a dose dispensing card</documentation>
-            <documentation xml:lang="da-DK">Type for et svar med en eller flere oversigter af dosisdispenseringskort</documentation>
+            <documentation xml:lang="en-GB">Response type with one or more summaries of a dispensing card</documentation>
+            <documentation xml:lang="da-DK">Type for et svar med en eller flere oversigter af dispenseringskort</documentation>
         </annotation>
     </element>
-    <complexType name="GetDoseDispensingSummaryResponseType">
+    <complexType name="GetDispensingSummaryResponseType">
         <sequence>
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-            <element name="DoseDispensingSummary" type="mc160:DoseDispensingSummaryType" minOccurs="0"/>
+            <element name="DispensingSummary" type="mc160:DispensingSummaryType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>

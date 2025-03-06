@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Created.xsd"/>
+	<include schemaLocation="CreatedWithoutPerson.xsd"/>
+	
+	<complexType name="LatestDispensingEffectuationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indication of when the latest dispensed effectuation was made, and by whom</documentation>
+			<documentation xml:lang="da-DK">Angivelse af tidspunktet for den seneste dispenserede effektuering samt hvem der udførte den</documentation>
+		</annotation>
+		<sequence>
+			<choice>
+				<element name="CreatedWithoutPerson" type="mc160:CreatedWithoutPersonType"/>
+				<element name="Created" type="mc160:CreatedType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

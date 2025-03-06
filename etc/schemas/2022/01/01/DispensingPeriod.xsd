@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingStatus.xsd"/>
+    <include schemaLocation="DispensingPeriodStartDate.xsd"/>
+    <include schemaLocation="DispensingPeriodEndDate.xsd"/>
+    <include schemaLocation="PackagedDateTime.xsd"/>
+    <include schemaLocation="DispensedEffectuationDate.xsd"/>
+    <include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
+    <include schemaLocation="DiscardedByDateTime.xsd"/>
+    <include schemaLocation="DispensingProductionIdentifier.xsd"/>
+    <include schemaLocation="AcutePacking.xsd"/>
+    <include schemaLocation="PrivatePlannedAdministration.xsd"/>
+    <include schemaLocation="Dispensing.xsd"/>
+
+    <element name="DispensingPeriod" type="mc160:DispensingPeriodType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dispensing period for a given number of dispensings</documentation>
+            <documentation xml:lang="da-DK">Dispenseringsperiode for en given mængde dispenseringer</documentation>
+        </annotation>
+    </element>
+    <complexType name="DispensingPeriodType">
+        <sequence>
+            <element name="Identifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="Status" type="mc160:DispensingStatusType"/>
+            <element name="StartDate" type="mc160:DispensingPeriodStartDateType"/>
+            <element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
+            <element name="PackagedDateTime" type="mc160:PackagedDateTimeType" minOccurs="0" />
+            <element name="EffectuationDate" type="mc160:DispensedEffectuationDateType" minOccurs="0"/>
+            <element name="ExpectedDelivery" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+            <element name="DiscardedByDateTime" type="mc160:DiscardedByDateTimeType" minOccurs="0"/>
+            <element name="ProductionIdentifier" type="mc160:DispensingProductionIdentifierType" minOccurs="0"/>
+            <element name="AcutePacking" type="mc160:AcutePackingType" minOccurs="0"/>
+            <element name="PrivatePlannedAdministration" type="mc160:PrivatePlannedAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Dispensing" type="mc160:DispensingType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

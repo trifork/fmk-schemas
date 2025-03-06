@@ -5,20 +5,20 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="DoseDispensingCardIdentifier.xsd"/>
-	<include schemaLocation="DoseDispensingPeriodStartDate.xsd"/>
+	<include schemaLocation="DispensingCardIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
 
-	<element name="GetDoseDispensingPeriodsRequest" type="mc160:GetDoseDispensingPeriodsRequestType">
+	<element name="GetDispensingPeriodsRequest" type="mc160:GetDispensingPeriodsRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request to receive the periods defined for a dose dispensing card</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der henter en oversigt over perioderne for et dosisdispenseringskort</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a request to receive the periods defined for a dispensing card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der henter en oversigt over perioderne for et dispenseringskort</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetDoseDispensingPeriodsRequestType">
+	<complexType name="GetDispensingPeriodsRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-        	<element name="DoseDispensingCardIdentifier" type="mc160:DoseDispensingCardIdentifierType" minOccurs="0"/>
-            <element name="IncludePeriodsSince" type="mc160:DoseDispensingPeriodStartDateType" minOccurs="0"/>
+        	<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType" minOccurs="0"/>
+            <element name="IncludePeriodsSince" type="mc160:DispensingPeriodStartDateType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
