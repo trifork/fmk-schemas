@@ -5,19 +5,19 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="UnattachedPrescription.xsd"/>
+	<include schemaLocation="WarrantForUseInPractice.xsd"/>
 
 	<element name="CreateOrderForUseInPracticeRequest" type="mc160:CreateOrderForUseInPracticeRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document containing one or more documents for creating prescriptions from drug medications</documentation>
-			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at oprette recepter fra lægemiddelordinationer</documentation>
+			<documentation xml:lang="en-GB">Request document for creating one or more warrants and orders for use in practice</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til at oprette en eller flere udleveringsgrundlag og bestillinger til brug i praksis</documentation>
 		</annotation>
 	</element>
 	<complexType name="CreateOrderForUseInPracticeRequestType">
 		<sequence>
 			<element name="CreatedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Prescription" type="mc160:UnattachedPrescriptionType" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:WarrantForUseInPracticeType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
