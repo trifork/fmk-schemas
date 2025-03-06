@@ -5,7 +5,7 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-	<include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+	<include schemaLocation="DispensingIdentifier.xsd"/>
 	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugIdentifier.xsd"/>
@@ -18,13 +18,13 @@
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
 
-	<complexType name="PlannedDispensingOverviewType">
+	<complexType name="PackagedDispensingOverviewType">
 		<annotation>
-			<documentation xml:lang="en-GB">Overview of a packaged dispensing periods planned dispensings</documentation>
-			<documentation xml:lang="da-DK">Overblik over en pakket dispenserings periode's planlagte dispenseringer</documentation>
+			<documentation xml:lang="en-GB">Overview of a packaged dispensing periods dispensings</documentation>
+			<documentation xml:lang="da-DK">Overblik over en pakket dispenserings periode's dispenseringer</documentation>
 		</annotation>
 		<sequence>
-			<element name="PlannedDispensingIdentifier" type="mc160:PlannedDispensingIdentifierType"/>
+			<element name="DispensingIdentifier" type="mc160:DispensingIdentifierType"/>
 			<element name="PlanedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="PrescribedDrug" type="mc160:DrugType"/>

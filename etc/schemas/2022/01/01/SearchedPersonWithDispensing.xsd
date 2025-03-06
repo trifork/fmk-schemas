@@ -7,22 +7,22 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Patient.xsd"/>
-	<include schemaLocation="PlannedDispensingSummary.xsd"/>
+	<include schemaLocation="SearchedDispensingSummary.xsd"/>
 
 	<!-- TODO: Part of service under eval -->
-	<element name="PersonWithPlannedDispensing" type="mc160:PersonWithPlannedDispensingType">
+	<element name="SearchedPersonWithDispensing" type="mc160:SearchedPersonWithDispensingType">
 		<annotation>
-			<documentation xml:lang="en-GB">Search result element containing ids for a planned dispensing</documentation>
-			<documentation xml:lang="da-DK">Element i søgeresultat indeholdende id'er for en planlagt dispensering</documentation>
+			<documentation xml:lang="en-GB">Search result element containing ids for a dispensing</documentation>
+			<documentation xml:lang="da-DK">Element i søgeresultat indeholdende id'er for en dispensering</documentation>
 		</annotation>
 	</element>
-	<complexType name="PersonWithPlannedDispensingType">
+	<complexType name="SearchedPersonWithDispensingType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="Patient" type="mc160:PatientType"/>
 			</choice>
-			<element name="PlannedDispensingSummary" type="mc160:PlannedDispensingSummaryType" maxOccurs="unbounded"/>
+			<element name="DispensingSummary" type="mc160:SearchedDispensingSummaryType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

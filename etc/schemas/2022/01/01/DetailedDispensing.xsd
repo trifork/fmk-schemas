@@ -5,8 +5,8 @@
         elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
 
-    <include schemaLocation="PlannedDispensingIdentifier.xsd"/>
-    <include schemaLocation="PlannedDispensingVersion.xsd"/>
+    <include schemaLocation="DispensingIdentifier.xsd"/>
+    <include schemaLocation="DispensingVersion.xsd"/>
     <include schemaLocation="Created.xsd"/>
     <include schemaLocation="Modified.xsd"/>
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
@@ -20,16 +20,16 @@
     <include schemaLocation="AdministrationInstruction.xsd"/>
     <include schemaLocation="PlannedAdministration.xsd"/>
 
-    <element name="DetailedPlannedDispensing" type="mc160:DetailedPlannedDispensingType">
+    <element name="DetailedDispensing" type="mc160:DetailedDispensingType">
         <annotation>
-            <documentation xml:lang="en-GB">Details for a planned dispensing for a drugmedication</documentation>
-            <documentation xml:lang="da-DK">Detaljer vedrørende en planlagt dispensering for en given lægemiddelordination</documentation>
+            <documentation xml:lang="en-GB">Details for a dispensing for a drugmedication</documentation>
+            <documentation xml:lang="da-DK">Detaljer vedrørende en dispensering for en given lægemiddelordination</documentation>
         </annotation>
     </element>
-    <complexType name="DetailedPlannedDispensingType">
+    <complexType name="DetailedDispensingType">
         <sequence>
-        	<element name="Identifier" type="mc160:PlannedDispensingIdentifierType"/>
-        	<element name="Version" type="mc160:PlannedDispensingVersionType"/>
+        	<element name="Identifier" type="mc160:DispensingIdentifierType"/>
+        	<element name="Version" type="mc160:DispensingVersionType"/>
 			<element name="Created" type="mc160:CreatedType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>

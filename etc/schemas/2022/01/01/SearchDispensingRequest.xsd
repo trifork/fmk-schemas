@@ -9,13 +9,13 @@
 	<include schemaLocation="IncludePatientDetails.xsd"/>
 
 	<!-- TODO: Re-evaluate this service, will it be needed when substitutions are chosen at start of period? -->
-	<element name="SearchPlannedDispensingRequest" type="mc160:SearchPlannedDispensingRequestType">
+	<element name="SearchDispensingRequest" type="mc160:SearchDispensingRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request to search for planned dispensing based on pharamacy id and drugid</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en søgning efter planlagte dispenseringer ud fra apoteksid og drugid</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a request to search for dispensing based on pharamacy id and drugid</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en søgning efter dispenseringer ud fra apoteksid og drugid</documentation>
 		</annotation>
 	</element>
-	<complexType name="SearchPlannedDispensingRequestType">
+	<complexType name="SearchDispensingRequestType">
 		<sequence>
 			<choice>
 				<element name="OrderedAtPharmacyIdentifier" type="mc160:OrganisationIdentifierType" maxOccurs="unbounded"/>

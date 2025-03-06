@@ -11,7 +11,7 @@
 	<include schemaLocation="DispensingPeriodEndDate.xsd"/>
 	<include schemaLocation="PackagedDateTime.xsd"/>
 	<include schemaLocation="DispensingProductionIdentifier.xsd"/>
-	<include schemaLocation="PlannedDispensingOverview.xsd"/>
+	<include schemaLocation="PackagedDispensingOverview.xsd"/>
 
 	<complexType name="PackagedPeriodOverviewType">
 		<annotation>
@@ -26,7 +26,7 @@
 			<element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
 			<element name="PackagedDateTime" type="mc160:PackagedDateTimeType"/>
 			<element name="ProductionIdentifier" type="mc160:DispensingProductionIdentifierType" minOccurs="0"/>
-			<element name="PlannedDispensingOverview" type="mc160:PlannedDispensingOverviewType" maxOccurs="unbounded"/>
+			<element name="PlannedDispensingOverview" type="mc160:DispensingOverviewType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

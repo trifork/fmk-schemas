@@ -5,8 +5,8 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="PlannedDispensingIdentifier.xsd"/>
-    <include schemaLocation="PlannedDispensingVersion.xsd"/>
+    <include schemaLocation="DispensingIdentifier.xsd"/>
+    <include schemaLocation="DispensingVersion.xsd"/>
     <include schemaLocation="DrugShortName.xsd"/>
     <include schemaLocation="DrugDescriptionText.xsd"/>
     <include schemaLocation="DispensingWarning.xsd"/>
@@ -17,12 +17,12 @@
 
     <complexType name="DispensingType">
         <annotation>
-            <documentation xml:lang="en-GB">Planned Dispensing of Drug Medication</documentation>
-            <documentation xml:lang="da-DK">Planlagt Dispensering af dispenseret lægemiddelordination</documentation>
+            <documentation xml:lang="en-GB">Dispensing of Drug Medication</documentation>
+            <documentation xml:lang="da-DK">Dispensering af dispenseret lægemiddelordination</documentation>
         </annotation>
         <sequence>
-            <element name="Identifier" type="mc160:PlannedDispensingIdentifierType"/>
-            <element name="Version" type="mc160:PlannedDispensingVersionType"/>
+            <element name="Identifier" type="mc160:DispensingIdentifierType"/>
+            <element name="Version" type="mc160:DispensingVersionType"/>
             <element name="ShortName" type="mc160:DrugShortNameType" minOccurs="0"/>
             <element name="Description" type="mc160:DrugDescriptionTextType" minOccurs="0"/>
             <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>

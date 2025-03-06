@@ -7,7 +7,7 @@
 
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodStatusChange.xsd"/>
-	<include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+	<include schemaLocation="DispensingIdentifier.xsd"/>
 	<include schemaLocation="PlannedAdministrationIdentifierAndVersion.xsd"/>
 	<include schemaLocation="DispensingWarning.xsd"/>
 
@@ -23,8 +23,8 @@
      			<complexType>
 	     			<sequence>
 						<element name="PlannedAdministration" type="mc160:PlannedAdministrationIdentifierAndVersionType"/>
-						<element name="DispensingIdentifier" type="mc160:PlannedDispensingIdentifierType" minOccurs="0"/> <!-- Dispensings are only created if call succeeds -->
-						<!-- Warnings that relate to the individual planned dispensing -->
+						<element name="DispensingIdentifier" type="mc160:DispensingIdentifierType" minOccurs="0"/> <!-- Dispensings are only created if call succeeds -->
+						<!-- Warnings that relate to the individual dispensing -->
 						<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
 	     			</sequence>
      			</complexType>
