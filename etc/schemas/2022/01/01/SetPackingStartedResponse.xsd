@@ -5,18 +5,18 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 
 	<element name="SetPackingStartedResponse" type="mc160:SetPackingStartedResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response to a request which starts the packing of a dosedispensed period</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for et svar for en forespørgsel som starter pakningen af en dosisdispenseret periode</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response to a request which starts the packing of a dispensed period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar for en forespørgsel som starter pakningen af en dispenseret periode</documentation>
 		</annotation>
 	</element>
 	<complexType name="SetPackingStartedResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="DoseDispensingPeriodIdentifier" type="mc160:DoseDispensingPeriodIdentifierType" maxOccurs="unbounded"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -6,6 +6,7 @@
         attributeFormDefault="unqualified">
 
 	<include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugIdentifier.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
@@ -19,13 +20,14 @@
 
 	<complexType name="PlannedDispensingOverviewType">
 		<annotation>
-			<documentation xml:lang="en-GB">Overview of a packaged dose dispensing periods planned dispensings</documentation>
-			<documentation xml:lang="da-DK">Overblik over en pakket dosisdispenserings periode's planlagte dispenseringer</documentation>
+			<documentation xml:lang="en-GB">Overview of a packaged dispensing periods planned dispensings</documentation>
+			<documentation xml:lang="da-DK">Overblik over en pakket dispenserings periode's planlagte dispenseringer</documentation>
 		</annotation>
 		<sequence>
 			<element name="PlannedDispensingIdentifier" type="mc160:PlannedDispensingIdentifierType"/>
+			<element name="PlanedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
-			<element name="PrescribedDrugIdentifier" type="mc160:DrugIdentifierType"/>
+			<element name="PrescribedDrug" type="mc160:DrugType"/>
 			<element name="PlannedDrugIdentifier" type="mc160:DrugIdentifierType" minOccurs="0"/>
 			<element name="ActualDrug" type="mc160:DrugType"/>
 			<element name="PackageNumber" type="mc160:PackageNumberType" minOccurs="0"/>

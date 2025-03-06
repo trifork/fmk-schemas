@@ -8,22 +8,22 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="IsPreflight.xsd"/>
-	<include schemaLocation="DoseDispensingPeriodStatusChange.xsd"/>
+	<include schemaLocation="StartEffectuationOfDispensingPeriod.xsd"/>
 
-	<element name="StartEffectuationOfDoseDispensingPeriodRequest" type="mc160:StartEffectuationOfDoseDispensingPeriodRequestType">
+	<element name="StartEffectuationOfDispensingPeriodRequest" type="mc160:StartEffectuationOfDispensingPeriodRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">A request to start effectuation for an entire DD period</documentation>
-			<documentation xml:lang="da-DK">Et request som påbegynder udlevering for alt i en DD periode</documentation>
+			<documentation xml:lang="en-GB">A request to start effectuation for an entire dispensing period</documentation>
+			<documentation xml:lang="da-DK">Et request som påbegynder udlevering for alt i en dispensing periode</documentation>
 		</annotation>
 	</element>
-	<complexType name="StartEffectuationOfDoseDispensingPeriodRequestType">
+	<complexType name="StartEffectuationOfDispensingPeriodRequestType">
 		<sequence>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded" />
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="IsPreflight" type="mc160:IsPreflightType" minOccurs="0"/>
-			<element name="StartEffectuationOfDoseDispensingPeriod" type="mc160:DoseDispensingPeriodStatusChangeType" maxOccurs="unbounded"/>
+			<element name="StartEffectuationOfDispensingPeriod" type="mc160:StartEffectuationOfDispensingPeriodType" maxOccurs="unbounded"/> <!-- TODO: Major changes -->
 		</sequence>
 	</complexType>
 </schema>

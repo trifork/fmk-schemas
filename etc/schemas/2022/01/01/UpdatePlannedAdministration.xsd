@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+    <include schemaLocation="PlannedDispensingVersion.xsd"/>
+    <include schemaLocation="ModificationMetadata.xsd"/>
+    <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifierAndVersion.xsd"/>
+    <include schemaLocation="DrugSubstitution.xsd"/>
+    <include schemaLocation="AdministrationInstruction.xsd"/>
+    <include schemaLocation="PlannedAdministrationAccordingToDrugMedication.xsd"/>
+    <include schemaLocation="PlannedAdministration.xsd"/>
+    
+    <complexType name="UpdatePlannedAdministrationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element for updating a planned dispensing for a drugmedication</documentation>
+            <documentation xml:lang="da-DK">Opdatering af en planlagt dispensering for en given lægemiddelordination</documentation>
+        </annotation>
+        <sequence>
+        	<element name="Identifier" type="mc160:PlannedDispensingIdentifierType"/>
+        	<element name="Version" type="mc160:PlannedDispensingVersionType"/>
+        	<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType" minOccurs="0"/>
+        	<element name="DrugMedication" type="mc160:DrugMedicationIdentifierAndVersionType"/>
+            <element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0" />
+			<choice minOccurs="0">
+				<element name="PlannedAdministrationAccordingToDrugMedication" type="mc160:PlannedAdministrationAccordingToDrugMedicationType"/>
+                <element name="PlannedAdministration" type="mc160:PlannedAdministrationType"/>
+			</choice>
+        </sequence>
+    </complexType>
+</schema>

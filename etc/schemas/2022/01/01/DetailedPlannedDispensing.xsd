@@ -9,13 +9,13 @@
     <include schemaLocation="PlannedDispensingVersion.xsd"/>
     <include schemaLocation="Created.xsd"/>
     <include schemaLocation="Modified.xsd"/>
-    <include schemaLocation="DoseDispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DispensingCardIdentifier.xsd"/>
     <include schemaLocation="DrugMedication.xsd"/>
-    <include schemaLocation="ValidPrescription.xsd"/>
+    <include schemaLocation="ValidWarrant.xsd"/>
     <include schemaLocation="PrescribingDoctor.xsd"/>
     <include schemaLocation="DrugShortName.xsd"/>
     <include schemaLocation="DrugDescriptionText.xsd"/>
-    <include schemaLocation="DoseDispensingWarning.xsd"/>
+    <include schemaLocation="DispensingWarning.xsd"/>
     <include schemaLocation="DrugSubstitution.xsd"/>
     <include schemaLocation="AdministrationInstruction.xsd"/>
     <include schemaLocation="PlannedAdministration.xsd"/>
@@ -33,17 +33,18 @@
 			<element name="Created" type="mc160:CreatedType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
-			<element name="DoseDispensingCardIdentifier" type="mc160:DoseDispensingCardIdentifierType" minOccurs="0"/>
+			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType" minOccurs="0"/>
           	<element name="DrugMedication" type="mc160:DrugMedicationType"/>
-          	<element name="ValidPrescription" type="mc160:ValidPrescriptionType" minOccurs="0"/>
+          	<element name="ValidWarrant" type="mc160:ValidWarrantType" minOccurs="0"/>
           	<element name="PrescribingDoctor" type="mc160:PrescribingDoctorType" minOccurs="0"/>
             <element name="ShortName" type="mc160:DrugShortNameType" minOccurs="0"/>
             <element name="Description" type="mc160:DrugDescriptionTextType" minOccurs="0"/>
-            <element name="Warning" type="mc160:DoseDispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="Substitution" type="mc160:DrugSubstitutionType" minOccurs="0"/>
-            <element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0" />
+            <element name="SubstitutionAtPackingPharmacy" type="mc160:DrugType" minOccurs="0"/>
+            <element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0"/>
             <element name="PlannedAdministration" type="mc160:PlannedAdministrationType" minOccurs="0"/>
-            <element name="DoseDispensingEndDate" type="mc160:DoseDispensingEndDateType" minOccurs="0"/>     
+            <element name="DispensingEndDate" type="mc160:DispensingEndDateType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>

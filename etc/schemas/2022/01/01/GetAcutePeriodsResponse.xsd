@@ -5,17 +5,17 @@
 		elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="PersonWithDoseDispensing.xsd"/>
+    <include schemaLocation="PersonWithDispensing.xsd"/>
 
 	<element name="GetAcutePeriodsResponse" type="mc160:GetAcutePeriodsResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response with acute dosedispensingperiods</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en svar med akutte dosisdispenseringsperioder</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response with acute dispensingperiods</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en svar med akutte dispenseringsperioder</documentation>
 		</annotation>
 	</element>
 	<complexType name="GetAcutePeriodsResponseType">
 		<sequence>
-			<element name="PersonWithDoseDispensing" type="mc160:PersonWithDoseDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PersonWithDispensing" type="mc160:PersonWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

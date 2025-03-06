@@ -5,21 +5,21 @@
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
 
-	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
-	<include schemaLocation="DoseDispensingProductionIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingProductionIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<element name="SetPackingFinished" type="mc160:SetPackingFinishedType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for finishing the packing of a dosedispensed period</documentation>
-			<documentation xml:lang="da-DK">Element for afslutning af pakning af en dosisdispenseret periode</documentation>
+			<documentation xml:lang="en-GB">Element for finishing the packing of a dispensed period</documentation>
+			<documentation xml:lang="da-DK">Element for afslutning af pakning af en dispenseret periode</documentation>
 		</annotation>
 	</element>
 
 	<complexType name="SetPackingFinishedType">
 		<sequence>
-			<element name="DoseDispensingPeriodIdentifier" type="mc160:DoseDispensingPeriodIdentifierType"/>
-			<element name="DoseDispensingProductionIdentifier" type="mc160:DoseDispensingProductionIdentifierType" minOccurs="0"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+			<element name="DispensingProductionIdentifier" type="mc160:DispensingProductionIdentifierType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

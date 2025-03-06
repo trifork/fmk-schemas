@@ -4,9 +4,15 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationVersion.xsd"/>
+	<include schemaLocation="DrugMedication.xsd"/>
+	<include schemaLocation="ValidWarrant.xsd"/>
+	<include schemaLocation="DispensingWarning.xsd"/>
 	<include schemaLocation="DosageQuantityUnitText.xsd"/>
 	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
 	<include schemaLocation="PlannedAdministrationStructures.xsd"/>
+	<include schemaLocation="AdministrationInstruction.xsd"/>
 
 	<complexType name="PlannedAdministrationType">
 		<annotation>
@@ -14,12 +20,19 @@
 			<documentation xml:lang="da-DK">Angivelse af hvor ofte og hvornår et lægemiddel planlægges til indtagelse</documentation>
 		</annotation>
 		<sequence>
-			<choice>
-				<element name="UnitText" type="mc160:DosageQuantityUnitTextType" minOccurs="0"/>
-				<element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType" minOccurs="0"/>
+			<element name="Identifier" type="mc160:PlannedAdministrationIdentifierType"/>
+			<element name="Version" type="mc160:PlannedAdministrationVersionType"/>
+			<element name="DrugMedication" type="mc160:DrugMedicationType"/>
+			<element name="ValidWarrant" type="mc160:ValidWarrantType" minOccurs="0"/>
+			<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+			<choice minOccurs="0">
+				<element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>
+				<element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType"/>
 			</choice>
+			<element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0"/>
 			<element name="PlannedAdministrationFixed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
 			<element name="PlannedAdministrationAccordingToNeed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
+			<element name="DispensingEndDate" type="mc160:DispensingEndDateType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

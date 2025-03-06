@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DispensingCardIdentifier.xsd"/>
+
+	<element name="CloseDispensingCardResponse" type="mc160:CloseDispensingCardResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a for a request which closes a dispensing card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel der lukker et dispenseringskort</documentation>
+		</annotation>
+	</element>
+	<complexType name="CloseDispensingCardResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="Identifier" type="mc160:DispensingCardIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

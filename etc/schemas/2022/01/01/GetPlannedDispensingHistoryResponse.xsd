@@ -5,18 +5,18 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="PersonIdentifier.xsd"/>
-    <include schemaLocation="PlannedDispensing.xsd"/>
+    <include schemaLocation="PlannedAdministrationHistory.xsd"/>
 
-    <element name="GetPlannedDispensingHistoryResponse" type="mc160:GetPlannedDispensingHistoryResponseType">
+    <element name="GetPlannedAdministrationHistoryResponse" type="mc160:GetPlannedAdministrationHistoryResponseType">
         <annotation>
-            <documentation xml:lang="en-GB">Outer container element for a response with a planned dispensing history</documentation>
-            <documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel efter planlagt dispenserings historik</documentation>
+            <documentation xml:lang="en-GB">Outer container element for a response with a planned administration history</documentation>
+            <documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel efter planlagt administration historik</documentation>
         </annotation>
     </element>
-    <complexType name="GetPlannedDispensingHistoryResponseType">
+    <complexType name="GetPlannedAdministrationHistoryResponseType">
         <sequence>
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-            <element name="PlannedDispensing" type="mc160:PlannedDispensingType" maxOccurs="unbounded"/>
+            <element name="PlannedAdministration" type="mc160:PlannedAdministrationHistoryType" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>
