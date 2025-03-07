@@ -7,6 +7,7 @@
     <include schemaLocation="DispensingWarningCode.xsd"/>
     <include schemaLocation="DispensingWarningText.xsd"/>
     <include schemaLocation="WarningSeverity.xsd"/>
+    <include schemaLocation="DispensingWarningBlockingFlag.xsd"/>
 
     <complexType name="DispensingWarningType">
         <annotation>
@@ -17,7 +18,7 @@
         	<element name="WarningCode" type="mc160:DispensingWarningCodeType"/>
             <element name="WarningText" type="mc160:DispensingWarningTextType"/>
         	<element name="Severity" type="mc160:WarningSeverityType"/>
-            <element name="Blocking" type="boolean"/>
+            <element name="Blocking" type="mc160:DispensingWarningBlockingFlagType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>
