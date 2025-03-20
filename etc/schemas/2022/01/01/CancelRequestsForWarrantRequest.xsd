@@ -7,21 +7,21 @@
     <include schemaLocation="PersonIdentifier.xsd"/>
     <include schemaLocation="MedicineCardVersion.xsd"/>
     <include schemaLocation="Modificator.xsd"/>
-    <include schemaLocation="PrescriptionRequestToCancel.xsd"/>
+    <include schemaLocation="RequestForWarrantToCancel.xsd"/>
 
-    <element name="CancelPrescriptionRequestRequest" type="mc160:CancelPrescriptionRequestRequestType">
+    <element name="CancelRequestsForWarrantRequest" type="mc160:CancelRequestsForWarrantRequestType">
         <annotation>
-            <documentation xml:lang="en-GB">Cancel prescription request</documentation>
-            <documentation xml:lang="da-DK">Annullér receptanmodninger</documentation>
+            <documentation xml:lang="en-GB">Cancel requests for warrant</documentation>
+            <documentation xml:lang="da-DK">Annullér anmodninger om udleveringsgrundlag</documentation>
         </annotation>
     </element>
-    <complexType name="CancelPrescriptionRequestRequestType">
+    <complexType name="CancelRequestsForWarrantRequestType">
         <sequence>
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
             <element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
             <element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
             <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-            <element name="PrescriptionRequest" type="mc160:PrescriptionRequestToCancelType" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="RequestForWarrant" type="mc160:RequestForWarrantToCancelType" minOccurs="1" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

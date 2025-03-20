@@ -5,13 +5,13 @@
     
     <include schemaLocation="PersonIdentifier.xsd"/>
     <include schemaLocation="CreatedDateTime.xsd"/>
-    <include schemaLocation="NumberOfUnhandledPrescriptionRequests.xsd"/>
+    <include schemaLocation="NumberOfUnhandledRequestsForWarrant.xsd"/>
 
-    <complexType name="SearchPrescriptionRequestsPatientType">
+    <complexType name="SearchRequestsForWarrantPatientType">
         <sequence>
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
             <element name="OldestUnhandledCreatedDateTime" type="mc160:CreatedDateTimeType"/>
-            <element name="NumberOfUnhandled" type="mc160:NumberOfUnhandledPrescriptionRequestsType"/>
+            <element name="NumberOfUnhandled" type="mc160:NumberOfUnhandledRequestsForWarrantType"/>
         </sequence>
     </complexType>
 </schema>

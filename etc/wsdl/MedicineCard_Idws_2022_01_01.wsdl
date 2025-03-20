@@ -101,8 +101,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionRequestRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/CancelPrescriptionRequestResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelRequestsForWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelRequestForWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/CloseDoseDispensingCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CloseDoseDispensingCardResponse.xsd"/>
@@ -169,8 +169,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/EffectuateDoseDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/EffectuateDoseDispensingPeriodResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/ForwardPrescriptionRequestRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/ForwardPrescriptionRequestResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ForwardRequestForWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ForwardRequestForWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsResponse.xsd"/>
@@ -256,11 +256,14 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantAndDetailsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantAndDetailsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestVersionsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionRequestVersionsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionResidualAmountRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPrescriptionResidualAmountResponse.xsd"/>
@@ -303,8 +306,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/SearchPlannedDispensingRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchPlannedDispensingResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchPrescriptionRequestsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchPrescriptionRequestsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchRequestsForWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchRequestsForWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
@@ -402,6 +405,7 @@
     <wsdl:message name="SecurityHeader">
         <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
     </wsdl:message>
+
     <wsdl:message name="WhitelistingHeader">
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
     </wsdl:message>
@@ -502,12 +506,12 @@
         <wsdl:part name="CancelPrescriptionResponse" element="mc160:CancelPrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CancelPrescriptionRequestRequest_160">
-        <wsdl:part name="CancelPrescriptionRequestRequest" element="mc160:CancelPrescriptionRequestRequest"/>
+    <wsdl:message name="CancelRequestForWarrantRequest_160">
+        <wsdl:part name="CancelRequestForWarrantRequest" element="mc160:CancelRequestsForWarrantRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CancelPrescriptionRequestResponse_160">
-        <wsdl:part name="CancelPrescriptionRequestResponse" element="mc160:CancelPrescriptionRequestResponse"/>
+    <wsdl:message name="CancelRequestForWarrantResponse_160">
+        <wsdl:part name="CancelRequestForWarrantResponse" element="mc160:CancelRequestForWarrantResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CloseDoseDispensingCardRequest_160">
@@ -678,12 +682,12 @@
         <wsdl:part name="EffectuateDoseDispensingPeriodResponse" element="mc160:EffectuateDoseDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="ForwardPrescriptionRequestRequest_160">
-        <wsdl:part name="ForwardPrescriptionRequestRequest" element="mc160:ForwardPrescriptionRequestRequest"/>
+    <wsdl:message name="ForwardRequestForWarrantRequest_160">
+        <wsdl:part name="ForwardRequestForWarrantRequest" element="mc160:ForwardRequestForWarrantRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="ForwardPrescriptionRequestResponse_160">
-        <wsdl:part name="ForwardPrescriptionRequestResponse" element="mc160:ForwardPrescriptionRequestResponse"/>
+    <wsdl:message name="ForwardRequestForWarrantResponse_160">
+        <wsdl:part name="ForwardRequestForWarrantResponse" element="mc160:ForwardRequestForWarrantResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetAcutePeriodsRequest_160">
@@ -910,20 +914,28 @@
         <wsdl:part name="GetPrescriptionResponse" element="mc160:GetPrescriptionResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescriptionRequestsRequest_160">
-        <wsdl:part name="GetPrescriptionRequestsRequest" element="mc160:GetPrescriptionRequestsRequest"/>
+    <wsdl:message name="GetRequestsForWarrantAndDetailsRequest_160">
+        <wsdl:part name="GetRequestsForWarrantAndDetailsRequest" element="mc160:GetRequestsForWarrantAndDetailsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescriptionRequestsResponse_160">
-        <wsdl:part name="GetPrescriptionRequestsResponse" element="mc160:GetPrescriptionRequestsResponse"/>
+    <wsdl:message name="GetRequestsForWarrantAndDetailsResponse_160">
+        <wsdl:part name="GetRequestsForWarrantAndDetailsResponse" element="mc160:GetRequestsForWarrantAndDetailsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescriptionRequestVersionsRequest_160">
-        <wsdl:part name="GetPrescriptionRequestVersionsRequest" element="mc160:GetPrescriptionRequestVersionsRequest"/>
+    <wsdl:message name="GetRequestsForWarrantRequest_160">
+        <wsdl:part name="GetRequestsForWarrantRequest" element="mc160:GetRequestsForWarrantRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescriptionRequestVersionsResponse_160">
-        <wsdl:part name="GetPrescriptionRequestVersionsResponse" element="mc160:GetPrescriptionRequestVersionsResponse"/>
+    <wsdl:message name="GetRequestsForWarrantResponse_160">
+        <wsdl:part name="GetRequestsForWarrantResponse" element="mc160:GetRequestsForWarrantResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetRequestForWarrantVersionsRequest_160">
+        <wsdl:part name="GetRequestForWarrantVersionsRequest" element="mc160:GetRequestForWarrantVersionsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetRequestForWarrantVersionsResponse_160">
+        <wsdl:part name="GetRequestForWarrantVersionsResponse" element="mc160:GetRequestForWarrantVersionsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPrescriptionResidualAmountRequest_160">
@@ -1030,12 +1042,12 @@
         <wsdl:part name="SearchPlannedDispensingResponse" element="mc160:SearchPlannedDispensingResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchPrescriptionRequestsRequest_160">
-        <wsdl:part name="SearchPrescriptionRequestsRequest" element="mc160:SearchPrescriptionRequestsRequest"/>
+    <wsdl:message name="SearchRequestsForWarrantRequest_160">
+        <wsdl:part name="SearchRequestsForWarrantRequest" element="mc160:SearchRequestsForWarrantRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchPrescriptionRequestsResponse_160">
-        <wsdl:part name="SearchPrescriptionRequestsResponse" element="mc160:SearchPrescriptionRequestsResponse"/>
+    <wsdl:message name="SearchRequestsForWarrantResponse_160">
+        <wsdl:part name="SearchRequestsForWarrantResponse" element="mc160:SearchRequestsForWarrantResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
@@ -1292,9 +1304,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CancelPrescriptionRequest_160">
-            <wsdl:input name="CancelPrescriptionRequestRequest_160" message="tns:CancelPrescriptionRequestRequest_160"/>
-            <wsdl:output name="CancelPrescriptionRequestResponse_160" message="tns:CancelPrescriptionRequestResponse_160"/>
+        <wsdl:operation name="CancelRequestForWarrant_160">
+            <wsdl:input name="CancelRequestForWarrantRequest_160" message="tns:CancelRequestForWarrantRequest_160"/>
+            <wsdl:output name="CancelRequestForWarrantResponse_160" message="tns:CancelRequestForWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1424,9 +1436,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="ForwardPrescriptionRequest_160">
-            <wsdl:input name="ForwardPrescriptionRequestRequest_160" message="tns:ForwardPrescriptionRequestRequest_160"/>
-            <wsdl:output name="ForwardPrescriptionRequestResponse_160" message="tns:ForwardPrescriptionRequestResponse_160"/>
+        <wsdl:operation name="ForwardRequestForWarrant_160">
+            <wsdl:input name="ForwardRequestForWarrantRequest_160" message="tns:ForwardRequestForWarrantRequest_160"/>
+            <wsdl:output name="ForwardRequestForWarrantResponse_160" message="tns:ForwardRequestForWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1598,15 +1610,21 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionRequests_160">
-            <wsdl:input name="GetPrescriptionRequestsRequest_160" message="tns:GetPrescriptionRequestsRequest_160"/>
-            <wsdl:output name="GetPrescriptionRequestsResponse_160" message="tns:GetPrescriptionRequestsResponse_160"/>
+        <wsdl:operation name="GetRequestsForWarrantAndDetails_160">
+            <wsdl:input name="GetRequestsForWarrantAndDetailsRequest_160" message="tns:GetRequestsForWarrantAndDetailsRequest_160"/>
+            <wsdl:output name="GetRequestsForWarrantAndDetailsResponse_160" message="tns:GetRequestsForWarrantAndDetailsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionRequestVersions_160">
-            <wsdl:input name="GetPrescriptionRequestVersionsRequest_160" message="tns:GetPrescriptionRequestVersionsRequest_160"/>
-            <wsdl:output name="GetPrescriptionRequestVersionsResponse_160" message="tns:GetPrescriptionRequestVersionsResponse_160"/>
+        <wsdl:operation name="GetRequestsForWarrant_160">
+            <wsdl:input name="GetRequestsForWarrantRequest_160" message="tns:GetRequestsForWarrantRequest_160"/>
+            <wsdl:output name="GetRequestsForWarrantResponse_160" message="tns:GetRequestsForWarrantResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetRequestForWarrantVersions_160">
+            <wsdl:input name="GetRequestForWarrantVersionsRequest_160" message="tns:GetRequestForWarrantVersionsRequest_160"/>
+            <wsdl:output name="GetRequestForWarrantVersionsResponse_160" message="tns:GetRequestForWarrantVersionsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1688,9 +1706,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchPrescriptionRequests_160">
-            <wsdl:input name="SearchPrescriptionRequestsRequest_160" message="tns:SearchPrescriptionRequestsRequest_160"/>
-            <wsdl:output name="SearchPrescriptionRequestsResponse_160" message="tns:SearchPrescriptionRequestsResponse_160"/>
+        <wsdl:operation name="SearchRequestsForWarrant_160">
+            <wsdl:input name="SearchRequestsForWarrantRequest_160" message="tns:SearchRequestsForWarrantRequest_160"/>
+            <wsdl:output name="SearchRequestsForWarrantResponse_160" message="tns:SearchRequestsForWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1975,13 +1993,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CancelPrescriptionRequest_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CancelPrescriptionRequest" style="document"/>
-            <wsdl:input name="CancelPrescriptionRequestRequest_160">
+        <wsdl:operation name="CancelRequestForWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CancelRequestForWarrant" style="document"/>
+            <wsdl:input name="CancelRequestForWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CancelPrescriptionRequestResponse_160">
+            <wsdl:output name="CancelRequestForWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2261,13 +2279,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="ForwardPrescriptionRequest_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#ForwardPrescriptionRequest" style="document"/>
-            <wsdl:input name="ForwardPrescriptionRequestRequest_160">
+        <wsdl:operation name="ForwardRequestForWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ForwardRequestForWarrant" style="document"/>
+            <wsdl:input name="ForwardRequestForWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="ForwardPrescriptionRequestResponse_160">
+            <wsdl:output name="ForwardRequestForWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2638,26 +2656,39 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionRequests_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescriptionRequests" style="document"/>
-            <wsdl:input name="GetPrescriptionRequestsRequest_160">
+        <wsdl:operation name="GetRequestsForWarrantAndDetails_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetRequestsForWarrantAndDetails" style="document"/>
+            <wsdl:input name="GetRequestsForWarrantAndDetailsRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPrescriptionRequestsResponse_160">
+            <wsdl:output name="GetRequestsForWarrantAndDetailsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescriptionRequestVersions_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescriptionRequestVersions" style="document"/>
-            <wsdl:input name="GetPrescriptionRequestVersionsRequest_160">
+        <wsdl:operation name="GetRequestsForWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetRequestsForWarrant" style="document"/>
+            <wsdl:input name="GetRequestsForWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPrescriptionRequestVersionsResponse_160">
+            <wsdl:output name="GetRequestsForWarrantResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetRequestForWarrantVersions_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetRequestForWarrantVersions" style="document"/>
+            <wsdl:input name="GetRequestForWarrantVersionsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetRequestForWarrantVersionsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2833,13 +2864,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchPrescriptionRequests_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchPrescriptionRequests" style="document"/>
-            <wsdl:input name="SearchPrescriptionRequestsRequest_160">
+        <wsdl:operation name="SearchRequestsForWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchRequestsForWarrant" style="document"/>
+            <wsdl:input name="SearchRequestsForWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="SearchPrescriptionRequestsResponse_160">
+            <wsdl:output name="SearchRequestsForWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

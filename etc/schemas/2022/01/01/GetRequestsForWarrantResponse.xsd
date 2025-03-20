@@ -5,20 +5,20 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionRequest.xsd"/>
+	<include schemaLocation="RequestForWarrant.xsd"/>
 	<include schemaLocation="PageNumber.xsd"/>
 	<include schemaLocation="MoreAvailable.xsd"/>
 
-	<element name="GetPrescriptionRequestsResponse" type="mc160:GetPrescriptionRequestsResponseType">
+	<element name="GetRequestsForWarrantResponse" type="mc160:GetRequestsForWarrantResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response with one or more prescriptions</documentation>
-			<documentation xml:lang="da-DK">Resultat af hentning af receptanmodninger for CPR nummer</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response with one or more requests for warrant for a person</documentation>
+			<documentation xml:lang="da-DK">Resultat af hentning af anmodninger om udleveringsgrundlag for en person</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetPrescriptionRequestsResponseType">
+	<complexType name="GetRequestsForWarrantResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
-			<element name="PrescriptionRequest" type="mc160:PrescriptionRequestType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RequestForWarrant" type="mc160:RequestForWarrantType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PageNumber" type="mc160:PageNumberType" />
 			<element name="MoreAvailable" type="mc160:MoreAvailableType" minOccurs="0"/>
 		</sequence>

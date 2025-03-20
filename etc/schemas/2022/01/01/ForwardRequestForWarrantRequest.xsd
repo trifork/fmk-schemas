@@ -7,21 +7,21 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="ForwardPrescriptionRequest.xsd"/>
+	<include schemaLocation="ForwardRequestForWarrant.xsd"/>
 
-	<element name="ForwardPrescriptionRequestRequest" type="mc160:ForwardPrescriptionRequestRequestType">
+	<element name="ForwardRequestForWarrantRequest" type="mc160:ForwardRequestForWarrantRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Forward a prescription request</documentation>
-			<documentation xml:lang="da-DK">Viderestil en receptanmodning</documentation>
+			<documentation xml:lang="en-GB">Forward a request for warrant</documentation>
+			<documentation xml:lang="da-DK">Viderestil en anmodning om udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
-	<complexType name="ForwardPrescriptionRequestRequestType">
+	<complexType name="ForwardRequestForWarrantRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="PrescriptionRequest" type="mc160:ForwardPrescriptionRequestType" maxOccurs="unbounded"/>
+			<element name="RequestForWarrant" type="mc160:ForwardRequestForWarrantType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

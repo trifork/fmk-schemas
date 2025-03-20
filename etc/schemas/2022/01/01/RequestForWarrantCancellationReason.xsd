@@ -4,17 +4,17 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<element name="PrescriptionRequestCancellationReasonType" type="mc160:PrescriptionRequestCancellationReasonType">
+	<element name="RequestForWarrantCancellationReasonType" type="mc160:RequestForWarrantCancellationReasonType">
 		<annotation>
-			<documentation xml:lang="en-GB">Reason why prescription request was cancelled</documentation>
-			<documentation xml:lang="da-DK">Årsag til afvisning af receptanmodning (afvisningsårsag)</documentation>
+			<documentation xml:lang="en-GB">Reason why request for warrant was cancelled</documentation>
+			<documentation xml:lang="da-DK">Årsag til afvisning af anmodning om udleveringsgrundlag (afvisningsårsag)</documentation>
 		</annotation>
 	</element>
-	<simpleType name="PrescriptionRequestCancellationReasonType">
-		<union memberTypes="mc160:PredefinedPrescriptionRequestCancellationReasonType mc160:UndefinedPrescriptionRequestCancellationReasonType"/>
+	<simpleType name="RequestForWarrantCancellationReasonType">
+		<union memberTypes="mc160:PredefinedRequestForWarrantCancellationReasonType mc160:UndefinedRequestForWarrantCancellationReasonType"/>
 	</simpleType>
-	<simpleType name="PredefinedPrescriptionRequestCancellationReasonType">
-		<restriction base="mc160:UndefinedPrescriptionRequestCancellationReasonType">
+	<simpleType name="PredefinedRequestForWarrantCancellationReasonType">
+		<restriction base="mc160:UndefinedRequestForWarrantCancellationReasonType">
 			<enumeration value="Behandlingen er afsluttet"/>
 			<enumeration value="Receptfornyelsen kræver konsultation"/>
             <enumeration value="Kontakt egen læge hvis recept ønskes"/>
@@ -27,7 +27,7 @@
 			<enumeration value="Medicinen kan købes i håndkøb"/>
 		</restriction>
 	</simpleType>
-	<simpleType name="UndefinedPrescriptionRequestCancellationReasonType">
+	<simpleType name="UndefinedRequestForWarrantCancellationReasonType">
 		<restriction base="string">
 			<minLength value="1"/>
 			<maxLength value="200"/>

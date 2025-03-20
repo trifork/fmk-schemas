@@ -7,20 +7,20 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
-	<include schemaLocation="ForwardedPrescriptionRequest.xsd"/>
+	<include schemaLocation="ForwardedRequestForWarrant.xsd"/>
 
-	<element name="ForwardPrescriptionRequestResponse" type="mc160:ForwardPrescriptionRequestResponseType">
+	<element name="ForwardRequestForWarrantResponse" type="mc160:ForwardRequestForWarrantResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for forwarding prescription requests</documentation>
-			<documentation xml:lang="da-DK">Svar på viderestilling af receptanmodninger</documentation>
+			<documentation xml:lang="en-GB">Response for forwarding a request for warrant</documentation>
+			<documentation xml:lang="da-DK">Svar på viderestilling af en anmodning om udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
-	<complexType name="ForwardPrescriptionRequestResponseType">
+	<complexType name="ForwardRequestForWarrantResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
             <element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
             <element name="VersionMismatchWarning" type="mc160:VersionMismatchWarningType" minOccurs="0"/>
-			<element name="PrescriptionRequest" type="mc160:ForwardedPrescriptionRequestType" maxOccurs="unbounded"/>
+			<element name="RequestForWarrant" type="mc160:ForwardedRequestForWarrantType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="SearchRequestsForWarrantOrganisation.xsd"/>
+	<include schemaLocation="CreatedDateTime.xsd"/>
+
+	<element name="SearchRequestsForWarrantRequest" type="mc160:SearchRequestsForWarrantRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">An element for searching for requests for warrant given an organisation which is either an ordering or a prescribing organisation</documentation>
+			<documentation xml:lang="da-DK">Et element til søgning efter anmodninger om udleveringsgrundlag givet en anmodende eller anmodede organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchRequestsForWarrantRequestType">
+		<sequence>
+			<choice>
+				<element name="PrescribingOrganisation" type="mc160:SearchRequestsForWarrantOrganisationType"/>
+				<element name="OrderingOrganisation" type="mc160:SearchRequestsForWarrantOrganisationType"/>
+			</choice>
+			<element name="FromDateTime" type="mc160:CreatedDateTimeType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
