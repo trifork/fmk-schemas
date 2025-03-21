@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="Created.xsd"/>
+	
+	<element name="WarrantSearchResult" type="mc160:WarrantSearchResultType">
+		<annotation>
+			<documentation xml:lang="en-GB">Contains information about who a warrant is issued to, and by whom</documentation>
+			<documentation xml:lang="da-DK">Indeholder information om hvem et udleveringsgrundlag er udstedt til, og af hvem</documentation>
+		</annotation>
+	</element>
+	<complexType name="WarrantSearchResultType">
+		<sequence>
+			<element name="Patient" type="mc160:PatientType" />
+			<element name="Created" type="mc160:CreatedType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

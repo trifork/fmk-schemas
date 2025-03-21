@@ -4,17 +4,17 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PrescriptionSearchResult.xsd"/>
+	<include schemaLocation="WarrantSearchResult.xsd"/>
 
 	<element name="SearchMedicineCardResponse" type="mc160:SearchMedicineCardResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for a response containing details from a prescription search for a person matching the input</documentation>
-			<documentation xml:lang="da-DK">Element for en resultat af en forespørgsel på recepter på en person som matcher det originale input</documentation>
+			<documentation xml:lang="en-GB">Element for a response containing details from a warrant search for a person matching the input</documentation>
+			<documentation xml:lang="da-DK">Element for en resultat af en søgning efter udleveringsgrundlag på en person som matcher det originale input</documentation>
 		</annotation>
 	</element>
 	<complexType name="SearchMedicineCardResponseType">
 		<sequence>
-			<element name="PrescriptionSearchResult" type="mc160:PrescriptionSearchResultType" minOccurs="0" maxOccurs="unbounded" />
+			<element name="WarrantSearchResult" type="mc160:WarrantSearchResultType" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
 </schema>

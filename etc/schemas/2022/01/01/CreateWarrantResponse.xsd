@@ -7,12 +7,12 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
-	<include schemaLocation="CreatedPrescription.xsd"/>
+	<include schemaLocation="CreatedWarrant.xsd"/>
 
 	<element name="CreateWarrantResponse" type="mc160:CreateWarrantResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response document containing one or more responses from creating prescriptions from drug medications</documentation>
-			<documentation xml:lang="da-DK">Response-dokument der indeholder en eller flere svar på oprettelse recepter fra lægemiddelordinationer</documentation>
+			<documentation xml:lang="en-GB">Response document containing one or more responses from creating warrants for drug medications</documentation>
+			<documentation xml:lang="da-DK">Response-dokument der indeholder en eller flere svar på oprettelse af udleveringsgrundlag på lægemiddelordinationer</documentation>
 		</annotation>
 	</element>
 	<complexType name="CreateWarrantResponseType">
@@ -20,7 +20,7 @@
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="VersionMismatchWarning" type="mc160:VersionMismatchWarningType" minOccurs="0"/>
-			<element name="Prescription" type="mc160:CreatedPrescriptionType" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:CreatedWarrantType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

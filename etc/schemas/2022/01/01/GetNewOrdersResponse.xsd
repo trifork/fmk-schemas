@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="PrescriptionsForPersonOrOrganisation.xsd"/>
+	<include schemaLocation="WarrantsForPersonOrOrganisation.xsd"/>
 	<include schemaLocation="MoreAvailable.xsd"/>
 
 	<element name="GetNewOrdersResponse" type="mc160:GetNewOrdersResponseType">
@@ -17,7 +17,7 @@
 	<complexType name="GetNewOrdersResponseType">
 		<sequence>
 			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
-			<element name="Prescriptions" type="mc160:PrescriptionsForPersonOrOrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Warrants" type="mc160:WarrantsForPersonOrOrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="MoreAvailable" type="mc160:MoreAvailableType"  minOccurs="0"/>
 		</sequence>
 	</complexType>

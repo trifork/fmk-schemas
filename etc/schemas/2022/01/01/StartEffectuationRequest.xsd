@@ -7,7 +7,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="DoseDispensing.xsd"/>
 
@@ -26,10 +26,10 @@
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
-			<element name="Prescription" maxOccurs="unbounded">
+			<element name="Warrant" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
-						<element name="Identifier" type="mc160:PrescriptionIdentifierType"/>
+						<element name="Identifier" type="mc160:WarrantIdentifierType"/>
 						<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 					</sequence>
 				</complexType>

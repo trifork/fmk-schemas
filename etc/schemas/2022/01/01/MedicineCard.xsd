@@ -16,9 +16,9 @@
 	<include schemaLocation="PrivateDrugMedication.xsd"/>
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="InvalidDrugMedication.xsd"/>
-	<include schemaLocation="Prescription.xsd"/>
-	<include schemaLocation="InvalidPrescription.xsd"/>
-	<include schemaLocation="OrderedPrescriptionsExist.xsd"/>
+	<include schemaLocation="Warrant.xsd"/>
+	<include schemaLocation="InvalidWarrant.xsd"/>
+	<include schemaLocation="RequestsForWarrantExist.xsd"/>
 	<include schemaLocation="DoseDispensingOverview.xsd"/>
 
 	<complexType name="MedicineCardType">
@@ -40,9 +40,9 @@
 			<element name="DrugMedicationWithNegativeConsent" type="mc160:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="mc160:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidDrugMedication" type="mc160:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="PrescriptionMedication" type="mc160:PrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidPrescriptionMedication" type="mc160:InvalidPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="OrderedPrescriptionMedicationsExist" type="mc160:OrderedPrescriptionsExistType" minOccurs="0"/>
+			<element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidWarrant" type="mc160:InvalidWarrantType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RequestsForWarrantExist" type="mc160:RequestsForWarrantExistType" minOccurs="0"/>
 			<element name="DoseDispensingSummary" type="mc160:DoseDispensingOverviewType" minOccurs="0"/>
 		</sequence>
 	</complexType>

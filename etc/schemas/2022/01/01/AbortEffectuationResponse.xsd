@@ -6,14 +6,14 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionError.xsd"/>
+	<include schemaLocation="WarrantError.xsd"/>
 
 	<element name="AbortEffectuationResponse" type="mc160:AbortEffectuationResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">A response to the 'abort effectuation' request, which includes identifier for the prescriptions where the abort succeeded, and an error structure for those where the abort operation failed.</documentation>
-			<documentation xml:lang="da-DK">Et svar på requestst 'afbryd ekspedition', som inkluderer identifiers for de recepter hvor ekspedition blev afbrudt med succes, og en fejl-struktur for dem hvor afbryd operationen fejlede.</documentation>
+			<documentation xml:lang="en-GB">A response to the 'abort effectuation' request, which includes identifier for the warrants where the abort succeeded, and an error structure for those where the abort operation failed.</documentation>
+			<documentation xml:lang="da-DK">Et svar på requestst 'afbryd ekspedition', som inkluderer identifiers for de udleveringsgrundlag hvor ekspedition blev afbrudt med succes, og en fejl-struktur for dem hvor afbryd operationen fejlede.</documentation>
 		</annotation>
 	</element>
 	<complexType name="AbortEffectuationResponseType">
@@ -22,10 +22,10 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="Prescription" minOccurs="0" maxOccurs="unbounded">
+			<element name="Warrant" minOccurs="0" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
-						<element name="Identifier" type="mc160:PrescriptionIdentifierType"/>
+						<element name="Identifier" type="mc160:WarrantIdentifierType"/>
 						<element name="Order">
 							<complexType>
 								<sequence>
@@ -36,7 +36,7 @@
 					</sequence>
 				</complexType>
 			</element>
-			<element name="AbortEffectuationFailed" type="mc160:PrescriptionErrorType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AbortEffectuationFailed" type="mc160:WarrantErrorType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

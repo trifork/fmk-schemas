@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="WarrantStatus" type="mc160:WarrantStatusType"/>
+
+	<simpleType name="WarrantStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">The status of the warrant</documentation>
+			<documentation xml:lang="da-DK">Udleveringsgrundlagets status</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="åben"/>
+			<enumeration value="afsluttet"/>
+			<enumeration value="annulleret"/>
+			<enumeration value="inaktiv"/>
+			<enumeration value="udløbet"/>
+			<enumeration value="ugyldig"/>
+		</restriction>
+	</simpleType>
+</schema>

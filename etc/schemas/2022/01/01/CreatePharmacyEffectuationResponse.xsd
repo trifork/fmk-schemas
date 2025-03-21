@@ -6,14 +6,14 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="EffectuationIdentifier.xsd"/>
 
 	<element name="CreatePharmacyEffectuationResponse" type="mc160:CreatePharmacyEffectuationResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for creating one or more effectuations on prescripionmedications</documentation>
-			<documentation xml:lang="da-DK">Svar på oprettelse af en eller flere uudleveringer på recepter </documentation>
+			<documentation xml:lang="en-GB">Response for creating one or more effectuations on warrants</documentation>
+			<documentation xml:lang="da-DK">Svar på oprettelse af en eller flere udleveringer på udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
 	<complexType name="CreatePharmacyEffectuationResponseType">
@@ -25,7 +25,7 @@
 			<element name="Effectuation" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
-						<element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType"/>
+						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
 						<element name="EffectuationIdentifier" type="mc160:EffectuationIdentifierType"/>
 					</sequence>
