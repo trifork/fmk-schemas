@@ -5,15 +5,16 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
-	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
+	<include schemaLocation="RequestForWarrantIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="SystemName.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
-	<include schemaLocation="PackageRestriction.xsd"/>
-	<include schemaLocation="CreateDoseDispensedRestriction.xsd"/>
+	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="HospitalPharmacyPrescription.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="DosageText.xsd"/>
 	<include schemaLocation="CreateOrder.xsd"/>
 
@@ -24,18 +25,17 @@
 		</annotation>
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
-			<element name="OrderedEffectuationIdentifier" type="mc160:OrderedEffectuationIdentifierType" minOccurs="0"/>
+			<element name="OrderedEffectuationIdentifier" type="mc160:RequestForWarrantIdentifierType" minOccurs="0"/>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
-			<element name="SystemName" type="mc160:SystemNameType"/>
 			<element name="ValidFromDate" type="mc160:ValidFromDateType" minOccurs="0"/>
 			<element name="ValidToDate" type="mc160:ValidToDateType" minOccurs="0"/>
 			<choice>
-				<element name="PackageRestriction" type="mc160:PackageRestrictionType"/>
-				<element name="DoseDispensedRestriction" type="mc160:CreateDoseDispensedRestrictionType"/>
+				<element name="Prescription" type="mc160:PrescriptionType"/>
+				<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType"/>
+				<element name="DoseDispensed" type="mc160:DoseDispensedType"/>
 			</choice>
-			<element name="DosageText" type="mc160:DosageTextType"/>
 			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
 		</sequence>
 	</complexType>

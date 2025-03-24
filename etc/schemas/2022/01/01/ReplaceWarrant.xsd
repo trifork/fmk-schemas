@@ -12,8 +12,9 @@
 	<include schemaLocation="SystemName.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
-	<include schemaLocation="PackageRestriction.xsd"/>
-	<include schemaLocation="CreateDoseDispensedRestriction.xsd"/>
+	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="HospitalPharmacyPrescription.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="DosageText.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
@@ -31,18 +32,13 @@
 			<element name="ReplaceWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
-			<element name="SystemName" type="mc160:SystemNameType"/>
-            <element name="ReimbursementClause" type="mc160:ReimbursementClauseType" minOccurs="0"/>
             <element name="ValidFromDate" type="mc160:ValidFromDateType" minOccurs="0"/>
             <element name="ValidToDate" type="mc160:ValidToDateType"/>
             <choice>
-                <element name="PackageRestriction" type="mc160:PackageRestrictionType"/>
-                <element name="DoseDispensedRestriction" type="mc160:CreateDoseDispensedRestrictionType"/>
+                <element name="Prescription" type="mc160:PrescriptionType"/>
+				<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType"/>
+                <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
 			</choice>
-			<element name="Indication" type="mc160:IndicationType" minOccurs="0"/>
-			<element name="DosageText" type="mc160:DosageTextType" minOccurs="0"/>
-			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
-			<element name="SupplementaryInformation" type="mc160:SupplementaryInformationType" minOccurs="0"/>
             <element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
             <choice>
 				<element name="InvalidateReplacedWarrant" type="mc160:InvalidateReplacedWarrantType"/>

@@ -18,8 +18,12 @@
 	<include schemaLocation="ReimbursementClause.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
-	<include schemaLocation="PackageRestriction.xsd"/>
-	<include schemaLocation="DoseDispensedRestriction.xsd"/>
+	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="LoosePrescription.xsd"/>
+	<include schemaLocation="HospitalPharmacyPrescription.xsd"/>
+	<include schemaLocation="TreatmentHandOver.xsd"/>
+	<include schemaLocation="UseInPractice.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageText.xsd"/>
@@ -55,8 +59,12 @@
             <element name="ValidFromDate" type="mc160:ValidFromDateType"/>
             <element name="ValidToDate" type="mc160:ValidToDateType"/>
 			<choice>
-                <element name="PackageRestriction" type="mc160:PackageRestrictionType"/>
-                <element name="DoseDispensedRestriction" type="mc160:DoseDispensedRestrictionType"/>
+                <element name="Prescription" type="mc160:PrescriptionType"/>
+				<element name="LoosePrescription" type="mc160:LoosePrescriptionType"/>
+				<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType"/>
+				<element name="TreatmentHandOver" type="mc160:TreatmentHandOverType"/>
+                <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+				<element name="UseInPractice" type="mc160:UseInPracticeType"/>
 			</choice>
 			<element name="Indication" type="mc160:IndicationType" minOccurs="0"/>
 			<element name="Drug" type="mc160:DrugType"/>

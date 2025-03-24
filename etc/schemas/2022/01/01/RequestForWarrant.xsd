@@ -10,7 +10,9 @@
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
-	<include schemaLocation="PackageRestriction.xsd"/>
+	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="HospitalPharmacyPrescription.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="CreateOrder.xsd"/>
 	<include schemaLocation="RequestForWarrantStatus.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
@@ -29,7 +31,11 @@
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
 			<element name="PrescribingOrganisation" type="mc160:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="PackageRestriction" type="mc160:PackageRestrictionType" minOccurs="0" />
+			<choice minOccurs="0">
+				<element name="Prescription" type="mc160:PrescriptionType"/>
+				<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType"/>
+				<element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+			</choice>
 			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
 			<element name="Status" type="mc160:RequestForWarrantStatusType" />
 			<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
