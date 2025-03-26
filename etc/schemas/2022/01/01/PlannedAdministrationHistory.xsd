@@ -9,8 +9,7 @@
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="ValidWarrant.xsd"/>
 	<include schemaLocation="DispensingWarning.xsd"/>
-	<include schemaLocation="DosageQuantityUnitText.xsd"/>
-	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
+	<include schemaLocation="DosageUnit.xsd"/>
 	<include schemaLocation="PlannedAdministrationStructures.xsd"/>
 	<include schemaLocation="AdministrationInstruction.xsd"/>
 
@@ -27,10 +26,7 @@
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="DrugMedication" type="mc160:DrugMedicationType"/>
 			<element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0"/>
-			<choice minOccurs="0">
-				<element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>
-				<element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType"/>
-			</choice>
+			<element name="DosageUnit" type="mc160:DosageUnitType" minOccurs="0"/>
 			<element name="PlannedAdministrationFixed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
 			<element name="PlannedAdministrationAccordingToNeed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
 		</sequence>

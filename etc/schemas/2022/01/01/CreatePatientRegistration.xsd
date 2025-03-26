@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="PatientRegistrationIdentifier.xsd"/>
+	<include schemaLocation="Modified.xsd"/>
+	<include schemaLocation="ExpirationDateTime.xsd"/>
+	<include schemaLocation="PatientRegistrationExpirationReason.xsd"/>
+	<include schemaLocation="PatientRegistrationType.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+
+	<element name="CreatePatientRegistration" type="mc160:CreatePatientRegistrationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for creating a patient registration</documentation>
+			<documentation xml:lang="da-DK">Element benyttet ved oprettelse af en patient registrering</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatePatientRegistrationType">
+		<sequence>
+			<element name="Created" type="mc160:ModifiedType" minOccurs="0"/>
+			<element name="Type" type="mc160:PatientRegistrationTypeType"/>
+            <element name="Expiration" type="mc160:ExpirationDateTimeType" minOccurs="0"/>
+			<element name="Reason" type="mc160:PatientRegistrationExpirationReasonType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

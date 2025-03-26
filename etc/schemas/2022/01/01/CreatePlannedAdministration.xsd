@@ -12,6 +12,7 @@
     <include schemaLocation="AdministrationInstruction.xsd"/>
     <include schemaLocation="PlannedAdministrationAccordingToDrugMedication.xsd"/>
     <include schemaLocation="PlannedAdministration.xsd"/>
+    <include schemaLocation="DosageUnit.xsd"/>
 
     <complexType name="CreatePlannedAdministrationType">
         <annotation>
@@ -26,10 +27,7 @@
 			<choice minOccurs="0">
                 <sequence>
                     <element name="PlannedAdministrationAccordingToDrugMedication" type="mc160:PlannedAdministrationAccordingToDrugMedicationType"/>
-                    <choice>
-                        <element name="UnitText" type="mc160:DosageQuantityUnitTextType" minOccurs="0"/>
-                        <element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType" minOccurs="0"/>
-                    </choice>
+                    <element name="DosageUnit" type="mc160:DosageUnitType" minOccurs="0"/>
                 </sequence>
                 <element name="PlannedAdministration" type="mc160:PlannedAdministrationType"/>
 			</choice>

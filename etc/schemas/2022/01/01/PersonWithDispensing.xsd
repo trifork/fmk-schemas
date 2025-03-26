@@ -7,7 +7,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Patient.xsd"/>
-	<include schemaLocation="IsDoseDispensingOnHold.xsd"/>
+	<include schemaLocation="PatientRegistration.xsd"/>
 	<include schemaLocation="DispensingCardSummary.xsd"/>
 
 	<complexType name="PersonWithDispensingType">
@@ -20,7 +20,7 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="Patient" type="mc160:PatientType"/>
 			</choice>
-			<element name="DispensingOnHold" type="mc160:IsDoseDispensingOnHoldType" minOccurs="0"/>
+			<element name="PatientRegistrations" type="mc160:PatientRegistrationType" minOccurs="0"/>
 			<element name="DispensingCard" type="mc160:DispensingCardSummaryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
