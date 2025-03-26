@@ -262,6 +262,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/PauseDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/PauseDrugMedicationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPatientOrganisationRelationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPatientOrganisationRelationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentResponse.xsd"/>
 
@@ -952,6 +955,14 @@
         <wsdl:part name="PauseDrugMedicationResponse" element="mc160:PauseDrugMedicationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RegisterPatientOrganisationRelationRequest_160">
+        <wsdl:part name="RegisterPatientOrganisationRelationRequest" element="mc160:RegisterPatientOrganisationRelationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="RegisterPatientOrganisationRelationResponse_160">
+        <wsdl:part name="RegisterPatientOrganisationRelationResponse" element="mc160:RegisterPatientOrganisationRelationResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="RemoveConsentRequest_160">
         <wsdl:part name="RemoveConsentRequest" element="mc160:RemoveConsentRequest"/>
     </wsdl:message>
@@ -1619,6 +1630,12 @@
         <wsdl:operation name="PauseDrugMedication_160">
             <wsdl:input name="PauseDrugMedicationRequest_160" message="tns:PauseDrugMedicationRequest_160"/>
             <wsdl:output name="PauseDrugMedicationResponse_160" message="tns:PauseDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPatientOrganisationRelation_160">
+            <wsdl:input name="RegisterPatientOrganisationRelationRequest_160" message="tns:RegisterPatientOrganisationRelationRequest_160"/>
+            <wsdl:output name="RegisterPatientOrganisationRelationResponse_160" message="tns:RegisterPatientOrganisationRelationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2719,6 +2736,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="PauseDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPatientOrganisationRelation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterPatientOrganisationRelation" style="document"/>
+            <wsdl:input name="RegisterPatientOrganisationRelationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterPatientOrganisationRelationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

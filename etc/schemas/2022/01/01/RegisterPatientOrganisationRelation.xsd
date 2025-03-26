@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
+
+	<element name="RegisterPatientOrganisationRelation" type="mc160:RegisterPatientOrganisationRelationType">
+		<annotation>
+			<documentation xml:lang="en-GB">A relation between a patient and an organisation</documentation>
+			<documentation xml:lang="da-DK">Registrering af en relation mellem en patient og en organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="RegisterPatientOrganisationRelationType">
+		<sequence>
+			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Organisation" type="mc160:OrganisationType"/>
+			<element name="Type" type="mc160:PatientOrganisationRelationTypeType"/>
+		</sequence>
+	</complexType>
+</schema>
