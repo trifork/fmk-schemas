@@ -182,6 +182,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingCardResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingDetailedSpecificationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingDetailedSpecificationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetFocesWhitelistingsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetFocesWhitelistingsResponse.xsd"/>
 
@@ -707,6 +710,14 @@
         <wsdl:part name="GetDispensingSummaryResponse" element="mc160:GetDispensingSummaryResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetDispensingDetailedSpecificationRequest_160">
+        <wsdl:part name="GetDispensingDetailedSpecificationRequest" element="mc160:GetDispensingDetailedSpecificationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDispensingDetailedSpecificationResponse_160">
+        <wsdl:part name="GetDispensingDetailedSpecificationResponse" element="mc160:GetDispensingDetailedSpecificationResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="GetDrugMedicationEffectuationsRequest_160">
         <wsdl:part name="GetDrugMedicationEffectuationsRequest" element="mc160:GetDrugMedicationEffectuationsRequest"/>
     </wsdl:message>
@@ -739,12 +750,12 @@
         <wsdl:part name="GetDrugMedicationVersionsResponse" element="mc160:GetDrugMedicationVersionsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetExplicitDispensingCardRequest_160">
-        <wsdl:part name="GetExplicitDispensingCardRequest" element="mc160:GetExplicitDispensingCardRequest"/>
+    <wsdl:message name="GetDispensingCardRequest_160">
+        <wsdl:part name="GetDispensingCardRequest" element="mc160:GetDispensingCardRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetExplicitDispensingCardResponse_160">
-        <wsdl:part name="GetExplicitDispensingCardResponse" element="mc160:GetExplicitDispensingCardResponse"/>
+    <wsdl:message name="GetDispensingCardResponse_160">
+        <wsdl:part name="GetDispensingCardResponse" element="mc160:GetDispensingCardResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetFocesWhitelistingsRequest_160">
@@ -1447,6 +1458,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetDispensingDetailedSpecification_160">
+            <wsdl:input name="GetDispensingDetailedSpecificationRequest_160" message="tns:GetDispensingDetailedSpecificationRequest_160"/>
+            <wsdl:output name="GetDispensingDetailedSpecificationResponse_160" message="tns:GetDispensingDetailedSpecificationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="GetDrugMedicationEffectuations_160">
             <wsdl:input name="GetDrugMedicationEffectuationsRequest_160" message="tns:GetDrugMedicationEffectuationsRequest_160"/>
             <wsdl:output name="GetDrugMedicationEffectuationsResponse_160" message="tns:GetDrugMedicationEffectuationsResponse_160"/>
@@ -1471,9 +1488,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetExplicitDispensingCard_160">
-            <wsdl:input name="GetExplicitDispensingCardRequest_160" message="tns:GetExplicitDispensingCardRequest_160"/>
-            <wsdl:output name="GetExplicitDispensingCardResponse_160" message="tns:GetExplicitDispensingCardResponse_160"/>
+        <wsdl:operation name="GetDispensingCard_160">
+            <wsdl:input name="GetDispensingCardRequest_160" message="tns:GetDispensingCardRequest_160"/>
+            <wsdl:output name="GetDispensingCardResponse_160" message="tns:GetDispensingCardResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2339,6 +2356,19 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetDispensingDetailedSpecification_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDispensingDetailedSpecification" style="document"/>
+            <wsdl:input name="GetDispensingDetailedSpecificationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDispensingDetailedSpecificationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="GetDrugMedicationEffectuations_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedicationEffectuations" style="document"/>
             <wsdl:input name="GetDrugMedicationEffectuationsRequest_160">
@@ -2391,13 +2421,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetExplicitDispensingCard_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetExplicitDispensingCard" style="document"/>
-            <wsdl:input name="GetExplicitDispensingCardRequest_160">
+        <wsdl:operation name="GetDispensingCard_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDispensingCard" style="document"/>
+            <wsdl:input name="GetDispensingCardRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetExplicitDispensingCardResponse_160">
+            <wsdl:output name="GetDispensingCardResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
