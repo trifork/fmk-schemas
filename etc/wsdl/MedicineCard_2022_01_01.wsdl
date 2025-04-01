@@ -39,14 +39,14 @@
         <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
             <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
         </xs:schema>
+
+        <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                   schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+
+        <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
+                   schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
         
         <xs:schema targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified">
-
-            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-                       schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
-
-            <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
-                       schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDispensingPeriodResponse.xsd"/>
@@ -65,6 +65,12 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/AttachOrDetachPrescriptionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AttachOrDetachPrescriptionResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CalculateDosageDurationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CalculateDosageDurationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CalculateRequiredDosageUnitsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CalculateRequiredDosageUnitsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/CancelOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CancelOrderResponse.xsd"/>
@@ -444,6 +450,22 @@
 
     <wsdl:message name="AttachOrDetachPrescriptionResponse_160">
         <wsdl:part name="AttachOrDetachPrescriptionResponse" element="mc160:AttachOrDetachPrescriptionResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CalculateDosageDurationRequest_160">
+        <wsdl:part name="CalculateDosageDurationRequest" element="mc160:CalculateDosageDurationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CalculateDosageDurationResponse_160">
+        <wsdl:part name="CalculateDosageDurationResponse" element="mc160:CalculateDosageDurationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CalculateRequiredDosageUnitsRequest_160">
+        <wsdl:part name="CalculateRequiredDosageUnitsRequest" element="mc160:CalculateRequiredDosageUnitsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CalculateRequiredDosageUnitsResponse_160">
+        <wsdl:part name="CalculateRequiredDosageUnitsResponse" element="mc160:CalculateRequiredDosageUnitsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CancelOrderRequest_160">
@@ -1260,6 +1282,18 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="CalculateDosageDuration_160">
+            <wsdl:input name="CalculateDosageDurationRequest_160" message="tns:CalculateDosageDurationRequest_160"/>
+            <wsdl:output name="CalculateDosageDurationResponse_160" message="tns:CalculateDosageDurationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CalculateRequiredDosageUnits_160">
+            <wsdl:input name="CalculateRequiredDosageUnitsRequest_160" message="tns:CalculateRequiredDosageUnitsRequest_160"/>
+            <wsdl:output name="CalculateRequiredDosageUnitsResponse_160" message="tns:CalculateRequiredDosageUnitsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="CancelOrder_160">
             <wsdl:input name="CancelOrderRequest_160" message="tns:CancelOrderRequest_160"/>
             <wsdl:output name="CancelOrderResponse_160" message="tns:CancelOrderResponse_160"/>
@@ -1921,6 +1955,32 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AttachOrDetachPrescriptionResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CalculateDosageDuration_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CalculateDosageDuration" style="document"/>
+            <wsdl:input name="CalculateDosageDurationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CalculateDosageDurationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CalculateRequiredDosageUnits_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CalculateRequiredDosageUnits" style="document"/>
+            <wsdl:input name="CalculateRequiredDosageUnitsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CalculateRequiredDosageUnitsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
