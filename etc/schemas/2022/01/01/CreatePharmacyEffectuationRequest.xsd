@@ -7,12 +7,12 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="CreatePharmacyEffectuationOnPrescription.xsd"/>
+	<include schemaLocation="CreatePharmacyEffectuationOnWarrant.xsd"/>
 
 	<element name="CreatePharmacyEffectuationRequest" type="mc160:CreatePharmacyEffectuationRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request for creating one or more effectuation by a pharmacy on prescripionmedications</documentation>
-			<documentation xml:lang="da-DK">Request til at oprette en eller flere effektueringer af et apotek på recepter </documentation>
+			<documentation xml:lang="en-GB">Request for creating one or more effectuation by a pharmacy on warrants</documentation>
+			<documentation xml:lang="da-DK">Request til at oprette en eller flere effektueringer på udleveringsgrundlag </documentation>
 		</annotation>
 	</element>
 	<complexType name="CreatePharmacyEffectuationRequestType">
@@ -23,7 +23,7 @@
 			</choice>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Prescription" type="mc160:CreatePharmacyEffectuationOnPrescriptionType" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:CreatePharmacyEffectuationOnWarrantType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

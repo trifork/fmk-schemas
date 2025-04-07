@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="AuthorisationDateTime.xsd"/>
+	<include schemaLocation="SystemName.xsd"/>
+	<include schemaLocation="ValidFromDate.xsd"/>
+	<include schemaLocation="ValidToDate.xsd"/>
+	<include schemaLocation="PackageRestriction.xsd"/>
+	<include schemaLocation="CreateDoseDispensedRestriction.xsd"/>
+	<include schemaLocation="DosageText.xsd"/>
+	<include schemaLocation="CreateOrder.xsd"/>
+
+	<complexType name="CreateWarrantType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document for creating a Warrant for a DrugMedication. When used in the service call where the drug medication is created the DrugMedicationIdentifer may be omitted, otherwise it is needed.</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til at oprette et udleveringsgrundlag til en lægemiddelordination. Når dette element anvendes i servicen til oprettelse af en lægemiddelordination udelades DrugMedicationIdentifer, i alle andre tilfælde er det nødvendigt.</documentation>
+		</annotation>
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
+			<element name="OrderedEffectuationIdentifier" type="mc160:OrderedEffectuationIdentifierType" minOccurs="0"/>
+			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
+			<element name="SystemName" type="mc160:SystemNameType"/>
+			<element name="ValidFromDate" type="mc160:ValidFromDateType" minOccurs="0"/>
+			<element name="ValidToDate" type="mc160:ValidToDateType" minOccurs="0"/>
+			<choice>
+				<element name="PackageRestriction" type="mc160:PackageRestrictionType"/>
+				<element name="DoseDispensedRestriction" type="mc160:CreateDoseDispensedRestrictionType"/>
+			</choice>
+			<element name="DosageText" type="mc160:DosageTextType"/>
+			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

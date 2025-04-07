@@ -7,12 +7,12 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="UndoEffectuationOnPrescriptionAndOrder.xsd"/>
+	<include schemaLocation="UndoEffectuationOnWarrantAndOrder.xsd"/>
 
 	<element name="UndoEffectuationRequest" type="mc160:UndoEffectuationRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Service request for undoing a number of existing pharmacy effectutations</documentation>
-			<documentation xml:lang="da-DK">Service kald til at tilbageføre et antal eksisterende apoteks ekspeditioner</documentation>
+			<documentation xml:lang="en-GB">Service request for undoing a number of existing effectutations</documentation>
+			<documentation xml:lang="da-DK">Service kald til at tilbageføre et antal eksisterende ekspeditioner</documentation>
 		</annotation>
 	</element>
 	<complexType name="UndoEffectuationRequestType">
@@ -23,7 +23,7 @@
 			</choice>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Prescription" type="mc160:UndoEffectuationOnPrescriptionAndOrderType" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:UndoEffectuationOnWarrantAndOrderType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

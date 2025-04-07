@@ -6,13 +6,13 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 
 	<element name="CancelOrderResponse" type="mc160:CancelOrderResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for cancelling orders on prescriptions</documentation>
-			<documentation xml:lang="da-DK">Svar på annulering af bestillinger på recepter</documentation>
+			<documentation xml:lang="en-GB">Response for cancelling orders on warrants</documentation>
+			<documentation xml:lang="da-DK">Svar på annulering af bestillinger på udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
 	<complexType name="CancelOrderResponseType">
@@ -24,7 +24,7 @@
 			<element name="Order" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
-						<element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType"/>
+						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
 					</sequence>
 				</complexType>

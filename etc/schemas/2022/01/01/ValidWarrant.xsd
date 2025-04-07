@@ -5,17 +5,17 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 
 	<complexType name="ValidWarrantType">
 		<annotation>
-			<documentation xml:lang="en-GB">Indication that a valid prescription exists for a planned administration</documentation>
-			<documentation xml:lang="da-DK">Information om der findes en gyldig recept for en planlagt administration</documentation>
+			<documentation xml:lang="en-GB">Indication that a valid warrant exists for a planned dispensing</documentation>
+			<documentation xml:lang="da-DK">Information om der findes et gyldigt udleveringsgrundlag for en planlagt dispensering</documentation>
 		</annotation>
 		<sequence>
-			<element name="Identifier" type="mc160:PrescriptionIdentifierType"/>
+			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
             <element name="ValidFromDate" type="mc160:ValidFromDateType"/>
             <element name="ValidToDate" type="mc160:ValidToDateType"/>
 		</sequence>

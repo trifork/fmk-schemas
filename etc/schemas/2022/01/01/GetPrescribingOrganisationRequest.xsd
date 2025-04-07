@@ -6,13 +6,13 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="PrescribingOrganisationRetrievalContext.xsd"/>
 
 	<element name="GetPrescribingOrganisationRequest" type="mc160:GetPrescribingOrganisationRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">An element for requesting the organisation to target for renewals for a given prescription</documentation>
-			<documentation xml:lang="da-DK">Et element til forespørgsel efter en receptfornyende organisation for en given recept</documentation>
+			<documentation xml:lang="en-GB">An element for requesting the organisation to target for renewals for a given warrant</documentation>
+			<documentation xml:lang="da-DK">Et element til forespørgsel efter en modtagende organisation for anmodning om fornyelse af et givet udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
 	<complexType name="GetPrescribingOrganisationRequestType">
@@ -20,7 +20,7 @@
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<choice>
 				<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
-				<element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType" maxOccurs="unbounded"/>
+				<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType" maxOccurs="unbounded"/>
 			</choice>
 			<element name="Context" type="mc160:PrescribingOrganisationRetrievalContextType"/>
 		</sequence>

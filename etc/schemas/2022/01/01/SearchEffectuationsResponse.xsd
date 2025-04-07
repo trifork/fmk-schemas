@@ -7,7 +7,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="PrivateDrugMedication.xsd"/>
 	<include schemaLocation="EffectuationsOnDrugMedication.xsd"/>
-	<include schemaLocation="EffectuationsOnPrescription.xsd"/>
+	<include schemaLocation="EffectuationsOnWarrant.xsd"/>
 	<include schemaLocation="MoreAvailable.xsd"/>
 
 	<element name="SearchEffectuationsResponse" type="mc160:SearchEffectuationsResponseType">
@@ -21,7 +21,7 @@
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<element name="DrugMedicationWithNegativeConsent" type="mc160:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="mc160:EffectuationsOnDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="PrescriptionMedication" type="mc160:EffectuationsOnPrescriptionType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:EffectuationsOnWarrantType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="MoreAvailable" type="mc160:MoreAvailableType" minOccurs="0"/>
 		</sequence>
 	</complexType>
