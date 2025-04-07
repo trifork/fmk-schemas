@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="MedicineCardVersion.xsd"/>
+
+	<element name="AttachOrDetachWarrantResponse" type="mc160:AttachOrDetachWarrantResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">A response from a request which attaches or detaches warrants to drug medications</documentation>
+			<documentation xml:lang="da-DK">Svar fra en forespørgsel der opretter  eller fjerner tilknytninger af udleveringsgrundlag til lægemiddelordinationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="AttachOrDetachWarrantResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
+		</sequence>
+	</complexType>
+</schema>

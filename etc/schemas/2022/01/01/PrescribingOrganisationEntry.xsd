@@ -5,7 +5,7 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="PrescriptionIdentifier.xsd"/>
+    <include schemaLocation="WarrantIdentifier.xsd"/>
     <include schemaLocation="DrugMedicationIdentifier.xsd"/>
     <include schemaLocation="Organisation.xsd"/>
     <include schemaLocation="RenewalReason.xsd"/>
@@ -13,11 +13,11 @@
 
     <complexType name="PrescribingOrganisationEntryType">
         <annotation>
-            <documentation xml:lang="en-GB">Element containing information on a prescribing organisation for a specific prescription</documentation>
-            <documentation xml:lang="da-DK">Element som indeholder informationer omkring en receptfornyende organisation for en recept</documentation>
+            <documentation xml:lang="en-GB">Element containing information on a prescribing organisation for a specific warrant</documentation>
+            <documentation xml:lang="da-DK">Element som indeholder informationer omkring udstedende organisation for et udleveringsgrundlag</documentation>
         </annotation>
         <sequence>
-            <element name="PrescriptionIdentifier" type="mc160:PrescriptionIdentifierType"/>
+            <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
             <element name="AttachedToDrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
         	<element name="Organisation" type="mc160:OrganisationType"/>
             <element name="Reason" type="mc160:RenewalReasonType"/>

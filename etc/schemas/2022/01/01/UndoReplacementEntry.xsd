@@ -4,16 +4,16 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PrescriptionIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
 	
 	<complexType name="UndoReplacementEntryType">
 		<annotation>
-			<documentation xml:lang="en-GB">Entry containing identifiers for prescription pairs involved with a undo replace prescription result</documentation>
-			<documentation xml:lang="da-DK">Element som indeholder et sæt identifiers for recepter som var involveret i et fortryd erstat recept kald</documentation>
+			<documentation xml:lang="en-GB">Entry containing identifiers for warrant pairs involved with a undo replace warrant result</documentation>
+			<documentation xml:lang="da-DK">Element som indeholder et sæt identifiers for udleveringsgrundlag som var involveret i et fortryd erstat udleveringsgrundlag kald</documentation>
 		</annotation>
 		<sequence>
-			<element name="ClosedPrescriptionIdentifier" type="mc160:PrescriptionIdentifierType"/>
-			<element name="ReopenedPrescriptionIdentifier" type="mc160:PrescriptionIdentifierType"/>
+			<element name="ClosedWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+			<element name="ReopenedWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 		</sequence>
 	</complexType>
 </schema>

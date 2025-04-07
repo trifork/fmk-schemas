@@ -13,13 +13,13 @@
 	<include schemaLocation="DoseDispensing.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
-	<include schemaLocation="EffectuationOnPrescription.xsd"/>
+	<include schemaLocation="EffectuationOnWarrant.xsd"/>
 	<include schemaLocation="InvalidEffectuation.xsd"/>
 
 	<complexType name="OrderType">
         <annotation>
-            <documentation xml:lang="en-GB">Order of an effectuation on a prescription</documentation>
-            <documentation xml:lang="da-DK">Bestilling af en udlevering på en recept</documentation>
+            <documentation xml:lang="en-GB">Order of an effectuation on a warrant</documentation>
+            <documentation xml:lang="da-DK">Bestilling af en udlevering på et udleveringsgrundlag</documentation>
         </annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:OrderIdentifierType"/>
@@ -35,7 +35,7 @@
 			<element name="DeliveryInstructionText" type="mc160:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
 			<choice minOccurs="0">
-				<element name="Effectuation" type="mc160:EffectuationOnPrescriptionType"/>
+				<element name="Effectuation" type="mc160:EffectuationOnWarrantType"/>
 				<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType"/>
 			</choice>
 		</sequence>
