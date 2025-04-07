@@ -11,6 +11,7 @@
 	<include schemaLocation="HospitalPharmacyPrescription.xsd"/>
 	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="CreateOrder.xsd"/>
+	<include schemaLocation="WithoutOrder.xsd"/>
 
 	<complexType name="RequestForWarrantToCreateType">
 		<annotation>
@@ -26,7 +27,10 @@
 				<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType"/>
 				<element name="DoseDispensed" type="mc160:DoseDispensedType"/>
 			</choice>
-			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="Order" type="mc160:CreateOrderType"/>
+				<element name="WithoutOrder" type="mc160:WithoutOrderType"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>
