@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+
+	<element name="UndoDiscardDispensingPeriodResponse" type="mc160:UndoDiscardDispensingPeriodResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a request which cancels the discarded status of a dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel som fortyder kasseringen af en dispenserings periode</documentation>
+		</annotation>
+	</element>
+	<complexType name="UndoDiscardDispensingPeriodResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"  maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

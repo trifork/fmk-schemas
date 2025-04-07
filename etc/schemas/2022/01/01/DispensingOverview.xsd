@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="DispensingPeriodStartDate.xsd"/>
+    <include schemaLocation="DispensingPeriodEndDate.xsd"/>
+    <include schemaLocation="LatestDispensingEffectuation.xsd"/>
+    <include schemaLocation="HasOpenDosageDispensedWarrants.xsd"/>
+    <include schemaLocation="Organisation.xsd"/>
+    <include schemaLocation="PatientRegistration.xsd"/>
+
+    <complexType name="DispensingOverviewType">
+        <annotation>
+            <documentation xml:lang="en-GB">Overall information about dispensing for a patient</documentation>
+            <documentation xml:lang="da-DK">Overordnet information om patientens dispensering</documentation>
+        </annotation>
+        <sequence>
+            <sequence minOccurs="0" maxOccurs="unbounded">
+                <element name="StartDate" type="mc160:DispensingPeriodStartDateType" minOccurs="0"/>
+                <element name="EndDate" type="mc160:DispensingPeriodEndDateType" minOccurs="0"/>
+                <choice>
+                    <element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
+                    <element name="DispensingOrganisation" type="mc160:OrganisationType"/>
+                </choice>
+            </sequence>
+			<element name="LatestDispensingEffectuation" type="mc160:LatestDispensingEffectuationType" minOccurs="0"/>
+			<element name="HasOpenDosageDispensingPrescriptions" type="mc160:HasOpenDosageDispensedWarrantsType"/>
+			<element name="PatientRegistration" type="mc160:PatientRegistrationType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

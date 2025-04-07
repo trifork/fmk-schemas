@@ -5,18 +5,18 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-    <include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+    <include schemaLocation="DispensingIdentifier.xsd"/>
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="Drug.xsd"/>
     <include schemaLocation="PackageNumber.xsd"/>
 
     <complexType name="PackagedDrugType">
         <annotation>
-            <documentation xml:lang="en-GB">Element for substituting the drug for a planned dispensing</documentation>
-            <documentation xml:lang="da-DK">Opdatering af det substituerede lægemiddel for en  planlagt dispensering</documentation>
+            <documentation xml:lang="en-GB">Element for substituting the drug for a dispensing</documentation>
+            <documentation xml:lang="da-DK">Opdatering af det substituerede lægemiddel for en  dispensering</documentation>
         </annotation>
         <sequence>
-        	<element name="PlannedDispensingIdentifier" type="mc160:PlannedDispensingIdentifierType"/>
+        	<element name="DispensingIdentifier" type="mc160:DispensingIdentifierType"/>
         	<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="Drug" type="mc160:DrugType"/>
             <element name="PackageNumber" type="mc160:PackageNumberType" minOccurs="0"/>

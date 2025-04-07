@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="DrugIdentifier.xsd"/>
+	<include schemaLocation="IncludePatientDetails.xsd"/>
+
+	<!-- TODO: Re-evaluate this service, will it be needed when substitutions are chosen at start of period? -->
+	<element name="SearchDispensingRequest" type="mc160:SearchDispensingRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to search for dispensing based on pharamacy id and drugid</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en søgning efter dispenseringer ud fra apoteksid og drugid</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchDispensingRequestType">
+		<sequence>
+			<choice>
+				<element name="OrderedAtPharmacyIdentifier" type="mc160:OrganisationIdentifierType" maxOccurs="unbounded"/>
+	            <element name="PackedAtOrganisationIdentifier" type="mc160:OrganisationIdentifierType" maxOccurs="unbounded"/>
+			</choice>
+			<element name="DrugIdentifier" type="mc160:DrugIdentifierType" maxOccurs="unbounded"/>
+			<element name="IncludePatientDetails" type="mc160:IncludePatientDetailsType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

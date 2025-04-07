@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DispensingIdentifier.xsd"/>
+	<include schemaLocation="DispensingVersion.xsd"/>
+	<include schemaLocation="DispensingCardIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifierAndVersion.xsd"/>
+	<include schemaLocation="AdministrationInstruction.xsd"/>
+	<include schemaLocation="DrugSubstitution.xsd"/>
+	<include schemaLocation="SubstitutionAllowed.xsd"/>
+
+	<!-- TODO: Part of service under eval -->
+	<complexType name="SearchedDispensingSummaryType">
+		<annotation>
+			<documentation xml:lang="en-GB">Summary of a dispensing that references a specific drug.</documentation>
+			<documentation xml:lang="da-DK">Oversigt over en dispensering der refererer til en specifikt lægemiddel.</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="mc160:DispensingIdentifierType"/>
+			<element name="Version" type="mc160:DispensingVersionType"/>
+			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType" minOccurs="0"/>
+			<element name="DrugMedication" type="mc160:DrugMedicationIdentifierAndVersionType"/>
+			<element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0" />
+			<element name="Substitution" type="mc160:DrugSubstitutionType" minOccurs="0"/>
+			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

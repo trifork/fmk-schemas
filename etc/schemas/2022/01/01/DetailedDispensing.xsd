@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+    <include schemaLocation="DispensingIdentifier.xsd"/>
+    <include schemaLocation="DispensingVersion.xsd"/>
+    <include schemaLocation="Created.xsd"/>
+    <include schemaLocation="Modified.xsd"/>
+    <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DrugMedication.xsd"/>
+    <include schemaLocation="ValidWarrant.xsd"/>
+    <include schemaLocation="PrescribingDoctor.xsd"/>
+    <include schemaLocation="DrugShortName.xsd"/>
+    <include schemaLocation="DrugDescriptionText.xsd"/>
+    <include schemaLocation="DispensingWarning.xsd"/>
+    <include schemaLocation="DrugSubstitution.xsd"/>
+    <include schemaLocation="AdministrationInstruction.xsd"/>
+    <include schemaLocation="PlannedAdministration.xsd"/>
+
+    <element name="DetailedDispensing" type="mc160:DetailedDispensingType">
+        <annotation>
+            <documentation xml:lang="en-GB">Details for a dispensing for a drugmedication</documentation>
+            <documentation xml:lang="da-DK">Detaljer vedrørende en dispensering for en given lægemiddelordination</documentation>
+        </annotation>
+    </element>
+    <complexType name="DetailedDispensingType">
+        <sequence>
+        	<element name="Identifier" type="mc160:DispensingIdentifierType"/>
+        	<element name="Version" type="mc160:DispensingVersionType"/>
+			<element name="Created" type="mc160:CreatedType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
+			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType" minOccurs="0"/>
+          	<element name="DrugMedication" type="mc160:DrugMedicationType"/>
+          	<element name="ValidWarrant" type="mc160:ValidWarrantType" minOccurs="0"/>
+          	<element name="PrescribingDoctor" type="mc160:PrescribingDoctorType" minOccurs="0"/>
+            <element name="ShortName" type="mc160:DrugShortNameType" minOccurs="0"/>
+            <element name="Description" type="mc160:DrugDescriptionTextType" minOccurs="0"/>
+            <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Substitution" type="mc160:DrugSubstitutionType" minOccurs="0"/>
+            <element name="SubstitutionAtPackingPharmacy" type="mc160:DrugType" minOccurs="0"/>
+            <element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0"/>
+            <element name="PlannedAdministration" type="mc160:PlannedAdministrationType" minOccurs="0"/>
+            <element name="DispensingEndDate" type="mc160:DispensingEndDateType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <include schemaLocation="DispensingDispensableUnit.xsd"/>
+    
+	<element name="DispensingDetailedSpecification" type="mc160:DispensingDetailedSpecificationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Detailed specification of a dispensing period, i.e. contents of each dispensable unit (typically a sealed plastic bag).</documentation>
+            <documentation xml:lang="da-DK">Detaljeret specifikation af en dispenseringsperiode, dvs. indholdet a hver enkelt "dispenserbare enhed" (typisk a forseglet plastikpose).</documentation>
+        </annotation>
+    </element>
+    <complexType name="DispensingDetailedSpecificationType">
+        <sequence>
+            <element name="DispensableUnit" type="mc160:DispensingDispensableUnitType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

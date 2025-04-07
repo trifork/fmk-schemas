@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DispensingCardHistory.xsd"/>
+
+	<element name="GetDispensingCardHistoryResponse" type="mc160:GetDispensingCardHistoryResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with the history for a dispensing card</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar med historik for et dispenseringskort</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetDispensingCardHistoryResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="DispensingCardHistory" type="mc160:DispensingCardHistoryType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
