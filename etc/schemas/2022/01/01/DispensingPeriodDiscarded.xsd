@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="DiscardReason.xsd"/>
+    <include schemaLocation="DiscardedByDateTime.xsd"/>
+
+    <element name="DispensingPeriodDiscarded" type="mc160:DispensingPeriodDiscardedType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element indicating that a dispensing period is to be discarded</documentation>
+            <documentation xml:lang="da-DK">Dispenseringsperiode for en given mængde dispenseringer</documentation>
+        </annotation>
+    </element>
+    <complexType name="DispensingPeriodDiscardedType">
+        <sequence>
+            <element name="Reason" type="mc160:DiscardReasonType"/>
+            <element name="DateTime" type="mc160:DiscardedByDateTimeType"/>
+        </sequence>
+    </complexType>
+</schema>

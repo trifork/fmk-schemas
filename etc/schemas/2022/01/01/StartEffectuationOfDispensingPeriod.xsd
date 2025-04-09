@@ -7,8 +7,7 @@
 
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
-    <include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
-    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="PlannedAdministrationSubstitution.xsd"/>
     <include schemaLocation="UsePreviousPeriodSubstitutions.xsd"/>
 
     <complexType name="StartEffectuationOfDispensingPeriodType">
@@ -20,15 +19,7 @@
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded" />
             <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
             <element name="UsePreviousPeriodSubstitutions" type="mc160:UsePreviousPeriodSubstitutionsFlagType" minOccurs="0"/>
-            <element name="PlannedAdministrationSubstitutions" minOccurs="0">
-                <complexType>
-                    <sequence>
-                        <element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
-                        <element name="Substitution" type="mc160:DrugType"/>
-                    </sequence>
-                </complexType>
-            </element>
-
+            <element name="PlannedAdministrationSubstitutions" type="mc160:PlannedAdministrationSubstitutionType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>
