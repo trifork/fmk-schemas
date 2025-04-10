@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+	<include schemaLocation="DispensingIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="DrugIdentifier.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="PackageNumber.xsd"/>
+	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="Indication.xsd"/>
+	<include schemaLocation="DrugMedicationType.xsd"/>
+	<include schemaLocation="SubstitutionAllowed.xsd"/>
+	<include schemaLocation="ReimbursementClause.xsd"/>
+
+	<complexType name="PackagedDispensingOverviewType">
+		<annotation>
+			<documentation xml:lang="en-GB">Overview of a packaged dispensing periods dispensings</documentation>
+			<documentation xml:lang="da-DK">Overblik over en pakket dispenserings periode's dispenseringer</documentation>
+		</annotation>
+		<sequence>
+			<element name="DispensingIdentifier" type="mc160:DispensingIdentifierType"/>
+			<element name="PlanedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="PrescribedDrug" type="mc160:DrugType"/>
+			<element name="PlannedDrugIdentifier" type="mc160:DrugIdentifierType" minOccurs="0"/>
+			<element name="ActualDrug" type="mc160:DrugType"/>
+			<element name="PackageNumber" type="mc160:PackageNumberType" minOccurs="0"/>
+			<element name="LastPeriodDrugIdentifier" type="mc160:DrugIdentifierType" minOccurs="0"/>
+			<element name="Amount" type="mc160:DoseQuantityType" minOccurs="0"/>
+			<element name="PrescribedBy" type="mc160:ModificatorType"/>
+			<element name="Indication" type="mc160:IndicationType"/>
+			<element name="Type" type="mc160:DrugMedicationTypeType"/>
+			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
+			<element name="ReimbursementClause" type="mc160:ReimbursementClauseType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -6,13 +6,13 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 	<include schemaLocation="PackagedDrug.xsd"/>
 
 	<element name="SubstitutePackagedDrugRequest" type="mc160:SubstitutePackagedDrugRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request to select packaged drugs for a dose dispensing period</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der vælger lægemidler der skal pakkes i en given DD periode</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a request to select packaged drugs for a dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der vælger lægemidler der skal pakkes i en given dispenseringsperiode</documentation>
 		</annotation>
 	</element>
 	<complexType name="SubstitutePackagedDrugRequestType">
@@ -20,7 +20,7 @@
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="PeriodIdentifier" type="mc160:DoseDispensingPeriodIdentifierType" minOccurs="0"/>
+			<element name="PeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" minOccurs="0"/>
 			<element name="PackagedDrug" type="mc160:PackagedDrugType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

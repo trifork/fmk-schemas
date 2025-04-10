@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="DispensingSummary.xsd"/>
+
+    <element name="GetDispensingSummaryResponse" type="mc160:GetDispensingSummaryResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Response type with one or more summaries of a dispensing card</documentation>
+            <documentation xml:lang="da-DK">Type for et svar med en eller flere oversigter af dispenseringskort</documentation>
+        </annotation>
+    </element>
+    <complexType name="GetDispensingSummaryResponseType">
+        <sequence>
+            <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+            <element name="DispensingSummary" type="mc160:DispensingSummaryType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

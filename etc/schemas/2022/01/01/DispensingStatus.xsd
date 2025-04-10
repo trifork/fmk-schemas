@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<simpleType name="DispensingStatusType">
+		<annotation>
+			<documentation xml:lang="en-GB">The status of a dispensing period</documentation>
+			<documentation xml:lang="da-DK">Status for en dispenseringsperiode</documentation>
+		</annotation>
+		<union memberTypes="mc160:UndefinedDispensingStatusType"/>
+	</simpleType>
+	<simpleType name="PredefinedDispensingStatusType">
+		<restriction base="mc160:UndefinedDispensingStatusType">
+			<enumeration value="Planlagt"/>
+			<!--<enumeration value="Apoteksbehandling påbegyndt"/>-->
+			<enumeration value="Klar til pakning"/>
+			<enumeration value="Pakning påbegyndt"/>
+			<enumeration value="Pakning afsluttet"/>
+			<enumeration value="Ekspederet"/>
+			<enumeration value="Kasseres"/>
+			<enumeration value="Ekspederes ikke"/>
+			<enumeration value="Ikke udleveret af apoteket"/>
+			<enumeration value="Slettet"/>
+			<enumeration value="Effektueret"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedDispensingStatusType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>

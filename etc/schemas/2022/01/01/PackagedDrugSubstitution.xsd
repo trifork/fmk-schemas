@@ -5,19 +5,19 @@
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-	<include schemaLocation="DoseDispensingPeriodIdentifier.xsd"/>
-	<include schemaLocation="PlannedDispensingIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingIdentifier.xsd"/>
 
 	<element name="PackagedDrugSubstitution" type="mc160:PackagedDrugSubstitutionType">
 		<annotation>
-			<documentation xml:lang="en-GB">Selection of packaged drugs for a dose dispensing period</documentation>
-			<documentation xml:lang="da-DK">Valg af lægemidler der skal pakkes i en given DD periode</documentation>
+			<documentation xml:lang="en-GB">Selection of packaged drugs for a dispensing period</documentation>
+			<documentation xml:lang="da-DK">Valg af lægemidler der skal pakkes i en given dispenserings periode</documentation>
 		</annotation>
 	</element>
 	<complexType name="PackagedDrugSubstitutionType">
 		<sequence>
-			<element name="PeriodIdentifier" type="mc160:DoseDispensingPeriodIdentifierType"/>
-			<element name="PlannedDispensingIdentifier" type="mc160:PlannedDispensingIdentifierType" maxOccurs="unbounded"/>
+			<element name="PeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+			<element name="PlannedDispensingIdentifier" type="mc160:DispensingIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
