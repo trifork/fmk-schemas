@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="PackageNumber.xsd"/>
+	<include schemaLocation="PackageSize.xsd"/>
+	<include schemaLocation="PackageQuantity.xsd"/>
+	<include schemaLocation="ReimbursementClause.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="Indication.xsd"/>
+	<include schemaLocation="DosageText.xsd"/>
+	<include schemaLocation="SubstitutionAllowed.xsd"/>
+	<include schemaLocation="SupplementaryInformation.xsd"/>
+
+	<complexType name="LoosePrescriptionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Special kind of warrant that is not attached to a drugmedication, which is created when a pharmacy is effectuating for instance a paper prescription</documentation>
+			<documentation xml:lang="da-DK">Speciel type udleveringsgrundlag, der ikke er knyttet til en lægemiddelordination, som oprettes når apoteket ekspederer eksempelvis en papirrecept</documentation>
+		</annotation>
+		<sequence>
+			<element name="PackageNumber" type="mc160:PackageNumberType"/>
+			<element name="PackageSize" type="mc160:PackageSizeType" minOccurs="0"/>
+			<element name="PackageQuantity" type="mc160:PackageQuantityType"/>
+			<element name="ReimbursementClause" type="mc160:ReimbursementClauseType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
