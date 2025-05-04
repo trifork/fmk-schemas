@@ -32,11 +32,6 @@ In the mc160idws_wsdl/target folder, MedicineCard_2022_01_01_Idws-collection.zip
 mvn clean install
 ```
 
-## Publish til trifork-internal nexus
-```
-mvn -f fmk-160-schema-classes deploy
-mvn -f fmk-160-idws-schema-classes deploy
-```
 
 
 # Building 1.4.x wsdl and zip-files
