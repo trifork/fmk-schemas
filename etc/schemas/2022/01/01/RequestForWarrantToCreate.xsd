@@ -7,9 +7,11 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="PackageRestriction.xsd"/>
-	<include schemaLocation="CreateDoseDispensedRestriction.xsd"/>
+	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="HospitalPharmacyPrescription.xsd"/>
+	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="CreateOrder.xsd"/>
+	<include schemaLocation="WithoutOrder.xsd"/>
 
 	<complexType name="RequestForWarrantToCreateType">
 		<annotation>
@@ -21,10 +23,14 @@
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrescribingOrganisation" type="mc160:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 			<choice minOccurs="0">
-				<element name="PackageRestriction" type="mc160:PackageRestrictionType"/>
-				<element name="DoseDispensedRestriction" type="mc160:CreateDoseDispensedRestrictionType"/>
+				<element name="Prescription" type="mc160:PrescriptionType"/>
+				<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType"/>
+				<element name="DoseDispensed" type="mc160:DoseDispensedType"/>
 			</choice>
-			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="Order" type="mc160:CreateOrderType"/>
+				<element name="WithoutOrder" type="mc160:WithoutOrderType"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>

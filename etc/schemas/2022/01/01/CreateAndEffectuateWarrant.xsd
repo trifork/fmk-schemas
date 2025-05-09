@@ -6,15 +6,7 @@
 
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
-	<include schemaLocation="SystemName.xsd"/>
-	<include schemaLocation="ReimbursementClause.xsd"/>
-	<include schemaLocation="Drug.xsd"/>
-	<include schemaLocation="PackageRestriction.xsd"/>
-	<include schemaLocation="CreateDoseDispensedRestriction.xsd"/>
-	<include schemaLocation="Indication.xsd"/>
-	<include schemaLocation="DosageText.xsd"/>
-	<include schemaLocation="SubstitutionAllowed.xsd"/>
-	<include schemaLocation="SupplementaryInformation.xsd"/>
+	<include schemaLocation="LoosePrescription.xsd"/>
 	<include schemaLocation="CreateOrderAndEffectuation.xsd"/>
 
 	<complexType name="CreateAndEffectuateWarrantType">
@@ -25,18 +17,13 @@
 		<sequence>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
-			<element name="SystemName" type="mc160:SystemNameType"/>
-            <element name="ReimbursementClause" type="mc160:ReimbursementClauseType" minOccurs="0"/>
+            <element name="Prescription" type="mc160:LoosePrescriptionType"/>
 			<element name="Drug" type="mc160:DrugType" minOccurs="0"/>
-            <choice>
-                <element name="PackageRestriction" type="mc160:PackageRestrictionType"/>
-                <element name="DoseDispensedRestriction" type="mc160:CreateDoseDispensedRestrictionType"/>
-			</choice>
 			<element name="Indication" type="mc160:IndicationType" minOccurs="0"/>
 			<element name="DosageText" type="mc160:DosageTextType" minOccurs="0"/>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
 			<element name="SupplementaryInformation" type="mc160:SupplementaryInformationType" minOccurs="0"/>
-            <element name="Order" type="mc160:CreateOrderAndEffectuationType"/>
+			<element name="Order" type="mc160:CreateOrderAndEffectuationType"/>
 		</sequence>
 	</complexType>
 </schema>

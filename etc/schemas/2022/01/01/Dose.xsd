@@ -7,6 +7,7 @@
 	<include schemaLocation="DoseQuantity.xsd"/>
 	<include schemaLocation="Duration.xsd"/>
 	<include schemaLocation="InfusionRate.xsd"/>
+	<include schemaLocation="AccordingToParameterSchema.xsd"/>
 	
 	<element name="Dose" type="mc160:DoseType">
 		<annotation>
@@ -37,7 +38,7 @@
 				</sequence>
 			</choice>
 		</sequence>
-			<element name="AccordingToParameterSchema"/>
+			<element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType" minOccurs="0"/>
 		</choice>
 	</complexType>
 </schema>

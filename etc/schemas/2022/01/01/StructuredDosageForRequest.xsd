@@ -10,6 +10,7 @@
 	<include schemaLocation="Precondition.xsd"/>
 	<include schemaLocation="DosageUnit.xsd"/>
 	<include schemaLocation="DosageParameter.xsd"/>
+	<include schemaLocation="IsSelfAdministration.xsd"/>
 
 	<element name="StructuredDosageForRequest" type="mc160:StructuredDosageForRequestType">
 		<annotation>
@@ -19,11 +20,7 @@
 	</element>
 	<complexType name="StructuredDosageForRequestType">
 		<sequence>
-			<choice>
-				<element name="IsFixedDosage"/>
-				<element name="IsAccordingToNeedDosage"/>
-			</choice>
-			<element name="IsSelfAdministration" minOccurs="0"/>
+			<element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
 			<element name="Precondition" type="mc160:PreconditionType"/>
 
 			<element name="DosageUnit" type="mc160:DosageUnitType"/>
