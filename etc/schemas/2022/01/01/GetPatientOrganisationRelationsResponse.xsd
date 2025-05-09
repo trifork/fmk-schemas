@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="SubOrganisationsIncluded.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
+	<include schemaLocation="MoreAvailable.xsd"/>
+
+	<element name="GetPatientOrganisationRelationsResponse" type="mc160:GetPatientOrganisationRelationsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document containing the result for searching for patient organisation relations</documentation>
+			<documentation xml:lang="da-DK">Response-dokument der indeholder resultatet af en søgning efter patient organisations relationer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetPatientOrganisationRelationsResponseType">
+		<sequence>
+			<element name="SubOrganisationsIncluded" type="mc160:SubOrganisationsIncludedType"/>
+			<element name="RelationIdentifier" type="mc160:PatientOrganisationRelationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MoreAvailable" type="mc160:MoreAvailableType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
