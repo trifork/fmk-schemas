@@ -4,8 +4,10 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+    <include schemaLocation="PatientFlag.xsd"/>
+    <include schemaLocation="PersonIdentifier.xsd"/>
 
-    <element name="RolespecificModificator" type="mc160:RoleSpecificModificatorType">
+    <element name="PersonModificator" type="mc160:PersonModificatorType">
         <annotation>
             <documentation xml:lang="en-GB">Contains a name, which meaning is defined by the chosen modificator role. Example: for the System role, the name can describe the system/functionality that generated the service request ("Indkøbskurv, Bostedet Mellemvang, bestilling")
             </documentation>
@@ -13,16 +15,21 @@
             </documentation>
         </annotation>
     </element>
-    <complexType name="RoleSpecificModificatorType">
-        <sequence>
-            <element name="NameLine" type="mc160:NameLineType" maxOccurs="10"/>
-        </sequence>
+    <complexType name="PersonModificatorType">
+        <choice>
+            <element name="Patient" type="mc160:PatientFlagType"/>
+            <sequence>
+                <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+                <element name="Name" type="mc160:SimpleNameType"/>
+            </sequence>
+        </choice>
+
     </complexType>
 
-    <simpleType name="NameLineType">
+    <simpleType name="SimpleNameType">
         <restriction base="string">
             <minLength value="1"/>
-            <maxLength value="50"/>
+            <maxLength value="130"/>
         </restriction>
     </simpleType>
 </schema>

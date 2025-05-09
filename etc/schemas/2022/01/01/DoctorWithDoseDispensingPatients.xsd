@@ -6,6 +6,7 @@
 
     <include schemaLocation="OrganisationIdentifier.xsd"/>
     <include schemaLocation="Patient.xsd"/>
+    <include schemaLocation="DispensingCardIdentifier.xsd"/>
 
     <complexType name="DoctorWithDoseDispensingPatientsType">
         <annotation>
@@ -18,6 +19,10 @@
                 <element name="Patient" type="mc160:PatientType" minOccurs="0" maxOccurs="unbounded"/>
                 <element name="PersonIdentifier" type="mc160:PersonIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
             </choice>
+            <sequence maxOccurs="unbounded">
+                <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+                <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
+            </sequence>
         </sequence>
     </complexType>
 </schema>

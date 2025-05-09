@@ -15,8 +15,11 @@
 	</element>
 	<complexType name="GetPlannedAdministrationResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="PlannedAdministration" type="mc160:PlannedAdministrationHistoryType" maxOccurs="unbounded"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="PlannedAdministration" type="mc160:PlannedAdministrationHistoryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

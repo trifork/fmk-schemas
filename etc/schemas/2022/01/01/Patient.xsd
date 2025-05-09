@@ -19,7 +19,12 @@
 			<element name="Person" type="mc160:SimpleCPRPersonType"/>
 			<?filter nsf="ignore"?>
 			<choice minOccurs="0">
-				<element name="Address" type="mc160:AddressType"/>
+				<sequence>
+					<!-- Signal that a person might have address protection, but you can still see it.
+					Wanted by Pharmacy systems who generally get address protection overwritten automatically -->
+					<element name="Address" type="mc160:AddressType"/>
+					<element name="AddressProtected" type="mc160:AddressProtectedType" minOccurs="0"/>
+				</sequence>
 				<element name="AddressProtected" type="mc160:AddressProtectedType"/>
 			</choice>
 		</sequence>
