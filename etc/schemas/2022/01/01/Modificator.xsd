@@ -4,8 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PatientFlag.xsd"/>
-	<include schemaLocation="ModificatorPerson.xsd"/>
+	<include schemaLocation="PersonModificator.xsd"/>
 	<include schemaLocation="HealthcareProfessional.xsd"/>
 	<include schemaLocation="RequestedRole.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
@@ -19,8 +18,8 @@
 
 		<sequence>
 			<choice>
-				<element name="Patient" type="mc160:PatientFlagType"/>
-				<element name="RoleSpecificName" type="mc160:RoleSpecificModificatorType"/>
+				<element name="Person" type="mc160:PersonModificatorType"/>
+				<element name="RoleSpecific" type="mc160:RoleSpecificModificatorType"/>
 				<element name="HealthcareProfessional" type="mc160:HealthcareProfessionalType"/>
 			</choice>
 			<element name="Role" type="mc160:RequestedRoleType"/>

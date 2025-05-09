@@ -4,6 +4,7 @@
         targetNamespace="http://fmk-teknik.dk/160" 
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+    <include schemaLocation="DispensingCardIdentifier.xsd"/>
     <include schemaLocation="DispensingPeriodStartDate.xsd"/>
     <include schemaLocation="DispensingPeriodEndDate.xsd"/>
     <include schemaLocation="LatestDispensingEffectuation.xsd"/>
@@ -18,6 +19,7 @@
         </annotation>
         <sequence>
             <sequence minOccurs="0" maxOccurs="unbounded">
+                <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
                 <element name="StartDate" type="mc160:DispensingPeriodStartDateType" minOccurs="0"/>
                 <element name="EndDate" type="mc160:DispensingPeriodEndDateType" minOccurs="0"/>
                 <choice>
@@ -26,8 +28,7 @@
                 </choice>
             </sequence>
 			<element name="LatestDispensingEffectuation" type="mc160:LatestDispensingEffectuationType" minOccurs="0"/>
-			<element name="HasOpenDosageDispensingPrescriptions" type="mc160:HasOpenDosageDispensedWarrantsType"/>
-			<element name="PatientRegistration" type="mc160:PatientRegistrationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="HasOpenDosageDispensingWarrants" type="mc160:HasOpenDosageDispensedWarrantsType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>

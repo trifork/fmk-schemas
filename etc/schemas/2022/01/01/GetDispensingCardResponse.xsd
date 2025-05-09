@@ -5,8 +5,9 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="Patient.xsd"/>
+    <include schemaLocation="Organisation.xsd"/>
     <include schemaLocation="RequestDateTime.xsd"/>
-    <include schemaLocation="DoseDispensingOnHold.xsd"/>
+    <include schemaLocation="PatientRegistration.xsd"/>
     <include schemaLocation="DispensingCard.xsd"/>
 
     <element name="GetDispensingCardResponse" type="mc160:GetDispensingCardResponseType">
@@ -17,10 +18,13 @@
     </element>
     <complexType name="GetDispensingCardResponseType">
         <sequence>
-            <element name="Patient" type="mc160:PatientType"/>
+            <choice>
+                <element name="Patient" type="mc160:PatientType"/>
+                <element name="Organisation" type="mc160:OrganisationType"/>
+            </choice>
             <element name="RequestDateTime" type="mc160:RequestDateTimeType"/>
-            <element name="DoseDispensingOnHold" type="mc160:DoseDispensingOnHoldType" minOccurs="0"/>
-            <element name="DispensingCard" type="mc160:DispensingCardType" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="PatientRegistration" type="mc160:PatientRegistrationType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="DispensingCard" type="mc160:DispensingCardType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

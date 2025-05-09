@@ -20,27 +20,20 @@
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageForResponse.xsd"/>
-	<include schemaLocation="PlannedAdministrationOnDrugMedication.xsd"/>
-	<include schemaLocation="PlannedAdministrationForPreviousVersion.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="Effectuation.xsd"/>
-	<include schemaLocation="InvalidEffectuation.xsd"/>
-	<include schemaLocation="MoreEffectuationsAvailable.xsd"/>
 	<include schemaLocation="Warrant.xsd"/>
-	<include schemaLocation="InvalidWarrant.xsd"/>
-	<include schemaLocation="IsDoseDispensed.xsd"/>
 
-	<complexType name="DrugMedicationType">
+	<complexType name="DrugMedicationOnPlannedAdministrationType">
 		<annotation>
-			<documentation xml:lang="en-GB">An overview of the drug medication (a medication on the medicine card)</documentation>
-			<documentation xml:lang="da-DK">En oversigt over lægemiddelordination (en ordination på medicinkortet)</documentation>
+			<documentation xml:lang="en-GB">An overview of the drug medication linked to a planned administration</documentation>
+			<documentation xml:lang="da-DK">En oversigt over lægemiddelordination tilknyttet en planlagt administration</documentation>
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="Version" type="mc160:DrugMedicationVersionType"/>
 			<element name="PreviousVersion" type="mc160:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="NextVersion" type="mc160:DrugMedicationVersionType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="ParentIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
 			<element name="Created" type="mc160:CreatedType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
@@ -55,18 +48,10 @@
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForResponseType"/>
-			<choice minOccurs="0">
-				<element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDrugMedicationType" maxOccurs="unbounded"/>
-				<element name="PlannedAdministrationForPreviousVersion" type="mc160:PlannedAdministrationForPreviousVersionType"/>
-			</choice>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="Effectuation" type="mc160:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="MoreEffectuationsAvailable" type="mc160:MoreEffectuationsAvailableType" minOccurs="0"/>
 			<element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidWarrant" type="mc160:InvalidWarrantType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="ReimbursementClause" type="mc160:ReimbursementClauseType" minOccurs="0"/>
-			<element name="IsDoseDispensed" type="mc160:IsDoseDispensedType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
