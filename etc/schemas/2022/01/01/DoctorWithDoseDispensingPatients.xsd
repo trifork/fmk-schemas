@@ -15,14 +15,22 @@
         </annotation>
         <sequence>
             <element name="Identifier" type="mc160:OrganisationIdentifierType"/>
-            <choice>
-                <element name="Patient" type="mc160:PatientType" minOccurs="0" maxOccurs="unbounded"/>
-                <element name="PersonIdentifier" type="mc160:PersonIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <choice minOccurs="0">
+                <sequence maxOccurs="unbounded">
+                    <element name="Patient" type="mc160:PatientType"/>
+                    <sequence maxOccurs="unbounded">
+                        <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+                        <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
+                    </sequence>
+                </sequence>
+                <sequence maxOccurs="unbounded">
+                    <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+                    <sequence maxOccurs="unbounded">
+                        <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+                        <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
+                    </sequence>
+                </sequence>
             </choice>
-            <sequence maxOccurs="unbounded">
-                <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
-                <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
-            </sequence>
         </sequence>
     </complexType>
 </schema>
