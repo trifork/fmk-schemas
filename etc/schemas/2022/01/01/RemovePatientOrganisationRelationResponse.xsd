@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
+
+	<element name="RemovePatientOrganisationRelationResponse" type="mc160:RemovePatientOrganisationRelationResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a for a request to remove a patients organisation relation</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en request som fjerner en patients organisations-relation</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="RemovePatientOrganisationRelationResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="RelationDeleted" type="mc160:PatientOrganisationRelationIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

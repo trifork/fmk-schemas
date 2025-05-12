@@ -13,10 +13,13 @@
 		</annotation>
 	</element>
 	<complexType name="PreconditionType">
-		<sequence>
-			<element name="StartDate" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
-			<element name="FreeText" type="mc160:PreconditionFreetextType" minOccurs="0"/>
-		</sequence>
+		<choice>
+			<element name="StartDate" type="mc160:DosageTimesStartDateType"/>
+			<sequence>
+				<element name="StartDate" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
+				<element name="FreeText" type="mc160:PreconditionFreetextType"/>
+			</sequence>
+		</choice>
 	</complexType>
 
 	<simpleType name="PreconditionFreetextType">

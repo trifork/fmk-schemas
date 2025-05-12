@@ -19,7 +19,10 @@
 		<sequence>
 			<?filter nsf="ignore"?>
 			<choice minOccurs="0">
-				<element name="Name" type="mc160:PersonNameType"/>
+				<sequence>
+					<element name="Name" type="mc160:PersonNameType"/>
+					<element name="NameProtected" type="mc160:PersonNameProtectedType" minOccurs="0"/>
+				</sequence>
 				<element name="NameProtected" type="mc160:PersonNameProtectedType"/>
 			</choice>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>

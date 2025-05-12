@@ -5,7 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 
-    <element name="RolespecificModificator" type="mc160:RolespecificModificatorType">
+    <element name="RolespecificModificator" type="mc160:RoleSpecificModificatorType">
         <annotation>
             <documentation xml:lang="en-GB">Contains a name, which meaning is defined by the chosen modificator role. Example: for the System role, the name can describe the system/functionality that generated the service request ("Indkøbskurv, Bostedet Mellemvang, bestilling")
             </documentation>
@@ -13,9 +13,16 @@
             </documentation>
         </annotation>
     </element>
-    <complexType name="RolespecificModificatorType">
+    <complexType name="RoleSpecificModificatorType">
         <sequence>
-            <element name="NameLine" type="string" maxOccurs="10"/>
+            <element name="NameLine" type="mc160:NameLineType" maxOccurs="10"/>
         </sequence>
     </complexType>
+
+    <simpleType name="NameLineType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="50"/>
+        </restriction>
+    </simpleType>
 </schema>

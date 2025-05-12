@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <element name="NoneAcuteChangeDate" type="mc160:NoneAcuteChangeDateType">
+        <annotation>
+            <documentation xml:lang="en-GB">Indicates the earliest date, before a given change to a DrugMedication can be rectified in the patients physical dispensensing</documentation>
+            <documentation xml:lang="da-DK">Indikere det tidligeste dato, før en ændring i en lægemiddelordination bliver afspejlet i patients fysiske dispensering</documentation>
+        </annotation>
+    </element>
+    <simpleType name="NoneAcuteChangeDateType">
+        <restriction base="date">
+            <minInclusive value="2000-01-01"/>
+        </restriction>
+    </simpleType>
+</schema>

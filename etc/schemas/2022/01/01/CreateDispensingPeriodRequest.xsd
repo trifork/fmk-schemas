@@ -16,7 +16,10 @@
 	</element>
 	<complexType name="CreateDispensingPeriodRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="CreatedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="DispensingPeriod" type="mc160:CreateDispensingPeriodType" maxOccurs="unbounded"/>
