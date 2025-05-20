@@ -64,6 +64,9 @@
         <include name="schemas/**"/>
         <include name="wsdl/*_Idws_*.wsdl"/>
         <!-- Exclude specialized versions of XSDs -->
+        <exclude name="schemas/2022/01"/>
+        <exclude name="schemas/2022/01/**"/>
+        <exclude name="schemas/fmk-1.6.0-all-types.xsd"/>
         <exclude name="schemas/2008/06/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" />
         <exclude name="schemas/2008/06/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
         <exclude name="schemas/2008/06/01/xmldsig-core-schema.xsd"/>
@@ -77,6 +80,11 @@
         <include name="wsdl/**"/>
         <!--<exclude name="schemas/idws/**"/>-->
         <include name="wsdl/*_Idws_*.wsdl"/>
+        <exclude name="wsdl/MedicineCard_2022_01_01.wsdl"/>
+        <exclude name="wsdl/MedicineCard_Idws_2022_01_01.wsdl"/>
+        <exclude name="schemas/2022/01"/>
+        <exclude name="schemas/2022/01/**"/>
+        <exclude name="schemas/fmk-1.6.0-all-types.xsd"/>
     </fileset>
 
     <target name="filter-specialized-xsds">
@@ -233,7 +241,9 @@
 
 	        <zip destfile="${target.dir}/fmk-schema-idws.zip"
 	             basedir="${idws.target.dir}"
-	             includes="schemas/**, wsdl/**" />
+	             includes="schemas/**, wsdl/**"
+                 excludes="schemas/2022/01, schemas/2022/01/**, wsdl/MedicineCard_2022_01_01.wsdl, wsdl/MedicineCard_Idws_2022_01_01.wsdl"
+            />
 	    </target>
 
 	    <macrodef name="organize-idws-schemas-macro">
