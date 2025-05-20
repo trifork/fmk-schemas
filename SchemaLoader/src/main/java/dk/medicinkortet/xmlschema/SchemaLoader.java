@@ -314,6 +314,9 @@ public class SchemaLoader {
         } else {
             wsdlOut = new File(targetDir() + "/wsdl/" + System.getProperty("WsdlName") + "-inline.wsdl");
         }
+        if(!wsdlOut.getParentFile().exists()){
+            wsdlOut.getParentFile().mkdirs();
+        }
 
         FileOutputStream fw = new FileOutputStream(wsdlOut);
         IOUtils.write(XmlUtil.node2String(wsdl, true, true), fw, "UTF-8");
