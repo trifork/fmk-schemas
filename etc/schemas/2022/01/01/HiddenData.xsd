@@ -12,10 +12,14 @@
 			<documentation xml:lang="da-DK">Angiver årsagen til evt. skjulte data</documentation>
 		</annotation>
 	</element>
-	
-	<complexType name="HiddenDataType">
-		<sequence>
-			<element name="NegativeConsent" type="mc160:NegativeConsentType" />
-		</sequence>
-	</complexType>
+
+	<simpleType name="HiddenDataType">
+		<restriction base="string" />
+	</simpleType>
+<!--	TODO CHSK: below was replaced with above. NegativeConsentType does not exist so this was done to proceed with current task. Fix this! -->
+<!--	<complexType name="HiddenDataType">-->
+<!--		<sequence>-->
+<!--			<element name="NegativeConsent" type="mc160:NegativeConsentType" />-->
+<!--		</sequence>-->
+<!--	</complexType>-->
 </schema>
