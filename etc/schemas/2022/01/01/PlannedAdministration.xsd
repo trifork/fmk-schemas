@@ -6,12 +6,13 @@
 
 	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
 	<include schemaLocation="PlannedAdministrationVersion.xsd"/>
-	<include schemaLocation="DrugMedication.xsd"/>
+	<include schemaLocation="DrugMedicationOnPlannedAdministration.xsd"/>
 	<include schemaLocation="ValidWarrant.xsd"/>
 	<include schemaLocation="DispensingWarning.xsd"/>
 	<include schemaLocation="PlannedAdministrationStructures.xsd"/>
 	<include schemaLocation="AdministrationInstruction.xsd"/>
 	<include schemaLocation="DosageUnit.xsd"/>
+	<include schemaLocation="DispensingEndDate.xsd"/>
 
 	<complexType name="PlannedAdministrationType">
 		<annotation>
@@ -21,7 +22,7 @@
 		<sequence>
 			<element name="Identifier" type="mc160:PlannedAdministrationIdentifierType"/>
 			<element name="Version" type="mc160:PlannedAdministrationVersionType"/>
-			<element name="DrugMedication" type="mc160:DrugMedicationType"/>
+			<element name="DrugMedication" type="mc160:DrugMedicationOnPlannedAdministrationType"/>
 			<element name="ValidWarrant" type="mc160:ValidWarrantType" minOccurs="0"/>
 			<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DosageUnit" type="mc160:DosageUnitType" minOccurs="0"/>

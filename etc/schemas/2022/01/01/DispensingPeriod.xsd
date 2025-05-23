@@ -37,7 +37,10 @@
             <element name="ProductionIdentifier" type="mc160:DispensingProductionIdentifierType" minOccurs="0"/>
             <element name="AcutePacking" type="mc160:AcutePackingType" minOccurs="0"/>
             <element name="PrivatePlannedAdministration" type="mc160:PrivatePlannedAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="Dispensing" type="mc160:DispensingType" minOccurs="0" maxOccurs="unbounded"/>
+            <choice>
+                <element name="Dispensing" type="mc160:DispensingType" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="PlannedAdministration" type="mc160:PlannedAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
+            </choice>
         </sequence>
     </complexType>
 </schema>

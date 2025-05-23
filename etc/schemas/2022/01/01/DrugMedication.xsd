@@ -20,6 +20,8 @@
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageForResponse.xsd"/>
+	<include schemaLocation="PlannedAdministrationOnDrugMedication.xsd"/>
+	<include schemaLocation="PlannedAdministrationForPreviousVersion.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="Effectuation.xsd"/>
 	<include schemaLocation="InvalidEffectuation.xsd"/>
@@ -53,6 +55,10 @@
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForResponseType"/>
+			<choice minOccurs="0">
+				<element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDrugMedicationType" maxOccurs="unbounded"/>
+				<element name="PlannedAdministrationForPreviousVersion" type="mc160:PlannedAdministrationForPreviousVersionType"/>
+			</choice>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="Effectuation" type="mc160:EffectuationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>

@@ -4,13 +4,21 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<element name="ExpirationDateTime" type="mc160:ExpirationDateTimeType">
+	<element name="RegistrationValidityPeriod" type="mc160:RegistrationValidityPeriodType">
 		<annotation>
 			<documentation xml:lang="en-GB">Date and time for expiration</documentation>
 			<documentation xml:lang="da-DK">Dato og tid for udløb</documentation>
 		</annotation>
 	</element>
-	<simpleType name="ExpirationDateTimeType">
+
+	<complexType name="RegistrationValidityPeriodType">
+		<sequence>
+			<element name="From" type="mc160:ValidityDateTimeType"/>
+			<element name="To" type="mc160:ValidityDateTimeType"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="ValidityDateTimeType">
 		<restriction base="dateTime">
 			<minInclusive value="2000-01-01T00:00:00Z"/>
 		</restriction>

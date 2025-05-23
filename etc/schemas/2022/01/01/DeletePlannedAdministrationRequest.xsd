@@ -16,10 +16,13 @@
 	</element>
 	<complexType name="DeletePlannedAdministrationRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="PlannedAdministration" type="mc160:DeleteAdministrationType" maxOccurs="unbounded"/>
+			<element name="DeletePlannedAdministration" type="mc160:DeletePlannedAdministrationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

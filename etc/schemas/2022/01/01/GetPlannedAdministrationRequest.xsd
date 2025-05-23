@@ -5,6 +5,8 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
 
 	<element name="GetPlannedAdministrationRequest" type="mc160:GetPlannedAdministrationRequestType">
@@ -15,8 +17,14 @@
 	</element>
 	<complexType name="GetPlannedAdministrationRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType" maxOccurs="unbounded"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<choice>
+				<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
+				<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType" maxOccurs="unbounded"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>

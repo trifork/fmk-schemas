@@ -6,6 +6,7 @@
 		attributeFormDefault="unqualified">
 	
 	<include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
@@ -13,6 +14,7 @@
 	<include schemaLocation="NotReviewed.xsd"/>
 	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
 	<include schemaLocation="PatientOrganisationRelation.xsd"/>
+	<include schemaLocation="PatientRegistration.xsd"/>
 	<include schemaLocation="PrivateDrugMedication.xsd"/>
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="InvalidDrugMedication.xsd"/>
@@ -27,7 +29,10 @@
 			<documentation xml:lang="da-DK">Virtuelt kort hvori en patients medicineringer dokumenteres</documentation>
 		</annotation>
 		<sequence>
-			<element name="Patient" type="mc160:PatientType"/>
+			<choice>
+				<element name="Patient" type="mc160:PatientType"/>
+				<element name="Organisation" type="mc160:OrganisationType"/>
+			</choice>
 			<element name="Version" type="mc160:MedicineCardVersionType"/>
 			<element name="PreviousVersion" type="mc160:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="NextVersion" type="mc160:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
@@ -37,6 +42,7 @@
 			<element name="NotReviewed" type="mc160:NotReviewedType" minOccurs="0"/>
 			<element name="IsInvalid" type="mc160:MedicineCardIsInvalidType" minOccurs="0"/>
 			<element name="PatientOrganisationRelation" type="mc160:PatientOrganisationRelationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PatientRegistration" type="mc160:PatientRegistrationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedicationWithNegativeConsent" type="mc160:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="mc160:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidDrugMedication" type="mc160:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="IncludeRemovedRegistrations.xsd"/>
+	<include schemaLocation="PatientRegistrationIdentification.xsd"/>
+
+	<element name="GetPatientRegistrationRequest" type="mc160:GetPatientRegistrationRequestType">
+        <annotation>
+            <documentation xml:lang="en-GB">Request document to get registrations for a patient</documentation>
+            <documentation xml:lang="da-DK">Request-dokument til at hente patient-registreringer</documentation>
+        </annotation>
+    </element>
+    <complexType name="GetPatientRegistrationRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<element name="IncludeRemovedRegistrations" type="mc160:IncludeRemovedRegistrationsType" minOccurs="0"/>
+            <element name="TypeAndIdentifierFilter" type="mc160:PatientRegistrationIdentificationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
