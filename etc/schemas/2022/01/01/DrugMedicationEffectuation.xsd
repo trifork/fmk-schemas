@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="WarrantIdentifier.xsd"/>
     <include schemaLocation="Effectuation.xsd"/>
 
     <complexType name="DrugMedicationEffectuationType">
@@ -14,6 +15,7 @@
         </annotation>
         <sequence>
         	<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
             <element name="Effectuation" type="mc160:EffectuationType" maxOccurs="unbounded"/>
         </sequence>    
     </complexType>

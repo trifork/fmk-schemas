@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<simpleType name="EnumerationValueType">
+		<annotation>
+			<documentation xml:lang="en-GB">The known types which are expandable enumerations</documentation>
+			<documentation xml:lang="da-DK">De kendte typer som er udvidbare værdier</documentation>
+		</annotation>
+		<union memberTypes="mc160:PredefinedEnumerationValueType mc160:UndefinedEnumerationValueType"/>
+	</simpleType>
+	<simpleType name="PredefinedEnumerationValueType">
+		<restriction base="mc160:UndefinedEnumerationValueType">
+			<enumeration value="ActiveSubstanceSourceType"/>
+			<enumeration value="ActiveSubstanceTextSourceType"/>
+			<enumeration value="AcutePackingType"/>
+			<enumeration value="AdministrationInstructionType"/>
+			<enumeration value="ATCCodeSourceType"/>
+			<enumeration value="ConsentSourceType"/>
+			<enumeration value="ConsentTypeType"/>
+			<enumeration value="ContentType"/>
+			<enumeration value="DiscardReasonType"/>
+			<enumeration value="DispensingStatusType"/>
+			<enumeration value="DoseTimeType"/>
+			<enumeration value="DrugFormCodeSourceType"/>
+			<enumeration value="DrugIdentifierSourceType"/>
+			<enumeration value="DrugMedicationEndedType"/>
+			<enumeration value="DrugMedicationTypeType"/>
+			<enumeration value="DrugPartTypeType"/>
+			<enumeration value="DrugStrengthTextSourceType"/>
+			<enumeration value="DrugStrengthUnitCodeSourceType"/>
+			<enumeration value="EnumerationValueType"/>
+			<enumeration value="HealthcareProfessionalIdentifierSourceType"/>
+			<enumeration value="HealthcareProfessionalInformationSourceType"/>
+			<enumeration value="IndicationCodeSourceType"/>
+			<enumeration value="InformationChangeTypeType"/>
+			<enumeration value="ModificationMetadataType"/>
+			<enumeration value="OrderStatusType"/>
+			<enumeration value="OrganisationIdentifierSourceType"/>
+			<enumeration value="OrganisationTypeType"/>
+			<enumeration value="PackageNumberSourceType"/>
+			<enumeration value="PackageSizeUnitCodeSourceType"/>
+			<enumeration value="PagingObjectType"/>
+			<enumeration value="PatientOrganisationRelationTypeType"/>
+			<enumeration value="PatientRegistrationExpirationReasonType"/>
+			<enumeration value="PatientRegistrationTypeType"/>
+			<enumeration value="PermissionType"/>
+			<enumeration value="PersonIdentifierSourceType"/>
+			<enumeration value="PersonIdentifierValidityStatusType"/>
+			<enumeration value="PlannedDoseTimeType"/>
+			<enumeration value="PrescribingOrganisationRetrievalContextType"/>
+			<enumeration value="PrintTypeType"/>
+			<enumeration value="ProductionDayType"/>
+			<enumeration value="RenewalReasonType"/>
+			<enumeration value="RequestedRoleType"/>
+			<enumeration value="RequestForWarrantCancellationReasonType"/>
+			<enumeration value="RequestForWarrantStatusType"/>
+			<enumeration value="RouteOfAdministrationSourceType"/>
+			<enumeration value="SpecialityCodeSourceType"/>
+			<enumeration value="SubstanceIdentifierSourceType"/>
+			<enumeration value="SystemTypeType"/>
+			<enumeration value="TimeUnitBetweenType"/>
+			<enumeration value="TimeUnitType"/>
+			<enumeration value="WarningSeverityType"/>
+			<enumeration value="WarrantRenewalReasonType"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedEnumerationValueType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>

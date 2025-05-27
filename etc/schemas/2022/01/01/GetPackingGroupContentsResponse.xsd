@@ -5,7 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="PackingGroupDetails.xsd"/>
-	<include schemaLocation="PersonWithDispensing.xsd"/>
+	<include schemaLocation="EntityWithDispensing.xsd"/>
 
 	<element name="GetPackingGroupContentsResponse" type="mc160:GetPackingGroupContentsResponseType">
 		<annotation>
@@ -16,7 +16,7 @@
 	<complexType name="GetPackingGroupContentsResponseType">
 		<sequence>
 			<element name="PackingGroup" type="mc160:PackingGroupDetailsType"/>
-			<element name="PersonWithDispensing" type="mc160:PersonWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="EntityWithDispensing" type="mc160:EntityWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

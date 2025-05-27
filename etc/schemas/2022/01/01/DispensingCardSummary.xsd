@@ -8,8 +8,6 @@
 	<include schemaLocation="DispensingCardIdentifier.xsd"/>
 	<include schemaLocation="DispensingCardDescription.xsd"/>
 	<include schemaLocation="DispensingPeriodSummary.xsd"/>
-	<include schemaLocation="PackingGroupIdentifier.xsd"/>
-	<include schemaLocation="PackingGroup.xsd"/>
 
 	<complexType name="DispensingCardSummaryType">
 		<annotation>
@@ -20,15 +18,6 @@
 			<element name="Identifier" type="mc160:DispensingCardIdentifierType"/>
         	<element name="Description" type="mc160:DispensingCardDescriptionType"/>
 			<element name="DispensingPeriod" type="mc160:DispensingPeriodSummaryType" minOccurs="0" maxOccurs="unbounded"/>
-			<choice>
-				<sequence>
-					<element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType" minOccurs="0"/>
-					<element name="PackingGroupName" type="mc160:PackingGroupType" minOccurs="0"/>
-					<element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
-					<element name="PackedAtOrganisation" type="mc160:OrganisationType"/>
-				</sequence>
-				<element name="DispensingOrganisation" type="mc160:OrganisationType"/>
-			</choice>
 		</sequence>
 	</complexType>
 </schema>

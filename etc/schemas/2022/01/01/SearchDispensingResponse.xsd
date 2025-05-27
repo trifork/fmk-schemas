@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PersonWithDispensing.xsd"/>
+	<include schemaLocation="EntityWithDispensing.xsd"/>
 
 	<!-- TODO: Re-evaluate this service, will it be needed when substitutions are chosen at start of period? -->
 	<element name="SearchDispensingResponse" type="mc160:SearchDispensingResponseType">
@@ -15,7 +15,7 @@
 	</element>
 	<complexType name="SearchDispensingResponseType">
 		<sequence>
-            <element name="PersonWithDispensing" type="mc160:PersonWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="EntityWithDispensing" type="mc160:EntityWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

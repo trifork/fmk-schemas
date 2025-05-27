@@ -4,6 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+	<include schemaLocation="PagingObject.xsd"/>
 
 	<element name="PagingResponse" type="mc160:PagingResponseType">
 		<annotation>
@@ -23,24 +24,6 @@
 		<attribute name="type" type="mc160:PagingObjectType" use="required"/>
 		</complexType>
 
-		<simpleType name="PagingObjectType">
-			<union memberTypes="mc160:PagingObjectPredefinedType mc160:UndefinedPagingObjectType"/>
-		</simpleType>
-
-		<simpleType name="PagingObjectPredefinedType">
-			<restriction base="mc160:UndefinedPagingObjectType">
-				<enumeration value="Medicinecards"/>
-				<enumeration value="Drugmedications"/>
-				<enumeration value="Warrants"/>
-				<enumeration value="Effectuations"/>
-			</restriction>
-		</simpleType>
-		<simpleType name="UndefinedPagingObjectType">
-			<restriction base="string">
-				<minLength value="1"/>
-				<maxLength value="200"/>
-			</restriction>
-		</simpleType>
 		<complexType name="LastReceivedType">
 			<sequence>
 				<element name="Field" type="mc160:PagingFieldType"/>

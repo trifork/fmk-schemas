@@ -15,7 +15,10 @@
 	</element>
 	<complexType name="EffectuateDispensingPeriodResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="DrugMedication" type="mc160:DrugMedicationEffectuationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

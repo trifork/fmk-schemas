@@ -15,9 +15,9 @@
 		</annotation>
 	</element>
     <complexType name="PatientRegistrationIdentificationType">
-        <sequence>
+        <choice>
             <element name="Type" type="mc160:PatientRegistrationTypeType" maxOccurs="unbounded"/>
-            <element name="Identifier" type="mc160:PatientRegistrationIdentifierType" minOccurs="0"/>
-        </sequence>
+            <element name="Identifier" type="mc160:PatientRegistrationIdentifierType" maxOccurs="unbounded"/>
+        </choice>
     </complexType>
 </schema>

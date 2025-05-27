@@ -19,6 +19,8 @@
 		<sequence>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
      		<element name="DispensingPeriodStatus" type="mc160:DispensingStatusType" />
+			<!-- Warnings that relate to the period as a whole -->
+			<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
      		<element name="Dispensing" minOccurs="0" maxOccurs="unbounded">
      			<complexType>
 	     			<sequence>
@@ -29,8 +31,7 @@
 	     			</sequence>
      			</complexType>
      		</element>
-     		<!-- Warnings that relate to the period as a whole -->
-            <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+
 		</sequence>
 	</complexType>
 </schema>
