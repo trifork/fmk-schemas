@@ -63,6 +63,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/AmendDispensingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AmendDispensingResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/AttachOrDetachWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AttachOrDetachWarrantResponse.xsd"/>
 
@@ -445,6 +448,14 @@
 
     <wsdl:message name="AdjustDosageChangeResponse_160">
         <wsdl:part name="AdjustDosageChangeResponse" element="mc160:AdjustDosageChangeResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AmendDispensingRequest_160">
+        <wsdl:part name="AmendDispensingRequest" element="mc160:AmendDispensingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AmendDispensingResponse_160">
+        <wsdl:part name="AmendDispensingResponse" element="mc160:AmendDispensingResponse"/>
     </wsdl:message>
 
     <wsdl:message name="AttachOrDetachWarrantRequest_160">
@@ -1295,6 +1306,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="AmendDispensing_160">
+            <wsdl:input name="AmendDispensingRequest_160" message="tns:AmendDispensingRequest_160"/>
+            <wsdl:output name="AmendDispensingResponse_160" message="tns:AmendDispensingResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="AttachOrDetachWarrant_160">
             <wsdl:input name="AttachOrDetachWarrantRequest_160" message="tns:AttachOrDetachWarrantRequest_160"/>
             <wsdl:output name="AttachOrDetachWarrantResponse_160" message="tns:AttachOrDetachWarrantResponse_160"/>
@@ -1973,6 +1990,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AdjustDosageChangeResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AmendDispensing_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AmendDispensing" style="document"/>
+            <wsdl:input name="AmendDispensingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AmendDispensingResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

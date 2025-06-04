@@ -6,6 +6,7 @@
 
 	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="SubstitutionChosenByPatient.xsd"/>
 
 	<element name="PlannedAdministrationSubstitution" type="mc160:PlannedAdministrationSubstitutionType">
 		<annotation>
@@ -17,6 +18,7 @@
 		<sequence>
 			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
 			<element name="Substitution" type="mc160:DrugType"/>
+			<element name="SubstitutionChosenByPatient" type="mc160:SubstitutionChosenByPatientType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

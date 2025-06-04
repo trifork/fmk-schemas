@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 
 	<element name="UndoDiscardDispensingPeriodResponse" type="mc160:UndoDiscardDispensingPeriodResponseType">
@@ -15,7 +16,10 @@
 	</element>
 	<complexType name="UndoDiscardDispensingPeriodResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"  maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

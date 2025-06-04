@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="DispensingCardHistory.xsd"/>
 
 	<element name="GetDispensingCardHistoryResponse" type="mc160:GetDispensingCardHistoryResponseType">
@@ -15,7 +16,10 @@
 	</element>
 	<complexType name="GetDispensingCardHistoryResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="DispensingCardHistory" type="mc160:DispensingCardHistoryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

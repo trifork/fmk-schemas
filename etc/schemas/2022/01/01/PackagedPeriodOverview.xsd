@@ -5,6 +5,8 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="Patient.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="DispensingCardIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
@@ -22,6 +24,7 @@
 			<choice>
 				<element name="Patient" type="mc160:PatientType"/>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="Organisation" type="mc160:OrganisationType"/>
 			</choice>
 			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
