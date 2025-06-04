@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+
+	<element name="PagingObject" type="mc160:PagingObjectType">
+		<annotation>
+			<documentation xml:lang="en-GB">The type of paging</documentation>
+			<documentation xml:lang="da-DK">Typen af paginering</documentation>
+		</annotation>
+	</element>
+
+	<simpleType name="PagingObjectType">
+		<union memberTypes="mc160:PagingObjectPredefinedType mc160:UndefinedPagingObjectType"/>
+	</simpleType>
+
+	<simpleType name="PagingObjectPredefinedType">
+		<restriction base="mc160:UndefinedPagingObjectType">
+			<enumeration value="Medicinecards"/>
+			<enumeration value="Drugmedications"/>
+			<enumeration value="Warrants"/>
+			<enumeration value="Effectuations"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedPagingObjectType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="200"/>
+		</restriction>
+	</simpleType>
+</schema>

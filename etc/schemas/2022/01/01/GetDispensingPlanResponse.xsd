@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodStatusChange.xsd"/>
+	<include schemaLocation="MedicationDispensingPlan.xsd"/>
+	<include schemaLocation="DispensingWarning.xsd"/>
+
+	<element name="GetDispensingPlanResponse" type="mc160:GetDispensingPlanResponseType"/>
+
+	<complexType name="GetDispensingPlanResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">A response containing a dispensing plan for a given period for each planned administration</documentation>
+			<documentation xml:lang="da-DK">En response som indeholder et ophældningsskema for en given periode, med hver enkelt planlagt administration</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="MedicationDispensingPlan" type="mc160:MedicationDispensingPlanType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

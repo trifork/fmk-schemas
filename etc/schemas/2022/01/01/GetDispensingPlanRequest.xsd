@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DispensingCardIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
+	<include schemaLocation="DispensingPeriodEndDate.xsd"/>
+	<include schemaLocation="PlannedAdministrationSubstitution.xsd"/>
+
+	<element name="GetDispensingPlanRequest" type="mc160:GetDispensingPlanRequestType"/>
+
+	<complexType name="GetDispensingPlanRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request to get a dispensing plan for a given dispensing card</documentation>
+			<documentation xml:lang="da-DK">Et request som henter an ophældningsplan for et givent dispenseringskort</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+			<element name="StartDate" type="mc160:DispensingPeriodStartDateType" minOccurs="0"/>
+			<element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
+			<element name="PlannedAdministrationSubstitution" type="mc160:PlannedAdministrationSubstitutionType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

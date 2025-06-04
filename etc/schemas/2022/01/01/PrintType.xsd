@@ -3,10 +3,7 @@
 		xmlns:mc160="http://fmk-teknik.dk/160"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-	
-	<include schemaLocation="PredefinedPrintType.xsd"/>
-	<include schemaLocation="UndefinedPrintType.xsd"/>
-	
+
 	<element name="PrintType" type="mc160:PrintTypeType">
 		<annotation>
 			<documentation xml:lang="en-GB">Type of print to return</documentation>
@@ -15,5 +12,20 @@
 	</element>
 	<simpleType name="PrintTypeType">
 		<union memberTypes="mc160:PredefinedPrintType mc160:UndefinedPrintType"/>
+	</simpleType>
+
+	<simpleType name="PredefinedPrintType">
+		<restriction base="mc160:UndefinedPrintType">
+			<enumeration value="medicinkortet"/>
+			<enumeration value="dispenseringskort"/>
+			<enumeration value="dispenseringskort med ændringsliste"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedPrintType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
+		</restriction>
 	</simpleType>
 </schema>

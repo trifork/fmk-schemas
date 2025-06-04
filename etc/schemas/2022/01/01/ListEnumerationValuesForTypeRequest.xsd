@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="EnumerationName.xsd"/>
+
+	<element name="ListEnumerationValuesForTypeRequest" type="mc160:ListEnumerationValuesForTypeRequestType"/>
+
+	<complexType name="ListEnumerationValuesForTypeRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request to get a list of possible enumeration values for a given type</documentation>
+			<documentation xml:lang="da-DK">Et request om at få en liste of mulige værdier for en given type</documentation>
+		</annotation>
+		<sequence>
+			<element name="EnumerationName" type="mc160:EnumerationNameType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

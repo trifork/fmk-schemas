@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="EnumerationName.xsd"/>
+
+	<element name="EnumerationEntry" type="mc160:EnumerationEntryType">
+		<annotation>
+			<documentation xml:lang="en-GB">Value containing a possible list of values for a given enumeration type</documentation>
+			<documentation xml:lang="da-DK">Værdi indeholdende en liste af mulige værdier for en given type</documentation>
+		</annotation>
+	</element>
+	<complexType name="EnumerationEntryType">
+		<sequence>
+			<element name="EnumerationNameType" type="mc160:EnumerationNameType"/>
+			<element name="EnumerationEntryValue" type="mc160:EnumerationEntryValueType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="EnumerationEntryValueType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element contains the specific value for the enumration, a description of its meaning, and potentially a warning about consequences of its use</documentation>
+			<documentation xml:lang="da-DK">Element indeholder den enkelte værdi for en given type, en beskrivelse af den betydning, og potentielle konsekvenser ved dens brug</documentation>
+		</annotation>
+		<sequence>
+			<element name="EntryValue" type="string"/>
+			<element name="Description" type="string" minOccurs="0"/>
+			<element name="Warning" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

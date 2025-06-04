@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="DispensingCardIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+
+	<element name="AmendDispensingRequest" type="mc160:AmendDispensingRequestType"/>
+
+	<complexType name="AmendDispensingRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request to amend the dispenseing for a given period</documentation>
+			<documentation xml:lang="da-DK">Et request som justere dispenseringen i en given periode</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+			<element name="InsertDispensingInPeriod" type="mc160:InsertAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="UpdateDispensingInPeriod" type="mc160:UpdateOrRemoveDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RemoveDispensingInPeriod" type="mc160:UpdateOrRemoveDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ClosePeriod" minOccurs="0" type="mc160:ClosePeriodType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="InsertAdministrationType">
+		<sequence>
+			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="UpdateOrRemoveDispensingType">
+		<sequence>
+			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="ClosePeriodType">
+		<sequence>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>
