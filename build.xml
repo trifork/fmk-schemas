@@ -77,6 +77,7 @@
         <include name="wsdl/**"/>
         <!--<exclude name="schemas/idws/**"/>-->
         <include name="wsdl/*_Idws_*.wsdl"/>
+        <exclude name="wsdl/MedicineCard_2022_01_01.wsdl"/>
     </fileset>
 
     <target name="filter-specialized-xsds">
@@ -214,7 +215,7 @@
             <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E6"/>
             <organize-idws-schemas-macro wsdlname="MedicineCard" versiondate="2022_01_01"/>
 
-	        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01"/>
+            <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01"/>
 	        <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01_E2"/>
             <organize-idws-schemas-macro wsdlname="EffectuationOrdering" versiondate="2015_01_01_E5"/>
 
@@ -233,7 +234,9 @@
 
 	        <zip destfile="${target.dir}/fmk-schema-idws.zip"
 	             basedir="${idws.target.dir}"
-	             includes="schemas/**, wsdl/**" />
+	             includes="schemas/**, wsdl/**"
+                 excludes="wsdl/MedicineCard_2022_01_01.wsdl"
+            />
 	    </target>
 
 	    <macrodef name="organize-idws-schemas-macro">
@@ -343,8 +346,7 @@
         <organize-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E3"/>
         <organize-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E5"/>
         <organize-schemas-macro wsdlname="MedicineCard" versiondate="2015_06_01_E6"/>
-        <organize-schemas-macro wsdlname="MedicineCard" versiondate="2022_01_01"/>
-		
+
 		<organize-schemas-macro wsdlname="BatchData" versiondate="2022_02_01"/>
 
 		<copy todir="${standard.target.dir}">
@@ -567,7 +569,6 @@
         <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2015_06_01_E3.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2015_06_01_E5.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2015_06_01_E6.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
-        <codegen wsdlfilename="${standard.target.dir}/wsdl/MedicineCard-inline_2022_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
     	<codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
     	<codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01_E2.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
         <codegen wsdlfilename="${standard.target.dir}/wsdl/EffectuationOrdering-inline_2015_01_01_E5.wsdl" output="${standard.target.dir}/gentestsrc-tmp" unpackClasses="true" serverSide="false" databindingname="xmlbeans"/>
@@ -738,7 +739,6 @@
 		<validatewsdl-macro wsdlfilename="MedicineCard-inline_2015_06_01_E5"/>
         <validatewsdl-macro wsdlfilename="MedicineCard-inline_2015_06_01_E6"/>
 
-        <validatewsdl-macro wsdlfilename="MedicineCard-inline_2022_01_01"/>
 
 		<!--<validatewsdl-macro wsdlfilename="MedicineCard-inline_Idws_2015_01_01"/>
 		<validatewsdl-macro wsdlfilename="MedicineCard-inline_Idws_2015_01_01_E1"/>

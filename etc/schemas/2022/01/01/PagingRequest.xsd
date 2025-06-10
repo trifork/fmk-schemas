@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PagingObject.xsd"/>
+	<include schemaLocation="LastReceivedType.xsd"/>
 
 	<element name="PagingRequest" type="mc160:PagingRequestType">
 		<annotation>
@@ -14,26 +15,9 @@
 	</element>
 	<complexType name="PagingRequestType">
 		<sequence>
-			<element name="Entity" type="mc160:EntityType"/>
+			<element name="PagingObject" type="mc160:PagingObjectType"/>
 			<element name="PageSize" type="int"/>
 			<element name="LastReceived" type="mc160:LastReceivedType"/>
 		</sequence>
-	</complexType>
-	<complexType name="EntityType">
-		<attribute name="type" type="mc160:PagingObjectType" use="required"/>
-
-	</complexType>
-	<complexType name="LastReceivedType">
-		<sequence>
-			<element name="Field" type="mc160:PagingFieldType"/>
-		</sequence>
-	</complexType>
-
-	<complexType name="PagingFieldType">
-		<simpleContent>
-			<extension base="long">
-				<attribute name="name" type="string" use="required"/>
-			</extension>
-		</simpleContent>
 	</complexType>
 </schema>

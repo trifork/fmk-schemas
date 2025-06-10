@@ -8,7 +8,8 @@
 	<include schemaLocation="ConsentHeader.xsd"/>
 	<include schemaLocation="WhitelistingHeader.xsd"/>
 	<include schemaLocation="PagingRequest.xsd"/>
-	
+	<include schemaLocation="MinLogSessionIdType.xsd"/>
+
 	<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderType"> 
 		<annotation>
 			<documentation xml:lang="en-GB">Generic request header to be used for common request parameters</documentation>
@@ -30,9 +31,4 @@
 		<documentation xml:lang="en-GB">Technical session id defined by the client system that  links more registrations belonging to the same session</documentation>
 		<documentation xml:lang="da-DK">Teknisk sessions id defineret af klient systemerne der derved kan koble flere kald hørende til den samme konsultation</documentation>
 	</annotation>
-	<simpleType name="MinLogSessionIdType">
-		<restriction base="string">
-			<maxLength value="40"/>
-		</restriction>
-	</simpleType>
 </schema>
