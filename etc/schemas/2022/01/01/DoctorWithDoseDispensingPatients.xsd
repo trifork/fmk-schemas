@@ -7,6 +7,7 @@
     <include schemaLocation="OrganisationIdentifier.xsd"/>
     <include schemaLocation="Patient.xsd"/>
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="CreatedDateTime.xsd"/>
 
     <complexType name="DoctorWithDoseDispensingPatientsType">
         <annotation>
@@ -21,6 +22,7 @@
                     <sequence maxOccurs="unbounded">
                         <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
                         <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
+                        <element name="CreatedDateTime" type="mc160:CreatedDateTimeType"/>
                     </sequence>
                 </sequence>
                 <sequence maxOccurs="unbounded">
@@ -28,6 +30,7 @@
                     <sequence maxOccurs="unbounded">
                         <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
                         <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
+                        <element name="CreatedDateTime" type="mc160:CreatedDateTimeType"/>
                     </sequence>
                 </sequence>
             </choice>
