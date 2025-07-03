@@ -20,21 +20,14 @@
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
-			<element name="InsertDispensingInPeriod" type="mc160:InsertAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="UpdateDispensingInPeriod" type="mc160:UpdateOrRemoveDispensingType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="RemoveDispensingInPeriod" type="mc160:UpdateOrRemoveDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InsertAdministrationInPeriod" type="mc160:AdministrationUpdateType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="UpdateAdministrationInPeriod" type="mc160:AdministrationUpdateType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RemoveAdministrationInPeriod" type="mc160:AdministrationUpdateType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="ClosePeriod" minOccurs="0" type="mc160:ClosePeriodType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 
-	<complexType name="InsertAdministrationType">
-		<sequence>
-			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
-			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
-		</sequence>
-	</complexType>
-
-	<complexType name="UpdateOrRemoveDispensingType">
+	<complexType name="AdministrationUpdateType">
 		<sequence>
 			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
