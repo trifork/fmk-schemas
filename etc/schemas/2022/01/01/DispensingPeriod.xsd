@@ -39,7 +39,10 @@
             <element name="PrivatePlannedAdministration" type="mc160:PrivatePlannedAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
             <choice>
                 <element name="Dispensing" type="mc160:DispensingType" minOccurs="0" maxOccurs="unbounded"/>
-                <element name="PlannedAdministration" type="mc160:PlannedAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
+                <sequence minOccurs="0" maxOccurs="unbounded">
+                    <element name="PlannedAdministration" type="mc160:PlannedAdministrationType"/>
+                    <element name="SubstitutionTemplate" type="mc160:DrugType" minOccurs="0"/>
+                </sequence>
             </choice>
         </sequence>
     </complexType>

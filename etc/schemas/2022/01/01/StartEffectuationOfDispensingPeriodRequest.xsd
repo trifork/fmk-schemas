@@ -9,6 +9,10 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="IsPreflight.xsd"/>
 	<include schemaLocation="StartEffectuationOfDispensingPeriod.xsd"/>
+	<include schemaLocation="CreateDispensingPeriod.xsd"/>
+	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
+	<include schemaLocation="DispensingPeriodEndDate.xsd"/>
+	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
 
 	<element name="StartEffectuationOfDispensingPeriodRequest" type="mc160:StartEffectuationOfDispensingPeriodRequestType">
 		<annotation>
@@ -18,7 +22,6 @@
 	</element>
 	<complexType name="StartEffectuationOfDispensingPeriodRequestType">
 		<sequence>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded" />
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
@@ -27,6 +30,16 @@
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="IsPreflight" type="mc160:IsPreflightType" minOccurs="0"/>
 			<element name="StartEffectuationOfDispensingPeriod" type="mc160:StartEffectuationOfDispensingPeriodType" maxOccurs="unbounded"/>
+			<element name="RequestedPeriod" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="StartDate" type="mc160:DispensingPeriodStartDateType"/>
+						<element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
+						<element name="ExpectedDelivery" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
 </schema>

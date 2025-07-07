@@ -18,7 +18,6 @@
 			<documentation xml:lang="da-DK">Et request som afbryder ekspedition af alt i en dispensing periode</documentation>
 		</annotation>
 		<sequence>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
@@ -26,6 +25,7 @@
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="AbortEffectuationOfDispensingPeriod" type="mc160:DispensingPeriodStatusChangeType" maxOccurs="unbounded"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

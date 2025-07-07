@@ -6,6 +6,7 @@
 
     <include schemaLocation="PackingGroupIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="ProductionDateTime.xsd"/>
 
 	<element name="GetPackingOverviewRequest" type="mc160:GetPackingOverviewRequestType">
 		<annotation>
@@ -16,7 +17,10 @@
 	<complexType name="GetPackingOverviewRequestType">
 		<sequence>
 			<choice>
-				<element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType"/>
+				<sequence>
+					<element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType"/>
+					<element name="FilterDate" type="mc160:ProductionDateTimeType" maxOccurs="2"/>
+				</sequence>
 				<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" maxOccurs="unbounded"/>
 			</choice>
 		</sequence>

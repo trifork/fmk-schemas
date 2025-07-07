@@ -208,8 +208,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationVersionsResponse.xsd"/>
@@ -300,6 +300,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDispensingRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDispensingResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterSubstitutionTemplateRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterSubstitutionTemplateResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentResponse.xsd"/>
 
@@ -308,9 +311,6 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/ReplaceWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/ReplaceWarrantResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchDispensingRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchDispensingResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsResponse.xsd"/>
@@ -798,12 +798,12 @@
         <wsdl:part name="GetDrugMedicationHistoryResponse" element="mc160:GetDrugMedicationHistoryResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDrugMedicationRequest_160">
-        <wsdl:part name="GetDrugMedicationRequest" element="mc160:GetDrugMedicationRequest"/>
+    <wsdl:message name="GetDrugMedicationsRequest_160">
+        <wsdl:part name="GetDrugMedicationsRequest" element="mc160:GetDrugMedicationsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDrugMedicationResponse_160">
-        <wsdl:part name="GetDrugMedicationResponse" element="mc160:GetDrugMedicationResponse"/>
+    <wsdl:message name="GetDrugMedicationsResponse_160">
+        <wsdl:part name="GetDrugMedicationsResponse" element="mc160:GetDrugMedicationsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationVersionsRequest_160">
@@ -1038,6 +1038,14 @@
         <wsdl:part name="RegisterDispensingResponse" element="mc160:RegisterDispensingResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RegisterSubstitutionTemplateRequest_160">
+        <wsdl:part name="RegisterSubstitutionTemplateRequest" element="mc160:RegisterSubstitutionTemplateRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="RegisterSubstitutionTemplateResponse_160">
+        <wsdl:part name="RegisterSubstitutionTemplateResponse" element="mc160:RegisterSubstitutionTemplateResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="RemoveConsentRequest_160">
         <wsdl:part name="RemoveConsentRequest" element="mc160:RemoveConsentRequest"/>
     </wsdl:message>
@@ -1060,14 +1068,6 @@
 
     <wsdl:message name="ReplaceWarrantResponse_160">
         <wsdl:part name="ReplaceWarrantResponse" element="mc160:ReplaceWarrantResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="SearchDispensingRequest_160">
-        <wsdl:part name="SearchDispensingRequest" element="mc160:SearchDispensingRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="SearchDispensingResponse_160">
-        <wsdl:part name="SearchDispensingResponse" element="mc160:SearchDispensingResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchEffectuationsRequest_160">
@@ -1558,9 +1558,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedication_160">
-            <wsdl:input name="GetDrugMedicationRequest_160" message="tns:GetDrugMedicationRequest_160"/>
-            <wsdl:output name="GetDrugMedicationResponse_160" message="tns:GetDrugMedicationResponse_160"/>
+        <wsdl:operation name="GetDrugMedications_160">
+            <wsdl:input name="GetDrugMedicationsRequest_160" message="tns:GetDrugMedicationsRequest_160"/>
+            <wsdl:output name="GetDrugMedicationsResponse_160" message="tns:GetDrugMedicationsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1738,6 +1738,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="RegisterSubstitutionTemplate_160">
+            <wsdl:input name="RegisterSubstitutionTemplateRequest_160" message="tns:RegisterSubstitutionTemplateRequest_160"/>
+            <wsdl:output name="RegisterSubstitutionTemplateResponse_160" message="tns:RegisterSubstitutionTemplateResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="RemoveConsent_160">
             <wsdl:input name="RemoveConsentRequest_160" message="tns:RemoveConsentRequest_160"/>
             <wsdl:output name="RemoveConsentResponse_160" message="tns:RemoveConsentResponse_160"/>
@@ -1753,12 +1759,6 @@
         <wsdl:operation name="ReplaceWarrant_160">
             <wsdl:input name="ReplaceWarrantRequest_160" message="tns:ReplaceWarrantRequest_160"/>
             <wsdl:output name="ReplaceWarrantResponse_160" message="tns:ReplaceWarrantResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SearchDispensing_160">
-            <wsdl:input name="SearchDispensingRequest_160" message="tns:SearchDispensingRequest_160"/>
-            <wsdl:output name="SearchDispensingResponse_160" message="tns:SearchDispensingResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2503,13 +2503,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedication_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedication" style="document"/>
-            <wsdl:input name="GetDrugMedicationRequest_160">
+        <wsdl:operation name="GetDrugMedications_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedications" style="document"/>
+            <wsdl:input name="GetDrugMedicationsRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDrugMedicationResponse_160">
+            <wsdl:output name="GetDrugMedicationsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2906,6 +2906,19 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="RegisterSubstitutionTemplate_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterSubstitutionTemplate" style="document"/>
+            <wsdl:input name="RegisterSubstitutionTemplateRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterSubstitutionTemplateResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="RemoveConsent_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#RemoveConsent" style="document"/>
             <wsdl:input name="RemoveConsentRequest_160">
@@ -2939,19 +2952,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="ReplaceWarrantResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SearchDispensing_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchDispensing" style="document"/>
-            <wsdl:input name="SearchDispensingRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SearchDispensingResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

@@ -6,7 +6,6 @@
 	
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="ForeignOrganisation.xsd"/>
-	<include schemaLocation="DoseDispensing.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
 	<include schemaLocation="CreatePharmacyEffectuation.xsd"/>
@@ -20,8 +19,7 @@
 			<choice>
 				<element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
 				<element name="OrderedAbroad" type="mc160:ForeignOrganisationType"/>
-			</choice>	
-			<element name="DoseDispensing" type="mc160:DoseDispensingType" minOccurs="0"/>
+			</choice>
 			<element name="DeliveryInstructionText" type="mc160:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
 			<element name="Effectuation" type="mc160:CreatePharmacyEffectuationType"/>

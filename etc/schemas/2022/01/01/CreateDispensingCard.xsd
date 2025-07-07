@@ -12,6 +12,7 @@
     <include schemaLocation="PackingGroupIdentifier.xsd"/>
     <include schemaLocation="Organisation.xsd"/>
     <include schemaLocation="DispensingOrDeliveryNotes.xsd"/>
+    <include schemaLocation="DispensingMachineIdentification.xsd"/>
 
     <complexType name="CreateDispensingCardType">
         <annotation>
@@ -19,20 +20,21 @@
             <documentation xml:lang="da-DK">Oprettelse af et dispenseringskort for en given person</documentation>
         </annotation>
         <sequence>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
         	<element name="Description" type="mc160:DispensingCardDescriptionType"/>
             <element name="Delivery" type="mc160:DeliveryTextType" minOccurs="0"/>
             <element name="DaysForExpeditedDosageChange" type="mc160:ExpeditedDosageChangeDaysType" minOccurs="0"/>
             <choice>
-	            <element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType"/>
-	            <sequence>
- 	    	        <element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
-    	    	    <element name="PackedAtOrganisation" type="mc160:OrganisationType"/>
-	            </sequence>
+                <element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType"/>
+                <sequence>
+                    <element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
+                    <element name="PackedAtOrganisation" type="mc160:OrganisationType"/>
+                </sequence>
                 <element name="DispensingOrganisation" type="mc160:OrganisationType"/>
             </choice>
             <element name="DispensingNotes" type="mc160:DispensingOrDeliveryNotesType" minOccurs="0"/>
             <element name="DeliveryNotes" type="mc160:DispensingOrDeliveryNotesType" minOccurs="0"/>
+            <element name="DispensingMachineIdentification" type="mc160:DispensingMachineIdentificationType" minOccurs="0"/>
+            <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>
