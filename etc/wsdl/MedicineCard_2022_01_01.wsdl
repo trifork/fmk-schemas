@@ -703,12 +703,12 @@
         <wsdl:part name="GetAuthorisationDateForNewestOpenWarrantResponse" element="mc160:GetAuthorisationDateForNewestOpenWarrantResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDetailedDispensingRequest_160">
-        <wsdl:part name="GetDetailedDispensingRequest" element="mc160:GetDetailedDispensingRequest"/>
+    <wsdl:message name="GetDetailedPlannedAdministrationRequest_160">
+        <wsdl:part name="GetDetailedPlannedAdministrationRequest" element="mc160:GetDetailedPlannedAdministrationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDetailedDispensingResponse_160">
-        <wsdl:part name="GetDetailedDispensingResponse" element="mc160:GetDetailedDispensingResponse"/>
+    <wsdl:message name="GetDetailedPlannedAdministrationResponse_160">
+        <wsdl:part name="GetDetailedPlannedAdministrationResponse" element="mc160:GetDetailedPlannedAdministrationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDispensingCardHistoryRequest_160">
@@ -1487,9 +1487,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDetailedDispensing_160">
-            <wsdl:input name="GetDetailedDispensingRequest_160" message="tns:GetDetailedDispensingRequest_160"/>
-            <wsdl:output name="GetDetailedDispensingResponse_160" message="tns:GetDetailedDispensingResponse_160"/>
+        <wsdl:operation name="GetDetailedPlannedAdministration_160">
+            <wsdl:input name="GetDetailedPlannedAdministrationRequest_160" message="tns:GetDetailedPlannedAdministrationRequest_160"/>
+            <wsdl:output name="GetDetailedPlannedAdministrationResponse_160" message="tns:GetDetailedPlannedAdministrationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2395,13 +2395,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDetailedDispensing_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDetailedDispensing" style="document"/>
-            <wsdl:input name="GetDetailedDispensingRequest_160">
+        <wsdl:operation name="GetDetailedPlannedAdministration_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDetailedPlannedAdministration" style="document"/>
+            <wsdl:input name="GetDetailedPlannedAdministrationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetDetailedDispensingResponse_160">
+            <wsdl:output name="GetDetailedPlannedAdministrationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
