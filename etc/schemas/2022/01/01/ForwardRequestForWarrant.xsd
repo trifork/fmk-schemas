@@ -7,6 +7,7 @@
 	<include schemaLocation="RequestForWarrantIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="PatientDoctorFlag.xsd"/>
 
 	<complexType name="ForwardRequestForWarrantType">
 		<annotation>
@@ -15,8 +16,9 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:RequestForWarrantIdentifierType" />
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PatientOwnDoctor" type="mc160:PatientDoctorFlagType" minOccurs="0"/>
 			<element name="PrescribingOrganisation" type="mc160:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

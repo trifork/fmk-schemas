@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationVersion.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+	<include schemaLocation="SubstitutionChosenByPatient.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+
+	<element name="RegisterDraftSubstitutionRequest" type="mc160:RegisterDraftSubstitutionRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element to register a substitution template for a given planned administration</documentation>
+			<documentation xml:lang="da-DK">Element til at registere en substitutions kladde for en given planlagt administration</documentation>
+		</annotation>
+	</element>
+	<complexType name="RegisterDraftSubstitutionRequestType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+			<element name="PlannedAdministrationVersion" type="mc160:PlannedAdministrationVersionType"/>
+			<element name="SubstitutionToRegister" type="mc160:DrugType"/>
+			<element name="SubstitutionChosenByPatient" type="mc160:SubstitutionChosenByPatientType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

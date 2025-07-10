@@ -25,7 +25,6 @@
 			<element name="DateTime" type="mc160:EffectuationDateTimeType"/>
 			<element name="EffectuationMethod" type="mc160:EffectuationMethodType"/>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<choice>
 				<sequence>
 					<!-- A drug was effectuated, with the dose and unit below. This overrides whatever is stated as drug and dosage on the drug medication -->
@@ -47,6 +46,7 @@
 				<!-- A drug was effectuated, the drug and dosage was given as stated on the drug medication -->
 				<element name="IsEffectuatedAccordingToDrugMedication" type="mc160:IsEffectuatedAccordingToDrugMedicationType"/>
 			</choice>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="DispensingMachineIdentification" type="mc160:DispensingMachineIdentificationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information on a machine used in the dispensing of medication to the patient, usually for dose dispensing</documentation>
+			<documentation xml:lang="da-DK">Information omkring en maskine som benyttes ved dispensing af medicin til patienten, typisk til dosisdispensering</documentation>
+		</annotation>
+	</element>
+	<complexType name="DispensingMachineIdentificationType">
+		<sequence>
+			<element name="OEM" type="string"/>
+			<element name="Identifier" type="string"/>
+		</sequence>
+	</complexType>
+</schema>

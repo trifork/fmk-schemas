@@ -9,13 +9,13 @@
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="InvalidDrugMedication.xsd"/>
 
-	<element name="GetDrugMedicationResponse" type="mc160:GetDrugMedicationResponseType">
+	<element name="GetDrugMedicationsResponse" type="mc160:GetDrugMedicationsResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a response with one or more drug medications</documentation>
 			<documentation xml:lang="da-DK">Element for et svar med en eller flere lægemiddelordinationer</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetDrugMedicationResponseType">
+	<complexType name="GetDrugMedicationsResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="PrivateDrugMedication" type="mc160:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>

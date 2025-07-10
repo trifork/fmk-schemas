@@ -6,6 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="ResidualWarrant.xsd"/>
+	<include schemaLocation="FMKDetail.xsd"/>
 
 	<element name="GetWarrantResidualAmountResponse" type="mc160:GetWarrantResidualAmountResponseType">
 		<annotation>
@@ -16,7 +17,8 @@
 	<complexType name="GetWarrantResidualAmountResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="Warrant" type="mc160:ResidualWarrantType" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:ResidualWarrantType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="FailedWarrants" type="mc160:FMKDetailType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

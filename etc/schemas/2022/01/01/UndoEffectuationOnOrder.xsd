@@ -3,9 +3,9 @@
 		xmlns:mc160="http://fmk-teknik.dk/160"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-	
-	<include schemaLocation="UndoEffectuation.xsd"/>
+
 	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="EffectuationIdentifier.xsd"/>
 
 	<complexType name="UndoEffectuationOnOrderType">
 		<annotation>
@@ -13,8 +13,8 @@
 			<documentation xml:lang="da-DK">Element til tilbageførsel af en enkelt apoteks-ekspedition på en bestilling</documentation>
 		</annotation>
 		<sequence>
-			<element name="Identifier" type="mc160:OrderIdentifierType"/>
-			<element name="Effectuation" type="mc160:UndoEffectuationType"/>
+			<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+			<element name="EffectuationIdentifier" type="mc160:EffectuationIdentifierType"/>
 		</sequence>
 	</complexType>
 </schema>

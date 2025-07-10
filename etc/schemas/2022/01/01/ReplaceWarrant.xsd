@@ -30,20 +30,20 @@
 		</annotation>
 		<sequence>
 			<element name="ReplaceWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
-            <element name="ValidFromDate" type="mc160:ValidFromDateType" minOccurs="0"/>
-            <element name="ValidToDate" type="mc160:ValidToDateType"/>
-            <choice>
-                <element name="Prescription" type="mc160:PrescriptionType"/>
+			<element name="ValidFromDate" type="mc160:ValidFromDateType" minOccurs="0"/>
+			<element name="ValidToDate" type="mc160:ValidToDateType"/>
+			<choice>
+				<element name="Prescription" type="mc160:PrescriptionType"/>
 				<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType"/>
-                <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+				<element name="DoseDispensed" type="mc160:DoseDispensedType"/>
 			</choice>
-            <element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
-            <choice>
+			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
+			<choice>
 				<element name="InvalidateReplacedWarrant" type="mc160:InvalidateReplacedWarrantType"/>
 				<element name="CloseReplacedWarrant" type="mc160:CloseReplacedWarrantType"/>
-            </choice>
+			</choice>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

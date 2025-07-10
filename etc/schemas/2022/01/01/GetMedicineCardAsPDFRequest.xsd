@@ -8,7 +8,7 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="PrintType.xsd"/>
 	<include schemaLocation="ModifiedDateTime.xsd"/>
-	<include schemaLocation="ShowDosagePeriod.xsd"/>
+	<include schemaLocation="DispensingPeriodFilterDate.xsd"/>
 
 	<element name="GetMedicineCardAsPDFRequest" type="mc160:GetMedicineCardAsPDFRequestType">
 		<annotation>
@@ -19,10 +19,12 @@
 	<complexType name="GetMedicineCardAsPDFRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
-			<element name="Version" type="mc160:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="PrintType" type="mc160:PrintTypeType"/>
-			<element name="DateTime" type="mc160:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="ShowDosageLimitations" type="mc160:ShowDosagePeriodType" minOccurs="0"/>
+			<choice>
+				<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="MedicineCardDateTime" type="mc160:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="DispensingPeriodFilterDate" type="mc160:DispensingPeriodFilterDateType" minOccurs="0"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>

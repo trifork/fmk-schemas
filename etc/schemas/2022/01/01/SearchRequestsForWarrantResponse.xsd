@@ -4,7 +4,6 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="SearchRequestsForWarrantMoreAvailable.xsd"/>
 	<include schemaLocation="SearchRequestsForWarrantPatient.xsd"/>
 
 	<element name="SearchRequestsForWarrantResponse" type="mc160:SearchRequestsForWarrantResponseType">
@@ -16,7 +15,6 @@
 	<complexType name="SearchRequestsForWarrantResponseType">
 		<sequence>
 			<element name="Patient" type="mc160:SearchRequestsForWarrantPatientType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="MoreAvailable" type="mc160:SearchRequestsForWarrantMoreAvailableType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

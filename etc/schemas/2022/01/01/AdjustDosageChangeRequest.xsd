@@ -9,6 +9,7 @@
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="CreateNewDrugMedication.xsd"/>
 	<include schemaLocation="StructuredDosageForRequest.xsd"/>
+	<include schemaLocation="DosageTimesStartDate.xsd"/>
 
 	<element name="AdjustDosageChangeRequest" type="mc160:AdjustDosageChangeRequestType">
 		<annotation>
@@ -23,8 +24,9 @@
 				<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 				<element name="CreateNewDrugMedication" type="mc160:CreateNewDrugMedicationType"/>
 			</choice>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DosageStructures" type="mc160:StructuredDosageForRequestType"/>
+			<element name="AdjustToDate" type="mc160:DosageTimesStartDateType"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

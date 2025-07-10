@@ -5,7 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="PackingGroupIdentifier.xsd"/>
-	<include schemaLocation="DispensingPeriodDate.xsd"/>
+	<include schemaLocation="ProductionDateTime.xsd"/>
 	<include schemaLocation="IncludeCardsWithoutPeriod.xsd"/>
 
 	<element name="GetPackingGroupContentsRequest" type="mc160:GetPackingGroupContentsRequestType">
@@ -17,7 +17,7 @@
 	<complexType name="GetPackingGroupContentsRequestType">
 		<sequence>
             <element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType"/>
-			<element name="PeriodDate" type="mc160:DispensingPeriodDateType" minOccurs="0"/>
+			<element name="FilterDate" type="mc160:ProductionDateTimeType" maxOccurs="2"/>
             <element name="IncludeCardsWithoutPeriod" type="mc160:IncludeCardsWithoutPeriodType" minOccurs="0"/>
 		</sequence>
 	</complexType>
