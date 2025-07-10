@@ -1038,12 +1038,12 @@
         <wsdl:part name="RegisterDispensingResponse" element="mc160:RegisterDispensingResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RegisterSubstitutionTemplateRequest_160">
-        <wsdl:part name="RegisterSubstitutionTemplateRequest" element="mc160:RegisterSubstitutionTemplateRequest"/>
+    <wsdl:message name="RegisterDraftSubstitutionRequest_160">
+        <wsdl:part name="RegisterDraftSubstitutionRequest" element="mc160:RegisterDraftSubstitutionRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="RegisterSubstitutionTemplateResponse_160">
-        <wsdl:part name="RegisterSubstitutionTemplateResponse" element="mc160:RegisterSubstitutionTemplateResponse"/>
+    <wsdl:message name="RegisterDraftSubstitutionResponse_160">
+        <wsdl:part name="RegisterDraftSubstitutionResponse" element="mc160:RegisterDraftSubstitutionResponse"/>
     </wsdl:message>
 
     <wsdl:message name="RemoveConsentRequest_160">
@@ -1738,9 +1738,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterSubstitutionTemplate_160">
-            <wsdl:input name="RegisterSubstitutionTemplateRequest_160" message="tns:RegisterSubstitutionTemplateRequest_160"/>
-            <wsdl:output name="RegisterSubstitutionTemplateResponse_160" message="tns:RegisterSubstitutionTemplateResponse_160"/>
+        <wsdl:operation name="RegisterDraftSubstitution_160">
+            <wsdl:input name="RegisterDraftSubstitutionRequest_160" message="tns:RegisterDraftSubstitutionRequest_160"/>
+            <wsdl:output name="RegisterDraftSubstitutionResponse_160" message="tns:RegisterDraftSubstitutionResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2906,13 +2906,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterSubstitutionTemplate_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterSubstitutionTemplate" style="document"/>
-            <wsdl:input name="RegisterSubstitutionTemplateRequest_160">
+        <wsdl:operation name="RegisterDraftSubstitution_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterDraftSubstitution" style="document"/>
+            <wsdl:input name="RegisterDraftSubstitutionRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RegisterSubstitutionTemplateResponse_160">
+            <wsdl:output name="RegisterDraftSubstitutionResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
