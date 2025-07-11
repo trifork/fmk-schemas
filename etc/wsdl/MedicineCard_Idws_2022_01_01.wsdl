@@ -202,9 +202,6 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingSummaryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingSummaryResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationEffectuationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationEffectuationsResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryResponse.xsd"/>
 
@@ -780,14 +777,6 @@
 
     <wsdl:message name="GetDispensingSummaryResponse_160">
         <wsdl:part name="GetDispensingSummaryResponse" element="mc160:GetDispensingSummaryResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetDrugMedicationEffectuationsRequest_160">
-        <wsdl:part name="GetDrugMedicationEffectuationsRequest" element="mc160:GetDrugMedicationEffectuationsRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetDrugMedicationEffectuationsResponse_160">
-        <wsdl:part name="GetDrugMedicationEffectuationsResponse" element="mc160:GetDrugMedicationEffectuationsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDrugMedicationHistoryRequest_160">
@@ -1543,12 +1532,6 @@
         <wsdl:operation name="GetDispensingSummary_160">
             <wsdl:input name="GetDispensingSummaryRequest_160" message="tns:GetDispensingSummaryRequest_160"/>
             <wsdl:output name="GetDispensingSummaryResponse_160" message="tns:GetDispensingSummaryResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedicationEffectuations_160">
-            <wsdl:input name="GetDrugMedicationEffectuationsRequest_160" message="tns:GetDrugMedicationEffectuationsRequest_160"/>
-            <wsdl:output name="GetDrugMedicationEffectuationsResponse_160" message="tns:GetDrugMedicationEffectuationsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2471,19 +2454,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDispensingSummaryResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDrugMedicationEffectuations_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedicationEffectuations" style="document"/>
-            <wsdl:input name="GetDrugMedicationEffectuationsRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDrugMedicationEffectuationsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
