@@ -5,11 +5,12 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifierAndVersion.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifierAndDateTime.xsd"/>
 	<include schemaLocation="IncludeWarrants.xsd"/>
-	<include schemaLocation="IncludeEffectuations.xsd"/>
+	<include schemaLocation="IncludeEffectuationsFlag.xsd"/>
 
 	<element name="GetDrugMedicationsRequest" type="mc160:GetDrugMedicationsRequestType">
 		<annotation>
@@ -19,12 +20,14 @@
 	</element>
 	<complexType name="GetDrugMedicationsRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="IdentifierAndVersion" type="mc160:DrugMedicationIdentifierAndVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="IdentifierAndDateTime" type="mc160:DrugMedicationIdentifierAndDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="IncludeWarrants" type="mc160:IncludeWarrantsType"/>
-			<element name="IncludeEffectuations" type="mc160:IncludeEffectuationsType"/>			
+			<element name="IncludeWarrants" type="mc160:IncludeWarrantsType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
