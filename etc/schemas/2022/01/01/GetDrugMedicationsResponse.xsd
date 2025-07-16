@@ -5,7 +5,6 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PrivateDrugMedication.xsd"/>
 	<include schemaLocation="DrugMedication.xsd"/>
 	<include schemaLocation="InvalidDrugMedication.xsd"/>
 
@@ -18,7 +17,6 @@
 	<complexType name="GetDrugMedicationsResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="PrivateDrugMedication" type="mc160:PrivateDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DrugMedication" type="mc160:DrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidDrugMedication" type="mc160:InvalidDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
