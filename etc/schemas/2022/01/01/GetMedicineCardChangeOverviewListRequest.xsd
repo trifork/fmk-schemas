@@ -6,15 +6,15 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 
-	<element name="GetMedicineCardVersionRequest" type="mc160:GetMedicineCardVersionRequestType">
+	<element name="GetMedicineCardChangeOverviewListRequest" type="mc160:GetMedicineCardChangeOverviewListRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a request for a medicinecards version</documentation>
 			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel efter et medicinkorts version</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetMedicineCardVersionRequestType">
+	<complexType name="GetMedicineCardChangeOverviewListRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" maxOccurs="100"/>
 		</sequence>
 	</complexType>
 </schema>

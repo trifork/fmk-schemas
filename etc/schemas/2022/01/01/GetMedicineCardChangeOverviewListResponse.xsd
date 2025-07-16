@@ -4,17 +4,17 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="MedicineCardVersionListItem.xsd"/>
+	<include schemaLocation="MedicineCardChangeListItem.xsd"/>
 
-	<element name="GetMedicineCardVersionListResponse" type="mc160:GetMedicineCardVersionListResponseType">
+	<element name="GetMedicineCardChangeOverviewListResponse" type="mc160:GetMedicineCardChangeOverviewListResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Outer container element for a response for a medicinecards versions</documentation>
 			<documentation xml:lang="da-DK">Ydre container-element for et svar på en forespørgsel efter et medicinkorts versions</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetMedicineCardVersionListResponseType">
+	<complexType name="GetMedicineCardChangeOverviewListResponseType">
 		<sequence>
-			<element name="MedicineCardVersionListItem" type="mc160:MedicineCardVersionListItemType" maxOccurs="unbounded"/>
+			<element name="MedicineCardChangeOverviewListItem" type="mc160:MedicineCardChangeListItemType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 

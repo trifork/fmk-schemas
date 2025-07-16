@@ -220,11 +220,11 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionListRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionListResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewListRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewListResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionsResponse.xsd"/>
@@ -835,12 +835,12 @@
         <wsdl:part name="GetMedicineCardVersionListResponse" element="mc160:GetMedicineCardVersionListResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardVersionRequest_160">
-        <wsdl:part name="GetMedicineCardVersionRequest" element="mc160:GetMedicineCardVersionRequest"/>
+    <wsdl:message name="GetMedicineCardChangeOverviewRequest_160">
+        <wsdl:part name="GetMedicineCardChangeOverviewRequest" element="mc160:GetMedicineCardChangeOverviewRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardVersionResponse_160">
-        <wsdl:part name="GetMedicineCardVersionResponse" element="mc160:GetMedicineCardVersionResponse"/>
+    <wsdl:message name="GetMedicineCardChangeOverviewResponse_160">
+        <wsdl:part name="GetMedicineCardChangeOverviewResponse" element="mc160:GetMedicineCardChangeOverviewResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardVersionsRequest_160">
@@ -1578,8 +1578,8 @@
         </wsdl:operation>
 
         <wsdl:operation name="GetMedicineCardVersion_160">
-            <wsdl:input name="GetMedicineCardVersionRequest_160" message="tns:GetMedicineCardVersionRequest_160"/>
-            <wsdl:output name="GetMedicineCardVersionResponse_160" message="tns:GetMedicineCardVersionResponse_160"/>
+            <wsdl:input name="GetMedicineCardChangeOverviewRequest_160" message="tns:GetMedicineCardChangeOverviewRequest_160"/>
+            <wsdl:output name="GetMedicineCardChangeOverviewResponse_160" message="tns:GetMedicineCardChangeOverviewResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2566,11 +2566,11 @@
 
         <wsdl:operation name="GetMedicineCardVersion_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersion" style="document"/>
-            <wsdl:input name="GetMedicineCardVersionRequest_160">
+            <wsdl:input name="GetMedicineCardChangeOverviewRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionResponse_160">
+            <wsdl:output name="GetMedicineCardChangeOverviewResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
