@@ -6,21 +6,23 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="SearchRequestsForWarrantOrganisation.xsd"/>
+	<include schemaLocation="SummarizeResults.xsd"/>
 	<include schemaLocation="SubOrganisationsIncluded.xsd"/>
 	<include schemaLocation="CreatedDateTime.xsd"/>
 	<include schemaLocation="RequestForWarrantIdentifier.xsd"/>
 
-	<element name="GetRequestsForWarrantAndDetailsRequest" type="mc160:GetRequestsForWarrantAndDetailsRequestType">
+	<element name="SearchRequestsForWarrantAndDetailsRequest" type="mc160:SearchRequestsForWarrantAndDetailsRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">An element for requesting requests for warrants given an organisation which is the prescribing organisation</documentation>
 			<documentation xml:lang="da-DK">Et element til forespørgsel efter anmodninger om udleveringsgrundlag givet den anmodede organisation</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="GetRequestsForWarrantAndDetailsRequestType">
+	<complexType name="SearchRequestsForWarrantAndDetailsRequestType">
 		<sequence>
 			<element name="PrescribingOrganisation" type="mc160:SearchRequestsForWarrantOrganisationType"/>
-			<element name="IncludeSubOrganisations" type="mc160:SubOrganisationsIncludedType"/>
+			<element name="SummarizeResults" type="mc160:SummarizeResultsType" minOccurs="0"/>
+			<element name="IncludeSubOrganisations" type="mc160:SubOrganisationsIncludedType" minOccurs="0"/>
 			<element name="RequestNotOlderThan" type="mc160:CreatedDateTimeType" minOccurs="0"/>
 		</sequence>
 	</complexType>
