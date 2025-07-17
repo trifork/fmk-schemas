@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="HasNegativeConsent.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
 
 	<element name="HiddenData" type="mc160:HiddenDataType">
 		<annotation>
@@ -15,6 +16,7 @@
 
 	<complexType name="HiddenDataType">
 		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="NegativeConsent" type="mc160:HasNegativeConsentType" />
 		</sequence>
 	</complexType>

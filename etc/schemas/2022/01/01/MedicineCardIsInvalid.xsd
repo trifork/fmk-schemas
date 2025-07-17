@@ -3,12 +3,18 @@
 		xmlns:mc160="http://fmk-teknik.dk/160"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-	
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+
 	<element name="MedicineCardIsInvalid" type="mc160:MedicineCardIsInvalidType">
 		<annotation>
 			<documentation xml:lang="en-GB">Marks that the medicine card is invalid</documentation>
 			<documentation xml:lang="da-DK">Markerer at medicinkortet er ugyldigt.</documentation>
 		</annotation>
 	</element>
-	<complexType name="MedicineCardIsInvalidType"/>
+	<complexType name="MedicineCardIsInvalidType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+		</sequence>
+	</complexType>
 </schema>
