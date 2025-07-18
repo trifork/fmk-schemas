@@ -34,6 +34,8 @@
 	<include schemaLocation="Order.xsd"/>
 	<include schemaLocation="WarrantVersion.xsd"/>
 	<include schemaLocation="IsPrivateWarrant.xsd"/>
+	<include schemaLocation="EffectuationOnWarrant.xsd"/>
+	<include schemaLocation="InvalidEffectuation.xsd"/>
 
 	<complexType name="WarrantType">
 		<annotation>
@@ -75,7 +77,9 @@
 			<element name="ReplacesWarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
 			<element name="ReplacedByWarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
             <element name="Order" type="mc160:OrderType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="Version" type="mc160:WarrantVersionType" minOccurs="0"/>
+			<element name="Effectuation" type="mc160:EffectuationOnWarrantType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Version" type="mc160:WarrantVersionType" minOccurs="0"/>
 			<element name="IsPrivateWarrant" type="mc160:IsPrivateWarrantType" minOccurs="0"/>
 		</sequence>
 	</complexType>
