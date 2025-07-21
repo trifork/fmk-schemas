@@ -202,9 +202,6 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingSummaryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingSummaryResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationEffectuationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationEffectuationsResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationHistoryResponse.xsd"/>
 
@@ -223,11 +220,11 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionListRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionListResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewListRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewListResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardChangeOverviewResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetMedicineCardVersionsResponse.xsd"/>
@@ -262,8 +259,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantAndDetailsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantAndDetailsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchRequestsForWarrantAndDetailsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchRequestsForWarrantAndDetailsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantResponse.xsd"/>
@@ -317,9 +314,6 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchMedicineCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchMedicineCardResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchRequestsForWarrantRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchRequestsForWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
@@ -782,14 +776,6 @@
         <wsdl:part name="GetDispensingSummaryResponse" element="mc160:GetDispensingSummaryResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDrugMedicationEffectuationsRequest_160">
-        <wsdl:part name="GetDrugMedicationEffectuationsRequest" element="mc160:GetDrugMedicationEffectuationsRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetDrugMedicationEffectuationsResponse_160">
-        <wsdl:part name="GetDrugMedicationEffectuationsResponse" element="mc160:GetDrugMedicationEffectuationsResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="GetDrugMedicationHistoryRequest_160">
         <wsdl:part name="GetDrugMedicationHistoryRequest" element="mc160:GetDrugMedicationHistoryRequest"/>
     </wsdl:message>
@@ -838,20 +824,20 @@
         <wsdl:part name="GetMedicineCardResponse" element="mc160:GetMedicineCardResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardVersionListRequest_160">
-        <wsdl:part name="GetMedicineCardVersionListRequest" element="mc160:GetMedicineCardVersionListRequest"/>
+    <wsdl:message name="GetMedicineCardChangeOverviewListRequest_160">
+        <wsdl:part name="GetMedicineCardChangeOverviewListRequest" element="mc160:GetMedicineCardChangeOverviewListRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardVersionListResponse_160">
-        <wsdl:part name="GetMedicineCardVersionListResponse" element="mc160:GetMedicineCardVersionListResponse"/>
+    <wsdl:message name="GetMedicineCardChangeOverviewListResponse_160">
+        <wsdl:part name="GetMedicineCardChangeOverviewListResponse" element="mc160:GetMedicineCardChangeOverviewListResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardVersionRequest_160">
-        <wsdl:part name="GetMedicineCardVersionRequest" element="mc160:GetMedicineCardVersionRequest"/>
+    <wsdl:message name="GetMedicineCardChangeOverviewRequest_160">
+        <wsdl:part name="GetMedicineCardChangeOverviewRequest" element="mc160:GetMedicineCardChangeOverviewRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetMedicineCardVersionResponse_160">
-        <wsdl:part name="GetMedicineCardVersionResponse" element="mc160:GetMedicineCardVersionResponse"/>
+    <wsdl:message name="GetMedicineCardChangeOverviewResponse_160">
+        <wsdl:part name="GetMedicineCardChangeOverviewResponse" element="mc160:GetMedicineCardChangeOverviewResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetMedicineCardVersionsRequest_160">
@@ -942,12 +928,12 @@
         <wsdl:part name="GetRequestForWarrantVersionsResponse" element="mc160:GetRequestForWarrantVersionsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetRequestsForWarrantAndDetailsRequest_160">
-        <wsdl:part name="GetRequestsForWarrantAndDetailsRequest" element="mc160:GetRequestsForWarrantAndDetailsRequest"/>
+    <wsdl:message name="SearchRequestsForWarrantAndDetailsRequest_160">
+        <wsdl:part name="SearchRequestsForWarrantAndDetailsRequest" element="mc160:SearchRequestsForWarrantAndDetailsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetRequestsForWarrantAndDetailsResponse_160">
-        <wsdl:part name="GetRequestsForWarrantAndDetailsResponse" element="mc160:GetRequestsForWarrantAndDetailsResponse"/>
+    <wsdl:message name="SearchRequestsForWarrantAndDetailsResponse_160">
+        <wsdl:part name="SearchRequestsForWarrantAndDetailsResponse" element="mc160:SearchRequestsForWarrantAndDetailsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetRequestsForWarrantRequest_160">
@@ -1084,14 +1070,6 @@
 
     <wsdl:message name="SearchMedicineCardResponse_160">
         <wsdl:part name="SearchMedicineCardResponse" element="mc160:SearchMedicineCardResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="SearchRequestsForWarrantRequest_160">
-        <wsdl:part name="SearchRequestsForWarrantRequest" element="mc160:SearchRequestsForWarrantRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="SearchRequestsForWarrantResponse_160">
-        <wsdl:part name="SearchRequestsForWarrantResponse" element="mc160:SearchRequestsForWarrantResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
@@ -1546,12 +1524,6 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedicationEffectuations_160">
-            <wsdl:input name="GetDrugMedicationEffectuationsRequest_160" message="tns:GetDrugMedicationEffectuationsRequest_160"/>
-            <wsdl:output name="GetDrugMedicationEffectuationsResponse_160" message="tns:GetDrugMedicationEffectuationsResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="GetDrugMedicationHistory_160">
             <wsdl:input name="GetDrugMedicationHistoryRequest_160" message="tns:GetDrugMedicationHistoryRequest_160"/>
             <wsdl:output name="GetDrugMedicationHistoryResponse_160" message="tns:GetDrugMedicationHistoryResponse_160"/>
@@ -1589,14 +1561,14 @@
         </wsdl:operation>
 
         <wsdl:operation name="GetMedicineCardVersionList_160">
-            <wsdl:input name="GetMedicineCardVersionListRequest_160" message="tns:GetMedicineCardVersionListRequest_160"/>
-            <wsdl:output name="GetMedicineCardVersionListResponse_160" message="tns:GetMedicineCardVersionListResponse_160"/>
+            <wsdl:input name="GetMedicineCardChangeOverviewListRequest_160" message="tns:GetMedicineCardChangeOverviewListRequest_160"/>
+            <wsdl:output name="GetMedicineCardChangeOverviewListResponse_160" message="tns:GetMedicineCardChangeOverviewListResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
         <wsdl:operation name="GetMedicineCardVersion_160">
-            <wsdl:input name="GetMedicineCardVersionRequest_160" message="tns:GetMedicineCardVersionRequest_160"/>
-            <wsdl:output name="GetMedicineCardVersionResponse_160" message="tns:GetMedicineCardVersionResponse_160"/>
+            <wsdl:input name="GetMedicineCardChangeOverviewRequest_160" message="tns:GetMedicineCardChangeOverviewRequest_160"/>
+            <wsdl:output name="GetMedicineCardChangeOverviewResponse_160" message="tns:GetMedicineCardChangeOverviewResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1666,9 +1638,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetRequestsForWarrantAndDetails_160">
-            <wsdl:input name="GetRequestsForWarrantAndDetailsRequest_160" message="tns:GetRequestsForWarrantAndDetailsRequest_160"/>
-            <wsdl:output name="GetRequestsForWarrantAndDetailsResponse_160" message="tns:GetRequestsForWarrantAndDetailsResponse_160"/>
+        <wsdl:operation name="SearchRequestsForWarrantAndDetails_160">
+            <wsdl:input name="SearchRequestsForWarrantAndDetailsRequest_160" message="tns:SearchRequestsForWarrantAndDetailsRequest_160"/>
+            <wsdl:output name="SearchRequestsForWarrantAndDetailsResponse_160" message="tns:SearchRequestsForWarrantAndDetailsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1771,12 +1743,6 @@
         <wsdl:operation name="SearchMedicineCard_160">
             <wsdl:input name="SearchMedicineCardRequest_160" message="tns:SearchMedicineCardRequest_160"/>
             <wsdl:output name="SearchMedicineCardResponse_160" message="tns:SearchMedicineCardResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SearchRequestsForWarrant_160">
-            <wsdl:input name="SearchRequestsForWarrantRequest_160" message="tns:SearchRequestsForWarrantRequest_160"/>
-            <wsdl:output name="SearchRequestsForWarrantResponse_160" message="tns:SearchRequestsForWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2477,19 +2443,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDrugMedicationEffectuations_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedicationEffectuations" style="document"/>
-            <wsdl:input name="GetDrugMedicationEffectuationsRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDrugMedicationEffectuationsResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="GetDrugMedicationHistory_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetDrugMedicationHistory" style="document"/>
             <wsdl:input name="GetDrugMedicationHistoryRequest_160">
@@ -2583,11 +2536,11 @@
 
         <wsdl:operation name="GetMedicineCardVersionList_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersionList" style="document"/>
-            <wsdl:input name="GetMedicineCardVersionListRequest_160">
+            <wsdl:input name="GetMedicineCardChangeOverviewListRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionListResponse_160">
+            <wsdl:output name="GetMedicineCardChangeOverviewListResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2596,11 +2549,11 @@
 
         <wsdl:operation name="GetMedicineCardVersion_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersion" style="document"/>
-            <wsdl:input name="GetMedicineCardVersionRequest_160">
+            <wsdl:input name="GetMedicineCardChangeOverviewRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetMedicineCardVersionResponse_160">
+            <wsdl:output name="GetMedicineCardChangeOverviewResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2750,13 +2703,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetRequestsForWarrantAndDetails_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetRequestsForWarrantAndDetails" style="document"/>
-            <wsdl:input name="GetRequestsForWarrantAndDetailsRequest_160">
+        <wsdl:operation name="SearchRequestsForWarrantAndDetails_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchRequestsForWarrantAndDetails" style="document"/>
+            <wsdl:input name="SearchRequestsForWarrantAndDetailsRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetRequestsForWarrantAndDetailsResponse_160">
+            <wsdl:output name="SearchRequestsForWarrantAndDetailsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2978,19 +2931,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchMedicineCardResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="SearchRequestsForWarrant_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchRequestsForWarrant" style="document"/>
-            <wsdl:input name="SearchRequestsForWarrantRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SearchRequestsForWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

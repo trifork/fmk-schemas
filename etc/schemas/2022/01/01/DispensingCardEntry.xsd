@@ -11,6 +11,7 @@
     <include schemaLocation="Delivery.xsd"/>
     <include schemaLocation="PackingGroupIdentifier.xsd"/>
     <include schemaLocation="DispensingOrDeliveryNotes.xsd"/>
+    <include schemaLocation="DispensingMachineIdentification.xsd"/>
 
     <complexType name="DispensingCardEntryType">
         <annotation>
@@ -33,6 +34,7 @@
             </choice>
             <element name="DispensingNotes" type="mc160:DispensingOrDeliveryNotesType" minOccurs="0"/>
             <element name="DeliveryNotes" type="mc160:DispensingOrDeliveryNotesType" minOccurs="0"/>
+            <element name="DispensingMachineIdentification" type="mc160:DispensingMachineIdentificationType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>

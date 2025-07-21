@@ -5,11 +5,11 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="ModifiedDateTime.xsd"/>
 	<include schemaLocation="IncludeWarrants.xsd"/>
-	<include schemaLocation="IncludeEffectuations.xsd"/>
-	<include schemaLocation="IncludeNonRelevantWarrants.xsd"/>
+	<include schemaLocation="IncludeNonRelevantWarrantsFlag.xsd"/>
 	<include schemaLocation="IncludeWithdrawnDrugMedications.xsd"/>
 	<include schemaLocation="DrugMedicationType.xsd"/>
 
@@ -21,12 +21,14 @@
 	</element>
 	<complexType name="GetMedicineCardRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="Version" type="mc160:MedicineCardVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DateTime" type="mc160:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="IncludeWarrants" type="mc160:IncludeWarrantsType"/>
-			<element name="IncludeEffectuations" type="mc160:IncludeEffectuationsType"/>
-			<element name="IncludeNonRelevantWarrants" type="mc160:IncludeNonRelevantWarrantsType"/>
+			<element name="IncludeWarrants" type="mc160:IncludeWarrantsType" minOccurs="0"/>
+			<element name="IncludeNonRelevantWarrants" type="mc160:IncludeNonRelevantWarrantsFlagType" minOccurs="0"/>
 			<element name="IncludeWithdrawnDrugMedications" type="mc160:IncludeWithdrawnDrugMedicationsType" minOccurs="0"/>
 			<!-- PlannedAdmin -->
 			<!-- Patient Registration? -->
