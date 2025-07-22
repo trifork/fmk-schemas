@@ -30,7 +30,7 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>schemaload-dgws</id>
+                        <id>schemaload-dgws-medicinecard</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>exec</goal>
@@ -51,6 +51,28 @@
                             </arguments>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>schemaload-dgws-patientregistration</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+
+                        <configuration>
+
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=PatientRegistration</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Dschemas.dir=../etc/schemas</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -58,7 +80,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <id>make-assembly-mc</id> <!-- this is used for inheritance merges -->
                         <phase>package</phase> <!-- bind to the packaging phase -->
                         <goals>
                             <goal>single</goal>
@@ -72,7 +94,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-inline</id> <!-- this is used for inheritance merges -->
+                        <id>make-assembly-mc-inline</id> <!-- this is used for inheritance merges -->
                         <phase>package</phase> <!-- bind to the packaging phase -->
                         <goals>
                             <goal>single</goal>
@@ -82,6 +104,34 @@
                             <finalName>MedicineCard_2022_01_01-inline</finalName>
                             <descriptors>
                                 <descriptor>src/assembly/mc160-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>src/assembly/por160.xml</descriptor>
+                            </descriptors>
+                            <finalName>PatientRegistration_2022_01_01-collection</finalName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-inline</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>PatientRegistration_2022_01_01-inline</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/por160-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>

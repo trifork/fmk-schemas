@@ -27,12 +27,23 @@
                 <version>1.7.9</version>
                 <executions>
                     <execution>
-                        <id>160dgws</id>
+                        <id>mc160dgws</id>
                         <goals>
                             <goal>wsdl2code</goal>
                         </goals>
                         <configuration>
                             <wsdlFile>../mc160_wsdl/target/resources/wsdl/MedicineCard-inline_2022_01_01.wsdl</wsdlFile>
+                            <databindingName>xmlbeans</databindingName>
+                            <unpackClasses>true</unpackClasses>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>por160dgws</id>
+                        <goals>
+                            <goal>wsdl2code</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFile>../mc160_wsdl/target/resources/wsdl/PatientRegistration-inline_2022_01_01.wsdl</wsdlFile>
                             <databindingName>xmlbeans</databindingName>
                             <unpackClasses>true</unpackClasses>
                         </configuration>
@@ -63,6 +74,14 @@
                     <include>MedicineCard_2022_01_01.wsdl</include>
                 </includes>
                 <targetPath>web/wsdl/MedicineCard_2022_01_01</targetPath>
+            </resource>
+            <resource>
+                <!-- Including wsdl file. -->
+                <directory>../por160_wsdl/target/resources/wsdl/PatientRegistration_2022_01_01/</directory>
+                <includes>
+                    <include>PatientRegistration_2022_01_01.wsdl</include>
+                </includes>
+                <targetPath>web/wsdl/PatientRegistration_2022_01_01</targetPath>
             </resource>
         </resources>
     </build>
