@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="WithdrawnDateTime.xsd"/>
 
 	<element name="SearchWithdrawnDrugMedicationsRequest" type="mc160:SearchWithdrawnDrugMedicationsRequestType">
@@ -15,7 +16,10 @@
 	</element>
 	<complexType name="SearchWithdrawnDrugMedicationsRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="DateTime" type="dateTime" minOccurs="0"/>
 			<element name="WithdrawnAfterDateTime" type="mc160:WithdrawnDateTimeType" minOccurs="0"/>
 		</sequence>

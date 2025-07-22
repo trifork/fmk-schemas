@@ -290,8 +290,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchMedicineCardRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchMedicineCardResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
@@ -1031,12 +1031,12 @@
         <wsdl:part name="SearchEffectuationsResponse" element="mc160:SearchEffectuationsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchMedicineCardRequest_160">
-        <wsdl:part name="SearchMedicineCardRequest" element="mc160:SearchMedicineCardRequest"/>
+    <wsdl:message name="SearchForPersonWithWarrantRequest_160">
+        <wsdl:part name="SearchForPersonWithWarrantRequest" element="mc160:SearchForPersonWithWarrantRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchMedicineCardResponse_160">
-        <wsdl:part name="SearchMedicineCardResponse" element="mc160:SearchMedicineCardResponse"/>
+    <wsdl:message name="SearchForPersonWithWarrantResponse_160">
+        <wsdl:part name="SearchForPersonWithWarrantResponse" element="mc160:SearchForPersonWithWarrantResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
@@ -1708,8 +1708,8 @@
         </wsdl:operation>
 
         <wsdl:operation name="SearchMedicineCard_160">
-            <wsdl:input name="SearchMedicineCardRequest_160" message="tns:SearchMedicineCardRequest_160"/>
-            <wsdl:output name="SearchMedicineCardResponse_160" message="tns:SearchMedicineCardResponse_160"/>
+            <wsdl:input name="SearchForPersonWithWarrantRequest_160" message="tns:SearchForPersonWithWarrantRequest_160"/>
+            <wsdl:output name="SearchForPersonWithWarrantResponse_160" message="tns:SearchForPersonWithWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2893,11 +2893,11 @@
 
         <wsdl:operation name="SearchMedicineCard_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#SearchMedicineCard" style="document"/>
-            <wsdl:input name="SearchMedicineCardRequest_160">
+            <wsdl:input name="SearchForPersonWithWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="SearchMedicineCardResponse_160">
+            <wsdl:output name="SearchForPersonWithWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
