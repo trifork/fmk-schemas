@@ -7,7 +7,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="CreateEffectuationOnDrugMedication.xsd"/>
+	<include schemaLocation="CreateEffectuationOnWarrant.xsd"/>
 
 	<element name="CreateEffectuationRequest" type="mc160:CreateEffectuationRequestType">
 		<annotation>
@@ -17,11 +17,12 @@
 	</element>
 	<complexType name="CreateEffectuationRequestType">
 		<sequence>
+			<!-- TODO, this service probably need to change to fit the new Warrants! -->
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="DrugMedication" type="mc160:CreateEffectuationOnDrugMedicationType" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:CreateEffectuationOnWarrantType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
