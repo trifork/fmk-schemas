@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 
 	<element name="SearchWithdrawnDrugMedicationsResponse" type="mc160:SearchWithdrawnDrugMedicationsResponseType">
@@ -15,7 +16,10 @@
 	</element>
 	<complexType name="SearchWithdrawnDrugMedicationsResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
