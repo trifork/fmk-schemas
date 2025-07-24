@@ -9,7 +9,6 @@
 	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
 	<include schemaLocation="Warrant.xsd"/>
 	<include schemaLocation="InvalidWarrant.xsd"/>
-	<include schemaLocation="PrivateWarrant.xsd"/>
 
 	<element name="GetWarrantResponse" type="mc160:GetWarrantResponseType">
 		<annotation>
@@ -23,10 +22,8 @@
 				<element name="Patient" type="mc160:PatientType"/>
 				<element name="Organisation" type="mc160:OrganisationType"/>
 			</choice>
-			<element name="IsInvalid" type="mc160:MedicineCardIsInvalidType" minOccurs="0"/>
 			<element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidWarrant" type="mc160:InvalidWarrantType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="PrivateWarrant" type="mc160:PrivateWarrantType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

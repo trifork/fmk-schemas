@@ -29,12 +29,13 @@
 	<include schemaLocation="DosageText.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="SupplementaryInformation.xsd"/>
-	<include schemaLocation="WarrantStatus.xsd"/>
 	<include schemaLocation="InvalidationReasonText.xsd"/>
 	<include schemaLocation="DeprecatedDateTime.xsd"/>
 	<include schemaLocation="Order.xsd"/>
 	<include schemaLocation="WarrantVersion.xsd"/>
 	<include schemaLocation="IsPrivateWarrant.xsd"/>
+	<include schemaLocation="EffectuationOnWarrant.xsd"/>
+	<include schemaLocation="InvalidEffectuation.xsd"/>
 
 	<complexType name="WarrantType">
 		<annotation>
@@ -71,13 +72,14 @@
 			<element name="DosageText" type="mc160:DosageTextType" minOccurs="0"/>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="SupplementaryInformation" type="mc160:SupplementaryInformationType" minOccurs="0"/>
-			<element name="Status" type="mc160:WarrantStatusType"/>
 			<element name="InvalidationReasonText" type="mc160:InvalidationReasonTextType" minOccurs="0"/>
 			<element name="Deprecated" type="mc160:DeprecatedDateTimeType" minOccurs="0"/>
 			<element name="ReplacesWarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
 			<element name="ReplacedByWarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
             <element name="Order" type="mc160:OrderType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="Version" type="mc160:WarrantVersionType" minOccurs="0"/>
+			<element name="Effectuation" type="mc160:EffectuationOnWarrantType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Version" type="mc160:WarrantVersionType" minOccurs="0"/>
 			<element name="IsPrivateWarrant" type="mc160:IsPrivateWarrantType" minOccurs="0"/>
 		</sequence>
 	</complexType>
