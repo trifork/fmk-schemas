@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE definitions [
 <!ENTITY fmkStandardSOAPRequestHeaders "
-                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
-                <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
-                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
-                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
-                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+        <soap:header use='literal' part='FMKRequestHeader' message='tns:FMKRequestHeader' />
 ">
 <!ENTITY fmkStandardSOAPResponseHeaders "
                 <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
@@ -47,6 +43,8 @@
 
             <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
                        schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKRequestHeader.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDispensingPeriodResponse.xsd"/>
@@ -370,6 +368,10 @@
         </xs:schema>
 
     </wsdl:types>
+
+    <wsdl:message name="FMKRequestHeader">
+        <wsdl:part name="FMKRequestHeader" element="mc160:FMKRequestHeader"/>
+    </wsdl:message>
 
     <wsdl:message name="SecurityHeader">
         <wsdl:part name="SecurityHeader" element="wsse:Security"/>
