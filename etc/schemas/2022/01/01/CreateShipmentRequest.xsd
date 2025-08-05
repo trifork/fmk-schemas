@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ShipmentIdentifier.xsd"/>
+	<include schemaLocation="ShipmentDeliveryDate.xsd"/>
+	<include schemaLocation="ShipmentDeliverySite.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+
+	<element name="CreateShipmentRequest" type="mc160:CreateShipmentRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to create a "Track-and-trace" shipment</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der opretter en "Track-and-trace"-forsendelse</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateShipmentRequestType">
+		<sequence>
+			<element name="ResponsiblePharmacy" type="mc160:OrganisationIdentifierType"/>
+			<element name="CreatedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="Shipment" type="mc160:ShipmentIdentifierType" maxOccurs="unbounded"/>
+			<element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType" minOccurs="0"/>
+			<element name="DeliverySite" type="mc160:ShipmentDeliverySiteType.xsd" minOccurs="0"/>
+			<element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
