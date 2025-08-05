@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="DosagePeriodLength.xsd"/>
+	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+
+	<element name="UnspecifiedDosage" type="mc160:UnspecifiedDosageType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of future, unspecified dosage quantity. Typically used to indicate the treatment must be reassessed.</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af fremtidig, uspecificeret doseringsmængde. Typisk brugt til at angive at behandlingen skal genovervejes.</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="UnspecifiedDosageType">
+		<choice>
+			<element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
+			<element name="EndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+		</choice>
+	</complexType>
+</schema>
