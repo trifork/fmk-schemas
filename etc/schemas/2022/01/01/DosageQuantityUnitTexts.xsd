@@ -14,8 +14,11 @@
 	</element>
 	<complexType name="DosageQuantityUnitTextsType">
 		<sequence>
-			<element name="Singular" type="mc160:DosageQuantityUnitTextType"/>
-			<element name="Plural" type="mc160:DosageQuantityUnitTextType"/>
+			<element name="Singular" type="mc160:DosageQuantityUnitTextValueType"/>
+			<element name="Plural" type="mc160:DosageQuantityUnitTextValueType"/>
 		</sequence>
+		<attribute name="source" type="mc160:DosageQuantityUnitTextSourceType" use="required"/>
+		<attribute name="date" type="mc160:SourceDateType" use="optional"/>
+		<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
 	</complexType>
 </schema>

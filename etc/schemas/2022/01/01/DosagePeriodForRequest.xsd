@@ -7,40 +7,53 @@
 	<include schemaLocation="DosageInstruction.xsd"/>
 	<include schemaLocation="DosageRestriction.xsd"/>
 	<include schemaLocation="DosageSchema.xsd"/>
+	<include schemaLocation="DosagePeriodLength.xsd"/>
 
 	<element name="DosagePeriodForRequestType" type="mc160:DosagePeriodForRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">TODO Description of the dosage times of a treatment</documentation>
-			<documentation xml:lang="da-DK">TODO Beskrivelse af doseringstidspunkter for en behandling</documentation>
+			<documentation xml:lang="en-GB">Description of dosage amounts and times for a treatment, including any possible restrictions for the treatment.</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringsmængder- og tidspunkter for en behandling, inkl. evt. restriktioner for behandlingen</documentation>
 		</annotation>
 	</element>
 	<complexType name="DosagePeriodForRequestType">
 		<sequence>
-			<element name="PeriodLength" type="mc160:DosagePeriodLengthType" minOccurs="0"/>
-			<element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
+			<element name="Profile" type="mc160:DosageProfileType"/>
 			<element name="Restriction" type="mc160:DosageRestrictionType" minOccurs="0"/>
-			<choice>
-				<element name="RepeatedDailyQuadSchema" type="mc160:RepeatedDailyQuadSchemaType"/>
-				<element name="RepeatedWeeklyQuadSchema" type="mc160:RepeatedWeeklyQuadSchemaType"/>
-				<element name="ContinualDailyQuadSchema" type="mc160:ContinualDailyQuadSchemaType"/>
-				<element name="ContinualWeeklyQuadSchema" type="mc160:ContinualWeeklyQuadSchemaType"/>
-				<element name="RepeatedDailyTimedSchema" type="mc160:RepeatedDailyTimedSchemaType"/>
-				<element name="RepeatedWeeklyTimedSchema" type="mc160:RepeatedWeeklyTimedSchemaType"/>
-				<element name="ContinualDailyTimedSchema" type="mc160:ContinualDailyTimedSchemaType"/>
-				<element name="ContinualWeeklyTimedSchema" type="mc160:ContinualWeeklyTimedSchemaType"/>
-				<element name="RepeatedDailyNumberedSchema" type="mc160:RepeatedDailyNumberedSchemaType"/>
-				<element name="RepeatedWeeklyNumberedSchema" type="mc160:RepeatedWeeklyNumberedSchemaType"/>
-				<element name="ContinualDailyNumberedSchema" type="mc160:ContinualDailyNumberedSchemaType"/>
-				<element name="ContinualWeeklyNumberedSchema" type="mc160:ContinualWeeklyNumberedSchemaType"/>
-				<element name="RepeatedDailyUnboundSchema" type="mc160:RepeatedDailyUnboundSchemaType"/>
+			<element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
+				<element name="PeriodLengthFreeText" type="mc160:DosagePeriodLengthTextType"/>
 			</choice>
+			<element name="IterationInterval" type="mc160:DosageSchemaIterationIntervalType" minOccurs="0"/>
+			<element name="Day" type="mc160:DayType" minOccurs="1" maxOccurs="99"/>
 		</sequence>
 	</complexType>
 
-	<simpleType name="DosagePeriodLengthType">
-		<restriction base="int">
-			<minInclusive value="1"/>
+	<simpleType name="DosagePeriodLengthTextType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="256"/>
 		</restriction>
 	</simpleType>
 
+	<complexType name="DayType">
+		<sequence>
+			<element name="Index" type="mc160:DayIndexType"/>
+			<element name="Dose" type="mc160:DoseType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="DosageProfileType">
+		<sequence>
+			<element name="ProfileCode" type="string"/>
+			<element name="ProfileDescription" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="DosageSchemaIterationIntervalType">
+		<restriction base="int">
+			<minInclusive value="0"/>
+			<maxInclusive value="365"/>
+		</restriction>
+	</simpleType>
 </schema>

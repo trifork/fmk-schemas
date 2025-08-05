@@ -6,13 +6,13 @@
 	
 	<element name="Duration" type="mc160:DurationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Duration in HH:MM</documentation>
-			<documentation xml:lang="da-DK">Varighed angivet i HH:MM (timer og minutter)</documentation>
+			<documentation xml:lang="en-GB">Duration of minimum 0</documentation>
+			<documentation xml:lang="da-DK">Varighed på minimum 0</documentation>
 		</annotation>
 	</element>
 	<simpleType name="DurationType">
-		<restriction base="string">
-			<pattern value="(([0-1][0-9])|(2[0-3])):[0-5][0-9]"/>
+		<restriction base="duration">
+			<minInclusive value="P0D"/>
 		</restriction>
 	</simpleType>
 </schema>
