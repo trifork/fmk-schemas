@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
 	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="TimesPerDay.xsd"/>
 	<include schemaLocation="Duration.xsd"/>
 	<include schemaLocation="InfusionRate.xsd"/>
 	<include schemaLocation="AccordingToParameterSchema.xsd"/>
@@ -16,29 +17,68 @@
 		</annotation>
 	</element>
 	<complexType name="DoseType">
-		<choice>
 		<sequence>
-			<choice>
-				<element name="Quantity" type="mc160:DoseQuantityType"/>
+			<choice minOccurs="0">
+				<element name="TimeOfDay" type="mc160:TimeOfDayType"/>
+				<element name="TimesPerDay" type="mc160:TimesPerDayType"/>
 				<sequence>
-					<element name="MinimalQuantity" type="mc160:DoseQuantityType"/>
-					<element name="MaximalQuantity" type="mc160:DoseQuantityType"/>
+					<element name="MinimumTimesPerDay" type="mc160:TimesPerDayType" minOccurs="0"/>
+					<element name="MaximumTimesPerDay" type="mc160:TimesPerDayType"/>
 				</sequence>
 			</choice>
 			<choice>
-				<element name="Duration" type="mc160:DurationType"/>
 				<sequence>
-					<element name="MinimalDuration" type="mc160:DurationType" minOccurs="0"/>
-					<element name="MaximumDuration" type="mc160:DurationType" minOccurs="0"/>
+					<choice minOccurs="0">
+						<element name="Quantity" type="mc160:DoseQuantityType"/>
+						<sequence>
+							<element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
+							<element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
+						</sequence>
+					</choice>
+					<choice>
+						<element name="Duration" type="mc160:DurationType"/>
+						<sequence>
+							<element name="MinimalDuration" type="mc160:DurationType" minOccurs="0"/>
+							<element name="MaximumDuration" type="mc160:DurationType" minOccurs="0"/>
+						</sequence>
+						<element name="InfusionRate" type="mc160:InfusionRateType"/>
+						<sequence>
+							<element name="MinimalInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+							<element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+						</sequence>
+					</choice>
 				</sequence>
-				<element name="InfusionRate" type="mc160:InfusionRateType"/>
-				<sequence>
-					<element name="MinimalInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-					<element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-				</sequence>
+				<element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType" minOccurs="0"/>
 			</choice>
 		</sequence>
-			<element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType" minOccurs="0"/>
-		</choice>
 	</complexType>
+
+	<simpleType name="DayIndexType">
+		<restriction base="int">
+			<minInclusive value="1"/>
+			<maxInclusive value="365"/>
+			<fractionDigits value="0"/>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="TimeOfDayType">
+		<union memberTypes="mc160:PredefinedTimeOfDayType mc160:UndefinedTimeOfDayType"/>
+	</simpleType>
+
+	<simpleType name="UndefinedTimeOfDayType">
+		<restriction base="string">
+			<minLength value="3"/>
+			<maxLength value="8"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PredefinedTimeOfDayType">
+		<restriction base="mc160:UndefinedTimeOfDayType">
+			<enumeration value="Morgen"/>
+			<enumeration value="Middag"/>
+			<enumeration value="Aften"/>
+			<enumeration value="Nat"/>
+		</restriction>
+	</simpleType>
 </schema>

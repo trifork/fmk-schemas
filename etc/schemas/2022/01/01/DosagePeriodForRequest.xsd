@@ -16,31 +16,85 @@
 	</element>
 	<complexType name="DosagePeriodForRequestType">
 		<sequence>
-			<element name="PeriodLength" type="mc160:DosagePeriodLengthType" minOccurs="0"/>
-			<element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
+			<element name="Profile" type="mc160:DoseProfileType"/>
 			<element name="Restriction" type="mc160:DosageRestrictionType" minOccurs="0"/>
-			<choice>
-				<element name="RepeatedDailyQuadSchema" type="mc160:RepeatedDailyQuadSchemaType"/>
-				<element name="RepeatedWeeklyQuadSchema" type="mc160:RepeatedWeeklyQuadSchemaType"/>
-				<element name="ContinualDailyQuadSchema" type="mc160:ContinualDailyQuadSchemaType"/>
-				<element name="ContinualWeeklyQuadSchema" type="mc160:ContinualWeeklyQuadSchemaType"/>
-				<element name="RepeatedDailyTimedSchema" type="mc160:RepeatedDailyTimedSchemaType"/>
-				<element name="RepeatedWeeklyTimedSchema" type="mc160:RepeatedWeeklyTimedSchemaType"/>
-				<element name="ContinualDailyTimedSchema" type="mc160:ContinualDailyTimedSchemaType"/>
-				<element name="ContinualWeeklyTimedSchema" type="mc160:ContinualWeeklyTimedSchemaType"/>
-				<element name="RepeatedDailyNumberedSchema" type="mc160:RepeatedDailyNumberedSchemaType"/>
-				<element name="RepeatedWeeklyNumberedSchema" type="mc160:RepeatedWeeklyNumberedSchemaType"/>
-				<element name="ContinualDailyNumberedSchema" type="mc160:ContinualDailyNumberedSchemaType"/>
-				<element name="ContinualWeeklyNumberedSchema" type="mc160:ContinualWeeklyNumberedSchemaType"/>
-				<element name="RepeatedDailyUnboundSchema" type="mc160:RepeatedDailyUnboundSchemaType"/>
+			<choice minOccurs="0">
+				<element name="PeriodLength" type="mc160:DosePeriodLengthType"/>
+				<element name="PeriodLengthFreeText" type="string"/>
 			</choice>
+
+			<element name="IterationInterval" type="mc160:DoseSchemaIterationIntervalType" minOccurs="0" />
+
+			<choice>
+				<element name="Day" type="mc160:DayType" minOccurs="1" maxOccurs="99"/>
+			</choice>
+
+<!--			<element name="Day" type="mc160:DosageDayQuadSchemaType" maxOccurs="100"/>-->
+
+<!--			<element name="PeriodLength" type="mc160:DosagePeriodLengthType" minOccurs="0"/>-->
+			<element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
+<!--			<choice>-->
+<!--				<element name="RepeatedDailyQuadSchema" type="mc160:RepeatedDailyQuadSchemaType"/>-->
+<!--				<element name="RepeatedWeeklyQuadSchema" type="mc160:RepeatedWeeklyQuadSchemaType"/>-->
+<!--				<element name="ContinualDailyQuadSchema" type="mc160:ContinualDailyQuadSchemaType"/>-->
+<!--				<element name="ContinualWeeklyQuadSchema" type="mc160:ContinualWeeklyQuadSchemaType"/>-->
+<!--				<element name="RepeatedDailyTimedSchema" type="mc160:RepeatedDailyTimedSchemaType"/>-->
+<!--				<element name="RepeatedWeeklyTimedSchema" type="mc160:RepeatedWeeklyTimedSchemaType"/>-->
+<!--				<element name="ContinualDailyTimedSchema" type="mc160:ContinualDailyTimedSchemaType"/>-->
+<!--				<element name="ContinualWeeklyTimedSchema" type="mc160:ContinualWeeklyTimedSchemaType"/>-->
+<!--				<element name="RepeatedDailyNumberedSchema" type="mc160:RepeatedDailyNumberedSchemaType"/>-->
+<!--				<element name="RepeatedWeeklyNumberedSchema" type="mc160:RepeatedWeeklyNumberedSchemaType"/>-->
+<!--				<element name="ContinualDailyNumberedSchema" type="mc160:ContinualDailyNumberedSchemaType"/>-->
+<!--				<element name="ContinualWeeklyNumberedSchema" type="mc160:ContinualWeeklyNumberedSchemaType"/>-->
+<!--				<element name="RepeatedDailyUnboundSchema" type="mc160:RepeatedDailyUnboundSchemaType"/>-->
+<!--			</choice>-->
 		</sequence>
 	</complexType>
 
-	<simpleType name="DosagePeriodLengthType">
+	<simpleType name="DosePeriodLengthType">
 		<restriction base="int">
 			<minInclusive value="1"/>
+			<fractionDigits value="0"/>
 		</restriction>
 	</simpleType>
 
+	<complexType name="DayType">
+		<sequence>
+			<element name="Index" type="mc160:DayIndexType" minOccurs="0"/>
+			<element name="Dose" type="mc160:DoseType" maxOccurs="4"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="DoseProfileType">
+		<sequence>
+			<element name="ProfileCode" type="string"/>
+			<element name="ProfileDescription" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+<!--	<simpleType name="DosagePeriodLengthType">-->
+<!--		<restriction base="int">-->
+<!--			<minInclusive value="1"/>-->
+<!--		</restriction>-->
+<!--	</simpleType>-->
+
+	<simpleType name="DayLabelType">
+		<restriction base="string">
+			<enumeration value="Mandag"/>
+			<enumeration value="Tirsdag"/>
+			<enumeration value="Onsdag"/>
+			<enumeration value="Torsdag"/>
+			<enumeration value="Fredag"/>
+			<enumeration value="Lørdag"/>
+			<enumeration value="Søndag"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="DoseSchemaIterationIntervalType">
+		<restriction base="int">
+			<minInclusive value="0"/>
+			<maxInclusive value="365"/>
+			<fractionDigits value="0"/>
+		</restriction>
+	</simpleType>
 </schema>

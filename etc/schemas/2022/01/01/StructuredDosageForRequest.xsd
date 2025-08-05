@@ -21,10 +21,10 @@
 	<complexType name="StructuredDosageForRequestType">
 		<sequence>
 			<element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
-			<element name="Precondition" type="mc160:PreconditionType"/>
+			<element name="Precondition" type="mc160:PreconditionType" minOccurs="0"/>
 
 			<element name="DosageUnit" type="mc160:DosageUnitType"/>
-			<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0"/>
+			<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
 
 			<element name="DosagePeriod" type="mc160:DosagePeriodForRequestType" maxOccurs="100"/>
 		</sequence>

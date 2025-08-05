@@ -19,15 +19,30 @@
         <sequence>
             <choice>
                 <sequence>
-                    <element name="MinValue" type="mc160:DoseQuantityType"/>
-                    <element name="MaxValue" type="mc160:DoseQuantityType" minOccurs="0"/>
+                    <choice>
+                        <element name="MinValue" type="mc160:DoseQuantityType"/>
+                        <element name="MinValueInclusive" type="mc160:DoseQuantityType"/>
+                        <element name="MinValueExclusive" type="mc160:DoseQuantityType"/>
+                    </choice>
+                    <choice minOccurs="0">
+                        <element name="MaxValue" type="mc160:DoseQuantityType"/>
+                        <element name="MaxValueInclusive" type="mc160:DoseQuantityType"/>
+                        <element name="MaxValueExclusive" type="mc160:DoseQuantityType"/>
+                    </choice>
                 </sequence>
                 <element name="Value" type="mc160:DoseQuantityType"/>
                 <element name="AssessedValue" type="mc160:AssessedValueType"/>
             </choice>
-            <element name="Quantity" type="mc160:DoseQuantityType"/>
+            <choice>
+                <element name="Quantity" type="mc160:DoseQuantityType"/>
+                <sequence>
+                    <element name="MinimalQuantity" type="mc160:DoseQuantityType"/>
+                    <element name="MaximalQuantity" type="mc160:DoseQuantityType"/>
+                </sequence>
+            </choice>
         </sequence>
     </complexType>
+
     <simpleType name="AssessedValueType">
         <restriction base="string">
             <minLength value="1"/>
