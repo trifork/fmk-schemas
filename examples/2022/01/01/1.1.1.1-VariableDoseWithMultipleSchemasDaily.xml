@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreateDrugMedicationRequest
+        xmlns="http://fmk-teknik.dk/160"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://fmk-teknik.dk/160 CreateDrugMedicationRequest.xsd">
+    <PersonIdentifier source="CPR">1111111118</PersonIdentifier>
+    <MedicineCardVersion>1341404071666006001</MedicineCardVersion>
+    <CreatedBy>
+        <HealthcareProfessional>
+            <Identifier source="Autorisation">12345</Identifier>
+            <Name>Karl Karlsen</Name>
+            <Information type="SpecialityCode">7170</Information>
+        </HealthcareProfessional>
+        <Role>Læge</Role>
+        <Organisation>
+            <Name>Psykiatrien, Region Nordjylland - afdeling Thy/Mors</Name>
+            <AddressLine>Niels Bohrs Vej 30</AddressLine>
+            <AddressLine>9220 Aalborg Øst</AddressLine>
+            <TelephoneNumber>00000000</TelephoneNumber>
+            <Type>Sygehus</Type>
+            <Identifier source="SKS">7690</Identifier>
+        </Organisation>
+    </CreatedBy>
+    <DrugMedication>
+        <BeginEndDate>
+            <TreatmentStartDate>2022-12-27</TreatmentStartDate>
+            <TreatmentEndingUndetermined/>
+        </BeginEndDate>
+        <Indication>
+            <Code source="Medicinpriser" date="2014-05-01">42</Code>
+        </Indication>
+        <RouteOfAdministration>
+            <Code source="Medicinpriser" date="2014-05-01">OR</Code>
+        </RouteOfAdministration>
+        <Drug>
+            <Identifier source="Medicinpriser" date="2014-05-01">28101674394</Identifier>
+            <Name>Panodil</Name>
+        </Drug>
+        <Dosage>
+            <StructuresPredefined>
+                <DosageUnit>
+                    <DosageUnitText>IE</DosageUnitText>
+                </DosageUnit>
+                <Parameter>
+                    <ParameterName>Blodglukoseværdi</ParameterName>
+                    <ParameterLabel>Dagsdoser</ParameterLabel>
+                    <ParameterUnit>
+                        <ParameterUnitText>mmol/L</ParameterUnitText>
+                    </ParameterUnit>
+                    <ParameterSchema>
+                        <ParametricQuantity>
+                            <MinValueInclusive>0</MinValueInclusive>
+                            <MaxValueExclusive>10</MaxValueExclusive>
+                            <MinimalQuantity>5</MinimalQuantity>
+                            <MaximalQuantity>10</MaximalQuantity>
+                        </ParametricQuantity>
+                        <ParametricQuantity>
+                            <MinValueInclusive>10</MinValueInclusive>
+                            <MaxValueExclusive>20</MaxValueExclusive>
+                            <MinimalQuantity>15</MinimalQuantity>
+                            <MaximalQuantity>20</MaximalQuantity>
+                        </ParametricQuantity>
+                        <ParametricQuantity>
+                            <MinValueInclusive>20</MinValueInclusive>
+                            <MinimalQuantity>25</MinimalQuantity>
+                            <MaximalQuantity>30</MaximalQuantity>
+                        </ParametricQuantity>
+                    </ParameterSchema>
+                </Parameter>
+                <Parameter>
+                    <ParameterName>Blodglukoseværdi</ParameterName>
+                    <ParameterLabel>Natdoser</ParameterLabel>
+                    <ParameterUnit>
+                        <ParameterUnitText>mmol/L</ParameterUnitText>
+                    </ParameterUnit>
+                    <ParameterSchema>
+                        <ParametricQuantity>
+                            <MinValueInclusive>0</MinValueInclusive>
+                            <MaxValueExclusive>10</MaxValueExclusive>
+                            <MinimalQuantity>10</MinimalQuantity>
+                            <MaximalQuantity>15</MaximalQuantity>
+                        </ParametricQuantity>
+                        <ParametricQuantity>
+                            <MinValueInclusive>10</MinValueInclusive>
+                            <MaxValueExclusive>20</MaxValueExclusive>
+                            <MinimalQuantity>20</MinimalQuantity>
+                            <MaximalQuantity>25</MaximalQuantity>
+                        </ParametricQuantity>
+                        <ParametricQuantity>
+                            <MinValueInclusive>20</MinValueInclusive>
+                            <MinimalQuantity>30</MinimalQuantity>
+                            <MaximalQuantity>40</MaximalQuantity>
+                        </ParametricQuantity>
+                    </ParameterSchema>
+                </Parameter>
+
+                <DosagePeriod>
+                    <Profile>
+                        <ProfileCode>1.1.1.1</ProfileCode>
+                    </Profile>
+                    <Day>
+                        <Dose>
+                            <TimeOfDay>Morgen</TimeOfDay>
+                            <AccordingToParameterSchema>Dagsdoser</AccordingToParameterSchema>
+                        </Dose>
+                        <Dose>
+                            <TimeOfDay>Middag</TimeOfDay>
+                            <AccordingToParameterSchema>Dagsdoser</AccordingToParameterSchema>
+                        </Dose>
+                        <Dose>
+                            <TimeOfDay>Aften</TimeOfDay>
+                            <AccordingToParameterSchema>Natdoser</AccordingToParameterSchema>
+                        </Dose>
+                        <Dose>
+                            <TimeOfDay>Nat</TimeOfDay>
+                            <AccordingToParameterSchema>Natdoser</AccordingToParameterSchema>
+                        </Dose>
+                    </Day>
+                </DosagePeriod>
+            </StructuresPredefined>
+        </Dosage>
+        <SubstitutionAllowed>true</SubstitutionAllowed>
+    </DrugMedication>
+</CreateDrugMedicationRequest>

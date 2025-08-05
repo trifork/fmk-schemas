@@ -1,0 +1,137 @@
+1.1.1.1-FixedDoseOneTimeDaily.xml
+
+Antal perioder: 1
+Daglig dosering hver dag i perioden med uspecificeret sluttidspunkt.
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.1-FixedDoseMultipleTimesDaily.xml
+
+Antal perioder: 1
+Daglig dosering 4 gange dagligt hver dag i perioden med uspecificeret sluttidspunkt.
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.1-FixedDoseMultipleDosePeriods.xml
+
+Antal perioder: 2
+
+Periode 1:
+Daglig dosering 4 gange dagligt hver dag i perioden. Perioden slutter ved "fritekst".
+
+Periode 2:
+Starter når periode 1 slutter. Perioden beskriver dosis for dag 1 og dag 2 efter periode 1 slutter.
+ProfileCode x.x.1.x fortæller, at index-værdierne i eksemplet dynamisk beskrive dagene i forhold til tidligere periode, dag 1 efter forrige periode er index 1 (fx onsdag hvis forrige periode sluttede en tirsdag)
+
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.1-VariableDoseWithSchemaDaily.xml
+
+Antal perioder: 1
+Antal parameterskemaer: 1
+
+Daglig dosering baseret på skema.
+Skemaet angiver 5 intervaller der bestemmer mængden af dosis på baggrund af målt værdi ved patienten
+Det sidste "interval" har ikke nogen max værdi, så alt over min-værdien i dette interval betyder at den angivne dosis for dette interval skal bruges.
+
+Det tomme element "AccordingToParameterSchema" fortæller, at mængden skal findes i det parameterskema der er angivet.
+
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.1-VariableDoseWithMultipleSchemasDaily.xml
+
+Antal perioder: 1
+Antal parameterskemaer: 2
+
+Daglig dosering baseret på skemaer. Der er angivet 2 skemaer, dags- og natdoser.
+Skemanerne angiver intervaller for hver parameter, både for mængden af medicin, men også for hvornår den enkelt parameter er gældende.
+
+Værdien for elementet "AccordingToParameterSchema" angiver hvilket parameterskema der skal anvendes for de forskellige "Dose" elementer
+
+
+--------------------------------------------------------------------------------------------------
+
+
+1.1.1.1-VariableDoseWithAssessedValueDaily.xml
+
+Antal perioder: 1
+Antal parameterskemaer: 1
+
+Daglig dosering baseret på skema.
+Skemaet angiver 3 intervaller for "vurderet værdi". Intervallerne bestemmer mængden af dosis.
+
+Det tomme element "AccordingToParameterSchema" fortæller, at mængden skal findes i det parameterskema der er angivet.
+
+
+--------------------------------------------------------------------------------------------------
+
+
+1.1.1.1-InfusionWithMaxInfusionRate.xml
+
+Eksempel på request for infusion med maksimal indløbshastighed.
+
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.2-FixedDoseAtCertainTime.xml
+
+Eksempel på fast dosering dagligt der skal indtages på specifikke tidspunkter.
+
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.3-FixedDoseAtAnyPointOfTheDay.xml
+
+Eksempel på fast dosering dagligt der skal indtages på uspecificerede tidspunkter.
+
+
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.3-FixedDoseAtAnyPointOfTheDay2.xml
+
+Eksempel på fast dosering dagligt der skal indtages på uspecificerede tidspunkter.
+
+
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.3-FlexibleDoseAtUnspecifiedTimesOfTheDay.xml
+
+Eksempel på fleksibel dosering dagligt der skal indtages på uspecificerede tidspunkter.
+
+--------------------------------------------------------------------------------------------------
+
+1.1.1.4-ContinuousDoseWithInfusionRate.xml
+
+Eksempel på kontinuerlig infusion uden tids- eller mængdebegrænsning.
+
+--------------------------------------------------------------------------------------------------
+
+1.1.2.3-WeeklyDoseSchemaRepeated.xml
+
+Eksempel med ugeskema over 2 uger der gentages. De to uger af forskellig dosis defineret.
+--------------------------------------------------------------------------------------------------
+
+1.1.2.3-WeekDoseSchemaNonRepeated.xml
+
+Eksempel på ikke-gentagende skemadosering, fx ved nedtrapning.
+
+Skemaet indeholder dosering for 3 dage med gradvist mindre dosering. Doseringerne er ikke tidsspecifikke, men der er angivet et minimum af tid der skal gå mellem indtag.
+
+Bemærk at IterationInterval er 0 for ikke gentagende dosering.
+
+--------------------------------------------------------------------------------------------------
+
+2.1.1.4-AcordingToNeedWithDailyMax.xml
+
+Eksempel på PN dosing med maximum dosis pr dag.
+
+
+--------------------------------------------------------------------------------------------------
+
+3.1.1.4-AcordingToNeedWithPeriodLength.xml
+
+Eksempel på PN-kur for dosis skal tages 2 gange dagligt i 10 dage.
