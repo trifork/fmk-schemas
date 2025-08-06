@@ -124,6 +124,12 @@
             <xs:include schemaLocation="../schemas/2022/01/01/CreateRequestForWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CreateRequestForWarrantResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateShipmentRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateShipmentResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateTrackAndTraceEventRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateTrackAndTraceEventResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/CreateWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CreateWarrantResponse.xsd"/>
 
@@ -150,6 +156,9 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/ForwardRequestForWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/ForwardRequestForWarrantResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GenerateShipmentIdentifiersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GenerateShipmentIdentifiersResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsResponse.xsd"/>
@@ -290,6 +299,9 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
@@ -601,6 +613,22 @@
         <wsdl:part name="CreateRequestForWarrantResponse" element="mc160:CreateRequestForWarrantResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="CreateShipmentRequest_160">
+        <wsdl:part name="CreateShipmentRequest" element="mc160:CreateShipmentRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateShipmentResponse_160">
+        <wsdl:part name="CreateShipmentResponse" element="mc160:CreateShipmentResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateTrackAndTraceEventRequest_160">
+        <wsdl:part name="CreateTrackAndTraceEventRequest" element="mc160:CreateTrackAndTraceEventRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateTrackAndTraceEventResponse_160">
+        <wsdl:part name="CreateTrackAndTraceEventResponse" element="mc160:CreateTrackAndTraceEventResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="CreateWarrantRequest_160">
         <wsdl:part name="CreateWarrantRequest" element="mc160:CreateWarrantRequest"/>
     </wsdl:message>
@@ -671,6 +699,14 @@
 
     <wsdl:message name="ForwardRequestForWarrantResponse_160">
         <wsdl:part name="ForwardRequestForWarrantResponse" element="mc160:ForwardRequestForWarrantResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GenerateShipmentIdentifiersRequest_160">
+        <wsdl:part name="GenerateShipmentIdentifiersRequest" element="mc160:GenerateShipmentIdentifiersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GenerateShipmentIdentifiersResponse_160">
+        <wsdl:part name="GenerateShipmentIdentifiersResponse" element="mc160:GenerateShipmentIdentifiersResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetAcutePeriodsRequest_160">
@@ -1041,6 +1077,14 @@
         <wsdl:part name="SearchForPersonWithWarrantResponse" element="mc160:SearchForPersonWithWarrantResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="SearchTrackAndTraceEventsRequest_160">
+        <wsdl:part name="SearchTrackAndTraceEventsRequest" element="mc160:SearchTrackAndTraceEventsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchTrackAndTraceEventsResponse_160">
+        <wsdl:part name="SearchTrackAndTraceEventsResponse" element="mc160:SearchTrackAndTraceEventsResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
         <wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="mc160:SearchWithdrawnDrugMedicationsRequest"/>
     </wsdl:message>
@@ -1385,6 +1429,18 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="CreateShipment_160">
+            <wsdl:input name="CreateShipmentRequest_160" message="tns:CreateShipmentRequest_160"/>
+            <wsdl:output name="CreateShipmentResponse_160" message="tns:CreateShipmentResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateTrackAndTraceEvent_160">
+            <wsdl:input name="CreateTrackAndTraceEventRequest_160" message="tns:CreateTrackAndTraceEventRequest_160"/>
+            <wsdl:output name="CreateTrackAndTraceEventResponse_160" message="tns:CreateTrackAndTraceEventResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="CreateWarrant_160">
             <wsdl:input name="CreateWarrantRequest_160" message="tns:CreateWarrantRequest_160"/>
             <wsdl:output name="CreateWarrantResponse_160" message="tns:CreateWarrantResponse_160"/>
@@ -1436,6 +1492,12 @@
         <wsdl:operation name="ForwardRequestForWarrant_160">
             <wsdl:input name="ForwardRequestForWarrantRequest_160" message="tns:ForwardRequestForWarrantRequest_160"/>
             <wsdl:output name="ForwardRequestForWarrantResponse_160" message="tns:ForwardRequestForWarrantResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GenerateShipmentIdentifiers_160">
+            <wsdl:input name="GenerateShipmentIdentifiersRequest_160" message="tns:GenerateShipmentIdentifiersRequest_160"/>
+            <wsdl:output name="GenerateShipmentIdentifiersResponse_160" message="tns:GenerateShipmentIdentifiersResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1712,6 +1774,12 @@
         <wsdl:operation name="SearchForPersonWithWarrant_160">
             <wsdl:input name="SearchForPersonWithWarrantRequest_160" message="tns:SearchForPersonWithWarrantRequest_160"/>
             <wsdl:output name="SearchForPersonWithWarrantResponse_160" message="tns:SearchForPersonWithWarrantResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchTrackAndTraceEvents_160">
+            <wsdl:input name="SearchTrackAndTraceEventsRequest_160" message="tns:SearchTrackAndTraceEventsRequest_160"/>
+            <wsdl:output name="SearchTrackAndTraceEventsResponse_160" message="tns:SearchTrackAndTraceEventsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2204,6 +2272,32 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="CreateShipment_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateShipment" style="document"/>
+            <wsdl:input name="CreateShipmentRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateShipmentResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateTrackAndTraceEvent_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateTrackAndTraceEvent" style="document"/>
+            <wsdl:input name="CreateTrackAndTraceEventRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateTrackAndTraceEventResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="DeleteDispensingPeriod_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#DeleteDispensingPeriod" style="document"/>
             <wsdl:input name="DeleteDispensingPeriodRequest_160">
@@ -2302,6 +2396,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="ForwardRequestForWarrantResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GenerateShipmentIdentifiers_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GenerateShipmentIdentifiers" style="document"/>
+            <wsdl:input name="GenerateShipmentIdentifiersRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GenerateShipmentIdentifiersResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2900,6 +3007,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchForPersonWithWarrantResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchTrackAndTraceEvents_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchTrackAndTraceEvents" style="document"/>
+            <wsdl:input name="SearchTrackAndTraceEventsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchTrackAndTraceEventsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
