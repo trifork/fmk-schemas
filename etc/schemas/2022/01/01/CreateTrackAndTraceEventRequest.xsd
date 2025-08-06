@@ -10,6 +10,7 @@
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 	<include schemaLocation="TrackAndTraceEventType.xsd"/>
 	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
+	<include schemaLocation="TrackAndTraceEventFreetext.xsd"/>
 
 	<element name="CreateTrackAndTraceEventRequest" type="mc160:CreateTrackAndTraceEventRequestType">
 		<annotation>
@@ -25,8 +26,9 @@
 				<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
 			</choice>
 			<element name="EventDateTime" type="mc160:TrackAndTraceEventDateTimeType" minOccurs="0"/>
-			<element name="ResponsiblePharmacy" type="mc160:OrganisationIdentifierType"/>
+			<element name="OrderedAtPharmacy" type="mc160:OrganisationIdentifierType"/>
 			<element name="EventType" type="mc160:TrackAndTraceEventTypeType"/>
+			<element name="Text" type="mc160:TrackAndTraceEventFreetextType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
