@@ -37,7 +37,7 @@
             <Name>Panodil</Name>
         </Drug>
         <Dosage>
-            <StructuresPredefined>
+            <StructuresFixed>
                 <DosageType>Fast</DosageType>
                 <DosageUnit>
                     <DosageUnitText>IE</DosageUnitText>
@@ -50,21 +50,21 @@
                     </ParameterUnit>
                     <ParameterSchema>
                         <ParametricQuantity>
-                            <MinValueInclusive>0</MinValueInclusive>
-                            <MaxValueExclusive>10</MaxValueExclusive>
-                            <MinimalQuantity>5</MinimalQuantity>
-                            <MaximalQuantity>10</MaximalQuantity>
+                            <MinimumValueInclusive>0</MinimumValueInclusive>
+                            <MaximumValueExclusive>10</MaximumValueExclusive>
+                            <MinimumQuantity>5</MinimumQuantity>
+                            <MaximumQuantity>10</MaximumQuantity>
                         </ParametricQuantity>
                         <ParametricQuantity>
-                            <MinValueInclusive>10</MinValueInclusive>
-                            <MaxValueExclusive>20</MaxValueExclusive>
-                            <MinimalQuantity>15</MinimalQuantity>
-                            <MaximalQuantity>20</MaximalQuantity>
+                            <MinimumValueInclusive>10</MinimumValueInclusive>
+                            <MaximumValueExclusive>20</MaximumValueExclusive>
+                            <MinimumQuantity>15</MinimumQuantity>
+                            <MaximumQuantity>20</MaximumQuantity>
                         </ParametricQuantity>
                         <ParametricQuantity>
-                            <MinValueInclusive>20</MinValueInclusive>
-                            <MinimalQuantity>25</MinimalQuantity>
-                            <MaximalQuantity>30</MaximalQuantity>
+                            <MinimumValueInclusive>20</MinimumValueInclusive>
+                            <MinimumQuantity>25</MinimumQuantity>
+                            <MaximumQuantity>30</MaximumQuantity>
                         </ParametricQuantity>
                     </ParameterSchema>
                 </Parameter>
@@ -76,21 +76,21 @@
                     </ParameterUnit>
                     <ParameterSchema>
                         <ParametricQuantity>
-                            <MinValueInclusive>0</MinValueInclusive>
-                            <MaxValueExclusive>10</MaxValueExclusive>
-                            <MinimalQuantity>10</MinimalQuantity>
-                            <MaximalQuantity>15</MaximalQuantity>
+                            <MinimumValueInclusive>0</MinimumValueInclusive>
+                            <MaximumValueExclusive>10</MaximumValueExclusive>
+                            <MinimumQuantity>10</MinimumQuantity>
+                            <MaximumQuantity>15</MaximumQuantity>
                         </ParametricQuantity>
                         <ParametricQuantity>
-                            <MinValueInclusive>10</MinValueInclusive>
-                            <MaxValueExclusive>20</MaxValueExclusive>
-                            <MinimalQuantity>20</MinimalQuantity>
-                            <MaximalQuantity>25</MaximalQuantity>
+                            <MinimumValueInclusive>10</MinimumValueInclusive>
+                            <MaximumValueExclusive>20</MaximumValueExclusive>
+                            <MinimumQuantity>20</MinimumQuantity>
+                            <MaximumQuantity>25</MaximumQuantity>
                         </ParametricQuantity>
                         <ParametricQuantity>
-                            <MinValueInclusive>20</MinValueInclusive>
-                            <MinimalQuantity>30</MinimalQuantity>
-                            <MaximalQuantity>40</MaximalQuantity>
+                            <MinimumValueInclusive>20</MinimumValueInclusive>
+                            <MinimumQuantity>30</MinimumQuantity>
+                            <MaximumQuantity>40</MaximumQuantity>
                         </ParametricQuantity>
                     </ParameterSchema>
                 </Parameter>
@@ -100,25 +100,26 @@
                         <ProfileCode>1.1.1.1</ProfileCode>
                     </Profile>
                     <Day>
+                        <Index>1</Index>
                         <Dose>
-                            <TimeOfDay>Morgen</TimeOfDay>
+                            <TimeOfDay>morning</TimeOfDay>
                             <AccordingToParameterSchema>Dagsdoser</AccordingToParameterSchema>
                         </Dose>
                         <Dose>
-                            <TimeOfDay>Middag</TimeOfDay>
+                            <TimeOfDay>noon</TimeOfDay>
                             <AccordingToParameterSchema>Dagsdoser</AccordingToParameterSchema>
                         </Dose>
                         <Dose>
-                            <TimeOfDay>Aften</TimeOfDay>
-                            <AccordingToParameterSchema>Natdoser</AccordingToParameterSchema>
+                            <TimeOfDay>evening</TimeOfDay>
+                            <AccordingToParameterSchema>Dagsdoser</AccordingToParameterSchema>
                         </Dose>
                         <Dose>
-                            <TimeOfDay>Nat</TimeOfDay>
+                            <TimeOfDay>night</TimeOfDay>
                             <AccordingToParameterSchema>Natdoser</AccordingToParameterSchema>
                         </Dose>
                     </Day>
                 </DosagePeriod>
-            </StructuresPredefined>
+            </StructuresFixed>
         </Dosage>
         <SubstitutionAllowed>true</SubstitutionAllowed>
     </DrugMedication>

@@ -41,63 +41,112 @@
                 <DosageType>Fast</DosageType>
                 <Precondition>
                     <StartDate>2025-07-06</StartDate>
-<!--                <FreeText></FreeText>-->
                 </Precondition>
                 <DosageUnit>
-<!--                <DosageUnitText></DosageUnitText>-->
                     <SingularDosageUnitText>Tablet</SingularDosageUnitText>
                     <PluralDosageUnitText>Tabletter</PluralDosageUnitText>
                 </DosageUnit>
                 <DosagePeriod>
+<!--                    Hver dag i en uge. -->
                     <Profile>
                         <ProfileCode>1.1.1.1</ProfileCode>
                     </Profile>
-                    <PeriodLengthFreeText>Indtil Mogens er flyvende igen</PeriodLengthFreeText>
+                    <PeriodLength>7</PeriodLength>
+                    <IterationInterval>1</IterationInterval>
                     <Day>
                         <Index>1</Index>
                         <Dose>
                             <TimeOfDay>morning</TimeOfDay>
-                            <Quantity>5</Quantity>
+                            <Quantity>2</Quantity>
                         </Dose>
                         <Dose>
                             <TimeOfDay>noon</TimeOfDay>
-                            <Quantity>5</Quantity>
+                            <Quantity>2</Quantity>
                         </Dose>
                         <Dose>
                             <TimeOfDay>evening</TimeOfDay>
-                            <Quantity>5</Quantity>
+                            <Quantity>2</Quantity>
                         </Dose>
                         <Dose>
                             <TimeOfDay>night</TimeOfDay>
-                            <Quantity>5</Quantity>
+                            <Quantity>2</Quantity>
                         </Dose>
                     </Day>
                 </DosagePeriod>
                 <DosagePeriod>
+                    <!--                    Hver dag i 2 uger efter første DosagePeriod -->
                     <Profile>
                         <ProfileCode>1.1.1.1</ProfileCode>
                     </Profile>
-                    <PeriodLength>2</PeriodLength>
+                    <PeriodLength>14</PeriodLength>
+                    <IterationInterval>1</IterationInterval>
                     <Day>
-                        <!--In this example, because profilecode is x.x.1.x, index 1 can be any day of the week.-->
                         <Index>1</Index>
                         <Dose>
+                            <TimeOfDay>morning</TimeOfDay>
+                            <Quantity>1</Quantity>
+                        </Dose>
+                        <Dose>
+                            <TimeOfDay>noon</TimeOfDay>
+                            <Quantity>1</Quantity>
+                        </Dose>
+                        <Dose>
                             <TimeOfDay>evening</TimeOfDay>
-                            <Quantity>2</Quantity>
+                            <Quantity>1</Quantity>
+                        </Dose>
+                        <Dose>
+                            <TimeOfDay>night</TimeOfDay>
+                            <Quantity>1</Quantity>
+                        </Dose>
+                    </Day>
+                </DosagePeriod>
+                <DosagePeriod>
+                    <!--                    Hver dag i en uge efter anden DosagePeriod, skiftevis morgen/aften og middag/nat dosering startende mandag  -->
+                    <Profile>
+                        <ProfileCode>1.1.1.1</ProfileCode>
+                    </Profile>
+                    <PeriodLength>7</PeriodLength>
+                    <IterationInterval>2</IterationInterval>
+                    <Day>
+                        <Index>1</Index>
+                        <Dose>
+                            <TimeOfDay>morning</TimeOfDay>
+                            <Quantity>1</Quantity>
+                        </Dose>
+                        <Dose>
+                            <TimeOfDay>evening</TimeOfDay>
+                            <Quantity>1</Quantity>
                         </Dose>
                     </Day>
                     <Day>
                         <Index>2</Index>
                         <Dose>
-                            <TimeOfDay>morning</TimeOfDay>
-                            <Quantity>3</Quantity>
+                            <TimeOfDay>noon</TimeOfDay>
+                            <Quantity>1</Quantity>
                         </Dose>
                         <Dose>
-                            <TimeOfDay>evening</TimeOfDay>
-                            <Quantity>3</Quantity>
+                            <TimeOfDay>night</TimeOfDay>
+                            <Quantity>1</Quantity>
                         </Dose>
                     </Day>
                 </DosagePeriod>
+
+                <DosagePeriod>
+                    <!--                    Sidste periode på 14 dage. Dosering max 1 om dagen på et uspecificeret tidspunkt.  -->
+                    <Profile>
+                        <ProfileCode>1.1.1.3</ProfileCode>
+                    </Profile>
+                    <PeriodLength>14</PeriodLength>
+                    <IterationInterval>1</IterationInterval>
+                    <Day>
+                        <Index>1</Index>
+                        <Dose>
+                            <MinimumQuantity>0</MinimumQuantity>
+                            <MaximumQuantity>1</MaximumQuantity>
+                        </Dose>
+                    </Day>
+                </DosagePeriod>
+
             </StructuresFixed>
         </Dosage>
         <SubstitutionAllowed>true</SubstitutionAllowed>
