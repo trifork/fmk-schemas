@@ -8,18 +8,20 @@
     <include schemaLocation="ShipmentIdentifier.xsd"/>
     <include schemaLocation="OrderIdentifier.xsd"/>
     <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
     <include schemaLocation="TrackAndTraceEventIdentifier.xsd"/>
     <include schemaLocation="TrackAndTraceEventType.xsd"/>
     <include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
-    <include schemaLocation="TrackAndTraceEventFreetext.xsd"/>
+    <include schemaLocation="ShipmentDeliveryDate.xsd"/>
+    <include schemaLocation="Order.xsd"/>
 
-    <element name="TrackAndTraceEvent" type="mc160:TrackAndTraceEventType">
+    <element name="TrackAndTraceEventDetails" type="mc160:TrackAndTraceEventDetailsType">
         <annotation>
             <documentation xml:lang="en-GB">An event for TrackAndTrace</documentation>
             <documentation xml:lang="da-DK">Et event i TrackAndTrace</documentation>
         </annotation>
     </element>
-    <complexType name="TrackAndTraceEventType">
+    <complexType name="TrackAndTraceEventDetailsType">
         <sequence>
             <element name="TrackAndTraceEventIdentifier" type="mc160:TrackAndTraceEventIdentifierType"/>
             <element name="EventDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
@@ -30,7 +32,8 @@
                 <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
             </choice>
             <element name="EventType" type="mc160:TrackAndTraceEventTypeType"/>
-            <element name="Text" type="mc160:TrackAndTraceEventFreetextType" minOccurs="0"/>
+            <element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType"/>
+            <element name="Order" type="mc160:OrderType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

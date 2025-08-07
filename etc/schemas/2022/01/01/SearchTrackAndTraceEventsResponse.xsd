@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="TrackAndTraceEvent.xsd"/>
+	<include schemaLocation="TrackAndTraceEventDetails.xsd"/>
 
 	<element name="SearchTrackAndTraceEventsResponse" type="mc160:SearchTrackAndTraceEventsResponseType">
 		<annotation>
@@ -14,7 +14,7 @@
 	</element>
 	<complexType name="SearchTrackAndTraceEventsResponseType">
 		<sequence>
-			<element name="TrackAndTraceEvent" type="mc160:TrackAndTraceEventType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="TrackAndTraceEvent" type="mc160:TrackAndTraceEventDetailsType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -11,6 +11,7 @@
 	<include schemaLocation="TrackAndTraceEventType.xsd"/>
 	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="IncludeOrderDetails.xsd"/>
 
 	<element name="SearchTrackAndTraceEventsRequest" type="mc160:SearchTrackAndTraceEventsRequestType">
 		<annotation>
@@ -24,7 +25,10 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" maxOccurs="unbounded"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="CreatedSinceDateTime" type="mc160:TrackAndTraceEventDateTimeType" minOccurs="0"/>
+			<choice minOccurs="0">
+				<element name="CreatedSinceDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
+				<element name="NoOfLatestEvents" type="integer"/>
+			</choice>
 			<choice minOccurs="0">
 				<element name="IncludeType" type="mc160:TrackAndTraceEventTypeType" maxOccurs="unbounded"/>
 				<element name="ExcludeType" type="mc160:TrackAndTraceEventTypeType" maxOccurs="unbounded"/>
@@ -32,6 +36,7 @@
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IncludeOrderDetails" type="mc160:IncludeOrderDetailsType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
