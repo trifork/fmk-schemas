@@ -22,7 +22,7 @@
 		<sequence>
 			<choice minOccurs="0">
 				<element name="CreatedSinceDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
-				<element name="NoOfLatestEvents" type="integer"/>
+				<element name="NoOfLatestEvents" type="mc160:NoOfLatestEventsType"/>
 			</choice>
 			<choice minOccurs="0">
 				<element name="IncludeType" type="mc160:TrackAndTraceEventTypeType" maxOccurs="unbounded"/>
@@ -34,4 +34,10 @@
 			<element name="IncludeOrderDetails" type="mc160:IncludeOrderDetailsType" minOccurs="0"/>
 		</sequence>
 	</complexType>
+	<simpleType name="NoOfLatestEventsType">
+		<restriction base="integer">
+			<minInclusive value="1"/>
+			<maxInclusive value="10"/>
+		</restriction>
+	</simpleType>
 </schema>
