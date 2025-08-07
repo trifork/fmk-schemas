@@ -8,11 +8,12 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="ShipmentIdentifier.xsd"/>
 	<include schemaLocation="TrackAndTraceEventIdentifier.xsd"/>
+	<include schemaLocation="ShipmentDeliveryDate.xsd"/>
 
 	<element name="CreateShipmentResponse" type="mc160:CreateShipmentResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response from creating a "Track-and-trace" shipment</documentation>
-			<documentation xml:lang="da-DK">Svar på oprettelse af en "Track-and-trace"-forsendelse</documentation>
+			<documentation xml:lang="en-GB">Response from creating a TrackAndTrace shipment</documentation>
+			<documentation xml:lang="da-DK">Svar på oprettelse af en TrackAndTrace-forsendelse</documentation>
 		</annotation>
 	</element>
 	<complexType name="CreateShipmentResponseType">
@@ -22,6 +23,7 @@
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
 			<element name="ShipmentIdentifier" type="mc160:ShipmentIdentifierType"/>
+			<element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
