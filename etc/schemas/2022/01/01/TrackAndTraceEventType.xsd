@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="TrackAndTraceEventType" type="mc160:TrackAndTraceEventTypeType">
+		<annotation>
+			<documentation xml:lang="en-GB">The type of TrackAndTrace event</documentation>
+			<documentation xml:lang="da-DK">Typen af TrackAndTrace-event</documentation>
+		</annotation>
+	</element>
+	<simpleType name="TrackAndTraceEventTypeType">
+		<union memberTypes="mc160:PredefinedTrackAndTraceEventTypeType mc160:UndefinedTrackAndTraceEventTypeType"/>
+	</simpleType>
+	<simpleType name="PredefinedTrackAndTraceEventTypeType">
+		<restriction base="mc160:UndefinedTrackAndTraceEventTypeType">
+			<enumeration value="Bestilling oprettet"/>
+			<enumeration value="Bestilling modtaget på (sygehus)apoteket"/>
+			<enumeration value="Bestilling behandles"/>
+			<enumeration value="Bestilling annulleret"/>
+			<enumeration value="Bestilling afvist"/>
+			<enumeration value="Bestilling ekspederet"/>
+			<enumeration value="Pakket til forsendelse"/>
+			<enumeration value="Afsendt"/>
+			<enumeration value="Modtaget på udleveringssted"/>
+			<enumeration value="Medicin klar i udleveringsboks"/>
+			<enumeration value="Medicin klar til afhentning"/>
+			<enumeration value="Medicin udleveret"/>
+			<enumeration value="Dosisrulle klar til pakning"/>
+			<enumeration value="Dosisrulle pakket"/>
+			<enumeration value="Dosisrulle ekspederet"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="UndefinedTrackAndTraceEventTypeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+</schema>
