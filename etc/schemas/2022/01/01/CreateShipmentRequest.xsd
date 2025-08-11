@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ShipmentIdentifier.xsd"/>
+	<include schemaLocation="ShipmentDeliveryDate.xsd"/>
+	<include schemaLocation="ShipmentDeliverySite.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
+
+	<element name="CreateShipmentRequest" type="mc160:CreateShipmentRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to create a TrackAndTrace shipment</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der opretter en TrackAndTrace-forsendelse</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateShipmentRequestType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="OrderedAtPharmacyIdentifier" type="mc160:OrganisationIdentifierType"/>
+			<element name="CreatedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ShipmentIdentifier" type="mc160:ShipmentIdentifierType" minOccurs="0"/>
+			<element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType" minOccurs="0"/>
+			<element name="DeliverySite" type="mc160:ShipmentDeliverySiteType.xsd" minOccurs="0"/>
+			<element name="EventDateTime" type="mc160:TrackAndTraceEventDateTimeType" minOccurs="0"/>
+			<element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

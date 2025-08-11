@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="ShipmentIdentifier.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="TrackAndTraceEventType.xsd"/>
+	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="IncludeOrderDetails.xsd"/>
+
+	<element name="SearchTrackAndTraceEventsRequest" type="mc160:SearchTrackAndTraceEventsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for searching for TrackAndTrace events</documentation>
+			<documentation xml:lang="da-DK">Element for en søgning efter TrackAndTrace-events</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchTrackAndTraceEventsRequestType">
+		<sequence>
+			<choice minOccurs="0">
+				<element name="CreatedSinceDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
+				<element name="NoOfLatestEvents" type="mc160:NoOfLatestEventsType"/>
+			</choice>
+			<choice minOccurs="0">
+				<element name="IncludeType" type="mc160:TrackAndTraceEventTypeType" maxOccurs="unbounded"/>
+				<element name="ExcludeType" type="mc160:TrackAndTraceEventTypeType" maxOccurs="unbounded"/>
+			</choice>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IncludeOrderDetails" type="mc160:IncludeOrderDetailsType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<simpleType name="NoOfLatestEventsType">
+		<restriction base="integer">
+			<minInclusive value="1"/>
+			<maxInclusive value="10"/>
+		</restriction>
+	</simpleType>
+</schema>
