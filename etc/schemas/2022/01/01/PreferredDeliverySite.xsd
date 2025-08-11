@@ -8,13 +8,13 @@
 
     <element name="PreferredDeliverySite" type="mc160:PreferredDeliverySiteType">
         <annotation>
-            <documentation xml:lang="en-GB">Unit for dosage quantity, singular and plural</documentation>
-            <documentation xml:lang="da-DK">Enhed for dosismængde, ental og flertal</documentation>
+            <documentation xml:lang="en-GB">Describes a preferred delivery site, optionally with delivery instructions</documentation>
+            <documentation xml:lang="da-DK">Beskriver et foretrukket udleveringssted samt eventuelle leveringsinstruktioner</documentation>
         </annotation>
     </element>
     <complexType name="PreferredDeliverySiteType">
         <sequence>
-            <element name="PreferredDeliverySite" type="mc160:OrganisationType" minOccurs="0"/>
+            <element name="DeliverySite" type="mc160:OrganisationType"/>
             <element name="DeliveryInstructionText" type="mc160:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
         </sequence>
     </complexType>
