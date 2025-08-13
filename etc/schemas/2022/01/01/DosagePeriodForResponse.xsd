@@ -3,7 +3,7 @@
 		xmlns:mc160="http://fmk-teknik.dk/160"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-	
+
 	<include schemaLocation="DayType.xsd"/>
 	<include schemaLocation="DosageInstruction.xsd"/>
 	<include schemaLocation="DosageRestriction.xsd"/>
@@ -11,15 +11,16 @@
 	<include schemaLocation="DosagePeriodLengthText.xsd"/>
 	<include schemaLocation="IterationInterval.xsd"/>
 
-	<element name="DosagePeriodForRequestType" type="mc160:DosagePeriodForRequestType">
+	<element name="DosagePeriodForResponseType" type="mc160:DosagePeriodForResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of dosage amounts and times for a treatment, including any possible restrictions for the treatment.</documentation>
 			<documentation xml:lang="da-DK">Beskrivelse af doseringsmængder- og tidspunkter for en behandling, inkl. evt. restriktioner for behandlingen</documentation>
 		</annotation>
 	</element>
-	<complexType name="DosagePeriodForRequestType">
+	<complexType name="DosagePeriodForResponseType">
 		<sequence>
-			<element name="Profile" type="mc160:DosageProfileForRequestType"/>
+			<element name="Profile" type="mc160:DosageProfileForResponseType"/>
+
 			<element name="Restriction" type="mc160:DosageRestrictionType" minOccurs="0"/>
 			<element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
 			<choice minOccurs="0">
@@ -31,9 +32,10 @@
 		</sequence>
 	</complexType>
 
-	<complexType name="DosageProfileForRequestType">
+	<complexType name="DosageProfileForResponseType">
 		<sequence>
 			<element name="ProfileCode" type="string"/>
+			<element name="ProfileDescription" type="string" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
