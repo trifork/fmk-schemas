@@ -4,6 +4,7 @@
 				targetNamespace="http://fmk-teknik.dk/160"
 				elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+	<include schemaLocation="DosageStructureRequestBase.xsd"/>
 	<include schemaLocation="DosagePeriodForRequest.xsd"/>
 	<include schemaLocation="DosageParameter.xsd"/>
 	<include schemaLocation="IsSelfAdministration.xsd"/>
@@ -15,10 +16,25 @@
 		</annotation>
 	</element>
 	<complexType name="DosageStructureForRequestType">
-		<sequence>
-			<element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
-			<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="DosagePeriod" type="mc160:DosagePeriodForRequestType" maxOccurs="10"/>
-		</sequence>
+		<complexContent>
+			<extension base="mc160:DosageStructureRequestBase">
+				<sequence>
+					<element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
+					<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="DosagePeriod" type="mc160:DosagePeriodForRequestType" maxOccurs="10"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="EmptyDosageStructureForRequestType">
+		<complexContent>
+			<extension base="mc160:DosageStructureRequestBase">
+				<choice>
+					<element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
+					<element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+				</choice>
+			</extension>
+		</complexContent>
 	</complexType>
 </schema>

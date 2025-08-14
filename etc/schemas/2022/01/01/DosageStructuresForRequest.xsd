@@ -6,7 +6,7 @@
 
 	<include schemaLocation="EmptyDosageStructure.xsd"/>
 	<include schemaLocation="DosageStructureForRequest.xsd"/>
-
+	<include schemaLocation="DosageStructureRequestBase.xsd"/>
 
 	<element name="DosageStructuresForRequest" type="mc160:DosageStructuresForRequestType">
 		<annotation>
@@ -14,12 +14,11 @@
 			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
 		</annotation>
 	</element>
+
 	<complexType name="DosageStructuresForRequestType">
 		<sequence>
-			<choice minOccurs="1" maxOccurs="10">
-				<element name="Structure" type="mc160:DosageStructureForRequestType"/>
-				<element name="EmptyStructure" type="mc160:EmptyDosageStructureType"/>
-			</choice>
+			<element name="Structure" type="mc160:DosageStructureRequestBase" minOccurs="1" maxOccurs="10"/>
 		</sequence>
 	</complexType>
+
 </schema>
