@@ -8,9 +8,6 @@
 	<include schemaLocation="DosageParameter.xsd"/>
 	<include schemaLocation="DosagePeriodForResponse.xsd"/>
 	<include schemaLocation="DosageTranslation.xsd"/>
-	<include schemaLocation="DosageStructureResponseBase.xsd"/>
-	<include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
-
 
 	<element name="DosageStructureForResponse" type="mc160:DosageStructureForResponseType">
 		<annotation>
@@ -19,26 +16,11 @@
 		</annotation>
 	</element>
 	<complexType name="DosageStructureForResponseType">
-		<complexContent>
-			<extension base="mc160:DosageStructureResponseBase">
-				<sequence>
-					<element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
-					<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
-					<element name="DosagePeriod" type="mc160:DosagePeriodForResponseType" maxOccurs="10"/>
-					<element name="DosageTranslation" type="mc160:DosageTranslationType"/>
-				</sequence>
-			</extension>
-		</complexContent>
-	</complexType>
-
-	<complexType name="EmptyDosageStructureForResponseType">
-		<complexContent>
-			<extension base="mc160:DosageStructureResponseBase">
-				<sequence>
-					<element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
-					<element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
-				</sequence>
-			</extension>
-		</complexContent>
+		<sequence>
+			<element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
+			<element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DosagePeriod" type="mc160:DosagePeriodForResponseType" maxOccurs="10"/>
+			<element name="DosageTranslation" type="mc160:DosageTranslationType"/>
+		</sequence>
 	</complexType>
 </schema>
