@@ -6,6 +6,7 @@
 
   <include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
   <include schemaLocation="DosagePeriodLength.xsd"/>
+  <include schemaLocation="DosageStructureBase.xsd"/>
 
   <element name="EmptyDosageStructure" type="mc160:EmptyDosageStructureType">
     <annotation>
@@ -15,11 +16,14 @@
   </element>
 
   <complexType name="EmptyDosageStructureType">
-    <sequence>
-      <choice>
-        <element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
-        <element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
-      </choice>
-    </sequence>
+    <complexContent>
+      <extension base="mc160:DosageStructureBase">
+        <choice>
+          <element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
+          <element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+        </choice>
+      </extension>
+    </complexContent>
   </complexType>
+
 </schema>
