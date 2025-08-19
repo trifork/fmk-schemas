@@ -190,9 +190,6 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDeliverySitesForPharmacyRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetDeliverySitesForPharmacyResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2022/01/01/GetDetailedPlannedAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDetailedPlannedAdministrationResponse.xsd"/>
 
@@ -757,14 +754,6 @@
 
     <wsdl:message name="GetAuthorisationDateForNewestOpenWarrantResponse_160">
         <wsdl:part name="GetAuthorisationDateForNewestOpenWarrantResponse" element="mc160:GetAuthorisationDateForNewestOpenWarrantResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetDeliverySitesForPharmacyRequest_160">
-        <wsdl:part name="GetDeliverySitesForPharmacyRequest" element="mc160:GetDeliverySitesForPharmacyRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetDeliverySitesForPharmacyResponse_160">
-        <wsdl:part name="GetDeliverySitesForPharmacyResponse" element="mc160:GetDeliverySitesForPharmacyResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDetailedPlannedAdministrationRequest_160">
@@ -1552,12 +1541,6 @@
         <wsdl:operation name="GetAuthorisationDateForNewestOpenWarrant_160">
             <wsdl:input name="GetAuthorisationDateForNewestOpenWarrantRequest_160" message="tns:GetAuthorisationDateForNewestOpenWarrantRequest_160"/>
             <wsdl:output name="GetAuthorisationDateForNewestOpenWarrantResponse_160" message="tns:GetAuthorisationDateForNewestOpenWarrantResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetDeliverySitesForPharmacy_160">
-            <wsdl:input name="GetDeliverySitesForPharmacyRequest_160" message="tns:GetDeliverySitesForPharmacyRequest_160"/>
-            <wsdl:output name="GetDeliverySitesForPharmacyResponse_160" message="tns:GetDeliverySitesForPharmacyResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2489,20 +2472,6 @@
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
-
-        <wsdl:operation name="GetDeliverySitesForPharmacy_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDeliverySitesForPharmacy" style="document"/>
-            <wsdl:input name="GetDeliverySitesForPharmacyRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetDeliverySitesForPharmacyResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
 
         <wsdl:operation name="GetDetailedPlannedAdministration_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetDetailedPlannedAdministration" style="document"/>
