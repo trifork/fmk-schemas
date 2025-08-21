@@ -25,7 +25,7 @@
         <sequence>
             <element name="TrackAndTraceEventIdentifier" type="mc160:TrackAndTraceEventIdentifierType"/>
             <element name="EventDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
-            <element name="OrderedAtPharmacy" type="mc160:OrganisationIdentifierType"/>
+            <element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
             <choice>
                 <element name="ShipmentIdentifier" type="mc160:ShipmentIdentifierType"/>
                 <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
@@ -34,6 +34,7 @@
             <element name="EventType" type="mc160:TrackAndTraceEventTypeType"/>
             <element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType"/>
             <element name="Order" type="mc160:OrderType" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- TODO: Relevant details for dosedispensing, such as periodstatus and delivery-->
         </sequence>
     </complexType>
 </schema>
