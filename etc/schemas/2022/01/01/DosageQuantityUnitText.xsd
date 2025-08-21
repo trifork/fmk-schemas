@@ -14,28 +14,8 @@
 			<documentation xml:lang="da-DK">Enhed for dosismængde</documentation>
 		</annotation>
 	</element>
-	<complexType name="DosageQuantityUnitTextType">
-		<simpleContent>
-			<extension base="mc160:DosageQuantityUnitTextValueType">
-				<attribute name="source" type="mc160:DosageQuantityUnitTextSourceType" use="required"/>
-				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
-				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
-			</extension>
-		</simpleContent>
-	</complexType>
 
-	<simpleType name="DosageQuantityUnitTextSourceType">
-		<union memberTypes="mc160:DosageQuantityUnitTextPredefinedSourceType mc160:UndefinedSourceType"/>
-	</simpleType>
-	<simpleType name="DosageQuantityUnitTextPredefinedSourceType">
-		<restriction base="mc160:UndefinedSourceType">
-			<enumeration value="Medicinpriser"/>
-			<enumeration value="Doseringsforslag"/>
-			<enumeration value="Local"/>
-			<enumeration value="Magistrel"/>
-		</restriction>
-	</simpleType>
-	<simpleType name="DosageQuantityUnitTextValueType">
+	<simpleType name="DosageQuantityUnitTextType">
 		<restriction base="string">
 			<minLength value="1"/>
 			<maxLength value="50"/>
