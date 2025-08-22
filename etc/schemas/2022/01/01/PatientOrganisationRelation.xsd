@@ -9,7 +9,7 @@
 	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
-	<include schemaLocation="PreferredDeliverySite.xsd"/>
+    <include schemaLocation="PatientRelationMetadata.xsd"/>
 	
 	<element name="PatientOrganisationRelation" type="mc160:PatientOrganisationRelationType">
 		<annotation>
@@ -24,10 +24,8 @@
 			<element name="Removed" type="mc160:CreatedType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Organisation" type="mc160:OrganisationType"/>
-			<choice minOccurs="0">
-				<element name="PreferredDeliverySite" type="mc160:PreferredDeliverySiteType"/>
-			</choice>
 			<element name="Type" type="mc160:PatientOrganisationRelationTypeType"/>
+            <element name="PatientRelationMetadata" type="mc160:PatientRelationMetadataType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
