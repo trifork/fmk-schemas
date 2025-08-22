@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="Organisation.xsd"/>
+
+	<element name="GetDeliverySitesForPharmacyResponse" type="mc160:GetDeliverySitesForPharmacyResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document to get the delivery sites associated with a given pharmacy</documentation>
+			<documentation xml:lang="da-DK">Response-dokument for at hente et givet apoteks tilknyttede udleveringssteder</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetDeliverySitesForPharmacyResponseType">
+		<sequence>
+			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType" />
+			<element name="DeliverySite" type="mc160:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

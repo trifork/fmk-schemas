@@ -53,6 +53,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePatientRegistrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePatientRegistrationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDeliverySitesForPharmacyRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDeliverySitesForPharmacyResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetPatientOrganisationRelationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPatientOrganisationRelationResponse.xsd"/>
 
@@ -111,6 +114,14 @@
         <wsdl:part name="CreatePatientRegistrationResponse" element="mc160:CreatePatientRegistrationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetDeliverySitesForPharmacyRequest_2022_01_01">
+        <wsdl:part name="GetDeliverySitesForPharmacyRequest" element="mc160:GetDeliverySitesForPharmacyRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDeliverySitesForPharmacyResponse_2022_01_01">
+        <wsdl:part name="GetDeliverySitesForPharmacyResponse" element="mc160:GetDeliverySitesForPharmacyResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="GetPatientOrganisationRelationRequest_2022_01_01">
         <wsdl:part name="GetPatientOrganisationRelationRequest" element="mc160:GetPatientOrganisationRelationRequest"/>
     </wsdl:message>
@@ -167,6 +178,13 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetDeliverySitesForPharmacy_2022_01_01">
+            <wsdl:input name="GetDeliverySitesForPharmacyRequest_2022_01_01" message="tns:GetDeliverySitesForPharmacyRequest_2022_01_01"/>
+            <wsdl:output name="GetDeliverySitesForPharmacyResponse_2022_01_01" message="tns:GetDeliverySitesForPharmacyResponse_2022_01_01"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+
         <wsdl:operation name="GetPatientOrganisationRelation_2022_01_01">
             <wsdl:input name="GetPatientOrganisationRelationRequest_2022_01_01" message="tns:GetPatientOrganisationRelationRequest_2022_01_01"/>
             <wsdl:output name="GetPatientOrganisationRelationResponse_2022_01_01" message="tns:GetPatientOrganisationRelationResponse_2022_01_01"/>
@@ -222,6 +240,19 @@
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
+
+       <wsdl:operation name="GetDeliverySitesForPharmacy_2022_01_01">
+           <soap:operation soapAction="http://fmk-teknik.dk/160#GetDeliverySitesForPharmacy" style="document"/>
+           <wsdl:input name="GetDeliverySitesForPharmacyRequest_2022_01_01">
+               &fmkStandardSOAPRequestHeaders;
+               <soap:body use="literal"/>
+           </wsdl:input>
+           <wsdl:output name="GetDeliverySitesForPharmacyResponse_2022_01_01">
+               &fmkStandardSOAPResponseHeaders;
+               <soap:body use="literal"/>
+           </wsdl:output>
+           &bindingFaultDeclaration;
+       </wsdl:operation>
 
         <wsdl:operation name="GetPatientOrganisationRelation_2022_01_01">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetPatientOrganisationRelation"
