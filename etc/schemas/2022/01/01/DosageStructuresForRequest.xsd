@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-				xmlns:mc160="http://fmk-teknik.dk/160"
-				targetNamespace="http://fmk-teknik.dk/160"
-				elementFormDefault="qualified" attributeFormDefault="unqualified">
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="DosageStructureBase.xsd"/>
-	<include schemaLocation="DosageStructure.xsd"/>
-	<include schemaLocation="EmptyDosageStructure.xsd"/>
+  <include schemaLocation="DosageStructureBase.xsd"/>
+  <include schemaLocation="DosageStructure.xsd"/>
+  <include schemaLocation="EmptyDosageStructure.xsd"/>
 
-	<element name="DosageStructuresForRequest" type="mc160:DosageStructuresForRequestType">
-		<annotation>
-			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
-			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
-		</annotation>
-	</element>
+  <element name="DosageStructuresForRequest" type="mc160:DosageStructuresForRequestType">
+    <annotation>
+      <documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+      <documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+    </annotation>
+  </element>
 
-	<complexType name="DosageStructuresForRequestType">
-		<sequence>
-			<element name="Structure" type="mc160:DosageStructureBase" minOccurs="1" maxOccurs="10"/>
-		</sequence>
-	</complexType>
+  <complexType name="DosageStructuresForRequestType">
+    <sequence>
+      <element name="Structure" type="mc160:DosageStructureBase" maxOccurs="10"/>
+      <element name="Unknown" type="mc160:UnknownDosage" minOccurs="0"/>
+    </sequence>
+  </complexType>
 
+  <complexType name="UnknownDosage">
+    <choice>
+      <element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
+      <element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+    </choice>
+  </complexType>
 </schema>
