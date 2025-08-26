@@ -5,7 +5,9 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 
-<include schemaLocation="IncludePatientDetails.xsd"/>
+    <include schemaLocation="IncludePatientDetails.xsd"/>
+    <include schemaLocation="IncludeManualDispensingPatients.xsd"/>
+    <include schemaLocation="IncludeDoseDispensingPatients.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 
 	<element name="ListDoseDispensingPatientsRequest" type="mc160:ListDoseDispensingPatientsRequestType">
@@ -17,6 +19,14 @@
 	<complexType name="ListDoseDispensingPatientsRequestType">
 		<sequence>
 			<element name="IncludePatientDetails" type="mc160:IncludePatientDetailsType"/>
+            <choice>
+                <element name="IncludeDoseDispensingPatients" type="mc160:IncludeDoseDispensingPatientsType"/>
+                <sequence>
+                    <element name="IncludeManualDispensingPatients" type="mc160:IncludeManualDispensingPatientsType"/>
+                    <element name="IncludeDoseDispensingPatients" type="mc160:IncludeDoseDispensingPatientsType" minOccurs="0"/>
+                </sequence>
+            </choice>
+
 			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
