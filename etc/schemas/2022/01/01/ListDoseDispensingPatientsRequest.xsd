@@ -7,6 +7,7 @@
 
     <include schemaLocation="IncludePatientDetails.xsd"/>
     <include schemaLocation="IncludeManualDispensingPatients.xsd"/>
+    <include schemaLocation="IncludeDoseDispensingPatients.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 
 	<element name="ListDoseDispensingPatientsRequest" type="mc160:ListDoseDispensingPatientsRequestType">
@@ -19,6 +20,7 @@
 		<sequence>
 			<element name="IncludePatientDetails" type="mc160:IncludePatientDetailsType"/>
             <element name="IncludeManualDispensingPatients" type="mc160:IncludeManualDispensingPatientsType" minOccurs="0"/>
+            <element name="IncludeDoseDispensingPatients" type="mc160:IncludeDoseDispensingPatientsType" minOccurs="0"/>
 			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
