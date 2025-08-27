@@ -4,26 +4,23 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-  <include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
   <include schemaLocation="DosagePeriodLength.xsd"/>
-  <include schemaLocation="DosageStructureBase.xsd"/>
+  <include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
 
   <element name="EmptyDosageStructure" type="mc160:EmptyDosageStructureType">
     <annotation>
-      <documentation xml:lang="en-GB">Description of an interval in the treatment where the drug is not given</documentation>
-      <documentation xml:lang="da-DK">Beskrivelse af en periode i behandlingen hvor lægemidlet ikke gives</documentation>
+      <documentation xml:lang="en-GB">Description of an interval in the treatment where the drug is not given
+      </documentation>
+      <documentation xml:lang="da-DK">Beskrivelse af en periode i behandlingen hvor lægemidlet ikke gives
+      </documentation>
     </annotation>
   </element>
 
   <complexType name="EmptyDosageStructureType">
-    <complexContent>
-      <extension base="mc160:DosageStructureBase">
-        <choice>
-          <element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
-          <element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
-        </choice>
-      </extension>
-    </complexContent>
+    <choice>
+      <element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
+      <element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+    </choice>
   </complexType>
 
 </schema>

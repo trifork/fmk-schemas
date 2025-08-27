@@ -10,6 +10,7 @@
 	<include schemaLocation="DosagePeriodLength.xsd"/>
 	<include schemaLocation="DosagePeriodLengthText.xsd"/>
 	<include schemaLocation="DosageProfile.xsd"/>
+	<include schemaLocation="DosageTranslation.xsd"/>
 	<include schemaLocation="IterationInterval.xsd"/>
 
 	<element name="DosagePeriodType" type="mc160:DosagePeriodType">
@@ -29,6 +30,9 @@
 			</choice>
 			<element name="IterationInterval" type="mc160:IterationIntervalType" minOccurs="0"/>
 			<element name="Day" type="mc160:DayType" minOccurs="1" maxOccurs="99"/>
+
+			<!-- @Reviewer: Eneste forskel mellem request/response. minOccurs sat til 0 så xsd'en kan genbruges. -->
+			<element name="DosageTranslation" type="mc160:DosageTranslationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 

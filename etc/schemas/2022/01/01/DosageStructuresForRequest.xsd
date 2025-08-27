@@ -4,9 +4,8 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-  <include schemaLocation="DosageStructureBase.xsd"/>
   <include schemaLocation="DosageStructure.xsd"/>
-  <include schemaLocation="EmptyDosageStructure.xsd"/>
+  <include schemaLocation="UnspecifiedDosage.xsd"/>
 
   <element name="DosageStructuresForRequest" type="mc160:DosageStructuresForRequestType">
     <annotation>
@@ -17,15 +16,10 @@
 
   <complexType name="DosageStructuresForRequestType">
     <sequence>
-      <element name="Structure" type="mc160:DosageStructureBase" maxOccurs="10"/>
-      <element name="Unknown" type="mc160:UnknownDosage" minOccurs="0"/>
+      <element name="Structure" type="mc160:DosageStructureType" maxOccurs="10"/>
+      <element name="Unspecified" type="mc160:UnspecifiedDosageType" minOccurs="0"/>
     </sequence>
   </complexType>
 
-  <complexType name="UnknownDosage">
-    <choice>
-      <element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
-      <element name="DosageEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
-    </choice>
-  </complexType>
+
 </schema>
