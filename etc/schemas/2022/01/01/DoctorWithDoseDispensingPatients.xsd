@@ -8,6 +8,7 @@
     <include schemaLocation="Patient.xsd"/>
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
     <include schemaLocation="CreatedDateTime.xsd"/>
+    <include schemaLocation="PersonWithDispensingCard.xsd"/>
 
     <complexType name="DoctorWithDoseDispensingPatientsType">
         <annotation>
@@ -16,24 +17,7 @@
         </annotation>
         <sequence>
             <element name="Identifier" type="mc160:OrganisationIdentifierType"/>
-            <choice minOccurs="0">
-                <sequence maxOccurs="unbounded">
-                    <element name="Patient" type="mc160:PatientType"/>
-                    <sequence maxOccurs="unbounded">
-                        <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
-                        <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
-                        <element name="CreatedDateTime" type="mc160:CreatedDateTimeType"/>
-                    </sequence>
-                </sequence>
-                <sequence maxOccurs="unbounded">
-                    <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-                    <sequence maxOccurs="unbounded">
-                        <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
-                        <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
-                        <element name="CreatedDateTime" type="mc160:CreatedDateTimeType"/>
-                    </sequence>
-                </sequence>
-            </choice>
+            <element name="PersonWithDispensingCard" type="mc160:PersonWithDispensingCardType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>
