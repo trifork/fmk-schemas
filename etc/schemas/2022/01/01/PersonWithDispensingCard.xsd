@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+    <include schemaLocation="Patient.xsd"/>
+    <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="CreatedDateTime.xsd"/>
+
+    <complexType name="PersonWithDispensingCardType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element containing information about a patient with one or more dispensing cards</documentation>
+            <documentation xml:lang="da-DK">Element som indeholder informationer om en patient med et eller flere dispenseringskort</documentation>
+        </annotation>
+        <sequence>
+            <choice>
+                <element name="Patient" type="mc160:PatientType"/>
+                <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+            </choice>
+            <element name="DispensingCardSummary" type="mc160:DispensingCardIdentifierAndOwner" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="DispensingCardIdentifierAndOwner">
+        <sequence>
+            <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+            <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
+            <element name="CreatedDateTime" type="mc160:CreatedDateTimeType"/>
+        </sequence>
+    </complexType>
+</schema>
