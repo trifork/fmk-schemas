@@ -1,0 +1,24 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="DispensingStatus.xsd"/>
+    <include schemaLocation="DeliveryText.xsd"/>
+    <include schemaLocation="DispensingOrDeliveryNotes.xsd"/>
+
+    <element name="DoseDispensingDeliveryStatus" type="mc160:DoseDispensingDeliveryStatusType">
+        <annotation>
+            <documentation xml:lang="en-GB">Describes a preferred delivery site, optionally with delivery instructions</documentation>
+            <documentation xml:lang="da-DK">Beskriver et foretrukket udleveringssted samt eventuelle leveringsinstruktioner</documentation>
+        </annotation>
+    </element>
+    <complexType name="DoseDispensingDeliveryStatusType">
+        <sequence>
+            <element name="DispensingStatus" type="mc160:DispensingStatusType"/>
+            <element name="Delivery" type="mc160:DeliveryTextType" minOccurs="0"/>
+            <element name="DispensingNotes" type="mc160:DispensingOrDeliveryNotesType" minOccurs="0"/>
+            <element name="DeliveryNotes" type="mc160:DispensingOrDeliveryNotesType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>
