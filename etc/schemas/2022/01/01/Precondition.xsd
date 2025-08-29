@@ -14,10 +14,27 @@
 	</element>
 	<complexType name="PreconditionType">
 		<choice>
-			<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
+			<element name="ValidFrom" type="mc160:PreconditionValidFromType"/>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType"/>
 		</choice>
 	</complexType>
+
+	<simpleType name="PreconditionValidFromType">
+		<union memberTypes="mc160:DosageTimesStartDateType mc160:PredefinedValidFromTypeType"/>
+	</simpleType>
+
+	<simpleType name="PredefinedValidFromTypeType">
+		<restriction base="mc160:UndefinedValidFromTypeType">
+			<enumeration value="Medicine in possession"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedValidFromTypeType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
 
 	<simpleType name="PreconditionFreeTextType">
 		<restriction base="string">
