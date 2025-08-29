@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <include schemaLocation="IsSelfAdministration.xsd"/>
+  <include schemaLocation="DosageParameter.xsd"/>
+  <include schemaLocation="DosagePeriod.xsd"/>
+  <include schemaLocation="DosageTranslation.xsd"/>
+  <include schemaLocation="DosageTimesDosageEndingUndetermined.xsd"/>
+
+  <element name="DosageStructure" type="mc160:DosageStructureType">
+    <annotation>
+      <documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
+      <documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+    </annotation>
+  </element>
+
+  <complexType name="DosageStructureType">
+    <choice>
+      <sequence>
+        <element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
+        <element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
+        <element name="DosagePeriod" type="mc160:DosagePeriodType" maxOccurs="100"/>
+      </sequence>
+
+      <sequence>
+        <choice>
+          <element name="EmptyPeriod" type="duration"/>
+          <element name="EmptyPeriodEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
+        </choice>
+        <element name="DosageTranslation" type="mc160:DosageTranslationType" minOccurs="0"/>
+      </sequence>
+    </choice>
+  </complexType>
+</schema>

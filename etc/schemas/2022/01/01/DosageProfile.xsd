@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <element name="DosageProfileType" type="mc160:DosageProfileType">
+    <annotation>
+      <documentation xml:lang="en-GB">Describes the profile of a dosage</documentation>
+      <documentation xml:lang="da-DK">Profile af en dosering</documentation>
+    </annotation>
+  </element>
+
+  <complexType name="DosageProfileType">
+    <sequence>
+      <element name="ProfileCode" type="mc160:ProfileCodeType"/>
+      <element name="ProfileDescription" type="string" minOccurs="0"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="ProfileCodeType">
+    <sequence>
+      <element name="DosageType" type="mc160:PredefinedProfileCodeDosageType" />
+      <element name="Recurrence" type="mc160:PredefinedProfileCodeRecurrenceType" />
+      <element name="Schedule" type="mc160:PredefinedProfileCodeScheduleType" />
+      <element name="Frequency" type="mc160:PredefinedProfileCodeFrequencyType" />
+    </sequence>
+  </complexType>
+
+  <simpleType name="PredefinedProfileCodeDosageType">
+      <union memberTypes="mc160:PredefinedProfileCodeDosageEnumeration mc160:UndefinedProfileCodeEnumType"/>
+  </simpleType>
+
+  <simpleType name="PredefinedProfileCodeDosageEnumeration">
+    <restriction base="mc160:UndefinedProfileCodeEnumType">
+      <enumeration value="Fast"/>
+      <enumeration value="PN"/>
+      <enumeration value="PN-kur"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="PredefinedProfileCodeRecurrenceType">
+      <union memberTypes="mc160:PredefinedProfileCodeRecurrenceEnumeration mc160:UndefinedProfileCodeEnumType"/>
+  </simpleType>
+
+  <simpleType name="PredefinedProfileCodeRecurrenceEnumeration">
+    <restriction base="mc160:UndefinedProfileCodeEnumType">
+      <enumeration value="Repeating"/>
+      <enumeration value="Non-repeating"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="PredefinedProfileCodeScheduleType">
+      <union memberTypes="mc160:PredefinedProfileCodeScheduleEnumeration mc160:UndefinedProfileCodeEnumType"/>
+  </simpleType>
+
+  <simpleType name="PredefinedProfileCodeScheduleEnumeration">
+    <restriction base="mc160:UndefinedProfileCodeEnumType">
+      <enumeration value="Non-specific weekdays"/>
+      <enumeration value="Specific weekdays"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="PredefinedProfileCodeFrequencyType">
+      <union memberTypes="mc160:PredefinedProfileCodeFrequencyEnumeration mc160:UndefinedProfileCodeEnumType"/>
+  </simpleType>
+
+  <simpleType name="PredefinedProfileCodeFrequencyEnumeration">
+    <restriction base="mc160:UndefinedProfileCodeEnumType">
+      <enumeration value="Morning, noon, evening, night"/>
+      <enumeration value="Specific time"/>
+      <enumeration value="During the day"/>
+      <enumeration value="No frequency limit"/>
+    </restriction>
+  </simpleType>
+
+
+  <simpleType name="UndefinedProfileCodeEnumType">
+    <restriction base="string">
+      <minLength value="1"/>
+      <maxLength value="50"/>
+    </restriction>
+  </simpleType>
+
+
+</schema>

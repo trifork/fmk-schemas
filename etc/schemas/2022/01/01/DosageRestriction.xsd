@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="DoseQuantity.xsd"/>
-	<include schemaLocation="TimeBetweenDoses.xsd"/>
+	<include schemaLocation="Duration.xsd"/>
 
 	<element name="DosageRestriction" type="mc160:DosageRestrictionType">
 		<annotation>
@@ -16,8 +16,9 @@
 	<complexType name="DosageRestrictionType">
 		<sequence>
 			<element name="MaximumDailyDose" type="mc160:DoseQuantityType" minOccurs="0"/>
-			<element name="MinimumTimeBetweenDoses" type="mc160:TimeBetweenDosesType" minOccurs="0"/>
-			<element name="MaximumTimeBetweenDoses" type="mc160:TimeBetweenDosesType" minOccurs="0"/>
+			<element name="MinimumTimeBetweenDosagePeriod" type="mc160:DurationType" minOccurs="0"/>
+			<element name="MinimumTimeBetweenDoses" type="mc160:DurationType" minOccurs="0"/>
+			<element name="MaximumTimeBetweenDoses" type="mc160:DurationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 

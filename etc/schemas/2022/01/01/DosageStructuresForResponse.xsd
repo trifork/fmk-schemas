@@ -4,21 +4,22 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<include schemaLocation="DosageStructureForResponse.xsd"/>
-	<include schemaLocation="EmptyDosageStructure.xsd"/>
-	
+	<include schemaLocation="DosageStructure.xsd"/>
+	<include schemaLocation="DosageTranslation.xsd"/>
+	<include schemaLocation="UnspecifiedDosage.xsd"/>
+
+
 	<element name="DosageStructuresForResponse" type="mc160:DosageStructuresForResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Description of the dosage times of a treatment</documentation>
-			<documentation xml:lang="da-DK">Beskrivelse af doseringstidspunkter for en behandling</documentation>
+			<documentation xml:lang="en-GB">Description of the dosage periods of a treatment</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af doseringsperioder for en behandling</documentation>
 		</annotation>
 	</element>
+
 	<complexType name="DosageStructuresForResponseType">
 		<sequence>
-			<choice maxOccurs="unbounded">
-				<element name="EmptyStructure" type="mc160:EmptyDosageStructureType"/>
-				<element name="Structure" type="mc160:DosageStructureForResponseType"/>
-			</choice>
+		  <element name="Structure" type="mc160:DosageStructureType" minOccurs="1" maxOccurs="10"/>
+			<element name="Unspecified" type="mc160:UnspecifiedDosageType" minOccurs="0"/>
 			<element name="DosageTranslationCombined" type="mc160:DosageTranslationType" minOccurs="0"/>
 		</sequence>
 	</complexType>

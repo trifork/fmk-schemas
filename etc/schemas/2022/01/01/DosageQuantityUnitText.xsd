@@ -4,12 +4,17 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+
 	<element name="DosageQuantityUnitText" type="mc160:DosageQuantityUnitTextType">
 		<annotation>
 			<documentation xml:lang="en-GB">Unit for dosage quantity</documentation>
 			<documentation xml:lang="da-DK">Enhed for dosismængde</documentation>
 		</annotation>
 	</element>
+
 	<simpleType name="DosageQuantityUnitTextType">
 		<restriction base="string">
 			<minLength value="1"/>
