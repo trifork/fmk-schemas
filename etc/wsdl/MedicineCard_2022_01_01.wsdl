@@ -262,8 +262,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/InvalidateWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/InvalidateWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/ListDoseDispensingPatientsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/ListDoseDispensingPatientsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ListDispensingPatientsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ListDispensingPatientsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/ListEnumerationValuesForTypeRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/ListEnumerationValuesForTypeResponse.xsd"/>
@@ -981,12 +981,12 @@
         <wsdl:part name="InvalidateWarrantResponse" element="mc160:InvalidateWarrantResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="ListDoseDispensingPatientsRequest_160">
-        <wsdl:part name="ListDoseDispensingPatientsRequest" element="mc160:ListDoseDispensingPatientsRequest"/>
+    <wsdl:message name="ListDispensingPatientsRequest_160">
+        <wsdl:part name="ListDispensingPatientsRequest" element="mc160:ListDispensingPatientsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="ListDoseDispensingPatientsResponse_160">
-        <wsdl:part name="ListDoseDispensingPatientsResponse" element="mc160:ListDoseDispensingPatientsResponse"/>
+    <wsdl:message name="ListDispensingPatientsResponse_160">
+        <wsdl:part name="ListDispensingPatientsResponse" element="mc160:ListDispensingPatientsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="ListEnumerationValuesForTypeRequest_160">
@@ -1705,9 +1705,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="ListDoseDispensingPatients_160">
-            <wsdl:input name="ListDoseDispensingPatientsRequest_160" message="tns:ListDoseDispensingPatientsRequest_160"/>
-            <wsdl:output name="ListDoseDispensingPatientsResponse_160" message="tns:ListDoseDispensingPatientsResponse_160"/>
+        <wsdl:operation name="ListDispensingPatients_160">
+            <wsdl:input name="ListDispensingPatientsRequest_160" message="tns:ListDispensingPatientsRequest_160"/>
+            <wsdl:output name="ListDispensingPatientsResponse_160" message="tns:ListDispensingPatientsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2857,13 +2857,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="ListDoseDispensingPatients_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#ListDoseDispensingPatients" style="document"/>
-            <wsdl:input name="ListDoseDispensingPatientsRequest_160">
+        <wsdl:operation name="ListDispensingPatients_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ListDispensingPatients" style="document"/>
+            <wsdl:input name="ListDispensingPatientsRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="ListDoseDispensingPatientsResponse_160">
+            <wsdl:output name="ListDispensingPatientsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

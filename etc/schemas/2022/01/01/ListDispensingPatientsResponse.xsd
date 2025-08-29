@@ -5,17 +5,17 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 
-	<include schemaLocation="DoctorWithDoseDispensingPatients.xsd"/>
+	<include schemaLocation="DoctorWithDispensingPatients.xsd"/>
 
-	<element name="ListDoseDispensingPatientsResponse" type="mc160:ListDoseDispensingPatientsResponseType">
+	<element name="ListDispensingPatientsResponse" type="mc160:ListDispensingPatientsResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response document containing information about dosedispensing patients asociated with doctor organisations</documentation>
 			<documentation xml:lang="da-DK">Response-dokument der indeholder information om DD patienter tilknyttet lægehuse</documentation>
 		</annotation>
 	</element>
-	<complexType name="ListDoseDispensingPatientsResponseType">
+	<complexType name="ListDispensingPatientsResponseType">
 		<sequence>
-			<element name="Organisation" type="mc160:DoctorWithDoseDispensingPatientsType" maxOccurs="unbounded"/>
+			<element name="Organisation" type="mc160:DoctorWithDispensingPatientsType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
