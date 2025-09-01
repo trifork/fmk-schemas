@@ -15,7 +15,8 @@
 	</element>
 	<complexType name="DosageParameterType">
 		<sequence>
-			<element name="ParameterName" type="string"/>
+			<element name="ParameterName" type="mc160:ParameterNameType"/>
+			<element name="ParameterLabel" type="mc160:ParameterLabelType" minOccurs="0"/>
 			<element name="ParameterUnit" type="mc160:DosageParameterUnitType" minOccurs="0"/>
 			<element name="ParameterSchema" type="mc160:DosageParameterSchemaType"/>
 		</sequence>
@@ -25,4 +26,18 @@
 			<element name="ParameterUnitText" type="mc160:DosageQuantityUnitTextType"/>
 		</sequence>
 	</complexType>
+
+	<simpleType name="ParameterNameType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="50"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ParameterLabelType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
 </schema>
