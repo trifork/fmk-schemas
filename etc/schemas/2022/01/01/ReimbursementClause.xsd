@@ -4,15 +4,28 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<element name="ReimbursementClause" type="mc160:ReimbursementClauseType">
+	<element name="ReimbursementCode" type="mc160:ReimbursementCodeType">
 		<annotation>
-			<documentation xml:lang="en-GB">Reimbursement clause</documentation>
-			<documentation xml:lang="da-DK">Tilsudskode på udleveringsgrundlaget</documentation>
+			<documentation xml:lang="en-GB">Reimbursement code</documentation>
+			<documentation xml:lang="da-DK">Tilskudskode på ordinationen</documentation>
 		</annotation>
 	</element>
-	<simpleType name="ReimbursementClauseType">
+
+	<simpleType name="ReimbursementCodeType">
+		<union memberTypes="mc160:ReimbursementCodeStringType mc160:PredefinedReimbursementEnumeration"/>
+	</simpleType>
+
+	<simpleType name="PredefinedReimbursementEnumeration">
 		<restriction base="string">
-			<enumeration value="klausulbetingelse opfyldt"/>
+			<enumeration value="Unknown"/>
 		</restriction>
 	</simpleType>
+
+	<simpleType name="ReimbursementCodeStringType">
+		<restriction base="string">
+			<maxLength value="50"/>
+			<minLength value="1"/>
+		</restriction>
+	</simpleType>
+
 </schema>
