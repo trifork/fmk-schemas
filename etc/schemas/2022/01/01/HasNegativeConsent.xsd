@@ -3,18 +3,12 @@
 		xmlns:mc160="http://fmk-teknik.dk/160"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-
-	<include schemaLocation="Modified.xsd"/>
-
-	<element name="NegativeConsent" type="mc160:NegativeConsentType">
+	
+	<element name="HasNegativeConsent" type="mc160:HasNegativeConsentType">
 		<annotation>
 			<documentation xml:lang="en-GB">This element indicates that the patent has given negative consent (privacy-marking).</documentation>
 			<documentation xml:lang="da-DK">Dette element indikerer at patienten har givet negativ samtykke (privatmarkering).</documentation>
 		</annotation>
 	</element>
-	<complexType name="NegativeConsentType">
-		<sequence>
-			<element name="Modified" type="mc160:ModifiedType"/>
-		</sequence>
-	</complexType>
+	<complexType name="HasNegativeConsentType"/>
 </schema>
