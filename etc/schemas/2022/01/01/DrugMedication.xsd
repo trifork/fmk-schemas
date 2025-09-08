@@ -14,7 +14,6 @@
 	<include schemaLocation="Paused.xsd"/>
 	<include schemaLocation="Withdrawn.xsd"/>
 	<include schemaLocation="NegativeConsent.xsd"/>
-	<include schemaLocation="HasNegativeConsent.xsd"/>
 	<include schemaLocation="DrugMedicationBeginEndDate.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="RouteOfAdministration.xsd"/>
@@ -47,10 +46,7 @@
 			<element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
 			<element name="Paused" type="mc160:PausedType" minOccurs="0"/>
 			<element name="Withdrawn" type="mc160:WithdrawnType" minOccurs="0"/>
-			<choice>
-				<element name="HasNegativeConsent" type="mc160:HasNegativeConsentType" minOccurs="0"/> <!-- HasNegativeConsent is used for request payloads as this does not include modifier information -->
-				<element name="NegativeConsent" type="mc160:NegativeConsentType" minOccurs="0"/> <!-- NegativeConsent is used for response payloads as this include modifier information -->
-			</choice>
+			<element name="NegativeConsent" type="mc160:NegativeConsentType" minOccurs="0"/>
 			<element name="BeginEndDate" type="mc160:DrugMedicationBeginEndDateType"/>
 			<element name="Indication" type="mc160:IndicationType"/>
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
