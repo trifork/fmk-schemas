@@ -21,35 +21,34 @@
   <complexType name="ProfileCodeType">
     <sequence>
       <element name="DosageType" type="mc160:PredefinedProfileCodeDosageType" />
-      <element name="Recurrence" type="mc160:PredefinedProfileCodeRecurrenceType" />
+      <element name="PeriodType" type="mc160:PredefinedProfileCodeDosagePeriodTypeType" />
       <element name="Schedule" type="mc160:PredefinedProfileCodeScheduleType" />
       <element name="Frequency" type="mc160:PredefinedProfileCodeFrequencyType" />
     </sequence>
   </complexType>
 
   <simpleType name="PredefinedProfileCodeDosageType">
-      <union memberTypes="mc160:PredefinedProfileCodeDosageEnumeration mc160:UndefinedProfileCodeEnumType"/>
+      <union memberTypes="mc160:PredefinedProfileCodeDosageTypeEnumeration mc160:UndefinedProfileCodeEnumType"/>
   </simpleType>
 
-  <simpleType name="PredefinedProfileCodeDosageEnumeration">
+  <simpleType name="PredefinedProfileCodeDosageTypeEnumeration">
     <restriction base="mc160:UndefinedProfileCodeEnumType">
       <enumeration value="Fast"/>
       <enumeration value="PN"/>
       <enumeration value="PN-kur"/>
-      <enumeration value="Empty"/>
-      <enumeration value="Unspecified"/>
     </restriction>
   </simpleType>
 
-  <simpleType name="PredefinedProfileCodeRecurrenceType">
-      <union memberTypes="mc160:PredefinedProfileCodeRecurrenceEnumeration mc160:UndefinedProfileCodeEnumType"/>
+  <simpleType name="PredefinedProfileCodeDosagePeriodTypeType">
+      <union memberTypes="mc160:PredefinedProfileCodeDosagePeriodTypeEnumeration mc160:UndefinedProfileCodeEnumType"/>
   </simpleType>
 
-  <simpleType name="PredefinedProfileCodeRecurrenceEnumeration">
+  <simpleType name="PredefinedProfileCodeDosagePeriodTypeEnumeration">
     <restriction base="mc160:UndefinedProfileCodeEnumType">
       <enumeration value="Repeating"/>
       <enumeration value="Non-repeating"/>
-      <enumeration value="N/A"/>
+      <enumeration value="Empty"/>
+      <enumeration value="Unspecified"/>
     </restriction>
   </simpleType>
 
