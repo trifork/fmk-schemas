@@ -6,8 +6,8 @@
 
   <element name="DosageProfileType" type="mc160:DosageProfileType">
     <annotation>
-      <documentation xml:lang="en-GB">Describes the profile of a dosage</documentation>
-      <documentation xml:lang="da-DK">Profile af en dosering</documentation>
+      <documentation xml:lang="en-GB">Profile code of a dosage period in a treatment</documentation>
+      <documentation xml:lang="da-DK">Profilkode for en doseringsperiode i en behandling</documentation>
     </annotation>
   </element>
 
@@ -36,6 +36,8 @@
       <enumeration value="Fast"/>
       <enumeration value="PN"/>
       <enumeration value="PN-kur"/>
+      <enumeration value="Empty"/>
+      <enumeration value="Unspecified"/>
     </restriction>
   </simpleType>
 
@@ -47,6 +49,7 @@
     <restriction base="mc160:UndefinedProfileCodeEnumType">
       <enumeration value="Repeating"/>
       <enumeration value="Non-repeating"/>
+      <enumeration value="N/A"/>
     </restriction>
   </simpleType>
 
@@ -58,6 +61,7 @@
     <restriction base="mc160:UndefinedProfileCodeEnumType">
       <enumeration value="Non-specific weekdays"/>
       <enumeration value="Specific weekdays"/>
+      <enumeration value="N/A"/>
     </restriction>
   </simpleType>
 
@@ -71,6 +75,7 @@
       <enumeration value="Specific time"/>
       <enumeration value="During the day"/>
       <enumeration value="No frequency limit"/>
+      <enumeration value="N/A"/>
     </restriction>
   </simpleType>
 
