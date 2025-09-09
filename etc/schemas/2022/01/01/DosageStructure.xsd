@@ -18,20 +18,30 @@
   </element>
 
   <complexType name="DosageStructureType">
-    <choice>
-      <sequence>
-        <element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
-        <element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
-        <element name="DosagePeriod" type="mc160:DosagePeriodType" maxOccurs="100"/>
-      </sequence>
+    <sequence>
+      <element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
+      <element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
 
-      <sequence>
-        <choice>
-          <element name="EmptyPeriod" type="duration"/>
-          <element name="EmptyPeriodEndingUndetermined" type="mc160:DosageTimesDosageEndingUndeterminedType"/>
-        </choice>
-        <element name="DosageTranslation" type="mc160:DosageTranslationType" minOccurs="0"/>
-      </sequence>
-    </choice>
+  <complexType name="DosageStructureForRequestType">
+    <complexContent>
+      <extension base="mc160:DosageStructureType">
+        <sequence>
+          <element name="DosagePeriod" type="mc160:DosagePeriodType" maxOccurs="100"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="DosageStructureForResponseType">
+    <complexContent>
+      <extension base="mc160:DosageStructureType">
+        <sequence>
+          <element name="DosagePeriod" type="mc160:DosagePeriodForResponseType" maxOccurs="100"/>
+          <element name="DosageTranslationCombined" type="mc160:DosageTranslationType" minOccurs="0"/>
+        </sequence>
+      </extension>
+    </complexContent>
   </complexType>
 </schema>

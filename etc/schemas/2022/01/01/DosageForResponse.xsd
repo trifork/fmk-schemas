@@ -7,7 +7,7 @@
   <include schemaLocation="Precondition.xsd"/>
   <include schemaLocation="DosageQuantityUnitText.xsd"/>
   <include schemaLocation="DosageQuantityUnitTexts.xsd"/>
-  <include schemaLocation="DosageStructuresForResponse.xsd"/>
+  <include schemaLocation="DosageStructure.xsd"/>
   <include schemaLocation="DosageFreeTextForResponse.xsd"/>
   <include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForResponse.xsd"/>
 
@@ -28,11 +28,10 @@
           </choice>
           <choice>
             <sequence>
-              <element name="StructuresFixed" type="mc160:DosageStructuresForResponseType" minOccurs="0"/>
-              <element name="StructuresAccordingToNeed" type="mc160:DosageStructuresForResponseType" minOccurs="0"/>
+              <element name="StructureFixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+              <element name="StructureAccordingToNeed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
             </sequence>
-            <element name="StructuresFixedStartedAccordingToNeed" type="mc160:DosageStructuresForResponseType"
-                     minOccurs="0"/>
+            <element name="StructureFixedStartedAccordingToNeed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
           </choice>
         </sequence>
         <element name="FreeText" type="mc160:DosageFreeTextForResponseType"/>

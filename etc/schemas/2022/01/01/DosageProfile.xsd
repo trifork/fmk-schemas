@@ -6,8 +6,8 @@
 
   <element name="DosageProfileType" type="mc160:DosageProfileType">
     <annotation>
-      <documentation xml:lang="en-GB">Describes the profile of a dosage</documentation>
-      <documentation xml:lang="da-DK">Profile af en dosering</documentation>
+      <documentation xml:lang="en-GB">Profile code of a dosage period in a treatment</documentation>
+      <documentation xml:lang="da-DK">Profilkode for en doseringsperiode i en behandling</documentation>
     </annotation>
   </element>
 
@@ -21,17 +21,17 @@
   <complexType name="ProfileCodeType">
     <sequence>
       <element name="DosageType" type="mc160:PredefinedProfileCodeDosageType" />
-      <element name="Recurrence" type="mc160:PredefinedProfileCodeRecurrenceType" />
+      <element name="PeriodType" type="mc160:PredefinedProfileCodeDosagePeriodTypeType" />
       <element name="Schedule" type="mc160:PredefinedProfileCodeScheduleType" />
       <element name="Frequency" type="mc160:PredefinedProfileCodeFrequencyType" />
     </sequence>
   </complexType>
 
   <simpleType name="PredefinedProfileCodeDosageType">
-      <union memberTypes="mc160:PredefinedProfileCodeDosageEnumeration mc160:UndefinedProfileCodeEnumType"/>
+      <union memberTypes="mc160:PredefinedProfileCodeDosageTypeEnumeration mc160:UndefinedProfileCodeEnumType"/>
   </simpleType>
 
-  <simpleType name="PredefinedProfileCodeDosageEnumeration">
+  <simpleType name="PredefinedProfileCodeDosageTypeEnumeration">
     <restriction base="mc160:UndefinedProfileCodeEnumType">
       <enumeration value="Fast"/>
       <enumeration value="PN"/>
@@ -39,14 +39,16 @@
     </restriction>
   </simpleType>
 
-  <simpleType name="PredefinedProfileCodeRecurrenceType">
-      <union memberTypes="mc160:PredefinedProfileCodeRecurrenceEnumeration mc160:UndefinedProfileCodeEnumType"/>
+  <simpleType name="PredefinedProfileCodeDosagePeriodTypeType">
+      <union memberTypes="mc160:PredefinedProfileCodeDosagePeriodTypeEnumeration mc160:UndefinedProfileCodeEnumType"/>
   </simpleType>
 
-  <simpleType name="PredefinedProfileCodeRecurrenceEnumeration">
+  <simpleType name="PredefinedProfileCodeDosagePeriodTypeEnumeration">
     <restriction base="mc160:UndefinedProfileCodeEnumType">
       <enumeration value="Repeating"/>
       <enumeration value="Non-repeating"/>
+      <enumeration value="Empty"/>
+      <enumeration value="Unspecified"/>
     </restriction>
   </simpleType>
 
@@ -58,6 +60,7 @@
     <restriction base="mc160:UndefinedProfileCodeEnumType">
       <enumeration value="Non-specific weekdays"/>
       <enumeration value="Specific weekdays"/>
+      <enumeration value="N/A"/>
     </restriction>
   </simpleType>
 
@@ -71,6 +74,7 @@
       <enumeration value="Specific time"/>
       <enumeration value="During the day"/>
       <enumeration value="No frequency limit"/>
+      <enumeration value="N/A"/>
     </restriction>
   </simpleType>
 
