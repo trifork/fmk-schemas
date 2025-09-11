@@ -14,14 +14,11 @@
 	</element>
 	<complexType name="PreconditionType">
 		<choice>
-			<element name="ValidFrom" type="mc160:PreconditionValidFromType"/>
+			<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
+			<element name="PredefinedCondition" type="mc160:PredefinedValidFromTypeType"/>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType"/>
 		</choice>
 	</complexType>
-
-	<simpleType name="PreconditionValidFromType">
-		<union memberTypes="mc160:DosageTimesStartDateType mc160:PredefinedValidFromTypeType"/>
-	</simpleType>
 
 	<simpleType name="PredefinedValidFromTypeType">
 		<restriction base="mc160:UndefinedValidFromTypeType">
