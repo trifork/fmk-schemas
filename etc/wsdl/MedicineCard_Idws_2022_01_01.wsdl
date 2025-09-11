@@ -324,9 +324,6 @@
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsResponse.xsd"/>
 
@@ -374,9 +371,6 @@
             <xs:include schemaLocation="../schemas/2022/01/01/UnpauseDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UnpauseDrugMedicationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/UnwithdrawDrugMedicationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/UnwithdrawDrugMedicationResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2022/01/01/UpdateDispensingCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UpdateDispensingCardResponse.xsd"/>
 
@@ -397,10 +391,6 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/UploadDrugCatalogRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UploadDrugCatalogResponse.xsd"/>
-
-            <xs:include schemaLocation="../schemas/2022/01/01/WithdrawDrugMedicationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/WithdrawDrugMedicationResponse.xsd"/>
-
         </xs:schema>
 
     </wsdl:types>
@@ -1116,14 +1106,6 @@
         <wsdl:part name="SearchTrackAndTraceEventsResponse" element="mc160:SearchTrackAndTraceEventsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
-        <wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="mc160:SearchWithdrawnDrugMedicationsRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_160">
-        <wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="mc160:SearchWithdrawnDrugMedicationsResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="SetMedicineCardNotReviewedRequest_160">
         <wsdl:part name="SetMedicineCardNotReviewedRequest" element="mc160:SetMedicineCardNotReviewedRequest"/>
     </wsdl:message>
@@ -1236,14 +1218,6 @@
         <wsdl:part name="UnpauseDrugMedicationResponse" element="mc160:UnpauseDrugMedicationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UnwithdrawDrugMedicationRequest_160">
-        <wsdl:part name="UnwithdrawDrugMedicationRequest" element="mc160:UnwithdrawDrugMedicationRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="UnwithdrawDrugMedicationResponse_160">
-        <wsdl:part name="UnwithdrawDrugMedicationResponse" element="mc160:UnwithdrawDrugMedicationResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="UpdateDispensingCardRequest_160">
         <wsdl:part name="UpdateDispensingCardRequest" element="mc160:UpdateDispensingCardRequest"/>
     </wsdl:message>
@@ -1298,14 +1272,6 @@
 
     <wsdl:message name="UploadDrugCatalogResponse_160">
         <wsdl:part name="UploadDrugCatalogResponse" element="mc160:UploadDrugCatalogResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="WithdrawDrugMedicationRequest_160">
-        <wsdl:part name="WithdrawDrugMedicationRequest" element="mc160:WithdrawDrugMedicationRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="WithdrawDrugMedicationResponse_160">
-        <wsdl:part name="WithdrawDrugMedicationResponse" element="mc160:WithdrawDrugMedicationResponse"/>
     </wsdl:message>
 
     <wsdl:portType name="MedicineCardPortType">
@@ -1814,12 +1780,6 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchWithdrawnDrugMedications_160">
-            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_160" message="tns:SearchWithdrawnDrugMedicationsRequest_160"/>
-            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_160" message="tns:SearchWithdrawnDrugMedicationsResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="SetMedicineCardNotReviewed_160">
             <wsdl:input name="SetMedicineCardNotReviewedRequest_160" message="tns:SetMedicineCardNotReviewedRequest_160"/>
             <wsdl:output name="SetMedicineCardNotReviewedResponse_160" message="tns:SetMedicineCardNotReviewedResponse_160"/>
@@ -1904,12 +1864,6 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UnwithdrawDrugMedication_160">
-            <wsdl:input name="UnwithdrawDrugMedicationRequest_160" message="tns:UnwithdrawDrugMedicationRequest_160"/>
-            <wsdl:output name="UnwithdrawDrugMedicationResponse_160" message="tns:UnwithdrawDrugMedicationResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="UpdateDispensingCard_160">
             <wsdl:input name="UpdateDispensingCardRequest_160" message="tns:UpdateDispensingCardRequest_160"/>
             <wsdl:output name="UpdateDispensingCardResponse_160" message="tns:UpdateDispensingCardResponse_160"/>
@@ -1951,13 +1905,6 @@
             <wsdl:output name="UploadDrugCatalogResponse_160" message="tns:UploadDrugCatalogResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
-
-        <wsdl:operation name="WithdrawDrugMedication_160">
-            <wsdl:input name="WithdrawDrugMedicationRequest_160" message="tns:WithdrawDrugMedicationRequest_160"/>
-            <wsdl:output name="WithdrawDrugMedicationResponse_160" message="tns:WithdrawDrugMedicationResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
 
     </wsdl:portType>
 
@@ -3058,19 +3005,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchWithdrawnDrugMedications_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchWithdrawnDrugMedications" style="document"/>
-            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="SetMedicineCardNotReviewed_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#SetMedicineCardNotReviewed" style="document"/>
             <wsdl:input name="SetMedicineCardNotReviewedRequest_160">
@@ -3253,19 +3187,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UnwithdrawDrugMedication_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#UnwithdrawDrugMedication" style="document"/>
-            <wsdl:input name="UnwithdrawDrugMedicationRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="UnwithdrawDrugMedicationResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="UpdateDispensingCard_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#UpdateDispensingCard" style="document"/>
             <wsdl:input name="UpdateDispensingCardRequest_160">
@@ -3351,19 +3272,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UploadDrugCatalogResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="WithdrawDrugMedication_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#WithdrawDrugMedication" style="document"/>
-            <wsdl:input name="WithdrawDrugMedicationRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="WithdrawDrugMedicationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
