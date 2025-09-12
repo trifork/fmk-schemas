@@ -5,7 +5,6 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
-	<include schemaLocation="UnwithdrawDrugMedicationOnUpdate.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="FollowUpDates.xsd"/>
@@ -29,7 +28,6 @@
 	<complexType name="UpdateDrugMedicationType">
 		<sequence>
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
-			<element name="Unwithdraw" type="mc160:UnwithdrawDrugMedicationOnUpdateType" minOccurs="0"/>
 			<element name="ParentIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
             <element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
