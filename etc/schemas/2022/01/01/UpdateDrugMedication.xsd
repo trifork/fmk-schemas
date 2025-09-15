@@ -18,7 +18,8 @@
 	<include schemaLocation="DosageForRequest.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
-	
+	<include schemaLocation="TypeOfMedicineHandover.xsd"/>
+
 	<element name="UpdateDrugMedication" type="mc160:UpdateDrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">An overview of the drug medication (a medication on the medicine card), used for update</documentation>
@@ -30,7 +31,7 @@
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="ParentIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
-            <element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
+      <element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
 			<element name="Pause" type="mc160:PauseType" minOccurs="0"/>
 			<element name="Type" type="mc160:DrugMedicationTypeType" minOccurs="0" />
 			<element name="HasNegativeConsent" type="mc160:HasNegativeConsentType" minOccurs="0"/>
@@ -40,6 +41,7 @@
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForRequestType"/>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
+      <element name="ExpectedTypeOfHandover" type="mc160:TypeOfMedicineHandoverType"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
