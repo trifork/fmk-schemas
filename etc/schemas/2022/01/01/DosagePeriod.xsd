@@ -22,7 +22,6 @@
 	</element>
 	<complexType name="DosagePeriodType">
 		<sequence>
-			<element name="Profile" type="mc160:DosageProfileType"/>
 			<element name="Restriction" type="mc160:DosageRestrictionType" minOccurs="0"/>
 			<element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
 			<choice minOccurs="0">
@@ -30,7 +29,11 @@
 				<element name="PeriodLengthFreeText" type="mc160:DosagePeriodLengthTextType"/>
 			</choice>
 			<element name="IterationInterval" type="mc160:IterationIntervalType" minOccurs="0"/>
-			<element name="Day" type="mc160:DayType" minOccurs="0" maxOccurs="99"/>
+			<choice>
+				<element name="Day" type="mc160:DayType" maxOccurs="99"/>
+				<element name="Empty" type="mc160:EmptyPeriodType"/>
+				<element name="Unspecified" type="mc160:UnspecifiedPeriodType"/>
+			</choice>
 		</sequence>
 	</complexType>
 
@@ -38,10 +41,14 @@
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
 				<sequence>
-					<element name="CalculatedDosageEndDate" type="mc160:CalculatedDosageEndDateType"/>
+					<element name="Profile" type="mc160:DosageProfileType"/>
+					<element name="EndDate" type="mc160:EndDateType"/>
 					<element name="DosageTranslation" type="mc160:DosageTranslationType"/>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
+
+	<complexType name="EmptyPeriodType" />
+	<complexType name="UnspecifiedPeriodType" />
 </schema>
