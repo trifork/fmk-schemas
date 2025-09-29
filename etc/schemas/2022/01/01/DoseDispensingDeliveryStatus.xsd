@@ -7,6 +7,7 @@
     <include schemaLocation="DeliveryInstructionText.xsd"/>
     <include schemaLocation="Delivery.xsd"/>
     <include schemaLocation="DispensingOrDeliveryNotes.xsd"/>
+    <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 
     <element name="DoseDispensingDeliveryStatus" type="mc160:DoseDispensingDeliveryStatusType">
         <annotation>
@@ -16,6 +17,7 @@
     </element>
     <complexType name="DoseDispensingDeliveryStatusType">
         <sequence>
+            <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
             <element name="DispensingStatus" type="mc160:DispensingStatusType"/>
             <element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
             <element name="DeliveryInstructionText" type="mc160:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
