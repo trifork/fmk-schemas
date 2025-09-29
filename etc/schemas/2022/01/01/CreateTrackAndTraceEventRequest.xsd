@@ -12,6 +12,7 @@
 	<include schemaLocation="TrackAndTraceEventType.xsd"/>
 	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
     <include schemaLocation="TrackAndTraceEventFreetext.xsd"/>
+    <include schemaLocation="TrackAndTraceFinalEvent.xsd"/>
 
 	<element name="CreateTrackAndTraceEventRequest" type="mc160:CreateTrackAndTraceEventRequestType">
 		<annotation>
@@ -31,6 +32,7 @@
 			<element name="OrderedAtPharmacy" type="mc160:OrganisationIdentifierType"/>
 			<element name="EventType" type="mc160:TrackAndTraceEventTypeType"/>
             <element name="EventFreetext" type="mc160:TrackAndTraceEventFreetextType"/>
+            <element name="IsFinalEvent" type="mc160:TrackAndTraceFinalEventType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
