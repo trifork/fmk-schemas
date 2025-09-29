@@ -25,6 +25,7 @@
 	<include schemaLocation="InvalidEffectuation.xsd"/>
 	<include schemaLocation="Warrant.xsd"/>
 	<include schemaLocation="InvalidWarrant.xsd"/>
+    <include schemaLocation="DrugAdministration.xsd"/>
 	<include schemaLocation="IsDoseDispensed.xsd"/>
 
 	<complexType name="DrugMedicationType">
@@ -57,7 +58,8 @@
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="InvalidWarrant" type="mc160:InvalidWarrantType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
+            <element name="DrugAdministration" type="mc160:DrugAdministrationType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
