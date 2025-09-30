@@ -288,6 +288,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPNRStartDateRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPNRStartDateResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentResponse.xsd"/>
 
@@ -1051,6 +1054,14 @@
         <wsdl:part name="RegisterDrugAdministrationResponse" element="mc160:RegisterDrugAdministrationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RegisterPRNStartDateRequest_160">
+        <wsdl:part name="RegisterPRNStartDateRequest" element="mc160:RegisterPRNStartDateRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="RegisterPRNStartDateResponse_160">
+        <wsdl:part name="RegisterPRNStartDateResponse" element="mc160:RegisterPRNStartDateResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="RemoveConsentRequest_160">
         <wsdl:part name="RemoveConsentRequest" element="mc160:RemoveConsentRequest"/>
     </wsdl:message>
@@ -1772,6 +1783,12 @@
         <wsdl:operation name="RegisterDrugAdministration_160">
             <wsdl:input name="RegisterDrugAdministrationRequest_160" message="tns:RegisterDrugAdministrationRequest_160"/>
             <wsdl:output name="RegisterDrugAdministrationResponse_160" message="tns:RegisterDrugAdministrationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPRNStartDate_160">
+            <wsdl:input name="RegisterPRNStartDateRequest_160" message="tns:RegisterPRNStartDateRequest_160"/>
+            <wsdl:output name="RegisterPRNStartDateResponse_160" message="tns:RegisterPRNStartDateResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2989,6 +3006,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="RegisterDrugAdministrationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPRNStartDate_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterPRNStartDate" style="document"/>
+            <wsdl:input name="RegisterPRNStartDateRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterPRNStartDateResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
