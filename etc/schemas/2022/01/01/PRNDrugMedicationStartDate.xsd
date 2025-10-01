@@ -8,19 +8,17 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="PRNStartDate.xsd"/>
 
-	<element name="UndoRegisterPRNStartDateRequest" type="mc160:UndoRegisterPRNStartDateRequestType">
+	<element name="PRNDrugMedicationStartDate" type="mc160:PRNDrugMedicationStartDateType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request type for undoing registration of the start of a PRN treatment</documentation>
-			<documentation xml:lang="da-DK">Request type til fortrydelse af registrering af start af en PN-kur</documentation>
+			<documentation xml:lang="en-GB">Type for representing a start date of a PRN treatment</documentation>
+			<documentation xml:lang="da-DK">Type til repræsentation af dato for start af PN-kur</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="UndoRegisterPRNStartDateRequestType">
+	<complexType name="PRNDrugMedicationStartDateType">
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="Start" type="mc160:PRNStartDateType"/>
 		</sequence>
 	</complexType>
-
-
 </schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PRNDrugMedicationStartDate.xsd"/>
+
+	<element name="ListPRNStartDatesResponse" type="mc160:ListPRNStartDatesResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response type for listing all start-registrations of PRN treatments</documentation>
+			<documentation xml:lang="da-DK">Svar type til at liste alle start registreringer af PN-kurer</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="ListPRNStartDatesResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="PRNStart" type="mc160:PRNDrugMedicationStartDateType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

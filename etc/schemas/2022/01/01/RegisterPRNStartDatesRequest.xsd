@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="PRNDrugMedicationStartDate.xsd"/>
+
+	<element name="RegisterPRNStartDatesRequest" type="mc160:RegisterPRNStartDatesRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Type for registering the start of one or more PRN treatments for a person</documentation>
+			<documentation xml:lang="da-DK">Type til registrering af start af en eller flere PN-kurer</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="RegisterPRNStartDatesRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="ModifiedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+
+			<element name="PRNStart" type="mc160:PRNDrugMedicationStartDateType" maxOccurs="100"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+</schema>
