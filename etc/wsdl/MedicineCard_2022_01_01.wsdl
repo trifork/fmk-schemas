@@ -288,8 +288,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPNRStartDateRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPNRStartDateResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPRNStartDateRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPRNStartDateResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentResponse.xsd"/>
@@ -349,6 +349,9 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterPRNStartDateRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterPRNStartDateResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/UndoReplaceWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoReplaceWarrantResponse.xsd"/>
@@ -1214,6 +1217,14 @@
         <wsdl:part name="UndoRegisterDrugAdministrationResponse" element="mc160:UndoRegisterDrugAdministrationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="UndoRegisterPRNStartDateRequest_160">
+        <wsdl:part name="UndoRegisterPRNStartDateRequest" element="mc160:UndoRegisterPRNStartDateRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoRegisterPRNStartDateResponse_160">
+        <wsdl:part name="UndoRegisterPRNStartDateResponse" element="mc160:UndoRegisterPRNStartDateResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="UndoReplaceWarrantRequest_160">
         <wsdl:part name="UndoReplaceWarrantRequest" element="mc160:UndoReplaceWarrantRequest"/>
     </wsdl:message>
@@ -1903,6 +1914,12 @@
         <wsdl:operation name="UndoRegisterDrugAdministration_160">
             <wsdl:input name="UndoRegisterDrugAdministrationRequest_160" message="tns:UndoRegisterDrugAdministrationRequest_160"/>
             <wsdl:output name="UndoRegisterDrugAdministrationResponse_160" message="tns:UndoRegisterDrugAdministrationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoRegisterPRNStartDate_160">
+            <wsdl:input name="UndoRegisterPRNStartDateRequest_160" message="tns:UndoRegisterPRNStartDateRequest_160"/>
+            <wsdl:output name="UndoRegisterPRNStartDateResponse_160" message="tns:UndoRegisterPRNStartDateResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3253,6 +3270,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UndoEffectuationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoRegisterPRNStartDate_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoRegisterPRNStartDate" style="document"/>
+            <wsdl:input name="UndoRegisterPRNStartDateRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoRegisterPRNStartDateResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

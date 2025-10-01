@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="PRNStartDate.xsd"/>
+
+	<element name="UndoRegisterPRNStartDateRequest" type="mc160:UndoRegisterPRNStartDateRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request type for undoing registration of the start of a PRN treatment</documentation>
+			<documentation xml:lang="da-DK">Request type til fortrydelse af registrering af start af en PN-kur</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="UndoRegisterPRNStartDateRequestType">
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="Start" type="mc160:PRNStartDateType"/>
+		</sequence>
+	</complexType>
+
+
+</schema>
