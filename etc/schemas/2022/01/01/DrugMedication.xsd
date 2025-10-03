@@ -27,6 +27,7 @@
 	<include schemaLocation="Warrant.xsd"/>
 	<include schemaLocation="InvalidWarrant.xsd"/>
 	<include schemaLocation="IsDoseDispensed.xsd"/>
+	<include schemaLocation="DrugMedicationEndedReason.xsd"/>
 
 	<complexType name="DrugMedicationType">
 		<annotation>
@@ -45,6 +46,7 @@
 			<element name="Type" type="mc160:DrugMedicationTypeType" />
 			<element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
 			<element name="Paused" type="mc160:PausedType" minOccurs="0"/>
+			<element name="Ended" type="mc160:EndedReasonType" minOccurs="0"/>
 			<element name="Withdrawn" type="mc160:WithdrawnType" minOccurs="0"/>
 			<element name="NegativeConsent" type="mc160:NegativeConsentType" minOccurs="0"/>
 			<element name="BeginEndDate" type="mc160:DrugMedicationBeginEndDateType"/>
