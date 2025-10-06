@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
+
+	<element name="UndoRegisterDrugAdministrationRequest" type="mc160:UndoRegisterDrugAdministrationRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request which cancels the registration of a drug administration</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel som fortryder registrering af medicinadministration</documentation>
+		</annotation>
+	</element>
+	<complexType name="UndoRegisterDrugAdministrationRequestType">
+		<sequence>
+            <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="ModifiedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="UndoRegisterDrugAdministration" type="mc160:DrugAdministrationIdentifierType"  maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

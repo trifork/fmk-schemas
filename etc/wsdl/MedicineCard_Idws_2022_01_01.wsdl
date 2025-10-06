@@ -309,6 +309,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDraftSubstitutionRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDraftSubstitutionResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentResponse.xsd"/>
 
@@ -364,6 +367,9 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/UndoReplaceWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoReplaceWarrantResponse.xsd"/>
@@ -1068,6 +1074,14 @@
         <wsdl:part name="RegisterDraftSubstitutionResponse" element="mc160:RegisterDraftSubstitutionResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RegisterDrugAdministrationRequest_160">
+        <wsdl:part name="RegisterDrugAdministrationRequest" element="mc160:RegisterDrugAdministrationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="RegisterDrugAdministrationResponse_160">
+        <wsdl:part name="RegisterDrugAdministrationResponse" element="mc160:RegisterDrugAdministrationResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="RemoveConsentRequest_160">
         <wsdl:part name="RemoveConsentRequest" element="mc160:RemoveConsentRequest"/>
     </wsdl:message>
@@ -1210,6 +1224,14 @@
 
     <wsdl:message name="UndoEffectuationResponse_160">
         <wsdl:part name="UndoEffectuationResponse" element="mc160:UndoEffectuationResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoRegisterDrugAdministrationRequest_160">
+        <wsdl:part name="UndoRegisterDrugAdministrationRequest" element="mc160:UndoRegisterDrugAdministrationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoRegisterDrugAdministrationResponse_160">
+        <wsdl:part name="UndoRegisterDrugAdministrationResponse" element="mc160:UndoRegisterDrugAdministrationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UndoReplaceWarrantRequest_160">
@@ -1778,6 +1800,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="RegisterDrugAdministration_160">
+            <wsdl:input name="RegisterDrugAdministrationRequest_160" message="tns:RegisterDrugAdministrationRequest_160"/>
+            <wsdl:output name="RegisterDrugAdministrationResponse_160" message="tns:RegisterDrugAdministrationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="RemoveConsent_160">
             <wsdl:input name="RemoveConsentRequest_160" message="tns:RemoveConsentRequest_160"/>
             <wsdl:output name="RemoveConsentResponse_160" message="tns:RemoveConsentResponse_160"/>
@@ -1883,6 +1911,12 @@
         <wsdl:operation name="UndoEffectuation_160">
             <wsdl:input name="UndoEffectuationRequest_160" message="tns:UndoEffectuationRequest_160"/>
             <wsdl:output name="UndoEffectuationResponse_160" message="tns:UndoEffectuationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoRegisterDrugAdministration_160">
+            <wsdl:input name="UndoRegisterDrugAdministrationRequest_160" message="tns:UndoRegisterDrugAdministrationRequest_160"/>
+            <wsdl:output name="UndoRegisterDrugAdministrationResponse_160" message="tns:UndoRegisterDrugAdministrationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2980,6 +3014,19 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="RegisterDrugAdministration_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterDrugAdministration" style="document"/>
+            <wsdl:input name="RegisterDrugAdministrationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterDrugAdministrationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="RemoveConsent_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#RemoveConsent" style="document"/>
             <wsdl:input name="RemoveConsentRequest_160">
@@ -3208,6 +3255,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UndoEffectuationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoRegisterDrugAdministration_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoRegisterDrugAdministration" style="document"/>
+            <wsdl:input name="UndoRegisterDrugAdministrationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoRegisterDrugAdministrationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

@@ -10,6 +10,7 @@
 	<include schemaLocation="DrugMedicationIdentifierAndVersion.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifierAndDateTime.xsd"/>
 	<include schemaLocation="IncludeWarrants.xsd"/>
+    <include schemaLocation="IncludeDrugAdministrations.xsd"/>
 
 	<element name="GetDrugMedicationsRequest" type="mc160:GetDrugMedicationsRequestType">
 		<annotation>
@@ -27,6 +28,7 @@
 			<element name="IdentifierAndVersion" type="mc160:DrugMedicationIdentifierAndVersionType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="IdentifierAndDateTime" type="mc160:DrugMedicationIdentifierAndDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="IncludeWarrants" type="mc160:IncludeWarrantsType" minOccurs="0"/>
+            <element name="IncludeAdministrations" type="mc160:IncludeDrugAdministrationsType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
