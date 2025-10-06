@@ -5,6 +5,7 @@
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
 
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 
 	<element name="ListPRNStartDatesRequest" type="mc160:ListPRNStartDatesRequestType">
@@ -17,6 +18,7 @@
 	<complexType name="ListPRNStartDatesRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="100"/>
 		</sequence>
 	</complexType>
 
