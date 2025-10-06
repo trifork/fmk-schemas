@@ -18,12 +18,11 @@
 	</element>
 	<complexType name="DrugMedicationBeginEndDateType">
 		<sequence>
-			<element name="CreatedDateTime" type="mc160:DrugMedicationCreatedDateTimeType" minOccurs="0"/>
 			<choice>
 				<element name="TreatmentStartDate" type="mc160:DrugMedicationTreatmentStartDateType"/>
 				<element name="TreatmentStartedPreviously" type="mc160:DrugMedicationTreatmentStartedPreviouslyType"/>
 			</choice>
-			<choice>
+			<choice minOccurs="0">
 				<element name="TreatmentEndDate" type="mc160:DrugMedicationTreatmentEndDateType"/>
 				<element name="TreatmentEndingUndetermined" type="mc160:DrugMedicationTreatmentEndingUndeterminedType"/>
 			</choice>
