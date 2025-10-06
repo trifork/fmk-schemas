@@ -11,11 +11,13 @@
 	<include schemaLocation="EffectuationMethod.xsd"/>
 	<include schemaLocation="CreatedWithoutPerson.xsd"/>
 	<include schemaLocation="Created.xsd"/>
-	<include schemaLocation="PackageDispensed.xsd"/>
+	<include schemaLocation="PackageHandOver.xsd"/>
+    <include schemaLocation="SingleDosageHandOver.xsd"/>
 	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
 	<include schemaLocation="PharmacyComment.xsd"/>
 	<include schemaLocation="LabelText.xsd"/>
     <include schemaLocation="Warrant.xsd"/>
+    <include schemaLocation="UsesSecondaryHandOver.xsd"/>
 
 	<complexType name="HandOverType">
 		<annotation>
@@ -33,21 +35,16 @@
             </choice>
             <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
             <choice>
-                <element name="PackageDispensed" type="mc160:PackageDispensedType"/>
-                <element name="SingleDosageDispensed" type="mc160:SingleDosageDispensed"/>
+                <element name="Package" type="mc160:PackageHandOverType"/>
+                <element name="SingleDosage" type="mc160:SingleDosageHandOverType"/>
                 <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
             </choice>
-			<element name="ExpectedDeliveryDateTime" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+            <element name="UsesSecondaryHandOver" type="mc160:UsesSecondaryHandOverType" minOccurs="0"/>
+
+            <element name="ExpectedDeliveryDateTime" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0"/>
 			<element name="PharmacyComment" type="mc160:PharmacyCommentType" minOccurs="0"/>
 			<element name="LabelText" type="mc160:LabelTextType" minOccurs="0"/>
 			<element name="DeliverySite" type="mc160:OrganisationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
-    <complexType name="SingleDosageDispensed">
-        <sequence>
-            <element name="DoseQuantity" type="mc160:DoseQuantityType"/>
-            <element name="DosageQuantityUnitText" type="mc160:DosageQuantityUnitTextType"/>
-            <element name="SubstitutedDrug" type="mc160:DrugType" minOccurs="0"/>
-        </sequence>
-    </complexType>
 </schema>
