@@ -17,10 +17,13 @@
 		<sequence>
             <choice>
                 <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
-                <sequence>
-                    <element name="OrganisationNameSubstring" type="mc160:OrganisationNameSubstringType" minOccurs="0" />
-                    <element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0"/>
-                </sequence>
+                <choice>
+                    <element name="AddressSubstring" type="mc160:AddressSubstringType"/>
+                    <sequence>
+                        <element name="OrganisationNameSubstring" type="mc160:OrganisationNameSubstringType"/>
+                        <element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0"/>
+                    </sequence>
+                </choice>
             </choice>
 		</sequence>
 	</complexType>
