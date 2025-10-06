@@ -4,8 +4,8 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="EffectuationIdentifier.xsd"/>
-	<include schemaLocation="EffectuationDateTime.xsd"/>
+	<include schemaLocation="HandOverIdentifier.xsd"/>
+	<include schemaLocation="HandOverDateTime.xsd"/>
 	<include schemaLocation="EffectuationMethod.xsd"/>
 	<include schemaLocation="CreatedWithoutPerson.xsd"/>
 	<include schemaLocation="Created.xsd"/>
@@ -13,15 +13,18 @@
 	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
 	<include schemaLocation="PharmacyComment.xsd"/>
 	<include schemaLocation="LabelText.xsd"/>
+    <include schemaLocation="Warrant.xsd"/>
 
-	<complexType name="EffectuationOnWarrantType">
+	<complexType name="HandOverType">
 		<annotation>
-			<documentation xml:lang="en-GB">An effectuation on the warrant. There is effectuated based on the type of warrant</documentation>
-			<documentation xml:lang="da-DK">En effektuering (udlevering) på udleveringsgrundlaget. Der er effektueret på baggrund af typen af udleveringsgrundlag</documentation>
+			<documentation xml:lang="en-GB">A handover on the warrant. There is effectuated based on the type of warrant</documentation>
+			<documentation xml:lang="da-DK">En udlevering på udleveringsgrundlaget. Der er udleveret på baggrund af typen af udleveringsgrundlag</documentation>
 		</annotation>
 		<sequence>
-			<element name="Identifier" type="mc160:EffectuationIdentifierType"/>
-			<element name="DateTime" type="mc160:EffectuationDateTimeType"/>
+			<element name="Identifier" type="mc160:HandOverIdentifierType"/>
+            <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+            <element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0"/>
+			<element name="DateTime" type="mc160:HandOverDateTimeType"/>
 			<element name="EffectuationMethod" type="mc160:EffectuationMethodType" minOccurs="0"/>
             <choice>
 			    <element name="CreatedWithoutPerson" type="mc160:CreatedWithoutPersonType"/>
