@@ -10,9 +10,11 @@
 	<include schemaLocation="ModifiedDateTime.xsd"/>
 	<include schemaLocation="IncludeWarrants.xsd"/>
 	<include schemaLocation="IncludeNonRelevantWarrantsFlag.xsd"/>
+	<include schemaLocation="IncludeWithdrawnDrugMedications.xsd"/>
 	<include schemaLocation="DrugMedicationType.xsd"/>
+    <include schemaLocation="IncludeDrugAdministrations.xsd"/>
 
-	<element name="GetMedicineCardRequest" type="mc160:GetMedicineCardRequestType">
+    <element name="GetMedicineCardRequest" type="mc160:GetMedicineCardRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request for a medicinecard</documentation>
 			<documentation xml:lang="da-DK">Element for en forespørgsel efter et medicinkort</documentation>
@@ -28,9 +30,11 @@
 			<element name="DateTime" type="mc160:ModifiedDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="IncludeWarrants" type="mc160:IncludeWarrantsType" minOccurs="0"/>
 			<element name="IncludeNonRelevantWarrants" type="mc160:IncludeNonRelevantWarrantsFlagType" minOccurs="0"/>
+			<element name="IncludeWithdrawnDrugMedications" type="mc160:IncludeWithdrawnDrugMedicationsType" minOccurs="0"/>
 			<!-- PlannedAdmin -->
 			<!-- Patient Registration? -->
 			<element name="IncludeDrugMedicationType" type="mc160:DrugMedicationTypeType" minOccurs="0" maxOccurs="unbounded" />
-		</sequence>
+            <element name="IncludeAdministrations" type="mc160:IncludeDrugAdministrationsType" minOccurs="0"/>
+        </sequence>
 	</complexType>
 </schema>
