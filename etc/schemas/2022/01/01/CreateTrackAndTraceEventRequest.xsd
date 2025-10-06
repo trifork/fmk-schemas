@@ -32,7 +32,10 @@
 			<element name="OrderedAtPharmacy" type="mc160:OrganisationIdentifierType"/>
 			<element name="EventType" type="mc160:TrackAndTraceEventTypeType"/>
             <element name="EventFreeText" type="mc160:TrackAndTraceEventFreeTextType"/>
-            <element name="IsFinalEvent" type="mc160:TrackAndTraceFinalEventType" minOccurs="0"/>
+            <choice minOccurs="0">
+                <element name="ExpectedNextEventDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
+                <element name="IsFinalEvent" type="mc160:TrackAndTraceFinalEventType"/>
+            </choice>
 		</sequence>
 	</complexType>
 </schema>
