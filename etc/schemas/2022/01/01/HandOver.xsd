@@ -27,7 +27,6 @@
             <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
             <element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0"/>
 			<element name="DateTime" type="mc160:HandOverDateTimeType"/>
-			<element name="EffectuationMethod" type="mc160:EffectuationMethodType" minOccurs="0"/>
             <choice>
 			    <element name="CreatedWithoutPerson" type="mc160:CreatedWithoutPersonType"/>
                 <element name="Created" type="mc160:CreatedType"/>
@@ -48,7 +47,7 @@
         <sequence>
             <element name="DoseQuantity" type="mc160:DoseQuantityType"/>
             <element name="DosageQuantityUnitText" type="mc160:DosageQuantityUnitTextType"/>
-            <element name="Drug" type="mc160:DrugType"/>
+            <element name="SubstitutedDrug" type="mc160:DrugType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>
