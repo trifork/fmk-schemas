@@ -4,19 +4,19 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-  <element name="CalculatedDosageEndDate" type="mc160:CalculatedDosageEndDateType">
+  <element name="CalculatedDosageEndDate" type="mc160:EndDateType">
     <annotation>
-      <documentation xml:lang="en-GB">Description of the end date of a treatment</documentation>
-      <documentation xml:lang="da-DK">Beskrivelse af slutdato for en behandling</documentation>
+      <documentation xml:lang="en-GB">Description of the end date of a treatment period</documentation>
+      <documentation xml:lang="da-DK">Beskrivelse af slutdato for en behandlingsperiode</documentation>
     </annotation>
   </element>
 
-  <complexType name="CalculatedDosageEndDateType">
+  <complexType name="EndDateType">
     <choice>
       <element name="CalculatedEndDate" type="date"/>
-      <element name="UnableToCalculateEndDate" type="mc160:UnableToCalculateEndDateType"/>
+      <element name="Unknown" type="mc160:UnknownEndDateType"/>
     </choice>
   </complexType>
 
-  <complexType name="UnableToCalculateEndDateType"/>
+  <complexType name="UnknownEndDateType"/>
 </schema>
