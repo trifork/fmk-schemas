@@ -5,18 +5,18 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
 	<include schemaLocation="WarrantIdentifier.xsd"/>
-	<include schemaLocation="HandOver.xsd"/>
-	<include schemaLocation="InvalidHandOver.xsd"/>
+	<include schemaLocation="Handover.xsd"/>
+	<include schemaLocation="InvalidHandover.xsd"/>
 	
-	<complexType name="HandOversType">
+	<complexType name="HandoversType">
 		<annotation>
 			<documentation xml:lang="en-GB">Grouping hand overs on a warrant</documentation>
 			<documentation xml:lang="da-DK">Grupperer udleveringer på et udleveringsgrundlag</documentation>
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
-			<element name="HandOver" type="mc160:HandOverType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidHandOver" type="mc160:InvalidHandOverType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Handover" type="mc160:HandoverType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidHandover" type="mc160:InvalidHandoverType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

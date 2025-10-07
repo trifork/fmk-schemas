@@ -6,40 +6,40 @@
 
     <include schemaLocation="DoseQuantity.xsd"/>
     <include schemaLocation="DosageQuantityUnitText.xsd"/>
-	<include schemaLocation="HandOverIdentifier.xsd"/>
-	<include schemaLocation="HandOverDateTime.xsd"/>
-	<include schemaLocation="DoseDispensingHandOver.xsd"/>
+	<include schemaLocation="HandoverIdentifier.xsd"/>
+	<include schemaLocation="HandoverDateTime.xsd"/>
+	<include schemaLocation="DoseDispensingHandover.xsd"/>
 	<include schemaLocation="CreatedWithoutPerson.xsd"/>
 	<include schemaLocation="Created.xsd"/>
-	<include schemaLocation="PackageHandOver.xsd"/>
-    <include schemaLocation="SingleDosageHandOver.xsd"/>
+	<include schemaLocation="PackageHandover.xsd"/>
+    <include schemaLocation="SingleDosageHandover.xsd"/>
 	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
 	<include schemaLocation="PharmacyComment.xsd"/>
 	<include schemaLocation="LabelText.xsd"/>
     <include schemaLocation="Warrant.xsd"/>
-    <include schemaLocation="UsesSecondaryHandOver.xsd"/>
+    <include schemaLocation="UsesSecondaryHandover.xsd"/>
 
-	<complexType name="HandOverType">
+	<complexType name="HandoverType">
 		<annotation>
 			<documentation xml:lang="en-GB">A handover on the warrant. Handover is based on the type of warrant</documentation>
 			<documentation xml:lang="da-DK">En udlevering på udleveringsgrundlaget. Der er udleveret på baggrund af typen af udleveringsgrundlag</documentation>
 		</annotation>
 		<sequence>
-			<element name="Identifier" type="mc160:HandOverIdentifierType"/>
+			<element name="Identifier" type="mc160:HandoverIdentifierType"/>
             <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
             <element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0"/>
-			<element name="DateTime" type="mc160:HandOverDateTimeType"/>
+			<element name="DateTime" type="mc160:HandoverDateTimeType"/>
             <choice>
 			    <element name="CreatedWithoutPerson" type="mc160:CreatedWithoutPersonType"/>
                 <element name="Created" type="mc160:CreatedType"/>
             </choice>
             <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
             <choice>
-                <element name="Package" type="mc160:PackageHandOverType"/>
-                <element name="SingleDosage" type="mc160:SingleDosageHandOverType"/>
-                <element name="DoseDispensed" type="mc160:DoseDispensingHandOverType"/>
+                <element name="Package" type="mc160:PackageHandoverType"/>
+                <element name="SingleDosage" type="mc160:SingleDosageHandoverType"/>
+                <element name="DoseDispensed" type="mc160:DoseDispensingHandoverType"/>
             </choice>
-            <element name="UsesSecondaryHandOver" type="mc160:UsesSecondaryHandOverType" minOccurs="0"/>
+            <element name="UsesSecondaryHandover" type="mc160:UsesSecondaryHandoverType" minOccurs="0"/>
 
 			<element name="PharmacyComment" type="mc160:PharmacyCommentType" minOccurs="0"/>
 			<element name="LabelText" type="mc160:LabelTextType" minOccurs="0"/>
