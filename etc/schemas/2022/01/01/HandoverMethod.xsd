@@ -4,29 +4,29 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<element name="TypeOfMedicineHandover" type="mc160:TypeOfMedicineHandoverType">
+	<element name="HandoverMethod" type="mc160:HandoverMethodType">
 		<annotation>
-			<documentation xml:lang="en-GB">Used to specify af way of handing over medicine.</documentation>
+			<documentation xml:lang="en-GB">Used to specify a way of handing over medicine.</documentation>
 			<documentation xml:lang="da-DK">Bruges til angivelse af en måde at udlevere medicin.</documentation>
 		</annotation>
 	</element>
 
-	<simpleType name="TypeOfMedicineHandoverType">
-		<union memberTypes="mc160:PredefinedTypeOfMedicineHandoverType mc160:UndefinedTypeOfMedicineHandoverType"/>
+	<simpleType name="HandoverMethodType">
+		<union memberTypes="mc160:PredefinedHandoverMethodType mc160:UndefinedHandoverMethodType"/>
 	</simpleType>
 
-	<simpleType name="PredefinedTypeOfMedicineHandoverType">
+	<simpleType name="PredefinedHandoverMethodType">
 		<restriction base="string">
-			<enumeration value="TreatmentHandOver"/>
+			<enumeration value="Treatment"/>
 			<enumeration value="Prescription"/>
 			<enumeration value="DosisPrescription"/>
-			<enumeration value="HospitalPharmacyPrescription"/>
+			<enumeration value="HospitalPharmacy"/>
 			<enumeration value="UseInPractice"/>
 			<enumeration value="WithoutPrescription"/>
 		</restriction>
 	</simpleType>
 
-	<simpleType name="UndefinedTypeOfMedicineHandoverType">
+	<simpleType name="UndefinedHandoverMethodType">
 		<restriction base="string">
 			<maxLength value="100"/>
 		</restriction>
