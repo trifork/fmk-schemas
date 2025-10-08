@@ -21,7 +21,7 @@
                     <element name="AddressSubstring" type="mc160:AddressSubstringType"/>
                     <sequence>
                         <element name="OrganisationNameSubstring" type="mc160:OrganisationNameSubstringType"/>
-                        <element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0"/>
+                        <element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0" maxOccurs="5"/>
                     </sequence>
                 </choice>
             </choice>
@@ -30,13 +30,13 @@
     <simpleType name="OrganisationNameSubstringType">
         <restriction base="string">
             <minLength value="1"/>
-            <maxLength value="70"/>
+            <maxLength value="100"/>
         </restriction>
     </simpleType>
     <simpleType name="AddressSubstringType">
         <restriction base="string">
             <minLength value="1"/>
-            <maxLength value="30"/>
+            <maxLength value="100"/>
         </restriction>
     </simpleType>
 
