@@ -11,14 +11,14 @@
 	<element name="ListPRNStartDatesResponse" type="mc160:ListPRNStartDatesResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response type for listing all start-registrations of PRN treatments</documentation>
-			<documentation xml:lang="da-DK">Svar type til at liste alle start registreringer af PN-kurer</documentation>
+			<documentation xml:lang="da-DK">Svar type til at liste alle start registreringer af PN-kure</documentation>
 		</annotation>
 	</element>
 
 	<complexType name="ListPRNStartDatesResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="PRNStart" type="mc160:PRNDrugMedicationStartDateType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -5,9 +5,8 @@
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
 
-	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PRNDrugMedicationStartDate.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 
 	<element name="RegisterPRNStartDatesResponse" type="mc160:RegisterPRNStartDatesResponseType">
 		<annotation>
@@ -19,10 +18,7 @@
 	<complexType name="RegisterPRNStartDatesResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="ModifiedBy" type="mc160:ModificatorType"/>
-			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-
-			<element name="PRNStart" type="mc160:PRNDrugMedicationStartDateType" maxOccurs="100"/>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
