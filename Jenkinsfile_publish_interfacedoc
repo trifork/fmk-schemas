@@ -4,9 +4,6 @@ properties([
             name: 'snitflade',
             choices: [
                 'Advis',
-                'M*2013_06_01',
-                'E*2013_06_01',
-                'P*2013_06_01',
                 '2013_01_01',
                 'M*2015_01_01',
                 'E*2015_01_01',
@@ -28,13 +25,13 @@ properties([
                 'M*2015_06_01_E5',
                 'P*2015_06_01_E5',
                 'M*2015_06_01_E6',
+                'M*2022_01_01',
                 'OrdinationsAI*_2022_03_01'
             ].join('\n')
                 ,
             description: '''
                 Generer html-dokumentation for den valgte snitflade, og publicer den på dokuwiki<br/>
                 Advis -> Advis<br/>
-                1.4.2 -> 2013_06_01<br/>
                 dumpRestore -> 2013_01_01<br/>
                 1.4.4 -> 2015_01_01 (opdaterer også E1)<br/>
                 1.4.4_E1 -> 2015_01_01_E1<br/>
@@ -47,6 +44,7 @@ properties([
                 1.4.6_E3 -> 2015_06_01_E3<br/>
                 1.4.6_E5 -> 2015_06_01_E5<br/>
                 1.4.6_E6 -> 2015_06_01_E6<br/>
+                1.6.0 -> 2022_01_01<br/>
                 <br/>
                 Man releaser snitfladerne Medicinkortet, EffectuationOrdering og Patient(Organisation)Registration særskilt. 
                 Dette gøres ved at vælge mellem hhv M*<I>snitflade</I>, E*<I>snitflade</I>, P*<I>snitflade</I>
@@ -72,7 +70,7 @@ pipeline {
                     snitflade = snitflade.trim()
                     step ([$class: 'CopyArtifact',
                         projectName: 'FMK_schema',
-                        filter: "**/standard/target/wsdl/*${snitflade}.wsdl,**/target/idws/target/wsdl/*${snitflade}.wsdl",
+                        filter: "**/standard/target/wsdl/*${snitflade}.wsdl,**/target/idws/target/wsdl/*${snitflade}.wsdl,**/target/resources/wsdl/*${snitflade}.wsdl",
                         target: 'tmp',
                         flatten: true]);
                 }
@@ -88,11 +86,18 @@ pipeline {
                         echo "dokuwiki.username=jenkins
                         dokuwiki.password=papkasse1234" >> build.properties
 
-                        for f in tmp/*.wsdl
-                        do
-                            ant generate-fmk-html -Dinlinefilename=$f
-                            ant post-to-dokuwiki -Dinfolder=tmp -Dinfile=${f##*/}.html  
-                        done
+                        if echo "M*2022_01_01" | grep -w -q ${snitflade}; then          #For 1.6.0-snitflade brug mvn, for ældre snitflader brug ant. "M*2022_01_01" kan senere udvides til f.eks. "M*2022_01_01 M*2022_01_01_E1".
+                            mvn xml:transform -N
+                            for f in tmp/*.html
+                                mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=jenkins -Ddokuwiki.password=papkasse1234
+                            done
+                        else
+                            for f in tmp/*.wsdl
+                            do
+                                ant generate-fmk-html -Dinlinefilename=$f
+                                ant post-to-dokuwiki -Dinfolder=tmp -Dinfile=${f##*/}.html
+                            done
+                        fi
                         rm -r tmp
                         '''
                 }
