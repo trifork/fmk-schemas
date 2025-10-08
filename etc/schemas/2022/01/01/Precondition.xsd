@@ -6,13 +6,31 @@
 
 	<include schemaLocation="DosageTimesStartDate.xsd"/>
 
-	<element name="Precondition" type="mc160:PreconditionType">
+	<element name="PreconditionRequest" type="mc160:PreconditionForRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Define a precondition that must be fulfilled, before the dosage can be considered active</documentation>
 			<documentation xml:lang="da-DK">Beskriver en betingelse der beskriver, hvornår doseringen kan anses som værende aktiv.</documentation>
 		</annotation>
 	</element>
-	<complexType name="PreconditionType">
+	<element name="PreconditionResponse" type="mc160:PreconditionForResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Define a precondition that must be fulfilled, before the dosage can be considered active</documentation>
+			<documentation xml:lang="da-DK">Beskriver en betingelse der beskriver, hvornår doseringen kan anses som værende aktiv.</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="PreconditionForResponseType">
+		<choice>
+		  <element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
+			<sequence>
+				<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
+				<element name="ExpectedValidFrom" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
+			</sequence>
+			<element name="FreeText" type="mc160:PreconditionFreeTextType"/>
+		</choice>
+	</complexType>
+
+	<complexType name="PreconditionForRequestType">
 		<choice>
 			<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
 			<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
