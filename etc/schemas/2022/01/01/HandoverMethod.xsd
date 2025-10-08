@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="HandoverMethod" type="mc160:HandoverMethodType">
+		<annotation>
+			<documentation xml:lang="en-GB">Used to specify a way of handing over medicine.</documentation>
+			<documentation xml:lang="da-DK">Bruges til angivelse af en måde at udlevere medicin.</documentation>
+		</annotation>
+	</element>
+
+	<simpleType name="HandoverMethodType">
+		<union memberTypes="mc160:PredefinedHandoverMethodType mc160:UndefinedHandoverMethodType"/>
+	</simpleType>
+
+	<simpleType name="PredefinedHandoverMethodType">
+		<restriction base="string">
+			<enumeration value="Treatment"/>
+			<enumeration value="Prescription"/>
+			<enumeration value="DosisPrescription"/>
+			<enumeration value="HospitalPharmacy"/>
+			<enumeration value="UseInPractice"/>
+			<enumeration value="WithoutPrescription"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="UndefinedHandoverMethodType">
+		<restriction base="string">
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+
+</schema>

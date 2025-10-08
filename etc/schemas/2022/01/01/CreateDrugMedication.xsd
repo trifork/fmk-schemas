@@ -21,6 +21,9 @@
 	<include schemaLocation="CreateWarrant.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
+	<include schemaLocation="HandoverMethod.xsd"/>
+	<include schemaLocation="RequestDrugAdministrationRegistration.xsd"/>
+	<include schemaLocation="RequireSecondaryHandover.xsd"/>
 
 	<complexType name="CreateDrugMedicationType">
 		<annotation>
@@ -41,10 +44,13 @@
 			<element name="Dosage" type="mc160:DosageForRequestType"/>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
 			<element name="Effectuation" type="mc160:CreateEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="HandoverPreference" type="mc160:HandoverMethodType"/>
 			<element name="CreateWarrant" type="mc160:CreateWarrantType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="AttachWarrant" type="mc160:WarrantIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RequestDrugAdministrationRegistration" type="mc160:DrugAdministrationRegistrationRequestedType" minOccurs="0" />
+			<element name="RequireSecondaryHandover" type="mc160:RequireSecondaryHandoverType" minOccurs="0" />
 		</sequence>
 	</complexType>
 </schema>

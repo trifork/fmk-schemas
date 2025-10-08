@@ -8,7 +8,10 @@
 
   <complexType name="DayType">
     <sequence>
-      <element name="Index" type="mc160:DayIndexType"/>
+      <choice>
+        <element name="WeekdayLabel" type="mc160:WeekdayLabelType"/>
+        <element name="Index" type="mc160:DayIndexType"/>
+      </choice>
       <element name="Dose" type="mc160:DoseType" maxOccurs="unbounded"/>
     </sequence>
   </complexType>
@@ -17,6 +20,18 @@
     <restriction base="int">
       <minInclusive value="1"/>
       <maxInclusive value="365"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="WeekdayLabelType">
+    <restriction base="string">
+      <enumeration value="Monday"/>
+      <enumeration value="Tuesday"/>
+      <enumeration value="Wednesday"/>
+      <enumeration value="Thursday"/>
+      <enumeration value="Friday"/>
+      <enumeration value="Saturday"/>
+      <enumeration value="Sunday"/>
     </restriction>
   </simpleType>
 
