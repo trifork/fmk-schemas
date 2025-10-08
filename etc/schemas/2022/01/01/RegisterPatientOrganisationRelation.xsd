@@ -8,9 +8,9 @@
 	<include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="PatientRelationValidityPeriod.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
+    <include schemaLocation="PatientRelationMetadata.xsd"/>
 
-
-	<element name="RegisterPatientOrganisationRelation" type="mc160:RegisterPatientOrganisationRelationType">
+    <element name="RegisterPatientOrganisationRelation" type="mc160:RegisterPatientOrganisationRelationType">
 		<annotation>
 			<documentation xml:lang="en-GB">A relation between a patient and an organisation</documentation>
 			<documentation xml:lang="da-DK">Registrering af en relation mellem en patient og en organisation</documentation>
@@ -22,6 +22,7 @@
 			<element name="Organisation" type="mc160:OrganisationType"/>
             <element name="ValidityPeriod" type="mc160:PatientRelationValidityPeriodType" minOccurs="0"/>
             <element name="Type" type="mc160:PatientOrganisationRelationTypeType"/>
+            <element name="PatientRelationMetadata" type="mc160:PatientRelationMetadataType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

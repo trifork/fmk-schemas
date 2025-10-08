@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+
+	<element name="SearchDeliverySitesRequest" type="mc160:SearchDeliverySitesRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request document to search for delivery sites for pharmacies</documentation>
+			<documentation xml:lang="da-DK">Request-dokument for at søge efter udleveringssteder for apoteker</documentation>
+		</annotation>
+	</element>
+	<complexType name="SearchDeliverySitesRequestType">
+		<sequence>
+            <choice>
+                <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+                <choice>
+                    <element name="AddressSubstring" type="mc160:AddressSubstringType"/>
+                    <sequence>
+                        <element name="OrganisationNameSubstring" type="mc160:OrganisationNameSubstringType"/>
+                        <element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0"/>
+                    </sequence>
+                </choice>
+            </choice>
+		</sequence>
+	</complexType>
+    <simpleType name="OrganisationNameSubstringType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="70"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="AddressSubstringType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="30"/>
+        </restriction>
+    </simpleType>
+
+</schema>
