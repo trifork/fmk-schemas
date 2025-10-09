@@ -26,6 +26,7 @@ properties([
                 'P*2015_06_01_E5',
                 'M*2015_06_01_E6',
                 'M*2022_01_01',
+                'P*2022_01_01',
                 'OrdinationsAI*_2022_03_01'
             ].join('\n')
                 ,
@@ -83,21 +84,10 @@ pipeline {
                     sh "echo ${snitflade} valgt"
 
                     sh '''
-                        echo "dokuwiki.username=jenkins
-                        dokuwiki.password=papkasse1234" >> build.properties
-
-                        if echo "M*2022_01_01" | grep -w -q ${snitflade}; then          #For 1.6.0-snitflade brug mvn, for ældre snitflader brug ant. "M*2022_01_01" kan senere udvides til f.eks. "M*2022_01_01 M*2022_01_01_E1".
-                            mvn xml:transform -N
-                            for f in tmp/*.html
-                                mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=jenkins -Ddokuwiki.password=papkasse1234
-                            done
-                        else
-                            for f in tmp/*.wsdl
-                            do
-                                ant generate-fmk-html -Dinlinefilename=$f
-                                ant post-to-dokuwiki -Dinfolder=tmp -Dinfile=${f##*/}.html
-                            done
-                        fi
+                        mvn xml:transform -N
+                        for f in tmp/*.html
+                            mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=jenkins -Ddokuwiki.password=papkasse1234
+                        done
                         rm -r tmp
                         '''
                 }
