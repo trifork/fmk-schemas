@@ -116,7 +116,6 @@
                         println("Creating request")
                         def template = new File("src/dk/medicinkortet/xmlschema/dokuwikitemplate_data.xml").text
                         def templateStart = new File("src/dk/medicinkortet/xmlschema/dokuwikitemplate_start.xml").text
-                        def templateEnd = new File("src/dk/medicinkortet/xmlschema/dokuwikitemplate_end.xml").text
                         def dokuwikiid = properties['infile'].substring(0, properties['infile'].length() - 10)
                         def file = new File("tmp/" + properties['infile']).text
 
@@ -125,7 +124,6 @@
                         for (def i = 0; i < file.length() / maxMessageLength; i++) {
                             messages.add(template.replace("\${dokuwikiid}", dokuwikiid).replace("\${html}", file.substring(i*maxMessageLength, Math.min((i+1)*maxMessageLength, file.length()))))
                         }
-                        messages.add(templateEnd.replace("\${dokuwikiid}", dokuwikiid))
 
                         println("Sending request")
                         def credentials = "${properties['dokuwiki.username']}:${properties['dokuwiki.password']}"
