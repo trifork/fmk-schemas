@@ -4,10 +4,14 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-    <include schemaLocation="OrganisationIdentifier.xsd"/>
     <include schemaLocation="Patient.xsd"/>
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+    <include schemaLocation="OrganisationName.xsd"/>
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
     <include schemaLocation="CreatedDateTime.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="DrugName.xsd"/>
 
     <complexType name="PersonWithDispensingCardType">
         <annotation>
@@ -26,7 +30,16 @@
         <sequence>
             <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
             <element name="DispensingCardOwner" type="mc160:OrganisationIdentifierType"/>
+            <element name="DispensingCardOwnerName" type="mc160:OrganisationNameType"/>
             <element name="CreatedDateTime" type="mc160:CreatedDateTimeType"/>
+            <element name="DispensedMedication" type="mc160:DispensedMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="DispensedMedicationType">
+        <sequence>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="DrugName" type="mc160:DrugNameType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>
