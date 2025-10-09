@@ -31,6 +31,7 @@
 	<include schemaLocation="HandoverMethod.xsd"/>
 	<include schemaLocation="RequestDrugAdministrationRegistration.xsd"/>
 	<include schemaLocation="RequireSecondaryHandover.xsd"/>
+	<include schemaLocation="PRNStartDate.xsd"/>
 
 	<complexType name="DrugMedicationType">
 		<annotation>
@@ -56,6 +57,10 @@
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForResponseType"/>
+			<choice minOccurs="0">
+				<element name="ActiveSince" type="mc160:PRNStartDateType"/>
+				<element name="ActiveFrom" type="mc160:PRNStartDateType"/>
+			</choice>
 			<choice minOccurs="0">
 				<element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDrugMedicationType" maxOccurs="unbounded"/>
 				<element name="PlannedAdministrationForPreviousVersion" type="mc160:PlannedAdministrationForPreviousVersionType"/>
