@@ -6,6 +6,7 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+    <include schemaLocation="AddressSubstring.xsd"/>
 
 	<element name="SearchDeliverySitesRequest" type="mc160:SearchDeliverySitesRequestType">
 		<annotation>
@@ -18,7 +19,7 @@
             <choice>
                 <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
                 <choice>
-                    <element name="AddressSubstring" type="mc160:AddressSubstringType"/>
+                    <element name="AddressSubstring" type="mc160:AddressSubstringType" maxOccurs="5"/>
                     <sequence>
                         <element name="OrganisationNameSubstring" type="mc160:OrganisationNameSubstringType"/>
                         <element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0" maxOccurs="5"/>
@@ -28,12 +29,6 @@
 		</sequence>
 	</complexType>
     <simpleType name="OrganisationNameSubstringType">
-        <restriction base="string">
-            <minLength value="1"/>
-            <maxLength value="100"/>
-        </restriction>
-    </simpleType>
-    <simpleType name="AddressSubstringType">
         <restriction base="string">
             <minLength value="1"/>
             <maxLength value="100"/>
