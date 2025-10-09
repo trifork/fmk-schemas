@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="EffectuationIdentifier.xsd"/>
+	<include schemaLocation="HandoverIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>	
 	
 	<element name="DeleteEffectuation" type="mc160:DeleteEffectuationType">
@@ -16,7 +16,7 @@
 	</element>
 	<complexType name="DeleteEffectuationType">
 		<sequence>
-			<element name="Identifier" type="mc160:EffectuationIdentifierType"/>
+			<element name="Identifier" type="mc160:HandoverIdentifierType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

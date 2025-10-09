@@ -5,18 +5,17 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
-	<include schemaLocation="Effectuation.xsd"/>
-	<include schemaLocation="InvalidEffectuation.xsd"/>
-	<include schemaLocation="EffectuationsOnWarrant.xsd"/>
+	<include schemaLocation="InvalidHandover.xsd"/>
+	<include schemaLocation="Handovers.xsd"/>
 	
-	<complexType name="WarrantEffectuationsOnDrugMedicationType">
+	<complexType name="HandoversOnDrugMedicationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Grouping effectuations on a drug medication</documentation>
 			<documentation xml:lang="da-DK">Grupperer effektueringer på en lægemiddelordination</documentation>
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
-			<element name="Warrant" type="mc160:EffectuationsOnWarrantType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Handovers" type="mc160:HandoversType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

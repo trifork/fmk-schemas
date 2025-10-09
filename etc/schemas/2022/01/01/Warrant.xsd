@@ -7,12 +7,12 @@
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersion.xsd"/>
-	<include schemaLocation="OrderedEffectuationIdentifier.xsd"/>
+	<include schemaLocation="OrderedHandoverIdentifier.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="CreatedWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="ModificatorWithoutPerson.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="LatestEffectuationDateTime.xsd"/>
+	<include schemaLocation="LatestHandoverDateTime.xsd"/>
 	<include schemaLocation="TerminatedDateTime.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
@@ -32,8 +32,8 @@
 	<include schemaLocation="Order.xsd"/>
 	<include schemaLocation="WarrantVersion.xsd"/>
 	<include schemaLocation="IsPrivateWarrant.xsd"/>
-	<include schemaLocation="EffectuationOnWarrant.xsd"/>
-	<include schemaLocation="InvalidEffectuation.xsd"/>
+	<include schemaLocation="Handover.xsd"/>
+	<include schemaLocation="InvalidHandover.xsd"/>
 
 	<complexType name="WarrantType">
 		<annotation>
@@ -44,14 +44,14 @@
 			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
 			<element name="AttachedToDrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
 			<element name="CreatedFromDrugMedicationVersion" type="mc160:DrugMedicationVersionType" minOccurs="0"/>
-			<element name="OrderedEffectuationIdentifier" type="mc160:OrderedEffectuationIdentifierType" minOccurs="0"/>
+			<element name="OrderedHandoverIdentifier" type="mc160:OrderedHandoverIdentifierType" minOccurs="0"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
 			<element name="Created" type="mc160:CreatedWithOptionalAuthorisationIdentifierType"/>
 			<choice minOccurs="0">
 				<element name="ReportedByWithoutPerson" type="mc160:ModificatorWithoutPersonType"/>
 				<element name="ReportedBy" type="mc160:ModificatorType"/>
 			</choice>
-			<element name="LatestEffectuationDateTime" type="mc160:LatestEffectuationDateTimeType" minOccurs="0"/>
+			<element name="LatestEffectuationDateTime" type="mc160:LatestHandoverDateTimeType" minOccurs="0"/>
 			<element name="TerminatedDateTime" type="mc160:TerminatedDateTimeType" minOccurs="0"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/> <!--Only used in responses -->
 			<element name="ValidFromDate" type="mc160:ValidFromDateType"/>
@@ -74,8 +74,8 @@
 			<element name="ReplacesWarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
 			<element name="ReplacedByWarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
 			<element name="Order" type="mc160:OrderType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="Effectuation" type="mc160:EffectuationOnWarrantType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="InvalidEffectuation" type="mc160:InvalidEffectuationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Handover" type="mc160:HandoverType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="InvalidHandover" type="mc160:InvalidHandoverType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="Version" type="mc160:WarrantVersionType" minOccurs="0"/>
 			<element name="IsPrivateWarrant" type="mc160:IsPrivateWarrantType" minOccurs="0"/>
 		</sequence>
