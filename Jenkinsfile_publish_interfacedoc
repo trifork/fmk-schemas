@@ -83,13 +83,15 @@ pipeline {
                 script {
                     sh "echo ${snitflade} valgt"
 
-                    sh '''
-                        mvn xml:transform -N
-                        for f in tmp/*.html
-                            mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=jenkins -Ddokuwiki.password=papkasse1234
-                        done
-                        rm -r tmp
-                        '''
+                    withCredentials([usernamePassword(credentialsId: 'JenkinsDokuWiki', passwordVariable: 'DOKUWIKI_PW', usernameVariable: 'DOKUWIKI_UN')]) {
+                        sh '''
+                            mvn xml:transform -N
+                            for f in tmp/*.html
+                                mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=$DOKUWIKI_UN -Ddokuwiki.password=$DOKUWIKI_PW
+                            done
+                            rm -r tmp
+                            '''
+                        }
                 }
             }
         }
