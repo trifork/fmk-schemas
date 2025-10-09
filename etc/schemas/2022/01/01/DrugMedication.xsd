@@ -12,9 +12,8 @@
 	<include schemaLocation="DrugMedicationType.xsd"/>
 	<include schemaLocation="FollowUpDates.xsd"/>
 	<include schemaLocation="Paused.xsd"/>
-	<include schemaLocation="Withdrawn.xsd"/>
 	<include schemaLocation="NegativeConsent.xsd"/>
-	<include schemaLocation="DrugMedicationBeginEndDate.xsd"/>
+	<include schemaLocation="DrugMedicationActivePeriod.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
@@ -22,8 +21,6 @@
 	<include schemaLocation="PlannedAdministrationOnDrugMedication.xsd"/>
 	<include schemaLocation="PlannedAdministrationForPreviousVersion.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
-	<include schemaLocation="Effectuation.xsd"/>
-	<include schemaLocation="InvalidEffectuation.xsd"/>
 	<include schemaLocation="Warrant.xsd"/>
 	<include schemaLocation="InvalidWarrant.xsd"/>
   <include schemaLocation="DrugAdministration.xsd"/>
@@ -31,6 +28,7 @@
 	<include schemaLocation="HandoverMethod.xsd"/>
 	<include schemaLocation="RequestDrugAdministrationRegistration.xsd"/>
 	<include schemaLocation="RequireSecondaryHandover.xsd"/>
+	<include schemaLocation="PRNStartDate.xsd"/>
 
 	<complexType name="DrugMedicationType">
 		<annotation>
@@ -49,13 +47,16 @@
 			<element name="Type" type="mc160:DrugMedicationTypeType" />
 			<element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
 			<element name="Paused" type="mc160:PausedType" minOccurs="0"/>
-			<element name="Withdrawn" type="mc160:WithdrawnType" minOccurs="0"/>
 			<element name="NegativeConsent" type="mc160:NegativeConsentType" minOccurs="0"/>
-			<element name="BeginEndDate" type="mc160:DrugMedicationBeginEndDateType"/>
+			<element name="ActivePeriod" type="mc160:DrugMedicationActivePeriodType"/>
 			<element name="Indication" type="mc160:IndicationType"/>
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForResponseType"/>
+			<choice minOccurs="0">
+				<element name="ActiveSince" type="mc160:PRNStartDateType"/>
+				<element name="ActiveFrom" type="mc160:PRNStartDateType"/>
+			</choice>
 			<choice minOccurs="0">
 				<element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDrugMedicationType" maxOccurs="unbounded"/>
 				<element name="PlannedAdministrationForPreviousVersion" type="mc160:PlannedAdministrationForPreviousVersionType"/>

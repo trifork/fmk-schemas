@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="Source.xsd"/>
+	<include schemaLocation="SourceDate.xsd"/>
+	<include schemaLocation="SourceYearAndWeek.xsd"/>
+
+	<element name="EndedReason" type="mc160:EndedReasonType">
+		<annotation>
+			<documentation xml:lang="en-GB">Type for specifying the reason why an LMO is no longer active (e.g. treatment completed as planned or treatment discontinued)</documentation>
+			<documentation xml:lang="da-DK">Type til angivelse af årsagen til en LMO ikke længere er aktiv (fx behandling afsluttet som planlagt eller behandling seponeret) </documentation>
+		</annotation>
+	</element>
+
+	<complexType name="EndedReasonType">
+		<sequence>
+			<element name="Reason" type="mc160:DrugMedicationEndedReasonType"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="DrugMedicationEndedReasonType">
+		<union memberTypes="mc160:UndefinedDrugMedicationEndedReasonType mc160:PredefinedDrugMedicationEndedReasonsType"/>
+	</simpleType>
+
+	<simpleType name="UndefinedDrugMedicationEndedReasonType">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PredefinedDrugMedicationEndedReasonsType">
+		<restriction base="string">
+			<enumeration value="Withdrawn"/>
+			<enumeration value="Expired"/>
+		</restriction>
+	</simpleType>
+
+</schema>

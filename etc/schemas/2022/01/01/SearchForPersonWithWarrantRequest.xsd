@@ -8,11 +8,8 @@
 	<include schemaLocation="PersonSurname.xsd"/>
 	<include schemaLocation="BirthDate.xsd"/>
 	<include schemaLocation="IsPersonWithoutCPR.xsd"/>
-	<include schemaLocation="StreetName.xsd"/>
-	<include schemaLocation="StreetBuildingIdentifier.xsd"/>
-	<include schemaLocation="PostCodeIdentifier.xsd"/>
-	<include schemaLocation="DistrictName.xsd"/>
-	<include schemaLocation="HealthcareProfessionalIdentifier.xsd"/>
+    <include schemaLocation="AddressSubstring.xsd"/>
+    <include schemaLocation="HealthcareProfessionalIdentifier.xsd"/>
 	<include schemaLocation="HealthcareProfessionalName.xsd"/>
 	<include schemaLocation="OrganisationName.xsd"/>
 	<include schemaLocation="OrganisationType.xsd"/>
@@ -36,16 +33,7 @@
 					</sequence>
 				</complexType>
 			</element>
-			<element name="Address" minOccurs="0">
-				<complexType>
-					<sequence>
-						<element name="StreetName" type="mc160:StreetNameType" minOccurs="0"/>
-						<element name="StreetBuildingIdentifier" type="mc160:StreetBuildingIdentifierType" minOccurs="0"/>
-						<element name="PostCodeIdentifier" type="mc160:PostCodeIdentifierType"  minOccurs="0"/>
-						<element name="DistrictName" type="mc160:DistrictNameType" minOccurs="0"/>
-					</sequence>
-				</complexType>
-			</element>
+			<element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0" maxOccurs="5"/>
 			<element name="IssuedBy" minOccurs="0">
 				<complexType>
 					<sequence>
