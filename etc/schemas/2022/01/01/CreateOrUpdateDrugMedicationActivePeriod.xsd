@@ -4,26 +4,24 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="DrugMedicationCreatedDateTime.xsd"/>
-	<include schemaLocation="DrugMedicationTreatmentStartDate.xsd"/>
-	<include schemaLocation="DrugMedicationTreatmentStartedPreviously.xsd"/>
+	<include schemaLocation="DrugMedicationStartDate.xsd"/>
+	<include schemaLocation="DrugMedicationStartedPreviously.xsd"/>
 	<include schemaLocation="DrugMedicationTreatmentEndDate.xsd"/>
 	<include schemaLocation="DrugMedicationTreatmentEndingUndetermined.xsd"/>
 
-	<element name="DrugMedicationBeginEndDate" type="mc160:DrugMedicationBeginEndDateType">
+	<element name="CreateOrUpdateDrugMedicationActivePeriod" type="mc160:CreateOrUpdateDrugMedicationActivePeriodType">
 		<annotation>
 			<documentation xml:lang="en-GB">Indicates a periode where the drug medication is active</documentation>
 			<documentation xml:lang="da-DK">Angiver en periode hvor lægemiddelordinationen gælder</documentation>
 		</annotation>
 	</element>
-	<complexType name="DrugMedicationBeginEndDateType">
+	<complexType name="CreateOrUpdateDrugMedicationActivePeriodType">
 		<sequence>
-			<element name="CreatedDateTime" type="mc160:DrugMedicationCreatedDateTimeType" minOccurs="0"/>
-			<choice>
-				<element name="TreatmentStartDate" type="mc160:DrugMedicationTreatmentStartDateType"/>
-				<element name="TreatmentStartedPreviously" type="mc160:DrugMedicationTreatmentStartedPreviouslyType"/>
+			<choice minOccurs="0">
+				<element name="DrugMedicationStartDate" type="mc160:DrugMedicationStartDateType"/>
+				<element name="DrugMedicationStartedPreviously" type="mc160:DrugMedicationStartedPreviouslyType"/>
 			</choice>
-			<choice>
+			<choice minOccurs="0">
 				<element name="TreatmentEndDate" type="mc160:DrugMedicationTreatmentEndDateType"/>
 				<element name="TreatmentEndingUndetermined" type="mc160:DrugMedicationTreatmentEndingUndeterminedType"/>
 			</choice>
