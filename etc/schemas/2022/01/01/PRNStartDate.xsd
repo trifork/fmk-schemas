@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<element name="PRNStartDate" type="mc160:PRNStartDateType">
+		<annotation>
+			<documentation xml:lang="en-GB">Type for representing a start date of a PRN treatment</documentation>
+			<documentation xml:lang="da-DK">Type til repræsentation af dato for start af PN-kur</documentation>
+		</annotation>
+	</element>
+
+	<simpleType name="PRNStartDateType">
+		<restriction base="date">
+			<minInclusive value="2025-01-01"/>
+		</restriction>
+	</simpleType>
+</schema>
