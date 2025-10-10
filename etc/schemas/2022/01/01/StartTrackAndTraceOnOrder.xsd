@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="ShipmentIdentifier.xsd"/>
+    <include schemaLocation="OrderIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="ShipmentDeliveryDate.xsd"/>
+    <include schemaLocation="Delivery.xsd"/>
+    <include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
+    <include schemaLocation="TrackAndTraceEventFreetext.xsd"/>
+    <include schemaLocation="TrackAndTraceFinalEvent.xsd"/>
+
+    <element name="StartTrackAndTraceOnOrder" type="mc160:StartTrackAndTraceOnOrderType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element specifying Track-and-Trace should be applied to an order.</documentation>
+            <documentation xml:lang="da-DK">Element som specificerer, at Track-and-Trace skal håndteres på en bestilling</documentation>
+        </annotation>
+    </element>
+    <complexType name="StartTrackAndTraceOnOrderType">
+        <sequence>
+            <element name="OrderedAtPharmacy" type="mc160:OrganisationIdentifierType"/>
+            <element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType" minOccurs="0"/>
+            <element name="EventFreeText" type="mc160:TrackAndTraceEventFreeTextType" minOccurs="0"/>
+            <choice minOccurs="0">
+                <element name="ExpectedNextEventDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
+                <element name="IsFinalEvent" type="mc160:TrackAndTraceFinalEventType"/>
+            </choice>
+            <element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>
