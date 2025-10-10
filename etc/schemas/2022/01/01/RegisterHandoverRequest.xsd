@@ -7,22 +7,21 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="CreateEffectuationOnWarrant.xsd"/>
+	<include schemaLocation="CreateHandoverOfDrugMedication.xsd"/>
 
 	<element name="RegisterHandoverRequest" type="mc160:RegisterHandoverRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request to add a effecutation</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel for at tilføje en effektuering</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a request to register a treatment handover</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel for at registrere en udlevering ved behandling</documentation>
 		</annotation>
 	</element>
 	<complexType name="RegisterHandoverRequestType">
 		<sequence>
-			<!-- TODO, this service probably need to change to fit the new Warrants! -->
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Warrant" type="mc160:CreateEffectuationOnWarrantType" maxOccurs="unbounded"/>
+			<element name="Handover" type="mc160:CreateHandoverOfDrugMedicationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

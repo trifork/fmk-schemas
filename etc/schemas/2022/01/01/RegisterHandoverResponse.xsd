@@ -7,19 +7,19 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
-	<include schemaLocation="CreatedEffectuationOnWarrant.xsd"/>
+	<include schemaLocation="CreatedTreatmentHandover.xsd"/>
 
-	<element name="CreateEffectuationResponse" type="mc160:CreateEffectuationResponseType">
+	<element name="RegisterHandoverResponse" type="mc160:RegisterHandoverResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a response from a request to add a effecutation</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for svaret fraen forespørgsel for at tilføje en effektuering</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response for registering a treatment handover</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for svaret fraen forespørgsel for at registrere en udlevering ved behandling</documentation>
 		</annotation>
 	</element>
-	<complexType name="CreateEffectuationResponseType">
+	<complexType name="RegisterHandoverResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
-			<element name="Warrant" type="mc160:WarrantIdentifierType" maxOccurs="unbounded"/>
+			<element name="Handover" type="mc160:CreatedTreatmentHandoverType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
