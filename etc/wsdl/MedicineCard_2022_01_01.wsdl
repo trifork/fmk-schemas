@@ -564,12 +564,12 @@
         <wsdl:part name="CreateDrugMedicationResponse" element="mc160:CreateDrugMedicationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreateEffectuationRequest_160">
-        <wsdl:part name="CreateEffectuationRequest" element="mc160:CreateEffectuationRequest"/>
+    <wsdl:message name="RegisterHandoverRequest_160">
+        <wsdl:part name="RegisterHandoverRequest" element="mc160:RegisterHandoverRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CreateEffectuationResponse_160">
-        <wsdl:part name="CreateEffectuationResponse" element="mc160:CreateEffectuationResponse"/>
+    <wsdl:message name="RegisterHandoverResponse_160">
+        <wsdl:part name="RegisterHandoverResponse" element="mc160:RegisterHandoverResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreateFocesWhitelistingRequest_160">
@@ -604,12 +604,12 @@
         <wsdl:part name="CreatePackingGroupResponse" element="mc160:CreatePackingGroupResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePharmacyEffectuationRequest_160">
-        <wsdl:part name="CreatePharmacyEffectuationRequest" element="mc160:CreatePharmacyEffectuationRequest"/>
+    <wsdl:message name="EffectuateOrderRequest_160">
+        <wsdl:part name="EffectuateOrderRequest" element="mc160:EffectuateOrderRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePharmacyEffectuationResponse_160">
-        <wsdl:part name="CreatePharmacyEffectuationResponse" element="mc160:CreatePharmacyEffectuationResponse"/>
+    <wsdl:message name="EffectuateOrderResponse_160">
+        <wsdl:part name="EffectuateOrderResponse" element="mc160:EffectuateOrderResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePlannedAdministrationRequest_160">
@@ -1172,12 +1172,12 @@
         <wsdl:part name="StartEffectuationOfDispensingPeriodResponse" element="mc160:StartEffectuationOfDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="StartEffectuationRequest_160">
-        <wsdl:part name="StartEffectuationRequest" element="mc160:StartEffectuationRequest"/>
+    <wsdl:message name="StartOrderRequest_160">
+        <wsdl:part name="StartOrderRequest" element="mc160:StartOrderRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="StartEffectuationResponse_160">
-        <wsdl:part name="StartEffectuationResponse" element="mc160:StartEffectuationResponse"/>
+    <wsdl:message name="StartOrderResponse_160">
+        <wsdl:part name="StartOrderResponse" element="mc160:StartOrderResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SubstitutePackagedDrugRequest_160">
@@ -1436,9 +1436,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateEffectuation_160">
-            <wsdl:input name="CreateEffectuationRequest_160" message="tns:CreateEffectuationRequest_160"/>
-            <wsdl:output name="CreateEffectuationResponse_160" message="tns:CreateEffectuationResponse_160"/>
+        <wsdl:operation name="RegisterHandover_160">
+            <wsdl:input name="RegisterHandoverRequest_160" message="tns:RegisterHandoverRequest_160"/>
+            <wsdl:output name="RegisterHandoverResponse_160" message="tns:RegisterHandoverResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1466,9 +1466,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePharmacyEffectuation_160">
-            <wsdl:input name="CreatePharmacyEffectuationRequest_160" message="tns:CreatePharmacyEffectuationRequest_160"/>
-            <wsdl:output name="CreatePharmacyEffectuationResponse_160" message="tns:CreatePharmacyEffectuationResponse_160"/>
+        <wsdl:operation name="EffectuateOrder_160">
+            <wsdl:input name="EffectuateOrderRequest_160" message="tns:EffectuateOrderRequest_160"/>
+            <wsdl:output name="EffectuateOrderResponse_160" message="tns:EffectuateOrderResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1892,9 +1892,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="StartEffectuation_160">
-            <wsdl:input name="StartEffectuationRequest_160" message="tns:StartEffectuationRequest_160"/>
-            <wsdl:output name="StartEffectuationResponse_160" message="tns:StartEffectuationResponse_160"/>
+        <wsdl:operation name="StartOrder_160">
+            <wsdl:input name="StartOrderRequest_160" message="tns:StartOrderRequest_160"/>
+            <wsdl:output name="StartOrderResponse_160" message="tns:StartOrderResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2240,13 +2240,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateEffectuation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateEffectuation" style="document"/>
-            <wsdl:input name="CreateEffectuationRequest_160">
+        <wsdl:operation name="RegisterHandover_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterHandover" style="document"/>
+            <wsdl:input name="RegisterHandoverRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreateEffectuationResponse_160">
+            <wsdl:output name="RegisterHandoverResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2292,13 +2292,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreatePharmacyEffectuation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePharmacyEffectuation" style="document"/>
-            <wsdl:input name="CreatePharmacyEffectuationRequest_160">
+        <wsdl:operation name="EffectuateOrder_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#EffectuateOrder" style="document"/>
+            <wsdl:input name="EffectuateOrderRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePharmacyEffectuationResponse_160">
+            <wsdl:output name="EffectuateOrderResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -3228,13 +3228,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="StartEffectuation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#StartEffectuation" style="document"/>
-            <wsdl:input name="StartEffectuationRequest_160">
+        <wsdl:operation name="StartOrder_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#StartOrder" style="document"/>
+            <wsdl:input name="StartOrderRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="StartEffectuationResponse_160">
+            <wsdl:output name="StartOrderResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

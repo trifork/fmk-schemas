@@ -9,20 +9,20 @@
 	<include schemaLocation="Warrant.xsd"/>
 	<include schemaLocation="WarrantError.xsd"/>
 	
-	<element name="StartEffectuationResponse" type="mc160:StartEffectuationResponseType">
+	<element name="StartOrderResponse" type="mc160:StartOrderResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response for the request to start orders one or more warrants</documentation>
 			<documentation xml:lang="da-DK">Svar på forespørgsel på at påbegynde bestilling af et eller flere udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
-	<complexType name="StartEffectuationResponseType">
+	<complexType name="StartOrderResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
 			<element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>
-			<element name="StartEffectuationFailed" type="mc160:WarrantErrorType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="StartOrderFailed" type="mc160:WarrantErrorType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
