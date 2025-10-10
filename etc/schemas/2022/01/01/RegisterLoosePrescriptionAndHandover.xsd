@@ -7,11 +7,11 @@
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="LoosePrescription.xsd"/>
-	<include schemaLocation="CreateOrderAndEffectuation.xsd"/>
+	<include schemaLocation="CreateOrderAndHandover.xsd"/>
 
-	<complexType name="CreateAndEffectuateWarrantType">
+	<complexType name="RegisterLoosePrescriptionAndHandoverType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document for creating a warrant together with an effectuation</documentation>
+			<documentation xml:lang="en-GB">Request document for creating a warrant together with a handover</documentation>
 			<documentation xml:lang="da-DK">Request-dokument til at oprette et udleveringsgrundlag med en tilhørende udlevering</documentation>
 		</annotation>
 		<sequence>
@@ -22,7 +22,7 @@
 			<element name="DosageText" type="mc160:DosageTextType" minOccurs="0"/>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
 			<element name="SupplementaryInformation" type="mc160:SupplementaryInformationType" minOccurs="0"/>
-			<element name="Order" type="mc160:CreateOrderAndEffectuationType"/>
+			<element name="Order" type="mc160:CreateOrderAndHandoverType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

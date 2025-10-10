@@ -9,11 +9,12 @@
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
 	<include schemaLocation="CreatePharmacyHandover.xsd"/>
+    <include schemaLocation="StartTrackAndTraceOnOrder.xsd"/>
 
-	<complexType name="CreateOrderAndEffectuationType">
+	<complexType name="CreateOrderAndHandoverType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document for creating an order together with an effectuation</documentation>
-			<documentation xml:lang="da-DK">Request-dokument til at oprette en bestilling sammen med en effektuering</documentation>
+			<documentation xml:lang="en-GB">Request document for creating an order together with a handover</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til at oprette en bestilling sammen med en udlevering</documentation>
 		</annotation>
 		<sequence>
 			<choice>
@@ -22,7 +23,8 @@
 			</choice>
 			<element name="DeliveryInstructionText" type="mc160:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
-			<element name="Effectuation" type="mc160:CreatePharmacyHandoverType"/>
-		</sequence>
+            <element name="StartTrackAndTraceOnOrder" type="mc160:StartTrackAndTraceOnOrderType" minOccurs="0"/>
+            <element name="Handover" type="mc160:CreatePharmacyHandoverType"/>
+        </sequence>
 	</complexType>
 </schema>
