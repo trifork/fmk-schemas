@@ -74,6 +74,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/RemovePatientRegistrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemovePatientRegistrationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchDeliverySitesRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchDeliverySitesResponse.xsd"/>
+
         </xs:schema>
 
     </wsdl:types>
@@ -170,6 +173,15 @@
         <wsdl:part name="RemovePatientRegistrationResponse" element="mc160:RemovePatientRegistrationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="SearchDeliverySitesRequest_2022_01_01">
+        <wsdl:part name="SearchDeliverySitesRequest" element="mc160:SearchDeliverySitesRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchDeliverySitesResponse_2022_01_01">
+        <wsdl:part name="SearchDeliverySitesResponse" element="mc160:SearchDeliverySitesResponse"/>
+    </wsdl:message>
+
+
     <wsdl:portType name="PatientRelationPortType">
 
         <wsdl:operation name="CreatePatientRegistration_2022_01_01">
@@ -218,6 +230,12 @@
         <wsdl:operation name="RemovePatientRegistration_2022_01_01">
             <wsdl:input name="RemovePatientRegistrationRequest_2022_01_01" message="tns:RemovePatientRegistrationRequest_2022_01_01"/>
             <wsdl:output name="RemovePatientRegistrationResponse_2022_01_01" message="tns:RemovePatientRegistrationResponse_2022_01_01"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchDeliverySites_2022_01_01">
+            <wsdl:input name="SearchDeliverySitesRequest_2022_01_01" message="tns:SearchDeliverySitesRequest_2022_01_01"/>
+            <wsdl:output name="SearchDeliverySitesResponse_2022_01_01" message="tns:SearchDeliverySitesResponse_2022_01_01"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -337,6 +355,20 @@
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
+
+       <wsdl:operation name="SearchDeliverySites_2022_01_01">
+           <soap:operation soapAction="http://fmk-teknik.dk/160#SearchDeliverySites"
+                           style="document"/>
+           <wsdl:input name="SearchDeliverySitesRequest_2022_01_01">
+               &fmkStandardSOAPRequestHeaders;
+               <soap:body use="literal"/>
+           </wsdl:input>
+           <wsdl:output name="SearchDeliverySitesResponse_2022_01_01">
+               &fmkStandardSOAPResponseHeaders;
+               <soap:body use="literal"/>
+           </wsdl:output>
+           &bindingFaultDeclaration;
+       </wsdl:operation>
 
    </wsdl:binding>
 

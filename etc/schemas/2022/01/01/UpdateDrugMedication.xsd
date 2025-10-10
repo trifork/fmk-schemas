@@ -12,14 +12,16 @@
 	<include schemaLocation="Pause.xsd"/>
 	<include schemaLocation="DrugMedicationType.xsd"/>
 	<include schemaLocation="HasNegativeConsent.xsd"/>
-	<include schemaLocation="CreateOrUpdateDrugMedicationBeginEndDate.xsd"/>
+	<include schemaLocation="CreateOrUpdateDrugMedicationActivePeriod.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageForRequest.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
+	<include schemaLocation="RequireSecondaryHandover.xsd"/>
 	<include schemaLocation="HandoverMethod.xsd"/>
+	<include schemaLocation="RequestDrugAdministrationRegistration.xsd"/>
 
 	<element name="UpdateDrugMedication" type="mc160:UpdateDrugMedicationType">
 		<annotation>
@@ -37,7 +39,7 @@
 			<element name="Pause" type="mc160:PauseType" minOccurs="0"/>
 			<element name="Type" type="mc160:DrugMedicationTypeType" minOccurs="0" />
 			<element name="HasNegativeConsent" type="mc160:HasNegativeConsentType" minOccurs="0"/>
-			<element name="BeginEndDate" type="mc160:CreateOrUpdateDrugMedicationBeginEndDateType"/>
+			<element name="ActivePeriod" type="mc160:CreateOrUpdateDrugMedicationActivePeriodType"/>
 			<element name="Indication" type="mc160:IndicationType"/>
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
@@ -46,6 +48,8 @@
 			<element name="HandoverPreference" type="mc160:HandoverMethodType"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RequireSecondaryHandover" type="mc160:RequireSecondaryHandoverType" minOccurs="0" />
+			<element name="RequestDrugAdministrationRegistrationRequested" type="mc160:DrugAdministrationRegistrationRequestedType" minOccurs="0" />
 		</sequence>
 	</complexType>
 </schema>
