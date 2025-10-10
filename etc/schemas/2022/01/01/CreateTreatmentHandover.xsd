@@ -11,7 +11,7 @@
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="PackageHandover.xsd"/>
     <include schemaLocation="SingleUnitsHandover.xsd"/>
-    <include schemaLocation="WarrantShouldRemainOpen.xsd"/>
+    <include schemaLocation="TerminateWarrant.xsd"/>
 
 	<complexType name="CreateTreatmentHandoverType">
 		<annotation>
@@ -23,7 +23,7 @@
                 <element name="CreateNewWarrant" type="mc160:CreateNewWarrantType"/>
                 <element name="ExistingWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
             </choice>
-            <element name="WarrantShouldRemainOpen" type="mc160:WarrantShouldRemainOpenType" minOccurs="0"/>
+            <element name="TerminateWarrant" type="mc160:TerminateWarrantType"/>
             <element name="Handover" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
