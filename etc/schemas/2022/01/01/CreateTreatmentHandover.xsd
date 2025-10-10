@@ -20,7 +20,19 @@
                 <element name="ExistingWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
             </choice>
             <element name="WarrantShouldRemainOpen" type="mc160:WarrantShouldRemainOpenType" minOccurs="0"/>
-            <element name="CreateHandover" type="mc160:CreateHandoverType" maxOccurs="unbounded"/>
+            <element name="Handover" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="DateTime" type="mc160:HandoverDateTimeType"/>
+                        <element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
+                        <choice>
+                            <element name="Package" type="mc160:PackageHandoverType"/>
+                            <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
+                        </choice>
+                        <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+                    </sequence>
+                </complexType>
+            </element>
 		</sequence>
 	</complexType>
 </schema>
