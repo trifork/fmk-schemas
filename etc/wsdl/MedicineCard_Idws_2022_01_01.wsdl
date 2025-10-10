@@ -327,8 +327,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/ReplaceWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/ReplaceWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchEffectuationsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetHandoversRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetHandoversResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantResponse.xsd"/>
@@ -1131,12 +1131,12 @@
         <wsdl:part name="ReplaceWarrantResponse" element="mc160:ReplaceWarrantResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchEffectuationsRequest_160">
-        <wsdl:part name="SearchEffectuationsRequest" element="mc160:SearchEffectuationsRequest"/>
+    <wsdl:message name="GetHandoversRequest_160">
+        <wsdl:part name="GetHandoversRequest" element="mc160:GetHandoversRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchEffectuationsResponse_160">
-        <wsdl:part name="SearchEffectuationsResponse" element="mc160:SearchEffectuationsResponse"/>
+    <wsdl:message name="GetHandoversResponse_160">
+        <wsdl:part name="GetHandoversResponse" element="mc160:GetHandoversResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchForPersonWithWarrantRequest_160">
@@ -1869,9 +1869,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchEffectuations_160">
-            <wsdl:input name="SearchEffectuationsRequest_160" message="tns:SearchEffectuationsRequest_160"/>
-            <wsdl:output name="SearchEffectuationsResponse_160" message="tns:SearchEffectuationsResponse_160"/>
+        <wsdl:operation name="GetHandovers_160">
+            <wsdl:input name="GetHandoversRequest_160" message="tns:GetHandoversRequest_160"/>
+            <wsdl:output name="GetHandoversResponse_160" message="tns:GetHandoversResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3143,13 +3143,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchEffectuations_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchEffectuations" style="document"/>
-            <wsdl:input name="SearchEffectuationsRequest_160">
+        <wsdl:operation name="GetHandovers_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetHandovers" style="document"/>
+            <wsdl:input name="GetHandoversRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="SearchEffectuationsResponse_160">
+            <wsdl:output name="GetHandoversResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
