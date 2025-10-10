@@ -22,23 +22,76 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.axis2</groupId>
-                <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
-                <version>2.0.0</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.6</version>
+                <dependencies>
+                    <!-- Ensure wsimport has JAXB on the classpath -->
+                    <dependency>
+                        <groupId>org.glassfish.jaxb</groupId>
+                        <artifactId>jaxb-xjc</artifactId>
+                        <version>2.3.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.glassfish.jaxb</groupId>
+                        <artifactId>jaxb-core</artifactId>
+                        <version>2.3.0.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>javax.xml.ws</groupId>
+                        <artifactId>jaxws-api</artifactId>
+                        <version>2.3.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sun.xml.ws</groupId>
+                        <artifactId>jaxws-rt</artifactId>
+                        <version>2.3.3</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>wsdl2code</goal>
+                            <goal>wsimport</goal>
                         </goals>
                         <configuration>
-                            <wsdlFile>../mc160idws_wsdl/target/resources/wsdl/MedicineCard_Idws-inline_2022_01_01.wsdl</wsdlFile>
-                            <databindingName>xmlbeans</databindingName>
-                            <unpackClasses>true</unpackClasses>
+                            <wsdlUrls>
+                                <wsdlUrl>../mc160idws_wsdl/target/resources/wsdl/MedicineCard_Idws-inline_2022_01_01.wsdl</wsdlUrl>
+                            </wsdlUrls>
+
+                            <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+
+                            <!-- Optional flags -->
+                            <xnocompile>true</xnocompile>
+                            <verbose>true</verbose>
+                            <bindingDirectory>../etc/jaxb</bindingDirectory>
+                            <bindingFiles>
+                                <bindingFile>MedicineCard_Idws_bindings.xjb</bindingFile>
+                            </bindingFiles>
                         </configuration>
                     </execution>
-
                 </executions>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.axis2</groupId>-->
+<!--                <artifactId>axis2-wsdl2code-maven-plugin</artifactId>-->
+<!--                <version>2.0.0</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>wsdl2code</goal>-->
+<!--                        </goals>-->
+
+<!--                        <configuration>-->
+<!--                            <wsdlFile>../mc160idws_wsdl/target/resources/wsdl/MedicineCard_Idws-inline_2022_01_01.wsdl</wsdlFile>-->
+<!--                            <databindingName>xmlbeans</databindingName>-->
+<!--                            <unpackClasses>true</unpackClasses>-->
+
+<!--                        </configuration>-->
+<!--                    </execution>-->
+
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 
@@ -47,6 +100,30 @@
             <groupId>dk.medicinkortet</groupId>
             <artifactId>MedicineCard_Idws_2022_01_01</artifactId>
             <version>${revision}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.ws</groupId>
+            <artifactId>jaxws-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.3</version>
         </dependency>
     </dependencies>
 
