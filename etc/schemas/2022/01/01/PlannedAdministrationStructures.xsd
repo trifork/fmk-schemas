@@ -8,14 +8,11 @@
 
 	<complexType name="PlannedAdministrationStructuresType">
 		<annotation>
-			<documentation xml:lang="en-GB">Structure for a number of period in the planned Administration</documentation>
+			<documentation xml:lang="en-GB">Structure for a number of period in the planned administration</documentation>
 			<documentation xml:lang="da-DK">Et antal perioder i den planlagte administration</documentation>
 		</annotation>
 		<sequence>
-			<choice maxOccurs="unbounded">
-				<element name="EmptyStructure" type="mc160:EmptyDosageStructureType"/>
-				<element name="PlannedAdministrationStructure" type="mc160:PlannedAdministrationStructureType"/>
-			</choice>
+			<element name="PlannedAdministrationStructure" type="mc160:PlannedAdministrationStructureType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
