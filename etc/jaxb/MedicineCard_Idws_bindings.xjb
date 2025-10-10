@@ -1,0 +1,20 @@
+<jaxb:bindings
+        xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        version="3.0">
+
+  <jaxb:bindings
+          schemaLocation="../../mc160idws_wsdl/target/resources/wsdl/MedicineCard_Idws-inline_2022_01_01.wsdl#types?schema3"
+          node="//xs:complexType[@name='SignatureType']">
+
+    <!-- Rename the uppercase Id attribute -->
+    <jaxb:bindings node="xs:attribute[@name='Id']">
+      <jaxb:property name="upperId"/>
+    </jaxb:bindings>
+
+    <!-- Rename the lowercase id attribute -->
+    <jaxb:bindings node="xs:attribute[@name='id']">
+      <jaxb:property name="lowerId"/>
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>
