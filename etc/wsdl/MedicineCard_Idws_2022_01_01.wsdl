@@ -1192,12 +1192,12 @@
         <wsdl:part name="StartEffectuationOfDispensingPeriodResponse" element="mc160:StartEffectuationOfDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="StartOrderRequest_160">
-        <wsdl:part name="StartOrderRequest" element="mc160:StartOrderHandlingRequest"/>
+    <wsdl:message name="StartOrderHandlingRequest_160">
+        <wsdl:part name="StartOrderHandlingRequest" element="mc160:StartOrderHandlingRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="StartOrderResponse_160">
-        <wsdl:part name="StartOrderResponse" element="mc160:StartOrderHandlingResponse"/>
+    <wsdl:message name="StartOrderHandlingResponse_160">
+        <wsdl:part name="StartOrderHandlingResponse" element="mc160:StartOrderHandlingResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SubstitutePackagedDrugRequest_160">
@@ -1906,9 +1906,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="StartOrder_160">
-            <wsdl:input name="StartOrderRequest_160" message="tns:StartOrderRequest_160"/>
-            <wsdl:output name="StartOrderResponse_160" message="tns:StartOrderResponse_160"/>
+        <wsdl:operation name="StartOrderHandling_160">
+            <wsdl:input name="StartOrderHandlingRequest_160" message="tns:StartOrderHandlingRequest_160"/>
+            <wsdl:output name="StartOrderHandlingResponse_160" message="tns:StartOrderHandlingResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3230,13 +3230,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="StartOrder_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#StartOrder" style="document"/>
-            <wsdl:input name="StartOrderRequest_160">
+        <wsdl:operation name="StartOrderHandling_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#StartOrderHandling" style="document"/>
+            <wsdl:input name="StartOrderHandlingRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="StartOrderResponse_160">
+            <wsdl:output name="StartOrderHandlingResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
