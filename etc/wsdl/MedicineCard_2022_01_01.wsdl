@@ -49,8 +49,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationOfDispensingPeriodResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/AbortEffectuationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortOrderHandlingRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortOrderHandlingResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/AbortPackingRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortPackingResponse.xsd"/>
@@ -433,20 +433,20 @@
         <wsdl:part name="AbortEffectuationOfDispensingPeriodResponse" element="mc160:AbortEffectuationOfDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="AbortEffectuationRequest_160">
-        <wsdl:part name="AbortEffectuationRequest" element="mc160:AbortEffectuationRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="AbortEffectuationResponse_160">
-        <wsdl:part name="AbortEffectuationResponse" element="mc160:AbortEffectuationResponse"/>
-    </wsdl:message>
-
     <wsdl:message name="AbortHandoverRequest_160">
         <wsdl:part name="AbortHandoverRequest" element="mc160:AbortHandoverRequest"/>
     </wsdl:message>
 
     <wsdl:message name="AbortHandoverResponse_160">
         <wsdl:part name="AbortHandoverResponse" element="mc160:AbortHandoverResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortOrderHandlingRequest_160">
+        <wsdl:part name="AbortOrderHandlingRequest" element="mc160:AbortOrderHandlingRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="AbortOrderHandlingResponse_160">
+        <wsdl:part name="AbortOrderHandlingResponse" element="mc160:AbortOrderHandlingResponse"/>
     </wsdl:message>
 
     <wsdl:message name="AbortPackingRequest_160">
@@ -1329,15 +1329,15 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="AbortEffectuation_160">
-            <wsdl:input name="AbortEffectuationRequest_160" message="tns:AbortEffectuationRequest_160"/>
-            <wsdl:output name="AbortEffectuationResponse_160" message="tns:AbortEffectuationResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="AbortHandover_160">
             <wsdl:input name="AbortHandoverRequest_160" message="tns:AbortHandoverRequest_160"/>
             <wsdl:output name="AbortHandoverResponse_160" message="tns:AbortHandoverResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortOrderHandling_160">
+            <wsdl:input name="AbortOrderHandlingRequest_160" message="tns:AbortOrderHandlingRequest_160"/>
+            <wsdl:output name="AbortOrderHandlingResponse_160" message="tns:AbortOrderHandlingResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2015,19 +2015,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="AbortEffectuation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#AbortEffectuation" style="document"/>
-            <wsdl:input name="AbortEffectuationRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="AbortEffectuationResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="AbortHandover_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#AbortHandover" style="document"/>
             <wsdl:input name="AbortHandoverRequest_160">
@@ -2035,6 +2022,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AbortHandoverResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="AbortOrderHandling_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AbortOrderHandling" style="document"/>
+            <wsdl:input name="AbortOrderHandlingRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="AbortOrderHandlingResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
