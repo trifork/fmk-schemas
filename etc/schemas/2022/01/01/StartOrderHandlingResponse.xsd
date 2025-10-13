@@ -32,12 +32,12 @@
 
     <complexType name="WarrantAndOrderIdentifierType">
         <annotation>
-            <documentation xml:lang="en-GB">A warrant identifier along with any order identifiers</documentation>
+            <documentation xml:lang="en-GB">A warrant identifier along with any corresponding order identifiers</documentation>
             <documentation xml:lang="da-DK">En identifier på udleveringsgrundlag med eventuelle tilhørende bestillingsidentifiers</documentation>
         </annotation>
         <sequence>
-            <element name="Identifier" type="mc160:WarrantIdentifierType"/>
-            <element name="Order" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+            <element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 
