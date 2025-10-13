@@ -11,7 +11,7 @@
 	
 	<element name="StartOrderHandlingResponse" type="mc160:StartOrderHandlingResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for the request to start orders one or more warrants</documentation>
+			<documentation xml:lang="en-GB">Response for the request to start orders on one or more warrants</documentation>
 			<documentation xml:lang="da-DK">Svar på forespørgsel på at påbegynde bestilling af et eller flere udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
@@ -21,8 +21,24 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>
+            <choice>
+                <element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="WarrantAndOrderIdentifier" type="mc160:WarrantAndOrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            </choice>
 			<element name="StartOrderFailed" type="mc160:WarrantErrorType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
+
+
+    <complexType name="WarrantAndOrderIdentifierType">
+        <annotation>
+            <documentation xml:lang="en-GB">A warrant identifier along with any order identifiers</documentation>
+            <documentation xml:lang="da-DK">En identifier på udleveringsgrundlag med eventuelle tilhørende bestillingsidentifiers</documentation>
+        </annotation>
+        <sequence>
+            <element name="Identifier" type="mc160:WarrantIdentifierType"/>
+            <element name="Order" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
 </schema>
