@@ -12,8 +12,8 @@
 
 	<element name="RegisterLoosePrescriptionAndHandoverRequest" type="mc160:RegisterLoosePrescriptionAndHandoverRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document containing one or more documents for creating warrants together with effectuations in one go</documentation>
-			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at oprette udleveringsgrundlag med tilhørende udleveringer</documentation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for registering loose prescriptions together and creating handovers</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at registrere løse recepter og oprette tilhørende udleveringer</documentation>
 		</annotation>
 	</element>
 	<complexType name="RegisterLoosePrescriptionAndHandoverRequestType">
@@ -26,7 +26,7 @@
 			<element name="CreatedBy" type="mc160:ModificatorType" />
 			<element name="EffectuatedBy" type="mc160:ModificatorType" />
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Warrant" type="mc160:RegisterLoosePrescriptionAndHandoverType" maxOccurs="unbounded"/>
+			<element name="WarrantAndHandover" type="mc160:RegisterLoosePrescriptionAndHandoverType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

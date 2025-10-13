@@ -12,8 +12,8 @@
 
 	<element name="RegisterLoosePrescriptionAndHandoverResponse" type="mc160:RegisterLoosePrescriptionAndHandoverResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for creating one or more warrants together with effectuations</documentation>
-			<documentation xml:lang="da-DK">Svar på oprettelse af en eller flere udleveringsgrundlag med tilhørende udleveringer </documentation>
+			<documentation xml:lang="en-GB">Response for registering one or more loose prescriptions together with handovers</documentation>
+			<documentation xml:lang="da-DK">Svar på oprettelse af en eller flere løse recepter med tilhørende udleveringer </documentation>
 		</annotation>
 	</element>
 	<complexType name="RegisterLoosePrescriptionAndHandoverResponseType">
@@ -22,7 +22,7 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="Warrant" maxOccurs="unbounded">
+			<element name="WarrantAndHandover" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
 						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
