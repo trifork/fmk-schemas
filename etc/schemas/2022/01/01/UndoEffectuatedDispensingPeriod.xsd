@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<complexType name="UndoEffectuatedDispensingPeriodType">
@@ -14,6 +15,7 @@
 		</annotation>
 		<sequence>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
