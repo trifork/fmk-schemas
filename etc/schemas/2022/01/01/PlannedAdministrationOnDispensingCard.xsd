@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+	<include schemaLocation="PlannedAdministrationVersion.xsd"/>
+	<include schemaLocation="DrugMedicationOnPlannedAdministration.xsd"/>
+	<include schemaLocation="ValidWarrant.xsd"/>
+	<include schemaLocation="DispensingWarning.xsd"/>
+    <include schemaLocation="DosageUnit.xsd"/>
+    <include schemaLocation="AdministrationInstruction.xsd"/>
+    <include schemaLocation="DosageTimesStartDate.xsd"/>
+    <include schemaLocation="PlannedAdministrationStructures.xsd"/>
+	<include schemaLocation="DispensingEndDate.xsd"/>
+
+	<complexType name="PlannedAdministrationOnDispensingCardType">
+		<annotation>
+			<documentation xml:lang="en-GB">A planned administration that's linked to a dispensing card</documentation>
+			<documentation xml:lang="da-DK">Angivelse af hvor ofte og hvornår et lægemiddel planlægges til administration</documentation>
+		</annotation>
+		<sequence>
+			<element name="Identifier" type="mc160:PlannedAdministrationIdentifierType"/>
+			<element name="Version" type="mc160:PlannedAdministrationVersionType"/>
+			<element name="DrugMedication" type="mc160:DrugMedicationOnPlannedAdministrationType"/>
+			<element name="ValidWarrant" type="mc160:ValidWarrantType" minOccurs="0"/>
+			<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="DosageUnit" type="mc160:DosageUnitType" minOccurs="0"/>
+			<element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0"/>
+            <element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
+			<element name="PlannedAdministrationFixed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
+			<element name="PlannedAdministrationAccordingToNeed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
+			<element name="DispensingEndDate" type="mc160:DispensingEndDateType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

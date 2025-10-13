@@ -84,7 +84,7 @@ pipeline {
                     try{
                         step ([$class: 'CopyArtifact',
                                projectName: 'FMK_schema',
-                               filter: "**/standard/target/wsdl/*${snitflade}*.zip,**/target/idws/target/wsdl/*${snitflade}*.zip",
+                               filter: "**/standard/target/wsdl/*${snitflade}*.zip,**/target/idws/target/wsdl/*${snitflade}*.zip,**/target/resources/*${snitflade}*.zip",
                                target: 'FMKResources/wsdl',
                                flatten: true]);
                     }
@@ -94,7 +94,7 @@ pipeline {
                     try {
                         step([$class     : 'CopyArtifact',
                               projectName: 'FMK_schema',
-                              filter     : "**/standard/target/wsdl/*${snitflade}*.wsdl,**/target/idws/target/wsdl/*${snitflade}*.wsdl",
+                              filter     : "**/standard/target/wsdl/*${snitflade}*.wsdl,**/target/idws/target/wsdl/*${snitflade}*.wsdl,**/target/resources/wsdl/*${snitflade}*.wsdl",
                               target     : 'FMKResources/tmp',
                               flatten    : true]);
                     }

@@ -636,7 +636,7 @@ function toggleUsageVisibility(id) {
   
     if(xsdDivObj.innerHTML.length == 0) {
 	 
-		xsdDivObj.innerHTML += "Anvendes i flg. typer:<br/>";
+		xsdDivObj.innerHTML += "Anvendes i flg. typer:&lt;br/&gt;";
 	
 		var uniqueArray = usages[id].filter(function(item, pos, self) {
 			return self.indexOf(item) == pos;

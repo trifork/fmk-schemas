@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DoseQuantity.xsd"/>
+	<include schemaLocation="DosageQuantityUnitText.xsd"/>
+	<include schemaLocation="Drug.xsd"/>
+
+	<complexType name="SingleUnitsHandoverType">
+		<annotation>
+			<documentation xml:lang="en-GB">Details for a handover of single units, i.e. not a packaged drug. </documentation>
+			<documentation xml:lang="da-DK">Detaljer for en udlevering af enkelte enheder, dvs. ikke et pakket lægemiddel.</documentation>
+		</annotation>
+        <sequence>
+            <element name="DoseQuantity" type="mc160:DoseQuantityType"/>
+            <element name="DosageQuantityUnitText" type="mc160:DosageQuantityUnitTextType"/>
+            <element name="SubstitutedDrug" type="mc160:DrugType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>
