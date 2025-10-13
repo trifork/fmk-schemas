@@ -10,13 +10,13 @@
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 
-	<element name="UndoEffectuationResponse" type="mc160:UndoEffectuationResponseType">
+	<element name="AbortHandoverResponse" type="mc160:AbortHandoverResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Service response for undoing an effectuation</documentation>
 			<documentation xml:lang="da-DK">Service svar på en tilbageførsel</documentation>
 		</annotation>
 	</element>
-	<complexType name="UndoEffectuationResponseType">
+	<complexType name="AbortHandoverResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
@@ -26,14 +26,17 @@
 				<complexType>
 					<sequence>
 						<element name="Identifier" type="mc160:WarrantIdentifierType"/>
-						<element name="Order" maxOccurs="unbounded">
-							<complexType>
-								<sequence>
-									<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-									<element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
-								</sequence>
-							</complexType>
-						</element>
+                        <choice>
+                            <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType" maxOccurs="unbounded"/>
+                            <element name="HandoverOnOrder" maxOccurs="unbounded">
+                                <complexType>
+                                    <sequence>
+                                        <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+                                        <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
+                                    </sequence>
+                                </complexType>
+                            </element>
+                        </choice>
 					</sequence>
 				</complexType>
 			</element>

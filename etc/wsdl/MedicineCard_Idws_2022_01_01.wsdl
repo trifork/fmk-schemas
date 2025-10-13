@@ -160,9 +160,6 @@
             <xs:include schemaLocation="../schemas/2022/01/01/DeleteDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/DeleteDispensingPeriodResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/DeleteEffectuationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/DeleteEffectuationResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2022/01/01/DeleteFocesWhitelistingRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/DeleteFocesWhitelistingResponse.xsd"/>
 
@@ -371,8 +368,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuatedDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuatedDispensingPeriodResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortHandoverRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/AbortHandoverResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationResponse.xsd"/>
@@ -689,14 +686,6 @@
 
     <wsdl:message name="DeleteDispensingPeriodResponse_160">
         <wsdl:part name="DeleteDispensingPeriodResponse" element="mc160:DeleteDispensingPeriodResponse"/>
-    </wsdl:message>
-
-    <wsdl:message name="DeleteEffectuationRequest_160">
-        <wsdl:part name="DeleteEffectuationRequest" element="mc160:DeleteEffectuationRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="DeleteEffectuationResponse_160">
-        <wsdl:part name="DeleteEffectuationResponse" element="mc160:DeleteEffectuationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="DeleteFocesWhitelistingRequest_160">
@@ -1243,12 +1232,12 @@
         <wsdl:part name="UndoEffectuatedDispensingPeriodResponse" element="mc160:UndoEffectuatedDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UndoEffectuationRequest_160">
-        <wsdl:part name="UndoEffectuationRequest" element="mc160:UndoEffectuationRequest"/>
+    <wsdl:message name="AbortHandoverRequest_160">
+        <wsdl:part name="AbortHandoverRequest" element="mc160:AbortHandoverRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="UndoEffectuationResponse_160">
-        <wsdl:part name="UndoEffectuationResponse" element="mc160:UndoEffectuationResponse"/>
+    <wsdl:message name="AbortHandoverResponse_160">
+        <wsdl:part name="AbortHandoverResponse" element="mc160:AbortHandoverResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UndoRegisterDrugAdministrationRequest_160">
@@ -1536,12 +1525,6 @@
         <wsdl:operation name="DeleteDispensingPeriod_160">
             <wsdl:input name="DeleteDispensingPeriodRequest_160" message="tns:DeleteDispensingPeriodRequest_160"/>
             <wsdl:output name="DeleteDispensingPeriodResponse_160" message="tns:DeleteDispensingPeriodResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="DeleteEffectuation_160">
-            <wsdl:input name="DeleteEffectuationRequest_160" message="tns:DeleteEffectuationRequest_160"/>
-            <wsdl:output name="DeleteEffectuationResponse_160" message="tns:DeleteEffectuationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1953,9 +1936,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UndoEffectuation_160">
-            <wsdl:input name="UndoEffectuationRequest_160" message="tns:UndoEffectuationRequest_160"/>
-            <wsdl:output name="UndoEffectuationResponse_160" message="tns:UndoEffectuationResponse_160"/>
+        <wsdl:operation name="AbortHandover_160">
+            <wsdl:input name="AbortHandoverRequest_160" message="tns:AbortHandoverRequest_160"/>
+            <wsdl:output name="AbortHandoverResponse_160" message="tns:AbortHandoverResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2421,19 +2404,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="DeleteDispensingPeriodResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="DeleteEffectuation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#DeleteEffectuation" style="document"/>
-            <wsdl:input name="DeleteEffectuationRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="DeleteEffectuationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -3325,13 +3295,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UndoEffectuation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoEffectuation" style="document"/>
-            <wsdl:input name="UndoEffectuationRequest_160">
+        <wsdl:operation name="AbortHandover_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#AbortHandover" style="document"/>
+            <wsdl:input name="AbortHandoverRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="UndoEffectuationResponse_160">
+            <wsdl:output name="AbortHandoverResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
