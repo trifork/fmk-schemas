@@ -37,11 +37,15 @@
             <element name="AcutePacking" type="mc160:AcutePackingType" minOccurs="0"/>
             <choice>
                 <element name="Dispensing" type="mc160:DispensingType" minOccurs="0" maxOccurs="unbounded"/>
-                <sequence minOccurs="0" maxOccurs="unbounded">
-                    <element name="PlannedAdministration" type="mc160:PlannedAdministrationType"/>
-                    <element name="SubstitutionTemplate" type="mc160:DrugType" minOccurs="0"/>
-                </sequence>
+                <element name="PlannedAdministrationEntry" type="mc160:PlannedAdministrationEntryType" minOccurs="0" maxOccurs="unbounded"/>
             </choice>
+        </sequence>
+    </complexType>
+
+    <complexType name="PlannedAdministrationEntryType">
+        <sequence>
+            <element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDispensingCardType"/>
+            <element name="SubstitutionTemplate" type="mc160:DrugType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>

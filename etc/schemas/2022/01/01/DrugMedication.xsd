@@ -19,7 +19,7 @@
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageForResponse.xsd"/>
 	<include schemaLocation="PlannedAdministrationOnDrugMedication.xsd"/>
-	<include schemaLocation="PlannedAdministrationForPreviousVersion.xsd"/>
+	<include schemaLocation="PlannedAdministrationExistForPreviousVersion.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="Warrant.xsd"/>
 	<include schemaLocation="InvalidWarrant.xsd"/>
@@ -59,7 +59,7 @@
 			</choice>
 			<choice minOccurs="0">
 				<element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDrugMedicationType" maxOccurs="unbounded"/>
-				<element name="PlannedAdministrationForPreviousVersion" type="mc160:PlannedAdministrationForPreviousVersionType"/>
+				<element name="PlannedAdministrationExistForPreviousVersion" type="mc160:PlannedAdministrationExistForPreviousVersionType"/>
 			</choice>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="HandoverPreference" type="mc160:HandoverMethodType"/>
