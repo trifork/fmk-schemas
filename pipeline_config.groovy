@@ -5,6 +5,6 @@ libraries{
     }
     sonarqube_maven
     archive {
-        artifacts = 'fmk-schemas/mc160_wsdl/target/*.zip, fmk-schemas/mc160idws_wsdl/target/*.zip, fmk-schemas/mc160_wsdl/target/resources/wsdl/*.wsdl, fmk-schemas/mc160idws_wsdl/target/resources/wsdl/*.wsdl'
+        artifacts = 'mc160_wsdl/target/*.zip, mc160idws_wsdl/target/*.zip, mc160_wsdl/target/resources/wsdl/*.wsdl, mc160idws_wsdl/target/resources/wsdl/*.wsdl'
     }
 }
