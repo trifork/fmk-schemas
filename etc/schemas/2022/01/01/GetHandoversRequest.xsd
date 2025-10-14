@@ -8,8 +8,9 @@
 	<include schemaLocation="HandoverDateTime.xsd"/>
 	<include schemaLocation="IncludeHandoversOnDrugMedications.xsd"/>
 	<include schemaLocation="IncludeHandoversOnLoosePrescriptions.xsd"/>
+    <include schemaLocation="IncludeSecondaryHandovers.xsd"/>
 
-	<element name="GetHandoversRequest" type="mc160:GetHandoversRequestType">
+    <element name="GetHandoversRequest" type="mc160:GetHandoversRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for a request for handovers</documentation>
 			<documentation xml:lang="da-DK">Element for en forespørgsel efter udleveringer</documentation>
@@ -22,6 +23,7 @@
 			<element name="ToDateTime" type="mc160:HandoverDateTimeType" minOccurs="0"/>
 			<element name="IncludeHandoversOnDrugMedications" type="mc160:IncludeHandoversOnDrugMedicationsType" minOccurs="0"/>
 			<element name="IncludeHandoversOnLoosePrescriptions" type="mc160:IncludeHandoversOnLoosePrescriptionsType" minOccurs="0"/>
+            <element name="IncludeSecondaryHandovers" type="mc160:IncludeSecondaryHandoversType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
