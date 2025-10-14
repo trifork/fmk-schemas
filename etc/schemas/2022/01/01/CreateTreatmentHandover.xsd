@@ -7,6 +7,7 @@
 	<include schemaLocation="WarrantIdentifier.xsd"/>
     <include schemaLocation="HandoverDateTime.xsd"/>
     <include schemaLocation="CreateNewWarrant.xsd"/>
+    <include schemaLocation="CreateDrugAdministrationOnHandover.xsd"/>
     <include schemaLocation="Modificator.xsd"/>
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="PackageHandover.xsd"/>
@@ -33,6 +34,7 @@
                             <element name="Package" type="mc160:PackageHandoverType"/>
                             <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
                         </choice>
+                        <element name="RegisterDrugAdministration" type="mc160:CreateDrugAdministrationOnHandoverType" minOccurs="0" maxOccurs="unbounded"/>
                         <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
                 </complexType>
