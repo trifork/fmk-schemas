@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
+	<include schemaLocation="HandoverIdentifier.xsd"/>
+    <include schemaLocation="DrugAdministrationIdentifier.xsd"/>
+	
+	<element name="CreatedTreatmentHandovers" type="mc160:CreatedTreatmentHandoversType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a warrant and associated handovers created on a drug medication</documentation>
+			<documentation xml:lang="da-DK">Element for udleveringsgrundlag og tilhørende udleveringer tilføjet til en lægemiddelordination</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreatedTreatmentHandoversType">
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="CreatedHandoversOnWarrant" type="mc160:WarrantAndHandoversType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+    <complexType name="WarrantAndHandoversType">
+        <sequence>
+            <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+            <element name="TreatmentHandover" type="mc160:RegisteredHandoverType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="RegisteredHandoverType">
+        <sequence>
+            <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
+            <element name="DrugAdministrationIdentifier" type="mc160:DrugAdministrationIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

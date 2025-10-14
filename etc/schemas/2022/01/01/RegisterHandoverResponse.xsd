@@ -7,7 +7,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
-	<include schemaLocation="CreatedTreatmentHandover.xsd"/>
+	<include schemaLocation="CreatedTreatmentHandovers.xsd"/>
 
 	<element name="RegisterHandoverResponse" type="mc160:RegisterHandoverResponseType">
 		<annotation>
@@ -19,7 +19,7 @@
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
-			<element name="Handover" type="mc160:CreatedTreatmentHandoverType" maxOccurs="unbounded"/>
+			<element name="CreatedTreatmentHandovers" type="mc160:CreatedTreatmentHandoversType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
