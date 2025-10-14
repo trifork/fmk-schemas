@@ -4,12 +4,12 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<include schemaLocation="AbortHandoverOnOrder.xsd"/>
+	<include schemaLocation="UndoHandoverOnOrder.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="TerminateWarrant.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 
-	<complexType name="AbortHandoverOnWarrantType">
+	<complexType name="UndoHandoverOnWarrantType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element for undoing a single handover on a warrant. If the handover is a pharmacy handover, the corresponding order must also be specified.</documentation>
 			<documentation xml:lang="da-DK">Element til tilbageførsel af en enkelt udlevering på et udleveringsgrundlag. Hvis der er tale om en apoteksudlevering, skal den tilhørende bestilling også specificeres.</documentation>
@@ -17,7 +17,7 @@
 		<sequence>
 			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
             <choice>
-                <element name="PharmacyHandover" type="mc160:AbortHandoverOnOrderType"/>
+                <element name="PharmacyHandover" type="mc160:UndoHandoverOnOrderType"/>
                 <element name="TreatmentHandoverIdentifier" type="mc160:HandoverIdentifierType"/>
             </choice>
 			<element name="Terminate" type="mc160:TerminateWarrantType"/>

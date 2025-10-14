@@ -10,13 +10,13 @@
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 
-	<element name="AbortHandoverResponse" type="mc160:AbortHandoverResponseType">
+	<element name="UndoHandoverResponse" type="mc160:UndoHandoverResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Service response for undoing an effectuation</documentation>
-			<documentation xml:lang="da-DK">Service svar på en tilbageførsel</documentation>
+			<documentation xml:lang="en-GB">Service response for undoing one or more handovers</documentation>
+			<documentation xml:lang="da-DK">Service svar på en tilbageførsel af en eller flere udleveringer</documentation>
 		</annotation>
 	</element>
-	<complexType name="AbortHandoverResponseType">
+	<complexType name="UndoHandoverResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>

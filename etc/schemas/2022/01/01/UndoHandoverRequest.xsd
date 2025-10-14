@@ -7,15 +7,15 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="AbortHandoverOnWarrant.xsd"/>
+	<include schemaLocation="UndoHandoverOnWarrant.xsd"/>
 
-	<element name="AbortHandoverRequest" type="mc160:AbortHandoverRequestType">
+	<element name="UndoHandoverRequest" type="mc160:UndoHandoverRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Service request for undoing a number of existing handovers</documentation>
 			<documentation xml:lang="da-DK">Service kald til at tilbageføre et antal eksisterende udleveringer</documentation>
 		</annotation>
 	</element>
-	<complexType name="AbortHandoverRequestType">
+	<complexType name="UndoHandoverRequestType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
@@ -23,7 +23,7 @@
 			</choice>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Warrant" type="mc160:AbortHandoverOnWarrantType" maxOccurs="unbounded"/>
+			<element name="Warrant" type="mc160:UndoHandoverOnWarrantType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
