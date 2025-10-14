@@ -34,6 +34,7 @@
 	<include schemaLocation="IsPrivateWarrant.xsd"/>
 	<include schemaLocation="Handover.xsd"/>
 	<include schemaLocation="InvalidHandover.xsd"/>
+    <include schemaLocation="WarrantStatus.xsd"/>
 
 	<complexType name="WarrantType">
 		<annotation>
@@ -78,6 +79,7 @@
 			<element name="InvalidHandover" type="mc160:InvalidHandoverType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="Version" type="mc160:WarrantVersionType" minOccurs="0"/>
 			<element name="IsPrivateWarrant" type="mc160:IsPrivateWarrantType" minOccurs="0"/>
+            <element name="Status" type="mc160:WarrantStatusType"/>
 		</sequence>
 	</complexType>
 </schema>
