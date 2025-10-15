@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="PackingGroupIdentifier.xsd"/>
+    <include schemaLocation="PackingGroupVersion.xsd"/>
+
+    <complexType name="PackingGroupIdentifierAndVersionType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element with result for updating a packinggroup</documentation>
+            <documentation xml:lang="da-DK">Resultat af opdatering af en pakkegruppe</documentation>
+        </annotation>
+        <sequence>
+        	<element name="Identifier" type="mc160:PackingGroupIdentifierType"/>
+        	<element name="Version" type="mc160:PackingGroupVersionType"/>
+        </sequence>
+    </complexType>
+</schema>
