@@ -166,8 +166,6 @@ pipeline {
     }
 
     post {
-        success {
-        }
         failure {
             emailext body: '$DEFAULT_CONTENT',
                     recipientProviders: [culprits(), requestor()],
