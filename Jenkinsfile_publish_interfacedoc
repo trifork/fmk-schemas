@@ -69,11 +69,12 @@ pipeline {
             steps {
                 script {
                     snitflade = snitflade.trim()
-                    step ([$class: 'CopyArtifact',
-                        projectName: 'FMK_schema',
-                        filter: "**/standard/target/wsdl/*${snitflade}.wsdl,**/target/idws/target/wsdl/*${snitflade}.wsdl,**/target/resources/wsdl/*${snitflade}.wsdl",
-                        target: 'tmp',
-                        flatten: true]);
+                        step([$class     : 'CopyArtifact',
+                              projectName: '/FMK_schema/master',
+                              selector   : 'lastCompleted',
+                              filter     : "**/target/resources/wsdl/*${snitflade}*.wsdl",
+                              target     : 'FMKResources/tmp',
+                              flatten    : true]);
                 }
             }
         }
