@@ -90,7 +90,7 @@ pipeline {
                                flatten: true]);
                     }
                     catch(exception) {
-                        sh "echo CopyArtifact zip failed ${exception.toString()}"
+                        //sh "echo CopyArtifact zip failed ${exception.toString()}"
                         def sw = new StringWriter()
                         def pw = new PrintWriter(sw)
                         exception.printStackTrace(pw)
