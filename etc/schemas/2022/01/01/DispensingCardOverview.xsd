@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DispensingCardVersion.xsd"/>
     <include schemaLocation="DispensingPeriodStartDate.xsd"/>
     <include schemaLocation="DispensingPeriodEndDate.xsd"/>
     <include schemaLocation="DispensingStatus.xsd"/>
@@ -20,6 +21,7 @@
     <complexType name="DispensingCardOverviewType">
         <sequence>
             <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+            <element name="Version" type="mc160:DispensingCardVersionType"/>
             <element name="StartDate" type="mc160:DispensingPeriodStartDateType" minOccurs="0"/>
             <element name="EndDate" type="mc160:DispensingPeriodEndDateType" minOccurs="0"/>
             <element name="Status" type="mc160:DispensingStatusType" minOccurs="0"/>

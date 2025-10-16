@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DispensingCardVersion.xsd"/>
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="DispensingCardDescription.xsd"/>
     <include schemaLocation="DeliveryText.xsd"/>
@@ -20,6 +21,7 @@
         </annotation>
         <sequence>
         	<element name="Identifier" type="mc160:DispensingCardIdentifierType"/>
+            <element name="Version" type="mc160:DispensingCardVersionType"/>
         	<element name="Description" type="mc160:DispensingCardDescriptionType"/>
             <element name="Delivery" type="mc160:DeliveryTextType" minOccurs="0"/>
             <element name="DaysForExpeditedDosageChange" type="mc160:ExpeditedDosageChangeDaysType" minOccurs="0"/>

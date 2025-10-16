@@ -6,7 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="DispensingCardIdentifier.xsd"/>
+	<include schemaLocation="DispensingCardIdentifierAndVersion.xsd"/>
 
 	<element name="CloseDispensingCardResponse" type="mc160:CloseDispensingCardResponseType">
 		<annotation>
@@ -20,7 +20,7 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType" maxOccurs="unbounded"/>
+			<element name="DispensingCard" type="mc160:DispensingCardIdentifierAndVersionType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

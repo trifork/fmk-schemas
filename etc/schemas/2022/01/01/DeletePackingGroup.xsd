@@ -6,7 +6,8 @@
         attributeFormDefault="unqualified">
 
 	<include schemaLocation="ModificationMetadata.xsd"/>
-	<include schemaLocation="PackingGroupIdentifier.xsd"/>
+    <include schemaLocation="PackingGroupIdentifier.xsd"/>
+    <include schemaLocation="PackingGroupVersion.xsd"/>
 
 	<complexType name="DeletePackingGroupType">
 		<annotation>
@@ -15,6 +16,7 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:PackingGroupIdentifierType"/>
+            <element name="Version" type="mc160:PackingGroupVersionType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
