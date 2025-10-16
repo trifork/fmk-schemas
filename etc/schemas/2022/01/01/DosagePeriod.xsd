@@ -12,7 +12,7 @@
 	<include schemaLocation="DosagePeriodLengthText.xsd"/>
 	<include schemaLocation="DosageProfile.xsd"/>
 	<include schemaLocation="DosageTranslation.xsd"/>
-	<include schemaLocation="IterationInterval.xsd"/>
+	<include schemaLocation="DosageIterationInterval.xsd"/>
 
 	<element name="DosagePeriodType" type="mc160:DosagePeriodType">
 		<annotation>
@@ -28,7 +28,7 @@
 				<element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
 				<element name="PeriodLengthFreeText" type="mc160:DosagePeriodLengthTextType"/>
 			</choice>
-			<element name="IterationInterval" type="mc160:IterationIntervalType" minOccurs="0"/>
+			<element name="IterationInterval" type="mc160:DosageIterationIntervalType" minOccurs="0"/>
 			<choice>
 				<element name="Day" type="mc160:DayType" maxOccurs="99"/>
 				<element name="Empty" type="mc160:EmptyPeriodType"/>

@@ -2,7 +2,6 @@ package dk.medicinkortet.xmlschema;
 
 import dk.medicinkortet.xmlschema.FindReferencedSchemaFiles.SchemaFile;
 import dk.sosi.seal.xml.XmlUtil;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
@@ -15,15 +14,15 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
-
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.*;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static java.util.stream.Collectors.toUnmodifiableList;
 
 /**
  * This class goes through the schemas in etc/schemas and places them in the correct structure in target/gensrc/META-INF.
@@ -228,7 +227,7 @@ public class SchemaLoader {
                                            Map<String, Set<File>> namespaces) throws URISyntaxException,
             FileNotFoundException, IOException {
         System.out.println("Generating index files");
-        for (Map.Entry<String, Set<File>> e : namespaces.entrySet()) {
+        for (Entry<String, Set<File>> e : namespaces.entrySet()) {
             String targetNamespace = e.getKey();
             URI p = new URI(targetNamespace);
             String path = p.getPath();
@@ -293,14 +292,16 @@ public class SchemaLoader {
         }
         
         // Insert new schema sections to the <types> element of the WSDL file
-        for (Map.Entry<String, Set<SchemaFile>> entry : ns2schemaFilesMap.entrySet()) {
-            String targetNamespace = entry.getKey();
+        final List<Entry<String, Set<SchemaFile>>> schemaEntriesSorted = ns2schemaFilesMap.entrySet()
+                .stream()
+                .sorted(Entry.comparingByKey())
+                .collect(toUnmodifiableList());
 
+        for (Entry<String, Set<SchemaFile>> entry : schemaEntriesSorted) {
+            final String targetNamespace = entry.getKey();
             System.out.println("Add <schema targetNamespace='" + targetNamespace + "'>");
-
-            Element ns = addSchemaToWsdl(types, wsdlDoc, targetNamespace);
+            final Element ns = addSchemaToWsdl(types, wsdlDoc, targetNamespace);
             for (SchemaFile schemaFile : entry.getValue()) {
-//                System.out.println("  - including " + schemaFile.location);
                 insertSchema(builder, wsdlDoc, ns, schemaFile);
             }
         }

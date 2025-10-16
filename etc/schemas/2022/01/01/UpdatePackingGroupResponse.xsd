@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PackingGroupIdentifier.xsd"/>
+	<include schemaLocation="PackingGroupIdentifierAndVersion.xsd"/>
 
 	<element name="UpdatePackingGroupResponse" type="mc160:UpdatePackingGroupResponseType">
 		<annotation>
@@ -14,7 +14,7 @@
 	</element>
 	<complexType name="UpdatePackingGroupResponseType">
 		<sequence>
-			<element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType" maxOccurs="unbounded"/>
+			<element name="PackingGroup" type="mc160:PackingGroupIdentifierAndVersionType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

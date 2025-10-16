@@ -6,6 +6,7 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="DiscardedByDateTime.xsd"/>
 	<include schemaLocation="DiscardReason.xsd"/>
@@ -20,6 +21,7 @@
 	<complexType name="DiscardDispensingPeriodType">
 		<sequence>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
 			<element name="DiscardedByDateTime" type="mc160:DiscardedByDateTimeType" minOccurs="0"/>
 			<element name="Reason" type="mc160:DiscardReasonType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
