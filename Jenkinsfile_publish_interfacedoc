@@ -95,6 +95,7 @@ pipeline {
                             sh '''
                                 mvn xml:transform -N
                                 for f in tmp/*.html
+                                do
                                     mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=$DOKUWIKI_UN -Ddokuwiki.password=$DOKUWIKI_PW
                                 done
                                 rm -r tmp
