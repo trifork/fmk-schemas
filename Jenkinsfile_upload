@@ -83,7 +83,7 @@ pipeline {
                     currentBuild.description = "${snitflade}"
                     try{
                         step ([$class: 'CopyArtifact',
-                               projectName: 'FMK_schema/master',
+                               projectName: '/FMK_schema/master',
                                filter: "**/target/*${snitflade}*.zip",
                                target: 'FMKResources/wsdl',
                                flatten: true]);
@@ -97,7 +97,7 @@ pipeline {
                     }
                     try {
                         step([$class     : 'CopyArtifact',
-                              projectName: 'FMK_schema/master',
+                              projectName: '/FMK_schema/master',
                               filter     : "**/target/resources/wsdl/*${snitflade}*.wsdl",
                               target     : 'FMKResources/tmp',
                               flatten    : true]);
