@@ -64,7 +64,7 @@ pipeline {
     /*agent {
         node {
             label ''
-            customWorkspace '/var/jenkins_home/jobs/FMK_schema/workspace'
+            customWorkspace '/var/jenkins_home/jobs/FMK_schema/master/workspace'
         }
     }*/
 
@@ -83,23 +83,31 @@ pipeline {
                     currentBuild.description = "${snitflade}"
                     try{
                         step ([$class: 'CopyArtifact',
-                               projectName: 'FMK_schema',
-                               filter: "**/standard/target/wsdl/*${snitflade}*.zip,**/target/idws/target/wsdl/*${snitflade}*.zip,**/target/resources/*${snitflade}*.zip",
+                               projectName: '/FMK_schema/master',
+                               filter: "**/target/*${snitflade}*.zip",
                                target: 'FMKResources/wsdl',
                                flatten: true]);
                     }
                     catch(exception) {
                         sh "echo CopyArtifact zip failed ${exception.toString()}"
+                        def sw = new StringWriter()
+                        def pw = new PrintWriter(sw)
+                        exception.printStackTrace(pw)
+                        echo sw.toString()
                     }
                     try {
                         step([$class     : 'CopyArtifact',
-                              projectName: 'FMK_schema',
-                              filter     : "**/standard/target/wsdl/*${snitflade}*.wsdl,**/target/idws/target/wsdl/*${snitflade}*.wsdl,**/target/resources/wsdl/*${snitflade}*.wsdl",
+                              projectName: '/FMK_schema/master',
+                              filter     : "**/target/resources/wsdl/*${snitflade}*.wsdl",
                               target     : 'FMKResources/tmp',
                               flatten    : true]);
                     }
                     catch(exception) {
                         sh "echo CopyArtifact wsdl failed ${exception.toString()}"
+                        def sw = new StringWriter()
+                        def pw = new PrintWriter(sw)
+                        exception.printStackTrace(pw)
+                        echo sw.toString()
                     }
                 }
             }

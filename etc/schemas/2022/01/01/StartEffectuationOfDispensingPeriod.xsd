@@ -7,6 +7,7 @@
 
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
     <include schemaLocation="PlannedAdministrationSubstitution.xsd"/>
     <include schemaLocation="UseDraftSubstitution.xsd"/>
 
@@ -17,6 +18,7 @@
         </annotation>
         <sequence>
             <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
             <choice>
                 <element name="UseDraftSubstitutions" type="mc160:UseDraftSubstitutionsFlagType" minOccurs="0"/>
                 <element name="PlannedAdministrationSubstitutions" type="mc160:PlannedAdministrationSubstitutionType" minOccurs="0" maxOccurs="unbounded"/>
