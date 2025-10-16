@@ -72,7 +72,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 cleanWs()
-                checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'FMKResources']], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:trifork/FMKResources.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'FMKResources']], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:trifork/FMKResources.git',credentialsId: 'github-app-FMK']]])
             }
         }
 
