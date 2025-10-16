@@ -83,17 +83,15 @@ pipeline {
                 script {
                     sh "echo ${snitflade} valgt"
 
-                    docker.image("registry.fmk.netic.dk/fmk/fmkbuilder_schema:11").inside(containerUserMapping + "--add-host ci.fmk.netic.dk:2a03:dc80:0:f12d::118 -e _JAVA_OPTIONS='-Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Stack=true -Djava.net.preferIPv6Addresses=true'") {
-                        withCredentials([usernamePassword(credentialsId: 'JenkinsDokuWiki', passwordVariable: 'DOKUWIKI_PW', usernameVariable: 'DOKUWIKI_UN')]) {
-                            sh '''
-                                mvn xml:transform -N
-                                for f in tmp/*.html
-                                    mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=$DOKUWIKI_UN -Ddokuwiki.password=$DOKUWIKI_PW
-                                done
-                                rm -r tmp
-                                '''
+                    withCredentials([usernamePassword(credentialsId: 'JenkinsDokuWiki', passwordVariable: 'DOKUWIKI_PW', usernameVariable: 'DOKUWIKI_UN')]) {
+                        sh '''
+                            mvn xml:transform -N
+                            for f in tmp/*.html
+                                mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=$DOKUWIKI_UN -Ddokuwiki.password=$DOKUWIKI_PW
+                            done
+                            rm -r tmp
+                            '''
                         }
-                    }
                 }
             }
         }
