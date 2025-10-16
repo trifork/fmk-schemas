@@ -81,26 +81,34 @@ pipeline {
                 script {
                     snitflade = snitflade.trim()
                     currentBuild.description = "${snitflade}"
-//                    try{
+                    try{
                         step ([$class: 'CopyArtifact',
                                projectName: 'FMK_schema/master',
                                filter: "mc160_wsdl/target/*${snitflade}*.zip,mc160idws_wsdl/target/*${snitflade}*.zip",
                                target: 'FMKResources/wsdl',
                                flatten: true]);
-//                    }
-//                    catch(exception) {
-//                        sh "echo CopyArtifact zip failed ${exception.toString()}"
-//                    }
-//                    try {
+                    }
+                    catch(exception) {
+                        sh "echo CopyArtifact zip failed ${exception.toString()}"
+                        def sw = new StringWriter()
+                        def pw = new PrintWriter(sw)
+                        exception.printStackTrace(pw)
+                        echo sw.toString()
+                    }
+                    try {
                         step([$class     : 'CopyArtifact',
                               projectName: 'FMK_schema/master',
                               filter     : "mc160_wsdl/target/resources/wsdl/*${snitflade}*.wsdl,mc160idws_wsdl/target/resources/wsdl/*${snitflade}*.wsdl",
                               target     : 'FMKResources/tmp',
                               flatten    : true]);
-//                    }
-//                    catch(exception) {
-//                        sh "echo CopyArtifact wsdl failed ${exception.toString()}"
-//                    }
+                    }
+                    catch(exception) {
+                        sh "echo CopyArtifact wsdl failed ${exception.toString()}"
+                        def sw = new StringWriter()
+                        def pw = new PrintWriter(sw)
+                        exception.printStackTrace(pw)
+                        echo sw.toString()
+                    }
                 }
             }
         }
