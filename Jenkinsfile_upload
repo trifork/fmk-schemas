@@ -152,16 +152,21 @@ pipeline {
                 }
             }
         }
+
+        stage('upload') {
+            steps {
+                script {
+                    withCredentials([gitUsernamePassword(credentialsId: 'github-app-FMK', gitToolName: 'Default')]) {
+                        sh 'cd FMKResources && git push origin HEAD:master'
+                    }
+                    build job: 'FMK_publish_interfacedoc', wait:false, parameters: [string(name: 'snitflade', value: "${snitflade}")]
+                }
+            }
+        }
     }
 
     post {
         success {
-            script {
-                withCredentials([gitUsernamePassword(credentialsId: 'github-app-FMK', gitToolName: 'Default')]) {
-                    sh 'cd FMKResources && git push origin HEAD:master'
-                }
-                build job: 'FMK_publish_interfacedoc', wait:false, parameters: [string(name: 'snitflade', value: "${snitflade}")]
-            }
         }
         failure {
             emailext body: '$DEFAULT_CONTENT',
