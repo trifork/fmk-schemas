@@ -65,6 +65,13 @@ pipeline {
     }
 
     stages {
+        stage('Clean') {
+            steps {
+                script {
+                    sh "rm -r tmp"
+                }
+            }
+        }
         stage('Copy Archive') {
             steps {
                 script {
@@ -98,7 +105,6 @@ pipeline {
                                 do
                                     mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=$DOKUWIKI_UN -Ddokuwiki.password=$DOKUWIKI_PW
                                 done
-                                rm -r tmp
                                 '''
                         }
                     }
