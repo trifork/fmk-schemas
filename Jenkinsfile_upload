@@ -150,11 +150,11 @@ pipeline {
 
     post {
         success {
-            script {
-                withCredentials([gitUsernamePassword(credentialsId: 'github-app-FMK', gitToolName: 'Default')]) {
+            withCredentials([gitUsernamePassword(credentialsId: 'github-app-FMK', gitToolName: 'Default')]) {
+                script {
                     sh 'cd FMKResources && git push origin HEAD:master'
+                    build job: 'FMK_publish_interfacedoc', wait:false, parameters: [string(name: 'snitflade', value: "${snitflade}")]
                 }
-                build job: 'FMK_publish_interfacedoc', wait:false, parameters: [string(name: 'snitflade', value: "${snitflade}")]
             }
         }
         failure {
