@@ -84,7 +84,10 @@ pipeline {
                     try{
                         step ([$class: 'CopyArtifact',
                                projectName: '/FMK_schema/master',
-                               selector: lastCompleted,
+                               selector: [
+                                 $class: 'StatusBuildSelector',
+                                 stable: false
+                               ],
                                filter: "**/target/*${snitflade}*.zip",
                                target: 'FMKResources/wsdl',
                                flatten: true]);
@@ -99,7 +102,10 @@ pipeline {
                     try {
                         step([$class     : 'CopyArtifact',
                               projectName: '/FMK_schema/master',
-                              selector   : lastCompleted,
+                              selector   : [
+                                $class: 'StatusBuildSelector',
+                                stable: false
+                              ],
                               filter     : "**/target/resources/wsdl/*${snitflade}*.wsdl",
                               target     : 'FMKResources/tmp',
                               flatten    : true]);

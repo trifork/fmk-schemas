@@ -71,7 +71,10 @@ pipeline {
                     snitflade = snitflade.trim()
                         step([$class     : 'CopyArtifact',
                               projectName: '/FMK_schema/master',
-                              selector   : lastCompleted,
+                              selector   : [
+                                $class: 'StatusBuildSelector',
+                                stable: false
+                              ],
                               filter     : "**/target/resources/wsdl/*${snitflade}*.wsdl",
                               target     : 'FMKResources/tmp',
                               flatten    : true]);
