@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="SecondaryHandoverIdentifier.xsd"/>
+
+	<element name="RegisterSecondaryHandoverResponse" type="mc160:RegisterSecondaryHandoverResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document containing information about the registered secondary handover</documentation>
+			<documentation xml:lang="da-DK">Response-dokument der indeholder information omkring den registrerede sekundære udlevering</documentation>
+		</annotation>
+	</element>
+	<complexType name="RegisterSecondaryHandoverResponseType">
+		<sequence>
+			<element name="Identifier" type="mc160:SecondaryHandoverIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>
