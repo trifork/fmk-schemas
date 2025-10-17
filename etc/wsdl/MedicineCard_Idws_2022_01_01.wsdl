@@ -419,6 +419,12 @@
             <xs:include schemaLocation="../schemas/2022/01/01/WithdrawDrugMedicationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/WithdrawDrugMedicationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterSecondaryHandoverRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterSecondaryHandoverResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoSecondaryHandoverRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoSecondaryHandoverResponse.xsd"/>
+
         </xs:schema>
 
     </wsdl:types>
@@ -1374,6 +1380,22 @@
         <wsdl:part name="WithdrawDrugMedicationResponse" element="mc160:WithdrawDrugMedicationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RegisterSecondaryHandoverRequest_160">
+        <wsdl:part name="RegisterSecondaryHandoverRequest" element="mc160:RegisterSecondaryHandoverRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="RegisterSecondaryHandoverResponse_160">
+        <wsdl:part name="RegisterSecondaryHandoverResponse" element="mc160:RegisterSecondaryHandoverResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoSecondaryHandoverRequest_160">
+        <wsdl:part name="UndoSecondaryHandoverRequest" element="mc160:UndoSecondaryHandoverRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="UndoSecondaryHandoverResponse_160">
+        <wsdl:part name="UndoSecondaryHandoverResponse" element="mc160:UndoSecondaryHandoverResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="AbortEffectuationOfDispensingPeriod_160">
@@ -2057,6 +2079,18 @@
         <wsdl:operation name="WithdrawDrugMedication_160">
             <wsdl:input name="WithdrawDrugMedicationRequest_160" message="tns:WithdrawDrugMedicationRequest_160"/>
             <wsdl:output name="WithdrawDrugMedicationResponse_160" message="tns:WithdrawDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterSecondaryHandover_160">
+            <wsdl:input name="RegisterSecondaryHandoverRequest_160" message="tns:RegisterSecondaryHandoverRequest_160"/>
+            <wsdl:output name="RegisterSecondaryHandoverResponse_160" message="tns:RegisterSecondaryHandoverResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoSecondaryHandover_160">
+            <wsdl:input name="UndoSecondaryHandoverRequest_160" message="tns:UndoSecondaryHandoverRequest_160"/>
+            <wsdl:output name="UndoSecondaryHandoverResponse_160" message="tns:UndoSecondaryHandoverResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3544,6 +3578,32 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="WithdrawDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterSecondaryHandover_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterSecondaryHandover" style="document"/>
+            <wsdl:input name="RegisterSecondaryHandoverRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterSecondaryHandoverResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="UndoSecondaryHandover_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoSecondaryHandover" style="document"/>
+            <wsdl:input name="UndoSecondaryHandoverRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="UndoSecondaryHandoverResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
