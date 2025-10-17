@@ -4,13 +4,13 @@
 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-	
+
 	<include schemaLocation="DoseQuantity.xsd"/>
 	<include schemaLocation="TimesPerDay.xsd"/>
 	<include schemaLocation="Duration.xsd"/>
 	<include schemaLocation="InfusionRate.xsd"/>
 	<include schemaLocation="AccordingToParameterSchema.xsd"/>
-	
+
 	<element name="Dose" type="mc160:DoseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Specification of the quantity of each dose and its scheduled time of administration</documentation>
@@ -42,14 +42,14 @@
 						<choice>
 							<element name="Duration" type="mc160:DurationType"/>
 							<sequence>
-								<element name="MinimalDuration" type="mc160:DurationType" minOccurs="0"/>
+								<element name="MinimumDuration" type="mc160:DurationType" minOccurs="0"/>
 								<element name="MaximumDuration" type="mc160:DurationType" minOccurs="0"/>
 							</sequence>
 						</choice>
 						<choice>
 							<element name="InfusionRate" type="mc160:InfusionRateType"/>
 							<sequence>
-								<element name="MinimalInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+								<element name="MinimumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
 								<element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
 							</sequence>
 						</choice>
