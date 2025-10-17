@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifierAndVersion.xsd"/>
 	<include schemaLocation="HandoverIdentifier.xsd"/>
 
 	<complexType name="UndoneEffectuatedDispensingPeriodType">
@@ -13,7 +13,7 @@
 			<documentation xml:lang="da-DK">Element med en tilbageført dispenseringsperiode og de slettede effektueringer</documentation>
 		</annotation>
 		<sequence>
-            <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriod" type="mc160:DispensingPeriodIdentifierAndVersionType"/>
 			<element name="EffectuationIdentifier" type="mc160:HandoverIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

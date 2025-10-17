@@ -220,6 +220,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDrugMedicationVersionsResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetFMKConfigurationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetFMKConfigurationResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetFocesWhitelistingsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetFocesWhitelistingsResponse.xsd"/>
 
@@ -333,8 +336,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchWithdrawnDrugMedicationsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsResponse.xsd"/>
@@ -851,6 +854,14 @@
         <wsdl:part name="GetDrugMedicationVersionsResponse" element="mc160:GetDrugMedicationVersionsResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="GetFMKConfigurationRequest_160">
+        <wsdl:part name="GetFMKConfigurationRequest" element="mc160:GetFMKConfigurationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetFMKConfigurationResponse_160">
+        <wsdl:part name="GetFMKConfigurationResponse" element="mc160:GetFMKConfigurationResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="GetFocesWhitelistingsRequest_160">
         <wsdl:part name="GetFocesWhitelistingsRequest" element="mc160:GetFocesWhitelistingsRequest"/>
     </wsdl:message>
@@ -1156,11 +1167,11 @@
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
-        <wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="mc160:SearchWithdrawnDrugMedicationsRequest"/>
+        <wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="mc160:SearchEndedDrugMedicationsRequest"/>
     </wsdl:message>
 
     <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_160">
-        <wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="mc160:SearchWithdrawnDrugMedicationsResponse"/>
+        <wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="mc160:SearchEndedDrugMedicationsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SetMedicineCardNotReviewedRequest_160">
@@ -1656,6 +1667,12 @@
         <wsdl:operation name="GetDrugMedicationVersions_160">
             <wsdl:input name="GetDrugMedicationVersionsRequest_160" message="tns:GetDrugMedicationVersionsRequest_160"/>
             <wsdl:output name="GetDrugMedicationVersionsResponse_160" message="tns:GetDrugMedicationVersionsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetFMKConfiguration_160">
+            <wsdl:input name="GetFMKConfigurationRequest_160" message="tns:GetFMKConfigurationRequest_160"/>
+            <wsdl:output name="GetFMKConfigurationResponse_160" message="tns:GetFMKConfigurationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2682,6 +2699,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDispensingCardResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetFMKConfiguration_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetFMKConfiguration" style="document"/>
+            <wsdl:input name="GetFMKConfigurationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetFMKConfigurationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

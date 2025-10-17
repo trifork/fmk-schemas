@@ -6,6 +6,7 @@
 
 	<include schemaLocation="HandoverDateTime.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
 
@@ -16,6 +17,7 @@
 		</annotation>
 		<sequence>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType" minOccurs="0"/>
 			<element name="EffectuationDateTime" type="mc160:HandoverDateTimeType"/>
 			<element name="ExpectedDelivery" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0" />
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
