@@ -8,15 +8,15 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PatientWithoutCPR.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="CreateAndEffectuateWarrant.xsd"/>
+	<include schemaLocation="RegisterLoosePrescriptionAndHandover.xsd"/>
 
-	<element name="CreateAndEffectuateWarrantRequest" type="mc160:CreateAndEffectuateWarrantRequestType">
+	<element name="RegisterLoosePrescriptionAndHandoverRequest" type="mc160:RegisterLoosePrescriptionAndHandoverRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document containing one or more documents for creating warrants together with effectuations in one go</documentation>
-			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at oprette udleveringsgrundlag med tilhørende udleveringer</documentation>
+			<documentation xml:lang="en-GB">Request document containing one or more documents for registering loose prescriptions and creating handovers</documentation>
+			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at registrere løse recepter og oprette tilhørende udleveringer</documentation>
 		</annotation>
 	</element>
-	<complexType name="CreateAndEffectuateWarrantRequestType">
+	<complexType name="RegisterLoosePrescriptionAndHandoverRequestType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
@@ -26,7 +26,7 @@
 			<element name="CreatedBy" type="mc160:ModificatorType" />
 			<element name="EffectuatedBy" type="mc160:ModificatorType" />
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Warrant" type="mc160:CreateAndEffectuateWarrantType" maxOccurs="unbounded"/>
+			<element name="WarrantAndHandover" type="mc160:RegisterLoosePrescriptionAndHandoverType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

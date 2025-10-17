@@ -7,19 +7,21 @@
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
-	<include schemaLocation="CreatePharmacyEffectuation.xsd"/>
+	<include schemaLocation="CreatePharmacyHandover.xsd"/>
 	<include schemaLocation="TerminateWarrant.xsd"/>
+    <include schemaLocation="StartTrackAndTraceOnOrder.xsd"/>
 
-	<complexType name="CreatePharmacyEffectuationOnWarrantType">
+	<complexType name="EffectuateOrderType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for creating a single effectuation on a warrant</documentation>
-			<documentation xml:lang="da-DK">Element til oprettelse af en enkelt effektuering på et udleveringsgrundlag</documentation>
+			<documentation xml:lang="en-GB">Element for effectuating an order</documentation>
+			<documentation xml:lang="da-DK">Element til effektuering af en bestilling</documentation>
 		</annotation>
 		<sequence>
 			<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 			<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-			<element name="Effectuation" type="mc160:CreatePharmacyEffectuationType"/>
+			<element name="Handover" type="mc160:CreatePharmacyHandoverType"/>
 			<element name="Terminate" type="mc160:TerminateWarrantType"/>
+            <element name="StartTrackAndTraceOnOrder" type="mc160:StartTrackAndTraceOnOrderType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

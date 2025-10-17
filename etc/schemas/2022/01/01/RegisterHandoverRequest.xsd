@@ -7,21 +7,21 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="DeleteEffectuation.xsd"/>
+	<include schemaLocation="CreateHandoverOfDrugMedication.xsd"/>
 
-	<element name="DeleteEffectuationRequest" type="mc160:DeleteEffectuationRequestType">
+	<element name="RegisterHandoverRequest" type="mc160:RegisterHandoverRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document containing one or more documents for deleting effectuations</documentation>
-			<documentation xml:lang="da-DK">Request-dokument der indeholder en eller flere dokumenter til at slette effektueringer</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a request to register a treatment handover</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel for at registrere en udlevering ved behandling</documentation>
 		</annotation>
 	</element>
-	<complexType name="DeleteEffectuationRequestType">
+	<complexType name="RegisterHandoverRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
-			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Effectuation" type="mc160:DeleteEffectuationType" maxOccurs="unbounded"/>
+			<element name="CreateHandoverOfDrugMedication" type="mc160:CreateHandoverOfDrugMedicationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -7,17 +7,19 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="CreatedTreatmentHandovers.xsd"/>
 
-	<element name="DeleteEffectuationResponse" type="mc160:DeleteEffectuationResponseType">
+	<element name="RegisterHandoverResponse" type="mc160:RegisterHandoverResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a delete effecuation response</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for et svar på slet effektueringer</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response for registering a treatment handover</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for svaret fraen forespørgsel for at registrere en udlevering ved behandling</documentation>
 		</annotation>
 	</element>
-	<complexType name="DeleteEffectuationResponseType">
+	<complexType name="RegisterHandoverResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
+			<element name="CreatedTreatmentHandovers" type="mc160:CreatedTreatmentHandoversType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
