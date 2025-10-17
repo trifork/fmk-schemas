@@ -11,7 +11,8 @@
 	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
 	<include schemaLocation="DispensingPeriodEndDate.xsd"/>
 	<include schemaLocation="DispensingCardIdentifier.xsd"/>
-	<include schemaLocation="PlannedAdministrationSubstitution.xsd"/>
+    <include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+    <include schemaLocation="HandoverIdentifier.xsd"/>
 
 	<element name="RegisterDispensingRequest" type="mc160:RegisterDispensingRequestType">
 		<annotation>
@@ -27,8 +28,16 @@
 			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
 			<element name="StartDate" type="mc160:DispensingPeriodStartDateType" minOccurs="0"/>
 			<element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
+            <element name="DispensedHandover" type="mc160:DispensedHandoverType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="IsPreflight" type="mc160:IsPreflightType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
+
+    <complexType name="DispensedHandoverType">
+        <sequence>
+            <element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+            <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
 </schema>

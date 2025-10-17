@@ -14,6 +14,7 @@
     <include schemaLocation="PlannedAdministrationOnDispensingCard.xsd"/>
     <include schemaLocation="DoseQuantity.xsd"/>
     <include schemaLocation="DispensingEndDate.xsd"/>
+    <include schemaLocation="HandoverIdentifier.xsd"/>
 
     <complexType name="DispensingType">
         <annotation>
@@ -26,8 +27,13 @@
             <element name="ShortName" type="mc160:DrugShortNameType" minOccurs="0"/>
             <element name="Description" type="mc160:DrugDescriptionTextType" minOccurs="0"/>
             <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="Substitution" type="mc160:DrugSubstitutionType" minOccurs="0"/>
-            <element name="SubstitutionAtPacking" type="mc160:DrugType" minOccurs="0"/>
+            <choice>
+                <sequence>
+                    <element name="Substitution" type="mc160:DrugSubstitutionType" minOccurs="0"/>
+                    <element name="SubstitutionAtPacking" type="mc160:DrugType" minOccurs="0"/>
+                </sequence>
+                <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+            </choice>
             <element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDispensingCardType" minOccurs="0"/>
             <element name="TotalDispensedQuantity" type="mc160:DoseQuantityType" minOccurs="0"/>
         </sequence>
