@@ -72,7 +72,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 cleanWs()
-                checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'FMKResources']], submoduleCfg: [], userRemoteConfigs: [[url: 'git@github.com:trifork/FMKResources.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: "*/master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'FMKResources']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/trifork/FMKResources.git',credentialsId: 'github-app-FMK']]])
             }
         }
 
@@ -84,12 +84,16 @@ pipeline {
                     try{
                         step ([$class: 'CopyArtifact',
                                projectName: '/FMK_schema/master',
+                               selector: [
+                                 $class: 'StatusBuildSelector',
+                                 stable: false
+                               ],
                                filter: "**/target/*${snitflade}*.zip",
                                target: 'FMKResources/wsdl',
                                flatten: true]);
                     }
                     catch(exception) {
-                        sh "echo CopyArtifact zip failed ${exception.toString()}"
+                        //sh "echo CopyArtifact zip failed ${exception.toString()}"
                         def sw = new StringWriter()
                         def pw = new PrintWriter(sw)
                         exception.printStackTrace(pw)
@@ -98,6 +102,10 @@ pipeline {
                     try {
                         step([$class     : 'CopyArtifact',
                               projectName: '/FMK_schema/master',
+                              selector   : [
+                                $class: 'StatusBuildSelector',
+                                stable: false
+                              ],
                               filter     : "**/target/resources/wsdl/*${snitflade}*.wsdl",
                               target     : 'FMKResources/tmp',
                               flatten    : true]);
@@ -144,15 +152,20 @@ pipeline {
                 }
             }
         }
+
+        stage('upload') {
+            steps {
+                script {
+                    withCredentials([gitUsernamePassword(credentialsId: 'github-app-FMK', gitToolName: 'Default')]) {
+                        sh 'cd FMKResources && git push origin HEAD:master'
+                    }
+                    build job: 'FMK_publish_interfacedoc', wait:false, parameters: [string(name: 'snitflade', value: "${snitflade}")]
+                }
+            }
+        }
     }
 
     post {
-        success {
-            script {
-                sh 'cd FMKResources && git push origin HEAD:master'
-                build job: 'FMK_publish_interfacedoc', wait:false, parameters: [string(name: 'snitflade', value: "${snitflade}")]
-            }
-        }
         failure {
             emailext body: '$DEFAULT_CONTENT',
                     recipientProviders: [culprits(), requestor()],
