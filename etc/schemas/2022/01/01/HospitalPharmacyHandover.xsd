@@ -4,14 +4,26 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<element name="HospitalPharmacyPrescription" type="mc160:HospitalPharmacyPrescriptionType">
+	<element name="HospitalPharmacyHandover" type="mc160:HospitalPharmacyHandoverType">
 		<annotation>
 			<documentation xml:lang="en-GB">Indication on a warrant, that it is supposed to be handed out free of charge by a hospital pharmacy</documentation>
 			<documentation xml:lang="da-DK">Angivelse på et udleveringsgrundlag at medicinen skal udleveres vederlagsfrit fra et sygehusapotek</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="HospitalPharmacyPrescriptionType">
-		<!-- TBD -->
+	<complexType name="HospitalPharmacyHandoverType">
+		<!--
+
+    Ikke planlagt til FMK 1.6.0, men til en senere extension.
+
+		Det er endnu ikke besluttet præcist, hvad typen skal indeholde,
+    men følgende forventes:
+
+    Feltet angiver, at medicinen forventes udleveret vederlagsfrit fra et sygehusapotek.
+    Det vil være muligt at angive en eller flere organisationer (sygehusapoteker) hvor det er muligt at bestille/afhente medicinen.
+
+		Med et flag kan der angives mulighed for hjemmelevering.
+
+		 -->
     </complexType>
 </schema>

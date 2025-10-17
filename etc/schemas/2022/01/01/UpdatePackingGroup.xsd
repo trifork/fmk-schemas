@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PackingGroupIdentifier.xsd"/>
+    <include schemaLocation="PackingGroupVersion.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="PackingGroup.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
@@ -16,6 +17,7 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:PackingGroupIdentifierType"/>
+            <element name="Version" type="mc160:PackingGroupVersionType"/>
 			<element name="Name" type="mc160:PackingGroupType"/>
 			<element name="OrderedAtPharmacy" type="mc160:OrganisationType" minOccurs="0"/>
 			<element name="PackedAtOrganisation" type="mc160:OrganisationType" minOccurs="0"/>

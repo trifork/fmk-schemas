@@ -6,6 +6,7 @@
         attributeFormDefault="unqualified">
 
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DispensingCardVersion.xsd"/>
     <include schemaLocation="ModificationMetadata.xsd"/>
 
     <complexType name="CloseDispensingCardType">
@@ -15,6 +16,7 @@
         </annotation>
         <sequence>
             <element name="Identifier" type="mc160:DispensingCardIdentifierType" />
+            <element name="Version" type="mc160:DispensingCardVersionType"/>
             <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>

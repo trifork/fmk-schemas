@@ -4,6 +4,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DispensingCardVersion.xsd"/>
     <include schemaLocation="DispensingCardDescription.xsd"/>
     <include schemaLocation="MedicineCardIsInvalid.xsd"/>
     <include schemaLocation="DispensingCardClosed.xsd"/>
@@ -26,6 +27,7 @@
     <complexType name="DispensingCardType">
         <sequence>
         	<element name="Identifier" type="mc160:DispensingCardIdentifierType"/>
+            <element name="Version" type="mc160:DispensingCardVersionType"/>
         	<element name="Description" type="mc160:DispensingCardDescriptionType"/>
             <element name="IsClosed" type="mc160:DispensingCardClosedType" minOccurs="0"/>
             <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>

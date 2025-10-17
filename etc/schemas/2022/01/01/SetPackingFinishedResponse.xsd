@@ -6,7 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifierAndVersion.xsd"/>
 
 	<element name="SetPackingFinishedResponse" type="mc160:SetPackingFinishedResponseType">
 		<annotation>
@@ -20,7 +20,7 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" maxOccurs="unbounded"/>
+			<element name="DispensingPeriod" type="mc160:DispensingPeriodIdentifierAndVersionType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
