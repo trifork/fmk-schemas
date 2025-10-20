@@ -6,31 +6,28 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
-	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="HandoverIdentifier.xsd"/>
 
-	<element name="AbortEffectuationRequest" type="mc160:AbortEffectuationRequestType">
+	<element name="RegisterLoosePrescriptionAndHandoverResponse" type="mc160:RegisterLoosePrescriptionAndHandoverResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">A request to abort an ongoing effectuation at a pharmacy. Status will change from 'ekspedition påbegyndt' to 'bestilt'.</documentation>
-			<documentation xml:lang="da-DK">Et request som afbryder en igangværende udlevering på et apotek. Status ændres fra 'ekspedition påbegyndt' til 'bestilt'.</documentation>
+			<documentation xml:lang="en-GB">Response for registering one or more loose prescriptions together with handovers</documentation>
+			<documentation xml:lang="da-DK">Svar på oprettelse af en eller flere løse recepter med tilhørende udleveringer </documentation>
 		</annotation>
 	</element>
-	<complexType name="AbortEffectuationRequestType">
+	<complexType name="RegisterLoosePrescriptionAndHandoverResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="ModifiedBy" type="mc160:ModificatorType"/>
-			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Warrant" maxOccurs="unbounded">
+			<element name="WarrantAndHandover" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
 						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-						<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
 					</sequence>
 				</complexType>
 			</element>

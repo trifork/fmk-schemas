@@ -10,24 +10,24 @@
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="HandoverIdentifier.xsd"/>
 
-	<element name="CreatePharmacyEffectuationResponse" type="mc160:CreatePharmacyEffectuationResponseType">
+	<element name="EffectuateOrderResponse" type="mc160:EffectuateOrderResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for creating one or more effectuations on warrants</documentation>
-			<documentation xml:lang="da-DK">Svar på oprettelse af en eller flere udleveringer på udleveringsgrundlag</documentation>
+			<documentation xml:lang="en-GB">Response for effectuating one or more orders on warrants</documentation>
+			<documentation xml:lang="da-DK">Svar på effektuering af en eller flere bestillinger på udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
-	<complexType name="CreatePharmacyEffectuationResponseType">
+	<complexType name="EffectuateOrderResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="Effectuation" maxOccurs="unbounded">
+			<element name="Handover" maxOccurs="unbounded">
 				<complexType>
 					<sequence>
 						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-						<element name="EffectuationIdentifier" type="mc160:HandoverIdentifierType"/>
+						<element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
 					</sequence>
 				</complexType>
 			</element>
