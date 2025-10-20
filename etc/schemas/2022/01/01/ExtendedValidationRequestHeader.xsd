@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="SkipExtendedValidation.xsd"/>
+
+	<element name="ExtendedValidationRequestHeader" type="mc160:ExtendedValidationRequestHeaderType">
+		<annotation>
+			<documentation xml:lang="en-GB">Decide which opt-in extended validations that the caller wants to be executed, and decide which of the default extended validations that should be skipped</documentation>
+			<documentation xml:lang="da-DK">Angiv hvilke tilvalgs-udvidede valideringer som ønskes udført, og hvilke af default udvidede valideringer der ønskes ignoreret</documentation>
+		</annotation>
+	</element>
+	<complexType name="ExtendedValidationRequestHeaderType">
+		<sequence>
+			<element name="IncludeOptionalValidations" type="mc160:ExtendedValidationErrorCodesType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="SkipValidations" type="mc160:SkipValidationsType"  minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="ExtendedValidationErrorCodesType">
+		<sequence>
+			<element name="ErrorCode" type="mc160:ExtendedValidationErrorCodeType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="SkipValidationsType">
+		<sequence>
+			<element name="ExtendedValidation" type="mc160:SkipExtendedValidationType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+
+</schema>

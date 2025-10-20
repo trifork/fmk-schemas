@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="ExtendedValidationErrorCode.xsd"/>
+
+	<element name="SkipExtendedValidationType" type="mc160:SkipExtendedValidationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Definition of which extended validation error codes should be skipped, regarding the request element referenced in ElementPath</documentation>
+			<documentation xml:lang="da-DK">Angivelse af hvilke udvidede valideringskoder der skal ignoreres for det element i requestet der er refererer til i ElementPath</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="SkipExtendedValidationType">
+		<sequence>
+			<element name="ErrorCode" type="mc160:ExtendedValidationErrorCodeType" maxOccurs="unbounded"/>
+			<element name="ElementPath" type="string"/>
+		</sequence>
+	</complexType>
+</schema>
