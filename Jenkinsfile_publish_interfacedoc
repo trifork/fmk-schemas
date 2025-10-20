@@ -60,20 +60,31 @@ pipeline {
     agent {
         node {
             label 'local'
-            customWorkspace '/var/jenkins_home/jobs/FMK_schema/workspace'
+            customWorkspace '/var/jenkins_home/jobs/FMK_schema/master/workspace'
         }
     }
 
     stages {
+        stage('Clean') {
+            steps {
+                script {
+                    sh "rm -r tmp"
+                }
+            }
+        }
         stage('Copy Archive') {
             steps {
                 script {
                     snitflade = snitflade.trim()
-                    step ([$class: 'CopyArtifact',
-                        projectName: 'FMK_schema',
-                        filter: "**/standard/target/wsdl/*${snitflade}.wsdl,**/target/idws/target/wsdl/*${snitflade}.wsdl,**/target/resources/wsdl/*${snitflade}.wsdl",
-                        target: 'tmp',
-                        flatten: true]);
+                        step([$class     : 'CopyArtifact',
+                              projectName: '/FMK_schema/master',
+                              selector   : [
+                                $class: 'StatusBuildSelector',
+                                stable: false
+                              ],
+                              filter     : "**/target/resources/wsdl/*${snitflade}*.wsdl",
+                              target     : 'tmp',
+                              flatten    : true]);
                 }
             }
         }
@@ -83,15 +94,20 @@ pipeline {
                 script {
                     sh "echo ${snitflade} valgt"
 
-                    withCredentials([usernamePassword(credentialsId: 'JenkinsDokuWiki', passwordVariable: 'DOKUWIKI_PW', usernameVariable: 'DOKUWIKI_UN')]) {
-                        sh '''
-                            mvn xml:transform -N
-                            for f in tmp/*.html
-                                mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=$DOKUWIKI_UN -Ddokuwiki.password=$DOKUWIKI_PW
-                            done
-                            rm -r tmp
-                            '''
+                    String jenkinsUserId = sh(returnStdout: true, script: 'id -u jenkins').trim()
+                    String dockerGroupId = sh(returnStdout: true, script: 'getent group docker | cut -d: -f3').trim()
+                    String containerUserMapping = "-u $jenkinsUserId:$dockerGroupId "
+                    docker.image("registry.fmk.netic.dk/fmk/fmkbuilder_schema:11").inside(containerUserMapping + "--add-host ci.fmk.netic.dk:2a03:dc80:0:f12d::118 -e _JAVA_OPTIONS='-Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=false -Djava.net.preferIPv6Stack=true -Djava.net.preferIPv6Addresses=true'") {
+                        withCredentials([usernamePassword(credentialsId: 'JenkinsDokuWiki', passwordVariable: 'DOKUWIKI_PW', usernameVariable: 'DOKUWIKI_UN')]) {
+                            sh '''
+                                mvn xml:transform -N
+                                for f in tmp/*.html
+                                do
+                                    mvn groovy:execute -Dinfile=$f -Ddokuwiki.username=$DOKUWIKI_UN -Ddokuwiki.password=$DOKUWIKI_PW
+                                done
+                                '''
                         }
+                    }
                 }
             }
         }

@@ -6,6 +6,7 @@
 	
 	<include schemaLocation="RequestForWarrantIdentifier.xsd"/>
 	<include schemaLocation="RequestForWarrantVersion.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
 
 	<element name="CreatedRequestForWarrant" type="mc160:CreatedRequestForWarrantType">
 		<annotation>
@@ -16,6 +17,7 @@
 	<complexType name="CreatedRequestForWarrantType">
 		<sequence>
 			<element name="Identifier" type="mc160:RequestForWarrantIdentifierType"/>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="Version" type="mc160:RequestForWarrantVersionType"/>
 		</sequence>
 	</complexType>

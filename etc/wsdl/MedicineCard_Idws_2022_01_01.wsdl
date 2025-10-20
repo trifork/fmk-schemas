@@ -196,6 +196,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingCardRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingCardResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingPeriodChangelogRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingPeriodChangelogResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingPeriodHistoryRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetDispensingPeriodHistoryResponse.xsd"/>
 
@@ -793,6 +796,14 @@
 
     <wsdl:message name="GetDispensingCardResponse_160">
         <wsdl:part name="GetDispensingCardResponse" element="mc160:GetDispensingCardResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDispensingPeriodChangelogRequest_160">
+        <wsdl:part name="GetDispensingPeriodChangelogRequest" element="mc160:GetDispensingPeriodChangelogRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDispensingPeriodChangelogResponse_160">
+        <wsdl:part name="GetDispensingPeriodChangelogResponse" element="mc160:GetDispensingPeriodChangelogResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetDispensingPeriodHistoryRequest_160">
@@ -1614,6 +1625,12 @@
         <wsdl:operation name="GetDispensingCard_160">
             <wsdl:input name="GetDispensingCardRequest_160" message="tns:GetDispensingCardRequest_160"/>
             <wsdl:output name="GetDispensingCardResponse_160" message="tns:GetDispensingCardResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDispensingPeriodChangelog_160">
+            <wsdl:input name="GetDispensingPeriodChangelogRequest_160" message="tns:GetDispensingPeriodChangelogRequest_160"/>
+            <wsdl:output name="GetDispensingPeriodChangelogResponse_160" message="tns:GetDispensingPeriodChangelogResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2578,6 +2595,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetDispensingCardHistoryResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDispensingPeriodChangelog_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDispensingPeriodChangelog" style="document"/>
+            <wsdl:input name="GetDispensingPeriodChangelogRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetDispensingPeriodChangelogResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
