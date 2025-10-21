@@ -117,7 +117,7 @@
                         println("Creating request")
                         def template = new File("src/dk/medicinkortet/xmlschema/dokuwikitemplate_data.xml").text
                         def templateStart = new File("src/dk/medicinkortet/xmlschema/dokuwikitemplate_start.xml").text
-                        def dokuwikiid = properties['infile'].substring(0, properties['infile'].length() - 10)
+                        def dokuwikiid = properties['infile'].substring(0, properties['infile'].length() - 10).replace("tmp/", "")
                         def file = new File(properties['infile']).text
 
                         def messages = []
