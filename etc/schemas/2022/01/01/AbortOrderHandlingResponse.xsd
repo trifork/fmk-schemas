@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="WarrantIdentifier.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="WarrantError.xsd"/>
+
+	<element name="AbortOrderHandlingResponse" type="mc160:AbortOrderHandlingResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">A response to the 'abort effectuation' request, which includes identifier for the warrants where the abort succeeded, and an error structure for those where the abort operation failed.</documentation>
+			<documentation xml:lang="da-DK">Et svar på requestst 'afbryd ekspedition', som inkluderer identifiers for de udleveringsgrundlag hvor ekspedition blev afbrudt med succes, og en fejl-struktur for dem hvor afbryd operationen fejlede.</documentation>
+		</annotation>
+	</element>
+	<complexType name="AbortOrderHandlingResponseType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="Warrant" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+						<element name="OrderIdentifier" type="mc160:OrderIdentifierType">
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="AbortOrderHandlingFailed" type="mc160:WarrantErrorType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

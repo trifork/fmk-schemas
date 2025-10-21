@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="HandoverDateTime.xsd"/>
+	<include schemaLocation="IncludeHandoversOnLoosePrescriptions.xsd"/>
+    <include schemaLocation="IncludeSecondaryHandovers.xsd"/>
+
+    <element name="GetHandoversRequest" type="mc160:GetHandoversRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for handovers</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter udleveringer</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetHandoversRequestType">
+		<sequence>
+            <choice>
+			    <element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+                <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+            </choice>
+			<element name="FromDateTime" type="mc160:HandoverDateTimeType" minOccurs="0"/>
+			<element name="ToDateTime" type="mc160:HandoverDateTimeType" minOccurs="0"/>
+			<element name="IncludeHandoversOnLoosePrescriptions" type="mc160:IncludeHandoversOnLoosePrescriptionsType" minOccurs="0"/>
+            <element name="IncludeSecondaryHandovers" type="mc160:IncludeSecondaryHandoversType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

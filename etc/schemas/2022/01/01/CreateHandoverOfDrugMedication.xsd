@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="HandoverDateTime.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="CreateTreatmentHandover.xsd"/>
+
+    <complexType name="CreateHandoverOfDrugMedicationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Document for creation of a new handover of a drug given a drug medication.</documentation>
+            <documentation xml:lang="da-DK">Dokument til oprettelse af en ny udlevering af et lægemiddel, givet en lægemiddelordination. </documentation>
+        </annotation>
+        <sequence>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="CreateTreatmentHandover" type="mc160:CreateTreatmentHandoverType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>
