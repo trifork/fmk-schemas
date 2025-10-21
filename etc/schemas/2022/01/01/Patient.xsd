@@ -17,16 +17,10 @@
 	<complexType name="PatientType">
 		<sequence>
 			<element name="Person" type="mc160:SimpleCPRPersonType"/>
-			<?filter nsf="ignore"?>
-			<choice minOccurs="0">
-				<sequence>
-					<!-- Signal that a person might have address protection, but you can still see it.
-					Wanted by Pharmacy systems who generally get address protection overwritten automatically -->
-					<element name="AddressLine" type="mc160:AddressLineType" maxOccurs="5"/>
-					<element name="AddressProtected" type="mc160:AddressProtectedType" minOccurs="0"/>
-				</sequence>
-				<element name="AddressProtected" type="mc160:AddressProtectedType"/>
-			</choice>
+            <!-- Signal that a person might have address protection, but you can still see it.
+            Wanted by Pharmacy systems who generally get address protection overwritten automatically -->
+            <element name="AddressLine" type="mc160:AddressLineType" minOccurs="0" maxOccurs="5"/>
+            <element name="AddressProtected" type="mc160:AddressProtectedType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
