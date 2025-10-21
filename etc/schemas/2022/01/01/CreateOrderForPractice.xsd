@@ -9,20 +9,24 @@
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
-	<include schemaLocation="UseInPractice.xsd"/>
-	<include schemaLocation="CreateOrder.xsd"/>
+	<include schemaLocation="PracticePrescription.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="SubstitutionAllowed.xsd"/>
+    <include schemaLocation="CreateOrder.xsd"/>
 
-	<complexType name="WarrantForUseInPracticeType">
+	<complexType name="CreateOrderForPracticeType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request document for creating a warrant for use in practice</documentation>
-			<documentation xml:lang="da-DK">Request-dokument til at oprette et udleveringsgrundlag til brug i praksis</documentation>
+			<documentation xml:lang="en-GB">Request document for creating a practiceprescription with an order</documentation>
+			<documentation xml:lang="da-DK">Request-dokument til at oprette en praksisrecept med en tilhørende bestilling</documentation>
 		</annotation>
 		<sequence>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
 			<element name="ValidFromDate" type="mc160:ValidFromDateType" minOccurs="0"/>
 			<element name="ValidToDate" type="mc160:ValidToDateType"/>
-			<element name="UseInPractice" type="mc160:UseInPracticeType"/>
+			<element name="PracticePrescription" type="mc160:PracticePrescriptionType"/>
+            <element name="Drug" type="mc160:DrugType" minOccurs="0"/>
+            <element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="Order" type="mc160:CreateOrderType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
