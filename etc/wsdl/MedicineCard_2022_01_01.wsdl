@@ -254,8 +254,6 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetWarrantRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPharmacyWarrantRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetHospitalPharmacyWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetWarrantResidualAmountRequest.xsd"/>
@@ -995,14 +993,6 @@
 
     <wsdl:message name="GetWarrantRequest_160">
         <wsdl:part name="GetWarrantRequest" element="mc160:GetWarrantRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetPharmacyWarrantRequest_160">
-        <wsdl:part name="GetPharmacyWarrantRequest" element="mc160:GetPharmacyWarrantRequest"/>
-    </wsdl:message>
-
-    <wsdl:message name="GetHospitalPharmacyWarrantRequest_160">
-        <wsdl:part name="GetHospitalPharmacyWarrantRequest" element="mc160:GetHospitalPharmacyWarrantRequest"/>
     </wsdl:message>
 
     <wsdl:message name="GetWarrantResponse_160">
@@ -1771,18 +1761,6 @@
 
         <wsdl:operation name="GetWarrant_160">
             <wsdl:input name="GetWarrantRequest_160" message="tns:GetWarrantRequest_160"/>
-            <wsdl:output name="GetWarrantResponse_160" message="tns:GetWarrantResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetPharmacyWarrant_160">
-            <wsdl:input name="GetPharmacyWarrantRequest_160" message="tns:GetPharmacyWarrantRequest_160"/>
-            <wsdl:output name="GetWarrantResponse_160" message="tns:GetWarrantResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetHospitalPharmacyWarrant_160">
-            <wsdl:input name="GetHospitalPharmacyWarrantRequest_160" message="tns:GetHospitalPharmacyWarrantRequest_160"/>
             <wsdl:output name="GetWarrantResponse_160" message="tns:GetWarrantResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
@@ -2971,32 +2949,6 @@
         <wsdl:operation name="GetWarrant_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetWarrant" style="document"/>
             <wsdl:input name="GetWarrantRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetWarrantResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetPharmacyWarrant_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPharmacyWarrant" style="document"/>
-            <wsdl:input name="GetPharmacyWarrantRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetWarrantResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetHospitalPharmacyWarrant_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetHospitalPharmacyWarrant" style="document"/>
-            <wsdl:input name="GetHospitalPharmacyWarrantRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
