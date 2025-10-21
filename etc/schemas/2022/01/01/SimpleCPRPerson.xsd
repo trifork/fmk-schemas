@@ -17,14 +17,8 @@
 			<documentation xml:lang="da-DK">Oplysninger om en person med kendt CPR</documentation>
 		</annotation>
 		<sequence>
-			<?filter nsf="ignore"?>
-			<choice minOccurs="0">
-				<sequence>
-					<element name="Name" type="mc160:PersonNameType"/>
-					<element name="NameProtected" type="mc160:PersonNameProtectedType" minOccurs="0"/>
-				</sequence>
-				<element name="NameProtected" type="mc160:PersonNameProtectedType"/>
-			</choice>
+            <element name="Name" type="mc160:PersonNameType" minOccurs="0"/>
+            <element name="NameProtected" type="mc160:PersonNameProtectedType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<?filter nsf="ignore"?>
 			<element name="BirthDate" type="mc160:BirthDateType"/>
