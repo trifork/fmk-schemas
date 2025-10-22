@@ -18,13 +18,11 @@
 	</element>
 	<complexType name="ActivatePendingWarrantResponseType">
 		<sequence>
-			<sequence>
-				<choice>
-					<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-					<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
-				</choice>
-				<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
-			</sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
