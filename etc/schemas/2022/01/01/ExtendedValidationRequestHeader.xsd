@@ -14,9 +14,19 @@
 	</element>
 	<complexType name="ExtendedValidationRequestHeaderType">
 		<sequence>
-			<element name="IncludeOptionalValidations" type="mc160:ExtendedValidationErrorCodesType" minOccurs="0" maxOccurs="unbounded"/>
+			<choice>
+				<element name="ApplyAllOptionalValidations" type="mc160:ApplyAllOptionalValidationsFlag"/>
+				<element name="ApplySelectedOptionalValidations" type="mc160:ExtendedValidationErrorCodesType" minOccurs="0" maxOccurs="unbounded"/>
+			</choice>
 			<element name="SkipValidations" type="mc160:SkipValidationsType"  minOccurs="0"/>
 		</sequence>
+	</complexType>
+
+	<complexType name="ApplyAllOptionalValidationsFlag">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates that the caller wants all optional extended validations to be applied.</documentation>
+			<documentation xml:lang="da-DK">Angiver at kalderen ønsker alle optionelle udvidede valideringer udført.</documentation>
+		</annotation>
 	</complexType>
 
 	<complexType name="ExtendedValidationErrorCodesType">
