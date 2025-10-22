@@ -5,7 +5,6 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="OrderIdentifier.xsd"/>
-	<include schemaLocation="CreatedWithoutPerson.xsd"/>
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
@@ -17,15 +16,12 @@
 
 	<complexType name="OrderType">
         <annotation>
-            <documentation xml:lang="en-GB">Order of an effectuation on a warrant</documentation>
+            <documentation xml:lang="en-GB">Order for a handover on a warrant</documentation>
             <documentation xml:lang="da-DK">Bestilling af en udlevering på et udleveringsgrundlag</documentation>
         </annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:OrderIdentifierType"/>
-			<choice>
-				<element name="CreatedWithoutPerson" type="mc160:CreatedWithoutPersonType"/>
-				<element name="Created" type="mc160:CreatedType"/>
-			</choice>
+            <element name="Created" type="mc160:CreatedType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
 			<element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>

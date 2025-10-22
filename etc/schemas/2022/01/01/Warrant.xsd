@@ -10,10 +10,8 @@
 	<include schemaLocation="OrderedHandoverIdentifier.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="CreatedWithOptionalAuthorisationIdentifier.xsd"/>
-	<include schemaLocation="ModificatorWithoutPerson.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="LatestHandoverDateTime.xsd"/>
-	<include schemaLocation="TerminatedDateTime.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 	<include schemaLocation="Prescription.xsd"/>
@@ -26,7 +24,6 @@
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageText.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
-	<include schemaLocation="SupplementaryInformation.xsd"/>
 	<include schemaLocation="InvalidationReasonText.xsd"/>
 	<include schemaLocation="DeprecatedDateTime.xsd"/>
 	<include schemaLocation="Order.xsd"/>
@@ -48,12 +45,8 @@
 			<element name="OrderedHandoverIdentifier" type="mc160:OrderedHandoverIdentifierType" minOccurs="0"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
 			<element name="Created" type="mc160:CreatedWithOptionalAuthorisationIdentifierType"/>
-			<choice minOccurs="0">
-				<element name="ReportedByWithoutPerson" type="mc160:ModificatorWithoutPersonType"/>
-				<element name="ReportedBy" type="mc160:ModificatorType"/>
-			</choice>
-			<element name="LatestEffectuationDateTime" type="mc160:LatestHandoverDateTimeType" minOccurs="0"/>
-			<element name="TerminatedDateTime" type="mc160:TerminatedDateTimeType" minOccurs="0"/>
+            <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="LatestHandoverDateTime" type="mc160:LatestHandoverDateTimeType" minOccurs="0"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/> <!--Only used in responses -->
 			<element name="ValidFromDate" type="mc160:ValidFromDateType"/>
 			<element name="ValidToDate" type="mc160:ValidToDateType"/>
@@ -69,7 +62,6 @@
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="DosageText" type="mc160:DosageTextType" minOccurs="0"/>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
-			<element name="SupplementaryInformation" type="mc160:SupplementaryInformationType" minOccurs="0"/>
 			<element name="InvalidationReasonText" type="mc160:InvalidationReasonTextType" minOccurs="0"/>
 			<element name="Deprecated" type="mc160:DeprecatedDateTimeType" minOccurs="0"/>
 			<element name="ReplacesWarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>

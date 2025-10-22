@@ -8,19 +8,19 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="UndoneEffectuatedDispensingPeriod.xsd"/>
 
-	<element name="UndoEffectuatedDispensingPeriodResponse" type="mc160:UndoEffectuatedDispensingPeriodResponseType">
+	<element name="UndoHandoverOfDispensingPeriodResponse" type="mc160:UndoHandoverOfDispensingPeriodResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for undoing effectuations for a dispensingperiod</documentation>
-			<documentation xml:lang="da-DK">Svar på tilbageførsel af effektueringer for en dispenseringsperiode</documentation>
+			<documentation xml:lang="en-GB">Response for undoing handovers for a dispensingperiod</documentation>
+			<documentation xml:lang="da-DK">Svar på tilbageførsel af udleveringer for en dispenseringsperiode</documentation>
 		</annotation>
 	</element>
-	<complexType name="UndoEffectuatedDispensingPeriodResponseType">
+	<complexType name="UndoHandoverOfDispensingPeriodResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="DispensingPeriod" type="mc160:UndoneEffectuatedDispensingPeriodType" maxOccurs="unbounded"/>
+			<element name="DispensingPeriod" type="mc160:UndoneHandoverOfDispensingPeriodType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
