@@ -151,8 +151,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/DiscardDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/DiscardDispensingPeriodResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/RegisterDispensingPeriodHandoverRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/RegisterDispensingPeriodHandoverResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/EffectuateDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/EffectuateDispensingPeriodResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/ForwardRequestForWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/ForwardRequestForWarrantResponse.xsd"/>
@@ -722,12 +722,12 @@
         <wsdl:part name="DiscardDispensingPeriodResponse" element="mc160:DiscardDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RegisterDispensingPeriodHandoverRequest_160">
-        <wsdl:part name="RegisterDispensingPeriodHandoverRequest" element="mc160:RegisterDispensingPeriodHandoverRequest"/>
+    <wsdl:message name="EffectuateDispensingPeriodRequest_160">
+        <wsdl:part name="EffectuateDispensingPeriodRequest" element="mc160:EffectuateDispensingPeriodRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="RegisterDispensingPeriodHandoverResponse_160">
-        <wsdl:part name="RegisterDispensingPeriodHandoverResponse" element="mc160:RegisterDispensingPeriodHandoverResponse"/>
+    <wsdl:message name="EffectuateDispensingPeriodResponse_160">
+        <wsdl:part name="EffectuateDispensingPeriodResponse" element="mc160:EffectuateDispensingPeriodResponse"/>
     </wsdl:message>
 
     <wsdl:message name="ForwardRequestForWarrantRequest_160">
@@ -1594,9 +1594,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterDispensingPeriodHandover_160">
-            <wsdl:input name="RegisterDispensingPeriodHandoverRequest_160" message="tns:RegisterDispensingPeriodHandoverRequest_160"/>
-            <wsdl:output name="RegisterDispensingPeriodHandoverResponse_160" message="tns:RegisterDispensingPeriodHandoverResponse_160"/>
+        <wsdl:operation name="EffectuateDispensingPeriod_160">
+            <wsdl:input name="EffectuateDispensingPeriodRequest_160" message="tns:EffectuateDispensingPeriodRequest_160"/>
+            <wsdl:output name="EffectuateDispensingPeriodResponse_160" message="tns:EffectuateDispensingPeriodResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2554,13 +2554,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterDispensingPeriodHandover_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterDispensingPeriodHandover" style="document"/>
-            <wsdl:input name="RegisterDispensingPeriodHandoverRequest_160">
+        <wsdl:operation name="EffectuateDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#EffectuateDispensingPeriod" style="document"/>
+            <wsdl:input name="EffectuateDispensingPeriodRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RegisterDispensingPeriodHandoverResponse_160">
+            <wsdl:output name="EffectuateDispensingPeriodResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
