@@ -8,19 +8,19 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="IsPreflight.xsd"/>
-	<include schemaLocation="StartEffectuationOfDispensingPeriod.xsd"/>
+	<include schemaLocation="StartHandlingOfDispensingPeriod.xsd"/>
 	<include schemaLocation="CreateDispensingPeriod.xsd"/>
 	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
 	<include schemaLocation="DispensingPeriodEndDate.xsd"/>
 	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
 
-	<element name="StartEffectuationOfDispensingPeriodRequest" type="mc160:StartEffectuationOfDispensingPeriodRequestType">
+	<element name="StartHandlingOfDispensingPeriodRequest" type="mc160:StartHandlingOfDispensingPeriodRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">A request to start effectuation for an entire dispensing period</documentation>
-			<documentation xml:lang="da-DK">Et request som påbegynder udlevering for alt i en dispensing periode</documentation>
+			<documentation xml:lang="en-GB">A request to start handling for an entire dispensing period</documentation>
+			<documentation xml:lang="da-DK">Et request som påbegynder håndtering af alt i en dispensing periode</documentation>
 		</annotation>
 	</element>
-	<complexType name="StartEffectuationOfDispensingPeriodRequestType">
+	<complexType name="StartHandlingOfDispensingPeriodRequestType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
@@ -29,7 +29,7 @@
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="IsPreflight" type="mc160:IsPreflightType" minOccurs="0"/>
-			<element name="StartEffectuationOfDispensingPeriod" type="mc160:StartEffectuationOfDispensingPeriodType" maxOccurs="unbounded"/>
+			<element name="StartHandlingOfDispensingPeriod" type="mc160:StartHandlingOfDispensingPeriodType" maxOccurs="unbounded"/>
 			<element name="CreateNextPeriod" minOccurs="0">
 				<complexType>
 					<sequence>

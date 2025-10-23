@@ -10,12 +10,12 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="DispensingPeriodStatusChange.xsd"/>
 
-	<element name="AbortEffectuationOfDispensingPeriodRequest" type="mc160:AbortEffectuationOfDispensingPeriodRequestType"/>
+	<element name="AbortHandlingOfDispensingPeriodRequest" type="mc160:AbortHandlingOfDispensingPeriodRequestType"/>
 
-	<complexType name="AbortEffectuationOfDispensingPeriodRequestType">
+	<complexType name="AbortHandlingOfDispensingPeriodRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">A request to abort effectuation for an entire dispensing period</documentation>
-			<documentation xml:lang="da-DK">Et request som afbryder ekspedition af alt i en dispensing periode</documentation>
+			<documentation xml:lang="en-GB">A request to abort handling for an entire dispensing period</documentation>
+			<documentation xml:lang="da-DK">Et request som afbryder udleveringen af alt i en dispensing periode</documentation>
 		</annotation>
 		<sequence>
 			<choice>
@@ -24,7 +24,7 @@
 			</choice>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="AbortEffectuationOfDispensingPeriod" type="mc160:DispensingPeriodStatusChangeType" maxOccurs="unbounded"/>
+			<element name="AbortHandlingOfDispensingPeriod" type="mc160:DispensingPeriodStatusChangeType" maxOccurs="unbounded"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
