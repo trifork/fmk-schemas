@@ -6,8 +6,7 @@
 
     <include schemaLocation="Organisation.xsd"/>
     <include schemaLocation="OrderedDateTime.xsd"/>
-    <include schemaLocation="IncludeHandledOrders.xsd"/>
-    <include schemaLocation="IncludeUnhandledOrders.xsd"/>
+    <include schemaLocation="IncludeEffectuatedOrders.xsd"/>
     <include schemaLocation="IncludeCancelledOrders.xsd"/>
 
 	<element name="SearchOrdersRequest" type="mc160:SearchOrdersRequestType">
@@ -19,8 +18,7 @@
 	<complexType name="SearchOrdersRequestType">
 		<sequence>
 			<element name="OrderingOrganisation" type="mc160:OrganisationIdentifierType"/>
-            <element name="IncludeUnhandledOrders" type="mc160:IncludeUnhandledOrdersType" minOccurs="0"/>
-            <element name="IncludeHandledOrders" type="mc160:IncludeHandledOrdersType" minOccurs="0"/>
+            <element name="IncludeEffectuatedOrders" type="mc160:IncludeEffectuatedOrdersType" minOccurs="0"/>
             <element name="IncludeCancelledOrders" type="mc160:IncludeCancelledOrdersType" minOccurs="0"/>
 			<element name="CreatedSince" type="mc160:OrderedDateTimeType"/>
 		</sequence>
