@@ -6,15 +6,15 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="EffectuateDispensingPeriod.xsd"/>
+	<include schemaLocation="HandoverDispensingPeriod.xsd"/>
 
-	<element name="EffectuateDispensingPeriodRequest" type="mc160:EffectuateDispensingPeriodRequestType">
+	<element name="RegisterDispensingPeriodHandoverRequest" type="mc160:RegisterDispensingPeriodHandoverRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request to create pharmacy effectuations for an entire dispensing period</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel til at oprette effektueringer for alt i en dispensing periode</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a request to create pharmacy handovers for an entire dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel til at oprette udleveringer for alt i en dispensing periode</documentation>
 		</annotation>
 	</element>
-	<complexType name="EffectuateDispensingPeriodRequestType">
+	<complexType name="RegisterDispensingPeriodHandoverRequestType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
@@ -22,7 +22,7 @@
 			</choice>
 			<element name="CreatedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="DispensingPeriod" type="mc160:EffectuateDispensingPeriodType" maxOccurs="unbounded"/>
+			<element name="DispensingPeriod" type="mc160:HandoverDispensingPeriodType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

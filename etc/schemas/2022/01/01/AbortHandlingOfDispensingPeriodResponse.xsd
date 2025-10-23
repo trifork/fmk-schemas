@@ -5,16 +5,16 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifierAndVersion.xsd"/>
-    <include schemaLocation="Organisation.xsd"/>
 
-	<element name="EffectuateDispensingPeriodResponse" type="mc160:EffectuateDispensingPeriodResponseType">
+	<element name="AbortHandlingOfDispensingPeriodResponse" type="mc160:AbortHandlingOfDispensingPeriodResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response for creating effectuations for a dispensingperiod</documentation>
-			<documentation xml:lang="da-DK">Svar på oprettelse af udleveringer for en dispenseringsperiode</documentation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a for a request to abort handling for an entire dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en request som afbryder håndteringen af alt i en dispenseringsperiode</documentation>
 		</annotation>
 	</element>
-	<complexType name="EffectuateDispensingPeriodResponseType">
+	<complexType name="AbortHandlingOfDispensingPeriodResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
