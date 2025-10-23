@@ -5,7 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="WarrantIdentifier.xsd"/>
-    <include schemaLocation="EffectuationDateTime.xsd"/>
+    <include schemaLocation="HandoverDateTime.xsd"/>
     <include schemaLocation="CreateNewWarrant.xsd"/>
     <include schemaLocation="CreateDrugAdministrationOnHandover.xsd"/>
     <include schemaLocation="Modificator.xsd"/>
@@ -28,7 +28,7 @@
             <element name="Handover" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
-                        <element name="DateTime" type="mc160:EffectuationDateTimeType"/>
+                        <element name="DateTime" type="mc160:HandoverDateTimeType"/>
                         <element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
                         <choice>
                             <element name="Package" type="mc160:PackageHandoverType"/>
