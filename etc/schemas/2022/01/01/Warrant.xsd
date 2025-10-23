@@ -13,6 +13,7 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="LatestHandoverDateTime.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
+    <include schemaLocation="UnspecifiedValidFrom.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 	<include schemaLocation="Prescription.xsd"/>
 	<include schemaLocation="LoosePrescription.xsd"/>
@@ -48,7 +49,10 @@
             <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="LatestHandoverDateTime" type="mc160:LatestHandoverDateTimeType" minOccurs="0"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/> <!--Only used in responses -->
-			<element name="ValidFromDate" type="mc160:ValidFromDateType"/>
+            <choice>
+                <element name="ValidFromDate" type="mc160:ValidFromDateType"/>
+                <element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
+            </choice>
 			<element name="ValidToDate" type="mc160:ValidToDateType"/>
 			<choice>
 				<element name="Prescription" type="mc160:PrescriptionType"/>

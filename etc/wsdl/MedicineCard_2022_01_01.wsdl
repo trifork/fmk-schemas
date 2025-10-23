@@ -58,6 +58,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/AcknowledgeOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AcknowledgeOrdersResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/ActivatePendingWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ActivatePendingWarrantResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeResponse.xsd"/>
 
@@ -471,6 +474,14 @@
 
     <wsdl:message name="AcknowledgeOrdersResponse_160">
         <wsdl:part name="AcknowledgeOrdersResponse" element="mc160:AcknowledgeOrdersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="ActivatePendingWarrantRequest_160">
+        <wsdl:part name="ActivatePendingWarrantRequest" element="mc160:ActivatePendingWarrantRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ActivatePendingWarrantResponse_160">
+        <wsdl:part name="ActivatePendingWarrantResponse" element="mc160:ActivatePendingWarrantResponse"/>
     </wsdl:message>
 
     <wsdl:message name="AdjustDosageChangeRequest_160">
@@ -1385,6 +1396,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="ActivatePendingWarrant_160">
+            <wsdl:input name="ActivatePendingWarrantRequest_160" message="tns:ActivatePendingWarrantRequest_160"/>
+            <wsdl:output name="ActivatePendingWarrantResponse_160" message="tns:ActivatePendingWarrantResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="AdjustDosageChange_160">
             <wsdl:input name="AdjustDosageChangeRequest_160" message="tns:AdjustDosageChangeRequest_160"/>
             <wsdl:output name="AdjustDosageChangeResponse_160" message="tns:AdjustDosageChangeResponse_160"/>
@@ -1679,13 +1696,13 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersionList_160">
+        <wsdl:operation name="GetMedicineCardChangeOverviewList_160">
             <wsdl:input name="GetMedicineCardChangeOverviewListRequest_160" message="tns:GetMedicineCardChangeOverviewListRequest_160"/>
             <wsdl:output name="GetMedicineCardChangeOverviewListResponse_160" message="tns:GetMedicineCardChangeOverviewListResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersion_160">
+        <wsdl:operation name="GetMedicineCardChangeOverview_160">
             <wsdl:input name="GetMedicineCardChangeOverviewRequest_160" message="tns:GetMedicineCardChangeOverviewRequest_160"/>
             <wsdl:output name="GetMedicineCardChangeOverviewResponse_160" message="tns:GetMedicineCardChangeOverviewResponse_160"/>
             &operationFaultDeclaration;
@@ -2117,6 +2134,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="AcknowledgeOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="ActivatePendingWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ActivatePendingWarrant" style="document"/>
+            <wsdl:input name="ActivatePendingWarrantRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ActivatePendingWarrantResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2760,8 +2790,8 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersionList_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersionList" style="document"/>
+        <wsdl:operation name="GetMedicineCardChangeOverviewList_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardChangeOverviewList" style="document"/>
             <wsdl:input name="GetMedicineCardChangeOverviewListRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
@@ -2773,8 +2803,8 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetMedicineCardVersion_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardVersion" style="document"/>
+        <wsdl:operation name="GetMedicineCardChangeOverview_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetMedicineCardChangeOverview" style="document"/>
             <wsdl:input name="GetMedicineCardChangeOverviewRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
