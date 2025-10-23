@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="CreatedDateTime.xsd"/>
+	
+	<complexType name="LatestDispensingRegistrationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indication of when the latest registered dispensing was made, and by whom</documentation>
+			<documentation xml:lang="da-DK">Angivelse af tidspunktet for den seneste registrerede dispensering samt hvem der udførte den</documentation>
+		</annotation>
+		<sequence>
+            <element name="By" type="mc160:ModificatorType"/>
+            <element name="DateTime" type="mc160:CreatedDateTimeType"/>
+		</sequence>
+	</complexType>
+</schema>
