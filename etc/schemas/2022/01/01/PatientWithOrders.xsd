@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="PatientOrders.xsd"/>
+
+	<element name="PatientWithOrders" type="mc160:PatientWithOrdersType">
+		<annotation>
+			<documentation xml:lang="en-GB">Patient identifier with orders sorted by status</documentation>
+			<documentation xml:lang="da-DK">Patient identifikation med bestillinger sorteret per status</documentation>
+		</annotation>
+	</element>
+	<complexType name="PatientWithOrdersType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="UnhandledOrders" type="mc160:PatientOrdersType" minOccurs="0"/>
+			<element name="HandledOrders" type="mc160:PatientOrdersType" minOccurs="0"/>
+			<element name="CancelledOrders" type="mc160:PatientOrdersType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
