@@ -223,6 +223,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetOrdersResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsResponse.xsd"/>
 
@@ -907,6 +910,16 @@
     <wsdl:message name="GetNewOrdersResponse_160">
         <wsdl:part name="GetNewOrdersResponse" element="mc160:GetNewOrdersResponse"/>
     </wsdl:message>
+
+
+    <wsdl:message name="GetOrdersRequest_160">
+        <wsdl:part name="GetOrdersRequest" element="mc160:GetOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetOrdersResponse_160">
+        <wsdl:part name="GetOrdersResponse" element="mc160:GetOrdersResponse"/>
+    </wsdl:message>
+
 
     <wsdl:message name="GetPackingGroupContentsRequest_160">
         <wsdl:part name="GetPackingGroupContentsRequest" element="mc160:GetPackingGroupContentsRequest"/>
@@ -1717,6 +1730,12 @@
         <wsdl:operation name="GetNewOrders_160">
             <wsdl:input name="GetNewOrdersRequest_160" message="tns:GetNewOrdersRequest_160"/>
             <wsdl:output name="GetNewOrdersResponse_160" message="tns:GetNewOrdersResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrders_160">
+            <wsdl:input name="GetOrdersRequest_160" message="tns:GetOrdersRequest_160"/>
+            <wsdl:output name="GetOrdersResponse_160" message="tns:GetOrdersResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2836,6 +2855,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetNewOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrders_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetOrders" style="document"/>
+            <wsdl:input name="GetOrdersRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrdersResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
