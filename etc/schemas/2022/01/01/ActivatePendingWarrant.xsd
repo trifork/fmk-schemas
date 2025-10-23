@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>	
+	<include schemaLocation="WarrantIdentifier.xsd"/>
+	
+	<element name="ActivatePendingWarrant" type="mc160:ActivatePendingWarrantType">
+		<annotation>
+			<documentation xml:lang="en-GB">Activate a pending warrant</documentation>
+			<documentation xml:lang="da-DK">Aktiver et fremtidigt udleveringsgrundlag</documentation>
+		</annotation>
+	</element>
+	<complexType name="ActivatePendingWarrantType">
+		<sequence>
+			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
+			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

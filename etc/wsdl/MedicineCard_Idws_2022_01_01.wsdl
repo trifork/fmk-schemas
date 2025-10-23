@@ -83,6 +83,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/AcknowledgeOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AcknowledgeOrdersResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/ActivatePendingWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ActivatePendingWarrantResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeResponse.xsd"/>
 
@@ -504,6 +507,14 @@
         <wsdl:part name="AcknowledgeOrdersResponse" element="mc160:AcknowledgeOrdersResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="ActivatePendingWarrantRequest_160">
+        <wsdl:part name="ActivatePendingWarrantRequest" element="mc160:ActivatePendingWarrantRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="ActivatePendingWarrantResponse_160">
+        <wsdl:part name="ActivatePendingWarrantResponse" element="mc160:ActivatePendingWarrantResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="AdjustDosageChangeRequest_160">
         <wsdl:part name="AdjustDosageChangeRequest" element="mc160:AdjustDosageChangeRequest"/>
     </wsdl:message>
@@ -576,12 +587,12 @@
         <wsdl:part name="CloseDispensingCardResponse" element="mc160:CloseDispensingCardResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="CreateAndEffectuateWarrantRequest_160">
-        <wsdl:part name="CreateAndEffectuateWarrantRequest" element="mc160:RegisterLoosePrescriptionAndHandoverRequest"/>
+    <wsdl:message name="RegisterLoosePrescriptionAndHandoverRequest_160">
+        <wsdl:part name="RegisterLoosePrescriptionAndHandoverRequest" element="mc160:RegisterLoosePrescriptionAndHandoverRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CreateAndEffectuateWarrantResponse_160">
-        <wsdl:part name="CreateAndEffectuateWarrantResponse" element="mc160:RegisterLoosePrescriptionAndHandoverResponse"/>
+    <wsdl:message name="RegisterLoosePrescriptionAndHandoverResponse_160">
+        <wsdl:part name="RegisterLoosePrescriptionAndHandoverResponse" element="mc160:RegisterLoosePrescriptionAndHandoverResponse"/>
     </wsdl:message>
 
     <wsdl:message name="CreateDispensingCardRequest_160">
@@ -1416,6 +1427,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="ActivatePendingWarrant_160">
+            <wsdl:input name="ActivatePendingWarrantRequest_160" message="tns:ActivatePendingWarrantRequest_160"/>
+            <wsdl:output name="ActivatePendingWarrantResponse_160" message="tns:ActivatePendingWarrantResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="AdjustDosageChange_160">
             <wsdl:input name="AdjustDosageChangeRequest_160" message="tns:AdjustDosageChangeRequest_160"/>
             <wsdl:output name="AdjustDosageChangeResponse_160" message="tns:AdjustDosageChangeResponse_160"/>
@@ -1470,9 +1487,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateAndEffectuateWarrant_160">
-            <wsdl:input name="CreateAndEffectuateWarrantRequest_160" message="tns:CreateAndEffectuateWarrantRequest_160"/>
-            <wsdl:output name="CreateAndEffectuateWarrantResponse_160" message="tns:CreateAndEffectuateWarrantResponse_160"/>
+        <wsdl:operation name="RegisterLoosePrescriptionAndHandover_160">
+            <wsdl:input name="RegisterLoosePrescriptionAndHandoverRequest_160" message="tns:RegisterLoosePrescriptionAndHandoverRequest_160"/>
+            <wsdl:output name="RegisterLoosePrescriptionAndHandoverResponse_160" message="tns:RegisterLoosePrescriptionAndHandoverResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2154,6 +2171,19 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="ActivatePendingWarrant_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#ActivatePendingWarrant" style="document"/>
+            <wsdl:input name="ActivatePendingWarrantRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="ActivatePendingWarrantResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="AdjustDosageChange_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#AdjustDosageChange" style="document"/>
             <wsdl:input name="AdjustDosageChangeRequest_160">
@@ -2271,13 +2301,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="CreateAndEffectuateWarrant_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateAndEffectuateWarrant" style="document"/>
-            <wsdl:input name="CreateAndEffectuateWarrantRequest_160">
+        <wsdl:operation name="RegisterLoosePrescriptionAndHandover_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterLoosePrescriptionAndHandover" style="document"/>
+            <wsdl:input name="RegisterLoosePrescriptionAndHandoverRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreateAndEffectuateWarrantResponse_160">
+            <wsdl:output name="RegisterLoosePrescriptionAndHandoverResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

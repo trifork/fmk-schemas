@@ -15,6 +15,7 @@
 	<include schemaLocation="LatestHandoverDateTime.xsd"/>
 	<include schemaLocation="TerminatedDateTime.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
+    <include schemaLocation="UnspecifiedValidFrom.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 	<include schemaLocation="Prescription.xsd"/>
 	<include schemaLocation="LoosePrescription.xsd"/>
@@ -55,7 +56,10 @@
 			<element name="LatestEffectuationDateTime" type="mc160:LatestHandoverDateTimeType" minOccurs="0"/>
 			<element name="TerminatedDateTime" type="mc160:TerminatedDateTimeType" minOccurs="0"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/> <!--Only used in responses -->
-			<element name="ValidFromDate" type="mc160:ValidFromDateType"/>
+            <choice>
+                <element name="ValidFromDate" type="mc160:ValidFromDateType"/>
+                <element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
+            </choice>
 			<element name="ValidToDate" type="mc160:ValidToDateType"/>
 			<choice>
 				<element name="Prescription" type="mc160:PrescriptionType"/>
