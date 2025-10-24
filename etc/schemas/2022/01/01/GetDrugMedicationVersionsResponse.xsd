@@ -6,6 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersionInfo.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 
 	<element name="GetDrugMedicationVersionsResponse" type="mc160:GetDrugMedicationVersionsResponseType">
 		<annotation>
@@ -15,8 +16,11 @@
 	</element>
 	<complexType name="GetDrugMedicationVersionsResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
-            <element name="DrugMedicationVersionInfo" type="mc160:DrugMedicationVersionInfoType" maxOccurs="unbounded"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="DrugMedicationVersionInfo" type="mc160:DrugMedicationVersionInfoType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
