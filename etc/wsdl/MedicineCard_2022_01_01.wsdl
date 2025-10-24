@@ -223,6 +223,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetOrdersResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsResponse.xsd"/>
 
@@ -316,6 +319,9 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchOrdersResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsResponse.xsd"/>
@@ -908,6 +914,16 @@
         <wsdl:part name="GetNewOrdersResponse" element="mc160:GetNewOrdersResponse"/>
     </wsdl:message>
 
+
+    <wsdl:message name="GetOrdersRequest_160">
+        <wsdl:part name="GetOrdersRequest" element="mc160:GetOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetOrdersResponse_160">
+        <wsdl:part name="GetOrdersResponse" element="mc160:GetOrdersResponse"/>
+    </wsdl:message>
+
+
     <wsdl:message name="GetPackingGroupContentsRequest_160">
         <wsdl:part name="GetPackingGroupContentsRequest" element="mc160:GetPackingGroupContentsRequest"/>
     </wsdl:message>
@@ -1154,6 +1170,14 @@
 
     <wsdl:message name="SearchForPersonWithWarrantResponse_160">
         <wsdl:part name="SearchForPersonWithWarrantResponse" element="mc160:SearchForPersonWithWarrantResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchOrdersRequest_160">
+        <wsdl:part name="SearchOrdersRequest" element="mc160:SearchOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchOrdersResponse_160">
+        <wsdl:part name="SearchOrdersResponse" element="mc160:SearchOrdersResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SearchTrackAndTraceEventsRequest_160">
@@ -1720,6 +1744,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetOrders_160">
+            <wsdl:input name="GetOrdersRequest_160" message="tns:GetOrdersRequest_160"/>
+            <wsdl:output name="GetOrdersResponse_160" message="tns:GetOrdersResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="GetPackingGroupContents_160">
             <wsdl:input name="GetPackingGroupContentsRequest_160" message="tns:GetPackingGroupContentsRequest_160"/>
             <wsdl:output name="GetPackingGroupContentsResponse_160" message="tns:GetPackingGroupContentsResponse_160"/>
@@ -1909,6 +1939,13 @@
         <wsdl:operation name="SearchForPersonWithWarrant_160">
             <wsdl:input name="SearchForPersonWithWarrantRequest_160" message="tns:SearchForPersonWithWarrantRequest_160"/>
             <wsdl:output name="SearchForPersonWithWarrantResponse_160" message="tns:SearchForPersonWithWarrantResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+
+        <wsdl:operation name="SearchOrders_160">
+            <wsdl:input name="SearchOrdersRequest_160" message="tns:SearchOrdersRequest_160"/>
+            <wsdl:output name="SSearchOrdersResponse_160" message="tns:SearchOrdersResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2842,6 +2879,19 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="GetOrders_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetOrders" style="document"/>
+            <wsdl:input name="GetOrdersRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="GetPackingGroupContents_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetPackingGroupContents" style="document"/>
             <wsdl:input name="GetPackingGroupContentsRequest_160">
@@ -3257,6 +3307,20 @@
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
+
+        <wsdl:operation name="SearchOrders_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchOrders" style="document"/>
+            <wsdl:input name="SearchOrdersRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
 
         <wsdl:operation name="SearchTrackAndTraceEvents_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#SearchTrackAndTraceEvents" style="document"/>
