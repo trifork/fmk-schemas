@@ -160,8 +160,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GenerateShipmentIdentifiersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GenerateShipmentIdentifiersResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAcuteDispensingPeriodsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAcuteDispensingPeriodsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenWarrantResponse.xsd"/>
@@ -746,12 +746,12 @@
         <wsdl:part name="GenerateShipmentIdentifiersResponse" element="mc160:GenerateShipmentIdentifiersResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetAcutePeriodsRequest_160">
-        <wsdl:part name="GetAcutePeriodsRequest" element="mc160:GetAcutePeriodsRequest"/>
+    <wsdl:message name="GetAcuteDispensingPeriodsRequest_160">
+        <wsdl:part name="GetAcuteDispensingPeriodsRequest" element="mc160:GetAcuteDispensingPeriodsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetAcutePeriodsResponse_160">
-        <wsdl:part name="GetAcutePeriodsResponse" element="mc160:GetAcutePeriodsResponse"/>
+    <wsdl:message name="GetAcuteDispensingPeriodsResponse_160">
+        <wsdl:part name="GetAcuteDispensingPeriodsResponse" element="mc160:GetAcuteDispensingPeriodsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetAuthorisationDateForNewestOpenWarrantRequest_160">
@@ -1612,9 +1612,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetAcutePeriods_160">
-            <wsdl:input name="GetAcutePeriodsRequest_160" message="tns:GetAcutePeriodsRequest_160"/>
-            <wsdl:output name="GetAcutePeriodsResponse_160" message="tns:GetAcutePeriodsResponse_160"/>
+        <wsdl:operation name="GetAcuteDispensingPeriods_160">
+            <wsdl:input name="GetAcuteDispensingPeriodsRequest_160" message="tns:GetAcuteDispensingPeriodsRequest_160"/>
+            <wsdl:output name="GetAcuteDispensingPeriodsResponse_160" message="tns:GetAcuteDispensingPeriodsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2593,13 +2593,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetAcutePeriods_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetAcutePeriods" style="document"/>
-            <wsdl:input name="GetAcutePeriodsRequest_160">
+        <wsdl:operation name="GetAcuteDispensingPeriods_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetAcuteDispensingPeriods" style="document"/>
+            <wsdl:input name="GetAcuteDispensingPeriodsRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetAcutePeriodsResponse_160">
+            <wsdl:output name="GetAcuteDispensingPeriodsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
