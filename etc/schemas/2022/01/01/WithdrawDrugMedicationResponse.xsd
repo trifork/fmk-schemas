@@ -8,6 +8,7 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
 	<include schemaLocation="WithdrawnDrugMedication.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 
 	<element name="WithdrawDrugMedicationResponse" type="mc160:WithdrawDrugMedicationResponseType">
 		<annotation>
@@ -17,7 +18,10 @@
 	</element>
 	<complexType name="WithdrawDrugMedicationResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="DrugMedication" type="mc160:WithdrawnDrugMedicationType" maxOccurs="unbounded"/>
 		</sequence>
