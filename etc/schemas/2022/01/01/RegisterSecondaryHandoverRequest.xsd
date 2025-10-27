@@ -6,6 +6,7 @@
 
     <include schemaLocation="PersonIdentifier.xsd"/>
     <include schemaLocation="CreateSecondaryHandover.xsd"/>
+    <include schemaLocation="Modificator.xsd"/>
 
 	<element name="RegisterSecondaryHandoverRequest" type="mc160:RegisterSecondaryHandoverRequestType">
 		<annotation>
@@ -16,6 +17,8 @@
 	<complexType name="RegisterSecondaryHandoverRequestType">
 		<sequence>
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+            <element name="CreatedBy" type="mc160:ModificatorType"/>
+            <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="SecondaryHandover" type="mc160:CreateSecondaryHandoverType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
