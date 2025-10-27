@@ -7,11 +7,11 @@
                 <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
 ">
 <!ENTITY operationFaultDeclaration "
-            <wsdl:fault name='DGWSFault' message='tns:DGWSFault'/>
+            <wsdl:fault name='FMKDetail' message='tns:FMKDetail'/>
 ">
 <!ENTITY bindingFaultDeclaration "
-            <wsdl:fault name='DGWSFault'>
-                <soap:fault name='DGWSFault' use='literal'/>
+            <wsdl:fault name='FMKDetail'>
+                <soap:fault name='FMKDetail' use='literal'/>
             </wsdl:fault>
 ">
 ]>
@@ -432,8 +432,8 @@
         <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
     </wsdl:message>
 
-    <wsdl:message name="DGWSFault">
-        <wsdl:part name="fault" element="medcom:FaultCode"/>
+    <wsdl:message name="FMKDetail">
+        <wsdl:part name="fault" element="mc160:FMKDetail"/>
     </wsdl:message>
 
     <wsdl:message name="ConsentHeader">
