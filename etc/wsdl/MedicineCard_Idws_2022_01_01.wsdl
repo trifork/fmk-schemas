@@ -268,8 +268,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedAdministrationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescribingOrganisationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescribingOrganisationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetIssuerOrganisationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetIssuerOrganisationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsResponse.xsd"/>
@@ -995,12 +995,12 @@
         <wsdl:part name="GetPlannedAdministrationResponse" element="mc160:GetPlannedAdministrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescribingOrganisationRequest_160">
-        <wsdl:part name="GetPrescribingOrganisationRequest" element="mc160:GetPrescribingOrganisationRequest"/>
+    <wsdl:message name="GetIssuerOrganisationRequest_160">
+        <wsdl:part name="GetIssuerOrganisationRequest" element="mc160:GetIssuerOrganisationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescribingOrganisationResponse_160">
-        <wsdl:part name="GetPrescribingOrganisationResponse" element="mc160:GetPrescribingOrganisationResponse"/>
+    <wsdl:message name="GetIssuerOrganisationResponse_160">
+        <wsdl:part name="GetIssuerOrganisationResponse" element="mc160:GetIssuerOrganisationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetRequestForWarrantVersionsRequest_160">
@@ -1793,9 +1793,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescribingOrganisation_160">
-            <wsdl:input name="GetPrescribingOrganisationRequest_160" message="tns:GetPrescribingOrganisationRequest_160"/>
-            <wsdl:output name="GetPrescribingOrganisationResponse_160" message="tns:GetPrescribingOrganisationResponse_160"/>
+        <wsdl:operation name="GetIssuerOrganisation_160">
+            <wsdl:input name="GetIssuerOrganisationRequest_160" message="tns:GetIssuerOrganisationRequest_160"/>
+            <wsdl:output name="GetIssuerOrganisationResponse_160" message="tns:GetIssuerOrganisationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2965,13 +2965,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescribingOrganisation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescribingOrganisation" style="document"/>
-            <wsdl:input name="GetPrescribingOrganisationRequest_160">
+        <wsdl:operation name="GetIssuerOrganisation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetIssuerOrganisation" style="document"/>
+            <wsdl:input name="GetIssuerOrganisationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPrescribingOrganisationResponse_160">
+            <wsdl:output name="GetIssuerOrganisationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

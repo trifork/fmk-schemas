@@ -4,20 +4,20 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<simpleType name="PrescribingOrganisationRetrievalContextType">
+	<simpleType name="IssuerOrganisationRetrievalContextType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element describing the context requesting from</documentation>
 			<documentation xml:lang="da-DK">Element beskrivende den kontekst man spørger fra</documentation>
 		</annotation>
-		<union memberTypes="mc160:PredefinedPrescribingOrganisationRetrievalContextType mc160:UndefinedPrescribingOrganisationRetrievalContextType"/>
+		<union memberTypes="mc160:PredefinedIssuerOrganisationRetrievalContextType mc160:UndefinedIssuerOrganisationRetrievalContextType"/>
 	</simpleType>
-	<simpleType name="PredefinedPrescribingOrganisationRetrievalContextType">
-		<restriction base="mc160:UndefinedPrescribingOrganisationRetrievalContextType">
+	<simpleType name="PredefinedIssuerOrganisationRetrievalContextType">
+		<restriction base="mc160:UndefinedIssuerOrganisationRetrievalContextType">
 			<enumeration value="Borger"/>
 			<enumeration value="Hjemmeplejen"/>
 		</restriction>
 	</simpleType>
-	<simpleType name="UndefinedPrescribingOrganisationRetrievalContextType">
+	<simpleType name="UndefinedIssuerOrganisationRetrievalContextType">
 		<restriction base="string">
 			<minLength value="1"/>
 			<maxLength value="100"/>
