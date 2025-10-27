@@ -8,6 +8,7 @@
 	<include schemaLocation="PackageNumber.xsd"/>
 	<include schemaLocation="PackageSize.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
+    <include schemaLocation="BatchNumber.xsd"/>
 
 	<complexType name="PackageHandoverType">
 		<annotation>
@@ -19,6 +20,7 @@
 			<element name="PackageNumber" type="mc160:PackageNumberType"/>
 			<element name="PackageSize" type="mc160:PackageSizeType" minOccurs="0"/>
 			<element name="SubstitutedDrug" type="mc160:DrugType" minOccurs="0"/>
-		</sequence>
+            <element name="BatchNumber" type="mc160:BatchNumberType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
 	</complexType>
 </schema>

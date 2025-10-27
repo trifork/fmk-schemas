@@ -22,13 +22,35 @@
             <Content>MedicineCard</Content>
         </Consent>
     </ConsentHeader>
+
     <MinLogSessionId>288938787902</MinLogSessionId>
-    <PartOfBatchOperation>true</PartOfBatchOperation>
+
     <Paging>
-        <PagingObject>Prescriptions</PagingObject>
+        <PagingObject>Warrants</PagingObject>
         <PageSize>10</PageSize>
         <LastReceived>
             <Field name="Identifier">983552773455</Field>
         </LastReceived>
     </Paging>
+
+    <ExtendedValidationHeader>
+        <ApplySelectedOptionalValidations>
+            <ErrorCode>10801</ErrorCode>
+            <ErrorCode>10802</ErrorCode>
+        </ApplySelectedOptionalValidations>
+        <SkipValidations>
+            <ExtendedValidation>
+                <ErrorCode>10100</ErrorCode>
+                <ErrorCode>10101</ErrorCode>
+                <ElementPath>DrugMedication[1]</ElementPath>
+            </ExtendedValidation>
+            <ExtendedValidation>
+                <ErrorCode>10100</ErrorCode>
+                <ErrorCode>10101</ErrorCode>
+                <ElementPath>DrugMedication[2]</ElementPath>
+            </ExtendedValidation>
+        </SkipValidations>
+    </ExtendedValidationHeader>
+    <PreflightOnly/>
+    <PartOfBatchOperation/>
 </FMKRequestHeader>

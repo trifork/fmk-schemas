@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="ProductionDateTime.xsd"/>
+
+	<element name="GetAcuteDispensingPeriodsRequest" type="mc160:GetAcuteDispensingPeriodsRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to get acute dispensingperiods</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel på hent akutte dispenseringsperioder</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetAcuteDispensingPeriodsRequestType">
+		<sequence>
+			<choice>
+				<sequence>
+					<element name="OrderedAtPharmacyIdentifier" type="mc160:OrganisationIdentifierType"/>
+					<element name="PackedAtOrganisationIdentifier" type="mc160:OrganisationIdentifierType" minOccurs="0"/>
+				</sequence>
+				<element name="PackedAtOrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="FilterDate" type="mc160:ProductionDateTimeType" minOccurs="0" maxOccurs="2"/>
+		</sequence>
+	</complexType>
+</schema>

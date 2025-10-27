@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
+	<include schemaLocation="IsPreflight.xsd"/>
+	<include schemaLocation="StartHandlingOfDispensingPeriod.xsd"/>
+	<include schemaLocation="CreateDispensingPeriod.xsd"/>
+	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
+	<include schemaLocation="DispensingPeriodEndDate.xsd"/>
+	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
+
+	<element name="StartHandlingOfDispensingPeriodRequest" type="mc160:StartHandlingOfDispensingPeriodRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">A request to start handling for an entire dispensing period</documentation>
+			<documentation xml:lang="da-DK">Et request som påbegynder håndtering af alt i en dispensing periode</documentation>
+		</annotation>
+	</element>
+	<complexType name="StartHandlingOfDispensingPeriodRequestType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="ModifiedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+			<element name="IsPreflight" type="mc160:IsPreflightType" minOccurs="0"/>
+			<element name="StartHandlingOfDispensingPeriod" type="mc160:StartHandlingOfDispensingPeriodType" maxOccurs="unbounded"/>
+			<element name="CreateNextPeriod" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="StartDate" type="mc160:DispensingPeriodStartDateType"/>
+						<element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
+						<element name="ExpectedDelivery" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+</schema>
