@@ -16,6 +16,7 @@
 	<include schemaLocation="LabelText.xsd"/>
     <include schemaLocation="Warrant.xsd"/>
     <include schemaLocation="UsesSecondaryHandover.xsd"/>
+    <include schemaLocation="SecondaryHandover.xsd"/>
 
 	<complexType name="HandoverType">
 		<annotation>
@@ -34,6 +35,7 @@
                 <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
             </choice>
             <element name="UsesSecondaryHandover" type="mc160:UsesSecondaryHandoverType" minOccurs="0"/>
+            <element name="SecondaryHandover" type="mc160:SecondaryHandoverType" minOccurs="0" maxOccurs="unbounded"/>
 
 			<element name="HandoverComment" type="mc160:HandoverCommentType" minOccurs="0"/>
 			<element name="LabelText" type="mc160:LabelTextType" minOccurs="0"/>
