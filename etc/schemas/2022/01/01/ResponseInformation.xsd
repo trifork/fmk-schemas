@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="VersionMismatchWarning.xsd"/>
+	<include schemaLocation="HiddenData.xsd"/>
+	<include schemaLocation="PagingResponse.xsd"/>
+	<include schemaLocation="FMKDetail.xsd"/>
+	<include schemaLocation="MinLogSessionIdType.xsd"/>
+	<include schemaLocation="FMKConfigurationList.xsd"/>
+	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
+	<include schemaLocation="KnownPersonIdentifiers.xsd"/>
+
+	<element name="ResponseInformation" type="mc160:ResponseInformationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Extendable information element, that makes it possible to add extra data to responses, without changing the xml schemas</documentation>
+			<documentation xml:lang="da-DK">Informations element som gør det muligt at tilføje yderligere information til et response, uden at det er nødvendigt at ændre xml skemaerne</documentation>
+		</annotation>
+	</element>
+	<complexType name="ResponseInformationType">
+		<sequence>
+			<element name="Text" type="string"/>
+			<element name="KeyValuePair" type="mc160:KeyValueSetType"/>
+		</sequence>
+	</complexType>
+</schema>

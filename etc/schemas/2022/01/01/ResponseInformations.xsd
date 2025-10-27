@@ -12,7 +12,6 @@
 	<include schemaLocation="FMKConfigurationList.xsd"/>
 	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
 	<include schemaLocation="KnownPersonIdentifiers.xsd"/>
-	<include schemaLocation="ResponseInformation.xsd"/>
 
 	<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderType">
 		<annotation>
@@ -27,21 +26,9 @@
 			<element name="VersionMismatchWarning" type="mc160:VersionMismatchWarningType" minOccurs="0"/>
 			<element name="HiddenData" type="mc160:HiddenDataType" minOccurs="0"/>
 			<element name="Paging" type="mc160:PagingResponseType" minOccurs="0"/>
-			<element name="Warnings" type="mc160:WarningsType" minOccurs="0" />
+			<element name="Warnings" type="mc160:FMKDetailType" minOccurs="0" maxOccurs="unbounded" />
 			<element name="FMKConfigurationList" type="mc160:FMKConfigurationListType" minOccurs="0"/>
-			<element name="Informations" type="mc160:ResponseInformationsType" minOccurs="0"/>
-		</sequence>
-	</complexType>
-
-	<complexType name="WarningsType">
-		<sequence>
-			<element name="Warning" type="mc160:FMKDetailType" maxOccurs="unbounded"/>
-		</sequence>
-	</complexType>
-
-	<complexType name="ResponseInformationsType">
-		<sequence>
-			<element name="Information" type="mc160:ResponseInformationType" maxOccurs="unbounded"/>
+			<element name="Informations" type="mc160:ResponseInformationsType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

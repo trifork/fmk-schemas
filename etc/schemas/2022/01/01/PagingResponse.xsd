@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PagingObject.xsd"/>
+	<include schemaLocation="PagingObjectParent.xsd"/>
 	<include schemaLocation="LastReceivedType.xsd"/>
 
 	<element name="PagingResponse" type="mc160:PagingResponseType">
@@ -16,6 +17,7 @@
 	<complexType name="PagingResponseType">
 		<sequence>
 			<element name="PagingObject" type="mc160:PagingObjectType"/>
+			<element name="ParentObjectIdentifier" type="mc160:PagingObjectParentType"/>
 			<element name="PageSize" type="int"/>
 			<element name="TotalSize" type="int"/>
 			<element name="LastReceived" type="mc160:LastReceivedType"/>
