@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+    <include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="DrugName.xsd"/>
+    <include schemaLocation="DosageTranslationShortText.xsd"/>
+    <include schemaLocation="Drug.xsd"/>
+
+	<element name="GetDispensingPeriodChangelogResponse" type="mc160:GetDispensingPeriodChangelogResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document containing a changelog between two different dispensing periods</documentation>
+			<documentation xml:lang="da-DK">Svar dokumenter indeholdende en ændringsliste mellem to forskellige dispenseringsperioder</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetDispensingPeriodChangelogResponseType">
+		<sequence>
+            <choice>
+                <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+                <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+            </choice>
+            <element name="PlannedAdministrationAdded" type="mc160:AddedOrRemovedAdministrationType" minOccurs="0"/>
+            <element name="PlannedAdministrationRemoved" type="mc160:AddedOrRemovedAdministrationType" minOccurs="0"/>
+            <element name="PlannedAdministrationUpdated" type="mc160:UpdatedAdministrationType" minOccurs="0"/>
+            <element name="DrugSubstitution" type="mc160:SubstitutedDrugType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+    <complexType name="AddedOrRemovedAdministrationType">
+        <sequence>
+            <element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="Drug" type="mc160:DrugType" minOccurs="0"/>
+            <element name="TranslatedDosageText" type="mc160:DosageTranslationShortTextType"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="UpdatedAdministrationType">
+        <sequence>
+            <element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="OldTranslatedDosageText" type="mc160:DosageTranslationShortTextType"/>
+            <element name="NewTranslatedDosageText" type="mc160:DosageTranslationShortTextType"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="SubstitutedDrugType">
+        <sequence>
+            <element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="PreviousDrug" type="mc160:DrugType" minOccurs="0"/>
+            <element name="NewDrug" type="mc160:DrugType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+</schema>

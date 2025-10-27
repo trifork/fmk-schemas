@@ -11,6 +11,7 @@
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="SystemName.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
+    <include schemaLocation="UnspecifiedValidFrom.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 	<include schemaLocation="Prescription.xsd"/>
 	<include schemaLocation="HospitalPharmacyHandover.xsd"/>
@@ -28,7 +29,10 @@
 			<element name="RequestForWarrantIdentifier" type="mc160:RequestForWarrantIdentifierType" minOccurs="0"/>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
-			<element name="ValidFromDate" type="mc160:ValidFromDateType" minOccurs="0"/>
+            <choice minOccurs="0">
+                <element name="ValidFromDate" type="mc160:ValidFromDateType"/>
+                <element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
+            </choice>
 			<element name="ValidToDate" type="mc160:ValidToDateType" minOccurs="0"/>
 			<choice>
 				<element name="Prescription" type="mc160:PrescriptionType"/>
