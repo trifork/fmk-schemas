@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <include schemaLocation="EntityWithDispensing.xsd"/>
+
+	<element name="GetAcuteDispensingPeriodsResponse" type="mc160:GetAcuteDispensingPeriodsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response with acute dispensingperiods</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en svar med akutte dispenseringsperioder</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetAcuteDispensingPeriodsResponseType">
+		<sequence>
+			<element name="EntityWithDispensing" type="mc160:EntityWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

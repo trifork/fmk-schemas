@@ -9,6 +9,7 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
+    <include schemaLocation="OrderCancellationReason.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<element name="CancelOrderRequest" type="mc160:CancelOrderRequestType">
@@ -30,6 +31,7 @@
 					<sequence>
 						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+                        <element name="CancellationReason" type="mc160:OrderCancellationReasonType" minOccurs="0"/>
 						<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 					</sequence>
 				</complexType>

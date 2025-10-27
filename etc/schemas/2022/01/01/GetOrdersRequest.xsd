@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="PersonIdentifier.xsd"/>
+    <include schemaLocation="OrganisationIdentifier.xsd"/>
+    <include schemaLocation="OrderIdentifier.xsd"/>
+    <include schemaLocation="OrderedDateTime.xsd"/>
+
+	<element name="GetOrdersRequest" type="mc160:GetOrdersRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a request for a list of orders on warrants for a patient or practice</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel efter en liste af bestillinger på udleveringsgrundlag for en patient eller praksis</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetOrdersRequestType">
+		<sequence>
+            <choice>
+			    <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+                <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+            </choice>
+			<choice>
+				<element name="OrderIdentifier" type="mc160:OrderIdentifierType" maxOccurs="unbounded"/>
+				<element name="CreatedSince" type="mc160:OrderedDateTimeType"/>
+			</choice>
+		</sequence>
+	</complexType>
+</schema>

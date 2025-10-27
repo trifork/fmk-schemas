@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifierAndVersion.xsd"/>
+
+	<element name="AbortHandlingOfDispensingPeriodResponse" type="mc160:AbortHandlingOfDispensingPeriodResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a response from a for a request to abort handling for an entire dispensing period</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for et svar på en request som afbryder håndteringen af alt i en dispenseringsperiode</documentation>
+		</annotation>
+	</element>
+	<complexType name="AbortHandlingOfDispensingPeriodResponseType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="DispensingPeriod" type="mc160:DispensingPeriodIdentifierAndVersionType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
