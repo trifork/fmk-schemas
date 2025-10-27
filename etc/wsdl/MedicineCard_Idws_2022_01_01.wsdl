@@ -184,8 +184,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GenerateShipmentIdentifiersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GenerateShipmentIdentifiersResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetAcutePeriodsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAcuteDispensingPeriodsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetAcuteDispensingPeriodsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetAuthorisationDateForNewestOpenWarrantResponse.xsd"/>
@@ -246,6 +246,9 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetNewOrdersResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/GetOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetOrdersResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPackingGroupContentsResponse.xsd"/>
@@ -343,6 +346,9 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchOrdersRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchOrdersResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsResponse.xsd"/>
@@ -771,12 +777,12 @@
         <wsdl:part name="GenerateShipmentIdentifiersResponse" element="mc160:GenerateShipmentIdentifiersResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetAcutePeriodsRequest_160">
-        <wsdl:part name="GetAcutePeriodsRequest" element="mc160:GetAcutePeriodsRequest"/>
+    <wsdl:message name="GetAcuteDispensingPeriodsRequest_160">
+        <wsdl:part name="GetAcuteDispensingPeriodsRequest" element="mc160:GetAcuteDispensingPeriodsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetAcutePeriodsResponse_160">
-        <wsdl:part name="GetAcutePeriodsResponse" element="mc160:GetAcutePeriodsResponse"/>
+    <wsdl:message name="GetAcuteDispensingPeriodsResponse_160">
+        <wsdl:part name="GetAcuteDispensingPeriodsResponse" element="mc160:GetAcuteDispensingPeriodsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetAuthorisationDateForNewestOpenWarrantRequest_160">
@@ -937,6 +943,14 @@
 
     <wsdl:message name="GetNewOrdersResponse_160">
         <wsdl:part name="GetNewOrdersResponse" element="mc160:GetNewOrdersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetOrdersRequest_160">
+        <wsdl:part name="GetOrdersRequest" element="mc160:GetOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetOrdersResponse_160">
+        <wsdl:part name="GetOrdersResponse" element="mc160:GetOrdersResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetPackingGroupContentsRequest_160">
@@ -1187,6 +1201,14 @@
         <wsdl:part name="SearchForPersonWithWarrantResponse" element="mc160:SearchForPersonWithWarrantResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="SearchOrdersRequest_160">
+        <wsdl:part name="SearchOrdersRequest" element="mc160:SearchOrdersRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchOrdersResponse_160">
+        <wsdl:part name="SearchOrdersResponse" element="mc160:SearchOrdersResponse"/>
+    </wsdl:message>
+
     <wsdl:message name="SearchTrackAndTraceEventsRequest_160">
         <wsdl:part name="SearchTrackAndTraceEventsRequest" element="mc160:SearchTrackAndTraceEventsRequest"/>
     </wsdl:message>
@@ -1195,12 +1217,12 @@
         <wsdl:part name="SearchTrackAndTraceEventsResponse" element="mc160:SearchTrackAndTraceEventsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchWithdrawnDrugMedicationsRequest_160">
-        <wsdl:part name="SearchWithdrawnDrugMedicationsRequest" element="mc160:SearchEndedDrugMedicationsRequest"/>
+    <wsdl:message name="SearchEndedDrugMedicationsRequest_160">
+        <wsdl:part name="SearchEndedDrugMedicationsRequest" element="mc160:SearchEndedDrugMedicationsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="SearchWithdrawnDrugMedicationsResponse_160">
-        <wsdl:part name="SearchWithdrawnDrugMedicationsResponse" element="mc160:SearchEndedDrugMedicationsResponse"/>
+    <wsdl:message name="SearchEndedDrugMedicationsResponse_160">
+        <wsdl:part name="SearchEndedDrugMedicationsResponse" element="mc160:SearchEndedDrugMedicationsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="SetMedicineCardNotReviewedRequest_160">
@@ -1625,9 +1647,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetAcutePeriods_160">
-            <wsdl:input name="GetAcutePeriodsRequest_160" message="tns:GetAcutePeriodsRequest_160"/>
-            <wsdl:output name="GetAcutePeriodsResponse_160" message="tns:GetAcutePeriodsResponse_160"/>
+        <wsdl:operation name="GetAcuteDispensingPeriods_160">
+            <wsdl:input name="GetAcuteDispensingPeriodsRequest_160" message="tns:GetAcuteDispensingPeriodsRequest_160"/>
+            <wsdl:output name="GetAcuteDispensingPeriodsResponse_160" message="tns:GetAcuteDispensingPeriodsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1748,6 +1770,12 @@
         <wsdl:operation name="GetNewOrders_160">
             <wsdl:input name="GetNewOrdersRequest_160" message="tns:GetNewOrdersRequest_160"/>
             <wsdl:output name="GetNewOrdersResponse_160" message="tns:GetNewOrdersResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrders_160">
+            <wsdl:input name="GetOrdersRequest_160" message="tns:GetOrdersRequest_160"/>
+            <wsdl:output name="GetOrdersResponse_160" message="tns:GetOrdersResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -1943,15 +1971,22 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+
+        <wsdl:operation name="SearchOrders_160">
+            <wsdl:input name="SearchOrdersRequest_160" message="tns:SearchOrdersRequest_160"/>
+            <wsdl:output name="SearchOrdersResponse_160" message="tns:SearchOrdersResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="SearchTrackAndTraceEvents_160">
             <wsdl:input name="SearchTrackAndTraceEventsRequest_160" message="tns:SearchTrackAndTraceEventsRequest_160"/>
             <wsdl:output name="SearchTrackAndTraceEventsResponse_160" message="tns:SearchTrackAndTraceEventsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchWithdrawnDrugMedications_160">
-            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_160" message="tns:SearchWithdrawnDrugMedicationsRequest_160"/>
-            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_160" message="tns:SearchWithdrawnDrugMedicationsResponse_160"/>
+        <wsdl:operation name="SearchEndedDrugMedications_160">
+            <wsdl:input name="SearchEndedDrugMedicationsRequest_160" message="tns:SearchEndedDrugMedicationsRequest_160"/>
+            <wsdl:output name="SearchEndedDrugMedicationsResponse_160" message="tns:SearchEndedDrugMedicationsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2601,13 +2636,13 @@
         </wsdl:operation>
 
 
-        <wsdl:operation name="GetAcutePeriods_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetAcutePeriods" style="document"/>
-            <wsdl:input name="GetAcutePeriodsRequest_160">
+        <wsdl:operation name="GetAcuteDispensingPeriods_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetAcuteDispensingPeriods" style="document"/>
+            <wsdl:input name="GetAcuteDispensingPeriodsRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetAcutePeriodsResponse_160">
+            <wsdl:output name="GetAcuteDispensingPeriodsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -2868,6 +2903,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetNewOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetOrders_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetOrders" style="document"/>
+            <wsdl:input name="GetOrdersRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetOrdersResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -3303,13 +3351,27 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchWithdrawnDrugMedications_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchWithdrawnDrugMedications" style="document"/>
-            <wsdl:input name="SearchWithdrawnDrugMedicationsRequest_160">
+
+        <wsdl:operation name="SearchOrders_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchOrders" style="document"/>
+            <wsdl:input name="SearchOrdersRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="SearchWithdrawnDrugMedicationsResponse_160">
+            <wsdl:output name="SearchOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchEndedDrugMedications_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchEndedDrugMedications" style="document"/>
+            <wsdl:input name="SearchEndedDrugMedicationsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchEndedDrugMedicationsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

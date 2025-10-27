@@ -7,7 +7,6 @@
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersion.xsd"/>
-	<include schemaLocation="OrderedHandoverIdentifier.xsd"/>
 	<include schemaLocation="AuthorisationDateTime.xsd"/>
 	<include schemaLocation="CreatedWithOptionalAuthorisationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
@@ -33,6 +32,7 @@
 	<include schemaLocation="Handover.xsd"/>
 	<include schemaLocation="InvalidHandover.xsd"/>
     <include schemaLocation="WarrantStatus.xsd"/>
+    <include schemaLocation="RequestForWarrantIdentifier.xsd"/>
 
 	<complexType name="WarrantType">
 		<annotation>
@@ -43,7 +43,7 @@
 			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
 			<element name="AttachedToDrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
 			<element name="CreatedFromDrugMedicationVersion" type="mc160:DrugMedicationVersionType" minOccurs="0"/>
-			<element name="OrderedHandoverIdentifier" type="mc160:OrderedHandoverIdentifierType" minOccurs="0"/>
+            <element name="RequestForWarrantIdentifier" type="mc160:RequestForWarrantIdentifierType" minOccurs="0"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
 			<element name="Created" type="mc160:CreatedWithOptionalAuthorisationIdentifierType"/>
             <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
