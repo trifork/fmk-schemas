@@ -18,7 +18,7 @@
 	<include schemaLocation="DosageForRequest.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="CreateTreatmentHandover.xsd"/>
-    <include schemaLocation="CreateDrugAdministration.xsd"/>
+	<include schemaLocation="CreateDrugAdministration.xsd"/>
 	<include schemaLocation="CreateWarrant.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="ReimbursementClause.xsd"/>
@@ -32,7 +32,6 @@
 			<documentation xml:lang="da-DK">Anvisning af hvilken medicin der skal anvendes (lægemiddel) hvor meget der skal gives (lægemiddeldosering), hvor længe (startdato og slutdato), hvordan den skal tilføres (administrationsvej) og hvorfor (indikation)</documentation>
 		</annotation>
 		<sequence>
-			<element name="ParentIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="FollowUpDates" type="mc160:FollowUpDatesType" minOccurs="0"/>
 			<element name="Pause" type="mc160:PauseType" minOccurs="0"/>
@@ -43,7 +42,7 @@
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForRequestType"/>
-			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
+			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="CreateTreatmentHandover" type="mc160:CreateTreatmentHandoverType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="HandoverPreference" type="mc160:HandoverMethodType"/>
 			<element name="CreateWarrant" type="mc160:CreateWarrantType" minOccurs="0" maxOccurs="unbounded"/>
@@ -51,7 +50,7 @@
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="RequestDrugAdministrationRegistration" type="mc160:DrugAdministrationRegistrationRequestedType" minOccurs="0" />
-            <element name="RequireSecondaryHandover" type="mc160:RequireSecondaryHandoverType" minOccurs="0" />
+			<element name="RequireSecondaryHandover" type="mc160:RequireSecondaryHandoverType" minOccurs="0" />
 		</sequence>
 	</complexType>
 </schema>
