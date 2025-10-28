@@ -6,10 +6,6 @@
 	
 	<include schemaLocation="DeliveryPriority.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
-	<include schemaLocation="StreetName.xsd"/>
-	<include schemaLocation="PseudoAddress.xsd"/>
-	<include schemaLocation="PostCode.xsd"/>
-	<include schemaLocation="ContactName.xsd"/>
 	
 	<element name="Delivery" type="mc160:DeliveryType">
 		<annotation>
@@ -21,14 +17,7 @@
 		<sequence>
 			<element name="Priority" type="mc160:DeliveryPriorityType"/>
             <choice>
-                <sequence>
-                    <choice minOccurs="0">
-                        <element name="StreetName" type="mc160:StreetNameType"/>
-                        <element name="PseudoAddress" type="mc160:PseudoAddressType"/>
-                    </choice>
-                    <element name="PostCode" type="mc160:PostCodeType" minOccurs="0"/>
-                    <element name="ContactName" type="mc160:ContactNameType" minOccurs="0"/>
-                </sequence>
+                <element name="AddressLine" type="mc160:AddressLineType" minOccurs="0" maxOccurs="5"/>
                 <element name="DeliverySite" type="mc160:OrganisationType" minOccurs="0"/>
             </choice>
 		</sequence>
