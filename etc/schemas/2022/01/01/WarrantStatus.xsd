@@ -7,10 +7,10 @@
     <include schemaLocation="Source.xsd"/>
     
     <simpleType name="WarrantStatusType">
-        <union memberTypes="mc160:WarrantPredefinedStatusType mc160:UndefinedSourceType"/>
+        <union memberTypes="mc160:PredefinedWarrantStatusType mc160:UndefinedWarrantStatusType"/>
     </simpleType>
 
-    <simpleType name="WarrantPredefinedStatusType">
+    <simpleType name="PredefinedWarrantStatusType">
         <restriction base="string">
             <enumeration value="Open"/>
             <enumeration value="Pending"/>
@@ -20,6 +20,13 @@
             <enumeration value="Expired"/>
             <enumeration value="Replaced"/>
             <enumeration value="Deferred cancellation"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="UndefinedWarrantStatusType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="200"/>
         </restriction>
     </simpleType>
 
