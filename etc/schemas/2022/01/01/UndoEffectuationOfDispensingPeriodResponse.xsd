@@ -6,21 +6,21 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="UndoneHandoverOfDispensingPeriod.xsd"/>
+	<include schemaLocation="UndoneEffectuationOfDispensingPeriod.xsd"/>
 
-	<element name="UndoHandoverOfDispensingPeriodResponse" type="mc160:UndoHandoverOfDispensingPeriodResponseType">
+	<element name="UndoEffectuationOfDispensingPeriodResponse" type="mc160:UndoEffectuationOfDispensingPeriodResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response for undoing handovers for a dispensingperiod</documentation>
 			<documentation xml:lang="da-DK">Svar på tilbageførsel af udleveringer for en dispenseringsperiode</documentation>
 		</annotation>
 	</element>
-	<complexType name="UndoHandoverOfDispensingPeriodResponseType">
+	<complexType name="UndoEffectuationOfDispensingPeriodResponseType">
 		<sequence>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="DispensingPeriod" type="mc160:UndoneHandoverOfDispensingPeriodType" maxOccurs="unbounded"/>
+			<element name="DispensingPeriod" type="mc160:UndoneEffectuationOfDispensingPeriodType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
