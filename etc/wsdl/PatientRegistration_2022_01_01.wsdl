@@ -74,6 +74,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/RemovePatientRegistrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemovePatientRegistrationResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchDeliverySitesRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchDeliverySitesResponse.xsd"/>
+
         </xs:schema>
 
     </wsdl:types>
@@ -106,118 +109,133 @@
         <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOf"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePatientRegistrationRequest_2022_01_01">
+    <wsdl:message name="CreatePatientRegistrationRequest_160">
         <wsdl:part name="CreatePatientRegistrationRequest" element="mc160:CreatePatientRegistrationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="CreatePatientRegistrationResponse_2022_01_01">
+    <wsdl:message name="CreatePatientRegistrationResponse_160">
         <wsdl:part name="CreatePatientRegistrationResponse" element="mc160:CreatePatientRegistrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDeliverySitesForPharmacyRequest_2022_01_01">
+    <wsdl:message name="GetDeliverySitesForPharmacyRequest_160">
         <wsdl:part name="GetDeliverySitesForPharmacyRequest" element="mc160:GetDeliverySitesForPharmacyRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetDeliverySitesForPharmacyResponse_2022_01_01">
+    <wsdl:message name="GetDeliverySitesForPharmacyResponse_160">
         <wsdl:part name="GetDeliverySitesForPharmacyResponse" element="mc160:GetDeliverySitesForPharmacyResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientOrganisationRelationRequest_2022_01_01">
+    <wsdl:message name="GetPatientOrganisationRelationRequest_160">
         <wsdl:part name="GetPatientOrganisationRelationRequest" element="mc160:GetPatientOrganisationRelationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientOrganisationRelationResponse_2022_01_01">
+    <wsdl:message name="GetPatientOrganisationRelationResponse_160">
         <wsdl:part name="GetPatientOrganisationRelationResponse" element="mc160:GetPatientOrganisationRelationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientOrganisationRelationsRequest_2022_01_01">
+    <wsdl:message name="GetPatientOrganisationRelationsRequest_160">
         <wsdl:part name="GetPatientOrganisationRelationsRequest" element="mc160:GetPatientOrganisationRelationsRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientOrganisationRelationsResponse_2022_01_01">
+    <wsdl:message name="GetPatientOrganisationRelationsResponse_160">
         <wsdl:part name="GetPatientOrganisationRelationsResponse" element="mc160:GetPatientOrganisationRelationsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientRegistrationRequest_2022_01_01">
+    <wsdl:message name="GetPatientRegistrationRequest_160">
         <wsdl:part name="GetPatientRegistrationRequest" element="mc160:GetPatientRegistrationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPatientRegistrationResponse_2022_01_01">
+    <wsdl:message name="GetPatientRegistrationResponse_160">
         <wsdl:part name="GetPatientRegistrationResponse" element="mc160:GetPatientRegistrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RegisterPatientOrganisationRelationRequest_2022_01_01">
+    <wsdl:message name="RegisterPatientOrganisationRelationRequest_160">
         <wsdl:part name="RegisterPatientOrganisationRelationRequest" element="mc160:RegisterPatientOrganisationRelationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="RegisterPatientOrganisationRelationResponse_2022_01_01">
+    <wsdl:message name="RegisterPatientOrganisationRelationResponse_160">
         <wsdl:part name="RegisterPatientOrganisationRelationResponse" element="mc160:RegisterPatientOrganisationRelationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RemovePatientOrganisationRelationRequest_2022_01_01">
+    <wsdl:message name="RemovePatientOrganisationRelationRequest_160">
         <wsdl:part name="RemovePatientOrganisationRelationRequest" element="mc160:RemovePatientOrganisationRelationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="RemovePatientOrganisationRelationResponse_2022_01_01">
+    <wsdl:message name="RemovePatientOrganisationRelationResponse_160">
         <wsdl:part name="RemovePatientOrganisationRelationResponse" element="mc160:RemovePatientOrganisationRelationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="RemovePatientRegistrationRequest_2022_01_01">
+    <wsdl:message name="RemovePatientRegistrationRequest_160">
         <wsdl:part name="RemovePatientRegistrationRequest" element="mc160:RemovePatientRegistrationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="RemovePatientRegistrationResponse_2022_01_01">
+    <wsdl:message name="RemovePatientRegistrationResponse_160">
         <wsdl:part name="RemovePatientRegistrationResponse" element="mc160:RemovePatientRegistrationResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="SearchDeliverySitesRequest_160">
+        <wsdl:part name="SearchDeliverySitesRequest" element="mc160:SearchDeliverySitesRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="SearchDeliverySitesResponse_160">
+        <wsdl:part name="SearchDeliverySitesResponse" element="mc160:SearchDeliverySitesResponse"/>
+    </wsdl:message>
+
+
     <wsdl:portType name="PatientRelationPortType">
 
-        <wsdl:operation name="CreatePatientRegistration_2022_01_01">
-            <wsdl:input name="CreatePatientRegistrationRequest_2022_01_01" message="tns:CreatePatientRegistrationRequest_2022_01_01"/>
-            <wsdl:output name="CreatePatientRegistrationResponse_2022_01_01" message="tns:CreatePatientRegistrationResponse_2022_01_01"/>
+        <wsdl:operation name="CreatePatientRegistration_160">
+            <wsdl:input name="CreatePatientRegistrationRequest_160" message="tns:CreatePatientRegistrationRequest_160"/>
+            <wsdl:output name="CreatePatientRegistrationResponse_160" message="tns:CreatePatientRegistrationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetDeliverySitesForPharmacy_2022_01_01">
-            <wsdl:input name="GetDeliverySitesForPharmacyRequest_2022_01_01" message="tns:GetDeliverySitesForPharmacyRequest_2022_01_01"/>
-            <wsdl:output name="GetDeliverySitesForPharmacyResponse_2022_01_01" message="tns:GetDeliverySitesForPharmacyResponse_2022_01_01"/>
+        <wsdl:operation name="GetDeliverySitesForPharmacy_160">
+            <wsdl:input name="GetDeliverySitesForPharmacyRequest_160" message="tns:GetDeliverySitesForPharmacyRequest_160"/>
+            <wsdl:output name="GetDeliverySitesForPharmacyResponse_160" message="tns:GetDeliverySitesForPharmacyResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
 
-        <wsdl:operation name="GetPatientOrganisationRelation_2022_01_01">
-            <wsdl:input name="GetPatientOrganisationRelationRequest_2022_01_01" message="tns:GetPatientOrganisationRelationRequest_2022_01_01"/>
-            <wsdl:output name="GetPatientOrganisationRelationResponse_2022_01_01" message="tns:GetPatientOrganisationRelationResponse_2022_01_01"/>
+        <wsdl:operation name="GetPatientOrganisationRelation_160">
+            <wsdl:input name="GetPatientOrganisationRelationRequest_160" message="tns:GetPatientOrganisationRelationRequest_160"/>
+            <wsdl:output name="GetPatientOrganisationRelationResponse_160" message="tns:GetPatientOrganisationRelationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientOrganisationRelations_2022_01_01">
-            <wsdl:input name="GetPatientOrganisationRelationsRequest_2022_01_01" message="tns:GetPatientOrganisationRelationsRequest_2022_01_01"/>
-            <wsdl:output name="GetPatientOrganisationRelationsResponse_2022_01_01" message="tns:GetPatientOrganisationRelationsResponse_2022_01_01"/>
+        <wsdl:operation name="GetPatientOrganisationRelations_160">
+            <wsdl:input name="GetPatientOrganisationRelationsRequest_160" message="tns:GetPatientOrganisationRelationsRequest_160"/>
+            <wsdl:output name="GetPatientOrganisationRelationsResponse_160" message="tns:GetPatientOrganisationRelationsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientRegistration_2022_01_01">
-            <wsdl:input name="GetPatientRegistrationRequest_2022_01_01" message="tns:GetPatientRegistrationRequest_2022_01_01"/>
-            <wsdl:output name="GetPatientRegistrationResponse_2022_01_01" message="tns:GetPatientRegistrationResponse_2022_01_01"/>
+        <wsdl:operation name="GetPatientRegistration_160">
+            <wsdl:input name="GetPatientRegistrationRequest_160" message="tns:GetPatientRegistrationRequest_160"/>
+            <wsdl:output name="GetPatientRegistrationResponse_160" message="tns:GetPatientRegistrationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterPatientOrganisationRelation_2022_01_01">
-            <wsdl:input name="RegisterPatientOrganisationRelationRequest_2022_01_01" message="tns:RegisterPatientOrganisationRelationRequest_2022_01_01"/>
-            <wsdl:output name="RegisterPatientOrganisationRelationResponse_2022_01_01" message="tns:RegisterPatientOrganisationRelationResponse_2022_01_01"/>
+        <wsdl:operation name="RegisterPatientOrganisationRelation_160">
+            <wsdl:input name="RegisterPatientOrganisationRelationRequest_160" message="tns:RegisterPatientOrganisationRelationRequest_160"/>
+            <wsdl:output name="RegisterPatientOrganisationRelationResponse_160" message="tns:RegisterPatientOrganisationRelationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientOrganisationRelation_2022_01_01">
-            <wsdl:input name="RemovePatientOrganisationRelationRequest_2022_01_01" message="tns:RemovePatientOrganisationRelationRequest_2022_01_01"/>
-            <wsdl:output name="RemovePatientOrganisationRelationResponse_2022_01_01" message="tns:RemovePatientOrganisationRelationResponse_2022_01_01"/>
+        <wsdl:operation name="RemovePatientOrganisationRelation_160">
+            <wsdl:input name="RemovePatientOrganisationRelationRequest_160" message="tns:RemovePatientOrganisationRelationRequest_160"/>
+            <wsdl:output name="RemovePatientOrganisationRelationResponse_160" message="tns:RemovePatientOrganisationRelationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientRegistration_2022_01_01">
-            <wsdl:input name="RemovePatientRegistrationRequest_2022_01_01" message="tns:RemovePatientRegistrationRequest_2022_01_01"/>
-            <wsdl:output name="RemovePatientRegistrationResponse_2022_01_01" message="tns:RemovePatientRegistrationResponse_2022_01_01"/>
+        <wsdl:operation name="RemovePatientRegistration_160">
+            <wsdl:input name="RemovePatientRegistrationRequest_160" message="tns:RemovePatientRegistrationRequest_160"/>
+            <wsdl:output name="RemovePatientRegistrationResponse_160" message="tns:RemovePatientRegistrationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchDeliverySites_160">
+            <wsdl:input name="SearchDeliverySitesRequest_160" message="tns:SearchDeliverySitesRequest_160"/>
+            <wsdl:output name="SearchDeliverySitesResponse_160" message="tns:SearchDeliverySitesResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -227,116 +245,130 @@
 
      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-        <wsdl:operation name="CreatePatientRegistration_2022_01_01">
+        <wsdl:operation name="CreatePatientRegistration_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#CreatePatientRegistration"
                             style="document"/>
-            <wsdl:input name="CreatePatientRegistrationRequest_2022_01_01">
+            <wsdl:input name="CreatePatientRegistrationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="CreatePatientRegistrationResponse_2022_01_01">
+            <wsdl:output name="CreatePatientRegistrationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-       <wsdl:operation name="GetDeliverySitesForPharmacy_2022_01_01">
+       <wsdl:operation name="GetDeliverySitesForPharmacy_160">
            <soap:operation soapAction="http://fmk-teknik.dk/160#GetDeliverySitesForPharmacy" style="document"/>
-           <wsdl:input name="GetDeliverySitesForPharmacyRequest_2022_01_01">
+           <wsdl:input name="GetDeliverySitesForPharmacyRequest_160">
                &fmkStandardSOAPRequestHeaders;
                <soap:body use="literal"/>
            </wsdl:input>
-           <wsdl:output name="GetDeliverySitesForPharmacyResponse_2022_01_01">
+           <wsdl:output name="GetDeliverySitesForPharmacyResponse_160">
                &fmkStandardSOAPResponseHeaders;
                <soap:body use="literal"/>
            </wsdl:output>
            &bindingFaultDeclaration;
        </wsdl:operation>
 
-        <wsdl:operation name="GetPatientOrganisationRelation_2022_01_01">
+        <wsdl:operation name="GetPatientOrganisationRelation_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetPatientOrganisationRelation"
                             style="document"/>
-            <wsdl:input name="GetPatientOrganisationRelationRequest_2022_01_01">
+            <wsdl:input name="GetPatientOrganisationRelationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPatientOrganisationRelationResponse_2022_01_01">
+            <wsdl:output name="GetPatientOrganisationRelationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientOrganisationRelations_2022_01_01">
+        <wsdl:operation name="GetPatientOrganisationRelations_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetPatientOrganisationRelations"
                             style="document"/>
-            <wsdl:input name="GetPatientOrganisationRelationsRequest_2022_01_01">
+            <wsdl:input name="GetPatientOrganisationRelationsRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPatientOrganisationRelationsResponse_2022_01_01">
+            <wsdl:output name="GetPatientOrganisationRelationsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPatientRegistration_2022_01_01">
+        <wsdl:operation name="GetPatientRegistration_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetPatientRegistration"
                             style="document"/>
-            <wsdl:input name="GetPatientRegistrationRequest_2022_01_01">
+            <wsdl:input name="GetPatientRegistrationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPatientRegistrationResponse_2022_01_01">
+            <wsdl:output name="GetPatientRegistrationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterPatientOrganisationRelation_2022_01_01">
+        <wsdl:operation name="RegisterPatientOrganisationRelation_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterPatientOrganisationRelation"
                             style="document"/>
-            <wsdl:input name="RegisterPatientOrganisationRelationRequest_2022_01_01">
+            <wsdl:input name="RegisterPatientOrganisationRelationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RegisterPatientOrganisationRelationResponse_2022_01_01">
+            <wsdl:output name="RegisterPatientOrganisationRelationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientOrganisationRelation_2022_01_01">
+        <wsdl:operation name="RemovePatientOrganisationRelation_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#RemovePatientOrganisationRelation"
                             style="document"/>
-            <wsdl:input name="RemovePatientOrganisationRelationRequest_2022_01_01">
+            <wsdl:input name="RemovePatientOrganisationRelationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RemovePatientOrganisationRelationResponse_2022_01_01">
+            <wsdl:output name="RemovePatientOrganisationRelationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RemovePatientRegistration_2022_01_01">
+        <wsdl:operation name="RemovePatientRegistration_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#RemovePatientRegistration"
                             style="document"/>
-            <wsdl:input name="RemovePatientRegistrationRequest_2022_01_01">
+            <wsdl:input name="RemovePatientRegistrationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="RemovePatientRegistrationResponse_2022_01_01">
+            <wsdl:output name="RemovePatientRegistrationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
             &bindingFaultDeclaration;
         </wsdl:operation>
+
+       <wsdl:operation name="SearchDeliverySites_160">
+           <soap:operation soapAction="http://fmk-teknik.dk/160#SearchDeliverySites"
+                           style="document"/>
+           <wsdl:input name="SearchDeliverySitesRequest_160">
+               &fmkStandardSOAPRequestHeaders;
+               <soap:body use="literal"/>
+           </wsdl:input>
+           <wsdl:output name="SearchDeliverySitesResponse_160">
+               &fmkStandardSOAPResponseHeaders;
+               <soap:body use="literal"/>
+           </wsdl:output>
+           &bindingFaultDeclaration;
+       </wsdl:operation>
 
    </wsdl:binding>
 

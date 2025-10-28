@@ -5,34 +5,34 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="OrderIdentifier.xsd"/>
-	<include schemaLocation="CreatedWithoutPerson.xsd"/>
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="OrderVersion.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
 	<include schemaLocation="OrderStatus.xsd"/>
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
-	<include schemaLocation="EffectuationOnWarrant.xsd"/>
-	<include schemaLocation="InvalidEffectuation.xsd"/>
+	<include schemaLocation="Handover.xsd"/>
+	<include schemaLocation="InvalidHandover.xsd"/>
+    <include schemaLocation="OrderCancellationReason.xsd"/>
 
 	<complexType name="OrderType">
         <annotation>
-            <documentation xml:lang="en-GB">Order of an effectuation on a warrant</documentation>
+            <documentation xml:lang="en-GB">Order for a handover on a warrant</documentation>
             <documentation xml:lang="da-DK">Bestilling af en udlevering på et udleveringsgrundlag</documentation>
         </annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:OrderIdentifierType"/>
-			<choice>
-				<element name="CreatedWithoutPerson" type="mc160:CreatedWithoutPersonType"/>
-				<element name="Created" type="mc160:CreatedType"/>
-			</choice>
+            <element name="Version" type="mc160:OrderVersionType"/>
+            <element name="Status" type="mc160:OrderStatusType"/>
+            <element name="Created" type="mc160:CreatedType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
 			<element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
-			<element name="Status" type="mc160:OrderStatusType"/>
 			<element name="DeliveryInstructionText" type="mc160:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
-			<element name="EffectuationIdentifier" type="mc160:EffectuationIdentifierType" minOccurs="0"/>
+            <element name="CancellationReason" type="mc160:OrderCancellationReasonType" minOccurs="0"/>
+            <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

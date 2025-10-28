@@ -7,6 +7,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationHistory.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 
 	<element name="GetDrugMedicationHistoryResponse" type="mc160:GetDrugMedicationHistoryResponseType">
 		<annotation>
@@ -16,9 +17,12 @@
 	</element>
 	<complexType name="GetDrugMedicationHistoryResponseType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-            <element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
-            <element name="History" type="mc160:DrugMedicationHistoryType"/>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+      <element name="History" type="mc160:DrugMedicationHistoryType"/>
 		</sequence>
 	</complexType>
 </schema>

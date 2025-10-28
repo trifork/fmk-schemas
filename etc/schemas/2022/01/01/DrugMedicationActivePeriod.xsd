@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationStartDate.xsd"/>
+	<include schemaLocation="DrugMedicationStartedPreviously.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentEndDate.xsd"/>
+	<include schemaLocation="DrugMedicationTreatmentEndingUndetermined.xsd"/>
+	<include schemaLocation="DrugMedicationEndedReason.xsd"/>
+
+	<element name="DrugMedicationActivePeriod" type="mc160:DrugMedicationActivePeriodType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates the period where the drug medication is/were active. If no longer active, the "ended" reason is also indicated.</documentation>
+			<documentation xml:lang="da-DK">Angiver perioden hvor lægemiddelordinationen er/var aktiv. Hvis den ikke længere er aktiv, årsagen til dette vil også fremgå.</documentation>
+		</annotation>
+	</element>
+	<complexType name="DrugMedicationActivePeriodType">
+		<sequence>
+			<choice>
+				<element name="DrugMedicationStartDate" type="mc160:DrugMedicationStartDateType"/>
+				<element name="DrugMedicationStartedPreviously" type="mc160:DrugMedicationStartedPreviouslyType"/>
+			</choice>
+			<choice minOccurs="0">
+				<element name="TreatmentEndDate" type="mc160:DrugMedicationTreatmentEndDateType"/>
+				<element name="TreatmentEndingUndetermined" type="mc160:DrugMedicationTreatmentEndingUndeterminedType"/>
+			</choice>
+			<element name="Ended" type="mc160:EndedReasonType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

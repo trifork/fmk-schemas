@@ -9,6 +9,9 @@
 	<include schemaLocation="WhitelistingHeader.xsd"/>
 	<include schemaLocation="PagingRequest.xsd"/>
 	<include schemaLocation="MinLogSessionIdType.xsd"/>
+	<include schemaLocation="PreflightFlag.xsd"/>
+	<include schemaLocation="PartOfBatchOperationFlag.xsd"/>
+	<include schemaLocation="ExtendedValidationRequestHeader.xsd"/>
 
 	<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderType"> 
 		<annotation>
@@ -22,13 +25,17 @@
 			<element name="WhitelistingHeader" type="mc160:WhitelistingHeaderType"/>
 			<element name="ConsentHeader" type="mc160:ConsentHeaderType" minOccurs="0"/>
 			<element name="MinLogSessionId" type="mc160:MinLogSessionIdType" minOccurs="0"/>
-			<element name="PartOfBatchOperation" type="boolean" minOccurs="0"/>
 			<element name="Paging" type="mc160:PagingRequestType" minOccurs="0"/>
+			<element name="ExtendedValidationHeader" type="mc160:ExtendedValidationRequestHeaderType" minOccurs="0"/>
+            <element name="FMKConfigurationLastUpdated" type="mc160:FMKConfigurationLastUpdatedType" minOccurs="0"/>
+			<element name="PreflightOnly" type="mc160:PreflightFlagType" minOccurs="0"/>
+			<element name="PartOfBatchOperation" type="mc160:PartOfBatchOperationFlagType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
-	<annotation>
-		<documentation xml:lang="en-GB">Technical session id defined by the client system that  links more registrations belonging to the same session</documentation>
-		<documentation xml:lang="da-DK">Teknisk sessions id defineret af klient systemerne der derved kan koble flere kald hørende til den samme konsultation</documentation>
-	</annotation>
+    <simpleType name="FMKConfigurationLastUpdatedType">
+        <restriction base="dateTime">
+            <minInclusive value="2000-01-01T00:00:00Z"/>
+        </restriction>
+    </simpleType>
 </schema>

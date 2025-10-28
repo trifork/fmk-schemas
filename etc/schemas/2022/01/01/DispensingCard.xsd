@@ -4,13 +4,14 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="DispensingCardVersion.xsd"/>
     <include schemaLocation="DispensingCardDescription.xsd"/>
     <include schemaLocation="MedicineCardIsInvalid.xsd"/>
     <include schemaLocation="DispensingCardClosed.xsd"/>
     <include schemaLocation="DispensingWarning.xsd"/>
     <include schemaLocation="DeliveryText.xsd"/>
     <include schemaLocation="PackingGroupIdentifier.xsd"/>
-    <include schemaLocation="PackingGroup.xsd"/>
+    <include schemaLocation="PackingGroupName.xsd"/>
     <include schemaLocation="Organisation.xsd"/>
     <include schemaLocation="DispensingOrDeliveryNotes.xsd"/>
     <include schemaLocation="DispensingPeriod.xsd"/>
@@ -26,6 +27,7 @@
     <complexType name="DispensingCardType">
         <sequence>
         	<element name="Identifier" type="mc160:DispensingCardIdentifierType"/>
+            <element name="Version" type="mc160:DispensingCardVersionType"/>
         	<element name="Description" type="mc160:DispensingCardDescriptionType"/>
             <element name="IsClosed" type="mc160:DispensingCardClosedType" minOccurs="0"/>
             <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
@@ -33,7 +35,7 @@
             <choice>
                 <sequence>
                     <element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType" minOccurs="0"/>
-                    <element name="PackingGroupName" type="mc160:PackingGroupType" minOccurs="0"/>
+                    <element name="PackingGroupName" type="mc160:PackingGroupNameType" minOccurs="0"/>
                     <element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
                     <element name="PackedAtOrganisation" type="mc160:OrganisationType"/>
                 </sequence>

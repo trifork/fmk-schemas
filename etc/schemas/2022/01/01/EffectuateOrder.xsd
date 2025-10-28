@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<include schemaLocation="WarrantIdentifier.xsd"/>
+	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="CreatePharmacyHandover.xsd"/>
+	<include schemaLocation="TerminateWarrant.xsd"/>
+    <include schemaLocation="StartTrackAndTraceOnOrder.xsd"/>
+
+	<complexType name="EffectuateOrderType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for effectuating an order</documentation>
+			<documentation xml:lang="da-DK">Element til effektuering af en bestilling</documentation>
+		</annotation>
+		<sequence>
+			<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+			<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+			<element name="Handover" type="mc160:CreatePharmacyHandoverType"/>
+			<element name="Terminate" type="mc160:TerminateWarrantType"/>
+            <element name="StartTrackAndTraceOnOrder" type="mc160:StartTrackAndTraceOnOrderType" minOccurs="0"/>
+			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>

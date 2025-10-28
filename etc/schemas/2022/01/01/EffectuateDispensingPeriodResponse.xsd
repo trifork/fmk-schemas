@@ -5,8 +5,8 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="DrugMedicationEffectuation.xsd"/>
-	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifierAndVersion.xsd"/>
+    <include schemaLocation="Organisation.xsd"/>
 
 	<element name="EffectuateDispensingPeriodResponse" type="mc160:EffectuateDispensingPeriodResponseType">
 		<annotation>
@@ -20,7 +20,7 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" maxOccurs="unbounded"/>
+			<element name="DispensingPeriod" type="mc160:DispensingPeriodIdentifierAndVersionType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

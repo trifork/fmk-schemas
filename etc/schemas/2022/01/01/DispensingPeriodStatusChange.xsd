@@ -7,6 +7,7 @@
 
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
     <include schemaLocation="DispensingStatus.xsd"/>
 
     <complexType name="DispensingPeriodStatusChangeType">
@@ -16,6 +17,7 @@
         </annotation>
         <sequence>
             <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="Version" type="mc160:DispensingPeriodVersionType"/>
             <element name="RequestedStatus" type="mc160:DispensingStatusType"/>
             <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>

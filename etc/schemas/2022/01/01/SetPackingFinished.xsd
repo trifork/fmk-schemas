@@ -6,6 +6,7 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
 	<include schemaLocation="DispensingProductionIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 
@@ -19,6 +20,7 @@
 	<complexType name="SetPackingFinishedType">
 		<sequence>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType" minOccurs="0"/>
 			<element name="DispensingProductionIdentifier" type="mc160:DispensingProductionIdentifierType" minOccurs="0"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

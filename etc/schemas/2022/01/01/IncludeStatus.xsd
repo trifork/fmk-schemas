@@ -12,12 +12,7 @@
             <documentation xml:lang="da-DK">Markering for at statusser for dispensingskort ønskes vist for en pakkegruppe</documentation>
         </annotation>
         <sequence>
-            <!-- TODO: this referenced Deadline < ProductionDateTime < StartDate. Since deadline is removed, might need to move to something like
-              now < StartDate < FilterByDateTime
-              OR
-              FilterDate1 < StartDate < FilterDate2
-              -->
-            <element name="ProductionDateTime" type="mc160:ProductionDateTimeType" minOccurs="0"/>
+            <element name="FilterDate" type="mc160:ProductionDateTimeType" minOccurs="0" maxOccurs="2"/>
         </sequence>
     </complexType>
 </schema>

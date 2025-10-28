@@ -3,8 +3,11 @@
 	<xsl:output method="html"/>
 	<xsl:variable name="nsfFilter" select="'nsf=&quot;ignore&quot;'"/>
 	<xsl:key name="complexTypeName" match="/wsdl:definitions/wsdl:types/xs:schema/xs:complexType" use="."/>
-	
-	<!--  Templates for expandable schema boxes -->
+
+    <xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyzæøå'" />
+    <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ'" />
+
+    <!--  Templates for expandable schema boxes -->
 	<xsl:template name="SchemaDiv">
 		<xsl:param name="id"/>
 		<xsl:param name="contents"/>
@@ -23,11 +26,11 @@
 		</div>
 
 	</xsl:template>
-	
+
 	<xsl:template name="SchemaTemplate">
 		<xsl:param name="component"/>
 		<xsl:param name="name"/>
-		
+
 		<xsl:variable name="componentID" select="@name"/>
 
 		<xsl:call-template name="SchemaDiv">
@@ -35,7 +38,7 @@
 			<xsl:with-param name="contents">
 				<xsl:apply-templates select="$component" mode="serialize"/>
 			</xsl:with-param>
-		
+
 		</xsl:call-template>
 
 	</xsl:template>
@@ -116,7 +119,7 @@
 
 	<xsl:template name="choice">
 		<xsl:param name="isNSF"/>
-		<xsl:if test="not(isNSF) or (not(contains(preceding-sibling::node()[not(self::text())][1], $nsfFilter)))">	
+		<xsl:if test="not(isNSF) or (not(contains(preceding-sibling::node()[not(self::text())][1], $nsfFilter)))">
 			<ul>Et af følgende elementer:
 				<xsl:for-each select="node()">
 					<xsl:if test="not(name()='')">
@@ -163,7 +166,7 @@
 		<xsl:param name="isNSF"/>
 
 		<xsl:if test="not(isNSF) or (not(contains(preceding-sibling::node()[not(self::text())][1], $nsfFilter)))">
-			<dl> 
+			<dl>
 				<xsl:choose>
 
 					<!-- Hvis der er en annotation på selve elementet, anvendes denne -->
@@ -178,7 +181,7 @@
 						</dd>
 						<dt>Type:</dt>
 						<dd>
-							<a href="#{substring-after(@type, ':')}">
+							<a href="#{translate(substring-after(@type, ':'),$uppercase,$lowercase)}">
 								<xsl:value-of select="substring-after(@type, ':')"/>
 							</a>
 						</dd>
@@ -196,7 +199,7 @@
 						</dd>
 						<dt>Type:</dt>
 						<dd>
-							<a href="#{substring-after(@type, ':')}">
+							<a href="#{translate(substring-after(@type, ':'),$uppercase,$lowercase)}">
 								<xsl:value-of select="substring-after(@type, ':')"/>
 							</a>
 						</dd>
@@ -213,7 +216,7 @@
 						</dd>
 						<dt>Type:</dt>
 						<dd>
-							<a href="#{substring-after(@type, ':')}">
+							<a href="#{translate(substring-after(@type, ':'),$uppercase,$lowercase)}">
 								<xsl:value-of select="substring-after(@type, ':')"/>
 							</a>
 						</dd>
@@ -231,7 +234,7 @@
 						</dd>
 						<dt>Type:</dt>
 						<dd>
-							<a href="#{substring-after(@type, ':')}">
+							<a href="#{translate(substring-after(@type, ':'),$uppercase,$lowercase)}">
 							<xsl:value-of select="substring-after(@type, ':')"/>
 							</a>
 						</dd>
@@ -249,7 +252,7 @@
 						</dd>
 						<dt>Type:</dt>
 						<dd>
-							<a href="#{substring-after(@type, ':')}">
+							<a href="#{translate(substring-after(@type, ':'),$uppercase,$lowercase)}">
 								<xsl:value-of select="substring-after(@type, ':')"/>
 							</a>
 						</dd>
@@ -267,7 +270,7 @@
 						</dd>
 						<dt>Type:</dt>
 						<dd>
-							<a href="#{substring-after(@type, ':')}">
+							<a href="#{translate(substring-after(@type, ':'),$uppercase,$lowercase)}">
 								<xsl:value-of select="substring-after(@type, ':')"/>
 							</a>
 						</dd>
@@ -293,7 +296,7 @@
 					<xsl:otherwise>
 
 						<dt>Min. antal:</dt>
-						<dd> 
+						<dd>
 							<xsl:choose>
 								<xsl:when test="not(@minOccurs)">
 					1
@@ -315,7 +318,7 @@
 							</xsl:choose>
 						</dd>
 					</xsl:otherwise>
-				</xsl:choose>	
+				</xsl:choose>
 			</dl>
 		</xsl:if>
 	</xsl:template>
@@ -341,13 +344,13 @@
 		<xsl:param name="isNSF"/>
 
 		<!-- Ignore all ...RequestType and ...ResponseType types since they are not relevant for stats - except ...ForResponseType that some dosagetypes are named -->
-		<xsl:if test="not(isNSF) or (('ForResponseType' = substring(current()/@name, string-length(current()/@name) - string-length('ForResponseType') +1)) 
-		or (not('RequestType' = substring(current()/@name, string-length(current()/@name) - string-length('RequestType') +1)) 
+		<xsl:if test="not(isNSF) or (('ForResponseType' = substring(current()/@name, string-length(current()/@name) - string-length('ForResponseType') +1))
+		or (not('RequestType' = substring(current()/@name, string-length(current()/@name) - string-length('RequestType') +1))
 		and not('ResponseType' = substring(current()/@name, string-length(current()/@name) - string-length('ResponseType') +1)))
 		and not(contains(preceding-sibling::node()[not(self::text())][1], $nsfFilter)))
 		">
 
-			<h2 id="{@name}">Type: <xsl:value-of select="@name"/>
+			<h2 id="{translate(@name,$uppercase,$lowercase)}">Type: <xsl:value-of select="@name"/>
 			</h2>
 
 			<xsl:choose>
@@ -356,7 +359,7 @@
 				</xsl:when>
 				<xsl:when test="/wsdl:definitions/wsdl:types/xs:schema/xs:element[substring-after(@type, ':')=current()/@name]/xs:annotation/xs:documentation[@xml:lang='da-DK']">
 				Beskrivelse: <xsl:value-of select="/wsdl:definitions/wsdl:types/xs:schema/xs:element[substring-after(@type, ':') = current()/@name]/xs:annotation/xs:documentation[@xml:lang='da-DK']"/>
-				</xsl:when>			
+				</xsl:when>
 			</xsl:choose>
 			<xsl:call-template name="SchemaTemplate">
 				<xsl:with-param name="component" select="current()"/>
@@ -393,7 +396,7 @@
 				</dd>
 				<dt>Tilføjet attributtype:</dt>
 				<dd>
-					<a href="#{substring-after(@type, ':')}">
+					<a href="#{translate(substring-after(@type, ':'),$uppercase,$lowercase)}">
 						<xsl:value-of select="substring-after(@type, ':')"/>
 					</a>
 				</dd>
@@ -414,7 +417,7 @@
 				<dl>
 					<dt>Basistype:</dt>
 					<dd>
-						<a href="#{substring-after(xs:extension/@base, ':')}">
+						<a href="#{translate(substring-after(xs:extension/@base, ':'),$uppercase,$lowercase)}">
 							<xsl:value-of select="substring-after(xs:extension/@base, ':')"/>
 						</a>
 					</dd>
@@ -428,11 +431,11 @@
 
 	<xsl:template match="xs:simpleType">
 
-		<h2 id="{@name}">Type: <xsl:value-of select="@name"/>
+		<h2 id="{translate(@name,$uppercase,$lowercase)}">Type: <xsl:value-of select="@name"/>
 		</h2>
 		<xsl:if test="/wsdl:definitions/wsdl:types/xs:schema/xs:element[substring-after(@type, ':')=current()/@name]/xs:annotation/xs:documentation[@xml:lang='da-DK']">
 		Beskrivelse: <xsl:value-of select="/wsdl:definitions/wsdl:types/xs:schema/xs:element[substring-after(@type, ':')=current()/@name]/xs:annotation/xs:documentation[@xml:lang='da-DK']"/>
-		</xsl:if>			
+		</xsl:if>
 
 		<xsl:call-template name="SchemaTemplate">
 			<xsl:with-param name="component" select="current()"/>
@@ -444,7 +447,7 @@
 			<ul>Foreningsmængde af flg. typer:
 				<xsl:for-each select="str:tokenize(xs:union/@memberTypes, ' ')">
 					<li>
-						<a href="#{substring-after(., ':')}">
+						<a href="#{translate(substring-after(., ':'),$uppercase,$lowercase)}">
 							<xsl:value-of select="substring-after(., ':')"/>
 						</a>
 					</li>
@@ -489,7 +492,7 @@
 					</dd>
 				</xsl:if>
 				<xsl:if test="xs:restriction/xs:enumeration">
-					<ul>Enumeration af flg. værdier: 
+					<ul>Enumeration af flg. værdier:
 						<xsl:for-each select="xs:restriction/xs:enumeration">
 							<li>
 								<xsl:value-of select="@value"/>
@@ -524,7 +527,7 @@ dl {
     margin: 0px 0 10px 200px;
     padding: 0 0 0.5em 0;
     color: grey;
-  }  
+  }
   ul {
     padding-top: 10px;
 
@@ -535,7 +538,7 @@ dl {
   padding-top: 10px;
   }
 
-  .contents { 
+  .contents {
   	border-width: 1px;
   	border-style: solid;
   	margin: 10px;
@@ -543,42 +546,42 @@ dl {
   	font-family: monospace;
   }
 
-  .usage { 
+  .usage {
   	border-width: 1px;
   	border-style: solid;
   	margin: 10px;
   	padding: 10px;
   }
-  
+
   .showHideXSD {
   	margin-left: 10px;
  }
 
 		</style>
 	</xsl:template>
-	
+
 	<xsl:template name="js">
 		<xsl:for-each select="/wsdl:definitions/wsdl:types/xs:schema/xs:complexType | /wsdl:definitions/wsdl:types/xs:schema/xs:simpleType">
 			<xsl:variable name="typename" select="@name"/>
 
 			usages["<xsl:value-of select="@name"/>"] = [
-				<xsl:for-each select="//xs:element[concat(':',$typename) = substring(@type, string-length(@type) - string-length($typename))] | //xs:union[concat(':',$typename) = substring(@memberTypes, string-length(@memberTypes) - string-length($typename))]"> 
+				<xsl:for-each select="//xs:element[concat(':',$typename) = substring(@type, string-length(@type) - string-length($typename))] | //xs:union[concat(':',$typename) = substring(@memberTypes, string-length(@memberTypes) - string-length($typename))]">
 					<xsl:if test="ancestor::xs:complexType">
 						"<xsl:value-of select="ancestor::xs:complexType[1]/@name"/>",
 					</xsl:if>
 					<xsl:if test="ancestor::xs:simpleType">
 						"<xsl:value-of select="ancestor::xs:simpleType[1]/@name"/>",
-					</xsl:if></xsl:for-each>	
+					</xsl:if></xsl:for-each>
 			];
 		</xsl:for-each>
 	</xsl:template>
-	
+
 	<xsl:template name="Javascript">
 
 	<script type="text/javascript">
 
 	var usages = [];
-	
+
 	<xsl:call-template name="js"/>
 
 function minimizeXSDDiv(xsdDivObj, buttonObj, name) {
@@ -586,7 +589,7 @@ function minimizeXSDDiv(xsdDivObj, buttonObj, name) {
   } else {
      xsdDivObj.style.display="none";
 
-     // Change text of button 
+     // Change text of button
      if (xsdDivObj.style.display=="none") {
         buttonObj.value="Vis " + name;
      }
@@ -625,7 +628,7 @@ function toggleVisibility(id, name) {
 }
 
 function toggleUsageVisibility(id) {
-	var divId = id + '_xsddiv_usage'; 
+	var divId = id + '_xsddiv_usage';
 	var xsdDivObj = document.getElementById(divId);
 	var buttonObj = document.getElementById(id + "_usage_button");
 	if (xsdDivObj.style.display=="none") {
@@ -633,11 +636,11 @@ function toggleUsageVisibility(id) {
 	} else if (xsdDivObj.style.display=="block") {
 	  minimizeXSDDiv(xsdDivObj, buttonObj, 'anvendelse');
 	}
-  
+
     if(xsdDivObj.innerHTML.length == 0) {
-	 
-		xsdDivObj.innerHTML += "Anvendes i flg. typer:<br/>";
-	
+
+		xsdDivObj.innerHTML += "Anvendes i flg. typer:&lt;br/&gt;";
+
 		var uniqueArray = usages[id].filter(function(item, pos, self) {
 			return self.indexOf(item) == pos;
 		});
@@ -647,10 +650,10 @@ function toggleUsageVisibility(id) {
 		});
 	}
 }
-	
+
 function generateUniqueUsageLinks(xsdDivObj, value) {
 	var link = document.createElement("a");
-	link.href = "#" + value;
+	link.href = "#" + value.toLowerCase();
 	link.innerHTML = value;
 	var p = document.createElement("p");
 	p.appendChild(link);

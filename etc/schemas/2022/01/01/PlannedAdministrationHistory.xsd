@@ -9,9 +9,11 @@
 	<include schemaLocation="Created.xsd"/>
 	<include schemaLocation="Modified.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifierAndVersion.xsd"/>
+    <include schemaLocation="DispensingCardIdentifier.xsd"/>
 	<include schemaLocation="ValidWarrant.xsd"/>
 	<include schemaLocation="DispensingWarning.xsd"/>
 	<include schemaLocation="DosageUnit.xsd"/>
+    <include schemaLocation="DosageTimesStartDate.xsd"/>
 	<include schemaLocation="PlannedAdministrationStructures.xsd"/>
 	<include schemaLocation="AdministrationInstruction.xsd"/>
 
@@ -26,11 +28,13 @@
 			<element name="Created" type="mc160:CreatedType"/>
 			<element name="Modified" type="mc160:ModifiedType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="DrugMedication" type="mc160:DrugMedicationIdentifierAndVersionType" minOccurs="0"/>
+			<element name="DrugMedication" type="mc160:DrugMedicationIdentifierAndVersionType"/>
+            <element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType" minOccurs="0"/>
 			<element name="AdministrationInstruction" type="mc160:AdministrationInstructionType" minOccurs="0"/>
 			<element name="DosageUnit" type="mc160:DosageUnitType" minOccurs="0"/>
+            <element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
 			<element name="PlannedAdministrationFixed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
-			<element name="PlannedAdministrationAccordingToNeed" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
+			<element name="PlannedAdministrationPRN" type="mc160:PlannedAdministrationStructuresType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="WarrantIdentifier.xsd"/>
+    <include schemaLocation="OrderIdentifier.xsd"/>
+
+	<element name="CreateOrderForPracticeResponse" type="mc160:CreateOrderForPracticeResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response document containing one or more responses from creating order for use in practice</documentation>
+			<documentation xml:lang="da-DK">Response-dokument der indeholder en eller flere svar på oprettelse af bestilling til brug i praksis</documentation>
+		</annotation>
+	</element>
+	<complexType name="CreateOrderForPracticeResponseType">
+		<sequence>
+            <element name="Order" maxOccurs="unbounded">
+                <complexType>
+                    <sequence>
+                        <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+                        <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+                    </sequence>
+                </complexType>
+            </element>
+		</sequence>
+	</complexType>
+</schema>

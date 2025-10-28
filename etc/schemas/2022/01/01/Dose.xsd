@@ -22,6 +22,8 @@
 			<choice minOccurs="0">
 				<element name="TimeOfDay" type="mc160:TimeOfDayType"/>
 				<element name="TimesPerDay" type="mc160:TimesPerDayType"/>
+				<element name="DuringTheDay" type="mc160:DuringTheDayType"/>
+				<element name="Unlimited" type="mc160:UnlimitedType"/>
 				<sequence>
 					<element name="MinimumTimesPerDay" type="mc160:TimesPerDayType" minOccurs="0"/>
 					<element name="MaximumTimesPerDay" type="mc160:TimesPerDayType"/>
@@ -70,4 +72,8 @@
 			<enumeration value="night"/>
 		</restriction>
 	</simpleType>
+
+	<complexType name="DuringTheDayType"/>
+	<complexType name="UnlimitedType"/>
+
 </schema>

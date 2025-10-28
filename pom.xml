@@ -64,6 +64,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.7.3</version>
                 <configuration>
                     <updatePomFile>true</updatePomFile>
                     <flattenMode>resolveCiFriendliesOnly</flattenMode>
@@ -84,6 +85,70 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <dir>tmp</dir>
+                            <stylesheet>src/dk/medicinkortet/xmlschema/fmkdoc.xsl</stylesheet>
+                            <outputDir>tmp</outputDir>
+                            <fileMappers>
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.RegExpFileMapper">
+                                    <pattern>$</pattern>
+                                    <replacement>.html</replacement>
+                                </fileMapper>
+                            </fileMappers>
+                        </transformationSet>
+                    </transformationSets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <source><![CDATA[
+                        def maxMessageLength = 2500000
+                        println("Uploading ${properties['infile']}")
+                        println("Creating request")
+                        def template = new File("src/dk/medicinkortet/xmlschema/dokuwikitemplate_data.xml").text
+                        def templateStart = new File("src/dk/medicinkortet/xmlschema/dokuwikitemplate_start.xml").text
+                        def dokuwikiid = properties['infile'].substring(0, properties['infile'].length() - 10).replace("tmp/", "")
+                        def file = new File(properties['infile']).text
+
+                        def messages = []
+                        messages.add(templateStart.replace("\${dokuwikiid}", dokuwikiid))
+                        for (def i = 0; i < file.length() / maxMessageLength; i++) {
+                            messages.add(template.replace("\${dokuwikiid}", dokuwikiid).replace("\${html}", file.substring(i*maxMessageLength, Math.min((i+1)*maxMessageLength, file.length()))))
+                        }
+
+                        println("Sending request")
+                        def credentials = "${properties['dokuwiki.username']}:${properties['dokuwiki.password']}"
+                        def encodedCredentials = Base64.getEncoder().encodeToString(credentials.getBytes())
+
+                        for (message in messages) {
+                            def post = new URL("https://wiki.fmk-teknik.dk/lib/exe/xmlrpc.php").openConnection()
+                            post.setRequestMethod("POST")
+                            post.setDoOutput(true)
+                            post.setRequestProperty("Content-Type", "text/xml")
+                            post.setRequestProperty("Authorization", "Basic " + encodedCredentials.toString())
+                            println(post.getConnectTimeout())
+                            post.getOutputStream().write(message.getBytes("UTF-8"))
+                            println(post.getContentLengthLong())
+                            def postRC = post.getResponseCode()
+                            println(postRC)
+                            if (postRC.equals(200)) {
+                                println(post.getInputStream().getText())
+                            } else {
+                                println(post.getErrorStream().getText())
+                            }
+                        }
+                    ]]></source>
+                </configuration>
             </plugin>
         </plugins>
     </build>

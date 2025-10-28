@@ -8,6 +8,7 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="UpdateDrugMedication.xsd"/>
+	<include schemaLocation="OrganisationIdentifier.xsd"/>
 
 	<element name="UpdateDrugMedicationRequest" type="mc160:UpdateDrugMedicationRequestType">
 		<annotation>
@@ -17,7 +18,10 @@
 	</element>
 	<complexType name="UpdateDrugMedicationRequestType">
 		<sequence>
-			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>

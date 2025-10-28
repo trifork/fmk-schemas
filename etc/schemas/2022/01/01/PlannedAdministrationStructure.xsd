@@ -4,10 +4,9 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="RepeatAfter.xsd"/>
+	<include schemaLocation="DosageIterationInterval.xsd"/>
 	<include schemaLocation="DosageIsNotIterated.xsd"/>
-	<include schemaLocation="DosageTimesStartDate.xsd"/>
-	<include schemaLocation="DosageTimesEndDate.xsd"/>
+	<include schemaLocation="DosagePeriodLength.xsd"/>
 	<include schemaLocation="PlannedDosageDay.xsd"/>
 
 	<complexType name="PlannedAdministrationStructureType">
@@ -16,13 +15,12 @@
 			<documentation xml:lang="da-DK">En Periode i den planlagte administration</documentation>
 		</annotation>
 		<sequence>
-			<choice>
-				<element name="IterationInterval" type="mc160:RepeatAfterType"/>
+			<choice minOccurs="0">
+				<element name="IterationInterval" type="mc160:DosageIterationIntervalType"/>
 				<element name="NotIterated" type="mc160:DosageIsNotIteratedType"/>
 			</choice>
-			<element name="StartDate" type="mc160:DosageTimesStartDateType"/>
-			<element name="EndDate" type="mc160:DosageTimesEndDateType" minOccurs="0"/>
-			<element name="Day" type="mc160:PlannedDosageDayType" maxOccurs="unbounded"/>
+			<element name="PeriodLength" type="mc160:DosagePeriodLengthType" minOccurs="0"/>
+			<element name="Day" type="mc160:PlannedDosageDayType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

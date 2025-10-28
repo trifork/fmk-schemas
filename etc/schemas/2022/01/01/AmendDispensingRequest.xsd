@@ -8,6 +8,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DispensingCardIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
 	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
 
 	<element name="AmendDispensingRequest" type="mc160:AmendDispensingRequestType"/>
@@ -31,12 +32,14 @@
 		<sequence>
 			<element name="PlannedAdministrationIdentifier" type="mc160:PlannedAdministrationIdentifierType"/>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
 		</sequence>
 	</complexType>
 
 	<complexType name="ClosePeriodType">
 		<sequence>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
 		</sequence>
 	</complexType>
 </schema>

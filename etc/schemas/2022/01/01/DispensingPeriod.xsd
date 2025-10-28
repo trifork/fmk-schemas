@@ -6,11 +6,12 @@
         attributeFormDefault="unqualified">
 
     <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+    <include schemaLocation="DispensingPeriodVersion.xsd"/>
     <include schemaLocation="DispensingStatus.xsd"/>
     <include schemaLocation="DispensingPeriodStartDate.xsd"/>
     <include schemaLocation="DispensingPeriodEndDate.xsd"/>
     <include schemaLocation="PackagedDateTime.xsd"/>
-    <include schemaLocation="DispensedEffectuationDate.xsd"/>
+    <include schemaLocation="EffectuationDateTime.xsd"/>
     <include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
     <include schemaLocation="DispensingPeriodDiscarded.xsd"/>
     <include schemaLocation="DispensingProductionIdentifier.xsd"/>
@@ -26,22 +27,27 @@
     <complexType name="DispensingPeriodType">
         <sequence>
             <element name="Identifier" type="mc160:DispensingPeriodIdentifierType"/>
+            <element name="Version" type="mc160:DispensingPeriodVersionType"/>
             <element name="Status" type="mc160:DispensingStatusType"/>
             <element name="StartDate" type="mc160:DispensingPeriodStartDateType"/>
             <element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
             <element name="PackagedDateTime" type="mc160:PackagedDateTimeType" minOccurs="0" />
-            <element name="EffectuationDate" type="mc160:DispensedEffectuationDateType" minOccurs="0"/>
+            <element name="EffectuationDateTime" type="mc160:EffectuationDateTimeType" minOccurs="0"/>
             <element name="ExpectedDelivery" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0"/>
             <element name="Discarded" type="mc160:DispensingPeriodDiscardedType" minOccurs="0"/>
             <element name="ProductionIdentifier" type="mc160:DispensingProductionIdentifierType" minOccurs="0"/>
             <element name="AcutePacking" type="mc160:AcutePackingType" minOccurs="0"/>
             <choice>
                 <element name="Dispensing" type="mc160:DispensingType" minOccurs="0" maxOccurs="unbounded"/>
-                <sequence minOccurs="0" maxOccurs="unbounded">
-                    <element name="PlannedAdministration" type="mc160:PlannedAdministrationType"/>
-                    <element name="SubstitutionTemplate" type="mc160:DrugType" minOccurs="0"/>
-                </sequence>
+                <element name="PlannedAdministrationEntry" type="mc160:PlannedAdministrationEntryType" minOccurs="0" maxOccurs="unbounded"/>
             </choice>
+        </sequence>
+    </complexType>
+
+    <complexType name="PlannedAdministrationEntryType">
+        <sequence>
+            <element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDispensingCardType"/>
+            <element name="SubstitutionTemplate" type="mc160:DrugType" minOccurs="0"/>
         </sequence>
     </complexType>
 </schema>

@@ -12,6 +12,8 @@
     <include schemaLocation="TrackAndTraceEventIdentifier.xsd"/>
     <include schemaLocation="TrackAndTraceEventType.xsd"/>
     <include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
+    <include schemaLocation="TrackAndTraceEventFreetext.xsd"/>
+    <include schemaLocation="TrackAndTraceFinalEvent.xsd"/>
     <include schemaLocation="ShipmentDeliveryDate.xsd"/>
     <include schemaLocation="Order.xsd"/>
     <include schemaLocation="DoseDispensingDeliveryStatus.xsd"/>
@@ -33,7 +35,12 @@
                 <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
             </choice>
             <element name="EventType" type="mc160:TrackAndTraceEventTypeType"/>
-            <element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType"/>
+            <element name="ExpectedDeliveryDate" type="mc160:ShipmentDeliveryDateType" minOccurs="0"/>
+            <element name="FreeText" type="mc160:TrackAndTraceEventFreeTextType" minOccurs="0"/>
+            <choice minOccurs="0">
+                <element name="ExpectedNextEventDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
+                <element name="IsFinalEvent" type="mc160:TrackAndTraceFinalEventType"/>
+            </choice>
             <element name="Order" type="mc160:OrderType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="DoseDispensingDeliveryAndStatus" type="mc160:DoseDispensingDeliveryStatusType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>

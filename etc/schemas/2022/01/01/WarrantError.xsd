@@ -8,12 +8,12 @@
     <include schemaLocation="OrderIdentifier.xsd"/>
     <include schemaLocation="OrderStatus.xsd"/>
     <include schemaLocation="Organisation.xsd"/>
-    <include schemaLocation="EffectuationIdentifier.xsd"/>
+    <include schemaLocation="HandoverIdentifier.xsd"/>
 
     <complexType name="WarrantErrorType">
         <annotation>
-            <documentation xml:lang="en-GB">Error object that refer to a specific error type and description on a given warrant, and possible also with reference to a specific order and effectuation.</documentation>
-            <documentation xml:lang="da-DK">Fejl-struktur som refererer til en specifik fejltype og beskrivelse på e givet udleveringsgrundlag, og muligvis også med reference til en specifik bestilling og effektuering.</documentation>
+            <documentation xml:lang="en-GB">Error object that refer to a specific error type and description on a given warrant, and possible also with reference to a specific order and handover.</documentation>
+            <documentation xml:lang="da-DK">Fejl-struktur som refererer til en specifik fejltype og beskrivelse på e givet udleveringsgrundlag, og muligvis også med reference til en specifik bestilling og udlevering.</documentation>
         </annotation>
         <sequence>
             <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
@@ -22,7 +22,7 @@
             <element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0"/>
             <element name="OrderStatus" type="mc160:OrderStatusType" minOccurs="0"/>
             <element name="InProgressAtPharmacy" type="mc160:OrganisationType" minOccurs="0"/>
-            <element name="EffectuationIdentifier" type="mc160:EffectuationIdentifierType" minOccurs="0"/>
+            <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType" minOccurs="0"/>
         </sequence>
     </complexType>
 

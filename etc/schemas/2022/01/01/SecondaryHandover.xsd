@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="SecondaryHandoverIdentifier.xsd"/>
+    <include schemaLocation="HandoverIdentifier.xsd"/>
+    <include schemaLocation="SecondaryHandoverDateTime.xsd"/>
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="SingleUnitsHandover.xsd"/>
+
+	<element name="SecondaryHandover" type="mc160:SecondaryHandoverType">
+		<annotation>
+			<documentation xml:lang="en-GB">An overview of a secondary handover</documentation>
+			<documentation xml:lang="da-DK">En oversigt over en sekundær udlevering</documentation>
+		</annotation>
+	</element>
+	<complexType name="SecondaryHandoverType">
+		<sequence>
+			<element name="Identifier" type="mc160:SecondaryHandoverIdentifierType"/>
+            <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
+            <element name="DateTime" type="mc160:SecondaryHandoverDateTimeType"/>
+            <element name="CreatedBy" type="mc160:ModificatorType"/>
+            <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+            <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
+		</sequence>
+	</complexType>
+</schema>

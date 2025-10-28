@@ -20,7 +20,7 @@
   <complexType name="DosageForRequestType">
     <choice>
       <sequence>
-        <element name="Precondition" type="mc160:PreconditionType" minOccurs="0"/>
+        <element name="Precondition" type="mc160:PreconditionForRequestType" minOccurs="0"/>
         <choice>
           <element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>
           <element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType"/>
@@ -28,14 +28,13 @@
         <choice>
           <sequence>
             <element name="StructureFixed" type="mc160:DosageStructureForRequestType" minOccurs="0"/>
-            <element name="StructureAccordingToNeed" type="mc160:DosageStructureForRequestType" minOccurs="0"/>
+            <element name="StructurePRN" type="mc160:DosageStructureForRequestType" minOccurs="0"/>
           </sequence>
-          <element name="StructureFixedStartedAccordingToNeed" type="mc160:DosageStructureForRequestType" minOccurs="0"/>
+          <element name="StructureFixedStartedPRN" type="mc160:DosageStructureForRequestType"/>
         </choice>
       </sequence>
       <element name="FreeText" type="mc160:DosageFreeTextForRequestType"/>
-      <element name="AdministrationAccordingToSchemaInLocalSystem"
-               type="mc160:AdministrationAccordingToSchemaInLocalSystemForRequestType"/>
+      <element name="AdministrationAccordingToSchemaInLocalSystem" type="mc160:AdministrationAccordingToSchemaInLocalSystemForRequestType"/>
     </choice>
   </complexType>
 </schema>
