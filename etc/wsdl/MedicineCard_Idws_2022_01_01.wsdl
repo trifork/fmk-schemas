@@ -6,9 +6,7 @@
                 <soap:header use='literal' part='ToHeader' message='tns:ToHeader' />
                 <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' wsdl:required='true' />
                 <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
-                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader'/>
-                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true'/>
-                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+                <soap:header use='literal' part='FMKRequestHeader' message='tns:FMKRequestHeader' />
 ">
 <!ENTITY fmkStandardSOAPResponseHeaders "
                 <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
@@ -68,6 +66,8 @@
 
         <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
                    schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
+
+        <xs:include schemaLocation="../schemas/2022/01/01/FMKRequestHeader.xsd"/>
         
         <xs:schema targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified">
 
@@ -459,24 +459,16 @@
         <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
     </wsdl:message>
 
-    <wsdl:message name="WhitelistingHeader">
-        <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
+    <wsdl:message name="FMKRequestHeader">
+        <wsdl:part name="FMKRequestHeader" element="mc160:FMKRequestHeader"/>
     </wsdl:message>
 
     <wsdl:message name="FMKDetail">
         <wsdl:part name="fault" element="mc160:FMKDetail" />
     </wsdl:message>
 
-    <wsdl:message name="ConsentHeader">
-        <wsdl:part name="ConsentHeader" element="mc160:ConsentHeader"/>
-    </wsdl:message>
-
     <wsdl:message name="TimingHeader">
         <wsdl:part name="TimingHeader" element="mc160:TimingList"/>
-    </wsdl:message>
-
-    <wsdl:message name="OnBehalfOfHeader">
-        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOf"/>
     </wsdl:message>
 
     <wsdl:message name="AbortHandlingOfDispensingPeriodRequest_160">
