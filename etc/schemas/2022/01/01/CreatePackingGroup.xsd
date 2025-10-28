@@ -6,7 +6,7 @@
         attributeFormDefault="unqualified">
 
 	<include schemaLocation="ModificationMetadata.xsd"/>
-	<include schemaLocation="PackingGroup.xsd"/>
+	<include schemaLocation="PackingGroupName.xsd"/>
 	<include schemaLocation="Organisation.xsd"/>
 
 	<complexType name="CreatePackingGroupType">
@@ -15,7 +15,7 @@
 			<documentation xml:lang="da-DK">Element der opretter en DD pakkegruppe</documentation>
 		</annotation>
 		<sequence>
-			<element name="Name" type="mc160:PackingGroupType"/>
+			<element name="Name" type="mc160:PackingGroupNameType"/>
 			<element name="OrderedAtPharmacy" type="mc160:OrganisationType"/>
 			<element name="PackedAtOrganisation" type="mc160:OrganisationType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>

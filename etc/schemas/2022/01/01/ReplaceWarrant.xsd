@@ -11,14 +11,13 @@
 	<include schemaLocation="ReimbursementClause.xsd"/>
 	<include schemaLocation="SystemName.xsd"/>
 	<include schemaLocation="ValidFromDate.xsd"/>
-    <include schemaLocation="UnspecifiedValidFrom.xsd"/>
+	<include schemaLocation="UnspecifiedValidFrom.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 	<include schemaLocation="Prescription.xsd"/>
 	<include schemaLocation="HospitalPharmacyHandover.xsd"/>
 	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
 	<include schemaLocation="DosageText.xsd"/>
-	<include schemaLocation="SubstitutionAllowed.xsd"/>
 	<include schemaLocation="CreateOrder.xsd"/>
 	<include schemaLocation="InvalidateReplacedWarrant.xsd"/>
 	<include schemaLocation="CloseReplacedWarrant.xsd"/>
@@ -31,10 +30,10 @@
 		<sequence>
 			<element name="ReplaceWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
-            <choice minOccurs="0">
-                <element name="ValidFromDate" type="mc160:ValidFromDateType"/>
-                <element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
-            </choice>
+			<choice minOccurs="0">
+				<element name="ValidFromDate" type="mc160:ValidFromDateType"/>
+				<element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
+			</choice>
 			<element name="ValidToDate" type="mc160:ValidToDateType"/>
 			<choice>
 				<element name="Prescription" type="mc160:PrescriptionType"/>

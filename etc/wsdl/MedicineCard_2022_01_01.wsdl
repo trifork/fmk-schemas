@@ -247,8 +247,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPlannedAdministrationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescribingOrganisationRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/GetPrescribingOrganisationResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetIssuerOrganisationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetIssuerOrganisationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestForWarrantVersionsResponse.xsd"/>
@@ -358,8 +358,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/UndoDiscardDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoDiscardDispensingPeriodResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/UndoHandoverOfDispensingPeriodRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/UndoHandoverOfDispensingPeriodResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationOfDispensingPeriodRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoEffectuationOfDispensingPeriodResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/UndoHandoverRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoHandoverResponse.xsd"/>
@@ -986,12 +986,12 @@
         <wsdl:part name="GetPlannedAdministrationResponse" element="mc160:GetPlannedAdministrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescribingOrganisationRequest_160">
-        <wsdl:part name="GetPrescribingOrganisationRequest" element="mc160:GetPrescribingOrganisationRequest"/>
+    <wsdl:message name="GetIssuerOrganisationRequest_160">
+        <wsdl:part name="GetIssuerOrganisationRequest" element="mc160:GetIssuerOrganisationRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="GetPrescribingOrganisationResponse_160">
-        <wsdl:part name="GetPrescribingOrganisationResponse" element="mc160:GetPrescribingOrganisationResponse"/>
+    <wsdl:message name="GetIssuerOrganisationResponse_160">
+        <wsdl:part name="GetIssuerOrganisationResponse" element="mc160:GetIssuerOrganisationResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetRequestForWarrantVersionsRequest_160">
@@ -1274,12 +1274,12 @@
         <wsdl:part name="UndoDiscardDispensingPeriodResponse" element="mc160:UndoDiscardDispensingPeriodResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UndoHandoverOfDispensingPeriodRequest_160">
-        <wsdl:part name="UndoHandoverOfDispensingPeriodRequest" element="mc160:UndoHandoverOfDispensingPeriodRequest"/>
+    <wsdl:message name="UndoEffectuationOfDispensingPeriodRequest_160">
+        <wsdl:part name="UndoEffectuationOfDispensingPeriodRequest" element="mc160:UndoEffectuationOfDispensingPeriodRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="UndoHandoverOfDispensingPeriodResponse_160">
-        <wsdl:part name="UndoHandoverOfDispensingPeriodResponse" element="mc160:UndoHandoverOfDispensingPeriodResponse"/>
+    <wsdl:message name="UndoEffectuationOfDispensingPeriodResponse_160">
+        <wsdl:part name="UndoEffectuationOfDispensingPeriodResponse" element="mc160:UndoEffectuationOfDispensingPeriodResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UndoRegisterDrugAdministrationRequest_160">
@@ -1814,9 +1814,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescribingOrganisation_160">
-            <wsdl:input name="GetPrescribingOrganisationRequest_160" message="tns:GetPrescribingOrganisationRequest_160"/>
-            <wsdl:output name="GetPrescribingOrganisationResponse_160" message="tns:GetPrescribingOrganisationResponse_160"/>
+        <wsdl:operation name="GetIssuerOrganisation_160">
+            <wsdl:input name="GetIssuerOrganisationRequest_160" message="tns:GetIssuerOrganisationRequest_160"/>
+            <wsdl:output name="GetIssuerOrganisationResponse_160" message="tns:GetIssuerOrganisationResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2037,9 +2037,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UndoHandoverOfDispensingPeriod_160">
-            <wsdl:input name="UndoHandoverOfDispensingPeriodRequest_160" message="tns:UndoHandoverOfDispensingPeriodRequest_160"/>
-            <wsdl:output name="UndoHandoverOfDispensingPeriodResponse_160" message="tns:UndoHandoverOfDispensingPeriodResponse_160"/>
+        <wsdl:operation name="UndoEffectuationOfDispensingPeriod_160">
+            <wsdl:input name="UndoEffectuationOfDispensingPeriodRequest_160" message="tns:UndoEffectuationOfDispensingPeriodRequest_160"/>
+            <wsdl:output name="UndoEffectuationOfDispensingPeriodResponse_160" message="tns:UndoEffectuationOfDispensingPeriodResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3017,13 +3017,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetPrescribingOrganisation_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetPrescribingOrganisation" style="document"/>
-            <wsdl:input name="GetPrescribingOrganisationRequest_160">
+        <wsdl:operation name="GetIssuerOrganisation_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetIssuerOrganisation" style="document"/>
+            <wsdl:input name="GetIssuerOrganisationRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="GetPrescribingOrganisationResponse_160">
+            <wsdl:output name="GetIssuerOrganisationResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -3499,13 +3499,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="UndoHandoverOfDispensingPeriod_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoHandoverOfDispensingPeriod" style="document"/>
-            <wsdl:input name="UndoHandoverOfDispensingPeriodRequest_160">
+        <wsdl:operation name="UndoEffectuationOfDispensingPeriod_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#UndoEffectuationOfDispensingPeriod" style="document"/>
+            <wsdl:input name="UndoEffectuationOfDispensingPeriodRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="UndoHandoverOfDispensingPeriodResponse_160">
+            <wsdl:output name="UndoEffectuationOfDispensingPeriodResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

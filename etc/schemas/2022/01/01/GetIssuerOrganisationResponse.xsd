@@ -5,18 +5,18 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PrescribingOrganisationEntry.xsd"/>
+	<include schemaLocation="IssuerOrganisationEntry.xsd"/>
 
-	<element name="GetPrescribingOrganisationResponse" type="mc160:GetPrescribingOrganisationResponseType">
+	<element name="GetIssuerOrganisationResponse" type="mc160:GetIssuerOrganisationResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">An element containing the information about an organisation that can receive requests for warrant</documentation>
 			<documentation xml:lang="da-DK">Et element indeholdende informationer omkring en organisation, der kan modtage anmodninger om udleveringsgrundlag</documentation>
 		</annotation>
 	</element>
-	<complexType name="GetPrescribingOrganisationResponseType">
+	<complexType name="GetIssuerOrganisationResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="PrescribingOrganisationEntry" type="mc160:PrescribingOrganisationEntryType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="IssuerOrganisationEntry" type="mc160:IssuerOrganisationEntryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
