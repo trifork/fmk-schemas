@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:mc160="http://fmk-teknik.dk/160"
-		targetNamespace="http://fmk-teknik.dk/160"
-		elementFormDefault="qualified" attributeFormDefault="unqualified">
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="WarrantIdentifier.xsd"/>
-	<include schemaLocation="OrderIdentifier.xsd"/>
+  <include schemaLocation="PersonIdentifier.xsd"/>
+  <include schemaLocation="OrganisationIdentifier.xsd"/>
+  <include schemaLocation="WarrantOrderIdentifierForResponse.xsd"/>
 
-	<element name="CancelOrderResponse" type="mc160:CancelOrderResponseType">
-		<annotation>
-			<documentation xml:lang="en-GB">Response for cancelling orders on warrants</documentation>
-			<documentation xml:lang="da-DK">Svar på annulering af bestillinger på udleveringsgrundlag</documentation>
-		</annotation>
-	</element>
-	<complexType name="CancelOrderResponseType">
-		<sequence>
-			<choice>
-				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
-			</choice>
-			<element name="Order" maxOccurs="unbounded">
-				<complexType>
-					<sequence>
-						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-					</sequence>
-				</complexType>
-			</element>
-		</sequence>
-	</complexType>
+  <element name="CancelOrderResponse" type="mc160:CancelOrderResponseType">
+    <annotation>
+      <documentation xml:lang="en-GB">Response for cancelling orders on warrants</documentation>
+      <documentation xml:lang="da-DK">Svar på annulering af bestillinger på udleveringsgrundlag</documentation>
+    </annotation>
+  </element>
+  <complexType name="CancelOrderResponseType">
+    <sequence>
+      <choice>
+        <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+        <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+      </choice>
+      <element name="Order" type="mc160:WarrantOrderIdentifierForResponseType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
 </schema>

@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:mc160="http://fmk-teknik.dk/160"
-		targetNamespace="http://fmk-teknik.dk/160"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified">
 
-	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
-    <include schemaLocation="DispensingPeriodVersion.xsd"/>
-	<include schemaLocation="DispensingPeriodStatusChange.xsd"/>
-	<include schemaLocation="DispensingIdentifier.xsd"/>
-	<include schemaLocation="PlannedAdministrationIdentifierAndVersion.xsd"/>
-	<include schemaLocation="DispensingWarning.xsd"/>
+  <include schemaLocation="DispensingPeriodIdentifier.xsd"/>
+  <include schemaLocation="DispensingPeriodVersion.xsd"/>
+  <include schemaLocation="DispensingPeriodStatusChange.xsd"/>
+  <include schemaLocation="DispensingIdentifier.xsd"/>
+  <include schemaLocation="PlannedAdministrationIdentifierAndVersion.xsd"/>
+  <include schemaLocation="DispensingWarning.xsd"/>
 
-	<complexType name="StartedHandlingOfDispensingPeriodType">
-		<annotation>
-			<documentation xml:lang="en-GB">Result of starting handling for a dispensing period</documentation>
-			<documentation xml:lang="da-DK">Resultat af påbegynd håndtering af dispenseringsperiode</documentation>
-		</annotation>
-		<sequence>
-			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
-            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
-     		<element name="DispensingPeriodStatus" type="mc160:DispensingStatusType" />
-			<!-- Warnings that relate to the period as a whole -->
-			<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
-     		<element name="Dispensing" minOccurs="0" maxOccurs="unbounded">
-     			<complexType>
-	     			<sequence>
-						<element name="PlannedAdministration" type="mc160:PlannedAdministrationIdentifierAndVersionType"/>
-						<element name="DispensingIdentifier" type="mc160:DispensingIdentifierType" minOccurs="0"/> <!-- Dispensings are only created if call succeeds -->
-						<!-- Warnings that relate to the individual dispensing -->
-						<element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
-	     			</sequence>
-     			</complexType>
-     		</element>
+  <complexType name="StartedHandlingOfDispensingPeriodType">
+    <annotation>
+      <documentation xml:lang="en-GB">Result of starting handling for a dispensing period</documentation>
+      <documentation xml:lang="da-DK">Resultat af påbegynd håndtering af dispenseringsperiode</documentation>
+    </annotation>
+    <sequence>
+      <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+      <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
+      <element name="DispensingPeriodStatus" type="mc160:DispensingStatusType"/>
+      <!-- Warnings that relate to the period as a whole -->
+      <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="Dispensing" type="mc160:PlannedAdminForDispensingType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
 
-		</sequence>
-	</complexType>
+  <complexType name="PlannedAdminForDispensingType">
+    <sequence>
+      <element name="PlannedAdministration" type="mc160:PlannedAdministrationIdentifierAndVersionType"/>
+      <element name="DispensingIdentifier" type="mc160:DispensingIdentifierType" minOccurs="0"/> <!-- Dispensings are only created if call succeeds -->
+      <!-- Warnings that relate to the individual dispensing -->
+      <element name="Warning" type="mc160:DispensingWarningType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
 </schema>

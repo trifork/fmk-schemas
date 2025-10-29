@@ -4,29 +4,30 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-    <include schemaLocation="PersonIdentifier.xsd"/>
-    <include schemaLocation="Order.xsd"/>
+  <include schemaLocation="PersonIdentifier.xsd"/>
+  <include schemaLocation="Order.xsd"/>
 
-	<element name="GetOrdersResponse" type="mc160:GetOrdersResponseType">
-		<annotation>
-			<documentation xml:lang="en-GB">Element for a request for a list of orders on warrants for a patient or practice</documentation>
-			<documentation xml:lang="da-DK">Element for en forespørgsel efter en list af bestillinger på udleveringsgrundlag for en patient eller praksis</documentation>
-		</annotation>
-	</element>
-	<complexType name="GetOrdersResponseType">
-		<sequence>
-            <choice>
-			    <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-                <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
-            </choice>
-            <element name="OrderOnWarrant" maxOccurs="unbounded">
-                <complexType>
-                    <sequence>
-                        <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-                        <element name="Order" type="mc160:OrderType" maxOccurs="unbounded"/>
-                    </sequence>
-                </complexType>
-            </element>
-		</sequence>
-	</complexType>
+  <element name="GetOrdersResponse" type="mc160:GetOrdersResponseType">
+    <annotation>
+      <documentation xml:lang="en-GB">Element for a request for a list of orders on warrants for a patient or practice</documentation>
+      <documentation xml:lang="da-DK">Element for en forespørgsel efter en list af bestillinger på udleveringsgrundlag for en patient eller praksis
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="GetOrdersResponseType">
+    <sequence>
+      <choice>
+        <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+        <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+      </choice>
+      <element name="OrderOnWarrant" type="mc160:OrderOnWarrantType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="OrderOnWarrantType">
+    <sequence>
+      <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+      <element name="Order" type="mc160:OrderType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
 </schema>

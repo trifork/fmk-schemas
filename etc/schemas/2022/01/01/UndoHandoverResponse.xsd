@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:mc160="http://fmk-teknik.dk/160"
-		targetNamespace="http://fmk-teknik.dk/160"
-		elementFormDefault="qualified" attributeFormDefault="unqualified">
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="HandoverIdentifier.xsd"/>
-	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="WarrantIdentifier.xsd"/>
-	<include schemaLocation="OrderIdentifier.xsd"/>
+  <include schemaLocation="PersonIdentifier.xsd"/>
+  <include schemaLocation="HandoverIdentifier.xsd"/>
+  <include schemaLocation="OrganisationIdentifier.xsd"/>
+  <include schemaLocation="WarrantIdentifier.xsd"/>
+  <include schemaLocation="OrderIdentifier.xsd"/>
 
-	<element name="UndoHandoverResponse" type="mc160:UndoHandoverResponseType">
-		<annotation>
-			<documentation xml:lang="en-GB">Service response for undoing one or more handovers</documentation>
-			<documentation xml:lang="da-DK">Service svar på en tilbageførsel af en eller flere udleveringer</documentation>
-		</annotation>
-	</element>
-	<complexType name="UndoHandoverResponseType">
-		<sequence>
-			<choice>
-				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
-			</choice>
-			<element name="Warrant" maxOccurs="unbounded">
-				<complexType>
-					<sequence>
-						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-                        <choice maxOccurs="unbounded">
-                            <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
-                            <element name="HandoverOnOrder">
-                                <complexType>
-                                    <sequence>
-                                        <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-                                        <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
-                                    </sequence>
-                                </complexType>
-                            </element>
-                        </choice>
-					</sequence>
-				</complexType>
-			</element>
-		</sequence>
-	</complexType>
+  <element name="UndoHandoverResponse" type="mc160:UndoHandoverResponseType">
+    <annotation>
+      <documentation xml:lang="en-GB">Service response for undoing one or more handovers</documentation>
+      <documentation xml:lang="da-DK">Service svar på en tilbageførsel af en eller flere udleveringer</documentation>
+    </annotation>
+  </element>
+  <complexType name="UndoHandoverResponseType">
+    <sequence>
+      <choice>
+        <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+        <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+      </choice>
+      <element name="Warrant" type="mc160:WarrantForUndoHandoverType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="WarrantForUndoHandoverType">
+    <sequence>
+      <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+      <choice maxOccurs="unbounded">
+        <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
+        <element name="HandoverOnOrder" type="mc160:HandoverOnOrderType" />
+      </choice>
+    </sequence>
+  </complexType>
+
+  <complexType name="HandoverOnOrderType">
+    <sequence>
+      <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+      <element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
+    </sequence>
+  </complexType>
 </schema>

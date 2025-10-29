@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:mc160="http://fmk-teknik.dk/160"
-		targetNamespace="http://fmk-teknik.dk/160"
-		elementFormDefault="qualified" attributeFormDefault="unqualified">
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="WarrantIdentifier.xsd"/>
-    <include schemaLocation="HandoverDateTime.xsd"/>
-    <include schemaLocation="CreateNewWarrant.xsd"/>
-    <include schemaLocation="CreateDrugAdministrationOnHandover.xsd"/>
-    <include schemaLocation="Modificator.xsd"/>
-    <include schemaLocation="ModificationMetadata.xsd"/>
-    <include schemaLocation="PackageHandover.xsd"/>
-    <include schemaLocation="SingleUnitsHandover.xsd"/>
-    <include schemaLocation="TerminateWarrant.xsd"/>
+  <include schemaLocation="WarrantIdentifier.xsd"/>
+  <include schemaLocation="HandoverDateTime.xsd"/>
+  <include schemaLocation="CreateNewWarrant.xsd"/>
+  <include schemaLocation="CreateDrugAdministrationOnHandover.xsd"/>
+  <include schemaLocation="Modificator.xsd"/>
+  <include schemaLocation="ModificationMetadata.xsd"/>
+  <include schemaLocation="PackageHandover.xsd"/>
+  <include schemaLocation="SingleUnitsHandover.xsd"/>
+  <include schemaLocation="TerminateWarrant.xsd"/>
 
-	<complexType name="CreateTreatmentHandoverType">
-		<annotation>
-			<documentation xml:lang="en-GB">Element for creating a handover for a given drug. A warrant of type "Treatment handover" must either be specified or created.</documentation>
-			<documentation xml:lang="da-DK">Element for en oprettelse af en udlevering af et givet lægemiddel. Et udleveringsgrundlag af typen "Udleveret ved behandling" skal enten angives eller oprettes.</documentation>
-		</annotation>
-		<sequence>
-            <choice>
-                <element name="CreateNewWarrant" type="mc160:CreateNewWarrantType"/>
-                <element name="ExistingWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-            </choice>
-            <element name="TerminateWarrant" type="mc160:TerminateWarrantType"/>
-            <element name="Handover" maxOccurs="unbounded">
-                <complexType>
-                    <sequence>
-                        <element name="DateTime" type="mc160:HandoverDateTimeType"/>
-                        <element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
-                        <choice>
-                            <element name="Package" type="mc160:PackageHandoverType"/>
-                            <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
-                        </choice>
-                        <element name="RegisterDrugAdministration" type="mc160:CreateDrugAdministrationOnHandoverType" minOccurs="0" maxOccurs="unbounded"/>
-                        <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
-                    </sequence>
-                </complexType>
-            </element>
-		</sequence>
-	</complexType>
+  <complexType name="CreateTreatmentHandoverType">
+    <annotation>
+      <documentation xml:lang="en-GB">Element for creating a handover for a given drug. A warrant of type "Treatment handover" must either be specified or
+        created.
+      </documentation>
+      <documentation xml:lang="da-DK">Element for en oprettelse af en udlevering af et givet lægemiddel. Et udleveringsgrundlag af typen "Udleveret ved
+        behandling" skal enten angives eller oprettes.
+      </documentation>
+    </annotation>
+    <sequence>
+      <choice>
+        <element name="CreateNewWarrant" type="mc160:CreateNewWarrantType"/>
+        <element name="ExistingWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+      </choice>
+      <element name="TerminateWarrant" type="mc160:TerminateWarrantType"/>
+      <element name="Handover" type="mc160:TreatmentHandoverForCreationType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="TreatmentHandoverForCreationType">
+    <sequence>
+      <element name="DateTime" type="mc160:HandoverDateTimeType"/>
+      <element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
+      <choice>
+        <element name="Package" type="mc160:PackageHandoverType"/>
+        <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
+      </choice>
+      <element name="RegisterDrugAdministration" type="mc160:CreateDrugAdministrationOnHandoverType" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
 </schema>
