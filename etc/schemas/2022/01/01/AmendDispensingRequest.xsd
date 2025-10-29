@@ -7,6 +7,7 @@
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DispensingCardIdentifier.xsd"/>
+    <include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
     <include schemaLocation="DispensingPeriodVersion.xsd"/>
 	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
@@ -21,6 +22,8 @@
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
+            <element name="ModifiedBy" type="mc160:ModificatorType"/>
+            <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="InsertAdministrationInPeriod" type="mc160:AdministrationUpdateType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="UpdateAdministrationInPeriod" type="mc160:AdministrationUpdateType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="RemoveAdministrationInPeriod" type="mc160:AdministrationUpdateType" minOccurs="0" maxOccurs="unbounded"/>
