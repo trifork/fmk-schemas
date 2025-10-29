@@ -10,7 +10,11 @@
 			<documentation xml:lang="da-DK">Køn</documentation>
 		</annotation>
 	</element>
-	<simpleType name="GenderType">
+    <simpleType name="GenderType">
+        <union memberTypes="mc160:PredefinedGenderType mc160:UndefinedGenderType"/>
+    </simpleType>
+
+	<simpleType name="PredefinedGenderType">
 		<restriction base="string">
 			<enumeration value="female"/>
 			<enumeration value="male"/>
@@ -18,4 +22,11 @@
 			<enumeration value="unspecified"/>
 		</restriction>
 	</simpleType>
+
+    <simpleType name="UndefinedGenderType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="40"/>
+        </restriction>
+    </simpleType>
 </schema>

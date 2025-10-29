@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE definitions [
 <!ENTITY fmkStandardSOAPRequestHeaders "
+        <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+        <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
         <soap:header use='literal' part='FMKRequestHeader' message='tns:FMKRequestHeader' />
 ">
 <!ENTITY fmkStandardSOAPResponseHeaders "
@@ -434,24 +436,12 @@
         <wsdl:part name="MedcomHeader" element="medcom:Header"/>
     </wsdl:message>
 
-    <wsdl:message name="WhitelistingHeader">
-        <wsdl:part name="WhitelistingHeader" element="sdsd201206:WhitelistingHeader"/>
-    </wsdl:message>
-
     <wsdl:message name="FMKDetail">
         <wsdl:part name="fault" element="mc160:FMKDetail"/>
     </wsdl:message>
 
-    <wsdl:message name="ConsentHeader">
-        <wsdl:part name="ConsentHeader" element="mc160:ConsentHeader"/>
-    </wsdl:message>
-
     <wsdl:message name="TimingHeader">
         <wsdl:part name="TimingHeader" element="mc160:TimingList"/>
-    </wsdl:message>
-
-    <wsdl:message name="OnBehalfOfHeader">
-        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOf"/>
     </wsdl:message>
 
     <wsdl:message name="AbortHandlingOfDispensingPeriodRequest_160">
