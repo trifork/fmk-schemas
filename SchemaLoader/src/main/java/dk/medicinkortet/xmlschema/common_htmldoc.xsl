@@ -379,8 +379,9 @@
 				<xsl:apply-templates select="xs:choice" mode="all"/>
 			</xsl:if>
 
-
 			<xsl:apply-templates select="xs:simpleContent"/>
+			<xsl:apply-templates select="xs:complexContent"/>
+
 		</xsl:if>
 	</xsl:template>
 
@@ -410,6 +411,26 @@
 
 		<ul>
 		Typeudvidelse:
+			<li>
+				<dl>
+					<dt>Basistype:</dt>
+					<dd>
+						<a href="#{substring-after(xs:extension/@base, ':')}">
+							<xsl:value-of select="substring-after(xs:extension/@base, ':')"/>
+						</a>
+					</dd>
+				</dl>
+				<ul>
+					<xsl:apply-templates select="xs:extension/xs:attribute"/>
+				</ul>
+			</li>
+		</ul>
+	</xsl:template>
+
+	<xsl:template match="xs:complexContent">
+
+		<ul>
+			Typeudvidelse:
 			<li>
 				<dl>
 					<dt>Basistype:</dt>
