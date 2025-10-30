@@ -20,22 +20,26 @@
 	</element>
 
 	<complexType name="PreconditionForResponseType">
-		<choice>
-		  <element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
-			<sequence>
-				<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
-				<element name="ExpectedValidFrom" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
-			</sequence>
-			<element name="FreeText" type="mc160:PreconditionFreeTextType"/>
-		</choice>
+		<sequence>
+			<choice>
+				<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
+				<sequence>
+					<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
+					<element name="ExpectedValidFrom" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
+				</sequence>
+			</choice>
+			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0" />
+		</sequence>
 	</complexType>
 
 	<complexType name="PreconditionForRequestType">
-		<choice>
-			<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
-			<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
-			<element name="FreeText" type="mc160:PreconditionFreeTextType"/>
-		</choice>
+		<sequence>
+			<choice>
+				<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
+				<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
+			</choice>
+			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0"/>
+		</sequence>
 	</complexType>
 
 	<simpleType name="PredefinedValidFromType">
