@@ -20,14 +20,14 @@
             <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
             <element name="AttachedToDrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
             <element name="CreatedDateTime" type="mc160:CreatedDateTimeType"/>
-            <element name="Entry" maxOccurs="unbounded">
-                <complexType>
-                    <sequence>
-                        <element name="Organisation" type="mc160:OrganisationType"/>
-                        <element name="Reason" type="mc160:RenewalReasonType"/>
-                    </sequence>
-                </complexType>
-            </element>
+            <element name="Entry" type="mc160:OrgAndReasonType" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+
+    <complexType name="OrgAndReasonType">
+        <sequence>
+            <element name="Organisation" type="mc160:OrganisationType"/>
+            <element name="Reason" type="mc160:RenewalReasonType"/>
         </sequence>
     </complexType>
 </schema>

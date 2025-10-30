@@ -7,9 +7,9 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
-	<include schemaLocation="WarrantIdentifier.xsd"/>
+	<include schemaLocation="WarrantOrderIdentifierForRequest.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
-    <include schemaLocation="OrderCancellationReason.xsd"/>
+	<include schemaLocation="OrderCancellationReason.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 
 	<element name="CancelOrderRequest" type="mc160:CancelOrderRequestType">
@@ -26,16 +26,18 @@
 			</choice>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="Order" maxOccurs="unbounded">
-				<complexType>
-					<sequence>
-						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-                        <element name="CancellationReason" type="mc160:OrderCancellationReasonType" minOccurs="0"/>
-						<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
-					</sequence>
-				</complexType>
-			</element>
+			<element name="Order" type="mc160:WarrantOrderIdentifierWithReasonForRequestType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
+
+	<complexType name="WarrantOrderIdentifierWithReasonForRequestType">
+		<complexContent>
+			<extension base="mc160:WarrantOrderIdentifierForRequestType">
+				<sequence>
+					<element name="CancellationReason" type="mc160:OrderCancellationReasonType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
 </schema>

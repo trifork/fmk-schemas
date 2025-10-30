@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <include schemaLocation="WarrantIdentifier.xsd"/>
+  <include schemaLocation="OrderIdentifier.xsd"/>
+  <include schemaLocation="ModificationMetadata.xsd"/>
+
+  <element name="WarrantOrderIdentifierForRequest" type="mc160:WarrantOrderIdentifierForRequestType">
+    <annotation>
+      <documentation xml:lang="en-GB">Type with identifier for Warrant and Order</documentation>
+      <documentation xml:lang="da-DK">Type med identifier for Warrant og Order</documentation>
+    </annotation>
+  </element>
+  <complexType name="WarrantOrderIdentifierForRequestType">
+    <sequence>
+      <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+      <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+      <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+</schema>
