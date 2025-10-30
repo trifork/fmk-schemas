@@ -68,9 +68,11 @@
         <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
                    schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
 
-        <xs:include schemaLocation="../schemas/2022/01/01/FMKRequestHeader.xsd"/>
-        
+
         <xs:schema targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified">
+
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKRequestHeader.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKResponseHeader.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/AbortHandlingOfDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortHandlingOfDispensingPeriodResponse.xsd"/>
@@ -462,6 +464,10 @@
 
     <wsdl:message name="FMKRequestHeader">
         <wsdl:part name="FMKRequestHeader" element="mc160:FMKRequestHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="FMKResponseHeader">
+        <wsdl:part name="FMKResponseHeader" element="mc160:FMKResponseHeader"/>
     </wsdl:message>
 
     <wsdl:message name="FMKDetail">
