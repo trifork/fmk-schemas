@@ -21,13 +21,8 @@
 
 	<complexType name="PreconditionForResponseType">
 		<sequence>
-			<choice>
-				<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
-				<sequence>
-					<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
-					<element name="ExpectedValidFrom" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
-				</sequence>
-			</choice>
+			<element name="ValidFrom" type="mc160:DosageTimesStartDateType" />
+			<element name="UpdateValidFromOnHandover" type="mc160:UpdateValidFromOnHandoverType" minOccurs="0"/>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0" />
 		</sequence>
 	</complexType>
@@ -36,24 +31,13 @@
 		<sequence>
 			<choice>
 				<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
-				<element name="PredefinedCondition" type="mc160:PredefinedValidFromType"/>
+				<element name="UpdateValidFromOnHandover" type="mc160:UpdateValidFromOnHandoverType"/>
 			</choice>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
-	<simpleType name="PredefinedValidFromType">
-		<restriction base="mc160:UndefinedValidFromType">
-			<enumeration value="Medicine in possession"/>
-		</restriction>
-	</simpleType>
-
-	<simpleType name="UndefinedValidFromType">
-		<restriction base="string">
-			<minLength value="1"/>
-			<maxLength value="100"/>
-		</restriction>
-	</simpleType>
+	<complexType name="UpdateValidFromOnHandoverType" />
 
 	<simpleType name="PreconditionFreeTextType">
 		<restriction base="string">
