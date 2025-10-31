@@ -22,7 +22,7 @@
 	<complexType name="PreconditionForResponseType">
 		<sequence>
 			<element name="ValidFrom" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
-			<element name="UpdateValidFromOnHandover" type="mc160:UpdateValidFromOnHandoverType" minOccurs="0"/>
+			<element name="UpdateValidFromOnHandover" type="mc160:UpdateValidFromUponHandoverType" minOccurs="0"/>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0" />
 		</sequence>
 	</complexType>
@@ -31,13 +31,13 @@
 		<sequence>
 			<choice>
 				<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
-				<element name="UpdateValidFromOnHandover" type="mc160:UpdateValidFromOnHandoverType"/>
+				<element name="UpdateValidFromOnHandover" type="mc160:UpdateValidFromUponHandoverType"/>
 			</choice>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
-	<complexType name="UpdateValidFromOnHandoverType" />
+	<complexType name="UpdateValidFromUponHandoverType" />
 
 	<simpleType name="PreconditionFreeTextType">
 		<restriction base="string">
