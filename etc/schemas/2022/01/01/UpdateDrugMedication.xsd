@@ -44,12 +44,12 @@
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForRequestType"/>
-			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType"/>
+			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
 			<element name="HandoverPreference" type="mc160:HandoverMethodType"/>
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="RequireSecondaryHandover" type="mc160:RequireSecondaryHandoverType" minOccurs="0" />
-			<element name="RequestDrugAdministrationRegistrationRequested" type="mc160:DrugAdministrationRegistrationRequestedType" minOccurs="0" />
-		</sequence>
+            <element name="DrugAdministrationRegistrationRequested" type="mc160:DrugAdministrationRegistrationRequestedType" minOccurs="0" />
+            <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
 	</complexType>
 </schema>

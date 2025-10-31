@@ -6,7 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
-	<include schemaLocation="WarrantIdentifier.xsd"/>
+	<include schemaLocation="WarrantOrderHandoverIdentifierForResponse.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="HandoverIdentifier.xsd"/>
 
@@ -22,15 +22,8 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="Handover" maxOccurs="unbounded">
-				<complexType>
-					<sequence>
-						<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-						<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-						<element name="HandoverIdentifier" type="mc160:HandoverIdentifierType"/>
-					</sequence>
-				</complexType>
-			</element>
+			<element name="Handover" type="mc160:WarrantOrderIdentifierWithHandoverForResponseType" maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
+
 </schema>
