@@ -48,6 +48,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/FMKRequestHeader.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/FMKResponseHeader.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/TimingList.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePatientRegistrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePatientRegistrationResponse.xsd"/>
 
@@ -81,6 +83,7 @@
 
     <wsdl:message name="SecurityHeader">
         <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+
     </wsdl:message>
 
     <wsdl:message name="MedComHeader">
@@ -105,6 +108,14 @@
 
     <wsdl:message name="OnBehalfOfHeader">
         <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOf"/>
+    </wsdl:message>
+
+    <wsdl:message name="FMKRequestHeader">
+        <wsdl:part name="FMKRequestHeader" element="mc160:FMKRequestHeader"/>
+    </wsdl:message>
+
+    <wsdl:message name="FMKResponseHeader">
+        <wsdl:part name="FMKResponseHeader" element="mc160:FMKResponseHeader"/>
     </wsdl:message>
 
     <wsdl:message name="CreatePatientRegistrationRequest_160">
