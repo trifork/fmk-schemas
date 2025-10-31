@@ -5,8 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="OrganisationIdentifier.xsd"/>
-    <include schemaLocation="WarrantIdentifier.xsd"/>
-    <include schemaLocation="OrderIdentifier.xsd"/>
+    <include schemaLocation="WarrantOrderIdentifierForRequest.xsd"/>
 
     <element name="AcknowledgeOrdersRequest" type="mc160:AcknowledgeOrdersRequestType">
         <annotation>
@@ -17,14 +16,7 @@
     <complexType name="AcknowledgeOrdersRequestType">
         <sequence>
             <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
-            <element name="Order" maxOccurs="unbounded">
-                <complexType>
-                    <sequence>
-                        <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-                        <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-                    </sequence>
-                </complexType>
-            </element>
+            <element name="Order" type="mc160:WarrantOrderIdentifierForRequestType" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

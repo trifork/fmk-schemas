@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		xmlns:mc160="http://fmk-teknik.dk/160"
-		targetNamespace="http://fmk-teknik.dk/160"
-		elementFormDefault="qualified" attributeFormDefault="unqualified">
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-    <include schemaLocation="DoseQuantity.xsd"/>
-    <include schemaLocation="DosageQuantityUnitText.xsd"/>
-	<include schemaLocation="HandoverIdentifier.xsd"/>
-	<include schemaLocation="HandoverDateTime.xsd"/>
-	<include schemaLocation="Created.xsd"/>
-	<include schemaLocation="PackageHandover.xsd"/>
-    <include schemaLocation="SingleUnitsHandover.xsd"/>
-	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
-	<include schemaLocation="HandoverComment.xsd"/>
-	<include schemaLocation="LabelText.xsd"/>
-    <include schemaLocation="Warrant.xsd"/>
-    <include schemaLocation="UsesSecondaryHandover.xsd"/>
-    <include schemaLocation="SecondaryHandover.xsd"/>
+  <include schemaLocation="DoseQuantity.xsd"/>
+  <include schemaLocation="DosageQuantityUnitText.xsd"/>
+  <include schemaLocation="HandoverIdentifier.xsd"/>
+  <include schemaLocation="HandoverDateTime.xsd"/>
+  <include schemaLocation="Created.xsd"/>
+  <include schemaLocation="PackageHandover.xsd"/>
+  <include schemaLocation="SingleUnitsHandover.xsd"/>
+  <include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
+  <include schemaLocation="HandoverComment.xsd"/>
+  <include schemaLocation="LabelText.xsd"/>
+  <include schemaLocation="Warrant.xsd"/>
+  <include schemaLocation="UsesSecondaryHandover.xsd"/>
+  <include schemaLocation="SecondaryHandover.xsd"/>
 
-	<complexType name="HandoverType">
-		<annotation>
-			<documentation xml:lang="en-GB">A handover on the warrant. Handover is based on the type of warrant</documentation>
-			<documentation xml:lang="da-DK">En udlevering på udleveringsgrundlaget. Der er udleveret på baggrund af typen af udleveringsgrundlag</documentation>
-		</annotation>
-		<sequence>
-			<element name="Identifier" type="mc160:HandoverIdentifierType"/>
-            <element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0"/>
-			<element name="DateTime" type="mc160:HandoverDateTimeType"/>
-            <element name="Created" type="mc160:CreatedType"/>
-            <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-            <choice>
-                <element name="Package" type="mc160:PackageHandoverType"/>
-                <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
-            </choice>
-            <element name="UsesSecondaryHandover" type="mc160:UsesSecondaryHandoverType" minOccurs="0"/>
-            <element name="SecondaryHandover" type="mc160:SecondaryHandoverType" minOccurs="0" maxOccurs="unbounded"/>
+  <complexType name="HandoverType">
+    <annotation>
+      <documentation xml:lang="en-GB">A handover on the warrant. Handover is based on the type of warrant</documentation>
+      <documentation xml:lang="da-DK">En udlevering på udleveringsgrundlaget. Der er udleveret på baggrund af typen af udleveringsgrundlag</documentation>
+    </annotation>
+    <sequence>
+      <element name="Identifier" type="mc160:HandoverIdentifierType"/>
+      <element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0"/>
+      <element name="DateTime" type="mc160:HandoverDateTimeType"/>
+      <element name="Created" type="mc160:CreatedType"/>
+      <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+      <choice>
+        <element name="Package" type="mc160:PackageHandoverType"/>
+        <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
+      </choice>
+      <element name="UsesSecondaryHandover" type="mc160:UsesSecondaryHandoverType" minOccurs="0"/>
+      <element name="SecondaryHandover" type="mc160:SecondaryHandoverType" minOccurs="0" maxOccurs="unbounded"/>
 
-			<element name="HandoverComment" type="mc160:HandoverCommentType" minOccurs="0"/>
-			<element name="LabelText" type="mc160:LabelTextType" minOccurs="0"/>
-			<element name="ResponsibleOrganisation" type="mc160:OrganisationType" minOccurs="0"/>
-		</sequence>
-	</complexType>
+      <element name="HandoverComment" type="mc160:HandoverCommentType" minOccurs="0"/>
+      <element name="LabelText" type="mc160:LabelTextType" minOccurs="0"/>
+      <element name="ResponsibleOrganisation" type="mc160:OrganisationType" minOccurs="0"/>
+    </sequence>
+  </complexType>
 </schema>
