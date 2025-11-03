@@ -21,6 +21,7 @@
 	<include schemaLocation="CreateOrder.xsd"/>
 	<include schemaLocation="InvalidateReplacedWarrant.xsd"/>
 	<include schemaLocation="CloseReplacedWarrant.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
 
 	<complexType name="ReplaceWarrantType">
 		<annotation>
@@ -35,10 +36,11 @@
 				<element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
 			</choice>
 			<element name="ValidToDate" type="mc160:ValidToDateType"/>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 			<choice>
-				<element name="Prescription" type="mc160:PrescriptionType"/>
-				<element name="HospitalPharmacyHandover" type="mc160:HospitalPharmacyHandoverType"/>
-				<element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+				<element name="Prescription" type="mc160:PrescriptionType" maxOccurs="unbounded"/>
+				<element name="HospitalPharmacyHandover" type="mc160:HospitalPharmacyHandoverType" maxOccurs="unbounded"/>
+				<element name="DoseDispensed" type="mc160:DoseDispensedType" maxOccurs="unbounded"/>
 			</choice>
 			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
 			<choice>
