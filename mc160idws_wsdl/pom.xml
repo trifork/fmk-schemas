@@ -30,7 +30,7 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>schemaload-dgws</id>
+                        <id>schemaload-idws-medicinecard</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -51,6 +51,28 @@
                             </arguments>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>schemaload-idws-patientregistration</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+
+                        <configuration>
+
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=PatientRegistration_Idws</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Dschemas.dir=../etc/schemas</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -58,30 +80,58 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly</id>
+                        <id>make-assembly-mc</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>MedicineCard_2022_01_01_Idws-collection</finalName>
+                            <finalName>MedicineCard_Idws_2022_01_01-collection</finalName>
                             <descriptors>
                                 <descriptor>src/assembly/mc160idws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-inline</id>
+                        <id>make-assembly-mc-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>MedicineCard_2022_01_01_Idws-inline</finalName>
+                            <finalName>MedicineCard-inline_Idws_2022_01_01.wsdl</finalName>
                             <descriptors>
                                 <descriptor>src/assembly/mc160idws-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>PatientRegistration_Idws_2022_01_01-collection</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/por160idws.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <finalName>PatientRegistration-inline_Idws_2022_01_01.wsdl</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/por160idws-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
