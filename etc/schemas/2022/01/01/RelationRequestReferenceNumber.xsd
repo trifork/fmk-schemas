@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" 
+		attributeFormDefault="unqualified">
+		
+	<element name="RelationRequestReferenceNumber" type="mc160:RelationRequestReferenceNumberType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element containing a reference number for a given drug medication, used during the creation/update of relations,
+                allowing any given relation to more accurately point to a second drug medication, to which a relation is wanted, in the request, regardless of respective position of these in the request</documentation>
+			<documentation xml:lang="da-DK">Element indeholder et reference nummer for en given lægemiddelordination, brugt under oprettelse/opdatering af relationer,
+                benyttes fra en given relation til at udpege den anden lægemiddelordination der oprettes en relation til i forespørgslen, uanset deres position i forespørgslen
+            </documentation>
+		</annotation>
+	</element>
+
+    <simpleType name="RelationRequestReferenceNumberType">
+        <restriction base="long">
+            <minInclusive value="1"/>
+        </restriction>
+    </simpleType>
+</schema>

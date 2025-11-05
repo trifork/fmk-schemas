@@ -22,6 +22,8 @@
 	<include schemaLocation="RequireSecondaryHandover.xsd"/>
 	<include schemaLocation="HandoverMethod.xsd"/>
 	<include schemaLocation="RequestDrugAdministrationRegistration.xsd"/>
+    <include schemaLocation="RelationRequestReferenceNumber.xsd"/>
+    <include schemaLocation="CreateDrugMedicationRelation.xsd"/>
 
 	<element name="UpdateDrugMedication" type="mc160:UpdateDrugMedicationType">
 		<annotation>
@@ -49,6 +51,10 @@
 			<element name="ReimbursementApprovedCode" type="mc160:ReimbursementCodeType" minOccurs="0"/>
 			<element name="RequireSecondaryHandover" type="mc160:RequireSecondaryHandoverType" minOccurs="0" />
             <element name="DrugAdministrationRegistrationRequested" type="mc160:DrugAdministrationRegistrationRequestedType" minOccurs="0" />
+            <sequence minOccurs="0">
+                <element name="DrugMedicationReferenceNumber" type="mc160:RelationRequestReferenceNumberType" minOccurs="0"/>
+                <element name="Relation" type="mc160:CreateDrugMedicationRelationType" maxOccurs="unbounded"/>
+            </sequence>
             <element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
 	</complexType>
