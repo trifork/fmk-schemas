@@ -4,7 +4,7 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-    <include schemaLocation="RelationRequestReferenceNumber.xsd"/>
+    <include schemaLocation="DrugMedicationRequestReferenceNumber.xsd"/>
     <include schemaLocation="RelationPrimaryFlag.xsd"/>
     <include schemaLocation="DrugMedicationIdentifier.xsd"/>
     <include schemaLocation="DrugMedicationRelationType.xsd"/>
@@ -18,7 +18,7 @@
             <element name="Primary" type="mc160:RelationPrimaryFlagType" minOccurs="0"/>
             <choice>
                 <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
-                <element name="ReferenceNumberForRelatedDrugMedication" type="mc160:RelationRequestReferenceNumberType" maxOccurs="unbounded"/>
+                <element name="ReferenceNumberForRelatedDrugMedication" type="mc160:DrugMedicationRequestReferenceNumberType" maxOccurs="unbounded"/>
             </choice>
             <element name="RelationType" type="mc160:DrugMedicationRelationTypeType"/>
         </sequence>
