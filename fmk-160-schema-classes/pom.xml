@@ -56,7 +56,7 @@
                     </execution>
                     <execution>
                         <id>POR</id>
-                        <phase>process-classes</phase>
+                        <phase>process-sources</phase>
                         <goals>
                             <goal>wsimport</goal>
                         </goals>
@@ -64,13 +64,14 @@
                             <wsdlUrls>
                                 <wsdlUrl>../mc160_wsdl/target/resources/wsdl/PatientRegistration-inline_2022_01_01.wsdl</wsdlUrl>
                             </wsdlUrls>
-
                             <sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
                             <xnocompile>true</xnocompile>
                             <bindingDirectory>../etc/jaxb</bindingDirectory>
                             <bindingFiles>
                                 <bindingFile>${medicineCardEpisode}</bindingFile>
                                 <bindingFile>Shared_bindings.xjb</bindingFile>
+                                <bindingFile>PatientRegistration_bindings.xjb</bindingFile>
+
                             </bindingFiles>
                         </configuration>
                     </execution>
@@ -80,8 +81,7 @@
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>3.1.0</version>
                 <executions>
-                    <execution>
-                        <id>sanitize-episode</id>
+                    <execution>                        <id>sanitize-episode</id>
                         <phase>generate-sources</phase>
                         <configuration>
                             <target>
@@ -91,6 +91,10 @@
                                                match="map=&quot;false&quot;"
                                                replace=""
                                                flags="g"/>
+                                <replaceregexp file="${medicineCardEpisode}"
+                                               match="\n    &lt;schemaBindings &gt;\n      &lt;package name=&quot;dk.fmk_teknik._160.mc_schema&quot;/&gt;\n    &lt;/schemaBindings&gt;"
+                                               replace=""
+                                               flags="gs"/>
                             </target>
                         </configuration>
                         <goals>
