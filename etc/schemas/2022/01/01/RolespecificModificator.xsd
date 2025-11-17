@@ -15,14 +15,14 @@
     </element>
     <complexType name="RoleSpecificModificatorType">
         <sequence>
-            <element name="NameLine" type="mc160:NameLineType" maxOccurs="10"/>
+            <element name="Name" type="mc160:RoleSpecificNameType"/>
         </sequence>
     </complexType>
 
-    <simpleType name="NameLineType">
+    <simpleType name="RoleSpecificNameType">
         <restriction base="string">
             <minLength value="1"/>
-            <maxLength value="50"/>
+            <maxLength value="500"/>
         </restriction>
     </simpleType>
 </schema>
