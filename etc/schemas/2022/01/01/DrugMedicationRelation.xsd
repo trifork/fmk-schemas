@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="RelationPrimaryFlag.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="DrugMedicationRelationType.xsd"/>
+
+	<complexType name="DrugMedicationRelationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element containing the relation between this drug medication containing this element and another drug medication</documentation>
+			<documentation xml:lang="da-DK">Element som indeholder relationen mellem den lægemiddelordination dette element er tilknyttet og en anden lægemiddelordination </documentation>
+		</annotation>
+		<sequence>
+            <element name="Primary" type="mc160:RelationPrimaryFlagType" minOccurs="0"/>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
+            <element name="RelationType" type="mc160:DrugMedicationRelationTypeType"/>
+        </sequence>
+	</complexType>
+</schema>
