@@ -139,6 +139,19 @@
                             </descriptors>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>make-combined</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <attach>true</attach>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/combined.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
