@@ -16,19 +16,17 @@
 		</annotation>
 	</element>
 	<complexType name="DrugStrengthType">
-		<sequence>
-			<choice>
-				<sequence>
-					<element name="Value" type="mc160:DrugStrengthValueType" minOccurs="0" maxOccurs="20"/>
-					<element name="UnitCode" type="mc160:DrugStrengthUnitCodeType" minOccurs="0"/>
-					<element name="UnitText" type="mc160:DrugStrengthUnitTextType" minOccurs="0"/>
-				</sequence>
-				<sequence>
-					<element name="Counter" type="mc160:SimpleDrugStrengthType" maxOccurs="10"/>
-					<element name="Denominator" type="mc160:SimpleDrugStrengthType"/>
-				</sequence>
-			</choice>
-			<element name="Text" type="mc160:DrugStrengthTextType" minOccurs="0"/>
-		</sequence>
+        <sequence>
+            <element name="StrengthItem" minOccurs="0" maxOccurs="10"/>
+            <element name="Text" type="mc160:DrugStrengthTextType" minOccurs="0"/>
+        </sequence>
 	</complexType>
+    
+    <complexType name="DrugStrengthItemType">
+        <sequence>
+            <element name="Value" type="mc160:DrugStrengthValueType" />
+            <element name="UnitCode" type="mc160:DrugStrengthUnitCodeType" />
+            <element name="UnitText" type="mc160:DrugStrengthUnitTextType" minOccurs="0"/>
+        </sequence>
+    </complexType>
 </schema>
