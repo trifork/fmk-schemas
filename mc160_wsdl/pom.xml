@@ -86,12 +86,12 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>true</appendAssemblyId>
+                            <appendAssemblyId>false</appendAssemblyId>
                             <attach>true</attach>
                             <descriptors>
                                 <descriptor>${project.parent.basedir}/src/assembly/mc160.xml</descriptor>
                             </descriptors>
-                            <finalName>MedicineCard_2022_01_01</finalName>
+                            <finalName>MedicineCard_2022_01_01-collection</finalName>
                         </configuration>
                     </execution>
                     <execution>
@@ -101,9 +101,9 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>true</appendAssemblyId>
+                            <appendAssemblyId>false</appendAssemblyId>
                             <attach>true</attach>
-                            <finalName>MedicineCard_2022_01_01</finalName>
+                            <finalName>MedicineCard-inline_2022_01_01.wsdl</finalName>
                             <descriptors>
                                 <descriptor>${project.parent.basedir}/src/assembly/mc160-inline.xml</descriptor>
                             </descriptors>
@@ -116,12 +116,12 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>true</appendAssemblyId>
+                            <appendAssemblyId>false</appendAssemblyId>
                             <attach>true</attach>
                             <descriptors>
                                 <descriptor>${project.parent.basedir}/src/assembly/por160.xml</descriptor>
                             </descriptors>
-                            <finalName>PatientRegistration_2022_01_01</finalName>
+                            <finalName>PatientRegistration_2022_01_01-collection</finalName>
                         </configuration>
                     </execution>
                     <execution>
@@ -131,11 +131,24 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>true</appendAssemblyId>
+                            <appendAssemblyId>false</appendAssemblyId>
                             <attach>true</attach>
-                            <finalName>PatientRegistration_2022_01_01</finalName>
+                            <finalName>PatientRegistration-inline_2022_01_01.wsdl</finalName>
                             <descriptors>
                                 <descriptor>${project.parent.basedir}/src/assembly/por160-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-combined</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <attach>true</attach>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/combined.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
