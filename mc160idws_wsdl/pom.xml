@@ -86,8 +86,8 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>MedicineCard_Idws_2022_01_01-collection</finalName>
+                            <appendAssemblyId></appendAssemblyId>
+                            <finalName>MedicineCard_Idws_2022_01_01</finalName>
                             <descriptors>
                                 <descriptor>src/assembly/mc160idws.xml</descriptor>
                             </descriptors>
@@ -100,8 +100,8 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>MedicineCard-inline_Idws_2022_01_01.wsdl</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <finalName>MedicineCard_Idws_2022_01_01</finalName>
                             <descriptors>
                                 <descriptor>src/assembly/mc160idws-inline.xml</descriptor>
                             </descriptors>
@@ -114,8 +114,8 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>PatientRegistration_Idws_2022_01_01-collection</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <finalName>PatientRegistration_Idws_2022_01_01</finalName>
                             <descriptors>
                                 <descriptor>src/assembly/por160idws.xml</descriptor>
                             </descriptors>
@@ -128,23 +128,10 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>PatientRegistration-inline_Idws_2022_01_01.wsdl</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <finalName>PatientRegistration_Idws_2022_01_01</finalName>
                             <descriptors>
                                 <descriptor>src/assembly/por160idws-inline.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>make-combined</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <attach>true</attach>
-                            <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/combinedidws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
