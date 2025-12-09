@@ -141,6 +141,12 @@ pipeline {
                             mv tmp/* wsdl/.
                             rm -r tmp
                             cd wsdl
+
+                            for name in _-*
+                            do
+                                mv $name ${name#_-}
+                            done
+
                             md5sum *.zip > latest_md5
                             cd ..
                             git add *
