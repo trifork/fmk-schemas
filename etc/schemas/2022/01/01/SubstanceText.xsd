@@ -3,40 +3,41 @@
 		xmlns:mc160="http://fmk-teknik.dk/160"
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
-
+	
 	<include schemaLocation="Source.xsd"/>
 	<include schemaLocation="SourceDate.xsd"/>
 	<include schemaLocation="SourceYearAndWeek.xsd"/>
-
-	<element name="ActiveSubstanceCode" type="mc160:ActiveSubstanceCodeType">
+	
+	<element name="SubstanceText" type="mc160:SubstanceTextType">
 		<annotation>
-			<documentation xml:lang="en-GB">Indicates the code of theactive substance</documentation>
-			<documentation xml:lang="da-DK">Angiver kode for den aktive substans</documentation>
+			<documentation xml:lang="en-GB">Contains one active substance text</documentation>
+			<documentation xml:lang="da-DK">Indeholder en enkelt aktiv substans tekst</documentation>
 		</annotation>
 	</element>
-	<complexType name="ActiveSubstanceCodeType">
+	<complexType name="SubstanceTextType">
 		<simpleContent>
-			<extension base="mc160:ActiveSubstanceCodeValueType">
-				<attribute name="source" type="mc160:ActiveSubstanceSourceType" use="required"/>
+			<extension base="mc160:SubstanceTextValueType">
+				<attribute name="source" type="mc160:SubstanceTextSourceType" use="required"/>
 				<attribute name="date" type="mc160:SourceDateType" use="optional"/>
 				<attribute name="yearAndWeek" type="mc160:SourceYearAndWeekType" use="optional"/>
 			</extension>
 		</simpleContent>
 	</complexType>
-	<simpleType name="ActiveSubstanceCodeValueType">
+	<simpleType name="SubstanceTextValueType">
 		<restriction base="string">
 			<minLength value="1"/>
 			<maxLength value="150"/>
 		</restriction>
 	</simpleType>
-	<simpleType name="ActiveSubstanceSourceType">
-		<union memberTypes="mc160:ActiveSubstancePredefinedSourceType mc160:UndefinedSourceType mc160:ExtendedLocalSourceType"/>
+	<simpleType name="SubstanceTextSourceType">
+		<union memberTypes="mc160:SubstanceTextPredefinedSourceType mc160:UndefinedSourceType mc160:ExtendedLocalSourceType"/>
 	</simpleType>
-	<simpleType name="ActiveSubstancePredefinedSourceType">
+	<simpleType name="SubstanceTextPredefinedSourceType">
 		<restriction base="mc160:UndefinedSourceType">
 			<enumeration value="Medicinpriser"/>
 			<enumeration value="Local"/>
             <enumeration value="Magistrel"/>
-		</restriction>
+            <enumeration value="Stærke vitaminer m.v."/>
+        </restriction>
 	</simpleType>
 </schema>

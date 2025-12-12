@@ -18,10 +18,10 @@
 	</element>
 	<complexType name="DrugPartType">
 		<sequence>
-			<element name="Type" type="mc160:DrugPartTypeType"/>
+			<element name="Type" type="mc160:DrugPartTypeType" minOccurs="0"/>
 			<choice>
 				<element name="Drug" type="mc160:DrugType"/>
-				<element name="Substance" type="mc160:SubstanceType" maxOccurs="100"/>
+				<element name="Substance" type="mc160:SubstanceType" />
 			</choice>
 			<choice minOccurs="0">
 				<element name="Amount" type="mc160:DrugValueUnitType"/>
