@@ -4,10 +4,11 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+  <include schemaLocation="IsSelfAdministration.xsd"/>
   <include schemaLocation="Precondition.xsd"/>
-  <include schemaLocation="DosageQuantityUnitText.xsd"/>
   <include schemaLocation="DosageQuantityUnitTexts.xsd"/>
-  <include schemaLocation="DosageStructure.xsd"/>
+  <include schemaLocation="DosageParameter.xsd"/>
+  <include schemaLocation="DosagePeriod.xsd"/>
   <include schemaLocation="DosageFreeTextForResponse.xsd"/>
   <include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForResponse.xsd"/>
 
@@ -19,6 +20,7 @@
   </element>
   <complexType name="DosageForResponseType">
     <sequence>
+      <element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
       <choice>
         <sequence>
           <element name="Precondition" type="mc160:PreconditionForResponseType"/>
@@ -26,17 +28,13 @@
             <element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>
             <element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType"/>
           </choice>
-          <element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
-          <choice>
-            <sequence>
-              <element name="StructureFixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
-              <element name="StructurePRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
-            </sequence>
-          </choice>
+
+          <element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/> <!-- @Reviewer: skal parametre være delt mellem fast og PN perioder? -->
+          <element name="DosagePeriod" type="mc160:DosagePeriodForResponseType" maxOccurs="100"/>
         </sequence>
+
         <element name="FreeText" type="mc160:DosageFreeTextForResponseType"/>
-        <element name="AdministrationAccordingToSchemaInLocalSystem"
-                 type="mc160:AdministrationAccordingToSchemaInLocalSystemForResponseType"/>
+        <element name="AdministrationAccordingToSchemaInLocalSystem" type="mc160:AdministrationAccordingToSchemaInLocalSystemForResponseType"/>
       </choice>
       <element name="DosageTranslationCombined" type="mc160:DosageTranslationType" minOccurs="0"/>
     </sequence>
