@@ -21,6 +21,7 @@
 	<include schemaLocation="CreateOrder.xsd"/>
 	<include schemaLocation="InvalidateReplacedWarrant.xsd"/>
 	<include schemaLocation="CloseReplacedWarrant.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
 
 	<complexType name="ReplaceWarrantType">
 		<annotation>
@@ -28,18 +29,14 @@
 			<documentation xml:lang="da-DK">Element til at angive at et udleveringsgrundlag skal erstattes af et nyt</documentation>
 		</annotation>
 		<sequence>
-			<element name="ReplaceWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
+			<element name="ReplaceWarrantIdentifier" type="mc160:WarrantIdentifierType" maxOccurs="unbounded"/>
 			<element name="AuthorisationDateTime" type="mc160:AuthorisationDateTimeType"/>
 			<choice minOccurs="0">
 				<element name="ValidFromDate" type="mc160:ValidFromDateType"/>
 				<element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
 			</choice>
 			<element name="ValidToDate" type="mc160:ValidToDateType"/>
-			<choice>
-				<element name="Prescription" type="mc160:PrescriptionType"/>
-				<element name="HospitalPharmacyHandover" type="mc160:HospitalPharmacyHandoverType"/>
-				<element name="DoseDispensed" type="mc160:DoseDispensedType"/>
-			</choice>
+            <element name="Warrant" type="mc160:WarrantWithOptionalDrugMedicationIdentifier" maxOccurs="unbounded"/>
 			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
 			<choice>
 				<element name="InvalidateReplacedWarrant" type="mc160:InvalidateReplacedWarrantType"/>
@@ -48,4 +45,15 @@
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
+
+    <complexType name="WarrantWithOptionalDrugMedicationIdentifier">
+        <sequence>
+            <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0"/>
+            <choice>
+                <element name="Prescription" type="mc160:PrescriptionType"/>
+                <element name="HospitalPharmacyHandover" type="mc160:HospitalPharmacyHandoverType"/>
+                <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+            </choice>
+        </sequence>
+    </complexType>
 </schema>
