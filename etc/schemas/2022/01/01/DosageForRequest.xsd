@@ -9,6 +9,7 @@
   <include schemaLocation="DosageFreeTextForRequest.xsd"/>
   <include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForRequest.xsd"/>
   <include schemaLocation="DosageStructure.xsd"/>
+  <include schemaLocation="PRNFixed.xsd"/>
 
   <element name="Dosage" type="mc160:DosageForRequestType">
     <annotation>
@@ -20,17 +21,18 @@
   <complexType name="DosageForRequestType">
     <choice>
       <sequence>
+        <element name="PRNFixed" type="mc160:PRNFixedType" minOccurs="0"/>
         <element name="Precondition" type="mc160:PreconditionForRequestType"/>
         <choice>
           <element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>
           <element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType"/>
         </choice>
+        <element name="IsSelfAdministration" type="mc160:IsSelfAdministrationType" minOccurs="0"/>
         <choice>
           <sequence>
             <element name="StructureFixed" type="mc160:DosageStructureForRequestType" minOccurs="0"/>
             <element name="StructurePRN" type="mc160:DosageStructureForRequestType" minOccurs="0"/>
           </sequence>
-          <element name="StructureFixedStartedPRN" type="mc160:DosageStructureForRequestType"/>
         </choice>
       </sequence>
       <element name="FreeText" type="mc160:DosageFreeTextForRequestType"/>

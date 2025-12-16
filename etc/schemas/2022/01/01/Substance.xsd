@@ -4,12 +4,10 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="SubstanceIdentifier.xsd"/>
-	<include schemaLocation="DrugStrength.xsd"/>
-	<include schemaLocation="AdditionalDrugName.xsd"/>
-	<include schemaLocation="DrugForm.xsd"/>
-	<include schemaLocation="DrugName.xsd"/>
-	<include schemaLocation="ATC.xsd"/>
+	<include schemaLocation="SubstanceCode.xsd"/>
+    <include schemaLocation="SubstanceTextWithoutSource.xsd"/>
+    <include schemaLocation="SubstanceText.xsd"/>
+    <include schemaLocation="SubstanceFreeText.xsd"/>
 
 	<element name="Substance" type="mc160:SubstanceType">
 		<annotation>
@@ -18,13 +16,13 @@
 		</annotation>
 	</element>
 	<complexType name="SubstanceType">
-		<sequence>
-			<element name="Identifier" type="mc160:SubstanceIdentifierType" minOccurs="0"/>
-			<element name="Name" type="mc160:DrugNameType"/>
-			<element name="AdditionalName" type="mc160:AdditionalDrugNameType" minOccurs="0" maxOccurs="20"/>
-			<element name="ATC" type="mc160:ATCType" minOccurs="0"/>
-			<element name="Form" type="mc160:DrugFormType" minOccurs="0"/>
-			<element name="Strength" type="mc160:DrugStrengthType" minOccurs="0"/>
-		</sequence>
+        <choice>
+            <sequence>
+                <element name="Code" type="mc160:SubstanceCodeType"/>
+                <element name="Text" type="mc160:SubstanceTextWithoutSourceType"/>
+            </sequence>
+            <element name="SubstanceText" type="mc160:SubstanceTextType"/>
+            <element name="FreeText" type="mc160:SubstanceFreeTextType"/>
+        </choice>
 	</complexType>
 </schema>
