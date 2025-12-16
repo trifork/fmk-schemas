@@ -8,6 +8,7 @@
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="TerminateWarrant.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 
 	<complexType name="UndoHandoverOnWarrantType">
 		<annotation>
@@ -16,10 +17,11 @@
 		</annotation>
 		<sequence>
 			<element name="WarrantIdentifier" type="mc160:WarrantIdentifierType"/>
-            <choice>
+			<choice>
                 <element name="PharmacyHandover" type="mc160:UndoHandoverOnOrderType"/>
                 <element name="TreatmentHandoverIdentifier" type="mc160:HandoverIdentifierType"/>
             </choice>
+			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="Terminate" type="mc160:TerminateWarrantType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
