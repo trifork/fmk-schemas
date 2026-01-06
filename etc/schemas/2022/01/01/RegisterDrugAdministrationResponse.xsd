@@ -6,6 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
     <include schemaLocation="DrugAdministrationIdentifier.xsd"/>
+	<include schemaLocation="RegisteredDrugAdministrations.xsd"/>
 
 	<element name="RegisterDrugAdministrationResponse" type="mc160:RegisterDrugAdministrationResponseType">
 		<annotation>
@@ -16,7 +17,7 @@
 	<complexType name="RegisterDrugAdministrationResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-            <element name="DrugAdministrationIdentifier" type="mc160:DrugAdministrationIdentifierType" maxOccurs="unbounded"/>
+            <element name="DrugAdministrations" type="mc160:RegisteredDrugAdministrationsType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
