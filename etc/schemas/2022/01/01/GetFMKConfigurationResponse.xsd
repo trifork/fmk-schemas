@@ -5,23 +5,18 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="KeyValueSet.xsd"/>
+    <include schemaLocation="FMKConfigurationLastUpdatedType.xsd"/>
 
 	<element name="GetFMKConfigurationResponse" type="mc160:GetFMKConfigurationResponseType"/>
 
 	<complexType name="GetFMKConfigurationResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">A response from the service to get the configuration status of FMK</documentation>
-			<documentation xml:lang="da-DK">Et svar fra servicen som henter konfigurationen af FMK</documentation>
+			<documentation xml:lang="en-GB">A response from the service to get the configuration status of FMK, described by a list of key/values and a date for when the configuration was last changed.</documentation>
+			<documentation xml:lang="da-DK">Et svar fra servicen som henter konfigurationen af FMK, defineret ved en liste af key/values samt en dato for hvornår konfigurationen senest blev ændret.</documentation>
 		</annotation>
 		<sequence>
             <element name="Configuration" type="mc160:KeyValueSetType" minOccurs="0" maxOccurs="unbounded"/>
-            <element name="LastUpdated" type="mc160:LastUpdatedType"/>
+            <element name="LastUpdated" type="mc160:FMKConfigurationLastUpdatedType"/>
 		</sequence>
 	</complexType>
-
-    <simpleType name="LastUpdatedType">
-        <restriction base="dateTime">
-            <minInclusive value="2000-01-01T00:00:00Z"/>
-        </restriction>
-    </simpleType>
 </schema>

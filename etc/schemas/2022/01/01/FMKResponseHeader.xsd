@@ -9,10 +9,10 @@
 	<include schemaLocation="PagingResponse.xsd"/>
 	<include schemaLocation="FMKDetail.xsd"/>
 	<include schemaLocation="MinLogSessionIdType.xsd"/>
-	<include schemaLocation="FMKConfigurationList.xsd"/>
 	<include schemaLocation="MedicineCardIsInvalid.xsd"/>
 	<include schemaLocation="KnownPersonIdentifiers.xsd"/>
 	<include schemaLocation="ResponseInformation.xsd"/>
+    <include schemaLocation="FMKConfigurationLastUpdatedType.xsd"/>
 
 	<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderType">
 		<annotation>
@@ -28,7 +28,7 @@
 			<element name="HiddenData" type="mc160:HiddenDataType" minOccurs="0"/>
 			<element name="Paging" type="mc160:PagingResponseType" minOccurs="0"/>
 			<element name="Warnings" type="mc160:WarningsType" minOccurs="0" />
-			<element name="FMKConfigurationList" type="mc160:FMKConfigurationListType" minOccurs="0"/>
+			<element name="FMKConfigurationUpdatedWarning" type="mc160:FMKConfigurationLastUpdatedType" minOccurs="0"/>
 			<element name="Informations" type="mc160:ResponseInformationsType" minOccurs="0"/>
 		</sequence>
 	</complexType>

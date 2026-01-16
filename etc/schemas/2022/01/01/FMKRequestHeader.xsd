@@ -12,6 +12,7 @@
 	<include schemaLocation="PreflightFlag.xsd"/>
 	<include schemaLocation="PartOfBatchOperationFlag.xsd"/>
 	<include schemaLocation="ExtendedValidationRequestHeader.xsd"/>
+    <include schemaLocation="FMKConfigurationLastUpdatedType.xsd"/>
 
 	<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderType"> 
 		<annotation>
@@ -32,10 +33,4 @@
 			<element name="PartOfBatchOperation" type="mc160:PartOfBatchOperationFlagType" minOccurs="0"/>
 		</sequence>
 	</complexType>
-
-    <simpleType name="FMKConfigurationLastUpdatedType">
-        <restriction base="dateTime">
-            <minInclusive value="2000-01-01T00:00:00Z"/>
-        </restriction>
-    </simpleType>
 </schema>
