@@ -10,7 +10,6 @@
   <include schemaLocation="DosageStructure.xsd"/>
   <include schemaLocation="DosageFreeTextForResponse.xsd"/>
   <include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForResponse.xsd"/>
-  <include schemaLocation="PRNFixed.xsd"/>
 
   <element name="DosageForResponse" type="mc160:DosageForResponseType">
     <annotation>
@@ -22,7 +21,6 @@
     <sequence>
       <choice>
         <sequence>
-          <element name="PRNFixed" type="mc160:PRNFixedType" minOccurs="0"/>
           <element name="Precondition" type="mc160:PreconditionForResponseType"/>
           <choice>
             <element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>

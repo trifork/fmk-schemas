@@ -5,6 +5,8 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="DosageTimesStartDate.xsd"/>
+	<include schemaLocation="DurationDays.xsd"/>
+	<include schemaLocation="EpisodicTreatment.xsd"/>
 
 	<element name="PreconditionRequest" type="mc160:PreconditionForRequestType">
 		<annotation>
@@ -24,6 +26,7 @@
 			<element name="ValidFrom" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
 			<element name="UpdateValidFromUponHandover" type="mc160:UpdateValidFromUponHandoverType" minOccurs="0"/>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0" />
+			<element name="EpisodicTreatment" type="mc160:EpisodicTreatmentType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
@@ -34,6 +37,7 @@
 				<element name="UpdateValidFromUponHandover" type="mc160:UpdateValidFromUponHandoverType"/>
 			</choice>
 			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0"/>
+			<element name="EpisodicTreatment" type="mc160:EpisodicTreatmentType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
