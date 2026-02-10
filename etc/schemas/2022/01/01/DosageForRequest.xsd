@@ -11,7 +11,6 @@
   <include schemaLocation="DosagePeriod.xsd"/>
   <include schemaLocation="DosageFreeTextForRequest.xsd"/>
   <include schemaLocation="AdministrationAccordingToSchemaInLocalSystemForRequest.xsd"/>
-  <include schemaLocation="PRNFixed.xsd"/>
 
   <element name="Dosage" type="mc160:DosageForRequestType">
     <annotation>
@@ -26,12 +25,10 @@
       <choice>
         <sequence>
           <element name="Precondition" type="mc160:PreconditionForRequestType"/>
-          <element name="PRNFixed" type="mc160:PRNFixedType" minOccurs="0"/>
           <choice>
             <element name="UnitText" type="mc160:DosageQuantityUnitTextType"/>
             <element name="UnitTexts" type="mc160:DosageQuantityUnitTextsType"/>
           </choice>
-
           <element name="Parameter" type="mc160:DosageParameterType" minOccurs="0" maxOccurs="unbounded"/>
           <element name="DosagePeriod" type="mc160:DosagePeriodForRequestType" maxOccurs="100"/>
         </sequence>
