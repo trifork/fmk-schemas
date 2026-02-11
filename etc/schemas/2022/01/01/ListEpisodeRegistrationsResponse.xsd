@@ -6,19 +6,19 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PRNDrugMedicationStartDate.xsd"/>
+	<include schemaLocation="EpisodeForResponse.xsd"/>
 
-	<element name="ListPRNStartDatesResponse" type="mc160:ListPRNStartDatesResponseType">
+	<element name="ListEpisodeRegistrationsResponse" type="mc160:ListEpisodeRegistrationsResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response type for listing all start-registrations of PRN treatments</documentation>
+			<documentation xml:lang="en-GB">Response type for listing all start-registrations of episodic treatments (PN-kur)</documentation>
 			<documentation xml:lang="da-DK">Svar type til at liste alle start registreringer af PN-kure</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="ListPRNStartDatesResponseType">
+	<complexType name="ListEpisodeRegistrationsResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="PRNStart" type="mc160:PRNDrugMedicationStartDateType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Registrations" type="mc160:EpisodeForResponseType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

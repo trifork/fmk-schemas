@@ -8,14 +8,14 @@
   <include schemaLocation="PersonIdentifier.xsd"/>
   <include schemaLocation="DrugMedicationIdentifier.xsd"/>
 
-  <element name="UndoRegisterPRNStartDatesResponse" type="mc160:UndoRegisterPRNStartDatesResponseType">
+  <element name="UndoEpisodeRegistrationsResponse" type="mc160:UndoEpisodeRegistrationsResponseType">
     <annotation>
-      <documentation xml:lang="en-GB">Response type for undoing registration of start of PRN treatment</documentation>
-      <documentation xml:lang="da-DK">Svar type til fortrydelse af registrering af start af PN-kur</documentation>
+      <documentation xml:lang="en-GB">Response type for undoing registration of start date of an episodic treatment (PN-kur)</documentation>
+      <documentation xml:lang="da-DK">Svar type til fortrydelse af registrering af startdato for PN-kur</documentation>
     </annotation>
   </element>
 
-  <complexType name="UndoRegisterPRNStartDatesResponseType">
+  <complexType name="UndoEpisodeRegistrationsResponseType">
     <sequence>
       <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
       <element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>

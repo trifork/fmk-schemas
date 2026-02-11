@@ -8,14 +8,14 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 
-	<element name="RegisterPRNStartDatesResponse" type="mc160:RegisterPRNStartDatesResponseType">
+	<element name="RegisterEpisodesResponse" type="mc160:RegisterEpisodesResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response type for registering the start of a PRN treatment</documentation>
-			<documentation xml:lang="da-DK">Svar type til registrering af start af en PN-kur</documentation>
+			<documentation xml:lang="en-GB">Response type for registering the start of episodic treatments</documentation>
+			<documentation xml:lang="da-DK">Svar type til registrering af start af PN-kure</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="RegisterPRNStartDatesResponseType">
+	<complexType name="RegisterEpisodesResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
