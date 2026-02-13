@@ -10,15 +10,15 @@
 
 	<element name="ListEpisodeRegistrationsResponse" type="mc160:ListEpisodeRegistrationsResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response type for listing all start-registrations of episodic treatments (PN-kur)</documentation>
-			<documentation xml:lang="da-DK">Svar type til at liste alle start registreringer af PN-kure</documentation>
+			<documentation xml:lang="en-GB">Response containing registered start dates for episodic treatments (PN-kur) for a person, grouped by drug medication identifier</documentation>
+			<documentation xml:lang="da-DK">Svar der indeholder registrerede startdatoer for PN-kure for en person, grupperet pr lægemiddelordination</documentation>
 		</annotation>
 	</element>
 
 	<complexType name="ListEpisodeRegistrationsResponseType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="Registrations" type="mc160:EpisodeForResponseType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Registrations" type="mc160:EpisodeRegistrationsForResponseType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

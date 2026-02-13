@@ -8,14 +8,14 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="EpisodicTreatmentStartDate.xsd"/>
 
-	<element name="EpisodeRegistrationsForResponse" type="mc160:EpisodeForResponseType">
+	<element name="EpisodeRegistrationsForResponse" type="mc160:EpisodeRegistrationsForResponseType">
 		<annotation>
-			<documentation xml:lang="en-GB">Type for representing start date registrations of an episodic treatment (PN-kur)</documentation>
-			<documentation xml:lang="da-DK">Type til repræsentation af registreringer af startdatoer for PN-kur</documentation>
+			<documentation xml:lang="en-GB">Registered start dates for an episodic treatment (PN-kur) with the given drug medication identifier</documentation>
+			<documentation xml:lang="da-DK">Registrerede startdatoer for en PN-kur med det givne ID</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="EpisodeForResponseType">
+	<complexType name="EpisodeRegistrationsForResponseType">
 		<sequence>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="EpisodeStart" type="mc160:EpisodicTreatmentStartDateType" minOccurs="0" maxOccurs="unbounded"/>
