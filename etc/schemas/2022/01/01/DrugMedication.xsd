@@ -18,7 +18,7 @@
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageForResponse.xsd"/>
-    <include schemaLocation="PRNStartDate.xsd"/>
+    <include schemaLocation="EpisodicTreatmentStartDate.xsd"/>
 	<include schemaLocation="PlannedAdministrationOnDrugMedication.xsd"/>
 	<include schemaLocation="PlannedAdministrationExistForPreviousVersion.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
@@ -53,10 +53,7 @@
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForResponseType"/>
-			<choice minOccurs="0">
-				<element name="ActiveSince" type="mc160:PRNStartDateType"/>
-				<element name="ActiveFrom" type="mc160:PRNStartDateType"/>
-			</choice>
+			<element name="ActiveSince" type="mc160:EpisodicTreatmentStartDateType" minOccurs="0"/>
 			<choice minOccurs="0">
 				<element name="PlannedAdministration" type="mc160:PlannedAdministrationOnDrugMedicationType" maxOccurs="unbounded"/>
 				<element name="PlannedAdministrationExistForPreviousVersion" type="mc160:PlannedAdministrationExistForPreviousVersionType"/>

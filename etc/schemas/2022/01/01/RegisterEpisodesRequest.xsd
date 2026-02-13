@@ -8,25 +8,23 @@
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="PRNDrugMedicationStartDate.xsd"/>
+	<include schemaLocation="EpisodeRegistrationsForRequest.xsd"/>
 
-	<element name="UndoRegisterPRNStartDatesRequest" type="mc160:UndoRegisterPRNStartDatesRequestType">
+	<element name="RegisterEpisodesRequest" type="mc160:RegisterEpisodesRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request type for undoing registration of the start of a PRN treatment</documentation>
-			<documentation xml:lang="da-DK">Request type til fortrydelse af registrering af start af en PN-kur</documentation>
+			<documentation xml:lang="en-GB">Request to register start dates for episodic treatments (PN-kur) for a person</documentation>
+			<documentation xml:lang="da-DK">Forespørgsel til at registrere startdatoer for PN-kure for en person</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="UndoRegisterPRNStartDatesRequestType">
+	<complexType name="RegisterEpisodesRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 
-			<element name="PRNStart" type="mc160:PRNDrugMedicationStartDateType" maxOccurs="100"/>
-			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Registrations" type="mc160:EpisodeRegistrationsForRequestType" maxOccurs="100"/>
 		</sequence>
 	</complexType>
-
 
 </schema>

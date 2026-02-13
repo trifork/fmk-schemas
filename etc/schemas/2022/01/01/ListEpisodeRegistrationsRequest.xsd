@@ -8,14 +8,14 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 
-	<element name="ListPRNStartDatesRequest" type="mc160:ListPRNStartDatesRequestType">
+	<element name="ListEpisodeRegistrationsRequest" type="mc160:ListEpisodeRegistrationsRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Request type to search for all start-registrations of PRN treatments</documentation>
-			<documentation xml:lang="da-DK">Request type til fremsøgning af alle start registreringer af PN-kure</documentation>
+			<documentation xml:lang="en-GB">Request to list registered start dates for episodic treatments (PN-kur) for a person</documentation>
+			<documentation xml:lang="da-DK">Forespørgsel til at liste registrerede startdatoer for PN-kure for en person</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="ListPRNStartDatesRequestType">
+	<complexType name="ListEpisodeRegistrationsRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="100"/>

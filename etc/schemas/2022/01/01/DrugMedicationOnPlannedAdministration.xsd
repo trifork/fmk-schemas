@@ -18,7 +18,7 @@
 	<include schemaLocation="RouteOfAdministration.xsd"/>
 	<include schemaLocation="Drug.xsd"/>
 	<include schemaLocation="DosageForResponse.xsd"/>
-    <include schemaLocation="PRNStartDate.xsd"/>
+    <include schemaLocation="EpisodicTreatmentStartDate.xsd"/>
 	<include schemaLocation="SubstitutionAllowed.xsd"/>
     <include schemaLocation="HandoverMethod.xsd"/>
 	<include schemaLocation="Warrant.xsd"/>
@@ -47,10 +47,7 @@
 			<element name="RouteOfAdministration" type="mc160:RouteOfAdministrationType"/>
 			<element name="Drug" type="mc160:DrugType"/>
 			<element name="Dosage" type="mc160:DosageForResponseType"/>
-            <choice minOccurs="0">
-                <element name="ActiveSince" type="mc160:PRNStartDateType"/>
-                <element name="ActiveFrom" type="mc160:PRNStartDateType"/>
-            </choice>
+			<element name="ActiveSince" type="mc160:EpisodicTreatmentStartDateType" minOccurs="0"/>
 			<element name="SubstitutionAllowed" type="mc160:SubstitutionAllowedType" minOccurs="0"/>
             <element name="HandoverPreference" type="mc160:HandoverMethodType"/>
 			<element name="Warrant" type="mc160:WarrantType" minOccurs="0" maxOccurs="unbounded"/>

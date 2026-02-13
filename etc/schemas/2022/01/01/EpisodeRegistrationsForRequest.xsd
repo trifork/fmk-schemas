@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="EpisodicTreatmentStartDate.xsd"/>
+
+	<element name="EpisodeRegistrationsForRequest" type="mc160:EpisodeRegistrationsForRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Start dates to register for an episodic treatment (PN-kur) with the given drug medication identifier</documentation>
+			<documentation xml:lang="da-DK">Startdatoer til registrering for en PN-kur med det angivne ID</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="EpisodeRegistrationsForRequestType">
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="EpisodeStart" type="mc160:EpisodicTreatmentStartDateType" maxOccurs="100"/>
+		</sequence>
+	</complexType>
+</schema>
