@@ -8,24 +8,37 @@
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
-	<include schemaLocation="EpisodeRegistrationsForRequest.xsd"/>
+	<include schemaLocation="Episodes.xsd"/>
 
-	<element name="UndoEpisodeRegistrationsRequest" type="mc160:UndoEpisodeRegistrationsRequestType">
+	<element name="UndoEpisodesRequest" type="mc160:UndoEpisodesRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request to undo registration of start dates for episodic treatments (PN-kur)</documentation>
 			<documentation xml:lang="da-DK">Forespørgsel til at fortryde registrering af startdatoer for PN-kure</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="UndoEpisodeRegistrationsRequestType">
+	<complexType name="UndoEpisodesRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 
-			<element name="Registrations" type="mc160:EpisodeRegistrationsForRequestType" maxOccurs="100"/>
+			<element name="Episodes" type="mc160:EpisodesForRequestType" maxOccurs="100"/>
 		</sequence>
 	</complexType>
 
+	<element name="UndoEpisodesResponse" type="mc160:UndoEpisodesResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response confirming undo of registered start dates for episodic treatments (PN-kur) for a person</documentation>
+			<documentation xml:lang="da-DK">Svar der bekræfter fortrydelse af registrerede startdatoer for PN-kure for en person</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="UndoEpisodesResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
 
 </schema>

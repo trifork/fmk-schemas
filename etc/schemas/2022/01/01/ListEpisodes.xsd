@@ -7,20 +7,34 @@
 
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="Episodes.xsd"/>
 
-	<element name="ListEpisodeRegistrationsRequest" type="mc160:ListEpisodeRegistrationsRequestType">
+	<element name="ListEpisodesRequest" type="mc160:ListEpisodesRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Request to list registered start dates for episodic treatments (PN-kur) for a person</documentation>
 			<documentation xml:lang="da-DK">Forespørgsel til at liste registrerede startdatoer for PN-kure for en person</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="ListEpisodeRegistrationsRequestType">
+	<complexType name="ListEpisodesRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="100"/>
 		</sequence>
 	</complexType>
 
+	<element name="ListEpisodesResponse" type="mc160:ListEpisodesResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Response containing registered start dates for episodic treatments (PN-kur) for a person, grouped by drug medication identifier</documentation>
+			<documentation xml:lang="da-DK">Svar der indeholder registrerede startdatoer for PN-kure for en person, grupperet pr lægemiddelordination</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="ListEpisodesResponseType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="Episodes" type="mc160:EpisodesForResponseType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
 
 </schema>
