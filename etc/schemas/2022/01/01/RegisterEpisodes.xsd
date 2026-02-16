@@ -5,8 +5,28 @@
 		elementFormDefault="qualified"
 		attributeFormDefault="unqualified">
 
+	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
+	<include schemaLocation="Episodes.xsd"/>
+
+	<element name="RegisterEpisodesRequest" type="mc160:RegisterEpisodesRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request to register start dates for episodic treatments (PN-kur) for a person</documentation>
+			<documentation xml:lang="da-DK">Forespørgsel til at registrere startdatoer for PN-kure for en person</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="RegisterEpisodesRequestType">
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="ModifiedBy" type="mc160:ModificatorType"/>
+			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+
+			<element name="Episodes" type="mc160:EpisodesForRequestType" maxOccurs="100"/>
+		</sequence>
+	</complexType>
 
 	<element name="RegisterEpisodesResponse" type="mc160:RegisterEpisodesResponseType">
 		<annotation>
@@ -21,4 +41,5 @@
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
+
 </schema>

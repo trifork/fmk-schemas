@@ -286,8 +286,7 @@
             <xs:include schemaLocation="../schemas/2022/01/01/ListPackingGroupsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/ListPackingGroupsResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/ListEpisodeRegistrationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/ListEpisodeRegistrationsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/ListEpisodes.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/MarkWarrantDeprecatedRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/MarkWarrantDeprecatedResponse.xsd"/>
@@ -306,8 +305,7 @@
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterDrugAdministrationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/RegisterEpisodesRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/RegisterEpisodesResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterEpisodes.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/RemoveConsentResponse.xsd"/>
@@ -371,8 +369,7 @@
             <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoRegisterDrugAdministrationResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/UndoEpisodeRegistrationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/UndoEpisodeRegistrationsResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/UndoEpisodes.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/UndoReplaceWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoReplaceWarrantResponse.xsd"/>
@@ -1078,12 +1075,12 @@
         <wsdl:part name="ListPackingGroupsResponse" element="mc160:ListPackingGroupsResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="ListEpisodeRegistrationsRequest_160">
-        <wsdl:part name="ListEpisodeRegistrationsRequest" element="mc160:ListEpisodeRegistrationsRequest"/>
+    <wsdl:message name="ListEpisodesRequest_160">
+        <wsdl:part name="ListEpisodesRequest" element="mc160:ListEpisodesRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="ListEpisodeRegistrationsResponse_160">
-        <wsdl:part name="ListEpisodeRegistrationsResponse" element="mc160:ListEpisodeRegistrationsResponse"/>
+    <wsdl:message name="ListEpisodesResponse_160">
+        <wsdl:part name="ListEpisodesResponse" element="mc160:ListEpisodesResponse"/>
     </wsdl:message>
 
     <wsdl:message name="MarkWarrantDeprecatedRequest_160">
@@ -1286,12 +1283,12 @@
         <wsdl:part name="UndoRegisterDrugAdministrationResponse" element="mc160:UndoRegisterDrugAdministrationResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="UndoEpisodeRegistrationsRequest_160">
-        <wsdl:part name="UndoEpisodeRegistrationsRequest" element="mc160:UndoEpisodeRegistrationsRequest"/>
+    <wsdl:message name="UndoEpisodesRequest_160">
+        <wsdl:part name="UndoEpisodesRequest" element="mc160:UndoEpisodesRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="UndoEpisodeRegistrationsResponse_160">
-        <wsdl:part name="UndoEpisodeRegistrationsResponse" element="mc160:UndoEpisodeRegistrationsResponse"/>
+    <wsdl:message name="UndoEpisodesResponse_160">
+        <wsdl:part name="UndoEpisodesResponse" element="mc160:UndoEpisodesResponse"/>
     </wsdl:message>
 
     <wsdl:message name="UndoReplaceWarrantRequest_160">
@@ -1889,8 +1886,8 @@
         </wsdl:operation>
 
         <wsdl:operation name="ListEpisodeRegistrations_160">
-            <wsdl:input name="ListEpisodeRegistrationsRequest_160" message="tns:ListEpisodeRegistrationsRequest_160"/>
-            <wsdl:output name="ListEpisodeRegistrationsResponse_160" message="tns:ListEpisodeRegistrationsResponse_160"/>
+            <wsdl:input name="ListEpisodesRequest_160" message="tns:ListEpisodesRequest_160"/>
+            <wsdl:output name="ListEpisodesResponse_160" message="tns:ListEpisodesResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2046,8 +2043,8 @@
         </wsdl:operation>
 
         <wsdl:operation name="UndoEpisodeRegistrations_160">
-            <wsdl:input name="UndoEpisodeRegistrationsRequest_160" message="tns:UndoEpisodeRegistrationsRequest_160"/>
-            <wsdl:output name="UndoEpisodeRegistrationsResponse_160" message="tns:UndoEpisodeRegistrationsResponse_160"/>
+            <wsdl:input name="UndoEpisodesRequest_160" message="tns:UndoEpisodesRequest_160"/>
+            <wsdl:output name="UndoEpisodesResponse_160" message="tns:UndoEpisodesResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3184,11 +3181,11 @@
 
         <wsdl:operation name="ListEpisodeRegistrations_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#ListEpisodeRegistrations" style="document"/>
-            <wsdl:input name="ListEpisodeRegistrationsRequest_160">
+            <wsdl:input name="ListEpisodesRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="ListEpisodeRegistrationsResponse_160">
+            <wsdl:output name="ListEpisodesResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -3510,11 +3507,11 @@
 
         <wsdl:operation name="UndoEpisodeRegistrations_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#UndoEpisodeRegistrations" style="document"/>
-            <wsdl:input name="UndoEpisodeRegistrationsRequest_160">
+            <wsdl:input name="UndoEpisodesRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="UndoEpisodeRegistrationsResponse_160">
+            <wsdl:output name="UndoEpisodesResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
