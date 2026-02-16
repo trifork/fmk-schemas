@@ -4,51 +4,55 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="CalculatedDosageEndDate.xsd"/>
-	<include schemaLocation="DayType.xsd"/>
-	<include schemaLocation="DosageInstruction.xsd"/>
-	<include schemaLocation="DosageRestriction.xsd"/>
 	<include schemaLocation="DosagePeriodLength.xsd"/>
 	<include schemaLocation="DosagePeriodLengthText.xsd"/>
-	<include schemaLocation="DosageProfile.xsd"/>
-	<include schemaLocation="DosageTranslation.xsd"/>
-	<include schemaLocation="DosageIterationInterval.xsd"/>
+	<include schemaLocation="DosageStructure.xsd"/>
 
 	<element name="DosagePeriodType" type="mc160:DosagePeriodType">
 		<annotation>
-			<documentation xml:lang="en-GB">Description of dosage amounts and times for a treatment, including any possible restrictions for the treatment.</documentation>
-			<documentation xml:lang="da-DK">Beskrivelse af doseringsmængder- og tidspunkter for en behandling, inkl. evt. restriktioner for behandlingen</documentation>
+			<documentation xml:lang="en-GB">Description of a dosage period specifying its duration</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en doseringsperiode med angivelse af periode længde</documentation>
 		</annotation>
 	</element>
+
 	<complexType name="DosagePeriodType">
 		<sequence>
-			<element name="Restriction" type="mc160:DosageRestrictionType" minOccurs="0"/>
-			<element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
 			<choice minOccurs="0">
 				<element name="PeriodLength" type="mc160:DosagePeriodLengthType"/>
 				<element name="PeriodLengthFreeText" type="mc160:DosagePeriodLengthTextType"/>
 			</choice>
-			<element name="IterationInterval" type="mc160:DosageIterationIntervalType" minOccurs="0"/>
-			<choice>
-				<element name="Day" type="mc160:DayType" maxOccurs="99"/>
-				<element name="Empty" type="mc160:EmptyPeriodType"/>
-				<element name="Unspecified" type="mc160:UnspecifiedPeriodType"/>
-			</choice>
 		</sequence>
 	</complexType>
 
-	<complexType name="DosagePeriodForResponseType">
+
+	<complexType name="DosagePeriodForRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of a dosage period specifying its duration and structured dosages</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en doseringsperiode med angivelse af længde og strukturerede doseringer</documentation>
+		</annotation>
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
 				<sequence>
-					<element name="Profile" type="mc160:DosageProfileType"/>
-					<element name="EndDate" type="mc160:EndDateType"/>
-					<element name="DosageTranslation" type="mc160:DosageTranslationType"/>
+					<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
+					<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
 
-	<complexType name="EmptyPeriodType"/>
-	<complexType name="UnspecifiedPeriodType"/>
+	<complexType name="DosagePeriodForResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Description of a dosage period specifying its duration and structured dosages, specifically for responses from services</documentation>
+			<documentation xml:lang="da-DK">Beskrivelse af en doseringsperiode med angivelse af længde og strukturerede doseringer, specifikt for svar fra services</documentation>
+		</annotation>
+		<complexContent>
+			<extension base="mc160:DosagePeriodType">
+				<sequence>
+					<element name="Fixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+					<element name="PRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
 </schema>
