@@ -89,7 +89,11 @@
         <wsdl:part name="GetPrescriptionEffectuationsToDeleteRequest" element="tns:GetPrescriptionEffectuationsToDeleteRequest"/>
     </wsdl:message>
 
-	<wsdl:message name="DGWSFault">
+    <wsdl:message name="GetMigratedDataToDeleteRequest">
+        <wsdl:part name="GetMigratedDataToDeleteRequest" element="tns:GetMigratedDataToDeleteRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode" />
 	</wsdl:message>
 	
@@ -193,7 +197,13 @@
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
 
-	</wsdl:portType>
+        <wsdl:operation name="GetMigratedDataToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMigratedDataToDelete" style="document"/>
+            <wsdl:input name="GetMigratedDataToDeleteRequest" message="tns:GetMigratedDataToDeleteRequest"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
 
 	<wsdl:binding name="BatchDataBinding" type="tns:BatchDataPortType">
 		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
