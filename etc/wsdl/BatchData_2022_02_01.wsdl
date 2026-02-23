@@ -363,6 +363,17 @@
             <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
         </wsdl:operation>
 
+        <wsdl:operation name="GetMigratedDataToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMigratedDataToDelete" style="document"/>
+            <wsdl:input name="GetMigratedDataToDeleteRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
     </wsdl:binding>
     
 	<wsdl:service name="BatchData">
