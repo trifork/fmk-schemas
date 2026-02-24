@@ -12,7 +12,7 @@
 	</element>
 
 	<simpleType name="HandoverMethodType">
-		<union memberTypes="mc160:PredefinedHandoverMethodType mc160:UndefinedHandoverMethodType"/>
+		<union memberTypes="mc160:PredefinedHandoverMethodType mc160:BackwardCompatibilityHandoverMethodType mc160:UndefinedHandoverMethodType"/>
 	</simpleType>
 
 	<simpleType name="PredefinedHandoverMethodType">
@@ -22,6 +22,16 @@
 			<enumeration value="DoseDispensed"/>
 			<enumeration value="HospitalPharmacy"/>
 			<enumeration value="WithoutPrescription"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="BackwardCompatibilityHandoverMethodType">
+		<annotation>
+			<documentation xml:lang="en-GB">Special code used for backwards-compatibility, should be replaced with another value when appropriate</documentation>
+			<documentation xml:lang="da-DK">Speciel kode som benyttes til bagud-kompatibilitet, bør erstattes med en anden værdi når det er passende</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="NotAssigned"/>
 		</restriction>
 	</simpleType>
 
