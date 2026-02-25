@@ -6,7 +6,7 @@
 
 	<include schemaLocation="DrugMedicationEndedReason.xsd"/>
 
-	<element name="TreatmentActivePeriodForRequest" type="mc160:ActivePeriodForRequestType">
+	<element name="ActivePeriodForRequest" type="mc160:ActivePeriodForRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Specifies the period during which the treatment is active</documentation>
 			<documentation xml:lang="da-DK">Angiver perioden hvor behandlingen er aktiv</documentation>
@@ -25,7 +25,7 @@
 		</sequence>
 	</complexType>
 
-	<element name="TreatmentActivePeriodForResponse" type="mc160:ActivePeriodForResponseType">
+	<element name="ActivePeriodForResponse" type="mc160:ActivePeriodForResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Specifies the period during which the drug medication is/was active. If it is no longer active, the reason for ending is also stated</documentation>
 			<documentation xml:lang="da-DK">Angiver perioden hvor lægemiddelordinationen er/har været aktiv. Hvis den ikke længere er aktiv, vil årsagen til afslutningen også angives</documentation>
@@ -33,8 +33,7 @@
 	</element>
 	<complexType name="ActivePeriodForResponseType">
 		<sequence>
-			<element name="CreatedDateTime" type="mc160:DrugMedicationCreatedDateTimeType"/>
-			<choice minOccurs="0">
+			<choice>
 				<element name="TreatmentStartDate" type="mc160:TreatmentStartDateType"/>
 				<element name="TreatmentStartedPreviously" type="mc160:TreatmentStartedPreviouslyType"/>
 			</choice>
@@ -45,18 +44,6 @@
 			<element name="EndedReason" type="mc160:EndedReasonType" minOccurs="0"/>
 		</sequence>
 	</complexType>
-
-	<element name="DrugMedicationCreatedDateTime" type="mc160:DrugMedicationCreatedDateTimeType">
-		<annotation>
-			<documentation xml:lang="en-GB">Date and time when the drug medication was created in FMK</documentation>
-			<documentation xml:lang="da-DK">Dato og tid for, hvornår lægemiddelordinationen blev oprettet i FMK</documentation>
-		</annotation>
-	</element>
-	<simpleType name="DrugMedicationCreatedDateTimeType">
-		<restriction base="dateTime">
-			<minInclusive value="2000-01-01T00:00:00Z"/>
-		</restriction>
-	</simpleType>
 
 	<element name="TreatmentStartDate" type="mc160:TreatmentStartDateType">
 		<annotation>
@@ -73,15 +60,15 @@
 	<element name="TreatmentEndingUndetermined" type="mc160:TreatmentEndingUndeterminedType">
 		<annotation>
 			<documentation xml:lang="en-GB">Indicates that the drug medication ending is undetermined, e.g. because the treatment is fixed</documentation>
-			<documentation xml:lang="da-DK">Angiver at behandlingen afslutning er uafgjort, f.eks. fordi der er tale om en fast behandling</documentation>
+			<documentation xml:lang="da-DK">Angiver at behandlingens afslutning er uafklaret, f.eks. fordi der er tale om en fast behandling</documentation>
 		</annotation>
 	</element>
 	<complexType name="TreatmentEndingUndeterminedType"/>
 
 	<element name="TreatmentStartedPreviously" type="mc160:TreatmentStartedPreviouslyType">
 		<annotation>
-			<documentation xml:lang="en-GB">Indicates that the treatment was started at some time before the creation of the drug medication in FMK</documentation>
-			<documentation xml:lang="da-DK">Angiver at behandling er startet tidligere end selve oprettelsen af lægemiddelordinationen på FMK</documentation>
+			<documentation xml:lang="en-GB">Indicates that the treatment started before the drug medication was created in FMK</documentation>
+			<documentation xml:lang="da-DK">Angiver, at behandlingen er startet, før lægemiddelordinationen blev oprettet i FMK</documentation>
 		</annotation>
 	</element>
 	<complexType name="TreatmentStartedPreviouslyType"/>
