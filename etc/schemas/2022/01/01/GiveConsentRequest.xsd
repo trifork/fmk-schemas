@@ -7,7 +7,7 @@
     <include schemaLocation="PersonIdentifier.xsd"/>
     <include schemaLocation="MedicineCardVersion.xsd"/>
     <include schemaLocation="Modificator.xsd"/>
-    <include schemaLocation="GiveConsentDrugMedication.xsd"/>
+    <include schemaLocation="GiveOrRemoveConsentDrugMedication.xsd"/>
 
 	<element name="GiveConsentRequest" type="mc160:GiveConsentRequestType">
 		<annotation>
@@ -21,7 +21,7 @@
             <element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
             <element name="ModifiedBy" type="mc160:ModificatorType"/>
             <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-            <element name="DrugMedication" type="mc160:GiveConsentDrugMedicationType" maxOccurs="unbounded"/>
+            <element name="DrugMedication" type="mc160:GiveOrRemoveConsentDrugMedicationType" maxOccurs="unbounded"/>
         </sequence>
 	</complexType>
 </schema>
