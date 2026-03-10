@@ -34,8 +34,14 @@
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
 				<sequence>
-					<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
-					<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
+					<choice>
+						<element name="Empty" type="mc160:EmptyDosageStructureType"/>
+						<element name="Unspecified" type="mc160:UnspecifiedDosageStructureType"/>
+						<sequence>
+							<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
+							<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
+						</sequence>
+					</choice>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -48,13 +54,19 @@
 		</annotation>
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
-				<sequence>
-					<element name="Fixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
-					<element name="PRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
-					<element name="EndDate" type="mc160:EndDateType"/>
-				</sequence>
+				<choice>
+					<element name="Empty" type="mc160:EmptyDosageStructureType"/>
+					<element name="Unspecified" type="mc160:UnspecifiedDosageStructureType"/>
+					<sequence>
+						<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
+						<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
+						<element name="EndDate" type="mc160:EndDateType"/>
+					</sequence>
+				</choice>
 			</extension>
 		</complexContent>
 	</complexType>
 
+	<complexType name="EmptyDosageStructureType"/>
+	<complexType name="UnspecifiedDosageStructureType"/>
 </schema>
