@@ -54,15 +54,17 @@
 		</annotation>
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
-				<choice>
-					<element name="Empty" type="mc160:EmptyDosagePeriodType"/>
-					<element name="Unspecified" type="mc160:UnspecifiedDosagePeriodType"/>
-					<sequence>
-						<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
-						<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
-						<element name="EndDate" type="mc160:EndDateType"/>
-					</sequence>
-				</choice>
+				<sequence>
+					<choice>
+						<element name="Empty" type="mc160:EmptyDosagePeriodType"/>
+						<element name="Unspecified" type="mc160:UnspecifiedDosagePeriodType"/>
+						<sequence>
+							<element name="Fixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+							<element name="PRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+						</sequence>
+					</choice>
+					<element name="EndDate" type="mc160:EndDateType"/>
+				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
