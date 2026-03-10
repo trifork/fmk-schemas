@@ -7,6 +7,7 @@
 	<include schemaLocation="DosagePeriodLength.xsd"/>
 	<include schemaLocation="DosagePeriodLengthText.xsd"/>
 	<include schemaLocation="DosageStructure.xsd"/>
+	<include schemaLocation="CalculatedDosageEndDate.xsd"/>
 
 	<element name="DosagePeriodType" type="mc160:DosagePeriodType">
 		<annotation>
@@ -50,6 +51,7 @@
 				<sequence>
 					<element name="Fixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
 					<element name="PRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+					<element name="EndDate" type="mc160:EndDateType"/>
 				</sequence>
 			</extension>
 		</complexContent>
