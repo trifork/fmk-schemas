@@ -8,13 +8,15 @@
 
 	<element name="NegativeConsent" type="mc160:NegativeConsentType">
 		<annotation>
-			<documentation xml:lang="en-GB">This element indicates that the patent has given negative consent (privacy-marking).</documentation>
-			<documentation xml:lang="da-DK">Dette element indikerer at patienten har givet negativ samtykke (privatmarkering).</documentation>
+			<documentation xml:lang="en-GB">Information about who changed the negative consent (private marking) on a drug medication and whether they added or removed it.</documentation>
+			<documentation xml:lang="da-DK">Information om hvem der har ændret privatmarkering på en lægemiddelordination og om de har tilføjet eller fjernet den.</documentation>
 		</annotation>
 	</element>
 	<complexType name="NegativeConsentType">
 		<sequence>
 			<element name="Modified" type="mc160:ModifiedType"/>
+			<element name="ReportedBy" type="mc160:ModifiedType"/>
+			<element name="Removed" type="boolean" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
