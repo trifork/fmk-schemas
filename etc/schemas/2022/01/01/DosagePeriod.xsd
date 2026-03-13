@@ -25,7 +25,6 @@
 		</sequence>
 	</complexType>
 
-
 	<complexType name="DosagePeriodForRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Description of a dosage period specifying its duration and structured dosages</documentation>
@@ -34,8 +33,14 @@
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
 				<sequence>
-					<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
-					<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
+					<choice>
+						<element name="Empty" type="mc160:EmptyDosagePeriodType"/>
+						<element name="Unspecified" type="mc160:UnspecifiedDosagePeriodType"/>
+						<sequence>
+							<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
+							<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
+						</sequence>
+					</choice>
 				</sequence>
 			</extension>
 		</complexContent>
@@ -49,12 +54,20 @@
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
 				<sequence>
-					<element name="Fixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
-					<element name="PRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+					<choice>
+						<element name="Empty" type="mc160:EmptyDosagePeriodType"/>
+						<element name="Unspecified" type="mc160:UnspecifiedDosagePeriodType"/>
+						<sequence>
+							<element name="Fixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+							<element name="PRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
+						</sequence>
+					</choice>
 					<element name="EndDate" type="mc160:EndDateType"/>
 				</sequence>
 			</extension>
 		</complexContent>
 	</complexType>
 
+	<complexType name="EmptyDosagePeriodType"/>
+	<complexType name="UnspecifiedDosagePeriodType"/>
 </schema>
