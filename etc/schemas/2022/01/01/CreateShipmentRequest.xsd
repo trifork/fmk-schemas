@@ -12,6 +12,7 @@
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
+	<include schemaLocation="KeyValueSet.xsd"/>
 
 	<element name="CreateShipmentRequest" type="mc160:CreateShipmentRequestType">
 		<annotation>
@@ -33,6 +34,7 @@
 			<element name="EventDateTime" type="mc160:TrackAndTraceEventDateTimeType" minOccurs="0"/>
 			<element name="OrderIdentifier" type="mc160:OrderIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="AdditionalInformation" type="mc160:KeyValueSetType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
