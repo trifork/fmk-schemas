@@ -15,7 +15,6 @@
 			<documentation xml:lang="da-DK">Beskrivelse af en doseringsperiode med angivelse af periode længde</documentation>
 		</annotation>
 	</element>
-
 	<complexType name="DosagePeriodType">
 		<sequence>
 			<choice minOccurs="0">
@@ -67,7 +66,20 @@
 			</extension>
 		</complexContent>
 	</complexType>
-
+	
+	<element name="EmptyDosagePeriod" type="mc160:EmptyDosagePeriodType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates that this dosage period has no dosages. Used to indicate pauses in treatment</documentation>
+			<documentation xml:lang="da-DK">Indikerer at denne doseringsperiode ikke har nogen doseringer. Bruges til at indikere pauser i behandlingen</documentation>
+		</annotation>
+	</element>
 	<complexType name="EmptyDosagePeriodType"/>
+
+	<element name="UnspecifiedDosagePeriod" type="mc160:UnspecifiedDosagePeriodType">
+		<annotation>
+			<documentation xml:lang="en-GB">Indicates that the dosage for this period is yet to be specified. Used when the period of the treatment is known, but the specific dosages and times are not yet determined</documentation>
+			<documentation xml:lang="da-DK">Indikerer, at doseringen for denne periode endnu ikke er specificeret. Bruges når behandlingsperioden er kendt, men de specifikke doseringer og tidspunkter endnu ikke er bestemt</documentation>
+		</annotation>
+	</element>
 	<complexType name="UnspecifiedDosagePeriodType"/>
 </schema>
