@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
   <include schemaLocation="DayType.xsd"/>
+  <include schemaLocation="DayUnspecifiedType.xsd"/>
   <include schemaLocation="DosageInstruction.xsd"/>
   <include schemaLocation="DosageRestriction.xsd"/>
   <include schemaLocation="DosageIterationInterval.xsd"/>
@@ -23,7 +24,10 @@
       <element name="Restriction" type="mc160:DosageRestrictionType" minOccurs="0"/>
       <element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
       <element name="IterationInterval" type="mc160:DosageIterationIntervalType" minOccurs="0"/>
-      <element name="Day" type="mc160:DayType" maxOccurs="99"/>
+      <choice>
+        <element name="Day" type="mc160:DayType" maxOccurs="99"/>
+        <element name="UnspecifiedDay" type="mc160:DayUnspecifiedType"/>
+      </choice>
     </sequence>
   </complexType>
 
