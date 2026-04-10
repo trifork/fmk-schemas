@@ -83,7 +83,7 @@ pipeline {
                     currentBuild.description = "${snitflade}"
                     try{
                         step ([$class: 'CopyArtifact',
-                               projectName: '/FMK_schema/master',
+                               projectName: "/FMK_schema/${branch}",
                                selector: [
                                  $class: 'StatusBuildSelector',
                                  stable: false
@@ -101,7 +101,7 @@ pipeline {
                     }
                     try {
                         step([$class     : 'CopyArtifact',
-                              projectName: '/FMK_schema/master',
+                              projectName: "/FMK_schema/${branch}",
                               selector   : [
                                 $class: 'StatusBuildSelector',
                                 stable: false
