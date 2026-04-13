@@ -25,7 +25,7 @@
 		<sequence>
 			<element name="ValidFrom" type="mc160:DosageTimesStartDateType" minOccurs="0"/>
 			<element name="UpdateValidFromUponHandover" type="mc160:UpdateValidFromUponHandoverType" minOccurs="0"/>
-			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0" />
+			<element name="PRNTrigger" type="mc160:PRNTriggerFreeTextType" minOccurs="0" />
 			<element name="EpisodicTreatment" type="mc160:EpisodicTreatmentType" minOccurs="0"/>
 		</sequence>
 	</complexType>
@@ -36,14 +36,20 @@
 				<element name="ValidFrom" type="mc160:DosageTimesStartDateType"/>
 				<element name="UpdateValidFromUponHandover" type="mc160:UpdateValidFromUponHandoverType"/>
 			</choice>
-			<element name="FreeText" type="mc160:PreconditionFreeTextType" minOccurs="0"/>
+			<element name="PRNTrigger" type="mc160:PRNTriggerFreeTextType" minOccurs="0"/>
 			<element name="EpisodicTreatment" type="mc160:EpisodicTreatmentType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 
 	<complexType name="UpdateValidFromUponHandoverType" />
 
-	<simpleType name="PreconditionFreeTextType">
+	<element name="PRNTrigger" type="mc160:PRNTriggerFreeTextType">
+		<annotation>
+			<documentation xml:lang="en-GB">Free text describing the trigger for a PRN dosage.</documentation>
+			<documentation xml:lang="da-DK">Fritekst som beskriver triggeren for en PN-dosering.</documentation>
+		</annotation>
+	</element>
+	<simpleType name="PRNTriggerFreeTextType">
 		<restriction base="string">
 			<minLength value="1"/>
 			<maxLength value="200"/>
