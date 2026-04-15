@@ -11,6 +11,7 @@
   <include schemaLocation="DosageIterationInterval.xsd"/>
   <include schemaLocation="DosageProfile.xsd"/>
   <include schemaLocation="DosageTranslation.xsd"/>
+  <include schemaLocation="WeekType.xsd"/>
 
   <element name="DosageStructure" type="mc160:DosageStructureType">
     <annotation>
@@ -27,6 +28,7 @@
       <choice>
         <element name="Day" type="mc160:DayType" maxOccurs="99"/>
         <element name="UnspecifiedDay" type="mc160:DayUnspecifiedType"/>
+        <element name="Week" type="mc160:WeekType" maxOccurs="53"/>
       </choice>
     </sequence>
   </complexType>
