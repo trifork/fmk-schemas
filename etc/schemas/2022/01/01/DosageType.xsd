@@ -11,11 +11,23 @@
         </annotation>
     </element>
     <simpleType name="DosageTypeType">
-        <restriction base="string">
+        <union memberTypes="mc160:PredefinedDosageTypeEnumType mc160:UndefinedDosageTypeEnumType"/>
+    </simpleType>
+
+    <simpleType name="PredefinedDosageTypeEnumType">
+        <restriction base="mc160:UndefinedDosageTypeEnumType">
             <enumeration value="Fixed"/>
             <enumeration value="PRN"/>
             <enumeration value="Combined"/>
             <enumeration value="Not Specified"/>
         </restriction>
     </simpleType>
+
+    <simpleType name="UndefinedDosageTypeEnumType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="50"/>
+        </restriction>
+    </simpleType>
+
 </schema>
