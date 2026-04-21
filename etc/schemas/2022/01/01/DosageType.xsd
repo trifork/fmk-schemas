@@ -4,14 +4,30 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-    <element name="DosageType" type="mc160:DosageTypeType">
+    <element name="DosageTypeForRequest" type="mc160:DosageTypeForRequestType">
         <annotation>
-            <documentation xml:lang="en-GB">Dosage type</documentation>
-            <documentation xml:lang="da-DK">Doseringstype</documentation>
+            <documentation xml:lang="en-GB">Dosage type for requests</documentation>
+            <documentation xml:lang="da-DK">Doseringstype for forespørgsler</documentation>
         </annotation>
     </element>
-    <simpleType name="DosageTypeType">
+    <simpleType name="DosageTypeForRequestType">
         <union memberTypes="mc160:PredefinedDosageTypeEnumType mc160:UndefinedDosageTypeEnumType"/>
+    </simpleType>
+
+    <element name="DosageTypeForResponse" type="mc160:DosageTypeForResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Dosage type for responses</documentation>
+            <documentation xml:lang="da-DK">Doseringstype for svar</documentation>
+        </annotation>
+    </element>
+    <simpleType name="DosageTypeForResponseType">
+        <union memberTypes="mc160:PredefinedDosageTypeForResponse mc160:PredefinedDosageTypeEnumType mc160:UndefinedDosageTypeEnumType"/>
+    </simpleType>
+
+    <simpleType name="PredefinedDosageTypeForResponse">
+        <restriction base="mc160:UndefinedDosageTypeEnumType">
+            <enumeration value="Not Specified"/>
+        </restriction>
     </simpleType>
 
     <simpleType name="PredefinedDosageTypeEnumType">
@@ -19,7 +35,6 @@
             <enumeration value="Fixed"/>
             <enumeration value="PRN"/>
             <enumeration value="Combined"/>
-            <enumeration value="Not Specified"/>
         </restriction>
     </simpleType>
 
