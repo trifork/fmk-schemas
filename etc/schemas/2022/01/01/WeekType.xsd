@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <include schemaLocation="Dose.xsd"/>
+
+  <complexType name="WeekType">
+    <annotation>
+      <documentation xml:lang="en-GB">Represents a single week in a weekday-based dosage. Contains up to 7 weekday entries, each specifying the weekday and its doses.</documentation>
+      <documentation xml:lang="da-DK">Repræsenterer en enkelt uge i en ugedagsbaseret dosering. Indeholder op til 7 ugedage, hver med angivelse af ugedag og tilhørende doser.</documentation>
+    </annotation>
+    <sequence>
+      <element name="Weekday" type="mc160:Weekday" maxOccurs="7"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="Weekday">
+    <annotation>
+      <documentation xml:lang="en-GB">A specific weekday with one or more doses to be administered on that day.</documentation>
+      <documentation xml:lang="da-DK">En specifik ugedag med én eller flere doser der skal administreres på den pågældende dag.</documentation>
+    </annotation>
+    <sequence>
+      <element name="Label" type="mc160:WeekdayLabelType"/>
+      <element name="Dose" type="mc160:DoseType" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+
+  <simpleType name="WeekdayLabelType">
+    <annotation>
+      <documentation xml:lang="en-GB">The name of a weekday (Monday through Sunday).</documentation>
+      <documentation xml:lang="da-DK">Navnet på en ugedag (Monday til Sunday).</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="Monday"/>
+      <enumeration value="Tuesday"/>
+      <enumeration value="Wednesday"/>
+      <enumeration value="Thursday"/>
+      <enumeration value="Friday"/>
+      <enumeration value="Saturday"/>
+      <enumeration value="Sunday"/>
+    </restriction>
+  </simpleType>
+
+</schema>
