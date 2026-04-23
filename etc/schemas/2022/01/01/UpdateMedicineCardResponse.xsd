@@ -20,6 +20,7 @@
 	<include schemaLocation="CancelledWarrant.xsd"/>
 	<include schemaLocation="ConsentWasGiven.xsd"/>
 	<include schemaLocation="ConsentWasRemoved.xsd"/>
+	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
 
 	<element name="UpdateMedicineCardResponse" type="mc160:UpdateMedicineCardResponseType">
 		<annotation>
@@ -42,6 +43,8 @@
 				<element name="CancelledWarrant" type="mc160:CancelledWarrantType" minOccurs="0"/>
 				<element name="CreatedTreatmentHandovers" type="mc160:CreatedTreatmentHandoversType" minOccurs="0"/>
 				<element name="UndoneHandovers" type="mc160:WarrantForUndoHandoverType" minOccurs="0"/>
+				<element name="DrugAdministrations" type="mc160:RegisteredDrugAdministrationsType" minOccurs="0"/>
+				<element name="UndoneDrugAdministrations" type="mc160:DrugAdministrationIdentifierType"  minOccurs="0"/>
 			</sequence>
 		</sequence>
 	</complexType>

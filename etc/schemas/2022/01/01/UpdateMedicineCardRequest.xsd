@@ -24,6 +24,8 @@
 	<include schemaLocation="CreateHandoverOfDrugMedication.xsd"/>
     <include schemaLocation="CreateDrugAdministration.xsd"/>
     <include schemaLocation="UndoHandoverOnWarrant.xsd"/>
+	<include schemaLocation="CreateDrugAdministration.xsd"/>
+	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
 
 	<element name="UpdateMedicineCardRequest" type="mc160:UpdateMedicineCardRequestType">
 		<annotation>
@@ -56,6 +58,8 @@
 				<element name="CancelWarrant" type="mc160:CancelWarrantType" minOccurs="0"/>
 				<element name="RegisterTreatmentHandover" type="mc160:CreateHandoverOfDrugMedicationType" minOccurs="0"/>
 				<element name="UndoTreatmentHandover" type="mc160:UndoHandoverOnWarrantType" minOccurs="0"/>
+				<element name="RegisterDrugAdministration" type="mc160:CreateDrugAdministrationType" minOccurs="0"/>
+				<element name="UndoRegisterDrugAdministration" type="mc160:DrugAdministrationIdentifierType" minOccurs="0"/>
 			</sequence>
 		</sequence>
 	</complexType>
