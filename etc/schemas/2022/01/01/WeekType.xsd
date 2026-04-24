@@ -23,7 +23,13 @@
     </annotation>
     <sequence>
       <element name="Label" type="mc160:WeekdayLabelType"/>
-      <element name="Dose" type="mc160:DoseType" maxOccurs="unbounded"/>
+      <choice>
+        <element name="TimeOfDayDose" type="mc160:TimeOfDayDoseType"/>
+        <element name="PartOfDayDose" type="mc160:PartOfDayDoseType"/>
+        <element name="TimesPerDayDose" type="mc160:TimesPerDayDoseType"/>
+        <element name="DuringTheDayDose" type="mc160:DuringTheDayDoseType"/>
+        <element name="UnlimitedDose" type="mc160:UnlimitedDayDoseType"/>
+      </choice>
     </sequence>
   </complexType>
 
@@ -42,5 +48,4 @@
       <enumeration value="Sunday"/>
     </restriction>
   </simpleType>
-
 </schema>

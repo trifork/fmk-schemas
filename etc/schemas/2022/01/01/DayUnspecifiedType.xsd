@@ -8,15 +8,18 @@
 
   <element name="DayUnspecified" type="mc160:DayUnspecifiedType">
     <annotation>
-      <documentation xml:lang="en-GB">Definition of a dosage that may be taken once for each iteration of the dosing cycle.</documentation>
-      <documentation xml:lang="da-DK">Definition af en dosering der må indtages én gang for hver iteration af doseringen.</documentation>
+      <documentation xml:lang="en-GB">A dose type for use when the dosing day is not fixed to a specific index within</documentation>
+      <documentation xml:lang="da-DK">En dosistype til brug når doseringsdag ikke er bundet til et bestemt indeks</documentation>
     </annotation>
   </element>
 
   <complexType name="DayUnspecifiedType">
-    <sequence>
-      <element name="Dose" type="mc160:DoseType" maxOccurs="unbounded"/>
-    </sequence>
+    <choice>
+      <element name="TimeOfDayDose" type="mc160:TimeOfDayDoseType"/>
+      <element name="PartOfDayDose" type="mc160:PartOfDayDoseType"/>
+      <element name="TimesPerDayDose" type="mc160:TimesPerDayDoseType"/>
+      <element name="DuringTheDayDose" type="mc160:DuringTheDayDoseType"/>
+      <element name="UnlimitedDayDose" type="mc160:UnlimitedDayDoseType"/>
+    </choice>
   </complexType>
-
 </schema>

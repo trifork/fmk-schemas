@@ -26,7 +26,7 @@
       <element name="Instruction" type="mc160:DosageInstructionType" minOccurs="0"/>
       <element name="IterationInterval" type="mc160:DosageIterationIntervalType" minOccurs="0"/>
       <choice>
-        <element name="Day" type="mc160:DayType" maxOccurs="99"/>
+        <element name="Day" type="mc160:DaySingleDoseType" maxOccurs="99"/>
         <element name="UnspecifiedDay" type="mc160:DayUnspecifiedType"/>
         <element name="Week" type="mc160:WeekType" maxOccurs="53"/>
       </choice>
@@ -41,8 +41,8 @@
     <complexContent>
       <extension base="mc160:DosageStructureType">
         <sequence>
-            <element name="Profile" type="mc160:DosageProfileType"/>
-            <element name="DosageTranslation" type="mc160:DosageTranslationType"/>
+          <element name="Profile" type="mc160:DosageProfileType"/>
+          <element name="DosageTranslation" type="mc160:DosageTranslationType"/>
         </sequence>
       </extension>
     </complexContent>
