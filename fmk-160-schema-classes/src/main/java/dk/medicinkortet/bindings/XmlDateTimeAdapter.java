@@ -15,7 +15,7 @@ public class XmlDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
     private static final DateTimeFormatter ISO_LOCAL_DATE = DateTimeFormatter.ISO_LOCAL_DATE;
 
     @Override
-    public LocalDateTime unmarshal(String value) throws Exception {
+    public LocalDateTime unmarshal(String value) {
         if (value == null || value.isEmpty()) {
             return null;
         }
@@ -27,7 +27,7 @@ public class XmlDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
     }
 
     @Override
-    public String marshal(LocalDateTime value) throws Exception {
+    public String marshal(LocalDateTime value) {
         if (value == null) {
             return null;
         }
