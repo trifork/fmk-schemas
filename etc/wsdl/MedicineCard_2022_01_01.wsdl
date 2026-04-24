@@ -65,8 +65,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/ActivatePendingWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/ActivatePendingWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/AdjustDosageChangeResponse.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CalculateDosageAdjustmentRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CalculateDosageAdjustmentResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/AmendDispensingRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AmendDispensingResponse.xsd"/>
@@ -489,12 +489,12 @@
         <wsdl:part name="ActivatePendingWarrantResponse" element="mc160:ActivatePendingWarrantResponse"/>
     </wsdl:message>
 
-    <wsdl:message name="AdjustDosageChangeRequest_160">
-        <wsdl:part name="AdjustDosageChangeRequest" element="mc160:AdjustDosageChangeRequest"/>
+    <wsdl:message name="CalculateDosageAdjustmentRequest_160">
+        <wsdl:part name="CalculateDosageAdjustmentRequest" element="mc160:CalculateDosageAdjustmentRequest"/>
     </wsdl:message>
 
-    <wsdl:message name="AdjustDosageChangeResponse_160">
-        <wsdl:part name="AdjustDosageChangeResponse" element="mc160:AdjustDosageChangeResponse"/>
+    <wsdl:message name="CalculateDosageAdjustmentResponse_160">
+        <wsdl:part name="CalculateDosageAdjustmentResponse" element="mc160:CalculateDosageAdjustmentResponse"/>
     </wsdl:message>
 
     <wsdl:message name="AmendDispensingRequest_160">
@@ -1441,9 +1441,9 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="AdjustDosageChange_160">
-            <wsdl:input name="AdjustDosageChangeRequest_160" message="tns:AdjustDosageChangeRequest_160"/>
-            <wsdl:output name="AdjustDosageChangeResponse_160" message="tns:AdjustDosageChangeResponse_160"/>
+        <wsdl:operation name="CalculateDosageAdjustment_160">
+            <wsdl:input name="CalculateDosageAdjustmentRequest_160" message="tns:CalculateDosageAdjustmentRequest_160"/>
+            <wsdl:output name="CalculateDosageAdjustmentResponse_160" message="tns:CalculateDosageAdjustmentResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2217,13 +2217,13 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="AdjustDosageChange_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#AdjustDosageChange" style="document"/>
-            <wsdl:input name="AdjustDosageChangeRequest_160">
+        <wsdl:operation name="CalculateDosageAdjustment_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CalculateDosageAdjustment" style="document"/>
+            <wsdl:input name="CalculateDosageAdjustmentRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output name="AdjustDosageChangeResponse_160">
+            <wsdl:output name="CalculateDosageAdjustmentResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

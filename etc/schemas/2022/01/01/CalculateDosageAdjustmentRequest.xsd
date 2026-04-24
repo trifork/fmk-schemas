@@ -12,21 +12,17 @@
 	<include schemaLocation="DosageTimesStartDate.xsd"/>
 	<include schemaLocation="DosageStructure.xsd"/>
 
-	<element name="AdjustDosageChangeRequest" type="mc160:AdjustDosageChangeRequestType">
+	<element name="CalculateDosageAdjustmentRequest" type="mc160:CalculateDosageAdjustmentRequestType">
 		<annotation>
-			<documentation xml:lang="en-GB">Outer container element for a request which adjusts the dosage dates for an upcoming update of a drug medication</documentation>
-			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel der justerer doseringsdatoerne for en kommende opdatering af en lægemiddelordination</documentation>
+			<documentation xml:lang="en-GB">Request that calculates a dosage with adjusted periods to be used in a later update of a drug medication</documentation>
+			<documentation xml:lang="da-DK">Forespørgsel til beregning af en dosering med justerede perioder til anvendelse ved en senere opdatering af en lægemiddelordination</documentation>
 		</annotation>
 	</element>
-	<complexType name="AdjustDosageChangeRequestType">
+	<complexType name="CalculateDosageAdjustmentRequestType">
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<choice>
-				<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
-				<element name="CreateNewDrugMedication" type="mc160:CreateNewDrugMedicationType"/>
-			</choice>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="Dosage" type="mc160:DosageForRequestType"/>
-			<element name="AdjustToDate" type="mc160:DosageTimesStartDateType"/>
 			<element name="ModificationMetadata" type="mc160:ModificationMetadataType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
