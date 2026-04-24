@@ -13,11 +13,15 @@
 
   <complexType name="DosageChoiceType">
     <choice>
-        <element name="TimeOfDayDosage" type="mc160:TimeOfDayDosageType"/>
-        <element name="PartOfDayDosage" type="mc160:PartOfDayDosageType"/>
-        <element name="TimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
-        <element name="DuringTheDayDosage" type="mc160:DuringTheDayDosageType"/>
-        <element name="UnlimitedDayDosage" type="mc160:UnlimitedDayDosageType"/>
+      <element name="TimeOfDayDosage" type="mc160:TimeOfDayDosageType"/>
+      <element name="PartOfDayDosage" type="mc160:PartOfDayDosageType"/>
+      <element name="TimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
+      <element name="DuringTheDayDosage" type="mc160:DuringTheDayDosageType"/>
+      <element name="UnlimitedDayDosage" type="mc160:UnlimitedDayDosageType"/>
+      <sequence>
+        <element name="MinimumTimesPerDayDosage" type="mc160:TimesPerDayDosageType" minOccurs="0"/>
+        <element name="MaximumTimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
+      </sequence>
     </choice>
   </complexType>
 
