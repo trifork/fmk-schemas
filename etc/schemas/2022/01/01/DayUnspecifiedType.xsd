@@ -14,12 +14,8 @@
   </element>
 
   <complexType name="DayUnspecifiedType">
-    <choice>
-      <element name="TimeOfDayDose" type="mc160:TimeOfDayDoseType"/>
-      <element name="PartOfDayDose" type="mc160:PartOfDayDoseType"/>
-      <element name="TimesPerDayDose" type="mc160:TimesPerDayDoseType"/>
-      <element name="DuringTheDayDose" type="mc160:DuringTheDayDoseType"/>
-      <element name="UnlimitedDayDose" type="mc160:UnlimitedDayDoseType"/>
-    </choice>
+    <sequence>
+      <element name="Dose" type="mc160:DosageChoiceType"/>
+    </sequence>
   </complexType>
 </schema>

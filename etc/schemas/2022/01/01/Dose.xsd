@@ -18,6 +18,16 @@
     </annotation>
   </element>
 
+  <complexType name="DosageChoiceType">
+    <choice>
+        <element name="TimeOfDayDose" type="mc160:TimeOfDayDoseType"/>
+        <element name="PartOfDayDose" type="mc160:PartOfDayDoseType"/>
+        <element name="TimesPerDayDose" type="mc160:TimesPerDayDoseType"/>
+        <element name="DuringTheDayDose" type="mc160:DuringTheDayDoseType"/>
+        <element name="UnlimitedDose" type="mc160:UnlimitedDayDoseType"/>
+    </choice>
+  </complexType>
+
   <complexType name="QuantityType">
     <annotation>
       <documentation xml:lang="en-GB">Base type specifying the quantity of a dose, expressed as an amount, duration, infusion rate, or according to a parameter schema</documentation>
