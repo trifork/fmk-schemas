@@ -11,20 +11,13 @@
   <include schemaLocation="InfusionRate.xsd"/>
   <include schemaLocation="AccordingToParameterSchema.xsd"/>
 
-  <element name="TimeOfDayDose" type="mc160:TimeOfDayDoseType">
-    <annotation>
-      <documentation xml:lang="en-GB">Specifies when the dose is to be administered</documentation>
-      <documentation xml:lang="da-DK">Angiver hvornår på dage en dosis skal indtages</documentation>
-    </annotation>
-  </element>
-
   <complexType name="DosageChoiceType">
     <choice>
-        <element name="TimeOfDayDose" type="mc160:TimeOfDayDoseType"/>
-        <element name="PartOfDayDose" type="mc160:PartOfDayDoseType"/>
-        <element name="TimesPerDayDose" type="mc160:TimesPerDayDoseType"/>
-        <element name="DuringTheDayDose" type="mc160:DuringTheDayDoseType"/>
-        <element name="UnlimitedDose" type="mc160:UnlimitedDayDoseType"/>
+        <element name="TimeOfDayDosage" type="mc160:TimeOfDayDosageType"/>
+        <element name="PartOfDayDosage" type="mc160:PartOfDayDosageType"/>
+        <element name="TimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
+        <element name="DuringTheDayDosage" type="mc160:DuringTheDayDosageType"/>
+        <element name="UnlimitedDayDosage" type="mc160:UnlimitedDayDosageType"/>
     </choice>
   </complexType>
 
@@ -61,13 +54,13 @@
     </choice>
   </complexType>
 
-  <complexType name="TimeOfDayDoseType">
+  <complexType name="TimeOfDayDosageType">
     <annotation>
       <documentation xml:lang="en-GB">One or more doses each scheduled at a specific clock time of day</documentation>
       <documentation xml:lang="da-DK">En eller flere doser planlagt til bestemte klokkeslæt på dagen</documentation>
     </annotation>
     <sequence>
-      <element name="TimeOfDay" type="mc160:TimeOfDayType" maxOccurs="unbounded"/>
+      <element name="TimeOfDayDose" type="mc160:TimeOfDayType" maxOccurs="unbounded"/>
     </sequence>
   </complexType>
 
@@ -85,7 +78,7 @@
     </complexContent>
   </complexType>
 
-  <complexType name="PartOfDayDoseType">
+  <complexType name="PartOfDayDosageType">
     <annotation>
       <documentation xml:lang="en-GB">A dose specifying one or more named parts of the day</documentation>
       <documentation xml:lang="da-DK">En dosis der specificere et eller flere bestemte tidspunkter på dagen</documentation>
@@ -135,7 +128,7 @@
     </complexContent>
   </complexType>
 
-  <complexType name="TimesPerDayDoseType">
+  <complexType name="TimesPerDayDosageType">
     <annotation>
       <documentation xml:lang="en-GB">A dose to be administered a specified number of times per day, without a fixed time of day</documentation>
       <documentation xml:lang="da-DK">En dosis der skal indtages et bestemt antal gange om dagen uden et fast tidspunkt</documentation>
@@ -149,7 +142,7 @@
     </complexContent>
   </complexType>
 
-  <complexType name="DuringTheDayDoseType">
+  <complexType name="DuringTheDayDosageType">
     <annotation>
       <documentation xml:lang="en-GB">A dose to be taken during the day, with no specific time of day required</documentation>
       <documentation xml:lang="da-DK">En dosis der skal indtages i løbet af dagen uden krav om bestemt tidspunkt</documentation>
@@ -159,7 +152,7 @@
     </complexContent>
   </complexType>
 
-  <complexType name="UnlimitedDayDoseType">
+  <complexType name="UnlimitedDayDosageType">
     <annotation>
       <documentation xml:lang="en-GB">A dose that may be taken an unlimited number of times during the day</documentation>
       <documentation xml:lang="da-DK">En dosis der kan indtages et ubegrænset antal gange i løbet af dagen</documentation>

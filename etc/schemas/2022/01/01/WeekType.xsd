@@ -8,8 +8,8 @@
 
   <complexType name="WeekType">
     <annotation>
-      <documentation xml:lang="en-GB">Represents a single week in a weekday-based dosage. Contains up to 7 weekday entries, each specifying the weekday and its doses.</documentation>
-      <documentation xml:lang="da-DK">Repræsenterer en enkelt uge i en ugedagsbaseret dosering. Indeholder op til 7 ugedage, hver med angivelse af ugedag og tilhørende doser.</documentation>
+      <documentation xml:lang="en-GB">Represents a single week in a weekday-based dosage. Contains up to 7 weekday entries, each specifying the weekday and its dosage.</documentation>
+      <documentation xml:lang="da-DK">Repræsenterer en enkelt uge i en ugedagsbaseret dosering. Indeholder op til 7 ugedage, hver med angivelse af ugedag og tilhørende dosering.</documentation>
     </annotation>
     <sequence>
       <element name="Weekday" type="mc160:Weekday" maxOccurs="7"/>
@@ -18,12 +18,12 @@
 
   <complexType name="Weekday">
     <annotation>
-      <documentation xml:lang="en-GB">A specific weekday with one or more doses to be administered on that day.</documentation>
-      <documentation xml:lang="da-DK">En specifik ugedag med én eller flere doser der skal administreres på den pågældende dag.</documentation>
+      <documentation xml:lang="en-GB">A specific weekday and the dosage to be administered on that day.</documentation>
+      <documentation xml:lang="da-DK">En specifik ugedag med den dosering der skal administreres på den pågældende dag.</documentation>
     </annotation>
     <sequence>
       <element name="Label" type="mc160:WeekdayLabelType"/>
-      <element name="Dose" type="mc160:DosageChoiceType"/>
+      <element name="Dosage" type="mc160:DosageChoiceType"/>
     </sequence>
   </complexType>
 
