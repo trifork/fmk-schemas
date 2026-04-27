@@ -16,8 +16,18 @@
       <element name="TimeOfDayDosage" type="mc160:TimeOfDayDosageType"/>
       <element name="PartOfDayDosage" type="mc160:PartOfDayDosageType"/>
       <element name="TimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
-      <element name="DuringTheDayDosage" type="mc160:DuringTheDayDosageType"/>
-      <element name="UnlimitedDayDosage" type="mc160:UnlimitedDayDosageType"/>
+      <element name="DuringTheDayDosage" type="mc160:QuantityType">
+        <annotation>
+          <documentation xml:lang="en-GB">A dose to be taken during the day, with no specific time of day required</documentation>
+          <documentation xml:lang="da-DK">En dosis der skal indtages i løbet af dagen uden krav om bestemt tidspunkt</documentation>
+        </annotation>
+      </element>
+      <element name="UnlimitedDayDosage" type="mc160:QuantityType">
+        <annotation>
+          <documentation xml:lang="en-GB">A dose that may be taken an unlimited number of times during the day</documentation>
+          <documentation xml:lang="da-DK">En dosis der kan indtages et ubegrænset antal gange i løbet af dagen</documentation>
+        </annotation>
+      </element>
       <sequence>
         <element name="MinimumTimesPerDayDosage" type="mc160:TimesPerDayDosageType" minOccurs="0"/>
         <element name="MaximumTimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
@@ -88,48 +98,11 @@
       <documentation xml:lang="da-DK">En dosis der specificere et eller flere bestemte tidspunkter på dagen</documentation>
     </annotation>
     <sequence>
-      <element name="Morning" type="mc160:MorningDoseType" minOccurs="0"/>
-      <element name="Noon" type="mc160:NoonDoseType" minOccurs="0"/>
-      <element name="Evening" type="mc160:EveningDoseType" minOccurs="0"/>
-      <element name="Night" type="mc160:NightDoseType" minOccurs="0"/>
+      <element name="Morning" type="mc160:QuantityType" minOccurs="0"/>
+      <element name="Noon" type="mc160:QuantityType" minOccurs="0"/>
+      <element name="Evening" type="mc160:QuantityType" minOccurs="0"/>
+      <element name="Night" type="mc160:QuantityType" minOccurs="0"/>
     </sequence>
-  </complexType>
-
-  <complexType name="MorningDoseType">
-    <annotation>
-      <documentation xml:lang="en-GB">The quantity of a dose to be taken in the morning</documentation>
-      <documentation xml:lang="da-DK">Mængden af en dosis der skal indtages om morgenen</documentation>
-    </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType"/>
-    </complexContent>
-  </complexType>
-  <complexType name="NoonDoseType">
-    <annotation>
-      <documentation xml:lang="en-GB">The quantity of a dose to be taken at noon</documentation>
-      <documentation xml:lang="da-DK">Mængden af en dosis der skal indtages til middag</documentation>
-    </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType"/>
-    </complexContent>
-  </complexType>
-  <complexType name="EveningDoseType">
-    <annotation>
-      <documentation xml:lang="en-GB">The quantity of a dose to be taken in the evening</documentation>
-      <documentation xml:lang="da-DK">Mængden af en dosis der skal indtages om aftenen</documentation>
-    </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType"/>
-    </complexContent>
-  </complexType>
-  <complexType name="NightDoseType">
-    <annotation>
-      <documentation xml:lang="en-GB">The quantity of a dose to be taken at night</documentation>
-      <documentation xml:lang="da-DK">Mængden af en dosis der skal indtages om natten</documentation>
-    </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType"/>
-    </complexContent>
   </complexType>
 
   <complexType name="TimesPerDayDosageType">
@@ -145,25 +118,4 @@
       </extension>
     </complexContent>
   </complexType>
-
-  <complexType name="DuringTheDayDosageType">
-    <annotation>
-      <documentation xml:lang="en-GB">A dose to be taken during the day, with no specific time of day required</documentation>
-      <documentation xml:lang="da-DK">En dosis der skal indtages i løbet af dagen uden krav om bestemt tidspunkt</documentation>
-    </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType"/>
-    </complexContent>
-  </complexType>
-
-  <complexType name="UnlimitedDayDosageType">
-    <annotation>
-      <documentation xml:lang="en-GB">A dose that may be taken an unlimited number of times during the day</documentation>
-      <documentation xml:lang="da-DK">En dosis der kan indtages et ubegrænset antal gange i løbet af dagen</documentation>
-    </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType"/>
-    </complexContent>
-  </complexType>
-
 </schema>
