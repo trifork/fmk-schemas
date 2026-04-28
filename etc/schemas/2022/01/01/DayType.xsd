@@ -7,13 +7,21 @@
   <include schemaLocation="Dose.xsd"/>
 
   <complexType name="DayType">
+    <annotation>
+      <documentation xml:lang="en-GB">A dosage day defined by an index and a dosage</documentation>
+      <documentation xml:lang="da-DK">En doseringsdag defineret ved et indeks og en dosering</documentation>
+    </annotation>
     <sequence>
       <element name="Index" type="mc160:DayIndexType"/>
-      <element name="Dose" type="mc160:DoseType" maxOccurs="unbounded"/>
+      <element name="Dosage" type="mc160:DosageChoiceType"/>
     </sequence>
   </complexType>
 
   <simpleType name="DayIndexType">
+    <annotation>
+      <documentation xml:lang="en-GB">The index of a day within a dosage cycle, from 1 to 365</documentation>
+      <documentation xml:lang="da-DK">Indekset for en dag i en doseringscyklus, fra 1 til 365</documentation>
+    </annotation>
     <restriction base="int">
       <minInclusive value="1"/>
       <maxInclusive value="365"/>

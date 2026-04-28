@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class XmlDateAdapter  extends XmlAdapter<String, LocalDate> {
 
     @Override
-    public LocalDate unmarshal(String v) throws Exception {
+    public LocalDate unmarshal(String v) {
         if (v == null) {
             return null;
         }
@@ -19,7 +19,7 @@ public class XmlDateAdapter  extends XmlAdapter<String, LocalDate> {
     }
 
     @Override
-    public String marshal(LocalDate v) throws Exception {
+    public String marshal(LocalDate v) {
         if (v == null) {
             return null;
         }
