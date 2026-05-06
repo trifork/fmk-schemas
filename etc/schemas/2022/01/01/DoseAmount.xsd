@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <include schemaLocation="DoseQuantity.xsd"/>
+  <include schemaLocation="DurationMinutes.xsd"/>
+  <include schemaLocation="InfusionRate.xsd"/>
+  <include schemaLocation="AccordingToParameterSchema.xsd"/>
+
+  <complexType name="DoseAmountType">
+    <annotation>
+      <documentation xml:lang="en-GB">Base type specifying a dose amount as either a direct quantity, an infusion, or according to a parameter schema</documentation>
+      <documentation xml:lang="da-DK">Basistype der angiver en dosismængde som enten en direkte mængde, en infusion eller i henhold til et parameterskema</documentation>
+    </annotation>
+    <choice>
+      <element name="Quantity" type="mc160:DoseQuantityType"/>
+      <element name="QuantityRange" type="mc160:QuantityRangeType"/>
+      <element name="Infusion" type="mc160:InfusionDoseType"/>
+      <element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType"/>
+    </choice>
+  </complexType>
+
+  <complexType name="QuantityRangeType">
+    <annotation>
+      <documentation xml:lang="en-GB">A dose amount expressed as a minimum and maximum quantity</documentation>
+      <documentation xml:lang="da-DK">En dosismængde udtrykt som en minimums- og maksimumsmængde</documentation>
+    </annotation>
+    <sequence>
+      <element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
+      <element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="InfusionDoseType">
+    <annotation>
+      <documentation xml:lang="en-GB">An infusion dose expressed as a duration or an infusion rate</documentation>
+      <documentation xml:lang="da-DK">En infusionsdosis udtrykt ved enten en varighed eller en infusionshastighed</documentation>
+    </annotation>
+    <choice>
+      <choice>
+        <element name="Duration" type="mc160:DurationMinutesType"/>
+        <element name="DurationRange" type="mc160:DurationRangeType"/>
+      </choice>
+      <choice>
+        <element name="InfusionRate" type="mc160:InfusionRateType"/>
+        <element name="InfusionRateRange" type="mc160:InfusionRateRangeType"/>
+      </choice>
+    </choice>
+  </complexType>
+
+  <complexType name="DurationRangeType">
+    <annotation>
+      <documentation xml:lang="en-GB">A duration interval expressed as a minimum and maximum duration in minutes</documentation>
+      <documentation xml:lang="da-DK">Et varighedsinterval udtrykt som en minimums- og maksimumsvarighed i minutter</documentation>
+    </annotation>
+    <sequence>
+      <element name="MinimumDuration" type="mc160:DurationMinutesType"/>
+      <element name="MaximumDuration" type="mc160:DurationMinutesType"/>
+    </sequence>
+  </complexType>
+
+  <complexType name="InfusionRateRangeType">
+    <annotation>
+      <documentation xml:lang="en-GB">An infusion rate interval expressed as a minimum and maximum rate</documentation>
+      <documentation xml:lang="da-DK">Et infusionshastighedsinterval udtrykt som en minimums- og maksimumshastighed</documentation>
+    </annotation>
+    <sequence>
+      <element name="MinimumInfusionRate" type="mc160:InfusionRateType"/>
+      <element name="MaximumInfusionRate" type="mc160:InfusionRateType"/>
+    </sequence>
+  </complexType>
+
+</schema>

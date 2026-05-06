@@ -5,11 +5,8 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-  <include schemaLocation="DoseQuantity.xsd"/>
   <include schemaLocation="TimesPerDay.xsd"/>
-  <include schemaLocation="DurationMinutes.xsd"/>
-  <include schemaLocation="InfusionRate.xsd"/>
-  <include schemaLocation="AccordingToParameterSchema.xsd"/>
+  <include schemaLocation="DoseAmount.xsd"/>
 
   <complexType name="DosageChoiceType">
     <choice>
@@ -31,39 +28,6 @@
     </choice>
   </complexType>
 
-  <complexType name="DoseAmountType">
-    <annotation>
-      <documentation xml:lang="en-GB">Base type specifying the amount of a dose, expressed as a quantity, duration, infusion rate, or according to a parameter schema</documentation>
-      <documentation xml:lang="da-DK">Basistype der angiver mængden af en dosis, udtrykt som en mængde, varighed, infusionshastighed eller i henhold til et parameterskema</documentation>
-    </annotation>
-    <choice>
-      <choice>
-        <element name="Quantity" type="mc160:DoseQuantityType"/>
-        <sequence>
-          <element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
-          <element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
-        </sequence>
-      </choice>
-      <choice>
-        <choice>
-          <element name="Duration" type="mc160:DurationMinutesType"/>
-          <sequence>
-            <element name="MinimumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
-            <element name="MaximumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
-          </sequence>
-        </choice>
-        <choice>
-          <element name="InfusionRate" type="mc160:InfusionRateType"/>
-          <sequence>
-            <element name="MinimumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-            <element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-          </sequence>
-        </choice>
-      </choice>
-      <element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType"/>
-    </choice>
-  </complexType>
-
   <complexType name="TimeOfDayDosageType">
     <annotation>
       <documentation xml:lang="en-GB">One or more doses each scheduled at a specific clock time of day</documentation>
@@ -76,8 +40,8 @@
 
   <complexType name="TimeOfDayType">
     <annotation>
-      <documentation xml:lang="en-GB">A dose entry specifying a quantity and a specific clock time of day (e.g. 08:00:00)</documentation>
-      <documentation xml:lang="da-DK">En dosis der specificere et eller flere specifikke klokkeslæt på dagen (f.eks. 08:00:00)</documentation>
+      <documentation xml:lang="en-GB">A dose entry specifying a dose amount and a specific clock time of day (e.g. 08:00:00)</documentation>
+      <documentation xml:lang="da-DK">En dosis der specificerer en dosismængde og et specifikt klokkeslæt på dagen (f.eks. 08:00:00)</documentation>
     </annotation>
     <complexContent>
       <extension base="mc160:DoseAmountType">
