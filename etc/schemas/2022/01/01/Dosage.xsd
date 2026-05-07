@@ -13,13 +13,13 @@
       <element name="TimeOfDayDosage" type="mc160:TimeOfDayDosageType"/>
       <element name="PartOfDayDosage" type="mc160:PartOfDayDosageType"/>
       <element name="TimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
-      <element name="DuringTheDayDosage" type="mc160:DoseAmountType">
+      <element name="DuringTheDayDosage" type="mc160:DoseType">
         <annotation>
           <documentation xml:lang="en-GB">A dose to be taken during the day, with no specific time of day required</documentation>
           <documentation xml:lang="da-DK">En dosis der skal indtages i løbet af dagen uden krav om bestemt tidspunkt</documentation>
         </annotation>
       </element>
-      <element name="UnlimitedDayDosage" type="mc160:DoseAmountType">
+      <element name="UnlimitedDayDosage" type="mc160:DoseType">
         <annotation>
           <documentation xml:lang="en-GB">A dose that may be taken an unlimited number of times during the day</documentation>
           <documentation xml:lang="da-DK">En dosis der kan indtages et ubegrænset antal gange i løbet af dagen</documentation>
@@ -44,7 +44,7 @@
       <documentation xml:lang="da-DK">En dosis der specificerer en dosismængde og et specifikt klokkeslæt på dagen (f.eks. 08:00:00)</documentation>
     </annotation>
     <complexContent>
-      <extension base="mc160:DoseAmountType">
+      <extension base="mc160:DoseType">
         <sequence>
           <element name="Time" type="xsd:time"/>
         </sequence>
@@ -58,10 +58,10 @@
       <documentation xml:lang="da-DK">En dosis der specificere et eller flere bestemte tidspunkter på dagen</documentation>
     </annotation>
     <sequence>
-      <element name="Morning" type="mc160:DoseAmountType" minOccurs="0"/>
-      <element name="Noon" type="mc160:DoseAmountType" minOccurs="0"/>
-      <element name="Evening" type="mc160:DoseAmountType" minOccurs="0"/>
-      <element name="Night" type="mc160:DoseAmountType" minOccurs="0"/>
+      <element name="Morning" type="mc160:DoseType" minOccurs="0"/>
+      <element name="Noon" type="mc160:DoseType" minOccurs="0"/>
+      <element name="Evening" type="mc160:DoseType" minOccurs="0"/>
+      <element name="Night" type="mc160:DoseType" minOccurs="0"/>
     </sequence>
   </complexType>
 
@@ -71,7 +71,7 @@
       <documentation xml:lang="da-DK">En dosis der skal indtages et bestemt antal gange om dagen uden et fast tidspunkt</documentation>
     </annotation>
     <complexContent>
-      <extension base="mc160:DoseAmountType">
+      <extension base="mc160:DoseType">
         <sequence>
           <element name="TimesPerDay" type="mc160:TimesPerDayType"/>
         </sequence>
