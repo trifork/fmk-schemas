@@ -53,24 +53,32 @@
 
   <complexType name="DurationRangeType">
     <annotation>
-      <documentation xml:lang="en-GB">A duration interval expressed as a minimum and maximum duration in minutes</documentation>
-      <documentation xml:lang="da-DK">Et varighedsinterval udtrykt som en minimums- og maksimumsvarighed i minutter</documentation>
+      <documentation xml:lang="en-GB">A duration interval expressed as a minimum and/or maximum duration in minutes</documentation>
+      <documentation xml:lang="da-DK">Et varighedsinterval udtrykt som en minimums- og/eller maksimumsvarighed i minutter</documentation>
     </annotation>
-    <sequence>
+    <choice>
+      <sequence>
+        <element name="MinimumDuration" type="mc160:DurationMinutesType"/>
+        <element name="MaximumDuration" type="mc160:DurationMinutesType"/>
+      </sequence>
       <element name="MinimumDuration" type="mc160:DurationMinutesType"/>
       <element name="MaximumDuration" type="mc160:DurationMinutesType"/>
-    </sequence>
+    </choice>
   </complexType>
 
   <complexType name="InfusionRateRangeType">
     <annotation>
-      <documentation xml:lang="en-GB">An infusion rate interval expressed as a minimum and maximum rate</documentation>
-      <documentation xml:lang="da-DK">Et infusionshastighedsinterval udtrykt som en minimums- og maksimumshastighed</documentation>
+      <documentation xml:lang="en-GB">An infusion rate interval expressed as a minimum and/or maximum rate</documentation>
+      <documentation xml:lang="da-DK">En indløbshastighedsinterval udtrykt som en minimums- og/eller maksimumshastighed</documentation>
     </annotation>
-    <sequence>
+    <choice>
+      <sequence>
+        <element name="MinimumInfusionRate" type="mc160:InfusionRateType"/>
+        <element name="MaximumInfusionRate" type="mc160:InfusionRateType"/>
+      </sequence>
       <element name="MinimumInfusionRate" type="mc160:InfusionRateType"/>
       <element name="MaximumInfusionRate" type="mc160:InfusionRateType"/>
-    </sequence>
+    </choice>
   </complexType>
 
 </schema>
