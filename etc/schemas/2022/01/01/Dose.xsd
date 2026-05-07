@@ -6,112 +6,71 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
   <include schemaLocation="DoseQuantity.xsd"/>
-  <include schemaLocation="TimesPerDay.xsd"/>
-  <include schemaLocation="Duration.xsd"/>
+  <include schemaLocation="DurationMinutes.xsd"/>
   <include schemaLocation="InfusionRate.xsd"/>
   <include schemaLocation="AccordingToParameterSchema.xsd"/>
 
-  <complexType name="DosageChoiceType">
-    <choice>
-      <element name="TimeOfDayDosage" type="mc160:TimeOfDayDosageType"/>
-      <element name="PartOfDayDosage" type="mc160:PartOfDayDosageType"/>
-      <element name="TimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
-      <element name="DuringTheDayDosage" type="mc160:QuantityType">
-        <annotation>
-          <documentation xml:lang="en-GB">A dose to be taken during the day, with no specific time of day required</documentation>
-          <documentation xml:lang="da-DK">En dosis der skal indtages i løbet af dagen uden krav om bestemt tidspunkt</documentation>
-        </annotation>
-      </element>
-      <element name="UnlimitedDayDosage" type="mc160:QuantityType">
-        <annotation>
-          <documentation xml:lang="en-GB">A dose that may be taken an unlimited number of times during the day</documentation>
-          <documentation xml:lang="da-DK">En dosis der kan indtages et ubegrænset antal gange i løbet af dagen</documentation>
-        </annotation>
-      </element>
-    </choice>
-  </complexType>
-
-  <complexType name="QuantityType">
+  <complexType name="DoseType">
     <annotation>
-      <documentation xml:lang="en-GB">Base type specifying the quantity of a dose, expressed as an amount, duration, infusion rate, or according to a parameter schema</documentation>
-      <documentation xml:lang="da-DK">Basistype der angiver mængden af en dosis, udtrykt som en mængde, varighed, infusionshastighed eller i henhold til et parameterskema</documentation>
+      <documentation xml:lang="en-GB">Base type specifying a dose amount as either a direct quantity, a quantity range, an infusion, or according to a parameter schema</documentation>
+      <documentation xml:lang="da-DK">Basistype der angiver en dosismængde som enten en direkte mængde, et mængdeinterval, en infusion eller i henhold til et parameterskema</documentation>
     </annotation>
     <choice>
-      <choice>
-        <element name="Quantity" type="mc160:DoseQuantityType"/>
-        <sequence>
-          <element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
-          <element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
-        </sequence>
-      </choice>
-      <choice>
-        <choice>
-          <element name="Duration" type="mc160:DurationType"/>
-          <sequence>
-            <element name="MinimumDuration" type="mc160:DurationType" minOccurs="0"/>
-            <element name="MaximumDuration" type="mc160:DurationType" minOccurs="0"/>
-          </sequence>
-        </choice>
-        <choice>
-          <element name="InfusionRate" type="mc160:InfusionRateType"/>
-          <sequence>
-            <element name="MinimumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-            <element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-          </sequence>
-        </choice>
-      </choice>
+      <element name="Quantity" type="mc160:DoseQuantityType"/>
+      <element name="QuantityRange" type="mc160:QuantityRangeType"/>
+      <element name="Infusion" type="mc160:InfusionDoseType"/>
       <element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType"/>
     </choice>
   </complexType>
 
-  <complexType name="TimeOfDayDosageType">
+  <complexType name="QuantityRangeType">
     <annotation>
-      <documentation xml:lang="en-GB">One or more doses each scheduled at a specific clock time of day</documentation>
-      <documentation xml:lang="da-DK">En eller flere doser planlagt til bestemte klokkeslæt på dagen</documentation>
+      <documentation xml:lang="en-GB">A dose amount expressed as a minimum and maximum quantity</documentation>
+      <documentation xml:lang="da-DK">En dosismængde udtrykt som en minimums- og maksimumsmængde</documentation>
     </annotation>
     <sequence>
-      <element name="TimeOfDayDose" type="mc160:TimeOfDayType" maxOccurs="unbounded"/>
+      <element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
+      <element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
     </sequence>
   </complexType>
 
-  <complexType name="TimeOfDayType">
+  <complexType name="InfusionDoseType">
     <annotation>
-      <documentation xml:lang="en-GB">A dose entry specifying a quantity and a specific clock time of day (e.g. 08:00:00)</documentation>
-      <documentation xml:lang="da-DK">En dosis der specificere et eller flere specifikke klokkeslæt på dagen (f.eks. 08:00:00)</documentation>
+      <documentation xml:lang="en-GB">An infusion dose expressed as a duration or an infusion rate</documentation>
+      <documentation xml:lang="da-DK">En infusionsdosis udtrykt ved enten en varighed eller en indløbshastighed</documentation>
     </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType">
-        <sequence>
-          <element name="Time" type="xsd:time"/>
-        </sequence>
-      </extension>
-    </complexContent>
+    <choice>
+      <choice>
+        <element name="Duration" type="mc160:DurationMinutesType"/>
+        <element name="DurationRange" type="mc160:DurationRangeType"/>
+      </choice>
+      <choice>
+        <element name="InfusionRate" type="mc160:InfusionRateType"/>
+        <element name="InfusionRateRange" type="mc160:InfusionRateRangeType"/>
+      </choice>
+    </choice>
   </complexType>
 
-  <complexType name="PartOfDayDosageType">
+  <complexType name="DurationRangeType">
     <annotation>
-      <documentation xml:lang="en-GB">A dose specifying one or more named parts of the day</documentation>
-      <documentation xml:lang="da-DK">En dosis der specificere et eller flere bestemte tidspunkter på dagen</documentation>
+      <documentation xml:lang="en-GB">A duration interval expressed as a minimum and/or maximum duration in minutes</documentation>
+      <documentation xml:lang="da-DK">Et varighedsinterval udtrykt som en minimums- og/eller maksimumsvarighed i minutter</documentation>
     </annotation>
     <sequence>
-      <element name="Morning" type="mc160:QuantityType" minOccurs="0"/>
-      <element name="Noon" type="mc160:QuantityType" minOccurs="0"/>
-      <element name="Evening" type="mc160:QuantityType" minOccurs="0"/>
-      <element name="Night" type="mc160:QuantityType" minOccurs="0"/>
+      <element name="MinimumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
+      <element name="MaximumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
     </sequence>
   </complexType>
 
-  <complexType name="TimesPerDayDosageType">
+  <complexType name="InfusionRateRangeType">
     <annotation>
-      <documentation xml:lang="en-GB">A dose to be administered a specified number of times per day, without a fixed time of day</documentation>
-      <documentation xml:lang="da-DK">En dosis der skal indtages et bestemt antal gange om dagen uden et fast tidspunkt</documentation>
+      <documentation xml:lang="en-GB">An infusion rate interval expressed as a minimum and/or maximum rate</documentation>
+      <documentation xml:lang="da-DK">Et indløbshastighedsinterval udtrykt som en minimums- og/eller maksimumshastighed</documentation>
     </annotation>
-    <complexContent>
-      <extension base="mc160:QuantityType">
-        <sequence>
-          <element name="TimesPerDay" type="mc160:TimesPerDayType"/>
-        </sequence>
-      </extension>
-    </complexContent>
+    <sequence>
+      <element name="MinimumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+      <element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+    </sequence>
   </complexType>
+
 </schema>
