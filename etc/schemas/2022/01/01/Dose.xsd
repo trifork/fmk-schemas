@@ -12,8 +12,8 @@
 
   <complexType name="DoseType">
     <annotation>
-      <documentation xml:lang="en-GB">Base type specifying a dose amount as either a direct quantity, an infusion, or according to a parameter schema</documentation>
-      <documentation xml:lang="da-DK">Basistype der angiver en dosismængde som enten en direkte mængde, en infusion eller i henhold til et parameterskema</documentation>
+      <documentation xml:lang="en-GB">Base type specifying a dose amount as either a direct quantity, a quantity range, an infusion, or according to a parameter schema</documentation>
+      <documentation xml:lang="da-DK">Basistype der angiver en dosismængde som enten en direkte mængde, et mængdeinterval, en infusion eller i henhold til et parameterskema</documentation>
     </annotation>
     <choice>
       <element name="Quantity" type="mc160:DoseQuantityType"/>
@@ -37,7 +37,7 @@
   <complexType name="InfusionDoseType">
     <annotation>
       <documentation xml:lang="en-GB">An infusion dose expressed as a duration or an infusion rate</documentation>
-      <documentation xml:lang="da-DK">En infusionsdosis udtrykt ved enten en varighed eller en infusionshastighed</documentation>
+      <documentation xml:lang="da-DK">En infusionsdosis udtrykt ved enten en varighed eller en indløbshastighed</documentation>
     </annotation>
     <choice>
       <choice>
@@ -65,7 +65,7 @@
   <complexType name="InfusionRateRangeType">
     <annotation>
       <documentation xml:lang="en-GB">An infusion rate interval expressed as a minimum and/or maximum rate</documentation>
-      <documentation xml:lang="da-DK">En indløbshastighedsinterval udtrykt som en minimums- og/eller maksimumshastighed</documentation>
+      <documentation xml:lang="da-DK">Et indløbshastighedsinterval udtrykt som en minimums- og/eller maksimumshastighed</documentation>
     </annotation>
     <sequence>
       <element name="MinimumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
