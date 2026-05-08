@@ -11,14 +11,14 @@
 	<include schemaLocation="ExpectedDeliveryDateTime.xsd"/>
 	<include schemaLocation="StartTrackAndTraceOnOrder.xsd"/>
 
-	<complexType name="EffectuatedDispensingPeriodType">
+	<complexType name="EffectuateDispensingPeriodType">
 		<annotation>
 			<documentation xml:lang="en-GB">Element to create handovers for a dispensing period</documentation>
 			<documentation xml:lang="da-DK">Element til at oprette udleveringer for en dispenseringsperiode</documentation>
 		</annotation>
 		<sequence>
 			<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
-            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType" minOccurs="0"/>
+            <element name="DispensingPeriodVersion" type="mc160:DispensingPeriodVersionType"/>
 			<element name="EffectuationDateTime" type="mc160:EffectuationDateTimeType"/>
 			<element name="ExpectedDelivery" type="mc160:ExpectedDeliveryDateTimeType" minOccurs="0" />
 			<element name="StartTrackAndTraceOnOrder" type="mc160:StartTrackAndTraceOnOrderType" minOccurs="0"/>
