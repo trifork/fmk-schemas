@@ -9,7 +9,7 @@
 	<include schemaLocation="DeliveryInstructionText.xsd"/>
 	<include schemaLocation="Delivery.xsd"/>
 	<include schemaLocation="CreatePharmacyHandover.xsd"/>
-    <include schemaLocation="StartTrackAndTraceOnOrder.xsd"/>
+    <include schemaLocation="DetailsForTrackAndTrace.xsd"/>
 
 	<complexType name="CreateOrderAndHandoverType">
 		<annotation>
@@ -23,7 +23,7 @@
 			</choice>
 			<element name="DeliveryInstructionText" type="mc160:DeliveryInstructionTextType" minOccurs="0" maxOccurs="3"/>
 			<element name="Delivery" type="mc160:DeliveryType" minOccurs="0"/>
-            <element name="StartTrackAndTraceOnOrder" type="mc160:StartTrackAndTraceOnOrderType" minOccurs="0"/>
+            <element name="StartTrackAndTraceOnOrder" type="mc160:DetailsForTrackAndTraceType" minOccurs="0"/>
             <element name="Handover" type="mc160:CreatePharmacyHandoverType"/>
         </sequence>
 	</complexType>
