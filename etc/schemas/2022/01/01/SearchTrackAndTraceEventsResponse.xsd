@@ -5,6 +5,8 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="TrackAndTraceEventDetails.xsd"/>
+	<include schemaLocation="Order.xsd"/>
+	<include schemaLocation="DoseDispensingDeliveryStatus.xsd"/>
 
 	<element name="SearchTrackAndTraceEventsResponse" type="mc160:SearchTrackAndTraceEventsResponseType">
 		<annotation>
@@ -14,6 +16,16 @@
 	</element>
 	<complexType name="SearchTrackAndTraceEventsResponseType">
 		<sequence>
+			<element name="TrackAndTraceEvents" type="mc160:TrackAndTraceEventsType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TrackAndTraceEventsType">
+		<sequence>
+			<choice>
+				<element name="Order" type="mc160:OrderType"/>
+				<element name="DoseDispensingDeliveryAndStatus" type="mc160:DoseDispensingDeliveryStatusType"/>
+			</choice>
 			<element name="TrackAndTraceEvent" type="mc160:TrackAndTraceEventDetailsType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
