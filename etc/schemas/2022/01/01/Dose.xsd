@@ -12,25 +12,21 @@
 
   <complexType name="DoseType">
     <annotation>
-      <documentation xml:lang="en-GB">Base type specifying a dose amount as either a direct quantity, a quantity range, an infusion, or according to a parameter schema</documentation>
-      <documentation xml:lang="da-DK">Basistype der angiver en dosismængde som enten en direkte mængde, et mængdeinterval, en infusion eller i henhold til et parameterskema</documentation>
-    </annotation>
-    <choice>
-      <element name="Quantity" type="mc160:DoseQuantityType"/>
-      <element name="QuantityRange" type="mc160:QuantityRangeType"/>
-      <element name="Infusion" type="mc160:InfusionDoseType"/>
-      <element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType"/>
-    </choice>
-  </complexType>
-
-  <complexType name="QuantityRangeType">
-    <annotation>
-      <documentation xml:lang="en-GB">A dose amount expressed as a minimum and maximum quantity</documentation>
-      <documentation xml:lang="da-DK">En dosismængde udtrykt som en minimums- og maksimumsmængde</documentation>
+      <documentation xml:lang="en-GB">Base type specifying a dose amount as either a direct quantity or according to a parameter schema</documentation>
+      <documentation xml:lang="da-DK">Basistype der angiver en dosismængde som enten en direkte mængde eller i henhold til et parameterskema</documentation>
     </annotation>
     <sequence>
-      <element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
-      <element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
+      <choice>
+        <choice>
+          <element name="Quantity" type="mc160:DoseQuantityType"/>
+          <sequence>
+            <element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
+            <element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
+          </sequence>
+        </choice>
+        <element name="AccordingToParameterSchema" type="mc160:AccordingToParameterSchemaType"/>
+      </choice>
+      <element name="Infusion" type="mc160:InfusionDoseType" minOccurs="0"/>
     </sequence>
   </complexType>
 
@@ -41,32 +37,16 @@
     </annotation>
     <choice>
       <element name="Duration" type="mc160:DurationMinutesType"/>
-      <element name="DurationRange" type="mc160:DurationRangeType"/>
+      <sequence>
+        <element name="MinimumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
+        <element name="MaximumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
+      </sequence>
       <element name="InfusionRate" type="mc160:InfusionRateType"/>
-      <element name="InfusionRateRange" type="mc160:InfusionRateRangeType"/>
+      <sequence>
+        <element name="MinimumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+        <element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
+      </sequence>
     </choice>
-  </complexType>
-
-  <complexType name="DurationRangeType">
-    <annotation>
-      <documentation xml:lang="en-GB">A duration interval expressed as a minimum and/or maximum duration in minutes</documentation>
-      <documentation xml:lang="da-DK">Et varighedsinterval udtrykt som en minimums- og/eller maksimumsvarighed i minutter</documentation>
-    </annotation>
-    <sequence>
-      <element name="MinimumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
-      <element name="MaximumDuration" type="mc160:DurationMinutesType" minOccurs="0"/>
-    </sequence>
-  </complexType>
-
-  <complexType name="InfusionRateRangeType">
-    <annotation>
-      <documentation xml:lang="en-GB">An infusion rate interval expressed as a minimum and/or maximum rate</documentation>
-      <documentation xml:lang="da-DK">Et indløbshastighedsinterval udtrykt som en minimums- og/eller maksimumshastighed</documentation>
-    </annotation>
-    <sequence>
-      <element name="MinimumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-      <element name="MaximumInfusionRate" type="mc160:InfusionRateType" minOccurs="0"/>
-    </sequence>
   </complexType>
 
 </schema>
