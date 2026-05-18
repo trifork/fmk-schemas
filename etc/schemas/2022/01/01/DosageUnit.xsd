@@ -4,8 +4,8 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-	<include schemaLocation="DosageQuantityUnitText.xsd"/>
-	<include schemaLocation="DosageQuantityUnitTexts.xsd"/>
+	<include schemaLocation="DoseUnitText.xsd"/>
+	<include schemaLocation="DoseUnitTexts.xsd"/>
 
 	<element name="DosageUnit" type="mc160:DosageUnitType">
 		<annotation>
@@ -15,10 +15,10 @@
 	</element>
 	<complexType name="DosageUnitType">
 		<choice>
-			<element name="DosageUnitText" type="mc160:DosageQuantityUnitTextType"/>
+			<element name="DosageUnitText" type="mc160:DoseUnitTextType"/>
 			<sequence>
-				<element name="SingularDosageUnitText" type="mc160:DosageQuantityUnitTextType"/>
-				<element name="PluralDosageUnitText" type="mc160:DosageQuantityUnitTextType"/>
+				<element name="SingularDosageUnitText" type="mc160:DoseUnitTextType"/>
+				<element name="PluralDosageUnitText" type="mc160:DoseUnitTextType"/>
 			</sequence>
 		</choice>
 	</complexType>

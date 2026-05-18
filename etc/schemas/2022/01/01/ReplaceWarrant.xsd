@@ -14,6 +14,7 @@
 	<include schemaLocation="UnspecifiedValidFrom.xsd"/>
 	<include schemaLocation="ValidToDate.xsd"/>
 	<include schemaLocation="Prescription.xsd"/>
+	<include schemaLocation="PracticePrescription.xsd"/>
 	<include schemaLocation="HospitalPharmacyHandover.xsd"/>
 	<include schemaLocation="DoseDispensed.xsd"/>
 	<include schemaLocation="Indication.xsd"/>
@@ -35,7 +36,7 @@
 				<element name="ValidFromDate" type="mc160:ValidFromDateType"/>
 				<element name="UnspecifiedValidFrom" type="mc160:UnspecifiedValidFromType"/>
 			</choice>
-			<element name="ValidToDate" type="mc160:ValidToDateType"/>
+			<element name="ValidToDate" type="mc160:ValidToDateType" minOccurs="0"/>
             <element name="Warrant" type="mc160:WarrantWithOptionalDrugMedicationIdentifier" maxOccurs="unbounded"/>
 			<element name="Order" type="mc160:CreateOrderType" minOccurs="0"/>
 			<choice>
@@ -53,6 +54,7 @@
                 <element name="Prescription" type="mc160:PrescriptionType"/>
                 <element name="HospitalPharmacyHandover" type="mc160:HospitalPharmacyHandoverType"/>
                 <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+				<element name="PracticePrescription" type="mc160:PracticePrescriptionType"/>
             </choice>
         </sequence>
     </complexType>

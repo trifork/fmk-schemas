@@ -17,6 +17,7 @@
     <include schemaLocation="ShipmentDeliveryDate.xsd"/>
     <include schemaLocation="Order.xsd"/>
     <include schemaLocation="DoseDispensingDeliveryStatus.xsd"/>
+    <include schemaLocation="KeyValueSet.xsd"/>
 
     <element name="TrackAndTraceEventDetails" type="mc160:TrackAndTraceEventDetailsType">
         <annotation>
@@ -43,6 +44,7 @@
             </choice>
             <element name="Order" type="mc160:OrderType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="DoseDispensingDeliveryAndStatus" type="mc160:DoseDispensingDeliveryStatusType" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="AdditionalInformation" type="mc160:KeyValueSetType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 </schema>

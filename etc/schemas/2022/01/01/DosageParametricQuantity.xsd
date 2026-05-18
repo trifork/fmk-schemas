@@ -18,20 +18,8 @@
     <complexType name="DosageParametricQuantityType">
         <sequence>
             <choice>
-                <sequence>
-                    <choice>
-                        <element name="MinimumValue" type="mc160:DoseQuantityType"/>
-                        <element name="MinimumValueInclusive" type="mc160:DoseQuantityType"/>
-                        <element name="MinimumValueExclusive" type="mc160:DoseQuantityType"/>
-                    </choice>
-                    <choice minOccurs="0">
-                        <element name="MaximumValue" type="mc160:DoseQuantityType"/>
-                        <element name="MaximumValueInclusive" type="mc160:DoseQuantityType"/>
-                        <element name="MaximumValueExclusive" type="mc160:DoseQuantityType"/>
-                    </choice>
-                </sequence>
-                <element name="Value" type="mc160:DoseQuantityType"/>
-                <element name="AssessedValue" type="mc160:AssessedValueType"/>
+                <element name="FromValue" type="mc160:DoseQuantityType"/>
+                <element name="Criterion" type="mc160:CriterionFreeText"/>
             </choice>
             <choice>
                 <element name="Quantity" type="mc160:DoseQuantityType"/>
@@ -39,11 +27,19 @@
                     <element name="MinimumQuantity" type="mc160:DoseQuantityType"/>
                     <element name="MaximumQuantity" type="mc160:DoseQuantityType"/>
                 </sequence>
+                <element name="Instruction" type="mc160:InstructionType"/>
             </choice>
         </sequence>
     </complexType>
 
-    <simpleType name="AssessedValueType">
+    <simpleType name="CriterionFreeText">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="200"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="InstructionType">
         <restriction base="string">
             <minLength value="1"/>
             <maxLength value="200"/>

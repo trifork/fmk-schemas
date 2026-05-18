@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DoseUnitText.xsd"/>
+
+	<element name="DoseUnitTexts" type="mc160:DoseUnitTextsType">
+		<annotation>
+			<documentation xml:lang="en-GB">Singular and plural unit for all the doses in the dosage</documentation>
+			<documentation xml:lang="da-DK">Entals- og flertalsenhed for alle doser i doseringen</documentation>
+		</annotation>
+	</element>
+	<complexType name="DoseUnitTextsType">
+		<sequence>
+			<element name="Singular" type="mc160:DoseUnitTextType"/>
+			<element name="Plural" type="mc160:DoseUnitTextType"/>
+		</sequence>
+	</complexType>
+</schema>

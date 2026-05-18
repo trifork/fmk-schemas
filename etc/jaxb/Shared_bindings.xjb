@@ -2,7 +2,7 @@
                xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xmlns:xs="http://www.w3.org/2001/XMLSchema" jaxb:extensionBindingPrefixes="xjc" jaxb:version="3.0">
 
-  <jaxb:globalBindings generateValueClass="true">
+  <jaxb:globalBindings generateIsSetMethod="true">
   <jaxb:serializable/>
 
   <xjc:javaType name="java.time.LocalDate" xmlType="xs:date"
@@ -10,5 +10,8 @@
 
   <xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime"
                 adapter="dk.medicinkortet.bindings.XmlDateTimeAdapter"/>
+
+  <xjc:javaType name="java.time.LocalTime" xmlType="xs:time"
+                adapter="dk.medicinkortet.bindings.XmlTimeAdapter"/>
   </jaxb:globalBindings>
 </jaxb:bindings>

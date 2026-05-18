@@ -13,6 +13,7 @@
 	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
     <include schemaLocation="TrackAndTraceEventFreetext.xsd"/>
     <include schemaLocation="TrackAndTraceFinalEvent.xsd"/>
+	<include schemaLocation="KeyValueSet.xsd"/>
 
 	<element name="CreateTrackAndTraceEventRequest" type="mc160:CreateTrackAndTraceEventRequestType">
 		<annotation>
@@ -36,6 +37,7 @@
                 <element name="ExpectedNextEventDateTime" type="mc160:TrackAndTraceEventDateTimeType"/>
                 <element name="IsFinalEvent" type="mc160:TrackAndTraceFinalEventType"/>
             </choice>
+			<element name="AdditionalInformation" type="mc160:KeyValueSetType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

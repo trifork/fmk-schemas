@@ -28,6 +28,7 @@
         <element name="CreateNewWarrant" type="mc160:CreateNewWarrantType"/>
         <element name="ExistingWarrantIdentifier" type="mc160:WarrantIdentifierType"/>
       </choice>
+      <element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
       <element name="TerminateWarrant" type="mc160:TerminateWarrantType" minOccurs="0"/>
       <element name="Handover" type="mc160:TreatmentHandoverForCreationType" maxOccurs="unbounded"/>
     </sequence>
@@ -36,7 +37,6 @@
   <complexType name="TreatmentHandoverForCreationType">
     <sequence>
       <element name="DateTime" type="mc160:HandoverDateTimeType"/>
-      <element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
       <choice>
         <element name="Package" type="mc160:PackageHandoverType"/>
         <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>

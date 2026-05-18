@@ -8,13 +8,13 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
 	
-	<element name="RemoveConsentDrugMedication" type="mc160:RemoveConsentDrugMedicationType">
+	<element name="GiveOrRemoveDrugMedication" type="mc160:GiveOrRemoveConsentDrugMedicationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Element for a request to mark a drugmedication with negative consent</documentation>
-			<documentation xml:lang="da-DK">Element for en forespørgsel der markerer en lægemiddelordination som privatmarkeret</documentation>
+			<documentation xml:lang="en-GB">Element for a request giving/removing negative consent on a drugmedication</documentation>
+			<documentation xml:lang="da-DK">Element for en forespørgsel der privatmarkerer/ophæver privatmarkering af en lægemiddelordination</documentation>
 		</annotation>
 	</element>
-	<complexType name="RemoveConsentDrugMedicationType">
+	<complexType name="GiveOrRemoveConsentDrugMedicationType">
 		<sequence>
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>

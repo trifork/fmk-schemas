@@ -4,35 +4,27 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-  <include schemaLocation="Dose.xsd"/>
+  <include schemaLocation="Dosage.xsd"/>
 
   <complexType name="DayType">
+    <annotation>
+      <documentation xml:lang="en-GB">A dosage day defined by an index and a dosage</documentation>
+      <documentation xml:lang="da-DK">En doseringsdag defineret ved et indeks og en dosering</documentation>
+    </annotation>
     <sequence>
-      <choice>
-        <element name="WeekdayLabel" type="mc160:WeekdayLabelType"/>
-        <element name="Index" type="mc160:DayIndexType"/>
-      </choice>
-      <element name="Dose" type="mc160:DoseType" maxOccurs="unbounded"/>
+      <element name="Index" type="mc160:DayIndexType"/>
+      <element name="Dosage" type="mc160:DosageChoiceType"/>
     </sequence>
   </complexType>
 
   <simpleType name="DayIndexType">
+    <annotation>
+      <documentation xml:lang="en-GB">The index of a day within a dosage cycle, from 1 to 365</documentation>
+      <documentation xml:lang="da-DK">Indekset for en dag i en doseringscyklus, fra 1 til 365</documentation>
+    </annotation>
     <restriction base="int">
       <minInclusive value="1"/>
       <maxInclusive value="365"/>
     </restriction>
   </simpleType>
-
-  <simpleType name="WeekdayLabelType">
-    <restriction base="string">
-      <enumeration value="Monday"/>
-      <enumeration value="Tuesday"/>
-      <enumeration value="Wednesday"/>
-      <enumeration value="Thursday"/>
-      <enumeration value="Friday"/>
-      <enumeration value="Saturday"/>
-      <enumeration value="Sunday"/>
-    </restriction>
-  </simpleType>
-
 </schema>
