@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="RequestForWarrantIdentifier.xsd"/>
+    <include schemaLocation="RequestForWarrantVersion.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="Created.xsd"/>
+    <include schemaLocation="Modificator.xsd"/>
+    <include schemaLocation="Modified.xsd"/>
+    <include schemaLocation="Prescription.xsd"/>
+    <include schemaLocation="HospitalPharmacyHandover.xsd"/>
+    <include schemaLocation="DoseDispensed.xsd"/>
+    <include schemaLocation="CreateOrder.xsd"/>
+    <include schemaLocation="RequestForWarrantStatus.xsd"/>
+    <include schemaLocation="WarrantIdentifier.xsd"/>
+    <include schemaLocation="RequestForWarrantCancellationReason.xsd"/>
+    <include schemaLocation="WithoutOrder.xsd"/>
+
+    <complexType name="RequestForWarrantSummaryType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element which summarises a request for warrant</documentation>
+            <documentation xml:lang="da-DK">Element der opsummerer en anmodning om udleveringsgrundlag</documentation>
+        </annotation>
+        <sequence>
+            <element name="Identifier" type="mc160:RequestForWarrantIdentifierType"/>
+            <element name="IssuerOrganisation" type="mc160:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
+            <choice minOccurs="0">
+                <element name="Prescription" type="mc160:PrescriptionType"/>
+                <element name="HospitalPharmacyHandover" type="mc160:HospitalPharmacyHandoverType"/>
+                <element name="DoseDispensed" type="mc160:DoseDispensedType"/>
+            </choice>
+            <element name="Status" type="mc160:RequestForWarrantStatusType"/>
+            <element name="WarrantIdentifier" type="mc160:WarrantIdentifierType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

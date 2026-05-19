@@ -286,6 +286,9 @@
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetRequestsForWarrantResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/GetTrackAndTraceDetailsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/GetTrackAndTraceDetailsResponse.xsd"/>
+
             <xs:include schemaLocation="../schemas/2022/01/01/GetWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetPharmacyWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/GetHospitalPharmacyWarrantRequest.xsd"/>
@@ -1041,6 +1044,14 @@
 
     <wsdl:message name="GetRequestsForWarrantResponse_160">
         <wsdl:part name="GetRequestsForWarrantResponse" element="mc160:GetRequestsForWarrantResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetTrackAndTraceDetailsRequest_160">
+        <wsdl:part name="GetTrackAndTraceDetailsRequest" element="mc160:GetTrackAndTraceDetailsRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetTrackAndTraceDetailsResponse_160">
+        <wsdl:part name="GetTrackAndTraceDetailsResponse" element="mc160:GetTrackAndTraceDetailsResponse"/>
     </wsdl:message>
 
     <wsdl:message name="GetWarrantResidualAmountRequest_160">
@@ -1860,6 +1871,12 @@
         <wsdl:operation name="GetRequestsForWarrant_160">
             <wsdl:input name="GetRequestsForWarrantRequest_160" message="tns:GetRequestsForWarrantRequest_160"/>
             <wsdl:output name="GetRequestsForWarrantResponse_160" message="tns:GetRequestsForWarrantResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetTrackAndTraceDetails_160">
+            <wsdl:input name="GetTrackAndTraceDetailsRequest_160" message="tns:GetTrackAndTraceDetailsRequest_160"/>
+            <wsdl:output name="GetTrackAndTraceDetailsResponse_160" message="tns:GetTrackAndTraceDetailsResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3089,6 +3106,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetRequestsForWarrantResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetTrackAndTraceDetails_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetTrackAndTraceDetails" style="document"/>
+            <wsdl:input name="GetTrackAndTraceDetailsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetTrackAndTraceDetailsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
