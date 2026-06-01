@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="TrackAndTraceEventDetails.xsd"/>
+	<include schemaLocation="RequestForWarrantSummary.xsd"/>
+	<include schemaLocation="DoseDispensingDeliveryStatus.xsd"/>
+	<include schemaLocation="Order.xsd"/>
+
+	<element name="GetTrackAndTraceDetailsResponse" type="mc160:GetTrackAndTraceDetailsResponseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Element for a response with TrackAndTrace events on a person or organisation</documentation>
+			<documentation xml:lang="da-DK">Element for et svar med TrackAndTrace-events for en person eller organisation</documentation>
+		</annotation>
+	</element>
+	<complexType name="GetTrackAndTraceDetailsResponseType">
+		<sequence>
+			<choice>
+				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
+			</choice>
+			<element name="TrackAndTraceEventsOnDrugMedication" type="mc160:TrackAndTraceEventsOnDrugMedicationType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="TrackAndTraceEventsOnDispensingPeriod" type="mc160:TrackAndTraceEventsOnDispensingPeriodType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TrackAndTraceEventsOnDrugMedicationType">
+		<sequence>
+			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="RequestForWarrant" type="mc160:RequestForWarrantSummaryType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="TrackAndTraceEventsOnOrder" type="mc160:TrackAndTraceEventsOnOrderType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TrackAndTraceEventsOnDispensingPeriodType">
+		<sequence>
+			<element name="DoseDispensingDeliveryAndStatus" type="mc160:DoseDispensingDeliveryStatusType"/>
+			<element name="TrackAndTraceEvent" type="mc160:TrackAndTraceEventDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="TrackAndTraceEventsOnOrderType">
+		<sequence>
+			<element name="Order" type="mc160:OrderType"/>
+			<element name="TrackAndTraceEvent" type="mc160:TrackAndTraceEventDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
