@@ -26,7 +26,10 @@
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			</choice>
-			<element name="RequestedPeriod" type="mc160:RequestedPeriodType"/>
+			<choice>
+				<element name="RequestedPeriod" type="mc160:RequestedPeriodType"/>
+				<element name="AdministrationOverview" type="mc160:AdministrationOverviewFlagType"/>
+			</choice>
 			<element name="FillSubstitutionTemplates" type="mc160:SubstitutionTemplatesFlagType" minOccurs="0"/>
 		</sequence>
 	</complexType>
@@ -36,7 +39,6 @@
 			<element name="CurrentPeriod" type="mc160:CurrentDispensingPeriodFlagType"/>
 			<element name="CurrentAndPendingPeriods" type="mc160:CurrentAndPendingDispensingPeriodsFlagType"/>
 			<element name="PendingPeriods" type="mc160:PendingDispensingPeriodsFlagType"/>
-			<element name="AdministrationOverview" type="mc160:AdministrationOverviewFlagType"/>
 			<element name="PeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
 			<element name="RequestedDate" type="mc160:DispensingRequestedDateType"/>
 		</choice>
