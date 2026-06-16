@@ -7,7 +7,9 @@
 	<include schemaLocation="AddressProtected.xsd"/>
 	<include schemaLocation="SimpleCPRPerson.xsd"/>
     <include schemaLocation="AddressLine.xsd"/>
-	
+	<include schemaLocation="PostCode.xsd"/>
+	<include schemaLocation="DistrictName.xsd"/>
+
 	<element name="Patient" type="mc160:PatientType">
 		<annotation>
 			<documentation xml:lang="en-GB">Information about a patient with known CPR</documentation>
@@ -20,6 +22,8 @@
             <!-- Signal that a person might have address protection, but you can still see it.
             Wanted by Pharmacy systems who generally get address protection overwritten automatically -->
             <element name="AddressLine" type="mc160:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<element name="PostCode" type="mc160:PostCodeType" minOccurs="0"/>
+			<element name="DistrictName" type="mc160:DistrictNameType" minOccurs="0"/>
             <element name="AddressProtected" type="mc160:AddressProtectedType" minOccurs="0"/>
 		</sequence>
 	</complexType>

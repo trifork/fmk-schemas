@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="DistrictName" type="mc160:DistrictNameType">
+		<annotation>
+			<documentation xml:lang="en-GB">District name of an address</documentation>
+			<documentation xml:lang="da-DK">Bynavn af en adresse</documentation>
+		</annotation>
+	</element>
+	<simpleType name="DistrictNameType">
+		<restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="100"/>
+        </restriction>
+	</simpleType>
+</schema>
