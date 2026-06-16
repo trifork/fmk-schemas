@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160"
+        targetNamespace="http://fmk-teknik.dk/160"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <include schemaLocation="DrugAdministrationIdentifier.xsd"/>
+    <include schemaLocation="DrugAdministrationDateTime.xsd"/>
+    <include schemaLocation="Created.xsd"/>
+    <include schemaLocation="DrugMedicationIdentifier.xsd"/>
+    <include schemaLocation="HandoverIdentifier.xsd"/>
+    <include schemaLocation="DoseQuantity.xsd"/>
+    <include schemaLocation="DoseUnitText.xsd"/>
+
+    <element name="UndoRegisterDrugAdministration" type="mc160:UndoRegisterDrugAdministrationType">
+        <annotation>
+            <documentation xml:lang="en-GB">Element specifying identifier (and possibly modificator) of drug administration to be undone</documentation>
+            <documentation xml:lang="da-DK">Element med identifier (og evt. modifikator) på medicinadministration, som skal annulleres</documentation>
+        </annotation>
+    </element>
+    <complexType name="UndoRegisterDrugAdministrationType">
+        <sequence>
+            <element name="DrugAdministrationIdentifier" type="mc160:DrugAdministrationIdentifierType"/>
+            <element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+</schema>

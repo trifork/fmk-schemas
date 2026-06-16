@@ -8,6 +8,7 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
+	<include schemaLocation="UndoRegisterDrugAdministration.xsd"/>
 
 	<element name="UndoRegisterDrugAdministrationRequest" type="mc160:UndoRegisterDrugAdministrationRequestType">
 		<annotation>
@@ -20,7 +21,7 @@
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
-			<element name="UndoRegisterDrugAdministration" type="mc160:DrugAdministrationIdentifierType"  maxOccurs="unbounded"/>
+			<element name="UndoRegisterDrugAdministration" type="mc160:UndoRegisterDrugAdministrationType"  maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>
