@@ -14,13 +14,13 @@
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
     <include schemaLocation="DispensingDispensableUnit.xsd"/>
     
-	<element name="GetDispensingDetailedSpecificationResponse" type="mc160:GetDispensingDetailedSpecificationResponse">
+	<element name="GetDispensingDetailedSpecificationResponse" type="mc160:GetDispensingDetailedSpecificationResponseType">
         <annotation>
             <documentation xml:lang="en-GB">Detailed specification for a specific dispensing period.</documentation>
             <documentation xml:lang="da-DK">Detaljeret specifikation af en dispenseringsperiode.</documentation>
         </annotation>
     </element>
-    <complexType name="GetDispensingDetailedSpecificationResponse">
+    <complexType name="GetDispensingDetailedSpecificationResponseType">
         <sequence>
             <choice>
                 <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
@@ -30,17 +30,7 @@
             <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
             <element name="StartDate" type="mc160:DispensingPeriodStartDateType"/>
             <element name="EndDate" type="mc160:DispensingPeriodEndDateType"/>
-            <element name="DispensingsAndUnits" type="mc160:DispensingAndUnitsType" minOccurs="0" maxOccurs="unbounded"/>
-        </sequence>
-    </complexType>
-
-    <complexType name="DispensingAndUnitsType">
-        <annotation>
-            <documentation xml:lang="en-GB">Detailed specification for a specific dispensing on a planned administration in a given dispensingperiod</documentation>
-            <documentation xml:lang="da-DK">Detaljeret specifikation af en dispensering for en planlagt administration i en given dispenseringsperiode</documentation>
-        </annotation>
-        <sequence>
-            <element name="Dispensing" type="mc160:DispensingType"/>
+            <element name="Dispensing" type="mc160:DispensingType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="DispensableUnit" type="mc160:DispensingDispensableUnitType" minOccurs="0" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
