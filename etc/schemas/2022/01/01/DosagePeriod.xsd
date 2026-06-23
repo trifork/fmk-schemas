@@ -53,6 +53,7 @@
 		<complexContent>
 			<extension base="mc160:DosagePeriodType">
 				<sequence>
+					<element name="DosagePeriodDescription" type="mc160:DosageTranslationType" minOccurs="0"/>
 					<choice>
 						<element name="Empty" type="mc160:EmptyDosagePeriodType"/>
 						<element name="Unspecified" type="mc160:UnspecifiedDosagePeriodType"/>
@@ -66,7 +67,7 @@
 			</extension>
 		</complexContent>
 	</complexType>
-	
+
 	<element name="EmptyDosagePeriod" type="mc160:EmptyDosagePeriodType">
 		<annotation>
 			<documentation xml:lang="en-GB">Indicates that this dosage period has no dosages. Used to indicate pauses in treatment</documentation>
