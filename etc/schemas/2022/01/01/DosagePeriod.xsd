@@ -36,6 +36,7 @@
 						<element name="Empty" type="mc160:EmptyDosagePeriodType"/>
 						<element name="Unspecified" type="mc160:UnspecifiedDosagePeriodType"/>
 						<sequence>
+							<element name="MaximumDailyDose" type="mc160:MaximumDailyDoseType" minOccurs="0"/>
 							<element name="Fixed" type="mc160:DosageStructureType" minOccurs="0"/>
 							<element name="PRN" type="mc160:DosageStructureType" minOccurs="0"/>
 						</sequence>
@@ -58,6 +59,7 @@
 						<element name="Empty" type="mc160:EmptyDosagePeriodType"/>
 						<element name="Unspecified" type="mc160:UnspecifiedDosagePeriodType"/>
 						<sequence>
+							<element name="MaximumDailyDose" type="mc160:MaximumDailyDoseType" minOccurs="0"/>
 							<element name="Fixed" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
 							<element name="PRN" type="mc160:DosageStructureForResponseType" minOccurs="0"/>
 						</sequence>
@@ -83,4 +85,12 @@
 		</annotation>
 	</element>
 	<complexType name="UnspecifiedDosagePeriodType"/>
+
+	<simpleType name="MaximumDailyDoseType">
+		<annotation>
+			<documentation xml:lang="en-GB">Maximum allowed total dose per day in a dosage period, expressed as a dose quantity</documentation>
+			<documentation xml:lang="da-DK">Maksimalt tilladt samlet dosis pr. dag i en doseringsperiode, angivet som en dosismængde</documentation>
+		</annotation>
+		<restriction base="mc160:DoseQuantityType"/>
+	</simpleType>
 </schema>
