@@ -3,6 +3,7 @@ package dk.medicinkortet.bindings;
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +18,9 @@ public class XmlDateTimeAdapter extends XmlAdapter<String, LocalDateTime> {
             return null;
         }
 
-        return LocalDateTime.parse(value, ISO_OFFSET_DATE_TIME);
+        return OffsetDateTime.parse(value, ISO_OFFSET_DATE_TIME)
+                .atZoneSameInstant(COPENHAGEN_ZONE_ID)
+                .toLocalDateTime();
     }
 
     @Override
