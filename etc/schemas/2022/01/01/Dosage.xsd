@@ -13,12 +13,7 @@
       <element name="TimeOfDayDosage" type="mc160:TimeOfDayDosageType"/>
       <element name="PartOfDayDosage" type="mc160:PartOfDayDosageType"/>
       <element name="TimesPerDayDosage" type="mc160:TimesPerDayDosageType"/>
-      <element name="UnlimitedDayDosage" type="mc160:DoseType">
-        <annotation>
-          <documentation xml:lang="en-GB">A dose that may be taken an unlimited number of times during the day</documentation>
-          <documentation xml:lang="da-DK">En dosis der kan indtages et ubegrænset antal gange i løbet af dagen</documentation>
-        </annotation>
-      </element>
+      <element name="UnlimitedDayDosage" type="mc160:UnlimitedDosageType"/>
     </choice>
   </complexType>
 
@@ -72,4 +67,27 @@
       </extension>
     </complexContent>
   </complexType>
+
+
+  <complexType name="UnlimitedDosageType">
+    <annotation>
+      <documentation xml:lang="en-GB">A dose that may be taken an unlimited (potentially limited to total amount) number of times during the day</documentation>
+      <documentation xml:lang="da-DK">En dosis der kan indtages et ubegrænset (potentielt begrænset total mængde) antal gange i løbet af dagen</documentation>
+    </annotation>
+    <complexContent>
+      <extension base="mc160:DoseType">
+        <sequence>
+          <element name="MaximumDailyDose" type="mc160:MaximumDailyDoseType" minOccurs="0"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <simpleType name="MaximumDailyDoseType">
+    <annotation>
+      <documentation xml:lang="en-GB">Maximum allowed total dose per day for an unlimited day dosage, expressed as a dose quantity</documentation>
+      <documentation xml:lang="da-DK">Maksimalt tilladt samlet dosis pr. dag ved ubegrænset dagsdosering, angivet som en dosismængde</documentation>
+    </annotation>
+    <restriction base="mc160:DoseQuantityType"/>
+  </simpleType>
 </schema>
