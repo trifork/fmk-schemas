@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class XmlTimeForDosageAdapter extends XmlAdapter<String, LocalTime> {
+public class XmlTimeNoOffsetAdapter extends XmlAdapter<String, LocalTime> {
 
     private static final DateTimeFormatter DOSAGE_TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
 
