@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>dk.medicinkortet</groupId>
+    <artifactId>medicinkortet-schema</artifactId>
+    <version>${revision}</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.trifork</groupId>
+  <artifactId>fmk-160-advis</artifactId>
+  <version>${revision}</version>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jvnet.jaxb</groupId>
+        <artifactId>jaxb-maven-plugin</artifactId>
+        <version>4.0.8</version>
+        <executions>
+          <execution>
+            <id>generate-advis-classes</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <schemaDirectory>../etc/schemas/2022/01/01/advis</schemaDirectory>
+              <schemaIncludes>
+                <include>**/*.xsd</include>
+              </schemaIncludes>
+              <bindingDirectory>../etc/jaxb</bindingDirectory>
+              <bindingIncludes>
+                <include>Advis_bindings.xjb</include>
+              </bindingIncludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>4.0.2</version>
+    </dependency>
+  </dependencies>
+</project>

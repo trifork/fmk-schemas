@@ -8,13 +8,11 @@
 	<include schemaLocation="PatientRegistrationModificationAction.xsd"/>
 	<include schemaLocation="PatientRegistrationIdentifiers.xsd"/>
 
-	<element name="PatientRegistrationModification" type="mc160:PatientRegistrationModificationType">
+	<complexType name="PatientRegistrationModificationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Information about a patient registration modification</documentation>
 			<documentation xml:lang="da-DK">Information om en ændring af en patientregistrering</documentation>
 		</annotation>
-	</element>
-	<complexType name="PatientRegistrationModificationType">
 		<sequence>
 			<element name="Action" type="mc160:PatientRegistrationModificationActionType"/>
 			<element name="Details" type="mc160:ModificationDetailsType" minOccurs="0"/>
