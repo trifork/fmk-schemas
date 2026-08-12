@@ -1,5 +1,6 @@
 <jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                version="3.0">
 
   <jaxb:bindings schemaLocation="../schemas/2022/01/01/advis/medicinecard/MedicineCardModification.xsd"
@@ -7,5 +8,13 @@
     <jaxb:schemaBindings>
       <jaxb:package name="dk.fmk_teknik._160.advis_schema"/>
     </jaxb:schemaBindings>
+  </jaxb:bindings>
+
+  <jaxb:bindings schemaLocation="../schemas/2022/01/01/advis/LostAdvis.xsd"
+                 node="/xs:schema">
+    <jaxb:bindings node="xs:complexType[@name='LostAdvisType']/xs:sequence/xs:element[@name='ResumedDate']">
+      <xjc:javaType name="java.time.OffsetDateTime"
+                    adapter="dk.medicinkortet.bindings.XmlOffsetDateTimeAdapter"/>
+    </jaxb:bindings>
   </jaxb:bindings>
 </jaxb:bindings>

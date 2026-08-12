@@ -4,9 +4,11 @@
 		targetNamespace="http://fmk-teknik.dk/160/advis"
 		elementFormDefault="qualified">
 
-	<include schemaLocation="../common/ModificationDetails.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationModificationAction.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationIdentifiers.xsd"/>
+
+	<element name="PatientOrganisationRelationModification"
+			 type="mc160:PatientOrganisationRelationModificationType"/>
 
 	<complexType name="PatientOrganisationRelationModificationType">
 		<annotation>
@@ -15,7 +17,6 @@
 		</annotation>
 		<sequence>
 			<element name="Action" type="mc160:PatientOrganisationRelationModificationActionType"/>
-			<element name="Details" type="mc160:ModificationDetailsType" minOccurs="0"/>
 			<element name="RelationIdentifier" type="mc160:PatientOrganisationRelationIdentifiersType"/>
 			<any minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

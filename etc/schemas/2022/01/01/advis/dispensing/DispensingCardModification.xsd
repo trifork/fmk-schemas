@@ -6,7 +6,8 @@
 
 	<include schemaLocation="DispensingCardModificationAction.xsd"/>
 	<include schemaLocation="DispensingInformation.xsd"/>
-	<include schemaLocation="../common/ModificationDetails.xsd"/>
+
+	<element name="DispensingCardModification" type="mc160:DispensingModificationType"/>
 
 	<complexType name="DispensingModificationType">
 		<annotation>
@@ -15,7 +16,6 @@
 		</annotation>
 		<sequence>
 			<element name="Action" type="mc160:DispensingCardModificationActionType"/>
-			<element name="Details" type="mc160:ModificationDetailsType" minOccurs="0"/>
 			<element name="Dispensing" type="mc160:DispensingInformationType"/>
 			<any minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

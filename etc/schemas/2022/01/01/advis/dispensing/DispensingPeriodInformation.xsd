@@ -5,7 +5,6 @@
 		elementFormDefault="qualified">
 
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
-	<include schemaLocation="DispensingStatus.xsd"/>
 
 	<complexType name="DispensingPeriodInformationType">
 		<annotation>
@@ -15,8 +14,8 @@
 		<sequence>
 			<element name="Identifier" type="mc160:DispensingPeriodIdentifierType"/>
 			<sequence minOccurs="0">
-				<element name="OldStatus" type="mc160:DispensingStatusType"/>
-				<element name="NewStatus" type="mc160:DispensingStatusType"/>
+				<element name="OldStatus" type="string"/>
+				<element name="NewStatus" type="string"/>
 			</sequence>
 		</sequence>
 	</complexType>

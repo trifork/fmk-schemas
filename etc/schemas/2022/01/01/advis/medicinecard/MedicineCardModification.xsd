@@ -6,7 +6,8 @@
 
 	<include schemaLocation="MedicineCardModificationAction.xsd"/>
 	<include schemaLocation="MedicineCardModificationIdentifiers.xsd"/>
-	<include schemaLocation="../common/ModificationDetails.xsd"/>
+
+	<element name="MedicineCardModification" type="mc160:MedicineCardModificationType"/>
 
 	<complexType name="MedicineCardModificationType">
 		<annotation>
@@ -15,7 +16,6 @@
 		</annotation>
 		<sequence>
 			<element name="Action" type="mc160:MedicineCardModificationActionType"/>
-			<element name="Details" type="mc160:ModificationDetailsType" minOccurs="0"/>
 			<element name="MedicineCard" type="mc160:MedicineCardModificationIdentifiersType"/>
 			<any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
 		</sequence>
