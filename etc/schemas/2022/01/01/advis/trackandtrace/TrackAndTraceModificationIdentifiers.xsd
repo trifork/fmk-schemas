@@ -17,10 +17,21 @@
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="TrackAndTraceEventIdentifier" type="mc160:TrackAndTraceEventIdentifierType"/>
-			<choice minOccurs="0">
+            <element name="EventType" type="mc160:EventTypeType"/>
+			<choice>
 				<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
 				<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
 			</choice>
 		</sequence>
 	</complexType>
+
+    <simpleType name="EventTypeType">
+        <annotation>
+            <documentation xml:lang="en-GB">Type of a Track and Trace event</documentation>
+            <documentation xml:lang="da-DK">Typen af et Track and Trace-event</documentation>
+        </annotation>
+        <restriction base="string">
+            <maxLength value="256"/>
+        </restriction>
+    </simpleType>
 </schema>
