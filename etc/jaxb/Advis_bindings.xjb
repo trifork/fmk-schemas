@@ -12,9 +12,9 @@
 
   <jaxb:bindings schemaLocation="../schemas/2022/01/01/advis/LostAdvis.xsd"
                  node="/xs:schema">
-    <jaxb:bindings node="xs:complexType[@name='LostAdvisType']/xs:sequence/xs:element[@name='ResumedDate']">
-      <xjc:javaType name="java.time.OffsetDateTime"
-                    adapter="dk.medicinkortet.bindings.XmlOffsetDateTimeAdapter"/>
+    <jaxb:bindings node="xs:complexType[@name='LostAdvisType']/xs:sequence/xs:element[@name='ResumeAt']">
+      <xjc:javaType name="java.time.LocalDateTime"
+                    adapter="dk.medicinkortet.bindings.XmlLocalDateTimeAdapter"/>
     </jaxb:bindings>
   </jaxb:bindings>
 </jaxb:bindings>
