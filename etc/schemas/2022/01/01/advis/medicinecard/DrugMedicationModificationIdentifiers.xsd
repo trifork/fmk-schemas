@@ -5,21 +5,19 @@
 		elementFormDefault="qualified">
 
 	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
-	<include schemaLocation="WarrantModificationIdentifiers.xsd"/>
+    <include schemaLocation="WarrantModificationIdentifiers.xsd"/>
 
-	<complexType name="DrugMedicationModificationIdentifiersType">
+    <complexType name="DrugMedicationModificationIdentifiersType">
 		<annotation>
 			<documentation xml:lang="en-GB">Identifiers for a drug medication modification</documentation>
 			<documentation xml:lang="da-DK">Identifikatorer for en ændring af en lægemiddelordination</documentation>
 		</annotation>
 		<sequence>
-            <sequence minOccurs="0">
-                <element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
-                <element name="Version" type="mc160:DrugMedicationVersionType"/>
-            </sequence>
-			<choice minOccurs="0">
-				<element name="Warrant" type="mc160:WarrantModificationIdentifiersType"/>
-				<element name="RequestForWarrantIdentifier" type="mc160:RequestForWarrantIdentifierType"/>
+            <element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
+            <element name="Version" type="mc160:DrugMedicationVersionType"/>
+            <choice minOccurs="0">
+                <element name="Warrant" type="mc160:WarrantIdentifierType"/>
+            	<element name="RequestForWarrantIdentifier" type="mc160:RequestForWarrantIdentifierType"/>
 				<element name="DrugAdministrationIdentifier" type="mc160:DrugAdministrationIdentifierType"/>
 			</choice>
 		</sequence>
