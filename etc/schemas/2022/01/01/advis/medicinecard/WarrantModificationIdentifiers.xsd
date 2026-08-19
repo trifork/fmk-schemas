@@ -5,7 +5,7 @@
 		elementFormDefault="qualified">
 
 	<include schemaLocation="HandoverModificationIdentifiers.xsd"/>
-	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="../common/OrderIdentifier.xsd"/>
 
 	<complexType name="WarrantModificationIdentifiersType">
 		<annotation>
@@ -14,7 +14,6 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
-			<element name="Version" type="mc160:WarrantVersionType"/>
 			<choice minOccurs="0">
 				<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
 				<element name="Handover" type="mc160:HandoverModificationIdentifiersType"/>
@@ -32,13 +31,4 @@
 		</restriction>
 	</simpleType>
 
-	<simpleType name="WarrantVersionType">
-		<annotation>
-			<documentation xml:lang="en-GB">Version number of a warrant</documentation>
-			<documentation xml:lang="da-DK">Versionsnummer for udleveringsgrundlag</documentation>
-		</annotation>
-		<restriction base="long">
-			<minInclusive value="1"/>
-		</restriction>
-	</simpleType>
 </schema>

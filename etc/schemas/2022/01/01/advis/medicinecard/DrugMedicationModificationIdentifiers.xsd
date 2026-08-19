@@ -5,7 +5,6 @@
 		elementFormDefault="qualified">
 
 	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
-	<include schemaLocation="RequestForWarrantIdentifiers.xsd"/>
 	<include schemaLocation="WarrantModificationIdentifiers.xsd"/>
 
 	<complexType name="DrugMedicationModificationIdentifiersType">
@@ -18,7 +17,7 @@
 			<element name="Version" type="mc160:DrugMedicationVersionType"/>
 			<choice minOccurs="0">
 				<element name="Warrant" type="mc160:WarrantModificationIdentifiersType"/>
-				<element name="RequestForWarrant" type="mc160:RequestForWarrantIdentifiersType"/>
+				<element name="RequestForWarrant" type="mc160:RequestForWarrantIdentifierType"/>
 				<element name="DrugAdministrationIdentifier" type="mc160:DrugAdministrationIdentifierType"/>
 			</choice>
 		</sequence>
@@ -43,4 +42,14 @@
 			<minInclusive value="1"/>
 		</restriction>
 	</simpleType>
+
+    <simpleType name="RequestForWarrantIdentifierType">
+        <annotation>
+            <documentation xml:lang="en-GB">Unique identifier for a request for a warrant</documentation>
+            <documentation xml:lang="da-DK">Unik identifikator for en anmodning om et udleveringsgrundlag</documentation>
+        </annotation>
+        <restriction base="long">
+            <minInclusive value="1"/>
+        </restriction>
+    </simpleType>
 </schema>
