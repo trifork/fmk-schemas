@@ -5,6 +5,7 @@
 		elementFormDefault="qualified">
 
 	<include schemaLocation="HandoverModificationIdentifiers.xsd"/>
+    <include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="../common/OrderIdentifier.xsd"/>
 
 	<complexType name="WarrantModificationIdentifiersType">
@@ -20,15 +21,5 @@
 			</choice>
 		</sequence>
 	</complexType>
-
-	<simpleType name="WarrantIdentifierType">
-		<annotation>
-			<documentation xml:lang="en-GB">Unique identifier for a warrant</documentation>
-			<documentation xml:lang="da-DK">Unik identifikator for et udleveringsgrundlag</documentation>
-		</annotation>
-		<restriction base="long">
-			<minInclusive value="1"/>
-		</restriction>
-	</simpleType>
 
 </schema>
