@@ -6,7 +6,6 @@
 
 	<include schemaLocation="../common/PersonIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationModificationIdentifiers.xsd"/>
-	<include schemaLocation="WarrantModificationIdentifiers.xsd"/>
 
 	<element name="MedicineCard" type="mc160:MedicineCardModificationIdentifiersType"/>
 
@@ -18,10 +17,7 @@
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="Version" type="mc160:MedicineCardVersionType"/>
-			<choice minOccurs="0">
-				<element name="DrugMedication" type="mc160:DrugMedicationModificationIdentifiersType"/>
-				<element name="Warrant" type="mc160:WarrantModificationIdentifiersType"/>
-			</choice>
+			<element name="DrugMedication" type="mc160:DrugMedicationModificationIdentifiersType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 

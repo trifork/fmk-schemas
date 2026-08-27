@@ -5,6 +5,9 @@
 		elementFormDefault="qualified">
 
 	<include schemaLocation="../common/UndefinedModificationAction.xsd"/>
+	<include schemaLocation="DrugAdministrationModificationAction.xsd"/>
+	<include schemaLocation="DrugMedicationModificationAction.xsd"/>
+	<include schemaLocation="OrderModificationAction.xsd"/>
 
 	<simpleType name="MedicineCardModificationActionType">
 		<annotation>
@@ -13,8 +16,7 @@
 		</annotation>
 		<union memberTypes="mc160:PredefinedMedicineCardModificationActionType
 							mc160:PredefinedDrugMedicationModificationActionType
-							mc160:PredefinedWarrantModificationActionType
-							mc160:PredefinedRequestForWarrantModificationActionType
+							mc160:PredefinedDrugAdministrationModificationActionType
 							mc160:PredefinedOrderModificationActionType
 							mc160:UndefinedModificationActionType"/>
 	</simpleType>
@@ -25,59 +27,15 @@
 			<enumeration value="MedicineCardNotReviewed"/>
 			<enumeration value="MedicineCardInvalidated"/>
 			<enumeration value="MedicineCardInvalidCleared"/>
-		</restriction>
-	</simpleType>
-
-	<simpleType name="PredefinedDrugMedicationModificationActionType">
-		<restriction base="mc160:UndefinedModificationActionType">
-			<enumeration value="DrugMedicationCreated"/>
-			<enumeration value="DrugMedicationUpdated"/>
-			<enumeration value="DrugMedicationPaused"/>
-			<enumeration value="DrugMedicationUnpaused"/>
-			<enumeration value="DrugMedicationWithdrawn"/>
-			<enumeration value="DrugMedicationUnwithdrawn"/>
-			<enumeration value="DrugMedicationInvalidated"/>
-			<enumeration value="DrugMedicationEpisodesRegistered"/>
-			<enumeration value="DrugMedicationEpisodesUnregistered"/>
-		</restriction>
-	</simpleType>
-
-	<simpleType name="PredefinedWarrantModificationActionType">
-		<restriction base="mc160:UndefinedModificationActionType">
 			<enumeration value="WarrantCreated"/>
-			<enumeration value="WarrantClosed"/>
 			<enumeration value="WarrantCancelled"/>
-			<enumeration value="WarrantInvalidated"/>
 			<enumeration value="WarrantReplaced"/>
-            <enumeration value="WarrantAttached"/>
-            <enumeration value="WarrantDetached"/>
-            <enumeration value="WarrantDeprecated"/>
-            <enumeration value="WarrantUndeprecated"/>
-            <enumeration value="WarrantHandoverRegistered"/>
-            <enumeration value="WarrantHandoverWithdrawn"/>
-		</restriction>
-	</simpleType>
-
-    <simpleType name="PredefinedDrugAdministrationModificationActionType">
-        <restriction base="mc160:UndefinedModificationActionType">
-            <enumeration value="DrugAdministrationCreated"/>
-            <enumeration value="DrugAdministrationRemoved"/>
-            <enumeration value="DrugAdministrationInvalidated"/>
-        </restriction>
-    </simpleType>
-
-	<simpleType name="PredefinedRequestForWarrantModificationActionType">
-		<restriction base="mc160:UndefinedModificationActionType">
-			<enumeration value="RequestForWarrantCreated"/>
-			<enumeration value="RequestForWarrantUpdated"/>
-		</restriction>
-	</simpleType>
-
-	<simpleType name="PredefinedOrderModificationActionType">
-		<restriction base="mc160:UndefinedModificationActionType">
-			<enumeration value="OrderCreated"/>
-			<enumeration value="OrderUpdated"/>
-			<enumeration value="OrderAcknowledged"/>
+			<enumeration value="WarrantAttached"/>
+			<enumeration value="WarrantDetached"/>
+			<enumeration value="WarrantDeprecated"/>
+			<enumeration value="WarrantUndeprecated"/>
+			<enumeration value="WarrantHandoverRegistered"/>
+			<enumeration value="WarrantHandoverWithdrawn"/>
 		</restriction>
 	</simpleType>
 
