@@ -5,18 +5,18 @@
 		elementFormDefault="qualified">
 
 	<include schemaLocation="DispensingCardModificationAction.xsd"/>
-	<include schemaLocation="DispensingInformation.xsd"/>
+	<include schemaLocation="DispensingCardModificationIdentifiers.xsd"/>
 
-	<element name="DispensingCardModification" type="mc160:DispensingModificationType"/>
+	<element name="DispensingCardModification" type="mc160:DispensingCardModificationType"/>
 
-	<complexType name="DispensingModificationType">
+	<complexType name="DispensingCardModificationType">
 		<annotation>
 			<documentation xml:lang="en-GB">Information about a dispensing card modification</documentation>
 			<documentation xml:lang="da-DK">Information om en ændring af et dispenseringskort</documentation>
 		</annotation>
 		<sequence>
 			<element name="Action" type="mc160:DispensingCardModificationActionType"/>
-			<element name="Dispensing" type="mc160:DispensingInformationType"/>
+			<element name="DispensingCard" type="mc160:DispensingCardModificationIdentifiersType"/>
 			<any minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

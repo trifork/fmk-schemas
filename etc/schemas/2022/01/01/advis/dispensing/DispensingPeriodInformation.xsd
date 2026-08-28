@@ -4,19 +4,23 @@
 		targetNamespace="http://fmk-teknik.dk/160/advis"
 		elementFormDefault="qualified">
 
+	<include schemaLocation="DispensingIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 
 	<complexType name="DispensingPeriodInformationType">
 		<annotation>
-			<documentation xml:lang="en-GB">Information about a dispensing period, optionally including a status change</documentation>
-			<documentation xml:lang="da-DK">Information om en dispenseringsperiode, eventuelt med en statusændring</documentation>
+			<documentation xml:lang="en-GB">Information about a dispensing period, optionally including a status change or an affected dispensing</documentation>
+			<documentation xml:lang="da-DK">Information om en dispenseringsperiode, eventuelt med en statusændring eller en berørt dispensering</documentation>
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:DispensingPeriodIdentifierType"/>
-			<sequence minOccurs="0">
-				<element name="OldStatus" type="string"/>
-				<element name="NewStatus" type="string"/>
-			</sequence>
+			<choice minOccurs="0">
+				<sequence>
+					<element name="OldStatus" type="string"/>
+					<element name="NewStatus" type="string"/>
+				</sequence>
+				<element name="DispensingIdentifier" type="mc160:DispensingIdentifierType"/>
+			</choice>
 		</sequence>
 	</complexType>
 </schema>

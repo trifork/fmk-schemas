@@ -8,14 +8,14 @@
 	<include schemaLocation="DispensingCardIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodInformation.xsd"/>
 
-	<complexType name="DispensingInformationType">
+	<complexType name="DispensingCardModificationIdentifiersType">
 		<annotation>
 			<documentation xml:lang="en-GB">Identifiers for a dispensing card modification</documentation>
 			<documentation xml:lang="da-DK">Identifikatorer for en ændring af et dispenseringskort</documentation>
 		</annotation>
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
-			<element name="DispensingCard" type="mc160:DispensingCardIdentifierType"/>
+			<element name="Identifier" type="mc160:DispensingCardIdentifierType"/>
 			<element name="DispensingPeriod" type="mc160:DispensingPeriodInformationType" minOccurs="0"/>
 		</sequence>
 	</complexType>
