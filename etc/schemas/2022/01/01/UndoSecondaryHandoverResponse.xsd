@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="SecondaryHandoverIdentifier.xsd"/>
+    <include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="UndoSecondaryHandoverResponse" type="mc160:UndoSecondaryHandoverResponseType">
 		<annotation>
@@ -14,6 +15,7 @@
 	</element>
 	<complexType name="UndoSecondaryHandoverResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="Identifier" type="mc160:SecondaryHandoverIdentifierType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

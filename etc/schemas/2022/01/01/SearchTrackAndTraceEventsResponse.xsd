@@ -7,6 +7,7 @@
 	<include schemaLocation="TrackAndTraceEventDetails.xsd"/>
 	<include schemaLocation="Order.xsd"/>
 	<include schemaLocation="DoseDispensingDeliveryStatus.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="SearchTrackAndTraceEventsResponse" type="mc160:SearchTrackAndTraceEventsResponseType">
 		<annotation>
@@ -16,6 +17,7 @@
 	</element>
 	<complexType name="SearchTrackAndTraceEventsResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="TrackAndTraceEvents" type="mc160:TrackAndTraceEventsType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

@@ -8,6 +8,7 @@
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="Warrant.xsd"/>
 	<include schemaLocation="InvalidWarrant.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetWarrantResponse" type="mc160:GetWarrantResponseType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="GetWarrantResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="Patient" type="mc160:PatientType"/>
 				<element name="Organisation" type="mc160:OrganisationType"/>

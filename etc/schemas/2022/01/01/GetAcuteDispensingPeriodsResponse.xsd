@@ -6,6 +6,7 @@
         attributeFormDefault="unqualified">
 
     <include schemaLocation="EntityWithDispensing.xsd"/>
+    <include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetAcuteDispensingPeriodsResponse" type="mc160:GetAcuteDispensingPeriodsResponseType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="GetAcuteDispensingPeriodsResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="EntityWithDispensing" type="mc160:EntityWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

@@ -7,6 +7,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
     <include schemaLocation="DrugAdministrationIdentifier.xsd"/>
 	<include schemaLocation="RegisteredDrugAdministrations.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="RegisterDrugAdministrationResponse" type="mc160:RegisterDrugAdministrationResponseType">
 		<annotation>
@@ -16,6 +17,7 @@
 	</element>
 	<complexType name="RegisterDrugAdministrationResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
             <element name="DrugAdministrations" type="mc160:RegisteredDrugAdministrationsType" maxOccurs="unbounded"/>
 		</sequence>

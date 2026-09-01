@@ -8,6 +8,7 @@
 	<include schemaLocation="OrderIdentifier.xsd"/>
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 	<include schemaLocation="TrackAndTraceEventIdentifier.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="CreateTrackAndTraceEventResponse" type="mc160:CreateTrackAndTraceEventResponseType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="CreateTrackAndTraceEventResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="ShipmentIdentifier" type="mc160:ShipmentIdentifierType"/>
 				<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>

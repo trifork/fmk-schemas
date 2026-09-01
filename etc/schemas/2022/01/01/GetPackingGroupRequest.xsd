@@ -6,6 +6,7 @@
 
 	<include schemaLocation="PackingGroupIdentifier.xsd"/>
 	<include schemaLocation="IncludeContents.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetPackingGroupRequest" type="mc160:GetPackingGroupRequestType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="GetPackingGroupRequestType">
 		<sequence>
+            <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
             <element name="PackingGroupIdentifier" type="mc160:PackingGroupIdentifierType"/>
             <element name="IncludeContents" type="mc160:IncludeContentsType" minOccurs="0"/>
 		</sequence>

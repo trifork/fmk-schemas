@@ -6,6 +6,7 @@
 
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="CreateOrderForPractice.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="CreateOrderForPracticeRequest" type="mc160:CreateOrderForPracticeRequestType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="CreateOrderForPracticeRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="OrderForPractice" type="mc160:CreateOrderForPracticeType" maxOccurs="unbounded"/>

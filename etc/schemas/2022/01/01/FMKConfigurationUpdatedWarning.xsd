@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<!--
+		Response-side free-standing SOAP header, used from 2022_01_01_E1 onwards.
+
+		Its own file rather than a second global element in FMKConfigurationLastUpdatedType.xsd:
+		that file is named for, and declares the global element of, the REQUEST header
+		(FMKConfigurationLastUpdated, which the client sends to state the configuration version
+		it holds). The two share the simpleType but are separate elements in separate directions,
+		and having the response WSDL include a request-named schema file invited exactly the
+		confusion this split avoids.
+	-->
+	<include schemaLocation="FMKConfigurationLastUpdatedType.xsd"/>
+
+	<element name="FMKConfigurationUpdatedWarning" type="mc160:FMKConfigurationLastUpdatedType">
+		<annotation>
+			<documentation xml:lang="en-GB">Free-standing SOAP response header warning that the FMK configuration data has changed. Response-side counterpart of the FMKConfigurationLastUpdated request header.</documentation>
+			<documentation xml:lang="da-DK">Fritstående SOAP response header, der advarer om at FMK konfigurations data er ændret. Response-sidens modstykke til FMKConfigurationLastUpdated i request headeren.</documentation>
+		</annotation>
+	</element>
+</schema>

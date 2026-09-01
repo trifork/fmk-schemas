@@ -10,6 +10,7 @@
 	<include schemaLocation="DispensingPeriodStartDate.xsd"/>
 	<include schemaLocation="DispensingPeriodEndDate.xsd"/>
 	<include schemaLocation="PlannedAdministrationSubstitution.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetDispensingPlanRequest" type="mc160:GetDispensingPlanRequestType"/>
 
@@ -19,6 +20,7 @@
 			<documentation xml:lang="da-DK">Et request som henter an ophældningsplan for et givent dispenseringskort</documentation>
 		</annotation>
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DispensingCardIdentifier" type="mc160:DispensingCardIdentifierType"/>
 			<element name="StartDate" type="mc160:DispensingPeriodStartDateType" minOccurs="0"/>

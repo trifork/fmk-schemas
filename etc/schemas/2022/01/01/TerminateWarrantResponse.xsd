@@ -7,6 +7,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="TerminateWarrantResponse" type="mc160:TerminateWarrantResponseType">
 		<annotation>
@@ -16,6 +17,7 @@
 	</element>
 	<complexType name="TerminateWarrantResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<sequence>
 				<choice>
 					<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>

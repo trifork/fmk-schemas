@@ -8,6 +8,7 @@
 	<include schemaLocation="MedicineCardVersion.xsd"/>
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
 	<include schemaLocation="ForwardedRequestForWarrant.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="ForwardRequestForWarrantResponse" type="mc160:ForwardRequestForWarrantResponseType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="ForwardRequestForWarrantResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
             <element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="RequestForWarrant" type="mc160:ForwardedRequestForWarrantType" maxOccurs="unbounded"/>

@@ -13,6 +13,14 @@
 	<include schemaLocation="KnownPersonIdentifiers.xsd"/>
 	<include schemaLocation="ResponseInformation.xsd"/>
     <include schemaLocation="FMKConfigurationLastUpdatedType.xsd"/>
+	<!-- WarningsType and ResponseInformationsType now live here; see FMKResponseHeaderBody.xsd. -->
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
+	<!--
+		Declares the free-standing FMKConfigurationUpdatedWarning element. Unused by this
+		wrapper, but the _Transition flavour reaches it only through here: that flavour keeps
+		this file and does not carry the _E1 include list.
+	-->
+	<include schemaLocation="FMKConfigurationUpdatedWarning.xsd"/>
 
 	<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderType">
 		<annotation>
@@ -30,18 +38,6 @@
 			<element name="Warnings" type="mc160:WarningsType" minOccurs="0" />
 			<element name="FMKConfigurationUpdatedWarning" type="mc160:FMKConfigurationLastUpdatedType" minOccurs="0"/>
 			<element name="Informations" type="mc160:ResponseInformationsType" minOccurs="0"/>
-		</sequence>
-	</complexType>
-
-	<complexType name="WarningsType">
-		<sequence>
-			<element name="Warning" type="mc160:FMKDetailType" maxOccurs="unbounded"/>
-		</sequence>
-	</complexType>
-
-	<complexType name="ResponseInformationsType">
-		<sequence>
-			<element name="Information" type="mc160:ResponseInformationType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
 </schema>

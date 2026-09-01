@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dk.medicinkortet</groupId>
+        <artifactId>medicinkortet-schema</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <groupId>dk.medicinkortet</groupId>
+    <artifactId>MedicineCard_2022_01_01_E1</artifactId>
+    <version>${revision}</version>
+
+    <!--
+        Split-header flavour of the 2022_01_01 contract (DGWS).
+
+        Builds TWO flavours from the shared etc/schemas/2022/01/01 pool:
+
+          _E1          - free-standing SOAP headers; Paging and ExtendedValidationHeader
+                         move into the request body. Published to clients as zip artifacts.
+          _Transition  - accepts the 2022_01_01 wrapper header AND the _E1 free-standing
+                         headers, so one endpoint can serve both client generations.
+                         Deliberately has NO assembly descriptor: it is a code-generation
+                         input only and must never be published to clients.
+
+        Keeping the old contract in mc160_wsdl and this one here means the two published
+        artifacts cannot drift into each other - a client resolves one or the other.
+    -->
+
+    <dependencies>
+        <dependency>
+            <groupId>dk.medicinkortet</groupId>
+            <artifactId>SchemaLoader</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>schemaload-dgws-medicinecard-e1</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01_E1</argument>
+                                <argument>-DWsdlName=MedicineCard</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>schemaload-dgws-patientregistration-e1</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01_E1</argument>
+                                <argument>-DWsdlName=PatientRegistration</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Server-side codegen input only - not assembled, not published. -->
+                        <id>schemaload-dgws-medicinecard-transition</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01_Transition</argument>
+                                <argument>-DWsdlName=MedicineCard</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <!-- Server-side codegen input only - not assembled, not published. -->
+                        <id>schemaload-dgws-patientregistration-transition</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01_Transition</argument>
+                                <argument>-DWsdlName=PatientRegistration</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-assembly-mc-e1</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160e1.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-mc-e1-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160e1-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-e1</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160e1.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-e1-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160e1-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

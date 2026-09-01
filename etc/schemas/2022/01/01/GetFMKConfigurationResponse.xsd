@@ -6,6 +6,7 @@
 
 	<include schemaLocation="KeyValueSet.xsd"/>
     <include schemaLocation="FMKConfigurationLastUpdatedType.xsd"/>
+    <include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetFMKConfigurationResponse" type="mc160:GetFMKConfigurationResponseType"/>
 
@@ -15,6 +16,7 @@
 			<documentation xml:lang="da-DK">Et svar fra servicen som henter konfigurationen af FMK, defineret ved en liste af key/values samt en dato for hvornår konfigurationen senest blev ændret.</documentation>
 		</annotation>
 		<sequence>
+            <element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
             <element name="Configuration" type="mc160:KeyValueSetType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="LastUpdated" type="mc160:FMKConfigurationLastUpdatedType"/>
 		</sequence>

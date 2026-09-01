@@ -9,6 +9,7 @@
     <include schemaLocation="RequestDateTime.xsd"/>
     <include schemaLocation="PatientRegistration.xsd"/>
     <include schemaLocation="DispensingCard.xsd"/>
+    <include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
     <element name="GetDispensingCardResponse" type="mc160:GetDispensingCardResponseType">
         <annotation>
@@ -18,6 +19,7 @@
     </element>
     <complexType name="GetDispensingCardResponseType">
         <sequence>
+            <element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
             <choice>
                 <element name="Patient" type="mc160:PatientType"/>
                 <element name="Organisation" type="mc160:OrganisationType"/>

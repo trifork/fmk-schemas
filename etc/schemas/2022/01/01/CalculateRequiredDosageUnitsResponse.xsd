@@ -9,6 +9,7 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DoseQuantity.xsd"/>
 	<include schemaLocation="CalculationInformation.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="CalculateRequiredDosageUnitsResponse" type="mc160:CalculateRequiredDosageUnitsResponseType">
 		<annotation>
@@ -18,6 +19,7 @@
 	</element>
 	<complexType name="CalculateRequiredDosageUnitsResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
 			<choice>
