@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE definitions [
 <!ENTITY fmkStandardSOAPRequestHeaders "
-                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' wsdl:required='true' />
-                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' wsdl:required='true' />
-                <soap:header use='literal' part='ToHeader' message='tns:ToHeader' />
-                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' wsdl:required='true' />
-                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
-                <soap:header use='literal' part='FMKRequestHeader' message='tns:FMKRequestHeader' />
-                <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
-                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' />
-                <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
-                <soap:header use='literal' part='MinLogSessionId' message='tns:MinLogSessionId' />
-                <soap:header use='literal' part='PreflightOnly' message='tns:PreflightOnly' />
-                <soap:header use='literal' part='PartOfBatchOperation' message='tns:PartOfBatchOperation' />
-                <soap:header use='literal' part='FMKConfigurationLastUpdated' message='tns:FMKConfigurationLastUpdated' />
+        <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+        <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
+        <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
+        <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
+        <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
+        <soap:header use='literal' part='MinLogSessionId' message='tns:MinLogSessionId' />
+        <soap:header use='literal' part='PreflightOnly' message='tns:PreflightOnly' />
+        <soap:header use='literal' part='PartOfBatchOperation' message='tns:PartOfBatchOperation' />
+        <soap:header use='literal' part='FMKConfigurationLastUpdated' message='tns:FMKConfigurationLastUpdated' />
 ">
 <!ENTITY fmkStandardSOAPResponseHeaders "
-                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
-                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' />
-                <soap:header use='literal' part='RelatesToHeader' message='tns:RelatesToHeader' />
-                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
-                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' />
-                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader' />
-                <soap:header use='literal' part='FMKResponseHeader' message='tns:FMKResponseHeader' />
-                <soap:header use='literal' part='KnownPersonIdentifiers' message='tns:KnownPersonIdentifiers' />
-                <soap:header use='literal' part='FMKConfigurationUpdatedWarning' message='tns:FMKConfigurationUpdatedWarning' />
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
+        <soap:header use='literal' part='KnownPersonIdentifiers' message='tns:KnownPersonIdentifiers' />
+        <soap:header use='literal' part='FMKConfigurationUpdatedWarning' message='tns:FMKConfigurationUpdatedWarning' />
 ">
 <!ENTITY operationFaultDeclaration "
             <wsdl:fault name='FMKDetail' message='tns:FMKDetail'/>
@@ -36,11 +26,14 @@
 ">
 ]>
 <!--
-     TRANSITION CONTRACT - NOT FOR PUBLICATION TO CLIENTS.
-     Accepts both the 2022_01_01 wrapper headers and the 2022_01_01_E1
-     free-standing headers, on request and response alike, so the server can
-     serve both client generations from one endpoint.
-     Used only as a code-generation input.
+     Split-header model for the 2022_01_01 contract.
+     Request:  OnBehalfOf / Whitelisting / Consent / MinLogSessionId / PreflightOnly /
+               PartOfBatchOperation / FMKConfigurationLastUpdated are free-standing SOAP
+               headers; Paging and ExtendedValidationHeader move into the request body
+               as the optional FMKRequestHeader element.
+     Response: KnownPersonIdentifiers and FMKConfigurationUpdatedWarning are free-standing
+               SOAP headers; the rest moves into the response body as the optional
+               FMKResponseHeader element.
      Generated from the corresponding _2022_01_01.wsdl - do not hand-edit.
 -->
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
@@ -49,47 +42,37 @@
                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
                   xmlns:mc160="http://fmk-teknik.dk/160"
                   xmlns:tns="http://fmk-teknik.dk/160"
+                  xmlns:medcom="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd"
                   xmlns:sdsd201206="http://www.sdsd.dk/dgws/2012/06"
-                  xmlns:wsseorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
-                  xmlns:wsuorig="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
-                  xmlns:wsa="http://www.w3.org/2005/08/addressing"
-                  xmlns:sbf="urn:liberty:sb"
+                  xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
                   targetNamespace="http://fmk-teknik.dk/160">
 
     <wsdl:types>
 
-        <xs:schema targetNamespace="urn:liberty:sb">
-            <xs:include schemaLocation="../schemas/liberty/liberty-idwsf-soap-binding.xsd" />
-            <xs:include schemaLocation="../schemas/liberty/idws-fault.xsd" />
-        </xs:schema>
-
-        <xs:schema targetNamespace="http://www.w3.org/2005/08/addressing">
-            <xs:include schemaLocation="../schemas/2005/08/addressing/ws-addr.xsd" />
-        </xs:schema>
-
         <xs:schema targetNamespace="http://www.medcom.dk/dgws/2006/04/dgws-1.0.xsd">
-            <xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd"/>
+			<xs:include schemaLocation="../schemas/medcom/dgws/2006/04/medcom.xsd" />
         </xs:schema>
 
         <xs:schema targetNamespace="http://www.sdsd.dk/dgws/2012/06">
             <xs:include schemaLocation="../schemas/sdsd/2012/06/WhitelistingHeader.xsd"/>
         </xs:schema>
 
-        <xs:schema targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-            <xs:include schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
-        </xs:schema>
-        <xs:schema targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-            <xs:include schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd/oasis-200401_orig-wss-wssecurity-utility-1.0.xsd" />
-        </xs:schema>
-
-        <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
-                   schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
-
-
         <xs:schema targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified">
 
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKRequestHeaderTransition.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKResponseHeader.xsd"/>
+            <xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       schemaLocation="../schemas/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd/oasis-200401_orig-wss-wssecurity-secext-1.0.xsd"/>
+
+            <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
+                       schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/WhitelistingHeader.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/MinLogSessionIdType.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/PreflightFlag.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/PartOfBatchOperationFlag.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKConfigurationLastUpdatedType.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/KnownPersonIdentifiers.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKConfigurationUpdatedWarning.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKResponseHeaderBody.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/AbortHandlingOfDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortHandlingOfDispensingPeriodResponse.xsd"/>
@@ -124,8 +107,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/CancelOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CancelOrderResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/CancelRequestForWarrantResponse.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CancelRequestForWarrantRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CancelRequestForWarrantResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/CancelWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CancelWarrantResponse.xsd"/>
@@ -161,6 +144,7 @@
 
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePackingGroupRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CreatePackingGroupResponse.xsd"/>
+
 
             <xs:include schemaLocation="../schemas/2022/01/01/EffectuateOrderRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/EffectuateOrderResponse.xsd"/>
@@ -368,14 +352,14 @@
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchForPersonWithWarrantResponse.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsRequest.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsResponse.xsd"/>
-
             <xs:include schemaLocation="../schemas/2022/01/01/SearchOrdersRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchOrdersResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SearchTrackAndTraceEventsResponse.xsd"/>
+
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/SearchEndedDrugMedicationsResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/SetMedicineCardNotReviewedRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/SetMedicineCardNotReviewedResponse.xsd"/>
@@ -463,31 +447,8 @@
 
     </wsdl:types>
 
-    <wsdl:message name="MessageIDHeader">
-        <wsdl:part name="MessageIDHeader" element="wsa:MessageID" />
-    </wsdl:message>
-    <wsdl:message name="ActionHeader">
-        <wsdl:part name="ActionHeader" element="wsa:Action" />
-    </wsdl:message>
-    <wsdl:message name="ToHeader">
-        <wsdl:part name="ToHeader" element="wsa:To" />
-    </wsdl:message>
-    <wsdl:message name="RelatesToHeader">
-        <wsdl:part name="RelatesToHeader" element="wsa:RelatesTo" />
-    </wsdl:message>
-    <wsdl:message name="FrameworkHeader">
-        <wsdl:part name="FrameworkHeader" element="sbf:Framework"/>
-    </wsdl:message>
-    <wsdl:message name="SecurityHeader">
-        <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
-    </wsdl:message>
-
-    <wsdl:message name="FMKRequestHeader">
-        <wsdl:part name="FMKRequestHeader" element="mc160:FMKRequestHeader"/>
-    </wsdl:message>
-
     <wsdl:message name="OnBehalfOfHeader">
-        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOf"/>
+        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOfHeader"/>
     </wsdl:message>
 
     <wsdl:message name="WhitelistingHeader">
@@ -514,10 +475,6 @@
         <wsdl:part name="FMKConfigurationLastUpdated" element="mc160:FMKConfigurationLastUpdated"/>
     </wsdl:message>
 
-    <wsdl:message name="FMKResponseHeader">
-        <wsdl:part name="FMKResponseHeader" element="mc160:FMKResponseHeader"/>
-    </wsdl:message>
-
     <wsdl:message name="KnownPersonIdentifiers">
         <wsdl:part name="KnownPersonIdentifiers" element="mc160:KnownPersonIdentifiers"/>
     </wsdl:message>
@@ -526,8 +483,16 @@
         <wsdl:part name="FMKConfigurationUpdatedWarning" element="mc160:FMKConfigurationUpdatedWarning"/>
     </wsdl:message>
 
+    <wsdl:message name="SecurityHeader">
+        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
+    </wsdl:message>
+
+    <wsdl:message name="MedComHeader">
+        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
+    </wsdl:message>
+
     <wsdl:message name="FMKDetail">
-        <wsdl:part name="fault" element="mc160:FMKDetail" />
+        <wsdl:part name="fault" element="mc160:FMKDetail"/>
     </wsdl:message>
 
     <wsdl:message name="TimingHeader">
@@ -1014,6 +979,7 @@
         <wsdl:part name="GetNewOrdersResponse" element="mc160:GetNewOrdersResponse"/>
     </wsdl:message>
 
+
     <wsdl:message name="GetOrdersRequest_160">
         <wsdl:part name="GetOrdersRequest" element="mc160:GetOrdersRequest"/>
     </wsdl:message>
@@ -1021,6 +987,7 @@
     <wsdl:message name="GetOrdersResponse_160">
         <wsdl:part name="GetOrdersResponse" element="mc160:GetOrdersResponse"/>
     </wsdl:message>
+
 
     <wsdl:message name="GetPackingGroupContentsRequest_160">
         <wsdl:part name="GetPackingGroupContentsRequest" element="mc160:GetPackingGroupContentsRequest"/>
@@ -1626,12 +1593,6 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterHandover_160">
-            <wsdl:input name="RegisterHandoverRequest_160" message="tns:RegisterHandoverRequest_160"/>
-            <wsdl:output name="RegisterHandoverResponse_160" message="tns:RegisterHandoverResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="CreateFocesWhitelisting_160">
             <wsdl:input name="CreateFocesWhitelistingRequest_160" message="tns:CreateFocesWhitelistingRequest_160"/>
             <wsdl:output name="CreateFocesWhitelistingResponse_160" message="tns:CreateFocesWhitelistingResponse_160"/>
@@ -1833,6 +1794,12 @@
         <wsdl:operation name="GetFocesWhitelistings_160">
             <wsdl:input name="GetFocesWhitelistingsRequest_160" message="tns:GetFocesWhitelistingsRequest_160"/>
             <wsdl:output name="GetFocesWhitelistingsResponse_160" message="tns:GetFocesWhitelistingsResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetHandovers_160">
+            <wsdl:input name="GetHandoversRequest_160" message="tns:GetHandoversRequest_160"/>
+            <wsdl:output name="GetHandoversResponse_160" message="tns:GetHandoversResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2040,6 +2007,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="RegisterHandover_160">
+            <wsdl:input name="RegisterHandoverRequest_160" message="tns:RegisterHandoverRequest_160"/>
+            <wsdl:output name="RegisterHandoverResponse_160" message="tns:RegisterHandoverResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="RegisterEpisodes_160">
             <wsdl:input name="RegisterEpisodesRequest_160" message="tns:RegisterEpisodesRequest_160"/>
             <wsdl:output name="RegisterEpisodesResponse_160" message="tns:RegisterEpisodesResponse_160"/>
@@ -2061,12 +2034,6 @@
         <wsdl:operation name="ReplaceWarrant_160">
             <wsdl:input name="ReplaceWarrantRequest_160" message="tns:ReplaceWarrantRequest_160"/>
             <wsdl:output name="ReplaceWarrantResponse_160" message="tns:ReplaceWarrantResponse_160"/>
-            &operationFaultDeclaration;
-        </wsdl:operation>
-
-        <wsdl:operation name="GetHandovers_160">
-            <wsdl:input name="GetHandoversRequest_160" message="tns:GetHandoversRequest_160"/>
-            <wsdl:output name="GetHandoversResponse_160" message="tns:GetHandoversResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -2505,19 +2472,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterHandover_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterHandover" style="document"/>
-            <wsdl:input name="RegisterHandoverRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="RegisterHandoverResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="CreateFocesWhitelisting_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#CreateFocesWhitelisting" style="document"/>
             <wsdl:input name="CreateFocesWhitelistingRequest_160">
@@ -2752,7 +2706,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-
         <wsdl:operation name="GetAcuteDispensingPeriods_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#GetAcuteDispensingPeriods" style="document"/>
             <wsdl:input name="GetAcuteDispensingPeriodsRequest_160">
@@ -2955,6 +2908,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="GetFocesWhitelistingsResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="GetHandovers_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#GetHandovers" style="document"/>
+            <wsdl:input name="GetHandoversRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="GetHandoversResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -3390,19 +3356,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="RegisterEpisodes_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterEpisodes" style="document"/>
-            <wsdl:input name="RegisterEpisodesRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="RegisterEpisodesResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="RegisterDrugAdministration_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterDrugAdministration" style="document"/>
             <wsdl:input name="RegisterDrugAdministrationRequest_160">
@@ -3410,6 +3363,32 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="RegisterDrugAdministrationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterHandover_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterHandover" style="document"/>
+            <wsdl:input name="RegisterHandoverRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterHandoverResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterEpisodes_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterEpisodes" style="document"/>
+            <wsdl:input name="RegisterEpisodesRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterEpisodesResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
@@ -3455,19 +3434,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="GetHandovers_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#GetHandovers" style="document"/>
-            <wsdl:input name="GetHandoversRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="GetHandoversResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
         <wsdl:operation name="SearchForPersonWithWarrant_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#SearchForPersonWithWarrant" style="document"/>
             <wsdl:input name="SearchForPersonWithWarrantRequest_160">
@@ -3481,20 +3447,6 @@
             &bindingFaultDeclaration;
         </wsdl:operation>
 
-        <wsdl:operation name="SearchTrackAndTraceEvents_160">
-            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchTrackAndTraceEvents" style="document"/>
-            <wsdl:input name="SearchTrackAndTraceEventsRequest_160">
-                &fmkStandardSOAPRequestHeaders;
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="SearchTrackAndTraceEventsResponse_160">
-                &fmkStandardSOAPResponseHeaders;
-                <soap:body use="literal"/>
-            </wsdl:output>
-            &bindingFaultDeclaration;
-        </wsdl:operation>
-
-
         <wsdl:operation name="SearchOrders_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#SearchOrders" style="document"/>
             <wsdl:input name="SearchOrdersRequest_160">
@@ -3502,6 +3454,20 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="SearchOrdersResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+
+        <wsdl:operation name="SearchTrackAndTraceEvents_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#SearchTrackAndTraceEvents" style="document"/>
+            <wsdl:input name="SearchTrackAndTraceEventsRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SearchTrackAndTraceEventsResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>

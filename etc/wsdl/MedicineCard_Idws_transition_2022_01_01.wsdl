@@ -6,8 +6,9 @@
                 <soap:header use='literal' part='ToHeader' message='tns:ToHeader' />
                 <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' wsdl:required='true' />
                 <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
+                <soap:header use='literal' part='FMKRequestHeader' message='tns:FMKRequestHeader' />
                 <soap:header use='literal' part='OnBehalfOfHeader' message='tns:OnBehalfOfHeader' />
-                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' wsdl:required='true' />
+                <soap:header use='literal' part='WhitelistingHeader' message='tns:WhitelistingHeader' />
                 <soap:header use='literal' part='ConsentHeader' message='tns:ConsentHeader' />
                 <soap:header use='literal' part='MinLogSessionId' message='tns:MinLogSessionId' />
                 <soap:header use='literal' part='PreflightOnly' message='tns:PreflightOnly' />
@@ -21,6 +22,7 @@
                 <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
                 <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' />
                 <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader' />
+                <soap:header use='literal' part='FMKResponseHeader' message='tns:FMKResponseHeader' />
                 <soap:header use='literal' part='KnownPersonIdentifiers' message='tns:KnownPersonIdentifiers' />
                 <soap:header use='literal' part='FMKConfigurationUpdatedWarning' message='tns:FMKConfigurationUpdatedWarning' />
 ">
@@ -34,14 +36,11 @@
 ">
 ]>
 <!--
-     Split-header model for the 2022_01_01 contract.
-     Request:  OnBehalfOf / Whitelisting / Consent / MinLogSessionId / PreflightOnly /
-               PartOfBatchOperation / FMKConfigurationLastUpdated are free-standing SOAP
-               headers; Paging and ExtendedValidationHeader move into the request body
-               as the optional FMKRequestHeader element.
-     Response: KnownPersonIdentifiers and FMKConfigurationUpdatedWarning are free-standing
-               SOAP headers; the rest moves into the response body as the optional
-               FMKResponseHeader element.
+     TRANSITION CONTRACT - NOT FOR PUBLICATION TO CLIENTS.
+     Accepts both the 2022_01_01 wrapper headers and the 2022_01_01 'new'
+     free-standing headers, on request and response alike, so the server can
+     serve both client generations from one endpoint.
+     Used only as a code-generation input.
      Generated from the corresponding _2022_01_01.wsdl - do not hand-edit.
 -->
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
@@ -89,14 +88,8 @@
 
         <xs:schema targetNamespace="http://fmk-teknik.dk/160" elementFormDefault="qualified">
 
-            <xs:include schemaLocation="../schemas/2022/01/01/WhitelistingHeader.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/MinLogSessionIdType.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/PreflightFlag.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/PartOfBatchOperationFlag.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKConfigurationLastUpdatedType.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/KnownPersonIdentifiers.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKConfigurationUpdatedWarning.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKResponseHeaderBody.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKRequestHeaderTransition.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/FMKResponseHeader.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/AbortHandlingOfDispensingPeriodRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/AbortHandlingOfDispensingPeriodResponse.xsd"/>
@@ -489,8 +482,12 @@
         <wsdl:part name="SecurityHeader" element="wsseorig:Security"/>
     </wsdl:message>
 
+    <wsdl:message name="FMKRequestHeader">
+        <wsdl:part name="FMKRequestHeader" element="mc160:FMKRequestHeader"/>
+    </wsdl:message>
+
     <wsdl:message name="OnBehalfOfHeader">
-        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOf"/>
+        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOfHeader"/>
     </wsdl:message>
 
     <wsdl:message name="WhitelistingHeader">
@@ -515,6 +512,10 @@
 
     <wsdl:message name="FMKConfigurationLastUpdated">
         <wsdl:part name="FMKConfigurationLastUpdated" element="mc160:FMKConfigurationLastUpdated"/>
+    </wsdl:message>
+
+    <wsdl:message name="FMKResponseHeader">
+        <wsdl:part name="FMKResponseHeader" element="mc160:FMKResponseHeader"/>
     </wsdl:message>
 
     <wsdl:message name="KnownPersonIdentifiers">

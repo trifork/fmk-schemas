@@ -11,11 +11,10 @@
     </parent>
 
     <groupId>dk.medicinkortet</groupId>
-    <artifactId>MedicineCard_Idws_2022_01_01_E1</artifactId>
+    <artifactId>MedicineCard_Idws_new_2022_01_01</artifactId>
     <version>${revision}</version>
 
-    <!-- IDWS counterpart of mc160e1_wsdl. See that module for the flavour rationale. -->
-
+    <!-- IDWS counterpart of mc160new_wsdl. See that module for the flavour rationale. -->
     <dependencies>
         <dependency>
             <groupId>dk.medicinkortet</groupId>
@@ -32,7 +31,7 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>schemaload-idws-medicinecard-e1</id>
+                        <id>schemaload-idws-medicinecard-new</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -40,8 +39,8 @@
                         <configuration>
                             <executable>java</executable>
                             <arguments>
-                                <argument>-DVersionDate=2022_01_01_E1</argument>
-                                <argument>-DWsdlName=MedicineCard_Idws</argument>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=MedicineCard_Idws_new</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -51,7 +50,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>schemaload-idws-patientregistration-e1</id>
+                        <id>schemaload-idws-patientregistration-new</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -59,8 +58,8 @@
                         <configuration>
                             <executable>java</executable>
                             <arguments>
-                                <argument>-DVersionDate=2022_01_01_E1</argument>
-                                <argument>-DWsdlName=PatientRegistration_Idws</argument>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=PatientRegistration_Idws_new</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -70,17 +69,17 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <!-- Server-side codegen input only - not assembled, not published. -->
                         <id>schemaload-idws-medicinecard-transition</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
+                            <!-- Server-side codegen input only - not assembled, not published. -->
                             <executable>java</executable>
                             <arguments>
-                                <argument>-DVersionDate=2022_01_01_Transition</argument>
-                                <argument>-DWsdlName=MedicineCard_Idws</argument>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=MedicineCard_Idws_transition</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -90,17 +89,17 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <!-- Server-side codegen input only - not assembled, not published. -->
                         <id>schemaload-idws-patientregistration-transition</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
                         <configuration>
+                            <!-- Server-side codegen input only - not assembled, not published. -->
                             <executable>java</executable>
                             <arguments>
-                                <argument>-DVersionDate=2022_01_01_Transition</argument>
-                                <argument>-DWsdlName=PatientRegistration_Idws</argument>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=PatientRegistration_Idws_transition</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -116,7 +115,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly-mc-e1-idws</id>
+                        <id>make-assembly-mc-new-idws</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -126,12 +125,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/mc160e1idws.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160newidws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-mc-e1-idws-inline</id>
+                        <id>make-assembly-mc-new-idws-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -141,12 +140,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/mc160e1idws-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160newidws-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por-e1-idws</id>
+                        <id>make-assembly-por-new-idws</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -156,12 +155,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/por160e1idws.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160newidws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por-e1-idws-inline</id>
+                        <id>make-assembly-por-new-idws-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -171,7 +170,7 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/por160e1idws-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160newidws-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
