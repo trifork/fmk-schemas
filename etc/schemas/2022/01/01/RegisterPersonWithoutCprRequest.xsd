@@ -1,0 +1,46 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PersonName.xsd"/>
+	<include schemaLocation="PersonNameProtected.xsd"/>
+	<include schemaLocation="BirthDate.xsd"/>
+	<include schemaLocation="Gender.xsd"/>
+	<include schemaLocation="AddressProtected.xsd"/>
+	<include schemaLocation="AddressLine.xsd"/>
+	<include schemaLocation="PostCode.xsd"/>
+	<include schemaLocation="DistrictName.xsd"/>
+	<include schemaLocation="CountryName.xsd"/>
+
+
+	<element name="RegisterPersonWithoutCprRequest" type="mc160:RegisterPersonWithoutCprRequestType">
+		<annotation>
+			<documentation xml:lang="en-GB">Outer container element for a request to register a person without cpr</documentation>
+			<documentation xml:lang="da-DK">Ydre container-element for en forespørgsel for at registrere en person uden cpr</documentation>
+		</annotation>
+	</element>
+	<complexType name="RegisterPersonWithoutCprRequestType">
+		<sequence>
+			<element name="Person" type="mc160:PersonWithoutCprType"/>
+		</sequence>
+	</complexType>
+
+
+	<element name="PersonWithoutCpr" type="mc160:PersonWithoutCprType"/>
+	<complexType name="PersonWithoutCprType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a person without CPR</documentation>
+			<documentation xml:lang="da-DK">Oplysninger om en person uden CPR</documentation>
+		</annotation>
+		<sequence>
+			<element name="Name" type="mc160:PersonNameType"/>
+			<element name="BirthDate" type="mc160:BirthDateType"/>
+			<element name="Gender" type="mc160:GenderType"/>
+			<element name="AddressLine" type="mc160:AddressLineType" minOccurs="0" maxOccurs="5"/>
+			<element name="PostCode" type="mc160:PostCodeType" minOccurs="0"/>
+			<element name="DistrictName" type="mc160:DistrictNameType" minOccurs="0"/>
+			<element name="Country" type="mc160:CountryNameType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>
