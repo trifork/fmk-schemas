@@ -17,18 +17,15 @@
     <!--
         Split-header flavour of the 2022_01_01 contract (DGWS).
 
-        Builds TWO flavours from the shared etc/schemas/2022/01/01 pool:
-
-          new         - free-standing SOAP headers; Paging and ExtendedValidationHeader
-                        move into the request body. Published to clients, under the BASE
-                        WSDL filename so switching is a coordinate change only.
-          transition  - accepts the original wrapper headers AND the "new" free-standing
-                        headers, so one endpoint can serve both client generations.
-                        Deliberately has NO assembly descriptor: a code-generation input
-                        only, which must never reach clients.
+        Free-standing SOAP headers; Paging and ExtendedValidationHeader move into the
+        request body, and most of FMKResponseHeader into the response body. Published to
+        clients under the BASE WSDL filename, so switching from the original contract is a
+        Maven coordinate change and nothing else.
 
         The original contract stays in mc160_wsdl, untouched, so the two published
-        artifacts cannot drift into each other.
+        artifacts cannot drift into each other. The FMK server accepts BOTH styles on one
+        endpoint - that is implemented in the server's header handling, not described by a
+        third schema.
     -->
     <dependencies>
         <dependency>
@@ -75,46 +72,6 @@
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
                                 <argument>-DWsdlName=PatientRegistration_new</argument>
-                                <argument>-Dtarget.dir=target/resources</argument>
-                                <argument>-Xmx1024m</argument>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>schemaload-dgws-medicinecard-transition</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <!-- Server-side codegen input only - not assembled, not published. -->
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-DVersionDate=2022_01_01</argument>
-                                <argument>-DWsdlName=MedicineCard_transition</argument>
-                                <argument>-Dtarget.dir=target/resources</argument>
-                                <argument>-Xmx1024m</argument>
-                                <argument>-classpath</argument>
-                                <classpath/>
-                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>schemaload-dgws-patientregistration-transition</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <!-- Server-side codegen input only - not assembled, not published. -->
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-DVersionDate=2022_01_01</argument>
-                                <argument>-DWsdlName=PatientRegistration_transition</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
