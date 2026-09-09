@@ -4,8 +4,8 @@
 		targetNamespace="http://fmk-teknik.dk/160/advis"
 		elementFormDefault="qualified">
 
-	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="RequestForWarrantIdentifier.xsd"/>
+	<include schemaLocation="WarrantModificationIdentifiers.xsd"/>
 
 	<complexType name="RequestForWarrantModificationIdentifiersType">
 		<annotation>
@@ -14,7 +14,12 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:RequestForWarrantIdentifierType"/>
-			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType"/>
+			<element name="Warrant" type="mc160:WarrantModificationIdentifiersType" minOccurs="0">
+				<annotation>
+					<documentation xml:lang="en-GB">The warrant that fulfilled the request, if any</documentation>
+					<documentation xml:lang="da-DK">Det udleveringsgrundlag der opfyldte anmodningen, hvis relevant</documentation>
+				</annotation>
+			</element>
 		</sequence>
 	</complexType>
 </schema>

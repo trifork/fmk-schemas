@@ -7,6 +7,7 @@
 	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
     <include schemaLocation="WarrantModificationIdentifiers.xsd"/>
+    <include schemaLocation="RequestForWarrantModificationIdentifiers.xsd"/>
 
     <complexType name="DrugMedicationModificationIdentifiersType">
 		<annotation>
@@ -18,6 +19,7 @@
             <element name="Version" type="mc160:DrugMedicationVersionType"/>
             <choice minOccurs="0">
                 <element name="Warrant" type="mc160:WarrantModificationIdentifiersType"/>
+				<element name="RequestForWarrant" type="mc160:RequestForWarrantModificationIdentifiersType"/>
 				<element name="DrugAdministrationIdentifier" type="mc160:DrugAdministrationIdentifierType"/>
 			</choice>
 		</sequence>

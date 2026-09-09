@@ -7,6 +7,8 @@
 	<include schemaLocation="../common/UndefinedModificationAction.xsd"/>
 	<include schemaLocation="DrugAdministrationModificationAction.xsd"/>
 	<include schemaLocation="DrugMedicationModificationAction.xsd"/>
+	<include schemaLocation="OrderModificationAction.xsd"/>
+	<include schemaLocation="RequestForWarrantModificationAction.xsd"/>
 
 	<simpleType name="MedicineCardModificationActionType">
 		<annotation>
@@ -16,6 +18,8 @@
 		<union memberTypes="mc160:PredefinedMedicineCardModificationActionType
 							mc160:PredefinedDrugMedicationModificationActionType
 							mc160:PredefinedDrugAdministrationModificationActionType
+							mc160:PredefinedOrderModificationActionType
+							mc160:PredefinedRequestForWarrantModificationActionType
 							mc160:UndefinedModificationActionType"/>
 	</simpleType>
 
@@ -32,6 +36,9 @@
 			<enumeration value="WarrantDetached"/>
 			<enumeration value="WarrantDeprecated"/>
 			<enumeration value="WarrantUndeprecated"/>
+			<enumeration value="WarrantClosed"/>
+			<enumeration value="WarrantInvalidated"/>
+			<enumeration value="WarrantDeleted"/>
 			<enumeration value="WarrantHandoverRegistered"/>
 			<enumeration value="WarrantHandoverWithdrawn"/>
 			<enumeration value="WarrantHandoverInvalidated"/>
