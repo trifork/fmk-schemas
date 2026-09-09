@@ -13,8 +13,8 @@
 
 	<complexType name="FMKResponseHeaderBodyType">
 		<annotation>
-			<documentation xml:lang="en-GB">Response values carried inside the response body rather than in the SOAP header. Used from the 2022_01_01 "new" contract onwards, where only KnownPersonIdentifiers and FMKConfigurationUpdatedWarning remain as free-standing SOAP headers. Element order is unchanged from FMKResponseHeaderType.</documentation>
-			<documentation xml:lang="da-DK">Response-værdier der sendes i response-bodyen i stedet for i SOAP headeren. Anvendes fra 2022_01_01 "new", hvor kun KnownPersonIdentifiers og FMKConfigurationUpdatedWarning sendes som fritstående SOAP headers. Rækkefølgen af elementer er uændret fra FMKResponseHeaderType.</documentation>
+			<documentation xml:lang="en-GB">Response values carried inside the response body rather than in the SOAP header. </documentation>
+			<documentation xml:lang="da-DK">Response-værdier der sendes i response-bodyen i stedet for i SOAP headeren. </documentation>
 		</annotation>
 		<sequence>
 			<element name="MedicinecardInvalid" type="mc160:MedicineCardIsInvalidType" minOccurs="0"/>
@@ -26,11 +26,6 @@
 		</sequence>
 	</complexType>
 
-	<!--
-		WarningsType and ResponseInformationsType were defined in FMKResponseHeader.xsd.
-		They moved here because the "new" flavour does not include that wrapper at all,
-		and both types are only ever used by response-header content.
-	-->
 	<complexType name="WarningsType">
 		<sequence>
 			<element name="Warning" type="mc160:FMKDetailType" maxOccurs="unbounded"/>
