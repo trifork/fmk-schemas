@@ -442,6 +442,8 @@
             <xs:include schemaLocation="../schemas/2022/01/01/UndoSecondaryHandoverRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/UndoSecondaryHandoverResponse.xsd"/>
 
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPersonWithoutCprRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/RegisterPersonWithoutCprResponse.xsd"/>
         </xs:schema>
 
     </wsdl:types>
@@ -1457,6 +1459,14 @@
         <wsdl:part name="UndoSecondaryHandoverResponse" element="mc160:UndoSecondaryHandoverResponse"/>
     </wsdl:message>
 
+    <wsdl:message name="RegisterPersonWithoutCprRequest_160">
+        <wsdl:part name="RegisterPersonWithoutCprRequest" element="mc160:RegisterPersonWithoutCprRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="RegisterPersonWithoutCprResponse_160">
+        <wsdl:part name="RegisterPersonWithoutCprResponse" element="mc160:RegisterPersonWithoutCprResponse"/>
+    </wsdl:message>
+
     <wsdl:portType name="MedicineCardPortType">
 
         <wsdl:operation name="AbortHandlingOfDispensingPeriod_160">
@@ -2195,6 +2205,12 @@
         <wsdl:operation name="UndoSecondaryHandover_160">
             <wsdl:input name="UndoSecondaryHandoverRequest_160" message="tns:UndoSecondaryHandoverRequest_160"/>
             <wsdl:output name="UndoSecondaryHandoverResponse_160" message="tns:UndoSecondaryHandoverResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPersonWithoutCpr_160">
+            <wsdl:input name="RegisterPersonWithoutCprRequest_160" message="tns:RegisterPersonWithoutCprRequest_160"/>
+            <wsdl:output name="RegisterPersonWithoutCprResponse_160" message="tns:RegisterPersonWithoutCprResponse_160"/>
             &operationFaultDeclaration;
         </wsdl:operation>
 
@@ -3800,6 +3816,19 @@
                 <soap:body use="literal"/>
             </wsdl:input>
             <wsdl:output name="UndoSecondaryHandoverResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="RegisterPersonWithoutCpr_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#RegisterPersonWithoutCpr" style="document"/>
+            <wsdl:input name="RegisterPersonWithoutCprRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="RegisterPersonWithoutCprResponse_160">
                 &fmkStandardSOAPResponseHeaders;
                 <soap:body use="literal"/>
             </wsdl:output>
