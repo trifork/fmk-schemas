@@ -7,6 +7,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="RemovePatientOrganisationRelationResponse" type="mc160:RemovePatientOrganisationRelationResponseType">
 		<annotation>
@@ -17,6 +18,7 @@
 
 	<complexType name="RemovePatientOrganisationRelationResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="RelationDeleted" type="mc160:PatientOrganisationRelationIdentifierType" maxOccurs="unbounded"/>
 		</sequence>

@@ -13,6 +13,7 @@
     <include schemaLocation="Dispensing.xsd"/>
     <include schemaLocation="DispensingCardIdentifier.xsd"/>
     <include schemaLocation="DispensingDispensableUnit.xsd"/>
+    <include schemaLocation="FMKResponseHeaderBody.xsd"/>
     
 	<element name="GetDispensingDetailedSpecificationResponse" type="mc160:GetDispensingDetailedSpecificationResponseType">
         <annotation>
@@ -22,6 +23,7 @@
     </element>
     <complexType name="GetDispensingDetailedSpecificationResponseType">
         <sequence>
+            <element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
             <choice>
                 <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
                 <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

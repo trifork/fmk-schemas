@@ -25,6 +25,7 @@
     <include schemaLocation="CreateDrugAdministration.xsd"/>
     <include schemaLocation="UndoHandoverOnWarrant.xsd"/>
 	<include schemaLocation="UndoRegisterDrugAdministration.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="UpdateMedicineCardRequest" type="mc160:UpdateMedicineCardRequestType">
 		<annotation>
@@ -34,6 +35,7 @@
 	</element>
 	<complexType name="UpdateMedicineCardRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>

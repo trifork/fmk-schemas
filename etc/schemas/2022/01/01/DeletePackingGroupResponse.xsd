@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PackingGroupIdentifierAndVersion.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="DeletePackingGroupResponse" type="mc160:DeletePackingGroupResponseType">
 		<annotation>
@@ -14,6 +15,7 @@
 	</element>
 	<complexType name="DeletePackingGroupResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PackingGroup" type="mc160:PackingGroupIdentifierAndVersionType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

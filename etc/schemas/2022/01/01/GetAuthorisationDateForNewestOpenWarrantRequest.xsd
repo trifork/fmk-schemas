@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetAuthorisationDateForNewestOpenWarrantRequest" type="mc160:GetAuthorisationDateForNewestOpenWarrantRequestType">
 		<annotation>
@@ -14,6 +15,7 @@
 	</element>
 	<complexType name="GetAuthorisationDateForNewestOpenWarrantRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 		</sequence>
 	</complexType>

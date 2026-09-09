@@ -8,6 +8,8 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Episodes.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="ListEpisodesRequest" type="mc160:ListEpisodesRequestType">
 		<annotation>
@@ -18,6 +20,7 @@
 
 	<complexType name="ListEpisodesRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="DrugMedicationIdentifier" type="mc160:DrugMedicationIdentifierType" minOccurs="0" maxOccurs="100"/>
 		</sequence>
@@ -32,6 +35,7 @@
 
 	<complexType name="ListEpisodesResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="Episodes" type="mc160:EpisodesForResponseType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

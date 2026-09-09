@@ -8,6 +8,7 @@
 	<include schemaLocation="PersonWithRequestsForWarrant.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="MoreAvailable.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 	<element name="SearchRequestsForWarrantAndDetailsResponse" type="mc160:SearchRequestsForWarrantAndDetailsResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">An element containing the information on a list of patients which has active requests for warrant</documentation>
@@ -17,6 +18,7 @@
 
 	<complexType name="SearchRequestsForWarrantAndDetailsResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonWithRequestsForWarrant" type="mc160:PersonWithRequestsForWarrantType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

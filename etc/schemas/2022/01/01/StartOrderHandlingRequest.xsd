@@ -9,6 +9,7 @@
   <include schemaLocation="Modificator.xsd"/>
   <include schemaLocation="WarrantIdentifier.xsd"/>
   <include schemaLocation="ModificationMetadata.xsd"/>
+  <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
   <element name="StartOrderHandlingRequest" type="mc160:StartOrderHandlingRequestType">
     <annotation>
@@ -19,6 +20,7 @@
   </element>
   <complexType name="StartOrderHandlingRequestType">
     <sequence>
+      <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
       <choice>
         <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
         <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

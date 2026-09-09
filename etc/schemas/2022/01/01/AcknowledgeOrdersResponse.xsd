@@ -4,6 +4,8 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
+
 	<element name="AcknowledgeOrdersResponse" type="mc160:AcknowledgeOrdersResponseType">
 		<annotation>
 			<documentation xml:lang="en-GB">Response to acknowledge that new orders have been received by a pharmacy</documentation>
@@ -11,5 +13,8 @@
 		</annotation>
 	</element>
 	<complexType name="AcknowledgeOrdersResponseType">
+		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
+		</sequence>
 	</complexType>
 </schema>

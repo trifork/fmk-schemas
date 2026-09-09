@@ -9,6 +9,7 @@
     <include schemaLocation="IncludeManualDispensingPatients.xsd"/>
     <include schemaLocation="IncludeDoseDispensingPatients.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="ListDispensingPatientsRequest" type="mc160:ListDispensingPatientsRequestType">
 		<annotation>
@@ -18,6 +19,7 @@
 	</element>
 	<complexType name="ListDispensingPatientsRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="IncludePatientDetails" type="mc160:IncludePatientDetailsType" minOccurs="0"/>
             <choice>
                 <element name="IncludeDoseDispensingPatients" type="mc160:IncludeDoseDispensingPatientsType"/>

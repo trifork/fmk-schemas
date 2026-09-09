@@ -8,6 +8,7 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="PlannedAdministrationIdentifier.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetPlannedAdministrationRequest" type="mc160:GetPlannedAdministrationRequestType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="GetPlannedAdministrationRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

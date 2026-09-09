@@ -7,6 +7,7 @@
 	<include schemaLocation="GetAllPermissions.xsd"/>
 	<include schemaLocation="GetCallersPermissions.xsd"/>
 	<include schemaLocation="GetCallersPermissionsToPerson.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetPermissionsRequest" type="mc160:GetPermissionsRequestType">
 		<annotation>
@@ -15,10 +16,13 @@
 		</annotation>
 	</element>
 	<complexType name="GetPermissionsRequestType">
-		<choice>
-			<element name="GetAllPermissions" type="mc160:GetAllPermissionsType"/>
-			<element name="GetCallersPermissions" type="mc160:GetCallersPermissionsType"/>
-			<element name="GetCallersPermissionsToPerson" type="mc160:GetCallersPermissionsToPersonType"/>
-		</choice>
+		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
+			<choice>
+				<element name="GetAllPermissions" type="mc160:GetAllPermissionsType"/>
+				<element name="GetCallersPermissions" type="mc160:GetCallersPermissionsType"/>
+				<element name="GetCallersPermissionsToPerson" type="mc160:GetCallersPermissionsToPersonType"/>
+			</choice>
+		</sequence>
 	</complexType>
 </schema>

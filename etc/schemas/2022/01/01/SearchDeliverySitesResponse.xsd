@@ -6,6 +6,7 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="SearchDeliverySitesResponse" type="mc160:SearchDeliverySitesResponseType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="SearchDeliverySitesResponseType">
 		<sequence>
+            <element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
             <element name="DeliverySiteAndAssociatedPharmacy" type="mc160:DeliverySiteAndPharmacy" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

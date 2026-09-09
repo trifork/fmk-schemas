@@ -6,6 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="MedicineCardVersion.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="AttachOrDetachWarrantResponse" type="mc160:AttachOrDetachWarrantResponseType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="AttachOrDetachWarrantResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 		</sequence>

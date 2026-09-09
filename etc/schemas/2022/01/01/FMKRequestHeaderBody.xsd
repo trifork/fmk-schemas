@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="PagingRequest.xsd"/>
+	<include schemaLocation="ExtendedValidationRequestHeader.xsd"/>
+
+	<complexType name="FMKRequestHeaderBodyType">
+		<annotation>
+			<documentation xml:lang="en-GB">Request parameters carried inside the request body rather than in the SOAP header. Used from the 2022_01_01 "new" contract onwards, where the remaining FMKRequestHeader elements are sent as free-standing SOAP headers.</documentation>
+			<documentation xml:lang="da-DK">Request-parametre der sendes i request-bodyen i stedet for i SOAP headeren. Anvendes fra 2022_01_01 "new", hvor de øvrige FMKRequestHeader-elementer sendes som fritstående SOAP headers.</documentation>
+		</annotation>
+		<sequence>
+			<element name="Paging" type="mc160:PagingRequestType" minOccurs="0"/>
+			<element name="ExtendedValidationHeader" type="mc160:ExtendedValidationRequestHeaderType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

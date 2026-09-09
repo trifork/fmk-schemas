@@ -6,6 +6,7 @@
 
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="DeletePackingGroup.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="DeletePackingGroupRequest" type="mc160:DeletePackingGroupRequestType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="DeletePackingGroupRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="PackingGroup" type="mc160:DeletePackingGroupType" maxOccurs="unbounded" />

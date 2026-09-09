@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="OrganisationIdentifier.xsd"/>
+    <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetFocesWhitelistingsRequest" type="mc160:GetFocesWhitelistingsRequestType">
 		<annotation>
@@ -14,6 +15,7 @@
 	</element>
 	<complexType name="GetFocesWhitelistingsRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 		</sequence>
 	</complexType>
