@@ -6,16 +6,18 @@
 
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationVersion.xsd"/>
+	<include schemaLocation="ElementType.xsd"/>
 
-	<element name="DrugMedicationWithNegativeConsent" type="mc160:DrugMedicationWithNegativeConsentType">
+	<element name="ElementWithNegativeConsent" type="mc160:ElementWithNegativeConsentType">
 		<annotation>
-			<documentation xml:lang="en-GB">This structure contains drug medication identifier and version for a drug medication with negative consent.</documentation>
-			<documentation xml:lang="da-DK">Denne struktur indeholder id og version for en lægemiddelordination med negativt samtykke.</documentation>
+			<documentation xml:lang="en-GB">This structure contains element type, identifier and version for an element with negative consent.</documentation>
+			<documentation xml:lang="da-DK">Denne struktur indeholder elementtype, id og version for et element med negativt samtykke.</documentation>
 		</annotation>
 	</element>
 
-	<complexType name="DrugMedicationWithNegativeConsentType">
+	<complexType name="ElementWithNegativeConsentType">
 		<sequence>
+			<element name="Type" type="mc160:ElementTypeType"/>
 			<element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
 			<element name="Version" type="mc160:DrugMedicationVersionType"/>
 		</sequence>
