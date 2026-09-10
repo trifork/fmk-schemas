@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<include schemaLocation="DrugMedicationWithNegativeConsent.xsd"/>
+
+	<element name="DrugMedicationsWithNegativeConsent" type="mc160:DrugMedicationsWithNegativeConsentListType">
+		<annotation>
+			<documentation xml:lang="en-GB">List of drug medications with negative consent.</documentation>
+			<documentation xml:lang="da-DK">Liste af lægemiddelordinationer med negativt samtykke.</documentation>
+		</annotation>
+	</element>
+
+	<complexType name="DrugMedicationsWithNegativeConsentListType">
+		<sequence>
+			<element name="DrugMedicationWithNegativeConsent" type="mc160:DrugMedicationWithNegativeConsentType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
