@@ -6,7 +6,6 @@
 
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="HandoverModificationIdentifiers.xsd"/>
-	<include schemaLocation="../common/OrderIdentifier.xsd"/>
 
 	<complexType name="LoosePrescriptionModificationIdentifiersType">
 		<annotation>
@@ -15,10 +14,7 @@
 		</annotation>
 		<sequence>
 			<element name="Identifier" type="mc160:WarrantIdentifierType"/>
-			<choice minOccurs="0">
-				<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
-				<element name="Handover" type="mc160:HandoverModificationIdentifiersType"/>
-			</choice>
+			<element name="Handover" type="mc160:HandoverModificationIdentifiersType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>
