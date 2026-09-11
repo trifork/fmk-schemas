@@ -11,18 +11,20 @@
     </parent>
 
     <groupId>dk.medicinkortet</groupId>
-    <artifactId>MedicineCard_2022_01_01</artifactId>
+    <artifactId>MedicineCard_old_2022_01_01</artifactId>
     <version>${revision}</version>
 
     <!--
-        The 2022_01_01 contract (DGWS). Header elements travel as free-standing SOAP
-        headers; Paging and ExtendedValidationHeader sit in the request body, and most of
-        FMKResponseHeader in the response body.
+        FROZEN predecessor of the 2022_01_01 contract (DGWS): the wrapper-header shape,
+        where everything travelled inside FMKRequestHeader / FMKResponseHeader.
 
-        This shape replaced the wrapper-header shape, which is frozen in mc160old_wsdl and
-        published as MedicineCard_old_2022_01_01 for the duration of the migration. Both
-        artifacts publish the same WSDL filename, so a client moves between them by
-        changing one Maven coordinate.
+        Kept only so existing clients can migrate, and never edited again - new operations
+        go into mc160_wsdl. Delete this module, its WSDLs and its assembly descriptors once
+        no client is on the wrapper shape.
+
+        NOTE: fmk-160-schema-classes generates from THIS module, not the canonical one,
+        because only this closure contains FMKRequestHeader.xsd - the server needs that
+        type to parse old-style requests while it accepts both shapes.
     -->
     <dependencies>
         <dependency>
@@ -40,7 +42,7 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>schemaload-dgws-medicinecard</id>
+                        <id>schemaload-dgws-medicinecard-old</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -49,7 +51,7 @@
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
-                                <argument>-DWsdlName=MedicineCard</argument>
+                                <argument>-DWsdlName=MedicineCard_old</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -59,7 +61,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>schemaload-dgws-patientregistration</id>
+                        <id>schemaload-dgws-patientregistration-old</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -68,7 +70,7 @@
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
-                                <argument>-DWsdlName=PatientRegistration</argument>
+                                <argument>-DWsdlName=PatientRegistration_old</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -84,7 +86,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly-mc</id>
+                        <id>make-assembly-mc-old</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -94,12 +96,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/mc160.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160old.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-mc-inline</id>
+                        <id>make-assembly-mc-old-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -109,12 +111,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/mc160-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160old-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por</id>
+                        <id>make-assembly-por-old</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -124,12 +126,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/por160.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160old.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por-inline</id>
+                        <id>make-assembly-por-old-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -139,7 +141,7 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/por160-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160old-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
