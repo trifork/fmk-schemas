@@ -14,6 +14,7 @@
     <artifactId>MedicineCard_Idws_2022_01_01</artifactId>
     <version>${revision}</version>
 
+    <!-- IDWS counterpart of mc160_wsdl. See that module for the rationale. -->
     <dependencies>
         <dependency>
             <groupId>dk.medicinkortet</groupId>
@@ -35,15 +36,12 @@
                         <goals>
                             <goal>exec</goal>
                         </goals>
-
                         <configuration>
-
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
                                 <argument>-DWsdlName=MedicineCard_Idws</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
-                                <argument>-Dschemas.dir=../etc/schemas</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
                                 <classpath/>
@@ -57,15 +55,12 @@
                         <goals>
                             <goal>exec</goal>
                         </goals>
-
                         <configuration>
-
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
                                 <argument>-DWsdlName=PatientRegistration_Idws</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
-                                <argument>-Dschemas.dir=../etc/schemas</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
                                 <classpath/>
@@ -80,58 +75,62 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly-mc</id>
+                        <id>make-assembly-mc-idws</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>src/assembly/mc160idws.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160idws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-mc-inline</id>
+                        <id>make-assembly-mc-idws-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>src/assembly/mc160idws-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160idws-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por</id>
+                        <id>make-assembly-por-idws</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>src/assembly/por160idws.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160idws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por-inline</id>
+                        <id>make-assembly-por-idws-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>src/assembly/por160idws-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160idws-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>

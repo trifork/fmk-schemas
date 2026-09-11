@@ -11,22 +11,10 @@
     </parent>
 
     <groupId>dk.medicinkortet</groupId>
-    <artifactId>MedicineCard_new_2022_01_01</artifactId>
+    <artifactId>MedicineCard_Idws_old_2022_01_01</artifactId>
     <version>${revision}</version>
 
-    <!--
-        Split-header flavour of the 2022_01_01 contract (DGWS).
-
-        Free-standing SOAP headers; Paging and ExtendedValidationHeader move into the
-        request body, and most of FMKResponseHeader into the response body. Published to
-        clients under the BASE WSDL filename, so switching from the original contract is a
-        Maven coordinate change and nothing else.
-
-        The original contract stays in mc160_wsdl, untouched, so the two published
-        artifacts cannot drift into each other. The FMK server accepts BOTH styles on one
-        endpoint - that is implemented in the server's header handling, not described by a
-        third schema.
-    -->
+    <!-- IDWS counterpart of mc160old_wsdl. Frozen; see that module for the rationale. -->
     <dependencies>
         <dependency>
             <groupId>dk.medicinkortet</groupId>
@@ -43,7 +31,7 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>schemaload-dgws-medicinecard-new</id>
+                        <id>schemaload-idws-medicinecard-old</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -52,7 +40,7 @@
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
-                                <argument>-DWsdlName=MedicineCard_new</argument>
+                                <argument>-DWsdlName=MedicineCard_Idws_old</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -62,7 +50,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>schemaload-dgws-patientregistration-new</id>
+                        <id>schemaload-idws-patientregistration-old</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
@@ -71,7 +59,7 @@
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
-                                <argument>-DWsdlName=PatientRegistration_new</argument>
+                                <argument>-DWsdlName=PatientRegistration_Idws_old</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
@@ -87,7 +75,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly-mc-new</id>
+                        <id>make-assembly-mc-old-idws</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -97,12 +85,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/mc160new.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160oldidws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-mc-new-inline</id>
+                        <id>make-assembly-mc-old-idws-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -112,12 +100,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/mc160new-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160oldidws-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por-new</id>
+                        <id>make-assembly-por-old-idws</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -127,12 +115,12 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/por160new.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160oldidws.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por-new-inline</id>
+                        <id>make-assembly-por-old-idws-inline</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
@@ -142,7 +130,7 @@
                             <attach>true</attach>
                             <finalName>_</finalName>
                             <descriptors>
-                                <descriptor>${project.parent.basedir}/src/assembly/por160new-inline.xml</descriptor>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160oldidws-inline.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
