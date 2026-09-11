@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160/advis"
+		targetNamespace="http://fmk-teknik.dk/160/advis"
+		elementFormDefault="qualified">
+
+	<include schemaLocation="../common/PersonIdentifier.xsd"/>
+	<include schemaLocation="PatientOrganisationRelationIdentifier.xsd"/>
+
+	<complexType name="PatientOrganisationRelationIdentifiersType">
+		<annotation>
+			<documentation xml:lang="en-GB">Identifiers for a patient-organisation relation modification</documentation>
+			<documentation xml:lang="da-DK">Identifikatorer for en ændring af en patient-organisationsrelation</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="Identifier" type="mc160:PatientOrganisationRelationIdentifierType"/>
+		</sequence>
+	</complexType>
+</schema>

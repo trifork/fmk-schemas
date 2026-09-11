@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160/advis"
+		targetNamespace="http://fmk-teknik.dk/160/advis"
+		elementFormDefault="qualified">
+
+	<include schemaLocation="../common/PersonIdentifier.xsd"/>
+    <include schemaLocation="../common/OrderIdentifier.xsd"/>
+	<include schemaLocation="../dispensing/DispensingPeriodIdentifier.xsd"/>
+	<include schemaLocation="TrackAndTraceEventIdentifier.xsd"/>
+
+	<complexType name="TrackAndTraceModificationIdentifiersType">
+		<annotation>
+			<documentation xml:lang="en-GB">Identifiers for a Track and Trace modification</documentation>
+			<documentation xml:lang="da-DK">Identifikatorer for en ændring af Track and Trace-oplysninger</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="TrackAndTraceEventIdentifier" type="mc160:TrackAndTraceEventIdentifierType"/>
+            <element name="EventType" type="mc160:EventTypeType"/>
+			<choice>
+				<element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
+				<element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>
+			</choice>
+		</sequence>
+	</complexType>
+
+    <simpleType name="EventTypeType">
+        <annotation>
+            <documentation xml:lang="en-GB">Type of a Track and Trace event</documentation>
+            <documentation xml:lang="da-DK">Typen af et Track and Trace-event</documentation>
+        </annotation>
+        <restriction base="string">
+            <maxLength value="256"/>
+        </restriction>
+    </simpleType>
+</schema>

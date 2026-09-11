@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160/advis"
+		targetNamespace="http://fmk-teknik.dk/160/advis"
+		elementFormDefault="qualified">
+
+	<include schemaLocation="MedicineCardModificationAction.xsd"/>
+	<include schemaLocation="MedicineCardModificationIdentifiers.xsd"/>
+
+	<element name="MedicineCardModification" type="mc160:MedicineCardModificationType"/>
+
+	<complexType name="MedicineCardModificationType">
+		<annotation>
+			<documentation xml:lang="en-GB">Information about a medicine card modification</documentation>
+			<documentation xml:lang="da-DK">Information om en ændring af et medicinkort</documentation>
+		</annotation>
+		<sequence>
+			<element name="Action" type="mc160:MedicineCardModificationActionType"/>
+			<element name="MedicineCard" type="mc160:MedicineCardModificationIdentifiersType"/>
+			<any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+		</sequence>
+	</complexType>
+</schema>
