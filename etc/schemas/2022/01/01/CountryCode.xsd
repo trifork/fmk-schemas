@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160"
+		targetNamespace="http://fmk-teknik.dk/160"
+		elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<element name="CountryCode" type="mc160:CountryCodeType"/>
+	<complexType name="CountryCodeType">
+		<annotation>
+			<documentation xml:lang="en-uk">The country code based on the 4 diffent schemes.</documentation>
+			<documentation xml:lang="da-dk">Landeidentifikations kode baseret på de 4 forskellige formater.</documentation>
+		</annotation>
+		<simpleContent>
+			<extension base="mc160:_CountryCodeType">
+				<attribute name="scheme" type="mc160:_CountryCodeSchemeType" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- The types below are support types for CountryCodeType - must not be used for other purporses. -->
+	<!-- Typer nedenfor er støtte typer til CountryCodeType - må ikke anvendes til andre formål. -->
+	<simpleType name="_CountryCodeType">
+		<annotation>
+			<documentation xml:lang="en-uk">This is a support type for CountryCodeType. The pattern is a choice of 4 different patterns for different schemas. ISO 3166 standard, alpha 2: [a-z,A-Z]{2}. Example "DK" for Danmark. ISO 3166 standard, alpha 3: [a-z,A-Z]{3}. Example "DKN" for Danmark. UN Statistics Divisions country codes: [0-9]{3}. Example "208" for Danmark AuthorityCode from the Central Office of Civil Registration: [0-9]{4}. Example "5100" for Danmark.</documentation>
+			<documentation xml:lang="da-dk">Dette er en støttetype til CountryCodeType. Det regulære udtryk er et valg for de 4 forskellige regulære udtryk for de forskellige formater. ISO 3166 standard, alpha 2: [a-z,A-Z]{2}. Eksempel "DK" for Danmark. ISO 3166 standard, alpha 3:  [a-z,A-Z]{3}. Eksempel "DKN" for Danmark. UN Statistics Divisions country codes: [0-9]{3}. Eksempel "208" for Danmark AuthorityCode from the Central Office of Civil Registration: [0-9]{4}. Eksempel "5100" for Danmark.</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="[a-z,A-Z]{2}|[a-z,A-Z]{3}|[0-9]{3}|[0-9]{4}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="_CountryCodeSchemeType">
+		<annotation>
+			<documentation xml:lang="en-uk">This is a support type for CountryCodeType.</documentation>
+			<documentation xml:lang="da-dk">Dette er en støttetype til CountryCodeType.</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="iso3166-alpha2">
+				<annotation>
+					<documentation xml:lang="en-uk">This scheme follows the ISO 3166 standard, alpha 2.</documentation>
+					<documentation xml:lang="da-dk">Dette format følger ISO 3166 standarden, alpha 2.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="iso3166-alpha3">
+				<annotation>
+					<documentation xml:lang="en-uk">This scheme follows the ISO 3166 standard, alpha 3.</documentation>
+					<documentation xml:lang="da-dk">Dette format følger ISO 3166 standarden, alpha 3.</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="un-numeric3">
+				<annotation>
+					<documentation xml:lang="en-uk">This scheme follows the UN Statistics Divisions country codes.</documentation>
+					<documentation xml:lang="da-dk">Dette format følger FNs Statistik Kontor landekoder</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="imk">
+				<annotation>
+					<documentation xml:lang="en-uk">This scheme follows the AuthorityCode from the Central Office of Civil Registration.</documentation>
+					<documentation xml:lang="da-dk">Dette format følger MyndighedsKoden fra Det Centrale Personregister</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+</schema>
