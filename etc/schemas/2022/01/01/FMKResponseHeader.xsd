@@ -14,6 +14,20 @@
 	<include schemaLocation="ResponseInformation.xsd"/>
     <include schemaLocation="FMKConfigurationLastUpdatedType.xsd"/>
 	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
+	<!--
+		DO NOT REMOVE, even though this wrapper does not use the element.
+
+		fmk-160-schema-classes generates from the _old contract, because that is the only closure
+		containing FMKRequestHeader.xsd and the server needs FMKRequestHeaderType to parse old-shape
+		requests. The free-standing FMKConfigurationUpdatedWarning element is otherwise reachable
+		only from the canonical contract, so without this include the generated jar cannot marshal
+		it and the server cannot answer a new-shape client.
+
+		In other words: the _old closure has to be a superset, because it is the code-generation
+		source for a server that speaks both shapes. Same reason PreflightOnly, MinLogSessionId and
+		the other free-standing globals are declared here but unused by this wrapper.
+	-->
+	<include schemaLocation="FMKConfigurationUpdatedWarning.xsd"/>
 
 	<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderType">
 		<annotation>
