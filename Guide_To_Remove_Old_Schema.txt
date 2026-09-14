@@ -44,6 +44,32 @@ Maven coordinate and nothing else. The old descriptors achieve this with a
 The FMK server accepts BOTH shapes on one endpoint. That is implemented in the
 server's header handling.
 
+WHY CODEGEN READS FROM THE OLD CONTRACT
+
+fmk-160-schema-classes generates from mc160old_wsdl, not from the canonical module.
+That looks like a mistake. It is not.
+
+The two closures are NOT interchangeable as code-generation sources:
+
+  only in the OLD closure        FMKRequestHeader.xsd / FMKResponseHeader.xsd
+                                 -> FMKRequestHeaderType, needed to PARSE old-shape
+                                    requests
+
+  naturally only in CANONICAL    FMKConfigurationUpdatedWarning
+                                 -> needed to ANSWER a new-shape client
+
+A server speaking both shapes needs both. So whichever closure feeds codegen has to
+be a SUPERSET, and the old one was made the superset: FMKResponseHeader.xsd includes
+FMKConfigurationUpdatedWarning.xsd even though the wrapper never uses it. Same reason
+PreflightOnly, MinLogSessionId and the other free-standing globals are declared in
+the old closure but only used by the new shape.
+
+This is why section 3 ("Repoint codegen at the canonical contract") is the step that
+actually ends the transition. Repointing codegen is only safe once old-shape parsing
+is gone, because FMKRequestHeaderType disappears from the jar at that moment - which
+is exactly what makes the compiler enumerate the work in section 4 ("Remove the
+dual-shape handling").
+
 --------------------------------------------------------------------------------
 1. PRECONDITIONS: Verify before starting
 --------------------------------------------------------------------------------
@@ -92,6 +118,13 @@ server's header handling.
      These two are the ONLY schema files that become unreachable - verified by
      diffing the two published closures. Everything else in the pool is shared.
 
+     Deleting FMKResponseHeader.xsd also removes its include of
+     FMKConfigurationUpdatedWarning.xsd, which is correct HERE and only here: that
+     include exists solely to make the old closure a superset for codegen (see
+     section 0). Do not remove it earlier - without it the generated jar cannot
+     marshal the free-standing response header, and the server silently loses the
+     ability to answer a new-shape client.
+
      Do NOT delete these, they belong to the canonical contract:
        FMKRequestHeaderBody.xsd        (Paging + ExtendedValidationHeader)
        FMKResponseHeaderBody.xsd       (the six response body elements, plus
@@ -99,7 +132,7 @@ server's header handling.
                                         which were MOVED here out of the wrapper)
        FMKConfigurationUpdatedWarning.xsd
        OnBehalfOf.xsd                  (declares both OnBehalfOf and
-                                        OnBehalfOfHeader globals - see 5.2)
+                                        OnBehalfOfHeader globals - see section 4.2)
 
 2.5  Remove the two module entries from pom.xml
 
