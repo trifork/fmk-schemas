@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dk.medicinkortet</groupId>
+        <artifactId>medicinkortet-schema</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <groupId>dk.medicinkortet</groupId>
+    <artifactId>MedicineCard_new_2022_01_01</artifactId>
+    <version>${revision}</version>
+
+    <!--
+        Split-header flavour of the 2022_01_01 contract (DGWS).
+
+        Free-standing SOAP headers; Paging and ExtendedValidationHeader move into the
+        request body, and most of FMKResponseHeader into the response body. Published to
+        clients under the BASE WSDL filename, so switching from the original contract is a
+        Maven coordinate change and nothing else.
+
+        The original contract stays in mc160_wsdl, untouched, so the two published
+        artifacts cannot drift into each other. The FMK server accepts BOTH styles on one
+        endpoint - that is implemented in the server's header handling, not described by a
+        third schema.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>dk.medicinkortet</groupId>
+            <artifactId>SchemaLoader</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>schemaload-dgws-medicinecard-new</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=MedicineCard_new</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>schemaload-dgws-patientregistration-new</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=PatientRegistration_new</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-assembly-mc-new</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160new.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-mc-new-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160new-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-new</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160new.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-new-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160new-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
