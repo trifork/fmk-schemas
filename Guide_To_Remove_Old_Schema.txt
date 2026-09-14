@@ -1,0 +1,276 @@
+================================================================================
+REMOVING THE OLD SCHEMA - End-of-transition guide
+================================================================================
+
+When the transition-phase for FMKRequestHeader / FMKResponseHeader is complete,
+and all clients have transitioned to the new schema, the old schema should be removed.
+
+Until then nothing here should be touched: the old contract is frozen, not
+unmaintained. Freezing is the point - new operations go only into the canonical
+WSDLs, so the two contracts cannot drift.
+
+0. BACKGROUND: What are the two contracts
+1. PRECONDITIONS: Verify before starting
+2. In this fmk-schemas-project: Delete the old contract
+3. fmk-schemas: Repoint codegen at the canonical contract
+4. In the FMK-project: Remove the dual-shape handling
+5. AFTERWARDS: Clean up the leftovers
+6. VERIFY
+
+
+--------------------------------------------------------------------------------
+0. BACKGROUND: What are the two contracts
+--------------------------------------------------------------------------------
+
+The 2022_01_01 contract exists in two shapes, both published, sharing ONE schema
+pool (etc/schemas/2022/01/01):
+
+  CANONICAL  dk.medicinkortet:MedicineCard_2022_01_01          (mc160_wsdl)
+             dk.medicinkortet:MedicineCard_Idws_2022_01_01     (mc160idws_wsdl)
+
+Header elements travel as free-standing SOAP headers. Paging and
+ExtendedValidationHeader sit in the request body inside an optional
+FMKRequestHeader element; most of FMKResponseHeader moved to the response
+body likewise. This is the shape that survives.
+
+  OLD        dk.medicinkortet:MedicineCard_old_2022_01_01      (mc160old_wsdl)
+             dk.medicinkortet:MedicineCard_Idws_old_2022_01_01 (mc160oldidws_wsdl)
+
+Both artifacts publish the SAME WSDL filename inside their zip
+(MedicineCard_2022_01_01.wsdl), so a client moves between them by changing one
+Maven coordinate and nothing else. The old descriptors achieve this with a
+<destName> rename; the canonical ones need none.
+
+The FMK server accepts BOTH shapes on one endpoint. That is implemented in the
+server's header handling.
+
+--------------------------------------------------------------------------------
+1. PRECONDITIONS: Verify before starting
+--------------------------------------------------------------------------------
+
+ [ ] No client is sending the wrapper shape. Check production traffic, not just
+     the client register. The guard in FMKRequestHeader160Handler records which
+     shape each request used, so log/count it for a period first.
+
+ [ ] The old artifact is no longer referenced by any published documentation,
+     wiki page or interface-doc build.
+
+ [ ] Announce it. Removing a published contract is not reversible for clients.
+
+
+--------------------------------------------------------------------------------
+2. In this fmk-schemas-project: Delete the old contract
+--------------------------------------------------------------------------------
+
+2.1  Delete the two modules
+
+       git rm -r mc160old_wsdl mc160oldidws_wsdl
+
+2.2  Delete the four frozen WSDLs
+
+       git rm etc/wsdl/MedicineCard_old_2022_01_01.wsdl
+       git rm etc/wsdl/PatientRegistration_old_2022_01_01.wsdl
+       git rm etc/wsdl/MedicineCard_Idws_old_2022_01_01.wsdl
+       git rm etc/wsdl/PatientRegistration_Idws_old_2022_01_01.wsdl
+
+2.3  Delete the eight assembly descriptors
+
+       git rm src/assembly/mc160old.xml
+       git rm src/assembly/mc160old-inline.xml
+       git rm src/assembly/mc160oldidws.xml
+       git rm src/assembly/mc160oldidws-inline.xml
+       git rm src/assembly/por160old.xml
+       git rm src/assembly/por160old-inline.xml
+       git rm src/assembly/por160oldidws.xml
+       git rm src/assembly/por160oldidws-inline.xml
+
+2.4  Delete the two now-orphaned wrapper schemas
+
+       git rm etc/schemas/2022/01/01/FMKRequestHeader.xsd
+       git rm etc/schemas/2022/01/01/FMKResponseHeader.xsd
+
+     These two are the ONLY schema files that become unreachable - verified by
+     diffing the two published closures. Everything else in the pool is shared.
+
+     Do NOT delete these, they belong to the canonical contract:
+       FMKRequestHeaderBody.xsd        (Paging + ExtendedValidationHeader)
+       FMKResponseHeaderBody.xsd       (the six response body elements, plus
+                                        WarningsType and ResponseInformationsType
+                                        which were MOVED here out of the wrapper)
+       FMKConfigurationUpdatedWarning.xsd
+       OnBehalfOf.xsd                  (declares both OnBehalfOf and
+                                        OnBehalfOfHeader globals - see 5.2)
+
+2.5  Remove the two module entries from pom.xml
+
+       <module>mc160old_wsdl</module>
+       <module>mc160oldidws_wsdl</module>
+
+2.6  Remove the four .gitignore entries
+
+       mc160old_wsdl/target/
+       mc160oldidws_wsdl/target/
+       mc160old_wsdl/.flattened-pom.xml
+       mc160oldidws_wsdl/.flattened-pom.xml
+
+
+--------------------------------------------------------------------------------
+3. fmk-schemas: Repoint codegen at the canonical contract
+--------------------------------------------------------------------------------
+
+This is the step that removes the old model from the generated jar.
+
+3.1  fmk-160-schema-classes/pom.xml   (3 references)
+
+     line ~39   wsdlUrl
+       from  ../mc160old_wsdl/target/resources/wsdl/MedicineCard_old-inline_2022_01_01.wsdl
+       to    ../mc160_wsdl/target/resources/wsdl/MedicineCard-inline_2022_01_01.wsdl
+
+     line ~67   wsdlUrl
+       from  ../mc160old_wsdl/target/resources/wsdl/PatientRegistration_old-inline_2022_01_01.wsdl
+       to    ../mc160_wsdl/target/resources/wsdl/PatientRegistration-inline_2022_01_01.wsdl
+
+     line ~133  reactor-ordering dependency artifactId
+       from  MedicineCard_old_2022_01_01
+       to    MedicineCard_2022_01_01
+
+3.2  fmk-160-idws-schema-classes/pom.xml   (2 references)
+
+     line ~36   wsdlUrl
+       from  ../mc160oldidws_wsdl/target/resources/wsdl/MedicineCard_Idws_old-inline_2022_01_01.wsdl
+       to    ../mc160idws_wsdl/target/resources/wsdl/MedicineCard_Idws-inline_2022_01_01.wsdl
+
+     line ~65   dependency artifactId
+       from  MedicineCard_Idws_old_2022_01_01
+       to    MedicineCard_Idws_2022_01_01
+
+3.3  etc/jaxb/*.xjb - 17 hardcoded paths across 9 files
+
+     The JAXB binding files hardcode the inline WSDL path AND a positional schema
+     index (#types?schemaN). Substitute the paths:
+
+       ../../mc160old_wsdl/target/resources/wsdl/MedicineCard_old-inline_2022_01_01.wsdl
+         ->  ../../mc160_wsdl/target/resources/wsdl/MedicineCard-inline_2022_01_01.wsdl
+
+       ../../mc160old_wsdl/target/resources/wsdl/PatientRegistration_old-inline_2022_01_01.wsdl
+         ->  ../../mc160_wsdl/target/resources/wsdl/PatientRegistration-inline_2022_01_01.wsdl
+
+       ../../mc160oldidws_wsdl/target/resources/wsdl/MedicineCard_Idws_old-inline_2022_01_01.wsdl
+         ->  ../../mc160idws_wsdl/target/resources/wsdl/MedicineCard_Idws-inline_2022_01_01.wsdl
+
+     Affected files (MedicineCard_bindings.xjb holds 9 of the 17):
+       DrugStrength_bindings.xjb
+       GetAcuteDispensingPeriodsRequest_bindings.xjb
+       ListDispensingPatientsRequest_bindings.xjb
+       ListPackingGroupsRequest_bindings.xjb
+       MedicineCard_bindings.xjb
+       MedicineCard_Idws_bindings.xjb
+       PatientRegistration_bindings.xjb
+       TimeOfDayDosageAdapter_bindings.xjb
+       TimeOfDayDosageAdapter_Idws_bindings.xjb
+
+     !! WARNING about #types?schemaN !!
+     Those indices are POSITIONAL into the inlined <wsdl:types>. If the number or
+     namespace ORDER of inlined xs:schema blocks differs between the old and
+     canonical inline WSDLs, the bindings will silently attach to the WRONG schema
+     - it builds clean and misbehaves at runtime. Both currently emit 9 blocks in
+     identical namespace order, so a plain path substitution is safe. VERIFY THIS
+     AGAIN before you trust it:
+
+       python -c "
+       from lxml import etree
+       XS='http://www.w3.org/2001/XMLSchema'
+       for p in ['mc160old_wsdl/target/resources/wsdl/MedicineCard_old-inline_2022_01_01.wsdl',
+                 'mc160_wsdl/target/resources/wsdl/MedicineCard-inline_2022_01_01.wsdl']:
+           d=etree.parse(p)
+           print(p.split('/')[0], [s.get('targetNamespace') for s in d.getroot().iter('{%s}schema'%XS)])
+       "
+
+     If the orders differ, remap the indices by hand - do not guess.
+
+3.4  Rebuild and confirm the wrapper type is gone
+
+       mvn clean package
+       ls fmk-160-schema-classes/target/generated-sources/wsimport/dk/fmk_teknik/_160/mc_schema/FMKRequestHeaderType.java
+
+     That file MUST no longer exist. If it does, codegen is still reading the old
+     contract somewhere.
+
+
+--------------------------------------------------------------------------------
+4. In the FMK-project: Remove the dual-shape handling
+--------------------------------------------------------------------------------
+
+Bump fmk's schema dependency first, then let the compiler find the work:
+
+     fmk/subprojects/parent/pom.xml   ->   <fmk-160-schema-version>
+
+Every compile error pointing at FMKRequestHeaderType / FMKResponseHeaderType is
+old-shape handling to delete.
+
+4.1  Places that needs attention:
+
+     FMKRequestHeader160Handler
+
+     FMKResponseBuildInterceptor
+
+     SOSIReceiverEndpointInterceptor   (DGWS dispatch)
+     IdwsInterceptor                   (IDWS dispatch)
+         Both iterate SOAP header elements and dispatch by local name. Remove the
+         "FMKRequestHeader" case; keep the free-standing names. NOTE: there are
+         TWO dispatch sites - do not fix only one.
+
+     RequestContext
+
+4.2  Watch out: Element names that look wrong but are not
+
+     MedicinecardInvalid       - lowercase 'c' is the published spelling, while
+                                 its type is MedicineCardIsInvalidType. Do not
+                                 "correct" it.
+     OnBehalfOfHeader          - OnBehalfOf.xsd declares BOTH OnBehalfOf and
+                                 OnBehalfOfHeader globals. The free-standing
+                                 header binds OnBehalfOfHeader so it keeps the
+                                 name it had inside the wrapper. The plain
+                                 OnBehalfOf global is still used by the 2015
+                                 WSDLs - do not delete it.
+     FMKConfigurationLastUpdated / FMKConfigurationUpdatedWarning
+                               - two DIFFERENT elements sharing one simpleType.
+                                 LastUpdated is the REQUEST header, UpdatedWarning
+                                 is the RESPONSE header. Never conflate them.
+
+4.3  Whitelisting stays mandatory
+
+     No XSD can require a free-standing SOAP header, so the canonical WSDL only
+     asserts wsdl:required='true'. The server-side presence check must SURVIVE the
+     cleanup even though the surrounding shape-detection goes away.
+
+
+--------------------------------------------------------------------------------
+5. AFTERWARDS: Clean up the leftovers
+--------------------------------------------------------------------------------
+
+ [ ] Unpublish / archive the old zips in Nexus per your retention policy. Deleting
+     the module stops producing them; it does not remove what was already pushed.
+
+ [ ] Remove the old artifact from any interface-doc publishing
+     (Jenkinsfile_publish_interfacedoc lists artifacts by glob - check it).
+
+ [ ] Delete this file.
+
+
+--------------------------------------------------------------------------------
+6. VERIFY
+--------------------------------------------------------------------------------
+
+ [ ] mvn clean package             - all modules green
+ [ ] no *_old_*.wsdl in etc/wsdl
+ [ ] no mc160old* directories
+ [ ] git grep -i mc160old          - no hits
+ [ ] FMKRequestHeaderType.java     - NOT generated any more
+ [ ] fmk compiles and its integration tests pass
+ [ ] an old-shape request is REJECTED (it should now fail, not be silently
+     ignored - add or keep a test asserting this)
+ [ ] a canonical-shape request still succeeds end to end
+
+Expected shape of the result: ONE contract, one schema pool, no duplicated
+definitions, and no schema file whose only purpose is backward compatibility.

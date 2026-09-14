@@ -1,0 +1,30 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 http://maven.apache.org/xsd/assembly-2.1.0.xsd">
+    <id>MedicineCard_old_2022_01_01_idws-collection</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <!--
+        The WSDL is published under the canonical filename, not the _old one, so a client
+        moving off this artifact changes only its Maven coordinate - no schemaLocation,
+        wsdlLocation or codegen path needs editing.
+    -->
+    <files>
+        <file>
+            <outputDirectory>.</outputDirectory>
+            <source>${project.basedir}/target/resources/wsdl/MedicineCard_Idws_old_2022_01_01/MedicineCard_Idws_old_2022_01_01.wsdl</source>
+            <destName>MedicineCard_Idws_2022_01_01.wsdl</destName>
+        </file>
+    </files>
+    <fileSets>
+        <fileSet>
+            <outputDirectory>.</outputDirectory>
+            <directory>${project.basedir}/target/resources/wsdl/MedicineCard_Idws_old_2022_01_01</directory>
+            <excludes>
+                <exclude>MedicineCard_Idws_old_2022_01_01.wsdl</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>
