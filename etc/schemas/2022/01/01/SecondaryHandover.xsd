@@ -4,12 +4,12 @@
         targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
-  <include schemaLocation="SecondaryHandoverIdentifier.xsd"/>
-  <include schemaLocation="HandoverIdentifier.xsd"/>
-  <include schemaLocation="SecondaryHandoverDateTime.xsd"/>
   <include schemaLocation="Created.xsd"/>
-  <include schemaLocation="SingleUnitsHandover.xsd"/>
+  <include schemaLocation="HandoverIdentifier.xsd"/>
   <include schemaLocation="PackageHandover.xsd"/>
+  <include schemaLocation="SecondaryHandoverDateTime.xsd"/>
+  <include schemaLocation="SecondaryHandoverIdentifier.xsd"/>
+  <include schemaLocation="SingleUnitsHandover.xsd"/>
 
 
   <element name="SecondaryHandover" type="mc160:SecondaryHandoverType">
@@ -20,10 +20,10 @@
   </element>
   <complexType name="SecondaryHandoverType">
     <sequence>
-      <element name="Identifier" type="mc160:SecondaryHandoverIdentifierType"/>
-      <element name="DateTime" type="mc160:SecondaryHandoverDateTimeType"/>
       <element name="Created" type="mc160:CreatedType"/>
       <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
+      <element name="Identifier" type="mc160:SecondaryHandoverIdentifierType"/>
+      <element name="DateTime" type="mc160:SecondaryHandoverDateTimeType"/>
       <choice>
         <element name="SingleUnits" type="mc160:SingleUnitsHandoverType"/>
         <element name="PackageQuantity" type="mc160:PackageQuantityType"/>
