@@ -36,6 +36,14 @@ body likewise. This is the shape that survives.
   OLD        dk.medicinkortet:MedicineCard_old_2022_01_01      (mc160old_wsdl)
              dk.medicinkortet:MedicineCard_Idws_old_2022_01_01 (mc160oldidws_wsdl)
 
+The four *_old_*.wsdl files are NOT in git. They are generated at build time
+(phase initialize) by WsdlFlavourGenerator, which concatenates the matching
+etc/wsdl/*_old_2022_01_01.prologue with the canonical WSDL's body. The prologue
+holds every difference between the shapes: the SOAP header lists, the header
+schema includes and the header message declarations are all DTD entities, so
+everything below the DTD is identical. Operations are therefore added to the
+canonical WSDLs only.
+
 Both artifacts publish the SAME WSDL filename inside their zip
 (MedicineCard_2022_01_01.wsdl), so a client moves between them by changing one
 Maven coordinate and nothing else. The old descriptors achieve this with a
@@ -92,12 +100,17 @@ dual-shape handling").
 
        git rm -r mc160old_wsdl mc160oldidws_wsdl
 
-2.2  Delete the four frozen WSDLs
+2.2  Delete the four flavour prologues
 
-       git rm etc/wsdl/MedicineCard_old_2022_01_01.wsdl
-       git rm etc/wsdl/PatientRegistration_old_2022_01_01.wsdl
-       git rm etc/wsdl/MedicineCard_Idws_old_2022_01_01.wsdl
-       git rm etc/wsdl/PatientRegistration_Idws_old_2022_01_01.wsdl
+       git rm etc/wsdl/MedicineCard_old_2022_01_01.prologue
+       git rm etc/wsdl/PatientRegistration_old_2022_01_01.prologue
+       git rm etc/wsdl/MedicineCard_Idws_old_2022_01_01.prologue
+       git rm etc/wsdl/PatientRegistration_Idws_old_2022_01_01.prologue
+
+     The four *_old_*.wsdl files are generated, not tracked. Deleting the modules
+     stops producing them; delete any copies left in your working tree:
+
+       rm -f etc/wsdl/*_old_2022_01_01.wsdl
 
 2.3  Delete the eight assembly descriptors
 
@@ -139,12 +152,29 @@ dual-shape handling").
        <module>mc160old_wsdl</module>
        <module>mc160oldidws_wsdl</module>
 
-2.6  Remove the four .gitignore entries
+2.6  Remove the .gitignore entries
 
        mc160old_wsdl/target/
        mc160oldidws_wsdl/target/
        mc160old_wsdl/.flattened-pom.xml
        mc160oldidws_wsdl/.flattened-pom.xml
+
+     and the block ignoring the generated WSDLs:
+
+       etc/wsdl/MedicineCard_old_2022_01_01.wsdl
+       etc/wsdl/MedicineCard_Idws_old_2022_01_01.wsdl
+       etc/wsdl/PatientRegistration_old_2022_01_01.wsdl
+       etc/wsdl/PatientRegistration_Idws_old_2022_01_01.wsdl
+
+2.7  Delete the flavour generator, now unused
+
+       git rm SchemaLoader/src/main/java/dk/medicinkortet/xmlschema/WsdlFlavourGenerator.java
+
+2.8  Optional: collapse the header entities in the four canonical WSDLs
+
+     With one shape left, &fmkHeaderSchemaIncludes; and &fmkHeaderMessages; no
+     longer vary. Inline them and drop the two entity definitions if you prefer
+     the WSDLs without the indirection. Purely cosmetic - leaving them is correct.
 
 
 --------------------------------------------------------------------------------
@@ -296,9 +326,10 @@ old-shape handling to delete.
 --------------------------------------------------------------------------------
 
  [ ] mvn clean package             - all modules green
- [ ] no *_old_*.wsdl in etc/wsdl
+ [ ] no *_old_*.wsdl and no *.prologue in etc/wsdl
  [ ] no mc160old* directories
  [ ] git grep -i mc160old          - no hits
+ [ ] git grep -i WsdlFlavourGenerator - no hits
  [ ] FMKRequestHeaderType.java     - NOT generated any more
  [ ] fmk compiles and its integration tests pass
  [ ] an old-shape request is REJECTED (it should now fail, not be silently
