@@ -24,6 +24,72 @@
                 <soap:fault name='FMKDetail' use='literal'/>
             </wsdl:fault>
 ">
+        <!ENTITY fmkHeaderSchemaIncludes "
+            <xs:include schemaLocation='../schemas/2022/01/01/OnBehalfOf.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/WhitelistingHeader.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/ConsentHeader.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/MinLogSessionIdType.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/PreflightFlag.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/PartOfBatchOperationFlag.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/FMKConfigurationLastUpdatedType.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/KnownPersonIdentifiers.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/FMKConfigurationUpdatedWarning.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/FMKResponseHeaderBody.xsd'/>
+">
+        <!ENTITY fmkHeaderMessages "
+    <wsdl:message name='SecurityHeader'>
+        <wsdl:part name='SecurityHeader' element='wsse:Security'/>
+
+    </wsdl:message>
+
+    <wsdl:message name='MedComHeader'>
+        <wsdl:part name='MedcomHeader' element='medcom:Header'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKDetail'>
+        <wsdl:part name='fault' element='mc160:FMKDetail'/>
+    </wsdl:message>
+
+    <wsdl:message name='ConsentHeader'>
+        <wsdl:part name='ConsentHeader' element='mc160:ConsentHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='TimingHeader'>
+        <wsdl:part name='TimingHeader' element='mc160:TimingList'/>
+    </wsdl:message>
+
+    <wsdl:message name='OnBehalfOfHeader'>
+        <wsdl:part name='OnBehalfOfHeader' element='mc160:OnBehalfOfHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='WhitelistingHeader'>
+        <wsdl:part name='WhitelistingHeader' element='mc160:WhitelistingHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='MinLogSessionId'>
+        <wsdl:part name='MinLogSessionId' element='mc160:MinLogSessionId'/>
+    </wsdl:message>
+
+    <wsdl:message name='PreflightOnly'>
+        <wsdl:part name='PreflightOnly' element='mc160:PreflightOnly'/>
+    </wsdl:message>
+
+    <wsdl:message name='PartOfBatchOperation'>
+        <wsdl:part name='PartOfBatchOperation' element='mc160:PartOfBatchOperation'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKConfigurationLastUpdated'>
+        <wsdl:part name='FMKConfigurationLastUpdated' element='mc160:FMKConfigurationLastUpdated'/>
+    </wsdl:message>
+
+    <wsdl:message name='KnownPersonIdentifiers'>
+        <wsdl:part name='KnownPersonIdentifiers' element='mc160:KnownPersonIdentifiers'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKConfigurationUpdatedWarning'>
+        <wsdl:part name='FMKConfigurationUpdatedWarning' element='mc160:FMKConfigurationUpdatedWarning'/>
+    </wsdl:message>
+">
 ]>
 <wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
@@ -52,16 +118,7 @@
             <xs:import namespace="urn:oasis:names:tc:SAML:2.0:assertion"
                        schemaLocation="../schemas/urn_oasis_names_tc_SAML_2.0_assertion/saml-schema-assertion-2.0.xsd"/>
 
-            <xs:include schemaLocation="../schemas/2022/01/01/OnBehalfOf.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/WhitelistingHeader.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/ConsentHeader.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/MinLogSessionIdType.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/PreflightFlag.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/PartOfBatchOperationFlag.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKConfigurationLastUpdatedType.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/KnownPersonIdentifiers.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKConfigurationUpdatedWarning.xsd"/>
-            <xs:include schemaLocation="../schemas/2022/01/01/FMKResponseHeaderBody.xsd"/>
+            &fmkHeaderSchemaIncludes;
 
             <xs:include schemaLocation="../schemas/2022/01/01/TimingList.xsd"/>
 
@@ -96,58 +153,7 @@
 
     </wsdl:types>
 
-    <wsdl:message name="SecurityHeader">
-        <wsdl:part name="SecurityHeader" element="wsse:Security"/>
-
-    </wsdl:message>
-
-    <wsdl:message name="MedComHeader">
-        <wsdl:part name="MedcomHeader" element="medcom:Header"/>
-    </wsdl:message>
-
-    <wsdl:message name="FMKDetail">
-        <wsdl:part name="fault" element="mc160:FMKDetail"/>
-    </wsdl:message>
-
-    <wsdl:message name="ConsentHeader">
-        <wsdl:part name="ConsentHeader" element="mc160:ConsentHeader"/>
-    </wsdl:message>
-
-    <wsdl:message name="TimingHeader">
-        <wsdl:part name="TimingHeader" element="mc160:TimingList"/>
-    </wsdl:message>
-
-    <wsdl:message name="OnBehalfOfHeader">
-        <wsdl:part name="OnBehalfOfHeader" element="mc160:OnBehalfOfHeader"/>
-    </wsdl:message>
-
-    <wsdl:message name="WhitelistingHeader">
-        <wsdl:part name="WhitelistingHeader" element="mc160:WhitelistingHeader"/>
-    </wsdl:message>
-
-    <wsdl:message name="MinLogSessionId">
-        <wsdl:part name="MinLogSessionId" element="mc160:MinLogSessionId"/>
-    </wsdl:message>
-
-    <wsdl:message name="PreflightOnly">
-        <wsdl:part name="PreflightOnly" element="mc160:PreflightOnly"/>
-    </wsdl:message>
-
-    <wsdl:message name="PartOfBatchOperation">
-        <wsdl:part name="PartOfBatchOperation" element="mc160:PartOfBatchOperation"/>
-    </wsdl:message>
-
-    <wsdl:message name="FMKConfigurationLastUpdated">
-        <wsdl:part name="FMKConfigurationLastUpdated" element="mc160:FMKConfigurationLastUpdated"/>
-    </wsdl:message>
-
-    <wsdl:message name="KnownPersonIdentifiers">
-        <wsdl:part name="KnownPersonIdentifiers" element="mc160:KnownPersonIdentifiers"/>
-    </wsdl:message>
-
-    <wsdl:message name="FMKConfigurationUpdatedWarning">
-        <wsdl:part name="FMKConfigurationUpdatedWarning" element="mc160:FMKConfigurationUpdatedWarning"/>
-    </wsdl:message>
+    &fmkHeaderMessages;
 
     <wsdl:message name="CreatePatientRegistrationRequest_160">
         <wsdl:part name="CreatePatientRegistrationRequest" element="mc160:CreatePatientRegistrationRequest"/>

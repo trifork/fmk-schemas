@@ -30,6 +30,46 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <executions>
+                    <!--
+                        The two WSDLs below are generated, not tracked: Flavour prologue + The
+                        canonical WSDL's body. Add operations in mc160idws_wsdl only.
+                    -->
+                    <execution>
+                        <id>generate-medicinecard-idws-old-wsdl</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-Dcanonical=../etc/wsdl/MedicineCard_Idws_2022_01_01.wsdl</argument>
+                                <argument>-Dprologue=../etc/wsdl/MedicineCard_Idws_old_2022_01_01.prologue</argument>
+                                <argument>-Dout=../etc/wsdl/MedicineCard_Idws_old_2022_01_01.wsdl</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.WsdlFlavourGenerator</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-patientregistration-idws-old-wsdl</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-Dcanonical=../etc/wsdl/PatientRegistration_Idws_2022_01_01.wsdl</argument>
+                                <argument>-Dprologue=../etc/wsdl/PatientRegistration_Idws_old_2022_01_01.prologue</argument>
+                                <argument>-Dout=../etc/wsdl/PatientRegistration_Idws_old_2022_01_01.wsdl</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.WsdlFlavourGenerator</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>schemaload-idws-medicinecard-old</id>
                         <phase>generate-sources</phase>
