@@ -6,20 +6,20 @@
 
 	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
-    <include schemaLocation="WarrantModificationIdentifiers.xsd"/>
-    <include schemaLocation="RequestForWarrantModificationIdentifiers.xsd"/>
+    <include schemaLocation="WarrantIdentifiers.xsd"/>
+    <include schemaLocation="RequestForWarrantIdentifiers.xsd"/>
 
-    <complexType name="DrugMedicationModificationIdentifiersType">
+    <complexType name="DrugMedicationIdentifiersType">
 		<annotation>
-			<documentation xml:lang="en-GB">Identifiers for a drug medication modification</documentation>
-			<documentation xml:lang="da-DK">Identifikatorer for en ændring af en lægemiddelordination</documentation>
+			<documentation xml:lang="en-GB">Identifiers for a drug medication</documentation>
+			<documentation xml:lang="da-DK">Identifikatorer for en lægemiddelordination</documentation>
 		</annotation>
 		<sequence>
             <element name="Identifier" type="mc160:DrugMedicationIdentifierType"/>
             <element name="Version" type="mc160:DrugMedicationVersionType"/>
             <choice minOccurs="0">
-                <element name="Warrant" type="mc160:WarrantModificationIdentifiersType"/>
-				<element name="RequestForWarrant" type="mc160:RequestForWarrantModificationIdentifiersType"/>
+                <element name="Warrant" type="mc160:WarrantIdentifiersType"/>
+				<element name="RequestForWarrant" type="mc160:RequestForWarrantIdentifiersType"/>
 				<element name="DrugAdministrationIdentifier" type="mc160:DrugAdministrationIdentifierType"/>
 			</choice>
 		</sequence>

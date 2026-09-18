@@ -6,17 +6,17 @@
 
 	<include schemaLocation="../common/PersonIdentifier.xsd"/>
 	<include schemaLocation="DispensingCardIdentifier.xsd"/>
-	<include schemaLocation="DispensingPeriodInformation.xsd"/>
+	<include schemaLocation="DispensingPeriodIdentifiers.xsd"/>
 
-	<complexType name="DispensingCardModificationIdentifiersType">
+	<complexType name="DispensingCardIdentifiersType">
 		<annotation>
-			<documentation xml:lang="en-GB">Identifiers for a dispensing card modification</documentation>
-			<documentation xml:lang="da-DK">Identifikatorer for en ændring af et dispenseringskort</documentation>
+			<documentation xml:lang="en-GB">Identifiers addressing what on the dispensing card the notification concerns</documentation>
+			<documentation xml:lang="da-DK">Identifikatorer, der udpeger, hvad på dispenseringskortet notifikationen vedrører</documentation>
 		</annotation>
 		<sequence>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="Identifier" type="mc160:DispensingCardIdentifierType"/>
-			<element name="DispensingPeriod" type="mc160:DispensingPeriodInformationType" minOccurs="0"/>
+			<element name="DispensingPeriod" type="mc160:DispensingPeriodIdentifiersType" minOccurs="0"/>
 		</sequence>
 	</complexType>
 </schema>

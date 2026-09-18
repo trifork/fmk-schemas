@@ -6,15 +6,6 @@
 
 	<include schemaLocation="../common/UndefinedModificationAction.xsd"/>
 
-	<simpleType name="RequestForWarrantModificationActionType">
-		<annotation>
-			<documentation xml:lang="en-GB">Type of request-for-warrant modification</documentation>
-			<documentation xml:lang="da-DK">Type af ændring af en anmodning om et udleveringsgrundlag</documentation>
-		</annotation>
-		<union memberTypes="mc160:PredefinedRequestForWarrantModificationActionType
-							mc160:UndefinedModificationActionType"/>
-	</simpleType>
-
 	<simpleType name="PredefinedRequestForWarrantModificationActionType">
 		<restriction base="mc160:UndefinedModificationActionType">
 			<enumeration value="RequestForWarrantCreated"/>
