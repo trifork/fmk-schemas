@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160/advis"
+		targetNamespace="http://fmk-teknik.dk/160/advis"
+		elementFormDefault="qualified">
+
+	<include schemaLocation="../common/UndefinedModificationAction.xsd"/>
+	<include schemaLocation="../common/TrackAndTraceModificationAction.xsd"/>
+
+	<simpleType name="DispensingCardNotificationActionType">
+		<annotation>
+			<documentation xml:lang="en-GB">Any action that can be notified on a dispensing card, naming the entity it concerns</documentation>
+			<documentation xml:lang="da-DK">Enhver handling, der kan notificeres på et dispenseringskort, med angivelse af den enhed, den vedrører</documentation>
+		</annotation>
+		<union memberTypes="mc160:PredefinedDispensingCardModificationActionType
+							mc160:PredefinedTrackAndTraceModificationActionType
+							mc160:UndefinedModificationActionType"/>
+	</simpleType>
+	<simpleType name="PredefinedDispensingCardModificationActionType">
+		<restriction base="mc160:UndefinedModificationActionType">
+			<enumeration value="DispensingCardCreated"/>
+			<enumeration value="DispensingCardClosed"/>
+			<enumeration value="DispensingRegistered"/>
+			<enumeration value="DispensingPeriodStatusChanged"/>
+		</restriction>
+	</simpleType>
+</schema>
