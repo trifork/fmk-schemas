@@ -4,17 +4,17 @@
 		targetNamespace="http://fmk-teknik.dk/160/advis"
 		elementFormDefault="qualified">
 
-	<include schemaLocation="../common/UndefinedModificationAction.xsd"/>
+	<include schemaLocation="../common/UndefinedAction.xsd"/>
 
-	<simpleType name="PatientRegistrationNotificationActionType">
+	<simpleType name="PatientRegistrationActionType">
 		<annotation>
 			<documentation xml:lang="en-GB">Any action that can be notified on a patient registration</documentation>
 			<documentation xml:lang="da-DK">Enhver handling, der kan notificeres på en patientregistrering</documentation>
 		</annotation>
-		<union memberTypes="mc160:PredefinedPatientRegistrationModificationActionType mc160:UndefinedModificationActionType"/>
+		<union memberTypes="mc160:PredefinedPatientRegistrationActionType mc160:UndefinedActionType"/>
 	</simpleType>
-	<simpleType name="PredefinedPatientRegistrationModificationActionType">
-		<restriction base="mc160:UndefinedModificationActionType">
+	<simpleType name="PredefinedPatientRegistrationActionType">
+		<restriction base="mc160:UndefinedActionType">
 			<enumeration value="RegistrationCreated"/>
 			<enumeration value="RegistrationRemoved"/>
 		</restriction>

@@ -4,7 +4,7 @@
         targetNamespace="http://fmk-teknik.dk/160/advis"
 		elementFormDefault="qualified">
 
-	<include schemaLocation="DispensingCardNotificationAction.xsd"/>
+	<include schemaLocation="DispensingCardAction.xsd"/>
 	<include schemaLocation="DispensingCardIdentifiers.xsd"/>
 
 	<element name="DispensingCardNotification" type="mc160:DispensingCardNotificationType"/>
@@ -15,7 +15,7 @@
 			<documentation xml:lang="da-DK">Notifikation om, at en hændelse er indtruffet på en persons dispenseringskort</documentation>
 		</annotation>
 		<sequence>
-			<element name="Action" type="mc160:DispensingCardNotificationActionType"/>
+			<element name="Action" type="mc160:DispensingCardActionType"/>
 			<element name="DispensingCard" type="mc160:DispensingCardIdentifiersType"/>
             <any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
 		</sequence>
