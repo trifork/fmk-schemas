@@ -4,16 +4,29 @@
 		targetNamespace="http://fmk-teknik.dk/160"
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 	
-	<element name="DosageFreeTextText" type="mc160:DosageFreeTextTextType">
+	<element name="DosageFreeTextTextForRequest" type="mc160:DosageFreeTextTextForRequestType">
 		<annotation>
 			<documentation xml:lang="en-GB">Free text for dosage</documentation>
 			<documentation xml:lang="da-DK">Fritekst for dosering</documentation>
 		</annotation>
 	</element>
-	<simpleType name="DosageFreeTextTextType">
+	<simpleType name="DosageFreeTextTextForRequestType">
 		<restriction base="string">
 			<minLength value="1"/>
 			<maxLength value="400"/>
 		</restriction>
 	</simpleType>
+
+    <element name="DosageFreeTextForResponse" type="mc160:DosageFreeTextTextForResponseType">
+        <annotation>
+            <documentation xml:lang="en-GB">Free text for dosage</documentation>
+            <documentation xml:lang="da-DK">Fritekst for dosering</documentation>
+        </annotation>
+    </element>
+    <simpleType name="DosageFreeTextTextForResponseType">
+        <restriction base="string">
+            <minLength value="1"/>
+            <maxLength value="4000"/>
+        </restriction>
+    </simpleType>
 </schema>
