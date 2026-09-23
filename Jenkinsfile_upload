@@ -86,9 +86,24 @@ pipeline {
                             do
                                 mv $name ${name#_-}
                             done
-
-                            md5sum *.zip > latest_md5
                             cd ..
+
+                            # The old-shape schema (mc160old / mc160oldidws) is archived and copied
+                            # alongside the canonical one, distinguishable by "_old" in the
+                            # filename. Splits into separate folders,
+                            # and strip "_old" so the artifact name matches the canonical one,
+                            # so they can be used equally in the FMK-project
+                            mkdir -p wsdl_old
+                            cd wsdl
+                            for f in *_old*
+                            do
+                                [ -e "$f" ] || continue
+                                mv "$f" "../wsdl_old/$(echo "$f" | sed 's/_old//')"
+                            done
+                            cd ..
+
+                            cd wsdl && md5sum *.zip > latest_md5 && cd ..
+                            cd wsdl_old && md5sum *.zip > latest_md5 && cd ..
                             git add *
                             git config user.email "jenkins@trifork.com"
                             git config user.name "jenkins"
