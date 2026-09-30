@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		xmlns:mc160="http://fmk-teknik.dk/160/advis"
+		targetNamespace="http://fmk-teknik.dk/160/advis"
+		elementFormDefault="qualified">
+
+	<include schemaLocation="../common/PersonIdentifier.xsd"/>
+	<include schemaLocation="DrugMedicationIdentifiers.xsd"/>
+	<include schemaLocation="LoosePrescriptionIdentifiers.xsd"/>
+	<include schemaLocation="OrderIdentifiers.xsd"/>
+
+	<element name="MedicineCard" type="mc160:MedicineCardIdentifiersType"/>
+
+	<complexType name="MedicineCardIdentifiersType">
+		<annotation>
+			<documentation xml:lang="en-GB">Identifiers addressing what on the medicine card the notification concerns</documentation>
+			<documentation xml:lang="da-DK">Identifikatorer, der udpeger, hvad på medicinkortet notifikationen vedrører</documentation>
+		</annotation>
+		<sequence>
+			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
+			<element name="Version" type="mc160:MedicineCardVersionType"/>
+			<choice minOccurs="0">
+				<element name="DrugMedication" type="mc160:DrugMedicationIdentifiersType"/>
+				<element name="LoosePrescription" type="mc160:LoosePrescriptionIdentifiersType"/>
+				<element name="Order" type="mc160:OrderIdentifiersType"/>
+			</choice>
+		</sequence>
+	</complexType>
+
+	<simpleType name="MedicineCardVersionType">
+		<annotation>
+			<documentation xml:lang="en-GB">The medicine card version at the time of the event, which only drug medication changes increment</documentation>
+			<documentation xml:lang="da-DK">Medicinkortets version på hændelsestidspunktet; kun ændringer af lægemiddelordinationer øger den</documentation>
+		</annotation>
+		<restriction base="long">
+			<minInclusive value="0"/>
+		</restriction>
+	</simpleType>
+</schema>

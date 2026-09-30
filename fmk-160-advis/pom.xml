@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>dk.medicinkortet</groupId>
+        <artifactId>medicinkortet-schema</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.trifork</groupId>
+    <artifactId>fmk-160-advis</artifactId>
+    <version>${revision}</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
+                <version>4.0.8</version>
+                <executions>
+                    <execution>
+                        <id>generate-advis-classes</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaDirectory>../etc/schemas/2026/09/01/advis</schemaDirectory>
+                            <schemaIncludes>
+                                <include>**/*.xsd</include>
+                            </schemaIncludes>
+                            <bindingDirectory>../etc/jaxb</bindingDirectory>
+                            <bindingIncludes>
+                                <include>Advis_bindings.xjb</include>
+                            </bindingIncludes>
+                            <extension>true</extension>
+                            <args>
+                                <arg>-Xfluent-api</arg>
+                            </args>
+                            <plugins>
+                                <plugin>
+                                    <groupId>org.jvnet.jaxb</groupId>
+                                    <artifactId>jaxb-plugins</artifactId>
+                                    <version>4.0.8</version>
+                                </plugin>
+                            </plugins>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>../etc/schemas/2026/09/01/advis</directory>
+                <includes>
+                    <include>**/*.xsd</include>
+                </includes>
+                <targetPath>fmk-schemas/advis160</targetPath>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+    </dependencies>
+
+</project>
