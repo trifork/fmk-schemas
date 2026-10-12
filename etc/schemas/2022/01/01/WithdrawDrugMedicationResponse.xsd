@@ -9,6 +9,7 @@
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
 	<include schemaLocation="WithdrawnDrugMedication.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="WithdrawDrugMedicationResponse" type="mc160:WithdrawDrugMedicationResponseType">
 		<annotation>
@@ -18,6 +19,7 @@
 	</element>
 	<complexType name="WithdrawDrugMedicationResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

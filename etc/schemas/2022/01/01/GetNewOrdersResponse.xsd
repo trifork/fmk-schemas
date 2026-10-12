@@ -7,6 +7,7 @@
 	<include schemaLocation="Organisation.xsd"/>
 	<include schemaLocation="WarrantsForPersonOrOrganisation.xsd"/>
 	<include schemaLocation="MoreAvailable.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetNewOrdersResponse" type="mc160:GetNewOrdersResponseType">
 		<annotation>
@@ -16,6 +17,7 @@
 	</element>
 	<complexType name="GetNewOrdersResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
 			<element name="Warrants" type="mc160:WarrantsForPersonOrOrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

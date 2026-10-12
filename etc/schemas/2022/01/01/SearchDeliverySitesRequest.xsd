@@ -7,6 +7,7 @@
 
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
     <include schemaLocation="AddressSubstring.xsd"/>
+    <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="SearchDeliverySitesRequest" type="mc160:SearchDeliverySitesRequestType">
 		<annotation>
@@ -16,6 +17,7 @@
 	</element>
 	<complexType name="SearchDeliverySitesRequestType">
 		<sequence>
+            <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
             <choice>
                 <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
                 <choice>

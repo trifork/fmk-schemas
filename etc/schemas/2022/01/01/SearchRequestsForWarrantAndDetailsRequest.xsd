@@ -10,6 +10,7 @@
 	<include schemaLocation="SubOrganisationsIncluded.xsd"/>
 	<include schemaLocation="CreatedDateTime.xsd"/>
 	<include schemaLocation="RequestForWarrantIdentifier.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="SearchRequestsForWarrantAndDetailsRequest" type="mc160:SearchRequestsForWarrantAndDetailsRequestType">
 		<annotation>
@@ -20,6 +21,7 @@
 
 	<complexType name="SearchRequestsForWarrantAndDetailsRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="OrderingOrganisation" type="mc160:SearchRequestsForWarrantOrganisationType"/>
 				<element name="IssuerOrganisation" type="mc160:SearchRequestsForWarrantOrganisationType"/>

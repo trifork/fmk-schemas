@@ -8,6 +8,7 @@
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="DeleteDispensingPeriod.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="DeleteDispensingPeriodRequest" type="mc160:DeleteDispensingPeriodRequestType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="DeleteDispensingPeriodRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

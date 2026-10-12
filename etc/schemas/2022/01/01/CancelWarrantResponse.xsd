@@ -10,6 +10,7 @@
 	<include schemaLocation="VersionMismatchWarning.xsd"/>
 	<include schemaLocation="WarrantIdentifier.xsd"/>
 	<include schemaLocation="WarrantError.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="CancelWarrantResponse" type="mc160:CancelWarrantResponseType">
 		<annotation>
@@ -19,6 +20,7 @@
 	</element>
 	<complexType name="CancelWarrantResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<sequence>
 				<choice>
 					<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>

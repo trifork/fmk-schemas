@@ -6,6 +6,7 @@
 
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="UpdatePackingGroup.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="UpdatePackingGroupRequest" type="mc160:UpdatePackingGroupRequestType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="UpdatePackingGroupRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="PackingGroup" type="mc160:UpdatePackingGroupType" maxOccurs="unbounded"/>

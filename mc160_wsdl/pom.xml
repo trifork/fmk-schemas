@@ -14,6 +14,16 @@
     <artifactId>MedicineCard_2022_01_01</artifactId>
     <version>${revision}</version>
 
+    <!--
+        The 2022_01_01 contract (DGWS). Header elements travel as free-standing SOAP
+        headers; Paging and ExtendedValidationHeader sit in the request body, and most of
+        FMKResponseHeader in the response body.
+
+        This shape replaced the wrapper-header shape, which is frozen in mc160old_wsdl and
+        published as MedicineCard_old_2022_01_01 for the duration of the migration. Both
+        artifacts publish the same WSDL filename, so a client moves between them by
+        changing one Maven coordinate.
+    -->
     <dependencies>
         <dependency>
             <groupId>dk.medicinkortet</groupId>
@@ -31,19 +41,16 @@
                 <executions>
                     <execution>
                         <id>schemaload-dgws-medicinecard</id>
-                        <phase>prepare-package</phase>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
-
                         <configuration>
-
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
                                 <argument>-DWsdlName=MedicineCard</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
-                                <argument>-Dschemas.dir=../etc/schemas</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
                                 <classpath/>
@@ -53,19 +60,16 @@
                     </execution>
                     <execution>
                         <id>schemaload-dgws-patientregistration</id>
-                        <phase>prepare-package</phase>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>exec</goal>
                         </goals>
-
                         <configuration>
-
                             <executable>java</executable>
                             <arguments>
                                 <argument>-DVersionDate=2022_01_01</argument>
                                 <argument>-DWsdlName=PatientRegistration</argument>
                                 <argument>-Dtarget.dir=target/resources</argument>
-                                <argument>-Dschemas.dir=../etc/schemas</argument>
                                 <argument>-Xmx1024m</argument>
                                 <argument>-classpath</argument>
                                 <classpath/>
@@ -80,23 +84,23 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly-mc</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly-mc</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>true</appendAssemblyId>
                             <attach>true</attach>
+                            <finalName>_</finalName>
                             <descriptors>
                                 <descriptor>${project.parent.basedir}/src/assembly/mc160.xml</descriptor>
                             </descriptors>
-                            <finalName>_</finalName>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-mc-inline</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly-mc-inline</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
@@ -110,23 +114,23 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly-por</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
                             <appendAssemblyId>true</appendAssemblyId>
                             <attach>true</attach>
+                            <finalName>_</finalName>
                             <descriptors>
                                 <descriptor>${project.parent.basedir}/src/assembly/por160.xml</descriptor>
                             </descriptors>
-                            <finalName>_</finalName>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>make-assembly-por-inline</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly-por-inline</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>

@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
     <include schemaLocation="FocesWhitelisting.xsd"/>
+    <include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="CreateFocesWhitelistingResponse" type="mc160:CreateFocesWhitelistingResponseType">
 		<annotation>
@@ -14,6 +15,7 @@
 	</element>
 	<complexType name="CreateFocesWhitelistingResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="FocesWhitelisting" type="mc160:FocesWhitelistingType"/>
 		</sequence>
 	</complexType>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+<!ENTITY fmkStandardSOAPRequestHeaders "
+        <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+        <soap:header use='literal' part='MedcomHeader' message='tns:MedComHeader' />
+        <soap:header use='literal' part='FMKRequestHeader' message='tns:FMKRequestHeader' />
+">
+<!ENTITY fmkStandardSOAPResponseHeaders "
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader'/>
+        <soap:header use='literal' part='FMKResponseHeader' message='tns:FMKResponseHeader' />
+">
+<!ENTITY fmkHeaderSchemaIncludes "
+            <xs:include schemaLocation='../schemas/2022/01/01/FMKRequestHeader.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/FMKResponseHeader.xsd'/>
+">
+<!ENTITY fmkHeaderMessages "
+    <wsdl:message name='FMKRequestHeader'>
+        <wsdl:part name='FMKRequestHeader' element='mc160:FMKRequestHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKResponseHeader'>
+        <wsdl:part name='FMKResponseHeader' element='mc160:FMKResponseHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='SecurityHeader'>
+        <wsdl:part name='SecurityHeader' element='wsse:Security'/>
+    </wsdl:message>
+
+    <wsdl:message name='MedComHeader'>
+        <wsdl:part name='MedcomHeader' element='medcom:Header'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKDetail'>
+        <wsdl:part name='fault' element='mc160:FMKDetail'/>
+    </wsdl:message>
+
+    <wsdl:message name='TimingHeader'>
+        <wsdl:part name='TimingHeader' element='mc160:TimingList'/>
+    </wsdl:message>
+">
+<!ENTITY operationFaultDeclaration "
+            <wsdl:fault name='FMKDetail' message='tns:FMKDetail'/>
+">
+<!ENTITY bindingFaultDeclaration "
+            <wsdl:fault name='FMKDetail'>
+                <soap:fault name='FMKDetail' use='literal'/>
+            </wsdl:fault>
+">
+]>

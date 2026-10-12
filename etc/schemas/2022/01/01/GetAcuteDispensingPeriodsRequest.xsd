@@ -6,6 +6,7 @@
 
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="ProductionDateTime.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetAcuteDispensingPeriodsRequest" type="mc160:GetAcuteDispensingPeriodsRequestType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="GetAcuteDispensingPeriodsRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<sequence>
 					<element name="OrderedAtPharmacyIdentifier" type="mc160:OrganisationIdentifierType"/>

@@ -6,6 +6,7 @@
 
 	<include schemaLocation="PersonIdentifier.xsd"/>
 	<include schemaLocation="AuthorisationDate.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetAuthorisationDateForNewestOpenWarrantResponse" type="mc160:GetAuthorisationDateForNewestOpenWarrantResponseType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="GetAuthorisationDateForNewestOpenWarrantResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="AuthorisationDate" type="mc160:AuthorisationDateType" minOccurs="0"/>
 		</sequence>

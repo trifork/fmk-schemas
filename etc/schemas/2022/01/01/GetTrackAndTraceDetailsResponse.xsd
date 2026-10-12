@@ -8,6 +8,7 @@
 	<include schemaLocation="RequestForWarrantSummary.xsd"/>
 	<include schemaLocation="DoseDispensingDeliveryStatus.xsd"/>
 	<include schemaLocation="Order.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetTrackAndTraceDetailsResponse" type="mc160:GetTrackAndTraceDetailsResponseType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="GetTrackAndTraceDetailsResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

@@ -4,6 +4,8 @@
 		targetNamespace="http://fmk-teknik.dk/160"
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
+
 
 	
 	<element name="UploadDrugCatalogResponse" type="mc160:UploadDrugCatalogResponseType">
@@ -14,6 +16,7 @@
 	</element>
 	<complexType name="UploadDrugCatalogResponseType">
 		<sequence>
+            <element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
             <element name="DrugCatalogSize" type="mc160:DrugCatalogSizeType" />
 		</sequence>
 	</complexType>

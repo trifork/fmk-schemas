@@ -8,6 +8,7 @@
     <include schemaLocation="MedicineCardVersion.xsd"/>
     <include schemaLocation="VersionMismatchWarning.xsd"/>
     <include schemaLocation="UpdatedDrugMedication.xsd"/>
+    <include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="RemoveConsentResponse" type="mc160:RemoveConsentResponseType">
         <annotation>
@@ -17,6 +18,7 @@
     </element>
     <complexType name="RemoveConsentResponseType">
         <sequence>
+            <element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
             <sequence>
                 <element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
                 <element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>

@@ -9,6 +9,7 @@
 	<include schemaLocation="DispensingPeriodIdentifier.xsd"/>
 	<include schemaLocation="TrackAndTraceEventType.xsd"/>
 	<include schemaLocation="TrackAndTraceEventDateTime.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="SearchTrackAndTraceEventsRequest" type="mc160:SearchTrackAndTraceEventsRequestType">
 		<annotation>
@@ -18,6 +19,7 @@
 	</element>
 	<complexType name="SearchTrackAndTraceEventsRequestType">
 		<sequence>
+            <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
             <choice>
                 <element name="OrderIdentifier" type="mc160:OrderIdentifierType"/>
                 <element name="DispensingPeriodIdentifier" type="mc160:DispensingPeriodIdentifierType"/>

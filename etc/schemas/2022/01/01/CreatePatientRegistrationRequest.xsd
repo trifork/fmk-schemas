@@ -9,6 +9,7 @@
     <include schemaLocation="Modificator.xsd"/>
     <include schemaLocation="ModificationMetadata.xsd"/>
     <include schemaLocation="CreatePatientRegistration.xsd"/>
+    <include schemaLocation="FMKRequestHeaderBody.xsd"/>
     
     <element name="CreatePatientRegistrationRequest" type="mc160:CreatePatientRegistrationRequestType">
         <annotation>
@@ -18,6 +19,7 @@
     </element>
     <complexType name="CreatePatientRegistrationRequestType">
         <sequence>
+            <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
             <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
             <element name="CreatedBy" type="mc160:ModificatorType" minOccurs="0"/>
             <element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>

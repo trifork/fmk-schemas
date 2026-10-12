@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="MedicineCardChangeListItem.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetMedicineCardChangeOverviewListResponse" type="mc160:GetMedicineCardChangeOverviewListResponseType">
 		<annotation>
@@ -14,6 +15,7 @@
 	</element>
 	<complexType name="GetMedicineCardChangeOverviewListResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="MedicineCardChangeOverviewListItem" type="mc160:MedicineCardChangeListItemType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

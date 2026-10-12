@@ -6,6 +6,7 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="Organisation.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetDeliverySitesForPharmacyResponse" type="mc160:GetDeliverySitesForPharmacyResponseType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="GetDeliverySitesForPharmacyResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PharmacyIdentifier" type="mc160:OrganisationIdentifierType" />
 			<element name="DeliverySite" type="mc160:OrganisationType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
