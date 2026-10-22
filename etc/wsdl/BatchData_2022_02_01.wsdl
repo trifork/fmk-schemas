@@ -49,6 +49,10 @@
         <wsdl:part name="GetDrugMedicationToDeleteRequest" element="tns:GetDrugMedicationToDeleteRequest"/>
     </wsdl:message>
 
+    <wsdl:message name="GetEmptyDrugMedicationForPersonWithoutCprToDeleteRequest">
+        <wsdl:part name="GetEmptyDrugMedicationForPersonWithoutCprToDeleteRequest" element="tns:GetEmptyDrugMedicationForPersonWithoutCprToDeleteRequest"/>
+    </wsdl:message>
+
     <wsdl:message name="GetDrugMedicationOnDeceasedRequest">
         <wsdl:part name="GetDrugMedicationOnDeceasedRequest" element="tns:GetDrugMedicationOnDeceasedRequest"/>
     </wsdl:message>
@@ -123,6 +127,13 @@
         <wsdl:operation name="GetDrugMedicationToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationToDelete" style="document"/>
             <wsdl:input name="GetDrugMedicationToDeleteRequest" message="tns:GetDrugMedicationToDeleteRequest"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetEmptyDrugMedicationForPersonWithoutCPRToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetEmptyDrugMedicationForPersonWithoutCprToDelete" style="document"/>
+            <wsdl:input name="GetEmptyDrugMedicationForPersonWithoutCprToDeleteRequest" message="tns:GetEmptyDrugMedicationForPersonWithoutCprToDeleteRequest"/>
             <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
@@ -245,6 +256,17 @@
         <wsdl:operation name="GetDrugMedicationToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationToDelete" style="document"/>
             <wsdl:input name="GetDrugMedicationToDeleteRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetEmptyDrugMedicationForPersonWithoutCPRToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetEmptyDrugMedicationForPersonWithoutCPRToDelete" style="document"/>
+            <wsdl:input name="GetEmptyDrugMedicationForPersonWithoutCPRToDeleteRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
