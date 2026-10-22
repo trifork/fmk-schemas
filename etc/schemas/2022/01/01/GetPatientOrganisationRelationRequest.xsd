@@ -10,6 +10,7 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="PatientOrganisationRelationType.xsd"/>
 	<include schemaLocation="IncludeRemovedRelations.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetPatientOrganisationRelationRequest" type="mc160:GetPatientOrganisationRelationRequestType">
 		<annotation>
@@ -19,6 +20,7 @@
 	</element>
 	<complexType name="GetPatientOrganisationRelationRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<choice>
 				<element name="Identifier" type="mc160:PatientOrganisationRelationIdentifierType" maxOccurs="unbounded"/>

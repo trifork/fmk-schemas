@@ -5,6 +5,7 @@
         elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="EnumerationEntry.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="ListEnumerationValuesForTypeResponse" type="mc160:ListEnumerationValuesForTypeResponseType"/>
 
@@ -14,6 +15,7 @@
 			<documentation xml:lang="da-DK">Et response om at få en liste of mulige værdier for en given type</documentation>
 		</annotation>
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="EnumerationEntry" type="mc160:EnumerationEntryType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>

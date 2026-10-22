@@ -12,6 +12,7 @@
   <include schemaLocation="Drug.xsd"/>
   <include schemaLocation="SubstitutionChosenByPatient.xsd"/>
   <include schemaLocation="ModificationMetadata.xsd"/>
+  <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
   <element name="RegisterDraftSubstitutionRequest" type="mc160:RegisterDraftSubstitutionRequestType">
     <annotation>
@@ -21,6 +22,7 @@
   </element>
   <complexType name="RegisterDraftSubstitutionRequestType">
     <sequence>
+      <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
       <choice>
         <element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
         <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

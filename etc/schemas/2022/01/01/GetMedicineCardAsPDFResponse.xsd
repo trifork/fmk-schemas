@@ -5,6 +5,7 @@
 		elementFormDefault="qualified" attributeFormDefault="unqualified">
 
 	<include schemaLocation="MedicineCardAsPDF.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetMedicineCardAsPDFResponse" type="mc160:GetMedicineCardAsPDFResponseType">
 		<annotation>
@@ -13,8 +14,11 @@
 		</annotation>
 	</element>
 	<complexType name="GetMedicineCardAsPDFResponseType">
-		<choice>
-			<element name="MedicineCard" type="mc160:MedicineCardAsPDFType" maxOccurs="unbounded"/>
-		</choice>
+		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
+			<choice>
+				<element name="MedicineCard" type="mc160:MedicineCardAsPDFType" maxOccurs="unbounded"/>
+			</choice>
+		</sequence>
 	</complexType>
 </schema>

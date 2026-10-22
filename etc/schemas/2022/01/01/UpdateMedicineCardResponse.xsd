@@ -21,6 +21,7 @@
 	<include schemaLocation="ConsentWasGiven.xsd"/>
 	<include schemaLocation="ConsentWasRemoved.xsd"/>
 	<include schemaLocation="DrugAdministrationIdentifier.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="UpdateMedicineCardResponse" type="mc160:UpdateMedicineCardResponseType">
 		<annotation>
@@ -30,6 +31,7 @@
 	</element>
 	<complexType name="UpdateMedicineCardResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<sequence maxOccurs="unbounded">

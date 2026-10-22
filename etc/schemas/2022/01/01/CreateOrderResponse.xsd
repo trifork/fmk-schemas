@@ -8,6 +8,7 @@
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
 	<include schemaLocation="WarrantOrderIdentifierForResponse.xsd"/>
 	<include schemaLocation="OrderIdentifier.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="CreateOrderResponse" type="mc160:CreateOrderResponseType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="CreateOrderResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType"/>
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

@@ -8,6 +8,7 @@
     <include schemaLocation="PersonIdentifier.xsd"/>
     <include schemaLocation="Modificator.xsd"/>
     <include schemaLocation="RemovePatientRegistration.xsd"/>
+    <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 
 	<element name="RemovePatientRegistrationRequest" type="mc160:RemovePatientRegistrationRequestType">
@@ -18,6 +19,7 @@
     </element>
     <complexType name="RemovePatientRegistrationRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<element name="ModifiedBy" type="mc160:ModificatorType" minOccurs="0"/>
 			<element name="ReportedBy" type="mc160:ModificatorType" minOccurs="0"/>

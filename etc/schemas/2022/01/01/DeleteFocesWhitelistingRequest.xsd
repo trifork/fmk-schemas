@@ -6,6 +6,7 @@
 
 	<include schemaLocation="Modificator.xsd"/>
     <include schemaLocation="FocesWhitelisting.xsd"/>
+    <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="DeleteFocesWhitelistingRequest" type="mc160:DeleteFocesWhitelistingRequestType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="DeleteFocesWhitelistingRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="ModifiedBy" type="mc160:ModificatorType"/>
 			<element name="FocesWhitelisting" type="mc160:FocesWhitelistingType"/>
 		</sequence>

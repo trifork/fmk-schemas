@@ -9,6 +9,7 @@
     <include schemaLocation="IncludeUnhandledOrders.xsd"/>
     <include schemaLocation="IncludeEffectuatedOrders.xsd"/>
     <include schemaLocation="IncludeCancelledOrders.xsd"/>
+    <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="SearchOrdersRequest" type="mc160:SearchOrdersRequestType">
 		<annotation>
@@ -18,6 +19,7 @@
 	</element>
 	<complexType name="SearchOrdersRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="OrderingOrganisation" type="mc160:OrganisationIdentifierType"/>
             <element name="IncludeUnhandledOrders" type="mc160:IncludeUnhandledOrdersType" minOccurs="0"/>
             <element name="IncludeEffectuatedOrders" type="mc160:IncludeEffectuatedOrdersType" minOccurs="0"/>

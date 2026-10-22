@@ -9,6 +9,7 @@
 	<include schemaLocation="Modificator.xsd"/>
 	<include schemaLocation="ReviewedDateTime.xsd"/>
 	<include schemaLocation="ModificationMetadata.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="SetMedicineCardNotReviewedRequest" type="mc160:SetMedicineCardNotReviewedRequestType">
 		<annotation>
@@ -18,6 +19,7 @@
 	</element>
 	<complexType name="SetMedicineCardNotReviewedRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 			<element name="MedicineCardVersion" type="mc160:MedicineCardVersionType"/>
 			<element name="NotReviewedBy" type="mc160:ModificatorType"/>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dk.medicinkortet</groupId>
+        <artifactId>medicinkortet-schema</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <groupId>dk.medicinkortet</groupId>
+    <artifactId>MedicineCard_old_2022_01_01</artifactId>
+    <version>${revision}</version>
+
+    <!--
+        FROZEN predecessor of the 2022_01_01 contract (DGWS): the wrapper-header shape,
+        where everything travelled inside FMKRequestHeader / FMKResponseHeader.
+
+        Kept only so existing clients can migrate, and never edited again - new operations
+        go into mc160_wsdl. Delete this module, its WSDLs and its assembly descriptors once
+        no client is on the wrapper shape.
+
+        NOTE: fmk-160-schema-classes generates from THIS module, not the canonical one,
+        because only this closure contains FMKRequestHeader.xsd - the server needs that
+        type to parse old-style requests while it accepts both shapes.
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>dk.medicinkortet</groupId>
+            <artifactId>SchemaLoader</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <!--
+                        The two WSDLs below are generated, not tracked: Flavour prologue + The
+                        canonical WSDL's body. Add operations in mc160_wsdl only.
+                    -->
+                    <execution>
+                        <id>generate-medicinecard-old-wsdl</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-Dcanonical=../etc/wsdl/MedicineCard_2022_01_01.wsdl</argument>
+                                <argument>-Dprologue=../etc/wsdl/MedicineCard_old_2022_01_01.prologue</argument>
+                                <argument>-Dout=../etc/wsdl/MedicineCard_old_2022_01_01.wsdl</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.WsdlFlavourGenerator</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-patientregistration-old-wsdl</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-Dcanonical=../etc/wsdl/PatientRegistration_2022_01_01.wsdl</argument>
+                                <argument>-Dprologue=../etc/wsdl/PatientRegistration_old_2022_01_01.prologue</argument>
+                                <argument>-Dout=../etc/wsdl/PatientRegistration_old_2022_01_01.wsdl</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.WsdlFlavourGenerator</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>schemaload-dgws-medicinecard-old</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=MedicineCard_old</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>schemaload-dgws-patientregistration-old</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-DVersionDate=2022_01_01</argument>
+                                <argument>-DWsdlName=PatientRegistration_old</argument>
+                                <argument>-Dtarget.dir=target/resources</argument>
+                                <argument>-Xmx1024m</argument>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>dk.medicinkortet.xmlschema.SchemaLoader</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-assembly-mc-old</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160old.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-mc-old-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/mc160old-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-old</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160old.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-por-old-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>true</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/por160old-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

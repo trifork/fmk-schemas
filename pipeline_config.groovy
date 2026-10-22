@@ -5,7 +5,7 @@ libraries{
     }
     sonarqube_maven
     archive {
-        artifacts = 'mc160_wsdl/target/*.zip, mc160idws_wsdl/target/*.zip, mc160_wsdl/target/resources/wsdl/*.wsdl, mc160idws_wsdl/target/resources/wsdl/*.wsdl'
+        artifacts = 'mc160_wsdl/target/*.zip, mc160idws_wsdl/target/*.zip, mc160_wsdl/target/resources/wsdl/*.wsdl, mc160idws_wsdl/target/resources/wsdl/*.wsdl, mc160old_wsdl/target/*.zip, mc160oldidws_wsdl/target/*.zip, mc160old_wsdl/target/resources/wsdl/*.wsdl, mc160oldidws_wsdl/target/resources/wsdl/*.wsdl'
     }
     verify {
         excluded_list = [

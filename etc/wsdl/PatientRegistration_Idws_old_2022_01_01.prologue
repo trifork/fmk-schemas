@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE definitions [
+        <!ENTITY fmkStandardSOAPRequestHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' wsdl:required='true' />
+                <soap:header use='literal' part='ToHeader' message='tns:ToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' wsdl:required='true' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' wsdl:required='true' />
+                <soap:header use='literal' part='FMKRequestHeader' message='tns:FMKRequestHeader' />
+">
+        <!ENTITY fmkStandardSOAPResponseHeaders "
+                <soap:header use='literal' part='MessageIDHeader' message='tns:MessageIDHeader' />
+                <soap:header use='literal' part='ActionHeader' message='tns:ActionHeader' />
+                <soap:header use='literal' part='RelatesToHeader' message='tns:RelatesToHeader' />
+                <soap:header use='literal' part='SecurityHeader' message='tns:SecurityHeader' />
+                <soap:header use='literal' part='FrameworkHeader' message='tns:FrameworkHeader' />
+                <soap:header use='literal' part='TimingHeader' message='tns:TimingHeader' />
+                <soap:header use='literal' part='FMKResponseHeader' message='tns:FMKResponseHeader' />
+">
+        <!ENTITY fmkHeaderSchemaIncludes "
+            <xs:include schemaLocation='../schemas/2022/01/01/FMKRequestHeader.xsd'/>
+            <xs:include schemaLocation='../schemas/2022/01/01/FMKResponseHeader.xsd'/>
+">
+        <!ENTITY fmkHeaderMessages "
+    <wsdl:message name='SecurityHeader'>
+        <wsdl:part name='SecurityHeader' element='wsseorig:Security'/>
+    </wsdl:message>
+
+    <wsdl:message name='WhitelistingHeader'>
+        <wsdl:part name='WhitelistingHeader' element='sdsd201206:WhitelistingHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKDetail'>
+        <wsdl:part name='fault' element='mc160:FMKDetail'/>
+    </wsdl:message>
+
+    <wsdl:message name='ConsentHeader'>
+        <wsdl:part name='ConsentHeader' element='mc160:ConsentHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='TimingHeader'>
+        <wsdl:part name='TimingHeader' element='mc160:TimingList'/>
+    </wsdl:message>
+
+    <wsdl:message name='OnBehalfOfHeader'>
+        <wsdl:part name='OnBehalfOfHeader' element='mc160:OnBehalfOf'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKRequestHeader'>
+        <wsdl:part name='FMKRequestHeader' element='mc160:FMKRequestHeader'/>
+    </wsdl:message>
+
+    <wsdl:message name='FMKResponseHeader'>
+        <wsdl:part name='FMKResponseHeader' element='mc160:FMKResponseHeader'/>
+    </wsdl:message>
+">
+        <!ENTITY operationFaultDeclaration "
+            <wsdl:fault name='FMKDetail' message='tns:FMKDetail'/>
+">
+        <!ENTITY bindingFaultDeclaration "
+            <wsdl:fault name='FMKDetail'>
+                <soap:fault name='FMKDetail' use='literal'/>
+            </wsdl:fault>
+">
+]>

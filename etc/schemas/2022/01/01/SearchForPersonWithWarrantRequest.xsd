@@ -17,6 +17,7 @@
   <include schemaLocation="OrganisationType.xsd"/>
   <include schemaLocation="OrganisationIdentifier.xsd"/>
   <include schemaLocation="HealthcareProfessional.xsd"/>
+  <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
   <element name="SearchForPersonWithWarrantRequest" type="mc160:SearchForPersonWithWarrantRequestType">
     <annotation>
@@ -26,6 +27,7 @@
   </element>
   <complexType name="SearchForPersonWithWarrantRequestType">
     <sequence>
+      <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
       <element name="Person" type="mc160:PersonDetailsType" minOccurs="0"/>
       <element name="AddressSubstring" type="mc160:AddressSubstringType" minOccurs="0" maxOccurs="5"/>
       <element name="PostCode" type="mc160:PostCodeType" minOccurs="0"/>

@@ -6,6 +6,7 @@
 		attributeFormDefault="unqualified">
 
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
 	<element name="GetDeliverySitesForPharmacyRequest" type="mc160:GetDeliverySitesForPharmacyRequestType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="GetDeliverySitesForPharmacyRequestType">
 		<sequence>
+			<element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
 			<element name="PharmacyIdentifier" type="mc160:OrganisationIdentifierType" />
 		</sequence>
 	</complexType>

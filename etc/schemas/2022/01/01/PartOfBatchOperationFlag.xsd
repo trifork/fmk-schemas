@@ -5,6 +5,13 @@
 		elementFormDefault="qualified" 
 		attributeFormDefault="unqualified">
 		
+	<element name="PartOfBatchOperation" type="mc160:PartOfBatchOperationFlagType">
+		<annotation>
+			<documentation xml:lang="en-GB">Free-standing SOAP header flag indicating that the requested service is part of a batch operation where extended validation in general should be disabled (reserved for future use)</documentation>
+			<documentation xml:lang="da-DK">Fritstående SOAP header, der angiver at en operation skal ses som en del af en batch operation, og derved skal udvidede valideringer ikke længere foretages (reserveret til fremtidig brug)</documentation>
+		</annotation>
+	</element>
+
 	<complexType name="PartOfBatchOperationFlagType">
 		<annotation>
 			<documentation xml:lang="en-GB">Flag to be set in request header, in case the requested service is a batch operation where extended validation in general should be disabled, in order to avoid extend validation to act as blocking errors (reserved for future use)</documentation>

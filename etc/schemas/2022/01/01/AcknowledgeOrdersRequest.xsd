@@ -6,6 +6,7 @@
 
     <include schemaLocation="OrganisationIdentifier.xsd"/>
     <include schemaLocation="WarrantOrderIdentifierForRequest.xsd"/>
+    <include schemaLocation="FMKRequestHeaderBody.xsd"/>
 
     <element name="AcknowledgeOrdersRequest" type="mc160:AcknowledgeOrdersRequestType">
         <annotation>
@@ -15,6 +16,7 @@
     </element>
     <complexType name="AcknowledgeOrdersRequestType">
         <sequence>
+            <element name="FMKRequestHeader" type="mc160:FMKRequestHeaderBodyType" minOccurs="0"/>
             <element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>
             <element name="Order" type="mc160:WarrantOrderIdentifierForRequestType" maxOccurs="unbounded"/>
         </sequence>

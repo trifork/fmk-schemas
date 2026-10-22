@@ -8,11 +8,11 @@
 
   <complexType name="WeekType">
     <annotation>
-      <documentation xml:lang="en-GB">Represents a single week in a weekday-based dosage. Contains up to 7 weekday entries, each specifying the weekday and its dosage.</documentation>
-      <documentation xml:lang="da-DK">Repræsenterer en enkelt uge i en ugedagsbaseret dosering. Indeholder op til 7 ugedage, hver med angivelse af ugedag og tilhørende dosering.</documentation>
+      <documentation xml:lang="en-GB">Represents a single week in a weekday-based dosage. Contains up to 7 weekday entries, each specifying the weekday and its dosage. A week can be empty..</documentation>
+      <documentation xml:lang="da-DK">Repræsenterer en enkelt uge i en ugedagsbaseret dosering. Indeholder op til 7 ugedage, hver med angivelse af ugedag og tilhørende dosering. En uge kan være tom.</documentation>
     </annotation>
     <sequence>
-      <element name="Weekday" type="mc160:Weekday" maxOccurs="7"/>
+      <element name="Weekday" type="mc160:Weekday" minOccurs="0" maxOccurs="7"/>
     </sequence>
   </complexType>
 

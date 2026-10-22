@@ -6,6 +6,7 @@
 
     <include schemaLocation="PackingGroupDetails.xsd"/>
 	<include schemaLocation="EntityWithDispensing.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetPackingGroupContentsResponse" type="mc160:GetPackingGroupContentsResponseType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="GetPackingGroupContentsResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="PackingGroup" type="mc160:PackingGroupDetailsType"/>
 			<element name="EntityWithDispensing" type="mc160:EntityWithDispensingType" minOccurs="0" maxOccurs="unbounded"/>
 		</sequence>

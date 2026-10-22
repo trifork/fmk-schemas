@@ -8,6 +8,7 @@
 	<include schemaLocation="DrugMedicationIdentifier.xsd"/>
 	<include schemaLocation="DrugMedicationHistory.xsd"/>
 	<include schemaLocation="OrganisationIdentifier.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="GetDrugMedicationHistoryResponse" type="mc160:GetDrugMedicationHistoryResponseType">
 		<annotation>
@@ -17,6 +18,7 @@
 	</element>
 	<complexType name="GetDrugMedicationHistoryResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<choice>
 				<element name="PersonIdentifier" type="mc160:PersonIdentifierType" />
 				<element name="OrganisationIdentifier" type="mc160:OrganisationIdentifierType"/>

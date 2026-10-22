@@ -6,6 +6,7 @@
 
 
 	<include schemaLocation="DoctorWithDispensingPatients.xsd"/>
+	<include schemaLocation="FMKResponseHeaderBody.xsd"/>
 
 	<element name="ListDispensingPatientsResponse" type="mc160:ListDispensingPatientsResponseType">
 		<annotation>
@@ -15,6 +16,7 @@
 	</element>
 	<complexType name="ListDispensingPatientsResponseType">
 		<sequence>
+			<element name="FMKResponseHeader" type="mc160:FMKResponseHeaderBodyType" minOccurs="0"/>
 			<element name="Organisation" type="mc160:DoctorWithDispensingPatientsType" maxOccurs="unbounded"/>
 		</sequence>
 	</complexType>
