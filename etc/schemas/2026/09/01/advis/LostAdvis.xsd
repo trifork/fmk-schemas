@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:mc160="http://fmk-teknik.dk/160/advis"
+        targetNamespace="http://fmk-teknik.dk/160/advis"
+        elementFormDefault="qualified">
+
+    <element name="LostAdvis" type="mc160:LostAdvisType">
+        <annotation>
+            <documentation xml:lang="en-GB">Indicates that earlier advisories might have been lost and clients should resynchronise</documentation>
+            <documentation xml:lang="da-DK">Angiver at tidligere adviseringer kan være gået tabt, og at klienter bør synkronisere igen</documentation>
+        </annotation>
+    </element>
+    <complexType name="LostAdvisType">
+        <sequence>
+            <element name="ResumeAt" type="dateTime" />
+        </sequence>
+    </complexType>
+</schema>
