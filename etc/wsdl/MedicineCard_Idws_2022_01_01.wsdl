@@ -193,6 +193,7 @@
             <xs:include schemaLocation="../schemas/2022/01/01/CreateDispensingPeriodResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/CreateDrugMedicationRequest.xsd"/>
+            <xs:include schemaLocation="../schemas/2022/01/01/CreateDrugMedicationForPatientWithoutCprRequest.xsd"/>
             <xs:include schemaLocation="../schemas/2022/01/01/CreateDrugMedicationResponse.xsd"/>
 
             <xs:include schemaLocation="../schemas/2022/01/01/RegisterHandoverRequest.xsd"/>
@@ -676,6 +677,10 @@
 
     <wsdl:message name="CreateDrugMedicationRequest_160">
         <wsdl:part name="CreateDrugMedicationRequest" element="mc160:CreateDrugMedicationRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateDrugMedicationForPatientWithoutCprRequest_160">
+        <wsdl:part name="CreateDrugMedicationForPatientWithoutCprRequest" element="mc160:CreateDrugMedicationForPatientWithoutCprRequest"/>
     </wsdl:message>
 
     <wsdl:message name="CreateDrugMedicationResponse_160">
@@ -1630,6 +1635,12 @@
             &operationFaultDeclaration;
         </wsdl:operation>
 
+        <wsdl:operation name="CreateDrugMedicationForPatientWithoutCpr_160">
+            <wsdl:input name="CreateDrugMedicationForPatientWithoutCprRequest_160" message="tns:CreateDrugMedicationForPatientWithoutCprRequest_160"/>
+            <wsdl:output name="CreateDrugMedicationResponse_160" message="tns:CreateDrugMedicationResponse_160"/>
+            &operationFaultDeclaration;
+        </wsdl:operation>
+
         <wsdl:operation name="RegisterHandover_160">
             <wsdl:input name="RegisterHandoverRequest_160" message="tns:RegisterHandoverRequest_160"/>
             <wsdl:output name="RegisterHandoverResponse_160" message="tns:RegisterHandoverResponse_160"/>
@@ -2505,6 +2516,19 @@
         <wsdl:operation name="CreateDrugMedication_160">
             <soap:operation soapAction="http://fmk-teknik.dk/160#CreateDrugMedication" style="document"/>
             <wsdl:input name="CreateDrugMedicationRequest_160">
+                &fmkStandardSOAPRequestHeaders;
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="CreateDrugMedicationResponse_160">
+                &fmkStandardSOAPResponseHeaders;
+                <soap:body use="literal"/>
+            </wsdl:output>
+            &bindingFaultDeclaration;
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateDrugMedicationForPatientWithoutCpr_160">
+            <soap:operation soapAction="http://fmk-teknik.dk/160#CreateDrugMedicationForPatientWithoutCpr" style="document"/>
+            <wsdl:input name="CreateDrugMedicationForPatientWithoutCprRequest_160">
                 &fmkStandardSOAPRequestHeaders;
                 <soap:body use="literal"/>
             </wsdl:input>
