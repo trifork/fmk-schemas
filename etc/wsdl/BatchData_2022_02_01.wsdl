@@ -97,10 +97,14 @@
         <wsdl:part name="GetMigratedDataToDeleteRequest" element="tns:GetMigratedDataToDeleteRequest"/>
     </wsdl:message>
 
+    <wsdl:message name="GetTrackAndTraceEventsToDeleteRequest">
+        <wsdl:part name="GetTrackAndTraceEventsToDeleteRequest" element="tns:GetTrackAndTraceEventsToDeleteRequest"/>
+    </wsdl:message>
+
     <wsdl:message name="DGWSFault">
 		<wsdl:part name="fault" element="medcom:FaultCode" />
 	</wsdl:message>
-	
+
 	<wsdl:portType name="BatchDataPortType">
         <wsdl:operation name="GetMedicineCardDataForDeceasedPersons">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMedicineCardDataForDeceasedPersons" style="document"/>
@@ -108,21 +112,21 @@
 			<wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-        
+
         <wsdl:operation name="GetDoctorsWithExpiringDDPatients">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoctorsWithExpiringDDPatients" style="document"/>
             <wsdl:input name="GetDoctorsWithExpiringDDPatientsRequest" message="tns:GetDoctorsWithExpiringDDPatientsRequest"/>
             <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-        
+
         <wsdl:operation name="GetDoctorsWithMixedDailyDosagePatients">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDoctorsWithMixedDailyDosagePatients" style="document"/>
             <wsdl:input name="GetDoctorsWithMixedDailyDosagePatientsRequest" message="tns:GetDoctorsWithMixedDailyDosagePatientsRequest"/>
             <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
-        
+
 
         <wsdl:operation name="GetDrugMedicationToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetDrugMedicationToDelete" style="document"/>
@@ -211,6 +215,13 @@
         <wsdl:operation name="GetMigratedDataToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMigratedDataToDelete" style="document"/>
             <wsdl:input name="GetMigratedDataToDeleteRequest" message="tns:GetMigratedDataToDeleteRequest"/>
+            <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
+            <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetTrackAndTraceEventsToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetTrackAndTraceEventsToDelete" style="document"/>
+            <wsdl:input name="GetTrackAndTraceEventsToDeleteRequest" message="tns:GetTrackAndTraceEventsToDeleteRequest"/>
             <wsdl:output name="BatchDataServiceResponse" message="tns:BatchDataServiceResponse"/>
             <wsdl:fault name="DGWSFault" message="tns:DGWSFault"/>
         </wsdl:operation>
@@ -388,6 +399,17 @@
         <wsdl:operation name="GetMigratedDataToDelete">
             <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetMigratedDataToDelete" style="document"/>
             <wsdl:input name="GetMigratedDataToDeleteRequest">
+                <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
+                <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="BatchDataServiceResponse"><soap:body use="literal"/></wsdl:output>
+            <wsdl:fault name="DGWSFault"><soap:fault name="DGWSFault" use="literal"/></wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetTrackAndTraceEventsToDelete">
+            <soap:operation soapAction="http://fmk-teknik.dk/batchservice/xml.schema/2022/02/01#GetTrackAndTraceEventsToDelete" style="document"/>
+            <wsdl:input name="GetTrackAndTraceEventsToDeleteRequest">
                 <soap:header use="literal" part="SecurityHeader" message="tns:SecurityHeader"/>
                 <soap:header use="literal" part="MedcomHeader" message="tns:MedComHeader"/>
                 <soap:body use="literal"/>
