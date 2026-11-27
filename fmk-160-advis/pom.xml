@@ -77,6 +77,43 @@
                     </execution>
                 </executions>
             </plugin>
+             <!-- Zip collections of the WSDL + XSDs, like the other schemas. attach=false: archived by Jenkins, not deployed to Nexus. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-assembly-advis</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>false</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/advis160.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>make-assembly-advis-inline</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <appendAssemblyId>true</appendAssemblyId>
+                            <attach>false</attach>
+                            <finalName>_</finalName>
+                            <descriptors>
+                                <descriptor>${project.parent.basedir}/src/assembly/advis160-inline.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <resources>
             <resource>
